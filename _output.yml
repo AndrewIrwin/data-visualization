@@ -1,0 +1,28 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#4D6F8D"
+  repo: https://github.com/andrewirwin/course-notes
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Course notes for STAT 2430</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    download: ["pdf", "epub"]
+  sharing:
+      facebook: no
+      twitter: no
+      github: yes
+      all: []
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+
+
+
