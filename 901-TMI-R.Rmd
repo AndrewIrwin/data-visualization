@@ -1,0 +1,55 @@
+---
+title: "TMI about R"
+author: "Andrew Irwin"
+date: "21/10/2020"
+output: html_document
+---
+
+
+Too much information about R: I want to know but I don’t want to ask.
+
+Important information that de-mystifies r. Mental model of why it works thus way.
+
+A series of q and a about r. Not tested or part of The course.
+
+Computer software is full of technical details. Too little understanding and you just get confused and make up rules for yourself. Too much detail and you don’t know why it matters so you get bored and disengaged. Course approach is a just in fine and just enough information. These videos tell you a little bit more.
+
+What is a data frame? Or tibble. Or data table?
+
+What is the difference between strings and factors?
+
+What’s the pipe? Why does ggplot use +?
+
+What are packages? What’s the difference between installing one and using one? Why is r organized thus way?
+
+Too many equals signs. = == <- all.equal. Waldo package.
+
+NA nan inf -inf
+Testing for Na. Replacing. If then functions.
+
+What’s a function?
+
+What’s a formula?
+Lm facet also t.test gam
+
+Grammar? Gg gt
+Descriptive vs imperative
+SQL as another example
+
+—-
+
+Cure videos
+
+How to get help from the Internet?
+
+How to ask a question? How to answer a question?
+
+How to fix an error in your code?
+
+How to learn from examples.
+Start with rmd and rpres templates
+
+How to get data into R
+
+
+

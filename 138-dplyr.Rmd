@@ -1,0 +1,45 @@
+---
+title: "Summarizing data"
+author: "Andrew Irwin"
+date: "02/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Summarizing data
+
+dplyr
+filter
+group_by
+mutate
+summarize
+slice
+count
+
+pivot_longer, wider
+
+
+## Exercise
+
+Learn to use three of the following functions, by reading dplyr tidyverse documentation or blog post. Show and explain 2 examples for each function. Show a simple and more complicated example.
+
+Overview
+* glimpse, slice
+
+Columns
+* relocate, select, separate, separate_rows
+
+Summarize
+* count, distinct, uncount
+
+factors
+fct_inorder
+fct_infreq
+
+ggplot
+geom_count
+ggridges
+ggrepel

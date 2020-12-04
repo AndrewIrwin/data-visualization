@@ -1,0 +1,55 @@
+---
+title: "Introduction"
+author: "Andrew Irwin"
+date: "15/10/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lesson 1. Invitation to Data Visualization
+
+Good data visualizations
+
+CO2
+Gapminder animated
+Weatherspark
+Env Canada dashboard
+
+Recreate graphs step by step
+
+Ideas
+Grammar of graphics. For reading and for creating
+Use of element. Length slope shape dot colour box plot histogram
+Organize and reshape data
+Tell a story
+No such thing as a neutral observer
+
+Colour challenges
+
+
+### Classics of data visualization
+
+Historical
+
+Napoleon army map.
+Florence Nightengale's causes of death.
+John Snow's cholera map.
+
+Modern
+
+Hans Rosling's TED talk on gapminder data
+Temperature and CO2 data over 800k years and the hockey stick (Michael Mann, Al Gore)
+Graphics from the NYT. https://www.nytimes.com/column/whats-going-on-in-this-graph
+e.g., https://www.nytimes.com/2018/01/04/learning/whats-going-on-in-this-graph-jan-9-2018.html
+
+
+
+
+## Stories
+
+https://www.openculture.com/2014/02/kurt-vonnegut-masters-thesis-rejected-by-u-chicago.html
+
+COWilke chapter

@@ -1,0 +1,103 @@
+---
+title: "Version Control"
+author: "Andrew Irwin"
+date: "15/10/2020"
+output: html_document
+---
+
+
+## What is version control software?
+
+[Version control](https://en.wikipedia.org/wiki/Version_control) software is used to manage the process of creating software. It is commonly used to track changes, manage the revision process of correcting errors and adding new features, tracking the history of a project through different versions, synchronizing contributions from many different people, and faciliating the distribution to a broad audience. Version control software is most commonly applied to the production of complex projects like software, but it can be used for text documents, data, and many other applications.
+
+
+## What software is used for version control?
+
+Version control software has a history dating back several decades, so there are [many different tools available](https://en.wikipedia.org/wiki/Comparison_of_version-control_software). We will be using one of the most popular packages, known as git ([Wikipedia](https://en.wikipedia.org/wiki/Git), [homepage](https://git-scm.com/)). Git keeps the entire history of a project on your own computer and does not require any central repository. Since version control software is often used to coordinate the work of many authors and to distribute the product, central repositories such as GitHub ([Wikipedia](GitHub), [homepage](https://github.com/)) have become very popular, to the point that some people see them as an integrated set of tools. Other popular version control software packages include [Mercurial](https://en.wikipedia.org/wiki/Mercurial) and [Subversion](https://en.wikipedia.org/wiki/Apache_Subversion) and central repositories such as [bitbucket](https://en.wikipedia.org/wiki/Bitbucket) and [more](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities).
+
+We will be using git and github in this book. Rstudio works well with Mercurial as well.
+
+## Why is version control used in data visualization?
+
+Data visualization is the process of combining data with computer code to create a visualization. Both of these parts can change with new information and new ideas, can require synthesis of skills from multiple authors, and benefit from transparency in design and distribution. As a result, version control software is a natural tool to help with the work of data visualization. 
+
+Suppose you develop a data visualization and you want to distribute the result, but you anticipate updating the data and revising the analyses. This sequence of steps is very similar to software development: an initial version is produced and released to users, changes are made, new versions are produced. Users (of software and data visulizations) want to know what version they are using, if there are any updates, and what the changes were between the versions. Version control software can help with these tasks and, once the key concepts are understood, without much extra effort on the part of the team producing the data visualization.
+
+Just as software can be developed without version control software, so can data visualizations. In this course we will integrate just enough use of version control to help you see how it can be helpful and to get you past the uncomfortable stage of knowing what it is without knowing the basics of how to use it.
+
+
+## How will we use version control?
+
+We will use git and github to submit and assess assignments and to mediate cooperative work. 
+
+Specifically, the following assignments will require the use of git and github:
+
+* Introduction to git and github
+* Tutorial for a new data visualization tool
+* Sample data visualization development
+* Final project
+
+
+## Introduction to git
+
+Key concepts
+
+
+## Using git with Rstudio
+
+Watch a video walkthrough of these steps (link)
+
+See the Rstudio [help](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&mode=desktop)
+
+Setup
+
+### On a Macintosh (OSX) computer
+
+### On a Windows computer
+
+### Set up a github account
+
+Create account
+Link to my course as student
+Get authorization key onto your computer
+
+
+### Common steps for each assignment
+
+New project > New Directory 
+Provide directory name, indicate the subdirectory, make sure "create a git repository" is checked.
+
+Create an Rmd file. Save the file.
+
+Stage the file. Stage the other files created for you as well.
+
+Click commit to make your first commit. Write a descriptive message. Click commit and close the windows.
+
+Create new repository on github.
+
+Attach the project to your github account.
+
+Terminal window: git remote add upstream https://github.com/AndrewIrwin/git-assignment.git
+(upstream or origin?)
+
+git push --set-upstream origin master
+
+Go to github repository page to see your files are now there.
+
+Create a README file. Stage and commit. Push to github by pressing the green up arrow. May need to authorize use of github credentials by typing your computer login password.
+
+Look on github to see your files are there now.
+
+Clean up by deleting the folder from your computer and the repository from github. (Settings / scroll to bottom / Delete repository / Type name to confirm / Type github password to confirm.)
+
+
+## Using github with Rstudio
+
+
+## Resources
+
+[Happy Git with R](https://happygitwithr.com/)
+
+[Advanced Git cheat sheet](https://www.maxpou.fr/git-cheat-sheet)
+
+

@@ -1,0 +1,34 @@
+---
+title: "Graphics output"
+author: "Andrew Irwin"
+date: "19/09/2020"
+output: html_document
+---
+
+
+## ragg
+
+
+A note about making figures for different purposes. The ideas are general, but the link below has some specific comments for R.
+ 
+We make figures for many purposes: to view on our own computer monitors, for publication (ultimately as a PDF), to show on a projector in a room and on printed posters (at least, we will do the last two in the eventual post-pandemic world). All of these require figures to have different sizes because they are viewed from different distances. Many (most, all?) computer graphics have elements that don’t always scale the same way or should be scaled in different ways for these different uses. For example, the size of symbols on a graph and text on legends should generally be bigger relative to the overall size of the graph in a presentation than on a printed page. If you are looking at a figure you created on the computer screen in front of you, you may desire relatively smaller text and symbols.
+ 
+In addition to these important perceptual concerns, there are also (sometimes mysterious) computer concerns having to do with “raster graphics” (png figures) and “vector graphics” (typically PDF, but PDF can contain raster graphics too), and how symbols are drawn and sized and how text is drawn and sized. Even people who understand these issues well can get confused and frustrated by them. And most of us have gaps in our understanding.
+ 
+Here is a short description of some of these issues:
+https://www.tidyverse.org/blog/2020/08/taking-control-of-plot-scaling/
+ 
+The take-away message is that if you want to save a graphic in R you can now use an option “scaling” to adjust the scale of the elements of the figure without changing the “physical” size of the image. This is described above for an easy way to save ggplot graphics: ggsave() with a new raster graphics output package (I just learned about it) called “ragg” and the function agg_png() which works like png() for creating raster graphics.
+ 
+e.g.,
+ 
+library(ggplot2)
+library(ragg)
+p <- ggplot( …)
+ggsave(“plot.png”, p, device= agg_png, width = 60, height = 36, units = “cm”, res = 300, scaling = 3)
+ 
+As always, if you are having trouble with R (saving graphics, creating graphics, etc), please ask!
+ 
+Andrew
+ 
+ 

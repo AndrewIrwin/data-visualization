@@ -1,0 +1,90 @@
+---
+title: "Tasks"
+author: "Andrew Irwin"
+date: "04/12/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Tasks
+
+Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
+
+Tasks will be evaluated on a 0-2 scale. The primary goal of each task is to perform the task, so the assessment will be 2 if the work is complete or mostly complete, 0 if the work is mostly incomplete, and 1 for roughly half complete tasks.
+
+## Lesson 1
+
+Find two data visualizations that you find informative, compelling, or in need of improvement.
+
+Create a document that shows each visualization (the figure, or a snapshot of a dynamic visualization), provides the source (e.g., url and publication details if applicable). In a few sentences describe 
+1. the data behind the visualization, 
+2. main message conveyed by the visualization,
+3. one or two features of the visualization that make it effective or suggestions for improvement. 
+The goal of this project isn't to be right or wrong, but rather to start the process of looking at data visualizations through the perspective of creator, designer, and critic.
+
+Submit your work as a single PDF on Brightspace.
+
+## Lesson 2
+
+1. Install R, Rstudio, and the packages identified in Healy, Chapter 1.
+2. Login to [rstudio.cloud](https://rstudio.cloud/) which can be used if you have trouble using R on your own computer.
+3. Create github account. 
+4. Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name.
+5. Ask for help with any of these tasks if you need it. 
+
+
+## Lesson 3
+
+Make a simple ggplot in an Rmd. Knit the R markdown file. Nothing to submit.
+
+## Lesson 4
+
+Check out a github repository from online course. Add a plot to the Rmd document you find there. Commit your changes and push the Rmd file back to github.
+
+## Lesson 5
+
+Demonstrate use of group_by, filter, summarize.
+
+R basics: c, str, class, typeof
+
+Demonstrate facetted plots in a few ways.
+
+Figure formatting. Axis labels. Legends. Colour scales. 
+
+Work with dates using lubridate. Parsing, manipulating, plotting.
+
+Learn to use a function from its help page. Learn about a dataset from its help page. Report in a Rmd document.
+
+Learn somethign about dplyr from r4ds book. Demonstrate by solving an exercise.
+
+Learn somethign from ggplot2 tidyverse website. Demonstrate. Give a menu of 2-3 tasks.
+
+Demonstrate pivot longer and pivot wider.
+
+Fix mistakes in code provided. (about 5 kinds of mistakes / error messages.)
+
+Do a tidy tuesday. as Rmd
+
+Do a tidy tuesday as slideshow. Make a Rmd slideshow to demonstrate creation of a figure and revision / elaboration. 5 slides.
+
+Make 3 versions of same figure: Rmd version (webpage), pdf for printed page (b&w), slideshow (png, big fonts, simplify, extra colour)
+
+
+Format a nice table using gt, kableExtra, etc
+
+Demo one of the following packages: Upset, patchwork, ggrepel
+
+demo one of the following: naniar, waldo, skimr
+
+Draw a simple map. (points on a map)
+
+Draw a more elaborate map. (colour scales, filled regions)
+
+Sample knn calculation.
+
+Sample PCA.
+
+

@@ -1,0 +1,20 @@
+---
+title: "Intro to R and Rstudio"
+author: "Andrew Irwin"
+date: "21/09/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Computing preliminaries
+
+We use R and Rstudio in this course.
+
+## If you've never used R before start here
+
+## If you are an experienced R user start here
+
+Hour-long video overview of Rstudio features: https://www.youtube.com/watch?v=PXiY8muVUec

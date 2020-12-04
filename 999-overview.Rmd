@@ -1,0 +1,46 @@
+---
+title: "overview talk"
+author: "Andrew Irwin"
+date: "20/09/2020"
+output: html_document
+---
+
+
+Opening and closing talk
+
+Communicating with data
+
+Efficiency
+OptimaiAtion
+Standardization
+
+Binary vs ASCII
+Denormalization
+Computational efficiency
+Reproducibility
+How do I know it’s right
+How does someone else know?
+
+How do I read it
+In 6 months
+Does someone on my team read it
+Does a completely unrelated person read it
+
+For code
+And graphs
+And words
+
+Time flies like an arrow
+Fruit flies like a banana
+
+Up goer five
+Simplified English Wikipedia
+
+Why r
+Why not some other langauge
+Why not some other data format
+SQL and the tidyvwrse
+NA and -999
+
+
+

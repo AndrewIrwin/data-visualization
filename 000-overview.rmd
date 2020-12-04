@@ -1,0 +1,76 @@
+---
+title: "Manifesto"
+author: "Andrew Irwin"
+date: "15/10/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Welcome
+
+Data visualization is a critical skill for anyone interested in using data to think and persuade. Its essence is converting raw data into a visual form that can be more easily apprehended than the full dataset. As a result, almost every data visualization is a simplification and approximation of a raw dataset, and thus involves a perspective -- the goals and biases of the person producing the visualization.
+
+This course focusses on three aspects: what makes a good data visualization, designing and improving a visualization, and the technical computer skills needed to create visualizations.
+
+##  What is Data Visualization?
+
+Data visualization is the practice of turning data into graphics which can be more easily interpreted than the raw data. 
+
+Data visualization approaches vary. For some purposes, highly customized graphic design and visual style are paramount. That's not our focus. We emphasize standardized graphical presentations -- which spans a wide variety of visualizations -- that minimize the use of graphical elements not directly linked to the data.
+
+
+### Goals of data visualization
+
+Enable visual interpretation of data. Guide reader to insight. Represent the data honestly.
+
+
+## Course organization
+
+Each week will be structured around lessons, interactions, and evaluation of what you've learned. The detailed outline provides specifics for each week.
+
+Lessons consist of course notes, an accompanying mini-lecture video, and some supplemental reading from the course textbooks. There will be 2-3 lessons each week.
+
+Each week there will be live interactions during scheduled class time for discussion of lesson material and computing demonstration.
+
+Tasks are opportunities to test your understanding of the key concepts from each lesson and demonstrate you have developed basic profiency with some computing skills. Most lessons will have a task for you to complete.
+
+Assignments combine skills from multiple lessons into a meaningful data visualization activity. These will require using skills from multiple tasks and applying the content of lessons in thoughtful and sometimes creative ways.
+
+The final project is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present to a reader an analysis of a dataset of your choice. The proposal will select a dataset and describe some of your planned analyses. The report will be a polished document showing off many of the ideas of the course using this dataset.
+
+
+
+
+## Evaluation
+
+Tasks (30%, roughly 2 per week)
+Assignments (40%, roughly 1 every two weeks)
+Project (Proposal, 5%; Report, 25%)
+
+## Course goals
+
+
+Science data visualization manifesto
+Communication
+Reanalysis
+Repeatable
+Convincing
+Auditable
+Transparent
+Correcting mistakes
+Creative Commons
+Software tools
+Complexity tolerant
+Adaptable
+Collaboration. Future you. Peers. Employers. Consumers.
+
+## Accessibility
+
+Data visualization is, as the name implies, the act of producing a product to be seen. This is a useful goal because our brains are very good at processing some kinds of visual information. Training to read visualizations can greatly increase the ability to extract information from a visualization, so it is important to know your audience -- students, the general public, people with well developed quantiative skills, or domain experts for the data you are presenting. All of these factors are central to knowing if a visualization is suitable and effective. Our target audience is university students.
+
+Not everyone has the same visual abilities. Some people have vision that differs from the most common experience in some way -- perceiving [colours differently](https://en.wikipedia.org/wiki/Color_blindness), reduced [acuity](https://en.wikipedia.org/wiki/Visual_acuity), and other differences all the way to complete blindness. We should always keep these differences in mind when producing visualizations. To take the hardest challenge head on, what is the value in producing a visualziation for someone who cannot see it? First, data visualization is a process that uses the creator's visual and technical skills to preent features of a dataset. Second, any data visualization should be accompanied by a written description of the message to be conveyed. Ideally the visual and written aspects will complement each other. A visualization does not "say" anything by itself; a written interpretation is an essential part of the process.
+
+or 

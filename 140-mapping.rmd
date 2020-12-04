@@ -1,0 +1,27 @@
+---
+title: "Mapping"
+author: "Andrew Irwin"
+date: "20/09/2020"
+output: html_document
+---
+
+# Making maps
+
+Maps of Canada
+
+Hidden lecture where I prepare data and write functions
+
+https://tengl.net/blog/2020/1/7/drawing-canada-maps-in-r
+
+get province and census division shape files from stats canada
+https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-s-eng.cfm?year=19
+
+Election data and bounaries and chloropleths and populated weighted chloropleths
+https://cran.r-project.org/web/packages/mapcan/readme/README.html
+
+Wind turbines in Maritimes
+https://discuss.ropensci.org/t/osmdata-rnaturalearth-and-magick-for-tidytuesday/2255
+
+Set of a bunch of maps
+https://github.com/AlexandraKapp/30daymapchallenge
+

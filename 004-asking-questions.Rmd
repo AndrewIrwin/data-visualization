@@ -1,0 +1,40 @@
+---
+title: "Asking questions"
+author: "Andrew Irwin"
+date: "25/10/2020"
+output: html_document
+---
+
+# Asking questions and getting help
+
+When you are learning a new subject or skill, you will have a lot of questions. Detailed questions about a particular skill. General questions about a topic. Big-picture questions about how to apply the material. Regardless of the question, asking questions well is a [superpower](https://jvns.ca/blog/2014/06/13/asking-questions-is-a-superpower/). Why? A question is a way of crystallizing the uncertainty in your mind about a specific topic. The more specific your question, the easier it is to answer, and the more likely it is that the response will be helpful to you. Sometimes simply asking a question will lead you to the steps to answer the question for yourself. In fact, asking questions of yourself is an important part of learning and thinking.
+
+Asking good questions can be challenging, especially in asynchronous learning. In a classroom, it's fairly easy: Can you give another example? Why did you do that calculation? What does the answer mean? Many questions you might ask in an in-person class don't translate well to other contexts: email, office hours, or online forums, because the immediate context of a class is missing. So it's up to you to add that context when you ask a question.
+
+In the suggestions below, I am imagining your are preparing a question to help you learn a concept or skill in a course. You could be asking your instructor, a classmate, or even yourself. It's important to ask questions -- and [I want you to ask questions](https://jvns.ca/blog/2014/04/04/ask-if-you-have-questions-isnt-enough/), so much that you should consider it part of your assigned work to formulate questions.
+
+## Suggestions for asking questions
+
+A few [suggestions](https://jvns.ca/blog/good-questions/):
+
+-   Explain the context (is this about material from a video, the course notes, an assignment -- which one?, or just something that you are wondering about)
+
+-   Say what you know (the topic is X, or the question asks for Y)
+
+-   Say what you are trying to do (understand an argument, perform a calculation, fix an error in code)
+
+-   Say what you think comes next or where you think you are stuck (I'm trying to figure out X, I don't know why the plot looks like Y)
+
+## How to learn material in this course
+
+Levels of the course - required outcomes
+
+Learning technical skills well enough so that you can use them again
+
+<https://jvns.ca/blog/2018/09/01/learning-skills-you-can-practice/>
+
+
+## Getting help
+
+* [R studio tips](https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/) presented as animated GIFs
+

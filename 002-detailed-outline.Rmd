@@ -1,0 +1,133 @@
+---
+title: "Detailed outline"
+author: "Andrew Irwin"
+date: "27/09/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Detailed outline
+
+Synchronous sessions on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.)
+
+Important dates
+* Wed 6 Jan: Term begins
+* Fri 5 Feb: Munro day, University closed
+* 15-19 Feb: Study break
+* Fri 2 Apr: Good Friday, University closed
+* Tue 6 Apr: Last Tuesday/Thursday class
+* Thu 8 Apr: Last day of classes
+* 10-23 Apr: Exam period
+
+
+
+## Course Overview - objectives and sample skills (computing, data)
+
+## look at data. socviz ch 1
+
+## why tools: ggplot, dplyr, markdown, git; R ties them together
+- 02 Introduction to R, Rstudio, add-on packages
+- 02a get started. socviz ch 2
+
+
+## The grammar of graphics
+
+- 03 ggplot graphs
+- 03a make a plot. socviz ch 3
+
+## Tidy data
+
+- 04 dplyr summaries
+- 05 shape color lines 
+- 05a show the right numbers. socviz ch 4
+- 05b graph tables, add labels, make notes. socviz. ch 5
+- 10 Version control
+- getting help from R and online
+- plotting small multiples (facets)
+- reading data (csv, tsv, xlsx); import menu item; r commands
+- a bit more about R. socviz. Appendix A all sections
+- data validation (pointblank)
+- tidy data
+- making data tidy (datapasta)
+
+- annotations
+- 30 graphics output (PDF, png, sizes, colors, themes; ragg) repurposing graphics for different media and purposes
+- 31 dbplyr and sqlite (brief)
+- graphs for categorical data
+- graphs for quantitative data
+- maps and chloropleths
+- heatmaps
+- draw maps. socviz. ch 7
+
+- linear models (lines, polynomials, robust, quantile); equationomatic 
+- loess, GAM
+- kmeans
+- MDS (?)
+- work with models. socviz ch 6
+
+- themes, etc
+- refine your plots. socviz ch 8
+
+
+
+## Another run at this plan
+
+Lecture titles (13)
+
+Introduction to Data Visualization
+Reproducibility and report writing
+The grammar of graphics and components of a ggplot
+Tracking changes and sharing data and code with git
+A tour of plot types
+Aesthetic features of graphs: symbols, lines, colours, and more
+Organizing data
+Summarizing data in tables
+Smoothing data
+Making clusters from quantitive data
+Comparing data: overlapping points and panel plots
+Learning computing tools on your own (project overview)
+Principal component analysis and Multidimensional scaling
+
+Lab titles (18)
+
+Getting R and Rstudio working in the cloud and on your computer
+Orientation to Rstudio and R markdown documents
+Your first ggplot
+Customizing ggplots
+Getting help with R
+Fixing R mistakes
+Getting data into R and tidying it
+Pivoting data
+Getting started with git
+More git practice
+Working with dates
+Linear regression and data smoothers
+Clustering
+Graphics formats - aesthetics and computer technialities
+Summarizing data with dplyr
+Using facetting
+Annotating plots and highlighting data
+PCA and MDS
+
+Appendix (5 + more added during term)
+
+What is the tidyverse? Contrast with other conventions
+How do I know I've done it right?
+Functions and types of data in R
+Text data and regular expressions introduction
+Examples of building up figures step by step
+
+Evaluation video overview and help
+
+Making a knitted document to describe somethign
+Making a video presentation
+
+
+## notes
+
+ghclass package for teaching with github
+github workshop for teaching https://mine-cetinkaya-rundel.github.io/teach-r-online/
+sugrrants package for visualizing course components

@@ -1,0 +1,11 @@
+---
+title: "PCA MDS"
+author: "Andrew Irwin"
+date: "12/11/2020"
+output: html_document
+---
+
+
+
+https://melinaluethje.com/2020/11/12/multivariate-ordinations-101/
+

@@ -1,0 +1,38 @@
+---
+title: "Colour"
+author: "Andrew Irwin"
+date: "24/09/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Using colour well
+
+## When to use colour in your graphics
+
+To highlight information already distinguished in some other way
+
+To distinguish a small number of categories (2-5)
+
+As a semi-quantitative scale, particularly if only a few hues are used (e.g., red and blue) in varying degrees of brightness or saturation
+
+Avoid using more than 5 colours 
+
+It is hard to make quantitative comparisons between two colours
+
+## Advice for picking colour palettes
+
+
+
+## Colour vision deficiency
+
+Awareness page https://www.colourblindawareness.org/colour-blindness/
+
+NIH statistics and other data https://ghr.nlm.nih.gov/condition/color-vision-deficiency
+
+Wikipedia https://en.wikipedia.org/wiki/Color_blindness
+
+Simulate what yuor ggplot looks like to someone with colour vision deficiency https://github.com/clauswilke/colorblindr

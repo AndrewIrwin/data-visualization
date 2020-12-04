@@ -1,0 +1,112 @@
+---
+title: "Term Project"
+author: "Andrew Irwin"
+date: "04/12/2020"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Term project
+
+## Proposal
+
+## Report
+
+Select and describe a dataset and question for final project. How you plan to use 5 things (overview plot, dplyr/table summary, small multiples, knn/PCA, map)
+
+Project
+Detailed rubric.
+Proposal is a mini-project, separately graded.
+
+
+
+Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests or based on work in other courses or research projects. You should demonstrate many the techniques from the course, applying them as appropriate to develop and communicate insight into the data.
+
+You should create compelling visualizations of your data. Pay attention to your presentation: neatness, coherency, and clarity will count. All analyses must be done in RStudio, using R.
+
+## Data
+
+It is important that you choose a readily accessible dataset that is large enough so multiple relationships can be explored, but no so complext that you get lost. I suggest your dataset should have at least 50 observations and about 10 variables. The variables should include categorical variables, discrete numerical variables, and continuous numerical variables. If you plan to use a dataset that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+
+Do not reuse datasets from any part of the course.
+
+Here is list of data repositories containing many interesting datasets. Feel free to use data from other sources if you prefer.
+
+TidyTuesday
+Bikeshare data portal
+Kaggle datasets
+OpenIntro datasets
+Awesome public datasets
+PRISM Data Archive Project
+Harvard Dataverse
+Statistics Canada
+Open government data (Canada, provinces, elsewhere)
+
+Deliverables
+Proposal - due Tuesday, 27 Oct, at 16:00
+Presentation - due Friday, 4 Dec, at 09:00 as pre-recorded video or live presentation in workshop
+Write-up - due Friday, 4 Dec, at 09:00
+Proposal
+Section 1 - Introduction: The introduction should introduce your general research question and your data (where it came from, how it was collected, what are the cases, what are the variables, etc.).
+
+Section 2 - Data: Place your data in the /data folder, and add dimensions and codebook to the README in that folder. Then print out the output of glimpse() or skim() of your data frame.
+
+Section 3 - Data analysis plan:
+
+The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.
+The comparison groups you will use, if applicable.
+Very preliminary exploratory data analysis, including some summary statistics and visualizations, along with some explanation on how they help you learn more about your data. (You can add to these later as you work on your project.)
+The statistical method(s) that you believe will be useful in answering your question(s). (You can update these later as you work on your project.)
+What results from these specific statistical methods are needed to support your hypothesized answer?
+Each section should be no more than 1 page (excluding figures). You can check a print preview to confirm length.
+
+Presentation
+5 minutes maximum, and each team member should say something substantial. You can either present live during your workshop or pre-record and submit your video to be played during the workshop.
+
+Prepare a slide deck using the template in your repo. This template uses a package called xaringan, and allows you to make presentation slides using R Markdown syntax. There isn’t a limit to how many slides you can use, just a time limit (5 minutes total). Each team member should get a chance to speak during the presentation. Your presentation should not just be an account of everything you tried (“then we did this, then we did this, etc.”), instead it should convey what choices you made, and why, and what you found.
+
+Before you finalize your presentation, make sure your chunks are turned off with echo = FALSE.
+
+Presentation schedule: Presentations will take place during the last workshop of the semester. You can choose to do your presentation live or pre-record it. During your workshop you will watch presentations from other teams in your workshop and provide feedback in the form of peer evaluations. The presentation line-up will be generated randomly.
+
+Write-up
+Along with your presentation slides, we want you to provide a brief summary of your project in the README of your repository.
+
+This write-up, which you can also think of as an summary of your project, should provide information on the dataset you’re using, your research question(s), your methodology, and your findings.
+
+Repo organization
+The following folders and files in your project repository:
+
+presentation.Rmd + presentation.html: Your presentation slides
+README.md: Your write-up
+/data/*: Your dataset in csv or RDS format, in the /data folder.
+/proposal: Your proposal from earlier in the semester
+Style and format does count for this assignment, so please take the time to make sure everything looks good and your data and code are properly formated.
+
+Tips
+You’re working in the same repo as your teammates now, so merge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.
+Review the marking guidelines below and ask questions if any of the expectations are unclear.
+Make sure each team member is contributing, both in terms of quality and quantity of contribution (we will be reviewing commits from different team members).
+Set aside time to work together and apart (physically).
+When you’re done, review the documents on GitHub to make sure you’re happy with the final state of your work. Then go get some rest!
+Code: In your presentation your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I should be able to obtain the results you presented. Exception: If you want to highlight something specific about a piece of code, you’re welcomed to show that portion.
+Teamwork: You are to complete the assignment as a team. All team members are expected to contribute equally to the completion of this assignment and team evaluations will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.
+Marking
+Total	100 pts
+Proposal	10 pts
+Presentation	50 pts
+Write-up	15 pts
+Reproducibility and organization	10 pts
+Team peer evaluation	10 pts
+Classmates’ evaluation	5 pts
+Criteria
+Content - What is the quality of research and/or policy question and relevancy of data to those questions?
+Correctness - Are statistical procedures carried out and explained correctly?
+Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations?
+Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+
+
+

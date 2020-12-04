@@ -1,0 +1,24 @@
+---
+title: "Ethical considerations"
+author: "Andrew Irwin"
+date: "18/11/2020"
+output: html_document
+---
+
+# Ethical considerations
+
+Readings and resources for ethics in data science 
+
+* [Case studies](https://www.oreilly.com/content/case-studies-in-data-ethics/)
+* [COVID dashboards](https://www.sciencedirect.com/science/article/pii/S2666389920300866)
+* [Data science ethics checklist](https://deon.drivendata.org/#data-science-ethics-checklist)
+
+Misc
+
+* https://www.datascience-pm.com/10-data-science-ethics-questions/
+* https://towardsdatascience.com/the-ethics-of-data-science-e3b1828affa2
+
+* https://www.loyola.edu/academics/data-science/blog/2018/why-ethics-are-important-in-data-science
+* [British actuaries](https://www.actuaries.org.uk/system/files/field/document/An%20Ethical%20Charter%20for%20Date%20Science%20WEB%20FINAL.PDF)
+
+

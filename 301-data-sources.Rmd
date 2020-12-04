@@ -1,0 +1,27 @@
+---
+title: "Annotated sources of data"
+author: "Andrew Irwin"
+date: "07/10/2020"
+output: html_document
+---
+
+## built-in and exisiting packages
+
+datasets
+palmerpenguins
+gapminder (but see website too [Gapminder]() )
+
+## websites
+
+[Our World In Data](https://ourworldindata.org/) a curated set of over 3000 charts with documentation and open source data.
+
+
+## student project
+
+find a dataset
+document it here
+
+
+## distribution of data
+
+[FAIR](https://en.wikipedia.org/wiki/FAIR_data)
