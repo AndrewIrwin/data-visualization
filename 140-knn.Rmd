@@ -5,7 +5,7 @@ date: "2021"
 output: html_document
 ---
 
-# K-Nearest Neighbour classification and regression
+# Lesson: K-Nearest Neighbour classification and regression
 
 ```{r echo=FALSE, warning=FALSE}
 library(palmerpenguins)

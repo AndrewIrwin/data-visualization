@@ -9,9 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Assignments
+## Assignments
 
-## Overview
+### Overview
 
 Assignments are opportunities to apply and combine the skills from several lessons. They are both structured, in that you are asked to use specific skills to accomplish a task, and creative in that you have some flexibility in the product you produce. You will be assessed on your use of technical skills and your judgement in making well-designed and effective visualizations, following the principles explored in the course.
 
@@ -26,23 +26,23 @@ Assesment rubric:
 
 
 
-## Assignment 1
+### Assignment 1
 
 learn, describe, and use a ggplot extension. 5% (Week 7, after break)
 - ggrepel, cowplot, patchwork, viridislite
 
-## Assignment 
+### Assignment 
 learn, describe, and use a table layout package. 5%  (Week 9)
 - DT, gt, flextable, kable/kableExtra
 
 (Do one as a 5 minute video with script and slides. Do the other as a rmd tutorial.)
 
 
-## Assignment 
+### Assignment 
 
 Mini-project: Tidy Tuesday 1. 5% (Week 10)
 
-## Assignment
+### Assignment
 
 Mini-project: Tidy Tuesday 2. 5% (Week 11)
 

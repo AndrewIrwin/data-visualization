@@ -14,12 +14,15 @@ knitr::opts_chunk$set(echo = TRUE)
 Synchronous sessions on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.)
 
 Important dates
+
 * Wed 6 Jan: Term begins
 * Fri 5 Feb: Munro day, University closed
 * 15-19 Feb: Study break
+* Fri 12 March: Project proposal due
 * Fri 2 Apr: Good Friday, University closed
 * Tue 6 Apr: Last Tuesday/Thursday class
 * Thu 8 Apr: Last day of classes
+* Fri 9 Apr: Final project due
 * 10-23 Apr: Exam period
 
 

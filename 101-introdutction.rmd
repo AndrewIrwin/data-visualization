@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Lesson 1. Invitation to Data Visualization
+# Lesson 1 Invitation to Data Visualization
 
 Good data visualizations
 

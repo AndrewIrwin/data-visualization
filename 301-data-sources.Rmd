@@ -15,6 +15,7 @@ gapminder (but see website too [Gapminder]() )
 
 [Our World In Data](https://ourworldindata.org/) a curated set of over 3000 charts with documentation and open source data.
 
+* One person's collection of [data](https://github.com/tacookson/data) of various sources
 
 ## student project
 
@@ -25,3 +26,8 @@ document it here
 ## distribution of data
 
 [FAIR](https://en.wikipedia.org/wiki/FAIR_data)
+
+## Canadian COVID data
+
+* [Federal](https://health-infobase.canada.ca/covid-19/visual-data-gallery/), [BC](https://experience.arcgis.com/experience/a6f23959a8b14bfa989e3cda29297ded), [AB](https://www.alberta.ca/stats/covid-19-alberta-statistics.htm), [SK](https://dashboard.saskatchewan.ca/health-wellness/covid-19/cases), [MB](https://www.arcgis.com/apps/opsdashboard/index.html#/29e86894292e449aa75763b077281b5b?rha=Winnipeg), [ON](https://covid-19.ontario.ca/data), [QC](https://www.inspq.qc.ca/covid-19/donnees/par-region), [NB](https://experience.arcgis.com/experience/8eeb9a2052d641c996dba5de8f25a8aa), [PE](https://www.princeedwardisland.ca/en/information/health-and-wellness/pei-covid-19-case-data), [NS](https://novascotia.ca/coronavirus/data/), 
+

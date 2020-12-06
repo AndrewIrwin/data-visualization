@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Computing preliminaries
+# Lesson 2 Computer tools
 
 We use R and Rstudio in this course.
 

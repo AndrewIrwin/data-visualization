@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Extra resources
+
 ## Courses
 
 * [Introduction to Data Science](https://www.introds.org/) at University of Edinburg by Mine Çetinkaya-Rundel
@@ -47,3 +49,10 @@ Learn R for free: learnR4free.com
 ## Videos
 
 Hour-long video overview of Rstudio features: https://www.youtube.com/watch?v=PXiY8muVUec
+
+
+## Other
+
+* A story about [starting to work as a data scientist](https://www.geekwire.com/2020/jacqueline-nolis/) and writing a [book about becoming a data scientist](https://www.manning.com/books/build-a-career-in-data-science).
+
+

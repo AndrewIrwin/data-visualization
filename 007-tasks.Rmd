@@ -9,13 +9,15 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Tasks
+# Evaluation
+
+## Tasks
 
 Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
 
 Tasks will be evaluated on a 0-2 scale. The primary goal of each task is to perform the task, so the assessment will be 2 if the work is complete or mostly complete, 0 if the work is mostly incomplete, and 1 for roughly half complete tasks.
 
-## Lesson 1
+### Lesson 1
 
 Find two data visualizations that you find informative, compelling, or in need of improvement.
 
@@ -27,7 +29,7 @@ The goal of this project isn't to be right or wrong, but rather to start the pro
 
 Submit your work as a single PDF on Brightspace.
 
-## Lesson 2
+### Lesson 2
 
 1. Install R, Rstudio, and the packages identified in Healy, Chapter 1.
 2. Login to [rstudio.cloud](https://rstudio.cloud/) which can be used if you have trouble using R on your own computer.
@@ -36,7 +38,7 @@ Submit your work as a single PDF on Brightspace.
 5. Ask for help with any of these tasks if you need it. 
 
 
-## Lesson 3
+### Lesson 3
 
 Make a simple ggplot in an Rmd. Knit the R markdown file. Nothing to submit.
 
@@ -44,7 +46,7 @@ Make a simple ggplot in an Rmd. Knit the R markdown file. Nothing to submit.
 
 Check out a github repository from online course. Add a plot to the Rmd document you find there. Commit your changes and push the Rmd file back to github.
 
-## Lesson 5
+### Lesson 5
 
 Demonstrate use of group_by, filter, summarize.
 
