@@ -23,6 +23,8 @@ knitr::opts_chunk$set(echo = TRUE)
 * [R Graphics Cookbook](https://r-graphics.org/)
 * [R for Data Science Exercise solutions](https://jrnold.github.io/r4ds-exercise-solutions/)
 
+* [Bookdown](https://bookdown.org/yihui/bookdown/) manual for writing longer documents with R Markdown
+
 ## Cheatsheets
 
 Hosted at [Rstudio](https://rstudio.com/resources/cheatsheets/)

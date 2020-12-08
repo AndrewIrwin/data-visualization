@@ -2,16 +2,13 @@
 title: "Data Visualization"
 author: "Andrew Irwin"
 date: "2021 Winter"
-output: html_document
-# knit: "bookdown::render_book"
-# site: bookdown::bookdown_site
 ---
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Welcome
+# (PART) Welcome {-}
 
 Data visualization is a critical skill for anyone interested in using data to think and persuade. Its essence is converting raw data into a visual form that can be more easily apprehended than the full dataset. As a result, almost every data visualization is a simplification and approximation of a raw dataset, and thus involves a perspective -- the goals and biases of the person producing the visualization.
 

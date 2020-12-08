@@ -2,6 +2,7 @@ bookdown::bs4_book:
   theme:
     primary: "#4D6F8D"
   repo: https://github.com/andrewirwin/course-notes
+  output_dir: "docs"
 bookdown::gitbook:
   css: style.css
   config:

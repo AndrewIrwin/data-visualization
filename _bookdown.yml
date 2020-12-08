@@ -3,3 +3,8 @@ delete_merged_file: true
 language:
   ui:
     chapter_name: "Chapter "
+site: bookdown::bookdown_site
+output: 
+  bookdown::bs4_book:
+  # output: html_document
+output_dir: "docs"
