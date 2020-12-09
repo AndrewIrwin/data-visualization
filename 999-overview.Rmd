@@ -56,3 +56,11 @@ NA and -999
 
 
 
+## Accessibility
+
+Data visualization is, as the name implies, the act of producing a product to be seen. This is a useful goal because our brains are very good at processing some kinds of visual information. Training to read visualizations can greatly increase the ability to extract information from a visualization, so it is important to know your audience -- students, the general public, people with well developed quantiative skills, or domain experts for the data you are presenting. All of these factors are central to knowing if a visualization is suitable and effective. Our target audience is university students.
+
+Not everyone has the same visual abilities. Some people have vision that differs from the most common experience in some way -- perceiving [colours differently](https://en.wikipedia.org/wiki/Color_blindness), reduced [acuity](https://en.wikipedia.org/wiki/Visual_acuity), and other differences all the way to complete blindness. We should always keep these differences in mind when producing visualizations. To take the hardest challenge head on, what is the value in producing a visualization for someone who cannot see it? Data visualization is a process that uses the creator's visual and technical skills to present features of a dataset. Any data visualization should be [accompanied by a written description of the message to be conveyed](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Accessibility/Alternative_text_for_images). Ideally the visual and written aspects will complement each other. A visualization does not "say" anything by itself; a written interpretation is an essential part of the process.
+
+
+

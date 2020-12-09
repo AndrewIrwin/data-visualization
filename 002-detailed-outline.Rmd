@@ -16,15 +16,20 @@ Important dates
 
 We have 24 synchronous sessions. The last two will be used for oral presentations.
 
-## List of lessons
+## Course calendar
 
-This is a tentative list of lessons which will be revised throughout the term
+This is a tentative schedule which will be revised throughout the term.
 
-- 01 What is Data Visualization?
-- 02 Course Overview - objectives and sample skills (computing, data)
-- 03 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
-- 04 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github
-- 05a Computer preliminaries. Installing R, Rstudio, packages, creating github account
+### Week 1: Jan 6-8
+
+- Lesson 1 What is Data Visualization?
+- Lesson 2 Course Overview - objectives and sample skills (computing, data)
+- Lesson 3 Computer preliminaries. Installing R, Rstudio, packages, creating github account
+
+### Week 2: Jan 11-15
+
+- Lesson 3 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
+- Lesson 4 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github
 - 05b Introduction to main features of Rstudio
 - 06 Get started. [Healy Chapter 2](https://socviz.co/gettingstarted.html#gettingstarted)
 - 07 Introduction to the Grammar of Graphics

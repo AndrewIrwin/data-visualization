@@ -20,47 +20,6 @@ how to select the best visualization method.
 
 At least one MATH or STAT course at or above the 1000 level. No experience with R or computer programming is required, but a desire to learn about both is essential.  
 
-## Course Objectives and Learning Outcomes
-
-By the end of the course you will be familiar with several aspects of data visualzation.
-
-*Visual impact and aesthetic aspects of graphics*
-
-- Understand the relationship between the structure of your data and the perceptual features of your graphics.
-- Describe aesthetic aspects of good plots. 
-- Use length, shape, size, colour, and other features to effectively display data and enable comparitive visual interpretation.
-
-*Visualization as communication*
-
-- Visualization is a visual language for communication, which should be accompanied by written interpretations
-- Communication effectiveness should be evaluated by peer-review and critical, constructive feedback
-- Visualizations should be developed through an iterative process akin to editing text, including the process of refining plots to highlight key features of the data, labeling items of interest, annotating plots, and changing overall appearance
-- Visualizations can be presented in different formats for different of audiences and different communications goals
-
-*Computing skills*
-
-- Learn the basics of using R, Rstudio, several R add-on packages, and git
-- Read data in several different formats into R
-- Create graphs with ggplot2 for continuous and categorical variables with informative legends.
-- Add error bars, linear models (OLS, robust regression, polynomials, quantile regression), smooths (LOESS, GAM), labels, and other annotations to a graph
-- Create small-multiple (facetted) plots.
-- Use the principles of [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) tables to facilitate transformation and analysis of data. Reshape data to make it tidy.
-- Summarize and transform data using dplyr
-- Reshape data using pivots
-- Create maps and some alternatives for presenting spatial data.
-- Write reproducible documents with R markdown to document your analysis process and present your results
-- Distribute data, code, and results using git and github
-- Access and interpret help resources (built-in help, vignettes, web pages, online discussion forums, blogs).
-- Develop skills for independently learning new data visualization methods and software
-
-*Statistical models*
-
-- Use a variety of modeling techniques such as LOESS, OLS, robust regression, polynomial regression, and quantile regression
-- Learn how to extract model information to compare different statistical models
-- Use principal component analysis (PCA) to reduce the dimensionality of complex datasets, increasing interpretability while minimizing information loss
-- Use multidimensional scaling (MDS) to visualize and compare similarities and dissimilarities between variables
-- Divide observations into homogeneous and distinct groups using K-means
-
 ## Course materials
  
 Course notes:

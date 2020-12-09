@@ -21,9 +21,44 @@ Data visualization is the practice of turning data into graphics, which can be m
 
 Data visualization approaches vary. For some purposes, highly customized graphic design and visual style are paramount. That's not our focus. We emphasize standardized graphical presentations -- which span a wide variety of visualizations -- that minimize the use of graphical elements not directly linked to the data.
 
+## Course Goals
 
-## Accessibility
+By the end of the course you will be familiar with several aspects of data visualzation.
 
-Data visualization is, as the name implies, the act of producing a product to be seen. This is a useful goal because our brains are very good at processing some kinds of visual information. Training to read visualizations can greatly increase the ability to extract information from a visualization, so it is important to know your audience -- students, the general public, people with well developed quantiative skills, or domain experts for the data you are presenting. All of these factors are central to knowing if a visualization is suitable and effective. Our target audience is university students.
+*Visual impact and aesthetic aspects of graphics*
 
-Not everyone has the same visual abilities. Some people have vision that differs from the most common experience in some way -- perceiving [colours differently](https://en.wikipedia.org/wiki/Color_blindness), reduced [acuity](https://en.wikipedia.org/wiki/Visual_acuity), and other differences all the way to complete blindness. We should always keep these differences in mind when producing visualizations. To take the hardest challenge head on, what is the value in producing a visualization for someone who cannot see it? Data visualization is a process that uses the creator's visual and technical skills to present features of a dataset. Any data visualization should be [accompanied by a written description of the message to be conveyed](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Accessibility/Alternative_text_for_images). Ideally the visual and written aspects will complement each other. A visualization does not "say" anything by itself; a written interpretation is an essential part of the process.
+- Understand the relationship between the structure of your data and the perceptual features of your graphics.
+- Describe aesthetic aspects of good plots. 
+- Use length, shape, size, colour, and other features to effectively display data and enable comparitive visual interpretation.
+
+*Visualization as communication*
+
+- Visualization is a visual language for communication, which should be accompanied by written interpretations
+- Communication effectiveness should be evaluated by peer-review and critical, constructive feedback
+- Visualizations should be developed through an iterative process akin to editing text, including the process of refining plots to highlight key features of the data, labeling items of interest, annotating plots, and changing overall appearance
+- Visualizations can be presented in different formats for different of audiences and different communications goals
+
+*Computing skills*
+
+- Learn the basics of using R, Rstudio, several R add-on packages, and git
+- Read data in several different formats into R
+- Create graphs with ggplot2 for continuous and categorical variables with informative legends.
+- Add error bars, linear models (OLS, robust regression, polynomials, quantile regression), smooths (LOESS, GAM), labels, and other annotations to a graph
+- Create small-multiple (facetted) plots.
+- Use the principles of [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) tables to facilitate transformation and analysis of data. Reshape data to make it tidy.
+- Summarize and transform data using dplyr
+- Reshape data using pivots
+- Create maps and some alternatives for presenting spatial data.
+- Write reproducible documents with R markdown to document your analysis process and present your results
+- Distribute data, code, and results using git and github
+- Access and interpret help resources (built-in help, vignettes, web pages, online discussion forums, blogs).
+- Develop skills for independently learning new data visualization methods and software
+
+*Statistical models*
+
+- Use a variety of modeling techniques such as LOESS, OLS, robust regression, polynomial regression, and quantile regression
+- Learn how to extract model information to compare different statistical models
+- Use principal component analysis (PCA) to reduce the dimensionality of complex datasets, increasing interpretability while minimizing information loss
+- Use multidimensional scaling (MDS) to visualize and compare similarities and dissimilarities between variables
+- Divide observations into homogeneous and distinct groups using K-means
+

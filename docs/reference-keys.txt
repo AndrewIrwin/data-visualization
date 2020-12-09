@@ -1,10 +1,9 @@
 welcome
 what-is-data-visualization
-accessibility
+course-goals
 syllabus
 course-description
 course-prerequisites
-course-objectives-and-learning-outcomes
 course-materials
 course-structure
 evaluation
@@ -14,7 +13,9 @@ course-policies
 university-policies-and-statements
 student-resources-and-support
 detailed-outline
-list-of-lessons
+course-calendar
+week-1-jan-6-8
+week-2-jan-11-15
 course-overview---objectives-and-sample-skills-computing-data
 look-at-data.-socviz-ch-1
 why-tools-ggplot-dplyr-markdown-git-r-ties-them-together

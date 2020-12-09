@@ -1,31 +1,47 @@
 # Lesson 1 Invitation to Data Visualization
 
-Good data visualizations
+In this lesson I will provide some examples of interesting and influential data visualizations.
 
-CO2
-Gapminder animated
+At the end of the lesson, I will ask you to identify two visualizations you find interesting and provide a brief description and analysis of each.
+
+## Atmospheric carbon dioxide concentration
+
+Climate change in the recent past and coming century will be controled by human-driven emission (and possibly sequestration) of carbon dioxide from fossil fuels into the atmosphere. Starting in the 1950s, the amount of carbon dioxide in the atmosphere (in parts per million) was regularly measured. Subsequently, methods for analyzing gasses trapped in ice were used to extend this record back about one million years. There is a direct physical link between atmospheric concentration of carbon dioxide and the loss of heat from Earth to space, resulting in a mechanistic link between increasing carbon dioxide concentration in the atmosphere and the mean temperature of the surface of the Earth. Visualizations of this data and assocated global mean temperature data have been extremely influential, forming the [cornerstone of books](https://en.wikipedia.org/wiki/The_Hockey_Stick_and_the_Climate_Wars), a [documentary movie](https://en.wikipedia.org/wiki/An_Inconvenient_Truth), and countless educational and environmental change movements.
+
+Sample [visualizations of atmospheric carbon dioxide](https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record.html) are available from the institute that has been collecting this data for decades.
+
+Estimates of [global mean temperature](https://climate.nasa.gov/vital-signs/global-temperature/) over time are available from NASA.
+
+Many other sites have information on this important problem, usually presenting [data visually](https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide) as a testament to the importance of visualizations.
+
+## Human health and development 
+
+[Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling) was a physician and popularizer of data visualizations to develop understanding of human health and economic development over time and across countries. His [public presentations](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) illustrate his view of how dyanmic charts can help us come to see the trajectory of global development, particularly the connections between health and economic development. I strongly encourage you to watch his presentations.
+
+## Weather 
+
+In contrast to climate, many people are strongly interested in their local weather conditions both today and anticipated in the near future.
+
 Weatherspark
 Env Canada dashboard
 
-Recreate graphs step by step
-
-Ideas
-Grammar of graphics. For reading and for creating
-Use of element. Length slope shape dot colour box plot histogram
-Organize and reshape data
-Tell a story
-No such thing as a neutral observer
-
-Colour challenges
-
-
-### Classics of data visualization
-
-Historical
+## Historically important visualizations
 
 Napoleon army map.
 Florence Nightengale's causes of death.
 John Snow's cholera map.
+
+## Stories
+
+
+## Ideas 
+
+Grammar of graphics. For reading and for creating
+Use of element. Length slope shape dot colour box plot histogram
+Organize and reshape data
+Colour challenges
+
+
 
 Modern
 
