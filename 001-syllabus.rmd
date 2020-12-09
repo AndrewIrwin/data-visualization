@@ -65,16 +65,16 @@ By the end of the course you will be familiar with several aspects of data visua
  
 Course notes:
 
-- Andrew J Irwin (2021) Data visualization. Online at https://github.com/andrewirwin/stat2430 (publish at stat2430.github.io) _Will be revised throughout the course._
+- Andrew J Irwin (2021) [Data visualization](https://andrewirwin.github.io/data-visualization/) _Will be revised throughout the course._
 
 Textbook: 
 
-- Kieran Healy (2018) Data Visualization: A Practical Introduction. Princeton University Press. Online at https://socviz.co
+- Kieran Healy (2018) [Data Visualization: A Practical Introduction](https://socviz.co). Princeton University Press. 
 
 Supplemental textbooks: 
 
-- Garret Grolemund & Hadley Wickham (2017) R for data science. O'Reilly. Online at https://r4ds.had.co.nz/
-- Claus O. Wilke (2019) Fundamentals of data visualization. O'Reilly. Online at https://clauswilke.com/dataviz/
+- Garret Grolemund & Hadley Wickham (2017) [R for data science](https://r4ds.had.co.nz/). O'Reilly. 
+- Claus O. Wilke (2019) [Fundamentals of data visualization](https://clauswilke.com/dataviz/). O'Reilly.
 
 ## Course structure
 
