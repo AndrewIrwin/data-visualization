@@ -1,7 +1,7 @@
 bookdown::bs4_book:
   theme:
     primary: "#637238"
-  repo: https://github.com/andrewirwin/stat2430
+  repo: https://github.com/AndrewIrwin/data-visualization
 bookdown::gitbook:
   lib_dir: assets
   split_by: chapter

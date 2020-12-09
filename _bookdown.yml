@@ -3,8 +3,8 @@ delete_merged_file: false
 language:
   ui:
     chapter_name: "Chapter "
-view: https://github.com/andrewirwin/stat2430/blob/master/%s
-edit: https://github.com/andrewirwin/stat2430/edit/master/%s
+view: https://github.com/AndrewIrwin/data-visualization/blob/master/%s
+edit: https://github.com/AndrewIrwin/data-visualization/edit/master/%s
 output_dir: "docs"
 new-session: yes
 
