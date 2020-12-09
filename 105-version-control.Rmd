@@ -1,12 +1,4 @@
----
-title: "Version Control"
-author: "Andrew Irwin"
-date: "15/10/2020"
-output: html_document
----
-
-
-## What is version control software?
+# What is version control software?
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) software is used to manage the process of creating software. It is commonly used to track changes, manage the revision process of correcting errors and adding new features, tracking the history of a project through different versions, synchronizing contributions from many different people, and faciliating the distribution to a broad audience. Version control software is most commonly applied to the production of complex projects like software, but it can be used for text documents, data, and many other applications.
 

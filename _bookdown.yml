@@ -1,10 +1,13 @@
 book_filename: "course-notes"
-delete_merged_file: true
+delete_merged_file: false
 language:
   ui:
     chapter_name: "Chapter "
-site: bookdown::bookdown_site
-output: 
-  bookdown::bs4_book:
-  # output: html_document
+view: https://github.com/andrewirwin/stat2430/blob/master/%s
+edit: https://github.com/andrewirwin/stat2430/edit/master/%s
 output_dir: "docs"
+new-session: yes
+
+rmd_files: [ "index.Rmd", 
+             "001-syllabus.rmd", 
+             "002-detailed-outline.Rmd"]

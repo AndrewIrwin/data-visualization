@@ -1,10 +1,3 @@
----
-title: "K-Nearest Neighbour classification and regression"
-author: "Andrew Irwin"
-date: "2021"
-output: html_document
----
-
 # Lesson: K-Nearest Neighbour classification and regression
 
 ```{r echo=FALSE, warning=FALSE}

@@ -1,9 +1,4 @@
----
-title: "Annotated sources of data"
-author: "Andrew Irwin"
-date: "07/10/2020"
-output: html_document
----
+# Data sources
 
 ## built-in and exisiting packages
 

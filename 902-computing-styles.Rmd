@@ -1,9 +1,3 @@
----
-title: "Computing notes"
-author: "Andrew Irwin"
-date: "2021 Winter"
-output: html_document
----
 
 # Computing notes
 

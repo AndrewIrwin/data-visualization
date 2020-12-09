@@ -1,13 +1,4 @@
----
-title: "Staying organized"
-author: "Andrew Irwin"
-date: "2021 Winter"
-output: html_document
----
-
-```{r include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Staying organized
 
 When you first start learning a computing tool like R, most people just put their files in "Downloads" or "Documents" or even on the "Desktop" with no particular thought to names or organization. This is fine when you are first experimenting, but it quickly gets out of control, especially when you want to keep one project separate from another, add data files, or want to share files with a collaborator.
 

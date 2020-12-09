@@ -1,14 +1,3 @@
----
-title: "Introduction"
-author: "Andrew Irwin"
-date: "15/10/2020"
-output: html_document
----
-
-```{r include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Lesson 1 Invitation to Data Visualization
 
 Good data visualizations

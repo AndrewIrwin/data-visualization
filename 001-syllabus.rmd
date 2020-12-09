@@ -1,9 +1,4 @@
----
-title: "Syllabus"
-author: "Andrew Irwin"
-date: "19/09/2020"
-output: html_document
----
+# Syllabus
 
 ```{r  include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -11,56 +6,60 @@ library(tidyverse)
 library(gt)
 ```
 
-# Syllabus
-
-This is the syllabus for the Data visualization (STAT 2430) course in Winter 2021 at Dalhousie University.
+This is the _draft_ syllabus for the Data Visualization (STAT 2430) course in Winter 2021 at Dalhousie University.
 
 ## Course Description
 
 Data visualization is the art and science of turning data into readable graphics. We will explore
-how to design and create data visualizations based on data available and tasks to be achieved.
-This course aims to introduce students to data visualization, including both the principles and
-techniques. Students will learn the value of visualization, specific techniques and understand
+how to design and create data visualizations.
+This exploration will include both the principles and
+techniques of data visualization. Students will learn the value of visualization, specific techniques and understand
 how to select the best visualization method.
 
 ## Course Prerequisites
 
-At least one MATH or STAT course at or above the 1000 level  
+At least one MATH or STAT course at or above the 1000 level. No experience with R or computer programming is required, but a desire to learn about both is essential.  
 
 ## Course Objectives and Learning Outcomes
 
-Visualization as communication
-- language for communication (visual); computer code
-- evaluate communication effectiveness by peer-review and critical, constructive feedback
-- Explore the process of refining plots to highlight key features of the data, labeling items of interest, annotating plots, and changing overall appearance.
-- Develop strategies for presenting graphical results in different formats and to different sorts of audiences.
-- Develop skills for independently learning new data visualization methods and software
+By the end of the course you will be familiar with several aspects of data visualzation.
 
-Visual impact and aesthetic aspects of graphics
+*Visual impact and aesthetic aspects of graphics*
+
 - Understand the relationship between the structure of your data and the perceptual features of your graphics.
-- Describe aesthetic aspects of good plots. Use length, shape, size, colour, and other features to effectively display data and enable comparitive visual interpretation
+- Describe aesthetic aspects of good plots. 
+- Use length, shape, size, colour, and other features to effectively display data and enable comparitive visual interpretation.
 
-Computing tools
-- Install R, Rstudio, add-on packages
-- Ensure R can find your data
-- Access and interpret help resources (built-in help, vignettes, web pages, online discussion forums, blogs).
-- Reproducible documents with R markdown, git/github
+*Visualization as communication*
+
+- Visualization is a visual language for communication, which should be accompanied by written interpretations
+- Communication effectiveness should be evaluated by peer-review and critical, constructive feedback
+- Visualizations should be developed through an iterative process akin to editing text, including the process of refining plots to highlight key features of the data, labeling items of interest, annotating plots, and changing overall appearance
+- Visualizations can be presented in different formats for different of audiences and different communications goals
+
+*Computing skills*
+
+- Learn the basics of using R, Rstudio, several R add-on packages, and git
+- Read data in several different formats into R
 - Create graphs with ggplot2 for continuous and categorical variables with informative legends.
-- Add error bars, linear models (OLS, robust regression, polynomials, quantile regression), smooths (LOESS, GAM), labels, and other annotations
+- Add error bars, linear models (OLS, robust regression, polynomials, quantile regression), smooths (LOESS, GAM), labels, and other annotations to a graph
 - Create small-multiple (facetted) plots.
-
-- Use the principles of tidy data tables to facilitate transformation and analysis of data. Reshape data to make it tidy.
+- Use the principles of [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) tables to facilitate transformation and analysis of data. Reshape data to make it tidy.
 - Summarize and transform data using dplyr
 - Reshape data using pivots
 - Create maps and some alternatives for presenting spatial data.
+- Write reproducible documents with R markdown to document your analysis process and present your results
+- Distribute data, code, and results using git and github
+- Access and interpret help resources (built-in help, vignettes, web pages, online discussion forums, blogs).
+- Develop skills for independently learning new data visualization methods and software
 
-Statistical models
-- Fit various modeling techniques such as LOESS, OLS, robust regression lines, polynomial curve, and quantile regression lines and generate predictions.
-- Learn how to extract three kinds of model object information in R such as component-level, observation-level and model-level to compare different statistical models.
-- Understand the Principal component analysis (PCA) technique for reducing the dimensionality of such datasets, increasing interpretability while minimizing information loss
-by maximizing variance.
-- Understand multidimensional scaling (MDS) to visualize and compare similarities and dissimilarities between sets of objects.
-- Divide observations into homogeneous and distinct groups using an iterative Kmeans algorithm.
+*Statistical models*
+
+- Use a variety of modeling techniques such as LOESS, OLS, robust regression, polynomial regression, and quantile regression
+- Learn how to extract model information to compare different statistical models
+- Use principal component analysis (PCA) to reduce the dimensionality of complex datasets, increasing interpretability while minimizing information loss
+- Use multidimensional scaling (MDS) to visualize and compare similarities and dissimilarities between variables
+- Divide observations into homogeneous and distinct groups using K-means
 
 ## Course materials
  
@@ -80,76 +79,54 @@ Supplemental textbooks:
 ## Course structure
 
 Each week will be structured around the following components:
+
 - Recorded mini-lectures for each lesson (linked to course notes and slides)
-- Independent reading linked to each lesson
-- Interactive discussion of the week's activities (Tuesday, 8:30 am)
-- Live coding tutorial / lab (linked to materials created before and after the meeting, Thursday 8:30 am)
+- Reading course notes and excerpts from the textbooks linked to each lesson
+- Interactive discussion of the week's lessons (Tuesday, 8:30 am Atlantic)
+- Live coding tutorial / lab (linked to materials created before and during the meeting, Thursday 8:30 am Atlantic)
 - Opportunities to develop and demonstrate your knowledge (tasks, assignments, and a term project)
 
 If you have questions about the course material, please submit them on the following [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public on the discussion forum where everyone in the class can benefit from the exchange. Please feel free to use the discussion forum to talk with other classmates and help each other.
 
 Our first week of class does not meet on Tuesday but does meet on Thursday. This first meeting will be an introduction to the course and interactive discussion.
 
-We will use Collaborate Ultra accessed through Brightspace for the interactive sessions. Generally these will be recorded so that you can watch them later if you are unable to participate. You are strongly encouraged to come to these meetings. First, they are intended to be the primary forum for asking questions and discussing course material. Second, they will help give your work on the course structure. I strongly encourage you to "raise your hand" during the discussion and ask questions using your voice. Some students prefer to use the chat to ask questions, and that is fine with me, but from my perspective it leads to a more disjointed and less useful interaction.
+We will use Collaborate Ultra accessed through [Brightspace](https://dal.brightspace.com/d2l/home/159870) for the interactive sessions. Generally these will be recorded so that you can watch them later if you are unable to participate. You are strongly encouraged to come to these meetings. The interactive sessions are the primary forum for asking questions and discussing course material. These regular meetings will help give your work on the course structure. I strongly encourage you to "raise your hand" during the discussion and ask questions using your voice. Some students prefer to use the chat to ask questions, and that is fine with me, but from my perspective it leads to a more disjointed and less useful interaction.
 
 ## Evaluation
 
-* Tasks for most lessons. Equally weighted, total 30%.
-* Assignments approximately every two weeks. Equally weighted, total 40%.
-* Term project, divided into two components
+Tasks are opportunities to test your understanding of the key concepts from each lesson and demonstrate you have developed basic profiency with some computing skills. Most lessons will have a task for you to complete.
+
+Assignments combine skills from multiple lessons into a meaningful data visualization activity. These will require using skills from multiple tasks and applying the content of lessons in thoughtful and sometimes creative ways.
+
+The final project is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present to a reader an analysis of a dataset of your choice. The proposal will select a dataset and describe some of your planned analyses. The report will be a polished document showing off many of the ideas of the course using this dataset.
+
+* Tasks for most lessons (30%, roughly 2-3 per week, equally weighted)
+* Assignments (40%, roughly 1 every two weeks, equally weighted)
+* Term project, divided into three components
   * Proposal, due Friday 5 March, 5%
-  * Report, due Friday X April, 25%
+  * Oral presentation, due Thursday 1 April, 10%
+  * Report, due Friday 9 April, 15%
 
 Tasks are due on Friday of the week they are assigned, unless otherwise noted. Late work will be accepted without penalty until the work is graded and solutions are posted. After that, no later work will be accepted, but if an accommodation is requested and granted, the value of that work will be redistributed to other tasks or assignments. *If you anticipate not being able to submit the proposal or report on time, please contact me by email.*
 
-
+Grades will be reported on [Brightspace](https://dal.brightspace.com/d2l/home/159870)
 
 ## Software
-The statistical software R/RStudio will be used in this course. No prior experience with
-R/RStudio is assumed, and we'll take some class time to learn the software.
-Free R download: \url{http://www.r-project.org/}
-Free RStudio download: \url{http://www.rstudio.com/}
 
-## List of lessons
+The statistical software R/RStudio and version control software git will be used in this course. No prior experience with
+R/RStudio is assumed, and we'll take class time to learn the software.
 
-Aim for 36. About 750 word script for each. Plus slides. Plus links. Plus live coding examples.
+* To download and install R got to [r-project.org](https://www.r-project.org/) and click on the link to [Download R](http://cran.r-project.org/mirrors.html)
+* To download and install Rstudio, go to [Rstudio.com](https://www.rstudio.com/) and click on the link do [Download Rstudio](https://rstudio.com/products/rstudio/download/)
+* To download and install git 
+  * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win)
+  * on Macintosh, use the Terminal app and type 'xcode-select --install' to download and install git.
 
-- 01 What is Data Visualization?
-- 02 Course Overview - objectives and sample skills (computing, data)
-- 03 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
-- 04 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github
-- 05a Computer preliminaries. Installing R, Rstudio, packages, creating github account
-- 05b Introduction to main features of Rstudio
-- 06 Get started. [Healy Chapter 2](https://socviz.co/gettingstarted.html#gettingstarted)
-- 07 Introduction to the Grammar of Graphics
-- 08 Make a plot. [Healy Chapter 3](https://socviz.co/makeplot.html#makeplot)
-- 09 Customizing plots: shape, color, lines, and more
-- 10 Summarizing data with dplyr 
-- 11 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
-- 12 Graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
-- 13 Version control concepts
-- 14 Working with Git
-- 15 Getting help from R and online
-- 16 Plotting small multiples (facets)
-- 17 Reading data (csv, tsv, xlsx); import menu item; r commands
-- 18 A bit more about R. [Healy Appendix](https://socviz.co/appendix.html#appendix)
-- 19 Data validation (pointblank)
-- 20 Tidy data
-- 21 Making data tidy (datapasta)
-- 22 Work with models. [Healy Chapter 6](https://socviz.co/modeling.html#modeling)
-- 23 linear models (lines, polynomials, robust, quantile); equationomatic 
-- 24 loess, GAM
-- 25 kmeans
-- 26 MDS (?)
-- 27 Draw maps. [Healy Chapter 7](https://socviz.co/maps.html#maps)
-- 28 Making maps and chloropleths
-- 29 Refine your plots. [Healy Chapter 8](https://socviz.co/refineplots.html#refineplots)
-- 30 themes, etc
-- 31 annotations
-- 32 graphics output (PDF, png, sizes, colors, themes; ragg) repurposing graphics for different media and purposes
+These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [rstudio.cloud](https://rstudio.cloud/) Everyone should learn to use the cloud service as a backup in case of problems with setting up the software on their own computer.
 
+R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login.
 
-
+[Videos](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726) demonstrating how to install this software are on Brightspace.
 
 ## Letter grades
 
@@ -168,74 +145,60 @@ grade_table %>% unite(`Grade range`, min_grade, max_grade, sep="-") %>%
         rename(`Letter grade`=letter) %>% gt() %>% cols_align("center")
 ```
 
-
 ## Course Policies
 
-Credit cannot be given for late assignments, because the solutions are posted immediately after the due date. The assignment weights will be shifted to the rest of the assignments if the missed assignments are due to illness. There is no make-up for the quizzes and tests. If the missed quiz or test is due to illness, the weight for the quiz or test will be shifted to the rest of the quizzes or test. If there is no decent reason for the missed quiz or test, the missed quiz or test grade will be zero. For the above weight transfer to apply, students need to provide the {\bf Student Declaration of Absence form} for missed academic requirement in this course. Each student can use the {\bf Student Declaration of Absence form} maximally twice in the term. 
+Credit will not be given for assignments submitted after grading is complete or the solutions are posted. If you miss an assignment due to illness or other event outside your control, contact me for an accommodation. If an accomodation is granted, assignment weight will be shifted to the rest of the assignments. 
 
-Students need to finish all assignments, quizzes, tests and final project independently, collaboration or copying solutions from any other sources are not allowed and thus deemed as plagiarism for this course. 
+Students need to finish all assignments independently; collaboration or copying solutions from any other sources are not allowed and will be considered an academic offense for this course. Tasks are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own. The final project and its components may be done in groups, but the work on the project should only be the work of members of the group.
 
 ## University Policies and Statements
 
 This course is governed by the academic rules and regulations set forth in the University Calendar and by Senate
 
-### Missed or Late Academic Requirements due to Student Absence
-
+*Missed or Late Academic Requirements due to Student Absence*
 As per Senate decision instructors may not require medical notes of students who must miss an academic requirement, including the final exam, for courses offered during fall or winter 2020-21 (until April 30, 2021). Information on regular policy, including the use of the Student Declaration of Absence can be found here: \url{https://www.dal.ca/dept/university_secretariat/policies/academic/missed-or-late-academic-requirements-due-to-student-absence.html. }
 
 
-### Academic Integrity
+*Academic Integrity*
+At Dalhousie University, we are guided in all of our work by the values of academic integrity: honesty, trust, fairness, responsibility and respect (The Center for Academic Integrity, Duke University, 1999). As a student, you are required to demonstrate these values in all of the work you do. The University provides policies and procedures that every member of the university community is required to follow to ensure academic integrity. [More information](https://www.dal.ca/dept/university_secretariat/academic-integrity.html)
 
-At Dalhousie University, we are guided in all of our work by the values of academic integrity: honesty, trust, fairness, responsibility and respect (The Center for Academic Integrity, Duke University, 1999). As a student, you are required to demonstrate these values in all of the work you do. The University provides policies and procedures that every member of the university community is required to follow to ensure academic integrity.\\
-Information: \url{https://www.dal.ca/dept/university_secretariat/academic-integrity.html}
+*Accessibility*
+The Advising and Access Services Centre is Dalhousie's centre of expertise for student accessibility and accommodation. The advising team works with students who request accommodation as a result of a disability, religious obligation, or any barrier related to any other characteristic protected under Human Rights legislation (Canada and Nova Scotia). [More information](https://www.dal.ca/campus_life/academic-support/accessibility.html)
 
-### Accessibility
-The Advising and Access Services Centre is Dalhousie's centre of expertise for student accessibility and accommodation. The advising team works with students who request accommodation as a result of a disability, religious obligation, or any barrier related to any other characteristic protected under Human Rights legislation (Canada and Nova Scotia).\\
-Information: \url{https://www.dal.ca/campus_life/academic-support/accessibility.html}
+*Student Code of Conduct*
+Everyone at Dalhousie is expected to treat others with dignity and respect. The Code of Student Conduct allows Dalhousie to take disciplinary action if students don’t follow this community expectation. When appropriate, violations of the code can be resolved in a reasonable and informal manner—perhaps through a restorative justice process. If an informal resolution can’t be reached, or would be inappropriate, procedures exist for formal dispute resolution. [Code](https://www.dal.ca/dept/university_secretariat/policies/student-life/code-of-student-conduct.html)
 
-### Student Code of Conduct
-Everyone at Dalhousie is expected to treat others with dignity and respect. The Code of Student Conduct allows Dalhousie to take disciplinary action if students don’t follow this community expectation. When appropriate, violations of the code can be resolved in a reasonable and informal manner—perhaps through a restorative justice process. If an informal resolution can’t be reached, or would be inappropriate, procedures exist for formal dispute resolution. \\
-Code: \url{https://www.dal.ca/dept/university_secretariat/policies/student-life/code-of-student-conduct.html}
+*Diversity and Inclusion - Culture of Respect*
+Every person at Dalhousie has a right to be respected and safe. We believe inclusiveness is fundamental to education. We stand for equality. Dalhousie is strengthened in our diversity. We are a respectful and inclusive community. We are committed to being a place where everyone feels welcome and supported, which is why our Strategic Direction prioritizes fostering a culture of diversity and inclusiveness. [Statement](http://www.dal.ca/cultureofrespect.html)
 
-### Diversity and Inclusion - Culture of Respect
+*Recognition of Mi’kmaq Territory*
+Dalhousie University would like to acknowledge that the University is on Traditional Mi’kmaq Territory. The Elders in Residence program provides students with access to First Nations elders for guidance, counsel and support. Visit or e-mail the Indigenous Student Centre (1321 Edward St) (elders@dal.ca). [Information](https://www.dal.ca/campus_life/communities/indigenous.html)
 
-Every person at Dalhousie has a right to be respected and safe. We believe inclusiveness is fundamental to education. We stand for equality. Dalhousie is strengthened in our diversity. We are a respectful and inclusive community. We are committed to being a place where everyone feels welcome and supported, which is why our Strategic Direction prioritizes fostering a culture of diversity and inclusiveness.\\ 
-Statement:  \url{http://www.dal.ca/cultureofrespect.html}
+* [Important Dates in the Academic Year (including add/drop dates)](https://www.dal.ca/academics/important_dates.html)
+* [University Grading Practices](https://www.dal.ca/dept/university_secretariat/policies/academic/grading-practices-policy.html)
 
-### Recognition of Mi’kmaq Territory
-Dalhousie University would like to acknowledge that the University is on Traditional Mi’kmaq Territory. The Elders in Residence program provides students with access to First Nations elders for guidance, counsel and support. Visit or e-mail the Indigenous Student Centre (1321 Edward St) (elders@dal.ca).
-Information: \url{https://www.dal.ca/campus_life/communities/indigenous.html}\\
+## Student Resources and Support
 
-### Important Dates in the Academic Year (including add/drop dates)
-
-https://www.dal.ca/academics/important_dates.html
-
-### University Grading Practices
-
-https://www.dal.ca/dept/university_secretariat/policies/academic/grading-practices-policy.html
-
-
-### Student Resources and Support
-#### Advising
+*Advising*: 
 [General Advising](https://www.dal.ca/campus_life/academic-support/advising.html),
 [Science Program Advisors](https://www.dal.ca/faculty/science/current-students/academic-advising.html),
 [Indigenous Student Centre](https://www.dal.ca/campus_life/communities/indigenous.html),
 [Black Advising Centre](https://www.dal.ca/campus_life/communities/black-student-advising.html),
 [International Centre](https://www.dal.ca/campus_life/international-centre/current-students.html)
 
-#### Academic supports
+*Academic supports*: 
 [Library](https://libraries.dal.ca/), 
 [Writing Centre](https://www.dal.ca/campus_life/academic-support/writing-and-study-skills.html),
 [Studying for Success](https://www.dal.ca/campus_life/academic-support/study-skills-and-tutoring.html),
 [Copyright Office](https://libraries.dal.ca/services/copyright-office.html),
 [Fair Dealing Guidelines](https://libraries.dal.ca/services/copyright-office/fair-dealing.html)
 
-#### Other supports and services
+*Other supports and services*:
 [Student Health & Wellness Centre](https://www.dal.ca/campus_life/health-and-wellness/services-support/student-health-and-wellness.html),
 [Student Advocacy](https://dsu.ca/dsas),
 [Ombudsperson](https://www.dal.ca/campus_life/safety-respect/student-rights-and-responsibilities/where-to-get-help/ombudsperson.html)
 
-#### Safety:
+*Safety*:
 [Biosafety](https://www.dal.ca/dept/safety/programs-services/biosafety.html),
 [Chemical Safety](https://www.dal.ca/dept/safety/programs-services/chemical-safety.html),
 [Radiation Safety](https://www.dal.ca/dept/safety/programs-services/radiation-safety.html),

@@ -1,14 +1,3 @@
----
-title: "Summarizing data"
-author: "Andrew Irwin"
-date: "02/12/2020"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Summarizing data
 
 dplyr

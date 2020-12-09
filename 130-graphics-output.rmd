@@ -1,12 +1,6 @@
----
-title: "Graphics output"
-author: "Andrew Irwin"
-date: "19/09/2020"
-output: html_document
----
 
 
-## ragg
+# ragg
 
 
 A note about making figures for different purposes. The ideas are general, but the link below has some specific comments for R.

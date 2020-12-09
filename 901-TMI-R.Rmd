@@ -1,10 +1,4 @@
----
-title: "TMI about R"
-author: "Andrew Irwin"
-date: "21/10/2020"
-output: html_document
----
-
+# TMI about R
 
 Too much information about R: I want to know but I don’t want to ask.
 

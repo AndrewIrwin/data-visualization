@@ -1,15 +1,5 @@
----
-title: "Term Project"
-author: "Andrew Irwin"
-date: "04/12/2020"
-output: html_document
----
 
-```{r include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Term project
+# Term project
 
 Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests or based on work in other courses or research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.
 

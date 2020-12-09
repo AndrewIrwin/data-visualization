@@ -1,10 +1,22 @@
----
-title: "overview talk"
-author: "Andrew Irwin"
-date: "20/09/2020"
-output: html_document
----
+# Course goals
 
+
+Science data visualization manifesto
+Communication
+Reanalysis
+Repeatable
+Convincing
+Auditable
+Transparent
+Correcting mistakes
+Creative Commons
+Software tools
+Complexity tolerant
+Adaptable
+Collaboration. Future you. Peers. Employers. Consumers.
+
+
+## Overview talk
 
 Opening and closing talk
 

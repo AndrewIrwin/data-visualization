@@ -1,17 +1,6 @@
----
-title: "Detailed outline"
-author: "Andrew Irwin"
-date: "27/09/2020"
-output: html_document
----
-
-```{r include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Detailed outline
 
-Synchronous sessions on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.)
+Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). Most sessions will be recorded and posted on Brightspace.
 
 Important dates
 
@@ -24,6 +13,46 @@ Important dates
 * Thu 8 Apr: Last day of classes
 * Fri 9 Apr: Final project due
 * 10-23 Apr: Exam period
+
+We have 24 synchronous sessions. The last two will be used for oral presentations.
+
+## List of lessons
+
+This is a tentative list of lessons which will be revised throughout the term
+
+- 01 What is Data Visualization?
+- 02 Course Overview - objectives and sample skills (computing, data)
+- 03 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
+- 04 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github
+- 05a Computer preliminaries. Installing R, Rstudio, packages, creating github account
+- 05b Introduction to main features of Rstudio
+- 06 Get started. [Healy Chapter 2](https://socviz.co/gettingstarted.html#gettingstarted)
+- 07 Introduction to the Grammar of Graphics
+- 08 Make a plot. [Healy Chapter 3](https://socviz.co/makeplot.html#makeplot)
+- 09 Customizing plots: shape, color, lines, and more
+- 10 Summarizing data with dplyr 
+- 11 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
+- 12 Graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
+- 13 Version control concepts
+- 14 Working with Git
+- 15 Getting help from R and online
+- 16 Plotting small multiples (facets)
+- 17 Reading data (csv, tsv, xlsx); import menu item; r commands
+- 18 A bit more about R. [Healy Appendix](https://socviz.co/appendix.html#appendix)
+- 19 Data validation (pointblank)
+- 20 Tidy data
+- 21 Making data tidy (datapasta)
+- 22 Work with models. [Healy Chapter 6](https://socviz.co/modeling.html#modeling)
+- 23 linear models (lines, polynomials, robust, quantile); equationomatic 
+- 24 loess, GAM
+- 25 kmeans
+- 26 MDS (?)
+- 27 Draw maps. [Healy Chapter 7](https://socviz.co/maps.html#maps)
+- 28 Making maps and chloropleths
+- 29 Refine your plots. [Healy Chapter 8](https://socviz.co/refineplots.html#refineplots)
+- 30 themes, etc
+- 31 annotations
+- 32 graphics output (PDF, png, sizes, colors, themes; ragg) repurposing graphics for different media and purposes
 
 
 
