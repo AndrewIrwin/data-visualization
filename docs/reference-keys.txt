@@ -1,3 +1,5 @@
+fig:env-canada-weather
+fig:weatherspark
 welcome
 what-is-data-visualization
 what-is-the-purpose-of-data-visualization
@@ -49,6 +51,7 @@ invitation-to-data-visualization
 atmospheric-carbon-dioxide-concentration
 human-health-and-development
 weather
+journalism
 historically-important-visualizations
 stories
 ideas
