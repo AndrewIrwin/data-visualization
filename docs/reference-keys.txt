@@ -45,7 +45,7 @@ deliverables
 proposal
 oral-presentation
 written-report
-lesson-1-invitation-to-data-visualization
+invitation-to-data-visualization
 atmospheric-carbon-dioxide-concentration
 human-health-and-development
 weather

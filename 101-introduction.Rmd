@@ -1,4 +1,4 @@
-# Lesson 1 Invitation to Data Visualization
+# Invitation to Data Visualization
 
 In this lesson I will provide some examples of interesting and influential data visualizations.
 
