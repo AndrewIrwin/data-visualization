@@ -10,4 +10,6 @@ new-session: yes
 
 rmd_files: [ "index.Rmd", 
              "001-syllabus.rmd", 
-             "002-detailed-outline.Rmd"]
+             "002-detailed-outline.Rmd",
+             "007-evaluation.rmd",
+             "101-introduction.rmd"]
