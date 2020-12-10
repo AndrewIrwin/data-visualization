@@ -23,13 +23,13 @@ We have 24 synchronous sessions. The last two will be used for oral presentation
 ### Week 1: Jan 6-8
 
 - Lesson 1 What is Data Visualization?
-- Lesson 2 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github
+- Lesson 2 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github. [Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted)
 - Lesson 3 Computer preliminaries. Installing R, Rstudio, packages, creating github account
 
 ### Week 2: Jan 11-15
 
 - Lesson 4 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
-- Lesson 5 Get started. [Healy Chapter 2](https://socviz.co/gettingstarted.html#gettingstarted)
+- Lesson 5 Get started. [Healy Section 2.5-2.6](https://socviz.co/gettingstarted.html#gettingstarted)
 - Lesson 6 Version control concepts and working with git
 - Exercise 1. Make a simple markdown document with a figure and commit to a github repository
 
