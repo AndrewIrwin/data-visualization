@@ -32,3 +32,12 @@ Learning technical skills well enough so that you can use them again
 
 * [R studio tips](https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/) presented as animated GIFs
 
+
+
+## Video help
+
+- Making a knitted document 
+- Making a video presentation
+- Introduction to main features of Rstudio
+- Lesson 16 Getting help from R and online
+

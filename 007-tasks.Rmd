@@ -1,4 +1,3 @@
-
 # Evaluation
 
 ## Tasks
@@ -78,5 +77,165 @@ Draw a more elaborate map. (colour scales, filled regions)
 Sample knn calculation.
 
 Sample PCA.
+
+
+# Assignments
+
+### Overview
+
+Assignments are opportunities to apply and combine the skills from several lessons. They are both structured, in that you are asked to use specific skills to accomplish a task, and creative in that you have some flexibility in the product you produce. You will be assessed on your use of technical skills and your judgement in making well-designed and effective visualizations, following the principles explored in the course.
+
+Assignments should be submitted to the relevant github repository, generally as an R markdown document.
+
+Assesment rubric:
+* 0 none of the objectives met; document has errors that prevent knitting
+* 1 some objectives met
+* 2 some objectives met
+* 3 no substantive errors
+* 4 excellent work, clearly presented and thoughtfully designed
+
+
+
+### Assignment 1
+
+learn, describe, and use a ggplot extension. 5% (Week 7, after break)
+- ggrepel, cowplot, patchwork, viridislite
+
+### Assignment 
+learn, describe, and use a table layout package. 5%  (Week 9)
+- DT, gt, flextable, kable/kableExtra
+
+(Do one as a 5 minute video with script and slides. Do the other as a rmd tutorial.)
+
+
+### Assignment 
+
+Mini-project: Tidy Tuesday 1. 5% (Week 10)
+
+### Assignment
+
+Mini-project: Tidy Tuesday 2. 5% (Week 11)
+
+
+
+
+# Term project
+
+Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests or based on work in other courses or research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.
+
+You should create compelling visualizations of your data. Pay attention to your presentation: neatness, coherency, and clarity will count. All analyses must be done in RStudio, using R.
+
+Deliverables
+
+* Proposal - due Fiday 12 March at 6:00 pm
+* Presentation - due Friday 2 April at 6:00 pm as pre-recorded video or live presentation in class on March 30 or April 1.
+* Report - due Friday 9 April at 6:00 pm
+
+Work in pairs. You can produce team products, or one product per team member, whichever you prefer.
+
+Use a single github repository for the proposal, presentation, and final report. If you work in pairs, producing joint work, use the repository for one team member and add the other member to the repository.
+
+### Proposal
+
+Your main task for the proposal is to find a dataset to analyze for your project and describe at least one question you can address with data visualizations.
+
+It is important that you choose a readily accessible dataset that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your dataset should have at least 50 observations and about 10 variables. The variables should include categorical variables, discrete numerical variables, and continuous numerical variables. If you plan to use a dataset that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+
+Do not reuse datasets from any part of the course.
+
+Here is list of data repositories containing many interesting datasets. Feel free to use data from other sources if you prefer.
+
+* [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+* [Kaggle](https://www.kaggle.com/datasets) datasets
+* [OpenIntro](https://www.openintro.org/book/statdata/index.php) datasets
+* [Awesome public](https://github.com/awesomedata/awesome-public-datasets) datasets
+* [Bikeshare](https://www.bikeshare.com/data/) data portal
+* [Harvard Dataverse](https://dataverse.harvard.edu/)
+* [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data)
+* Open government data: [Canada](https://open.canada.ca/en/open-data), [NS](https://data.novascotia.ca/), and many other sources
+* Other sources listed in the [Data sources]() section of these notes or that you find on your own.
+
+Describe a dataset and question you can address with the data for your report. How you plan to use 5 things (overview plot, dplyr/table summary, small multiples, knn/PCA, map)
+
+
+Your proposal should include an Rmd document with the following sections and the proposed dataset.
+
+* Introduction: The introduction should introduce your general research question and your data (where it came from, how it was collected, what are the cases, what are the variables, etc.).
+* Data: Place your data in the /data folder, and add dimensions and codebook to the README in that folder. Include the output of `dplyr::glimpse()` or `skimr::skim()` on your data frame.
+* Visualization and analysis plan:
+  * The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.
+  * Ideas for at least two possible visualizations for exploratory data analysis, including some summary statistics and visualizations, along with some explanation on how they help you learn more about your data.
+  * An idea of how at least one statistical methods described in the course (smoothing, PCA, k-means) could be useful in analyzing your data
+
+
+*Assessment*. Your proposal will be assessed for the following elements: a dataset is identifed and described (size of dataset, variables, source), a question to be investigated is clearly described, a visualization plan is presented. Scoring will be similar to exercises:
+
+* 4 points (1 each) for the following 4 elements: description of data, size of data, source of data, question, 
+* 2 points for a visualization plan
+* 2 points for presentation quality, 
+* 2 points for creativity / thoughtfulness / imagination
+
+Total 10.
+
+### Oral presentation
+
+The oral presentation should be 3-5 minutes long. The goal is to present the highlights of your project and allow for feedback which can be incorporated as you revise your written report.
+
+You should have a small number of slides to accompany your presentation. I suggest a format such as the following:
+
+* A title with your name
+* A description of the data you are analyzing
+* At least one question you can investigate with your data visualization
+* At least two data visualizations
+* A conclusion
+
+A template for a presentation is in the project repository.
+
+Don't show your R code; the focus should be on your results and visualzations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
+
+Your presentation should not just be an account of everything you tried (“then we did this, then we did this, etc.”), instead it should convey what choices you made, and why, and what you found.
+ 
+### Written report
+
+
+
+Presentation schedule: Presentations will take place during the last workshop of the semester. You can choose to do your presentation live or pre-record it. During your workshop you will watch presentations from other teams in your workshop and provide feedback in the form of peer evaluations. The presentation line-up will be generated randomly.
+
+Write-up
+Along with your presentation slides, we want you to provide a brief summary of your project in the README of your repository.
+
+This write-up, which you can also think of as an summary of your project, should provide information on the dataset you’re using, your research question(s), your methodology, and your findings.
+
+Repo organization
+The following folders and files in your project repository:
+
+presentation.Rmd + presentation.html: Your presentation slides
+README.md: Your write-up
+/data/*: Your dataset in csv or RDS format, in the /data folder.
+/proposal: Your proposal from earlier in the semester
+Style and format does count for this assignment, so please take the time to make sure everything looks good and your data and code are properly formated.
+
+You’re working in the same repo as your teammate, so merge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.
+
+Review the marking guidelines below and ask questions if any of the expectations are unclear.
+
+Code: In your presentation your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I should be able to obtain the results you presented. Exception: If you want to highlight something specific about a piece of code, you’re welcomed to show that portion.
+
+Marking
+Total	100 pts
+Proposal	10 pts
+Presentation	50 pts
+Write-up	15 pts
+Reproducibility and organization	10 pts
+Team peer evaluation	10 pts
+Classmates’ evaluation	5 pts
+
+Criteria
+Content - What is the quality of research and/or policy question and relevancy of data to those questions?
+Correctness - Are statistical procedures carried out and explained correctly?
+Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations?
+Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+
+
 
 

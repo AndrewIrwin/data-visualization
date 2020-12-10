@@ -1,0 +1,18 @@
+---
+title: "Note and miscellaneous"
+author: "Andrew Irwin"
+date: "10/12/2020"
+output: html_document
+---
+
+# Notes
+
+text without a home.
+
+
+## notes
+
+ghclass package for teaching with github
+github workshop for teaching https://mine-cetinkaya-rundel.github.io/teach-r-online/
+sugrrants package for visualizing course components
+
