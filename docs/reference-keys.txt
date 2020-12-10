@@ -47,7 +47,7 @@ deliverables
 proposal
 oral-presentation
 written-report
-invitation-to-data-visualization
+invitation
 atmospheric-carbon-dioxide-concentration
 human-health-and-development
 weather
