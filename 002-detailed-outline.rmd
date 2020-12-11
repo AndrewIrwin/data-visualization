@@ -1,0 +1,125 @@
+# Detailed outline
+
+Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). Most sessions will be recorded and posted on Brightspace.
+
+Important dates
+
+* Wed 6 Jan: Term begins
+* Fri 5 Feb: Munro day, University closed
+* 15-19 Feb: Study break
+* Fri 12 March: Project proposal due
+* Fri 2 Apr: Good Friday, University closed
+* Tue 6 Apr: Last Tuesday/Thursday class
+* Thu 8 Apr: Last day of classes
+* Fri 9 Apr: Final project due
+* 10-23 Apr: Exam period
+
+We have 24 synchronous sessions. The last two will be used for oral presentations.
+
+## Course calendar
+
+**This is a tentative schedule which will be revised throughout the term.**
+
+### Week 1: Jan 6-8
+
+- [Lesson 1](#invitation) What is Data Visualization?
+- Lesson 2 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github. [Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted)
+- Lesson 3 Computer preliminaries. Installing R, Rstudio, packages, creating github account
+
+### Week 2: Jan 11-15
+
+- Lesson 4 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
+- Lesson 5 Get started. [Healy Section 2.5-2.6](https://socviz.co/gettingstarted.html#gettingstarted)
+- Lesson 6 Version control concepts and working with git
+- Exercise 1. Make a simple markdown document with a figure and commit to a github repository
+
+### Week 3: Jan 18-22
+
+- Lesson 7 Introduction to the Grammar of Graphics
+- Lesson 8 Make a plot. [Healy Chapter 3](https://socviz.co/makeplot.html#makeplot)
+- Lesson 9 Customizing plots: shape, color, lines, and more
+
+### Week 4: Jan 25-29
+
+- Lesson 10 Summarizing data with dplyr (group_by, filter, mutate, summarize)
+- Lesson 11 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
+- Lesson 12 Graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
+
+- Lesson 2. Describe, summarize, and display data using tables and plots
+
+### Week 5: Feb 1-5
+
+- Lesson 13 Reading data (csv, tsv, xlsx); import menu item; r commands
+- Lesson 14 Plotting small multiples (facets)
+- Lesson 15 A bit more about R. [Healy Appendix](https://socviz.co/appendix.html#appendix)
+
+### Week 6: Feb 8-12
+
+- Lesson 16 Work with models. [Healy Chapter 6](https://socviz.co/modeling.html#modeling)
+- Lesson 17 Linear models (lines, polynomials, robust, quantile); equationomatic 
+- Lesson 18 Loess, GAM
+
+### Week 7: Feb 22-26
+
+- Lesson 19 K-means
+- Lesson 20 PCA
+- Lesson 21 NMDS 
+
+### Week 8: Mar 1-5
+
+- Lesson 22 Tidy data; Making data tidy (datapasta)
+- Lesson 23 Data validation (pointblank)
+- Lesson 24 Finding, describing data with metadata (codebook)
+
+### Week 9: Mar 8-12
+
+- Lesson 25 Draw maps. [Healy Chapter 7](https://socviz.co/maps.html#maps)
+- Lesson 26 Making maps and chloropleths
+- Lesson 27 Refine your plots. [Healy Chapter 8](https://socviz.co/refineplots.html#refineplots)
+
+### Week 10: Mar 15-19
+
+- Lesson 28 Themes
+- Lesson 29 Annotations
+- Lesson 30 Graphics output (PDF, png, sizes, colors, themes; ragg) repurposing graphics for different media and purposes
+
+### Week 11: Mar 22-26
+
+- Working with factors
+
+### Week 12: Mar 29-April 1
+
+- Wrap up and oral presentations
+- length slope shape color Wilke book
+- graphs for categorical data
+- graphs for quantitative data
+- pivot longer and wider
+- Working with dates
+
+## Another run at this plan
+
+Lectures
+
+- Introduction to Data Visualization
+- Reproducibility and report writing
+- The grammar of graphics and components of a ggplot
+- Tracking changes and sharing data and code with git
+- A tour of plot types
+- Aesthetic features of graphs: symbols, lines, colours, and more
+- Organizing data
+- Summarizing data in tables
+- Smoothing data
+- Making clusters from quantitive data
+- Comparing data: overlapping points and panel plots
+- Learning computing tools on your own (project overview)
+- Principal component analysis and Multidimensional scaling
+
+Appendix (5 + more added during term)
+
+- What is the tidyverse? Contrast with other conventions
+- How do I know I've done it right?
+- Functions and types of data in R
+- Text data and regular expressions introduction
+- Examples of building up figures step by step
+
+

@@ -8,8 +8,8 @@ edit: https://github.com/AndrewIrwin/data-visualization/edit/master/%s
 output_dir: "docs"
 new-session: yes
 
-rmd_files: [ "index.Rmd", 
+rmd_files: [ "index.rmd", 
              "001-syllabus.rmd", 
-             "002-detailed-outline.Rmd",
+             "002-detailed-outline.rmd",
              "007-evaluation.rmd",
              "101-introduction.rmd"]

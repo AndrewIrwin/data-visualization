@@ -1,6 +1,6 @@
 bookdown::bs4_book:
   theme:
-    primary:  "#0080FF"  #  "#637238"
+    primary:  "#9437FF"  #  "#637238"
   repo: https://github.com/AndrewIrwin/data-visualization
 bookdown::gitbook:
   lib_dir: assets
