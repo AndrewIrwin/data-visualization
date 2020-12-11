@@ -1,5 +1,6 @@
 fig:co2-2-year
 fig:co2-full-record
+fig:gapminder-fertility
 fig:env-canada-weather
 fig:weatherspark
 welcome

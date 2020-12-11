@@ -24,7 +24,12 @@ Many other sites have information on this important problem, usually presenting 
 
 ## Human health and development 
 
-[Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling) was a physician and popularizer of data visualizations to develop understanding of human health and economic development over time and across countries. His [public presentations](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) illustrate his view of how dyanmic charts can help us come to see the trajectory of global development, particularly the connections between health and economic development. I strongly encourage you to watch his presentations.
+[Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling) was a physician and popularizer of data visualizations to develop understanding of human health and economic development over time and across countries. His [public presentations](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) illustrate his view of how dyanmic charts can help us come to see the trajectory of global development, particularly the connections between health and economic development. I strongly encourage you to watch his presentations. He was especially well known for his effort to dispell misunderstandings about differences across countries in health and human development. He popularized a style of scatterplot which combined the use of colour, symbol size, and animations to show changes over time.
+gapminder-fertility-income.png
+
+```{r gapminder-fertility, echo=FALSE, fig.cap="Fertility rate (babies per woman) as a function of median national income across countries. See the animated version showing how [this relationship has changed over time](https://bit.ly/3oAb0Uq). Source [gapminder.org](https://gapminder.org)", out.width = '100%'}
+knitr::include_graphics("static/gapminder-fertility-income.png")
+```
 
 ## Weather 
 
