@@ -8,6 +8,14 @@ At the end of the lesson, I will ask you to identify two visualizations you find
 
 Climate change in the recent past and coming century will be controled by human-driven emission (and possibly sequestration) of carbon dioxide from fossil fuels into the atmosphere. Starting in the 1950s, the amount of carbon dioxide in the atmosphere (in parts per million) was regularly measured. Subsequently, methods for analyzing gasses trapped in ice were used to extend this record back about one million years. There is a direct physical link between atmospheric concentration of carbon dioxide and the loss of heat from Earth to space, resulting in a mechanistic link between increasing carbon dioxide concentration in the atmosphere and the mean temperature of the surface of the Earth. Visualizations of this data and assocated global mean temperature data have been extremely influential, forming the [cornerstone of books](https://en.wikipedia.org/wiki/The_Hockey_Stick_and_the_Climate_Wars), a [documentary movie](https://en.wikipedia.org/wiki/An_Inconvenient_Truth), and countless educational and environmental change movements.
 
+```{r co2-2-year, echo=FALSE, fig.cap="Two years of atmospheric CO$_2$ concentration from Mauna Loa observatory. Source [co2.earth](https://www.co2.earth/daily-co2) and [sioweb.ucsd.edu](https://sioweb.ucsd.edu/programs/keelingcurve/) ", out.width = '100%'}
+knitr::include_graphics("static/mlo_two_years.png")
+```
+
+```{r co2-full-record, echo=FALSE, fig.cap="Atmospheric CO$_2$ concentration from Mauna Loa observatory, 1958 to present. Source [co2.earth](https://www.co2.earth/daily-co2) and [sioweb.ucsd.edu](https://sioweb.ucsd.edu/programs/keelingcurve/) ", out.width = '100%'}
+knitr::include_graphics("static/mlo_full_record.png")
+```
+
 Sample [visualizations of atmospheric carbon dioxide](https://scrippsco2.ucsd.edu/data/atmospheric_co2/primary_mlo_co2_record.html) are available from the institute that has been collecting this data for decades.
 
 Estimates of [global mean temperature](https://climate.nasa.gov/vital-signs/global-temperature/) over time are available from NASA.
