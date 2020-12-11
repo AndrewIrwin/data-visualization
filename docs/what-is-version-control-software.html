@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 10 What is version control software? | Intro to R and Rstudio</title>
+<title>Chapter 7 What is version control software? | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.5.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="">Intro to R and Rstudio</a>
+        <a href="index.html" title="">Data Visualization</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -34,100 +34,93 @@
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
 <li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
 <li><a class="" href="detailed-outline.html"><span class="header-section-number">3</span> Detailed outline</a></li>
-<li><a class="" href="evaluation-2.html"><span class="header-section-number">4</span> Evaluation</a></li>
-<li><a class="" href="assignments.html"><span class="header-section-number">5</span> Assignments</a></li>
-<li><a class="" href="term-project.html"><span class="header-section-number">6</span> Term project</a></li>
-<li><a class="" href="ethical-considerations.html"><span class="header-section-number">7</span> Ethical considerations</a></li>
-<li><a class="" href="lesson-1-invitation-to-data-visualization.html"><span class="header-section-number">8</span> Lesson 1 Invitation to Data Visualization</a></li>
-<li><a class="" href="lesson-2-computer-tools.html"><span class="header-section-number">9</span> Lesson 2 Computer tools</a></li>
-<li><a class="active" href="what-is-version-control-software.html"><span class="header-section-number">10</span> What is version control software?</a></li>
-<li><a class="" href="ragg.html"><span class="header-section-number">11</span> ragg</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">12</span> Summarizing data</a></li>
-<li><a class="" href="lesson-k-nearest-neighbour-classification-and-regression.html"><span class="header-section-number">13</span> Lesson: K-Nearest Neighbour classification and regression</a></li>
-<li><a class="" href="making-maps.html"><span class="header-section-number">14</span> Making maps</a></li>
-<li><a class="" href="pca.html"><span class="header-section-number">15</span> PCA</a></li>
-<li><a class="" href="using-colour-well.html"><span class="header-section-number">16</span> Using colour well</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></li>
-<li><a class="" href="staying-organized.html"><span class="header-section-number">18</span> Staying organized</a></li>
-<li><a class="" href="asking-questions-and-getting-help.html"><span class="header-section-number">19</span> Asking questions and getting help</a></li>
-<li><a class="" href="extra-resources.html"><span class="header-section-number">20</span> Extra resources</a></li>
-<li><a class="" href="tmi-about-r.html"><span class="header-section-number">21</span> TMI about R</a></li>
-<li><a class="" href="computing-notes.html"><span class="header-section-number">22</span> Computing notes</a></li>
-<li><a class="" href="overview-talk.html"><span class="header-section-number">23</span> Overview talk</a></li>
+<li><a class="" href="evaluation-1.html"><span class="header-section-number">4</span> Evaluation</a></li>
+<li><a class="" href="invitation.html"><span class="header-section-number">5</span> Invitation to Data Visualization</a></li>
+<li><a class="" href="computer-tools.html"><span class="header-section-number">6</span> Computer tools</a></li>
+<li><a class="active" href="what-is-version-control-software.html"><span class="header-section-number">7</span> What is version control software?</a></li>
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/andrewirwin/stat2430">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="what-is-version-control-software" class="section level1" number="10">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="what-is-version-control-software" class="section level1" number="7">
 <h1>
-<span class="header-section-number">10</span> What is version control software?<a class="anchor" aria-label="anchor" href="#what-is-version-control-software"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7</span> What is version control software?<a class="anchor" aria-label="anchor" href="#what-is-version-control-software"><i class="fas fa-link"></i></a>
 </h1>
 <p><a href="https://en.wikipedia.org/wiki/Version_control">Version control</a> software is used to manage the process of creating software. It is commonly used to track changes, manage the revision process of correcting errors and adding new features, tracking the history of a project through different versions, synchronizing contributions from many different people, and faciliating the distribution to a broad audience. Version control software is most commonly applied to the production of complex projects like software, but it can be used for text documents, data, and many other applications.</p>
-<div id="what-software-is-used-for-version-control" class="section level2" number="10.1">
+<div id="what-software-is-used-for-version-control" class="section level2" number="7.1">
 <h2>
-<span class="header-section-number">10.1</span> What software is used for version control?<a class="anchor" aria-label="anchor" href="#what-software-is-used-for-version-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.1</span> What software is used for version control?<a class="anchor" aria-label="anchor" href="#what-software-is-used-for-version-control"><i class="fas fa-link"></i></a>
 </h2>
 <p>Version control software has a history dating back several decades, so there are <a href="https://en.wikipedia.org/wiki/Comparison_of_version-control_software">many different tools available</a>. We will be using one of the most popular packages, known as git (<a href="https://en.wikipedia.org/wiki/Git">Wikipedia</a>, <a href="https://git-scm.com/">homepage</a>). Git keeps the entire history of a project on your own computer and does not require any central repository. Since version control software is often used to coordinate the work of many authors and to distribute the product, central repositories such as GitHub (<a href="GitHub">Wikipedia</a>, <a href="https://github.com/">homepage</a>) have become very popular, to the point that some people see them as an integrated set of tools. Other popular version control software packages include <a href="https://en.wikipedia.org/wiki/Mercurial">Mercurial</a> and <a href="https://en.wikipedia.org/wiki/Apache_Subversion">Subversion</a> and central repositories such as <a href="https://en.wikipedia.org/wiki/Bitbucket">bitbucket</a> and <a href="https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities">more</a>.</p>
 <p>We will be using git and github in this book. Rstudio works well with Mercurial as well.</p>
 </div>
-<div id="why-is-version-control-used-in-data-visualization" class="section level2" number="10.2">
+<div id="why-is-version-control-used-in-data-visualization" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">10.2</span> Why is version control used in data visualization?<a class="anchor" aria-label="anchor" href="#why-is-version-control-used-in-data-visualization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Why is version control used in data visualization?<a class="anchor" aria-label="anchor" href="#why-is-version-control-used-in-data-visualization"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data visualization is the process of combining data with computer code to create a visualization. Both of these parts can change with new information and new ideas, can require synthesis of skills from multiple authors, and benefit from transparency in design and distribution. As a result, version control software is a natural tool to help with the work of data visualization.</p>
 <p>Suppose you develop a data visualization and you want to distribute the result, but you anticipate updating the data and revising the analyses. This sequence of steps is very similar to software development: an initial version is produced and released to users, changes are made, new versions are produced. Users (of software and data visulizations) want to know what version they are using, if there are any updates, and what the changes were between the versions. Version control software can help with these tasks and, once the key concepts are understood, without much extra effort on the part of the team producing the data visualization.</p>
 <p>Just as software can be developed without version control software, so can data visualizations. In this course we will integrate just enough use of version control to help you see how it can be helpful and to get you past the uncomfortable stage of knowing what it is without knowing the basics of how to use it.</p>
 </div>
-<div id="how-will-we-use-version-control" class="section level2" number="10.3">
+<div id="how-will-we-use-version-control" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">10.3</span> How will we use version control?<a class="anchor" aria-label="anchor" href="#how-will-we-use-version-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> How will we use version control?<a class="anchor" aria-label="anchor" href="#how-will-we-use-version-control"><i class="fas fa-link"></i></a>
 </h2>
-<p>We will use git and github to submit and assess assignments and to mediate cooperative work.</p>
-<p>Specifically, the following assignments will require the use of git and github:</p>
-<ul>
-<li>Introduction to git and github</li>
-<li>Tutorial for a new data visualization tool</li>
-<li>Sample data visualization development</li>
-<li>Final project</li>
-</ul>
+<p>Most evaluations in our course will require you to use git and github. Depending on how you work on your final project, you may use it as a tool for collaboration.</p>
 </div>
-<div id="introduction-to-git" class="section level2" number="10.4">
+<div id="introduction-to-git" class="section level2" number="7.4">
 <h2>
-<span class="header-section-number">10.4</span> Introduction to git<a class="anchor" aria-label="anchor" href="#introduction-to-git"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.4</span> Introduction to git<a class="anchor" aria-label="anchor" href="#introduction-to-git"><i class="fas fa-link"></i></a>
 </h2>
 <p>Key concepts</p>
+<ul>
+<li><p>A tool for managing files on your computer
+** Rstudio projects
+** Individual files (Rmd, html, csv, and more)</p></li>
+<li><p>A local git repository
+** Staging files
+** Committing changes
+** Using the diff tool to examine changes</p></li>
+</ul>
 </div>
-<div id="using-git-with-rstudio" class="section level2" number="10.5">
+<div id="using-git-with-rstudio" class="section level2" number="7.5">
 <h2>
-<span class="header-section-number">10.5</span> Using git with Rstudio<a class="anchor" aria-label="anchor" href="#using-git-with-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5</span> Using git with Rstudio<a class="anchor" aria-label="anchor" href="#using-git-with-rstudio"><i class="fas fa-link"></i></a>
 </h2>
 <p>Watch a video walkthrough of these steps (link)</p>
-<p>See the Rstudio <a href="https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&amp;mode=desktop">help</a></p>
+<ul>
+<li>Checking to be sure git is working on your computer</li>
+<li>Creating a new Rstudio project and enabling version control</li>
+<li>Adding a file to your project</li>
+<li>Staging changes to your files to be committed to your local git repository</li>
+<li>Committing your staged changes to your local git repository</li>
+<li>Pushing your changes to your github repository</li>
+</ul>
 <p>Setup</p>
-<div id="on-a-macintosh-osx-computer" class="section level3" number="10.5.1">
+<div id="on-a-macintosh-osx-computer" class="section level3" number="7.5.1">
 <h3>
-<span class="header-section-number">10.5.1</span> On a Macintosh (OSX) computer<a class="anchor" aria-label="anchor" href="#on-a-macintosh-osx-computer"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5.1</span> On a Macintosh (OSX) computer<a class="anchor" aria-label="anchor" href="#on-a-macintosh-osx-computer"><i class="fas fa-link"></i></a>
 </h3>
 </div>
-<div id="on-a-windows-computer" class="section level3" number="10.5.2">
+<div id="on-a-windows-computer" class="section level3" number="7.5.2">
 <h3>
-<span class="header-section-number">10.5.2</span> On a Windows computer<a class="anchor" aria-label="anchor" href="#on-a-windows-computer"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5.2</span> On a Windows computer<a class="anchor" aria-label="anchor" href="#on-a-windows-computer"><i class="fas fa-link"></i></a>
 </h3>
 </div>
-<div id="set-up-a-github-account" class="section level3" number="10.5.3">
+<div id="set-up-a-github-account" class="section level3" number="7.5.3">
 <h3>
-<span class="header-section-number">10.5.3</span> Set up a github account<a class="anchor" aria-label="anchor" href="#set-up-a-github-account"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5.3</span> Set up a github account<a class="anchor" aria-label="anchor" href="#set-up-a-github-account"><i class="fas fa-link"></i></a>
 </h3>
 <p>Create account
 Link to my course as student
 Get authorization key onto your computer</p>
 </div>
-<div id="common-steps-for-each-assignment" class="section level3" number="10.5.4">
+<div id="common-steps-for-each-assignment" class="section level3" number="7.5.4">
 <h3>
-<span class="header-section-number">10.5.4</span> Common steps for each assignment<a class="anchor" aria-label="anchor" href="#common-steps-for-each-assignment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5.4</span> Common steps for each assignment<a class="anchor" aria-label="anchor" href="#common-steps-for-each-assignment"><i class="fas fa-link"></i></a>
 </h3>
 <p>New project &gt; New Directory
 Provide directory name, indicate the subdirectory, make sure “create a git repository” is checked.</p>
@@ -145,47 +138,50 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
 <p>Clean up by deleting the folder from your computer and the repository from github. (Settings / scroll to bottom / Delete repository / Type name to confirm / Type github password to confirm.)</p>
 </div>
 </div>
-<div id="using-github-with-rstudio" class="section level2" number="10.6">
+<div id="using-github-with-rstudio" class="section level2" number="7.6">
 <h2>
-<span class="header-section-number">10.6</span> Using github with Rstudio<a class="anchor" aria-label="anchor" href="#using-github-with-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.6</span> Using github with Rstudio<a class="anchor" aria-label="anchor" href="#using-github-with-rstudio"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="resources-1" class="section level2" number="10.7">
+<div id="resources-1" class="section level2" number="7.7">
 <h2>
-<span class="header-section-number">10.7</span> Resources<a class="anchor" aria-label="anchor" href="#resources-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.7</span> Resources<a class="anchor" aria-label="anchor" href="#resources-1"><i class="fas fa-link"></i></a>
 </h2>
-<p><a href="https://happygitwithr.com/">Happy Git with R</a></p>
-<p><a href="https://www.maxpou.fr/git-cheat-sheet">Advanced Git cheat sheet</a></p>
-
+<ul>
+<li>Rstudio <a href="https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&amp;mode=desktop">help</a>
+</li>
+<li><a href="https://happygitwithr.com/">Happy Git with R</a></li>
+<li><a href="https://www.maxpou.fr/git-cheat-sheet">Advanced Git cheat sheet</a></li>
+</ul>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="lesson-2-computer-tools.html"><span class="header-section-number">9</span> Lesson 2 Computer tools</a></div>
-<div class="next"><a href="ragg.html"><span class="header-section-number">11</span> ragg</a></div>
+<div class="prev"><a href="computer-tools.html"><span class="header-section-number">6</span> Computer tools</a></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#what-is-version-control-software"><span class="header-section-number">10</span> What is version control software?</a></li>
-<li><a class="nav-link" href="#what-software-is-used-for-version-control"><span class="header-section-number">10.1</span> What software is used for version control?</a></li>
-<li><a class="nav-link" href="#why-is-version-control-used-in-data-visualization"><span class="header-section-number">10.2</span> Why is version control used in data visualization?</a></li>
-<li><a class="nav-link" href="#how-will-we-use-version-control"><span class="header-section-number">10.3</span> How will we use version control?</a></li>
-<li><a class="nav-link" href="#introduction-to-git"><span class="header-section-number">10.4</span> Introduction to git</a></li>
+<li><a class="nav-link" href="#what-is-version-control-software"><span class="header-section-number">7</span> What is version control software?</a></li>
+<li><a class="nav-link" href="#what-software-is-used-for-version-control"><span class="header-section-number">7.1</span> What software is used for version control?</a></li>
+<li><a class="nav-link" href="#why-is-version-control-used-in-data-visualization"><span class="header-section-number">7.2</span> Why is version control used in data visualization?</a></li>
+<li><a class="nav-link" href="#how-will-we-use-version-control"><span class="header-section-number">7.3</span> How will we use version control?</a></li>
+<li><a class="nav-link" href="#introduction-to-git"><span class="header-section-number">7.4</span> Introduction to git</a></li>
 <li>
-<a class="nav-link" href="#using-git-with-rstudio"><span class="header-section-number">10.5</span> Using git with Rstudio</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#on-a-macintosh-osx-computer"><span class="header-section-number">10.5.1</span> On a Macintosh (OSX) computer</a></li>
-<li><a class="nav-link" href="#on-a-windows-computer"><span class="header-section-number">10.5.2</span> On a Windows computer</a></li>
-<li><a class="nav-link" href="#set-up-a-github-account"><span class="header-section-number">10.5.3</span> Set up a github account</a></li>
-<li><a class="nav-link" href="#common-steps-for-each-assignment"><span class="header-section-number">10.5.4</span> Common steps for each assignment</a></li>
+<a class="nav-link" href="#using-git-with-rstudio"><span class="header-section-number">7.5</span> Using git with Rstudio</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#on-a-macintosh-osx-computer"><span class="header-section-number">7.5.1</span> On a Macintosh (OSX) computer</a></li>
+<li><a class="nav-link" href="#on-a-windows-computer"><span class="header-section-number">7.5.2</span> On a Windows computer</a></li>
+<li><a class="nav-link" href="#set-up-a-github-account"><span class="header-section-number">7.5.3</span> Set up a github account</a></li>
+<li><a class="nav-link" href="#common-steps-for-each-assignment"><span class="header-section-number">7.5.4</span> Common steps for each assignment</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#using-github-with-rstudio"><span class="header-section-number">10.6</span> Using github with Rstudio</a></li>
-<li><a class="nav-link" href="#resources-1"><span class="header-section-number">10.7</span> Resources</a></li>
+<li><a class="nav-link" href="#using-github-with-rstudio"><span class="header-section-number">7.6</span> Using github with Rstudio</a></li>
+<li><a class="nav-link" href="#resources-1"><span class="header-section-number">7.7</span> Resources</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/andrewirwin/stat2430/blob/master/105-version-control.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/andrewirwin/stat2430/edit/master/105-version-control.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/105-version-control.rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/105-version-control.rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -197,7 +193,7 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to R and Rstudio</strong>" was written by Andrew Irwin. It was last built on 21/09/2020.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021 Winter.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -205,18 +201,6 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+</footer>
 </body>
 </html>

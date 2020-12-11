@@ -20,26 +20,35 @@ Just as software can be developed without version control software, so can data 
 
 ## How will we use version control?
 
-We will use git and github to submit and assess assignments and to mediate cooperative work. 
-
-Specifically, the following assignments will require the use of git and github:
-
-* Introduction to git and github
-* Tutorial for a new data visualization tool
-* Sample data visualization development
-* Final project
+Most evaluations in our course will require you to use git and github. Depending on how you work on your final project, you may use it as a tool for collaboration.
 
 
 ## Introduction to git
 
 Key concepts
 
+* A tool for managing files on your computer
+  ** Rstudio projects
+  ** Individual files (Rmd, html, csv, and more)
+  
+* A local git repository
+  ** Staging files
+  ** Committing changes
+  ** Using the diff tool to examine changes
+  
+
 
 ## Using git with Rstudio
 
 Watch a video walkthrough of these steps (link)
 
-See the Rstudio [help](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&mode=desktop)
+* Checking to be sure git is working on your computer
+* Creating a new Rstudio project and enabling version control
+* Adding a file to your project
+* Staging changes to your files to be committed to your local git repository
+* Committing your staged changes to your local git repository
+* Pushing your changes to your github repository
+
 
 Setup
 
@@ -88,8 +97,8 @@ Clean up by deleting the folder from your computer and the repository from githu
 
 ## Resources
 
-[Happy Git with R](https://happygitwithr.com/)
-
-[Advanced Git cheat sheet](https://www.maxpou.fr/git-cheat-sheet)
+* Rstudio [help](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&mode=desktop)
+* [Happy Git with R](https://happygitwithr.com/)
+* [Advanced Git cheat sheet](https://www.maxpou.fr/git-cheat-sheet)
 
 

@@ -12,4 +12,6 @@ rmd_files: [ "index.rmd",
              "001-syllabus.rmd", 
              "002-detailed-outline.rmd",
              "007-evaluation.rmd",
-             "101-introduction.rmd"]
+             "101-introduction.rmd",
+             "102-intro-to-r.rmd",
+             "105-version-control.rmd"]

@@ -22,7 +22,7 @@ We have 24 synchronous sessions. The last two will be used for oral presentation
 
 ### Week 1: Jan 6-8
 
-- [Lesson 1](#invitation) What is Data Visualization?
+- [Lesson 1](#invitation) An Invitation to Data Visualization (Chapter \@ref(invitation))
 - Lesson 2 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github. [Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted)
 - Lesson 3 Computer preliminaries. Installing R, Rstudio, packages, creating github account
 

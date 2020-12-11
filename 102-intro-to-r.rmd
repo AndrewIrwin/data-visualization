@@ -1,15 +1,5 @@
----
-title: "Intro to R and Rstudio"
-author: "Andrew Irwin"
-date: "21/09/2020"
-output: html_document
----
 
-```{r include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-# Lesson 2 Computer tools
+# Computer tools
 
 We will use R and Rstudio in this course. R is widely used to analyze data and comes with many add-on packages for statistical analysis, data visualization, and specialized tools for many disciplines and applications. We will just scratch the surface of what R can do, but by the end of the course you should feel comfortable learning to use R for data visulization and you will have the skills to learn how to use R for many other tasks. Rstudio is a graphical user interface for R with many convenient features including tools to support report writing, getting help, and project management. For data visualization we will use '[ggplot2](https://en.wikipedia.org/wiki/Ggplot2)', for data analysis we will use the '[tidyverse](https://www.tidyverse.org/)' style of programming, for report writing we will use '[R markdown](https://rmarkdown.rstudio.com/)', and for project management we will use R projects and '[git](https://git-scm.com/)' version control. All of these computer terms will mean much more to you later on in the course!
 
@@ -44,17 +34,15 @@ There are two central ideas in the tidyverse approach to data analysis: data sho
 
 Once you know how to produce a data visualization or statisical analysis, new challenges quickly arrive. You must communicate these results to someone else. You must be prepared to revise your analysis and repeat it on revised or new data. A common approach is write lots of little bits of computer code, cut and paste the results into a word processor, and try to remember how it all fits together. R markdown documents are key step in a better solution. An R markdown document contains both natural-langauge (e.g., English) text for humans to read and R code for the computer to use. The R markdown document can be compiled (we will say 'knitted') together with the results of R computations to provide a finished report. This enables the computer code and data analysis results to be kept together with the exposition about the data and results.
 
-## Git
+## Git and Github
 
+Git is a kind of distributed version control software. This means that it is a tool to help you keep track of versions of computer code, including R markdown documents, both in your own files and however you choose to share them with others. It has tools for managing versions of software in databases called repositories. Version history and management is useful if you revise a report you have prepared but want to keep access to the old style of report for archival purposes. Having access to old versions of data visulizations is essential for auditing and quality control as well. Git also enables two or more people working in different locations to collaborate on the same project, managing both changes that are logically independent but made between file exchanges, and helping collaborators resolve conflicts in edits. Git is widely used in the data science world and among software developers. 
 
-## Github
+We will be learning the most basic uses of git in our course.
 
-
-## Tasks
-
-See the task for lesson 2.
+Github is a web service that allows you to easily publish your git repositories. Rstudio has easy to use tools for managing your work using git and github. These course notes are written and published using Rstudio, git, and github. You will use the same tools for your assignments and term project.
 
 ## Resources
 
 * If you want to know a lot more about using Rstudio, here is an [hour-long video overview of Rstudio features](https://www.youtube.com/watch?v=PXiY8muVUec)
-
+* If you want to know more than we will cover about git and github, see the notes called [Happy git with R](https://happygitwithr.com/). All the essentials of using these tools will be explained in future lessons.
