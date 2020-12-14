@@ -1,65 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Evaluation | Data Visualization</title>
-<meta name="author" content="Andrew Irwin">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.5.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Evaluation | Data Visualization</title>
+  <meta name="description" content="Chapter 4 Evaluation | Data Visualization" />
+  <meta name="generator" content="bookdown 0.21.5 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Evaluation | Data Visualization" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Evaluation | Data Visualization" />
+  
+  
+  
+
+<meta name="author" content="Andrew Irwin" />
+
+
+<meta name="date" content="2020-12-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="detailed-outline.html"/>
+<link rel="next" href="ch-invitation.html"/>
+<script src="assets/header-attrs-2.5.3/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Data Visualization</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
-<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
-<li><a class="" href="detailed-outline.html"><span class="header-section-number">3</span> Detailed outline</a></li>
-<li><a class="active" href="evaluation-1.html"><span class="header-section-number">4</span> Evaluation</a></li>
-<li><a class="" href="invitation.html"><span class="header-section-number">5</span> Invitation to Data Visualization</a></li>
-<li><a class="" href="computer-tools.html"><span class="header-section-number">6</span> Computer tools</a></li>
-<li><a class="" href="what-is-version-control-software.html"><span class="header-section-number">7</span> What is version control software?</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-data-visualization"><i class="fa fa-check"></i><b>1.1</b> What is Data Visualization?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-is-the-purpose-of-data-visualization"><i class="fa fa-check"></i><b>1.2</b> What is the purpose of data visualization?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#course-goals"><i class="fa fa-check"></i><b>1.3</b> Course Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i><b>2</b> Syllabus</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="syllabus.html"><a href="syllabus.html#course-description"><i class="fa fa-check"></i><b>2.1</b> Course Description</a></li>
+<li class="chapter" data-level="2.2" data-path="syllabus.html"><a href="syllabus.html#course-prerequisites"><i class="fa fa-check"></i><b>2.2</b> Course Prerequisites</a></li>
+<li class="chapter" data-level="2.3" data-path="syllabus.html"><a href="syllabus.html#course-materials"><i class="fa fa-check"></i><b>2.3</b> Course materials</a></li>
+<li class="chapter" data-level="2.4" data-path="syllabus.html"><a href="syllabus.html#course-structure"><i class="fa fa-check"></i><b>2.4</b> Course structure</a></li>
+<li class="chapter" data-level="2.5" data-path="syllabus.html"><a href="syllabus.html#evaluation"><i class="fa fa-check"></i><b>2.5</b> Evaluation</a></li>
+<li class="chapter" data-level="2.6" data-path="syllabus.html"><a href="syllabus.html#syllabus_software"><i class="fa fa-check"></i><b>2.6</b> Software</a></li>
+<li class="chapter" data-level="2.7" data-path="syllabus.html"><a href="syllabus.html#letter-grades"><i class="fa fa-check"></i><b>2.7</b> Letter grades</a></li>
+<li class="chapter" data-level="2.8" data-path="syllabus.html"><a href="syllabus.html#course-policies"><i class="fa fa-check"></i><b>2.8</b> Course Policies</a></li>
+<li class="chapter" data-level="2.9" data-path="syllabus.html"><a href="syllabus.html#university-policies-and-statements"><i class="fa fa-check"></i><b>2.9</b> University Policies and Statements</a></li>
+<li class="chapter" data-level="2.10" data-path="syllabus.html"><a href="syllabus.html#student-resources-and-support"><i class="fa fa-check"></i><b>2.10</b> Student Resources and Support</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="detailed-outline.html"><a href="detailed-outline.html"><i class="fa fa-check"></i><b>3</b> Detailed outline</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="detailed-outline.html"><a href="detailed-outline.html#important-dates"><i class="fa fa-check"></i><b>3.1</b> Important dates</a></li>
+<li class="chapter" data-level="3.2" data-path="detailed-outline.html"><a href="detailed-outline.html#course-calendar"><i class="fa fa-check"></i><b>3.2</b> Course calendar</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="detailed-outline.html"><a href="detailed-outline.html#week-1-jan-6-8"><i class="fa fa-check"></i><b>3.2.1</b> Week 1: Jan 6-8</a></li>
+<li class="chapter" data-level="3.2.2" data-path="detailed-outline.html"><a href="detailed-outline.html#week-2-jan-11-15"><i class="fa fa-check"></i><b>3.2.2</b> Week 2: Jan 11-15</a></li>
+<li class="chapter" data-level="3.2.3" data-path="detailed-outline.html"><a href="detailed-outline.html#week-3-jan-18-22"><i class="fa fa-check"></i><b>3.2.3</b> Week 3: Jan 18-22</a></li>
+<li class="chapter" data-level="3.2.4" data-path="detailed-outline.html"><a href="detailed-outline.html#week-4-jan-25-29"><i class="fa fa-check"></i><b>3.2.4</b> Week 4: Jan 25-29</a></li>
+<li class="chapter" data-level="3.2.5" data-path="detailed-outline.html"><a href="detailed-outline.html#week-5-feb-1-5"><i class="fa fa-check"></i><b>3.2.5</b> Week 5: Feb 1-5</a></li>
+<li class="chapter" data-level="3.2.6" data-path="detailed-outline.html"><a href="detailed-outline.html#week-6-feb-8-12"><i class="fa fa-check"></i><b>3.2.6</b> Week 6: Feb 8-12</a></li>
+<li class="chapter" data-level="3.2.7" data-path="detailed-outline.html"><a href="detailed-outline.html#week-7-feb-22-26"><i class="fa fa-check"></i><b>3.2.7</b> Week 7: Feb 22-26</a></li>
+<li class="chapter" data-level="3.2.8" data-path="detailed-outline.html"><a href="detailed-outline.html#week-8-mar-1-5"><i class="fa fa-check"></i><b>3.2.8</b> Week 8: Mar 1-5</a></li>
+<li class="chapter" data-level="3.2.9" data-path="detailed-outline.html"><a href="detailed-outline.html#week-9-mar-8-12"><i class="fa fa-check"></i><b>3.2.9</b> Week 9: Mar 8-12</a></li>
+<li class="chapter" data-level="3.2.10" data-path="detailed-outline.html"><a href="detailed-outline.html#week-10-mar-15-19"><i class="fa fa-check"></i><b>3.2.10</b> Week 10: Mar 15-19</a></li>
+<li class="chapter" data-level="3.2.11" data-path="detailed-outline.html"><a href="detailed-outline.html#week-11-mar-22-26"><i class="fa fa-check"></i><b>3.2.11</b> Week 11: Mar 22-26</a></li>
+<li class="chapter" data-level="3.2.12" data-path="detailed-outline.html"><a href="detailed-outline.html#week-12-mar-29-april-1"><i class="fa fa-check"></i><b>3.2.12</b> Week 12: Mar 29-April 1</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="detailed-outline.html"><a href="detailed-outline.html#another-run-at-this-plan"><i class="fa fa-check"></i><b>3.3</b> Another run at this plan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="evaluation-1.html"><a href="evaluation-1.html"><i class="fa fa-check"></i><b>4</b> Evaluation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="evaluation-1.html"><a href="evaluation-1.html#tasks"><i class="fa fa-check"></i><b>4.1</b> Tasks</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="evaluation-1.html"><a href="evaluation-1.html#task_1"><i class="fa fa-check"></i><b>4.1.1</b> Lesson 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="evaluation-1.html"><a href="evaluation-1.html#task_2"><i class="fa fa-check"></i><b>4.1.2</b> Lesson 2</a></li>
+<li class="chapter" data-level="4.1.3" data-path="evaluation-1.html"><a href="evaluation-1.html#task_3"><i class="fa fa-check"></i><b>4.1.3</b> Lesson 3</a></li>
+<li class="chapter" data-level="4.1.4" data-path="evaluation-1.html"><a href="evaluation-1.html#lesson-5"><i class="fa fa-check"></i><b>4.1.4</b> Lesson 5</a></li>
+<li class="chapter" data-level="4.1.5" data-path="evaluation-1.html"><a href="evaluation-1.html#lesson-6"><i class="fa fa-check"></i><b>4.1.5</b> Lesson 6</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="evaluation-1.html"><a href="evaluation-1.html#assignments"><i class="fa fa-check"></i><b>4.2</b> Assignments</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment-1"><i class="fa fa-check"></i><b>4.2.1</b> Assignment 1</a></li>
+<li class="chapter" data-level="4.2.2" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment-2"><i class="fa fa-check"></i><b>4.2.2</b> Assignment 2</a></li>
+<li class="chapter" data-level="4.2.3" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment-3"><i class="fa fa-check"></i><b>4.2.3</b> Assignment 3</a></li>
+<li class="chapter" data-level="4.2.4" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment"><i class="fa fa-check"></i><b>4.2.4</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="evaluation-1.html"><a href="evaluation-1.html#term-project"><i class="fa fa-check"></i><b>4.3</b> Term project</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="evaluation-1.html"><a href="evaluation-1.html#deliverables"><i class="fa fa-check"></i><b>4.3.1</b> Deliverables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="evaluation-1.html"><a href="evaluation-1.html#proposal"><i class="fa fa-check"></i><b>4.3.2</b> Proposal</a></li>
+<li class="chapter" data-level="4.3.3" data-path="evaluation-1.html"><a href="evaluation-1.html#oral-presentation"><i class="fa fa-check"></i><b>4.3.3</b> Oral presentation</a></li>
+<li class="chapter" data-level="4.3.4" data-path="evaluation-1.html"><a href="evaluation-1.html#written-report"><i class="fa fa-check"></i><b>4.3.4</b> Written report</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch-invitation.html"><a href="ch-invitation.html"><i class="fa fa-check"></i><b>5</b> Invitation to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch-invitation.html"><a href="ch-invitation.html#atmospheric-carbon-dioxide-concentration"><i class="fa fa-check"></i><b>5.1</b> Atmospheric carbon dioxide concentration</a></li>
+<li class="chapter" data-level="5.2" data-path="ch-invitation.html"><a href="ch-invitation.html#human-health-and-development"><i class="fa fa-check"></i><b>5.2</b> Human health and development</a></li>
+<li class="chapter" data-level="5.3" data-path="ch-invitation.html"><a href="ch-invitation.html#weather"><i class="fa fa-check"></i><b>5.3</b> Weather</a></li>
+<li class="chapter" data-level="5.4" data-path="ch-invitation.html"><a href="ch-invitation.html#journalism"><i class="fa fa-check"></i><b>5.4</b> Journalism</a></li>
+<li class="chapter" data-level="5.5" data-path="ch-invitation.html"><a href="ch-invitation.html#historically-important-visualizations"><i class="fa fa-check"></i><b>5.5</b> Historically important visualizations</a></li>
+<li class="chapter" data-level="5.6" data-path="ch-invitation.html"><a href="ch-invitation.html#stories"><i class="fa fa-check"></i><b>5.6</b> Stories</a></li>
+<li class="chapter" data-level="5.7" data-path="ch-invitation.html"><a href="ch-invitation.html#ideas"><i class="fa fa-check"></i><b>5.7</b> Ideas</a></li>
+<li class="chapter" data-level="5.8" data-path="ch-invitation.html"><a href="ch-invitation.html#stories-1"><i class="fa fa-check"></i><b>5.8</b> Stories</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch-tools.html"><a href="ch-tools.html"><i class="fa fa-check"></i><b>6</b> Computer tools</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="ch-tools.html"><a href="ch-tools.html#r"><i class="fa fa-check"></i><b>6.0.1</b> R</a></li>
+<li class="chapter" data-level="6.1" data-path="ch-tools.html"><a href="ch-tools.html#rstudio"><i class="fa fa-check"></i><b>6.1</b> Rstudio</a></li>
+<li class="chapter" data-level="6.2" data-path="ch-tools.html"><a href="ch-tools.html#ggplot"><i class="fa fa-check"></i><b>6.2</b> ggplot</a></li>
+<li class="chapter" data-level="6.3" data-path="ch-tools.html"><a href="ch-tools.html#tidyverse"><i class="fa fa-check"></i><b>6.3</b> tidyverse</a></li>
+<li class="chapter" data-level="6.4" data-path="ch-tools.html"><a href="ch-tools.html#r-markdown"><i class="fa fa-check"></i><b>6.4</b> R Markdown</a></li>
+<li class="chapter" data-level="6.5" data-path="ch-tools.html"><a href="ch-tools.html#git-and-github"><i class="fa fa-check"></i><b>6.5</b> Git and Github</a></li>
+<li class="chapter" data-level="6.6" data-path="ch-tools.html"><a href="ch-tools.html#reading"><i class="fa fa-check"></i><b>6.6</b> Reading</a></li>
+<li class="chapter" data-level="6.7" data-path="ch-tools.html"><a href="ch-tools.html#resources"><i class="fa fa-check"></i><b>6.7</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="look-data.html"><a href="look-data.html"><i class="fa fa-check"></i><b>7</b> Look at Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="look-data.html"><a href="look-data.html#review"><i class="fa fa-check"></i><b>7.1</b> Review</a></li>
+<li class="chapter" data-level="7.2" data-path="look-data.html"><a href="look-data.html#goals"><i class="fa fa-check"></i><b>7.2</b> Goals</a></li>
+<li class="chapter" data-level="7.3" data-path="look-data.html"><a href="look-data.html#problems-with-numerical-summaries"><i class="fa fa-check"></i><b>7.3</b> Problems with numerical summaries</a></li>
+<li class="chapter" data-level="7.4" data-path="look-data.html"><a href="look-data.html#good-and-bad-figures"><i class="fa fa-check"></i><b>7.4</b> Good and bad figures</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="look-data.html"><a href="look-data.html#chart-junk"><i class="fa fa-check"></i><b>7.4.1</b> Chart junk</a></li>
+<li class="chapter" data-level="7.4.2" data-path="look-data.html"><a href="look-data.html#distracting-colours-images-or-shapes"><i class="fa fa-check"></i><b>7.4.2</b> Distracting colours, images or shapes</a></li>
+<li class="chapter" data-level="7.4.3" data-path="look-data.html"><a href="look-data.html#bad-data"><i class="fa fa-check"></i><b>7.4.3</b> Bad data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="look-data.html"><a href="look-data.html#perception-guidelines-and-cautions"><i class="fa fa-check"></i><b>7.5</b> Perception guidelines and cautions</a></li>
+<li class="chapter" data-level="7.6" data-path="look-data.html"><a href="look-data.html#decoding-graphs"><i class="fa fa-check"></i><b>7.6</b> Decoding graphs</a></li>
+<li class="chapter" data-level="7.7" data-path="look-data.html"><a href="look-data.html#where-to-put-0"><i class="fa fa-check"></i><b>7.7</b> Where to put 0?</a></li>
+<li class="chapter" data-level="7.8" data-path="look-data.html"><a href="look-data.html#lines-shapes-or-connect-the-dots"><i class="fa fa-check"></i><b>7.8</b> Lines, shapes, or connect the dots?</a></li>
+<li class="chapter" data-level="7.9" data-path="look-data.html"><a href="look-data.html#thinking-about-your-goals"><i class="fa fa-check"></i><b>7.9</b> Thinking about your goals</a></li>
+<li class="chapter" data-level="7.10" data-path="look-data.html"><a href="look-data.html#sources"><i class="fa fa-check"></i><b>7.10</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="first-plot.html"><a href="first-plot.html"><i class="fa fa-check"></i><b>8</b> Making your first plot</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="first-plot.html"><a href="first-plot.html#goals-1"><i class="fa fa-check"></i><b>8.1</b> Goals</a></li>
+<li class="chapter" data-level="8.2" data-path="first-plot.html"><a href="first-plot.html#required-elements-for-a-plot"><i class="fa fa-check"></i><b>8.2</b> Required elements for a plot</a></li>
+<li class="chapter" data-level="8.3" data-path="first-plot.html"><a href="first-plot.html#your-first-plot"><i class="fa fa-check"></i><b>8.3</b> Your first plot</a></li>
+<li class="chapter" data-level="8.4" data-path="first-plot.html"><a href="first-plot.html#improving-your-plot"><i class="fa fa-check"></i><b>8.4</b> Improving your plot</a></li>
+<li class="chapter" data-level="8.5" data-path="first-plot.html"><a href="first-plot.html#exercises"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.6" data-path="first-plot.html"><a href="first-plot.html#sources-1"><i class="fa fa-check"></i><b>8.6</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html"><i class="fa fa-check"></i><b>9</b> What is version control software?</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#what-software-is-used-for-version-control"><i class="fa fa-check"></i><b>9.1</b> What software is used for version control?</a></li>
+<li class="chapter" data-level="9.2" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#why-is-version-control-used-in-data-visualization"><i class="fa fa-check"></i><b>9.2</b> Why is version control used in data visualization?</a></li>
+<li class="chapter" data-level="9.3" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#how-will-we-use-version-control"><i class="fa fa-check"></i><b>9.3</b> How will we use version control?</a></li>
+<li class="chapter" data-level="9.4" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#introduction-to-git"><i class="fa fa-check"></i><b>9.4</b> Introduction to git</a></li>
+<li class="chapter" data-level="9.5" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#using-git-with-rstudio"><i class="fa fa-check"></i><b>9.5</b> Using git with Rstudio</a></li>
+<li class="chapter" data-level="9.6" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#setup"><i class="fa fa-check"></i><b>9.6</b> Setup</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#on-rstudio.cloud"><i class="fa fa-check"></i><b>9.6.1</b> On rstudio.cloud</a></li>
+<li class="chapter" data-level="9.6.2" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#on-a-macintosh-osx-computer"><i class="fa fa-check"></i><b>9.6.2</b> On a Macintosh (OSX) computer</a></li>
+<li class="chapter" data-level="9.6.3" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#on-a-windows-computer"><i class="fa fa-check"></i><b>9.6.3</b> On a Windows computer</a></li>
+<li class="chapter" data-level="9.6.4" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#set-up-a-github-account"><i class="fa fa-check"></i><b>9.6.4</b> Set up a github account</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#practice-tasks"><i class="fa fa-check"></i><b>9.7</b> Practice tasks</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#create-a-project"><i class="fa fa-check"></i><b>9.7.1</b> Create a project</a></li>
+<li class="chapter" data-level="9.7.2" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#create-a-new-markdown-file"><i class="fa fa-check"></i><b>9.7.2</b> Create a new markdown file</a></li>
+<li class="chapter" data-level="9.7.3" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#stage-and-commit-your-changes"><i class="fa fa-check"></i><b>9.7.3</b> Stage and commit your changes</a></li>
+<li class="chapter" data-level="9.7.4" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#connect-to-github"><i class="fa fa-check"></i><b>9.7.4</b> Connect to github</a></li>
+<li class="chapter" data-level="9.7.5" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#push-your-changes"><i class="fa fa-check"></i><b>9.7.5</b> Push your changes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#common-steps-for-each-assignment"><i class="fa fa-check"></i><b>9.8</b> Common steps for each assignment</a></li>
+<li class="chapter" data-level="9.9" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#your-first-assignment-from-github"><i class="fa fa-check"></i><b>9.9</b> Your first assignment from github</a></li>
+<li class="chapter" data-level="9.10" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#resources-1"><i class="fa fa-check"></i><b>9.10</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html"><i class="fa fa-check"></i><b>10</b> Accessibility, Bias, and Ethics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#accessibility"><i class="fa fa-check"></i><b>10.1</b> Accessibility</a></li>
+<li class="chapter" data-level="10.2" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#data-collection-and-analysis"><i class="fa fa-check"></i><b>10.2</b> Data collection and analysis</a></li>
+</ul></li>
 </ul>
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="evaluation-1" class="section level1" number="4">
-<h1>
-<span class="header-section-number">4</span> Evaluation<a class="anchor" aria-label="anchor" href="#evaluation-1"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Visualization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="evaluation-1" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Evaluation</h1>
 <p>All the work students will complete for evaluation and credit in the course is described below.</p>
 <div id="tasks" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> Tasks<a class="anchor" aria-label="anchor" href="#tasks"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">4.1</span> Tasks</h2>
 <p>Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.</p>
 <p>Tasks will be evaluated on a 0-2 scale. The primary goal of each task is to perform the task, so the assessment will be 2 if the work is complete or mostly complete, 0 if the work is mostly incomplete, and 1 for roughly half complete tasks.</p>
-<div id="lesson-1" class="section level3" number="4.1.1">
-<h3>
-<span class="header-section-number">4.1.1</span> Lesson 1<a class="anchor" aria-label="anchor" href="#lesson-1"><i class="fas fa-link"></i></a>
-</h3>
+<div id="task_1" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Lesson 1</h3>
 <p>Find two data visualizations that you find informative, compelling, or in need of improvement.</p>
 <p>Create a document that shows each visualization (the figure, or a snapshot of a dynamic visualization), provides the source (e.g., url and publication details if applicable). In a few sentences describe
 1. the data behind the visualization,
@@ -68,43 +309,34 @@
 The goal of this project isn’t to be right or wrong, but rather to start the process of looking at data visualizations through the perspective of creator, designer, and critic.</p>
 <p>Submit your work as a single PDF on Brightspace.</p>
 </div>
-<div id="lesson-2" class="section level3" number="4.1.2">
-<h3>
-<span class="header-section-number">4.1.2</span> Lesson 2<a class="anchor" aria-label="anchor" href="#lesson-2"><i class="fas fa-link"></i></a>
-</h3>
-<p>Read <a href="https://socviz.co/gettingstarted.html#gettingstarted">Healy, Sections 2.1-2.4</a>.</p>
+<div id="task_2" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Lesson 2</h3>
+<p>Read <a href="https://socviz.co/gettingstarted.html#gettingstarted">Healy, Sections 2.1-2.4</a>. There is nothing to submit for this task.</p>
 </div>
-<div id="lesson-3" class="section level3" number="4.1.3">
-<h3>
-<span class="header-section-number">4.1.3</span> Lesson 3<a class="anchor" aria-label="anchor" href="#lesson-3"><i class="fas fa-link"></i></a>
-</h3>
+<div id="task_3" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Lesson 3</h3>
+<p>See the instructions in the <a href="syllabus.html#syllabus_software">syllabus</a></p>
 <ol style="list-style-type: decimal">
 <li>Install R, Rstudio, and the packages identified in Healy, Chapter 1.</li>
 <li>Install git.</li>
 <li>Create a github account.</li>
-<li>Login to <a href="https://rstudio.cloud/">rstudio.cloud</a> which can be used if you have trouble using R on your own computer.</li>
+<li>Login to <a href="https://rstudio.cloud/project/1998812">rstudio.cloud</a>. This is a complete R, Rstudio, and git setup “in the cloud” that can be used if you have trouble using R on your own computer.</li>
 <li>Ask for help with any of these tasks if you need it.</li>
 </ol>
 <p>Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name.</p>
 </div>
 <div id="lesson-5" class="section level3" number="4.1.4">
-<h3>
-<span class="header-section-number">4.1.4</span> Lesson 5<a class="anchor" aria-label="anchor" href="#lesson-5"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.4</span> Lesson 5</h3>
 <p>Make the plot from Healy Section 2.6. Look at the other variables in the gapminder dataset and make some other plots of your choosing. Put your plots in an Rmd. Knit the R markdown file. Nothing to submit. Ask for help if you have problems.</p>
 </div>
 <div id="lesson-6" class="section level3" number="4.1.5">
-<h3>
-<span class="header-section-number">4.1.5</span> Lesson 6<a class="anchor" aria-label="anchor" href="#lesson-6"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.1.5</span> Lesson 6</h3>
 <p>Check out a github repository from online course. Add a plot to the Rmd document you find there. Commit your changes and push the Rmd file back to github.</p>
 <p><strong>More to come.</strong></p>
 </div>
 </div>
 <div id="assignments" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> Assignments<a class="anchor" aria-label="anchor" href="#assignments"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">4.2</span> Assignments</h2>
 <p>Assignments are opportunities to apply and combine the skills from several lessons. They are both structured, in that you are asked to use specific skills to accomplish a task, and creative in that you have some flexibility in the product you produce. You will be assessed on your use of technical skills and your judgement in making well-designed and effective visualizations, following the principles explored in the course.</p>
 <p>Assignments should be submitted to the relevant github repository, generally as an R markdown document.</p>
 <p>Assesment rubric:</p>
@@ -116,43 +348,31 @@ The goal of this project isn’t to be right or wrong, but rather to start the p
 <li>4 excellent work, clearly presented and thoughtfully designed</li>
 </ul>
 <div id="assignment-1" class="section level3" number="4.2.1">
-<h3>
-<span class="header-section-number">4.2.1</span> Assignment 1<a class="anchor" aria-label="anchor" href="#assignment-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.1</span> Assignment 1</h3>
 <p>learn, describe, and use a ggplot extension. 5% (Week 7, after break)
 - ggrepel, cowplot, patchwork, viridislite</p>
 </div>
 <div id="assignment-2" class="section level3" number="4.2.2">
-<h3>
-<span class="header-section-number">4.2.2</span> Assignment 2<a class="anchor" aria-label="anchor" href="#assignment-2"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.2</span> Assignment 2</h3>
 <p>learn, describe, and use a table layout package. 5% (Week 9)
 - DT, gt, flextable, kable/kableExtra</p>
 <p>(Do one as a 5 minute video with script and slides. Do the other as a rmd tutorial.)</p>
 </div>
 <div id="assignment-3" class="section level3" number="4.2.3">
-<h3>
-<span class="header-section-number">4.2.3</span> Assignment 3<a class="anchor" aria-label="anchor" href="#assignment-3"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.3</span> Assignment 3</h3>
 <p>Mini-project: Tidy Tuesday 1. 5% (Week 10)</p>
 </div>
 <div id="assignment" class="section level3" number="4.2.4">
-<h3>
-<span class="header-section-number">4.2.4</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.2.4</span> Assignment</h3>
 <p>Mini-project: Tidy Tuesday 2. 5% (Week 11)</p>
 </div>
 </div>
 <div id="term-project" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Term project<a class="anchor" aria-label="anchor" href="#term-project"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">4.3</span> Term project</h2>
 <p>Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests, based on work in other courses, or independent research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.</p>
 <p>You should create compelling visualizations of your data. Pay attention to your presentation: neatness, coherency, and clarity will count. All analyses must be done in RStudio using R.</p>
 <div id="deliverables" class="section level3" number="4.3.1">
-<h3>
-<span class="header-section-number">4.3.1</span> Deliverables<a class="anchor" aria-label="anchor" href="#deliverables"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.3.1</span> Deliverables</h3>
 <ul>
 <li>Proposal - due Fiday 12 March at 6:00 pm</li>
 <li>Presentation - due Friday 2 April at 6:00 pm as pre-recorded video or live presentation in class on March 30 or April 1.</li>
@@ -162,23 +382,17 @@ The goal of this project isn’t to be right or wrong, but rather to start the p
 <p>Use a single github repository for the proposal, presentation, and final report. If you work in pairs, producing joint work, use the repository for one team member and add the other member to the repository.</p>
 </div>
 <div id="proposal" class="section level3" number="4.3.2">
-<h3>
-<span class="header-section-number">4.3.2</span> Proposal<a class="anchor" aria-label="anchor" href="#proposal"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.3.2</span> Proposal</h3>
 <p>Your main task for the proposal is to find a dataset to analyze for your project and describe at least one question you can address with data visualizations.</p>
 <p>It is important that you choose a readily accessible dataset that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your dataset should have at least 50 observations and about 10 variables. The variables should include categorical variables, discrete numerical variables, and continuous numerical variables. If you plan to use a dataset that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.</p>
 <p>Do not reuse datasets from any part of the course.</p>
 <p>Here is list of data repositories containing many interesting datasets. Feel free to use data from other sources if you prefer.</p>
 <ul>
 <li><a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a></li>
-<li>
-<a href="https://www.kaggle.com/datasets">Kaggle</a> datasets</li>
-<li>
-<a href="https://www.openintro.org/book/statdata/index.php">OpenIntro</a> datasets</li>
-<li>
-<a href="https://github.com/awesomedata/awesome-public-datasets">Awesome public</a> datasets</li>
-<li>
-<a href="https://www.bikeshare.com/data/">Bikeshare</a> data portal</li>
+<li><a href="https://www.kaggle.com/datasets">Kaggle</a> datasets</li>
+<li><a href="https://www.openintro.org/book/statdata/index.php">OpenIntro</a> datasets</li>
+<li><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome public</a> datasets</li>
+<li><a href="https://www.bikeshare.com/data/">Bikeshare</a> data portal</li>
 <li><a href="https://dataverse.harvard.edu/">Harvard Dataverse</a></li>
 <li><a href="https://www150.statcan.gc.ca/n1/en/type/data">Statistics Canada</a></li>
 <li>Open government data: <a href="https://open.canada.ca/en/open-data">Canada</a>, <a href="https://data.novascotia.ca/">NS</a>, and many other sources</li>
@@ -188,14 +402,13 @@ The goal of this project isn’t to be right or wrong, but rather to start the p
 <p>Your proposal should include an Rmd document called proposal.rmd with the following sections and the proposed dataset.</p>
 <ul>
 <li>Introduction: The introduction should introduce your general research question and your data (where it came from, how it was collected, what are the cases, what are the variables, etc.).</li>
-<li>Data: Place your data in the /data folder, and add dimensions and codebook to the README in that folder. Include the output of <code><a href="https://tibble.tidyverse.org/reference/glimpse.html">dplyr::glimpse()</a></code> or <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skimr::skim()</a></code> on your data frame.</li>
+<li>Data: Place your data in the /data folder, and add dimensions and codebook to the README in that folder. Include the output of <code>dplyr::glimpse()</code> or <code>skimr::skim()</code> on your data frame.</li>
 <li>Visualization and analysis plan:
 <ul>
 <li>The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.</li>
 <li>Ideas for at least two possible visualizations for exploratory data analysis, including some summary statistics and visualizations, along with some explanation on how they help you learn more about your data.</li>
 <li>An idea of how at least one statistical methods described in the course (smoothing, PCA, k-means) could be useful in analyzing your data</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p><em>Assessment</em>. Your proposal will be assessed for the following elements: a dataset is identifed and described (size of dataset, variables, source), a question to be investigated is clearly described, a visualization plan is presented. Scoring will be similar to exercises:</p>
 <ul>
@@ -207,9 +420,7 @@ The goal of this project isn’t to be right or wrong, but rather to start the p
 <p>Total 10.</p>
 </div>
 <div id="oral-presentation" class="section level3" number="4.3.3">
-<h3>
-<span class="header-section-number">4.3.3</span> Oral presentation<a class="anchor" aria-label="anchor" href="#oral-presentation"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.3.3</span> Oral presentation</h3>
 <p>The oral presentation should be about 5 minutes long. The goal is to present the highlights of your project and allow for feedback which can be incorporated as you revise your written report.</p>
 <p>You should have a small number of slides to accompany your presentation. I suggest a format such as the following:</p>
 <ul>
@@ -225,9 +436,7 @@ The goal of this project isn’t to be right or wrong, but rather to start the p
 <p>Presentation schedule: Presentations will take place during the last workshop of the semester. You can choose to do your presentation live or pre-record it. During your workshop you will watch presentations from other teams in your workshop and provide feedback in the form of peer evaluations. The presentation line-up will be generated randomly.</p>
 </div>
 <div id="written-report" class="section level3" number="4.3.4">
-<h3>
-<span class="header-section-number">4.3.4</span> Written report<a class="anchor" aria-label="anchor" href="#written-report"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">4.3.4</span> Written report</h3>
 <p>Required elements:</p>
 <ul>
 <li>README.rmd</li>
@@ -259,64 +468,67 @@ Creativity and Critical Thought - Is the project carefully thought out? Are the 
 </div>
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="detailed-outline.html"><span class="header-section-number">3</span> Detailed outline</a></div>
-<div class="next"><a href="invitation.html"><span class="header-section-number">5</span> Invitation to Data Visualization</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#evaluation-1"><span class="header-section-number">4</span> Evaluation</a></li>
-<li>
-<a class="nav-link" href="#tasks"><span class="header-section-number">4.1</span> Tasks</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lesson-1"><span class="header-section-number">4.1.1</span> Lesson 1</a></li>
-<li><a class="nav-link" href="#lesson-2"><span class="header-section-number">4.1.2</span> Lesson 2</a></li>
-<li><a class="nav-link" href="#lesson-3"><span class="header-section-number">4.1.3</span> Lesson 3</a></li>
-<li><a class="nav-link" href="#lesson-5"><span class="header-section-number">4.1.4</span> Lesson 5</a></li>
-<li><a class="nav-link" href="#lesson-6"><span class="header-section-number">4.1.5</span> Lesson 6</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#assignments"><span class="header-section-number">4.2</span> Assignments</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#assignment-1"><span class="header-section-number">4.2.1</span> Assignment 1</a></li>
-<li><a class="nav-link" href="#assignment-2"><span class="header-section-number">4.2.2</span> Assignment 2</a></li>
-<li><a class="nav-link" href="#assignment-3"><span class="header-section-number">4.2.3</span> Assignment 3</a></li>
-<li><a class="nav-link" href="#assignment"><span class="header-section-number">4.2.4</span> Assignment</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#term-project"><span class="header-section-number">4.3</span> Term project</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#deliverables"><span class="header-section-number">4.3.1</span> Deliverables</a></li>
-<li><a class="nav-link" href="#proposal"><span class="header-section-number">4.3.2</span> Proposal</a></li>
-<li><a class="nav-link" href="#oral-presentation"><span class="header-section-number">4.3.3</span> Oral presentation</a></li>
-<li><a class="nav-link" href="#written-report"><span class="header-section-number">4.3.4</span> Written report</a></li>
-</ul>
-</li>
-</ul>
+            </section>
 
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/007-evaluation.rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/007-evaluation.rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2020-12-10.</p>
+          </div>
+        </div>
+      </div>
+<a href="detailed-outline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ch-invitation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AndrewIrwin/data-visualization/edit/master/007-evaluation.rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AndrewIrwin/data-visualization/blob/master/007-evaluation.rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -330,4 +542,5 @@ Creativity and Critical Thought - Is the project carefully thought out? Are the 
   })();
 </script>
 </body>
+
 </html>

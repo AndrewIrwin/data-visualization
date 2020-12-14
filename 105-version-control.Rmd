@@ -2,7 +2,6 @@
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) software is used to manage the process of creating software. It is commonly used to track changes, manage the revision process of correcting errors and adding new features, tracking the history of a project through different versions, synchronizing contributions from many different people, and faciliating the distribution to a broad audience. Version control software is most commonly applied to the production of complex projects like software, but it can be used for text documents, data, and many other applications.
 
-
 ## What software is used for version control?
 
 Version control software has a history dating back several decades, so there are [many different tools available](https://en.wikipedia.org/wiki/Comparison_of_version-control_software). We will be using one of the most popular packages, known as git ([Wikipedia](https://en.wikipedia.org/wiki/Git), [homepage](https://git-scm.com/)). Git keeps the entire history of a project on your own computer and does not require any central repository. Since version control software is often used to coordinate the work of many authors and to distribute the product, central repositories such as GitHub ([Wikipedia](GitHub), [homepage](https://github.com/)) have become very popular, to the point that some people see them as an integrated set of tools. Other popular version control software packages include [Mercurial](https://en.wikipedia.org/wiki/Mercurial) and [Subversion](https://en.wikipedia.org/wiki/Apache_Subversion) and central repositories such as [bitbucket](https://en.wikipedia.org/wiki/Bitbucket) and [more](https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities).
@@ -20,50 +19,93 @@ Just as software can be developed without version control software, so can data 
 
 ## How will we use version control?
 
-Most evaluations in our course will require you to use git and github. Depending on how you work on your final project, you may use it as a tool for collaboration.
+Most evaluations in our course will require you to use git and github. Depending on how you work on your final project, you may use it as a tool for collaboration. This course will emphasize the most basic uses of git and give you an opportunity to practice core elements of using git.
 
 
 ## Introduction to git
 
-Key concepts
-
-* A tool for managing files on your computer
-  ** Rstudio projects
-  ** Individual files (Rmd, html, csv, and more)
-  
-* A local git repository
-  ** Staging files
-  ** Committing changes
-  ** Using the diff tool to examine changes
-  
+Git organizes data in a _repository_, commonly called a _repo_. The repo contains a copy of all the files you ask git to track and it tracks all changes to make to the files. One you create a repository you must _stage_ or add files to the repository. Staging is a declaration that the current version of a file is the one you want to added to the repository. Each file must be staged as a separate step. (In Rstudio this just means checking a box.) Once you have staged all the files you want, you _commit_ them to the repository. This updates the repository, moving files from the staged area. New files are stored in their entirety. If a file has been changed, only the differences between the old and new versions are retained. All of these changes happen on your own computer, in a folder called `.git` used by git to keep track of the repository. If you are using a service like github you can then _push_ your changes to the _remote_ location so that they can easily be obtained by others.
 
 
 ## Using git with Rstudio
 
-Watch a video walkthrough of these steps (link)
+Here are the most important steps for using git with Rstudio. It looks like a lot of steps, because I've broken down each task into simple steps. In practice, once you are used to the process, it's all quite simple. I've prepared a video walkthrough (link) of each step that you can follow along with. 
 
-* Checking to be sure git is working on your computer
-* Creating a new Rstudio project and enabling version control
-* Adding a file to your project
-* Staging changes to your files to be committed to your local git repository
-* Committing your staged changes to your local git repository
-* Pushing your changes to your github repository
+* Check to be sure git is working on your computer
+* Create a new Rstudio project in a new folder and enable version control
+* Add a file to your project
+* Stage your files to your local git repository
+* Commit your staged changes to your local git repository
+* Create a remote repository on github
+* Tell Rstudio and git where to find this remote repository
+* Push your changes to your github repository
+* Revise a file in your project (including renaming, creating new files)
+* Stage those changes
+* Commit those changes
+* Push the changes
+
+An important variation on this process in our course will arise with assignments. For assignments, I will create a repository for you on github containing instructions and possibly some data files. You will create a new Rstudio project on your computer based on this repository (known as _cloning_ a repository). This takes care of a lot of the steps above: creating the repository, adding files, creating a github repository, and connecting your local repository to the remote location. Then you just focus on the main steps: staging, committing, and pushing.
 
 
-Setup
+## Setup
+
+### On rstudio.cloud
+
+Git is already installed on rstudio.cloud. There are several ways to confirm this. 
+
+* You can click on the "terminal" tab and type `git`. You will see a help message instead of an error message.
+* Under the menu item Tools > Version Control > Project setup, you will see git as a choice in the popup menu for "version control system" instead of "none".
+* Using File > New Project > Version Control > Git to create a new project using a remote repository (such as this sample) will work.
 
 ### On a Macintosh (OSX) computer
 
+To install git, open "Terminal", either within R or using the application Terminal found in the Applications > Utilities folder, and type
+
+* xcode-select --install
+
+and wait a few minutes.
+
+Type `git` at the terminal to check that the installation worked.
+
 ### On a Windows computer
+
+Download git from [git-scm](https://git-scm.com/) using the [download](https://git-scm.com/downloads) link. Run the installer, accepting all the default options in the many dialog boxes that appear.
+
+When you are done, type `git` in the Rstudio terminal. If you see some help text displayed instead of an error message you know git is installed.
 
 ### Set up a github account
 
-Create account
-Link to my course as student
-Get authorization key onto your computer
+* Create a free account at [github.com](https://github.com/join)
+* Tell me your github account name by filling in the brightspace survey for Task 1.
+* In a day or less you will get an invitation by email to join the course on github. Accept the invitation.
+* When you pull files from or push files to github you will need to enter your password. An authorization key can be place on your computer to let you skip this authentication step. (Instructions to come.)
+
+**Do not move on to the next steps until you have git working properly on your computer.** If you can't get it working, use [rstudio.cloud](https://rstudio.cloud/project/1998812) for now.
+
+## Practice tasks
+
+### Create a project
+
+### Create a new markdown file 
+
+### Stage and commit your changes
+
+### Connect to github
+
+### Push your changes
 
 
-### Common steps for each assignment
+* A tool for managing files on your computer
+  * Rstudio projects
+  * Individual files (Rmd, html, csv, and more)
+  
+* A local git repository
+  * Staging files
+  * Committing changes
+  * Using the diff tool to examine changes
+
+
+## Common steps for each assignment
 
 New project > New Directory 
 Provide directory name, indicate the subdirectory, make sure "create a git repository" is checked.
@@ -92,8 +134,9 @@ Look on github to see your files are there now.
 Clean up by deleting the folder from your computer and the repository from github. (Settings / scroll to bottom / Delete repository / Type name to confirm / Type github password to confirm.)
 
 
-## Using github with Rstudio
+## Your first assignment from github
 
+In the task for the next lesson you'll practice cloning a repository from github to create a new project on your computer (or rstudio.cloud account). This is how we will do all the assignments
 
 ## Resources
 

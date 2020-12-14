@@ -1,127 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 7 What is version control software? | Data Visualization</title>
-<meta name="author" content="Andrew Irwin">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.5.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 What is version control software? | Data Visualization</title>
+  <meta name="description" content="Chapter 9 What is version control software? | Data Visualization" />
+  <meta name="generator" content="bookdown 0.21.5 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 What is version control software? | Data Visualization" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 What is version control software? | Data Visualization" />
+  
+  
+  
+
+<meta name="author" content="Andrew Irwin" />
+
+
+<meta name="date" content="2020-12-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="first-plot.html"/>
+<link rel="next" href="accessibility-bias-and-ethics.html"/>
+<script src="assets/header-attrs-2.5.3/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Data Visualization</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
-<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
-<li><a class="" href="detailed-outline.html"><span class="header-section-number">3</span> Detailed outline</a></li>
-<li><a class="" href="evaluation-1.html"><span class="header-section-number">4</span> Evaluation</a></li>
-<li><a class="" href="invitation.html"><span class="header-section-number">5</span> Invitation to Data Visualization</a></li>
-<li><a class="" href="computer-tools.html"><span class="header-section-number">6</span> Computer tools</a></li>
-<li><a class="active" href="what-is-version-control-software.html"><span class="header-section-number">7</span> What is version control software?</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-is-data-visualization"><i class="fa fa-check"></i><b>1.1</b> What is Data Visualization?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#what-is-the-purpose-of-data-visualization"><i class="fa fa-check"></i><b>1.2</b> What is the purpose of data visualization?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#course-goals"><i class="fa fa-check"></i><b>1.3</b> Course Goals</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i><b>2</b> Syllabus</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="syllabus.html"><a href="syllabus.html#course-description"><i class="fa fa-check"></i><b>2.1</b> Course Description</a></li>
+<li class="chapter" data-level="2.2" data-path="syllabus.html"><a href="syllabus.html#course-prerequisites"><i class="fa fa-check"></i><b>2.2</b> Course Prerequisites</a></li>
+<li class="chapter" data-level="2.3" data-path="syllabus.html"><a href="syllabus.html#course-materials"><i class="fa fa-check"></i><b>2.3</b> Course materials</a></li>
+<li class="chapter" data-level="2.4" data-path="syllabus.html"><a href="syllabus.html#course-structure"><i class="fa fa-check"></i><b>2.4</b> Course structure</a></li>
+<li class="chapter" data-level="2.5" data-path="syllabus.html"><a href="syllabus.html#evaluation"><i class="fa fa-check"></i><b>2.5</b> Evaluation</a></li>
+<li class="chapter" data-level="2.6" data-path="syllabus.html"><a href="syllabus.html#syllabus_software"><i class="fa fa-check"></i><b>2.6</b> Software</a></li>
+<li class="chapter" data-level="2.7" data-path="syllabus.html"><a href="syllabus.html#letter-grades"><i class="fa fa-check"></i><b>2.7</b> Letter grades</a></li>
+<li class="chapter" data-level="2.8" data-path="syllabus.html"><a href="syllabus.html#course-policies"><i class="fa fa-check"></i><b>2.8</b> Course Policies</a></li>
+<li class="chapter" data-level="2.9" data-path="syllabus.html"><a href="syllabus.html#university-policies-and-statements"><i class="fa fa-check"></i><b>2.9</b> University Policies and Statements</a></li>
+<li class="chapter" data-level="2.10" data-path="syllabus.html"><a href="syllabus.html#student-resources-and-support"><i class="fa fa-check"></i><b>2.10</b> Student Resources and Support</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="detailed-outline.html"><a href="detailed-outline.html"><i class="fa fa-check"></i><b>3</b> Detailed outline</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="detailed-outline.html"><a href="detailed-outline.html#important-dates"><i class="fa fa-check"></i><b>3.1</b> Important dates</a></li>
+<li class="chapter" data-level="3.2" data-path="detailed-outline.html"><a href="detailed-outline.html#course-calendar"><i class="fa fa-check"></i><b>3.2</b> Course calendar</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="detailed-outline.html"><a href="detailed-outline.html#week-1-jan-6-8"><i class="fa fa-check"></i><b>3.2.1</b> Week 1: Jan 6-8</a></li>
+<li class="chapter" data-level="3.2.2" data-path="detailed-outline.html"><a href="detailed-outline.html#week-2-jan-11-15"><i class="fa fa-check"></i><b>3.2.2</b> Week 2: Jan 11-15</a></li>
+<li class="chapter" data-level="3.2.3" data-path="detailed-outline.html"><a href="detailed-outline.html#week-3-jan-18-22"><i class="fa fa-check"></i><b>3.2.3</b> Week 3: Jan 18-22</a></li>
+<li class="chapter" data-level="3.2.4" data-path="detailed-outline.html"><a href="detailed-outline.html#week-4-jan-25-29"><i class="fa fa-check"></i><b>3.2.4</b> Week 4: Jan 25-29</a></li>
+<li class="chapter" data-level="3.2.5" data-path="detailed-outline.html"><a href="detailed-outline.html#week-5-feb-1-5"><i class="fa fa-check"></i><b>3.2.5</b> Week 5: Feb 1-5</a></li>
+<li class="chapter" data-level="3.2.6" data-path="detailed-outline.html"><a href="detailed-outline.html#week-6-feb-8-12"><i class="fa fa-check"></i><b>3.2.6</b> Week 6: Feb 8-12</a></li>
+<li class="chapter" data-level="3.2.7" data-path="detailed-outline.html"><a href="detailed-outline.html#week-7-feb-22-26"><i class="fa fa-check"></i><b>3.2.7</b> Week 7: Feb 22-26</a></li>
+<li class="chapter" data-level="3.2.8" data-path="detailed-outline.html"><a href="detailed-outline.html#week-8-mar-1-5"><i class="fa fa-check"></i><b>3.2.8</b> Week 8: Mar 1-5</a></li>
+<li class="chapter" data-level="3.2.9" data-path="detailed-outline.html"><a href="detailed-outline.html#week-9-mar-8-12"><i class="fa fa-check"></i><b>3.2.9</b> Week 9: Mar 8-12</a></li>
+<li class="chapter" data-level="3.2.10" data-path="detailed-outline.html"><a href="detailed-outline.html#week-10-mar-15-19"><i class="fa fa-check"></i><b>3.2.10</b> Week 10: Mar 15-19</a></li>
+<li class="chapter" data-level="3.2.11" data-path="detailed-outline.html"><a href="detailed-outline.html#week-11-mar-22-26"><i class="fa fa-check"></i><b>3.2.11</b> Week 11: Mar 22-26</a></li>
+<li class="chapter" data-level="3.2.12" data-path="detailed-outline.html"><a href="detailed-outline.html#week-12-mar-29-april-1"><i class="fa fa-check"></i><b>3.2.12</b> Week 12: Mar 29-April 1</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="detailed-outline.html"><a href="detailed-outline.html#another-run-at-this-plan"><i class="fa fa-check"></i><b>3.3</b> Another run at this plan</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="evaluation-1.html"><a href="evaluation-1.html"><i class="fa fa-check"></i><b>4</b> Evaluation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="evaluation-1.html"><a href="evaluation-1.html#tasks"><i class="fa fa-check"></i><b>4.1</b> Tasks</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="evaluation-1.html"><a href="evaluation-1.html#task_1"><i class="fa fa-check"></i><b>4.1.1</b> Lesson 1</a></li>
+<li class="chapter" data-level="4.1.2" data-path="evaluation-1.html"><a href="evaluation-1.html#task_2"><i class="fa fa-check"></i><b>4.1.2</b> Lesson 2</a></li>
+<li class="chapter" data-level="4.1.3" data-path="evaluation-1.html"><a href="evaluation-1.html#task_3"><i class="fa fa-check"></i><b>4.1.3</b> Lesson 3</a></li>
+<li class="chapter" data-level="4.1.4" data-path="evaluation-1.html"><a href="evaluation-1.html#lesson-5"><i class="fa fa-check"></i><b>4.1.4</b> Lesson 5</a></li>
+<li class="chapter" data-level="4.1.5" data-path="evaluation-1.html"><a href="evaluation-1.html#lesson-6"><i class="fa fa-check"></i><b>4.1.5</b> Lesson 6</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="evaluation-1.html"><a href="evaluation-1.html#assignments"><i class="fa fa-check"></i><b>4.2</b> Assignments</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment-1"><i class="fa fa-check"></i><b>4.2.1</b> Assignment 1</a></li>
+<li class="chapter" data-level="4.2.2" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment-2"><i class="fa fa-check"></i><b>4.2.2</b> Assignment 2</a></li>
+<li class="chapter" data-level="4.2.3" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment-3"><i class="fa fa-check"></i><b>4.2.3</b> Assignment 3</a></li>
+<li class="chapter" data-level="4.2.4" data-path="evaluation-1.html"><a href="evaluation-1.html#assignment"><i class="fa fa-check"></i><b>4.2.4</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="evaluation-1.html"><a href="evaluation-1.html#term-project"><i class="fa fa-check"></i><b>4.3</b> Term project</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="evaluation-1.html"><a href="evaluation-1.html#deliverables"><i class="fa fa-check"></i><b>4.3.1</b> Deliverables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="evaluation-1.html"><a href="evaluation-1.html#proposal"><i class="fa fa-check"></i><b>4.3.2</b> Proposal</a></li>
+<li class="chapter" data-level="4.3.3" data-path="evaluation-1.html"><a href="evaluation-1.html#oral-presentation"><i class="fa fa-check"></i><b>4.3.3</b> Oral presentation</a></li>
+<li class="chapter" data-level="4.3.4" data-path="evaluation-1.html"><a href="evaluation-1.html#written-report"><i class="fa fa-check"></i><b>4.3.4</b> Written report</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ch-invitation.html"><a href="ch-invitation.html"><i class="fa fa-check"></i><b>5</b> Invitation to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ch-invitation.html"><a href="ch-invitation.html#atmospheric-carbon-dioxide-concentration"><i class="fa fa-check"></i><b>5.1</b> Atmospheric carbon dioxide concentration</a></li>
+<li class="chapter" data-level="5.2" data-path="ch-invitation.html"><a href="ch-invitation.html#human-health-and-development"><i class="fa fa-check"></i><b>5.2</b> Human health and development</a></li>
+<li class="chapter" data-level="5.3" data-path="ch-invitation.html"><a href="ch-invitation.html#weather"><i class="fa fa-check"></i><b>5.3</b> Weather</a></li>
+<li class="chapter" data-level="5.4" data-path="ch-invitation.html"><a href="ch-invitation.html#journalism"><i class="fa fa-check"></i><b>5.4</b> Journalism</a></li>
+<li class="chapter" data-level="5.5" data-path="ch-invitation.html"><a href="ch-invitation.html#historically-important-visualizations"><i class="fa fa-check"></i><b>5.5</b> Historically important visualizations</a></li>
+<li class="chapter" data-level="5.6" data-path="ch-invitation.html"><a href="ch-invitation.html#stories"><i class="fa fa-check"></i><b>5.6</b> Stories</a></li>
+<li class="chapter" data-level="5.7" data-path="ch-invitation.html"><a href="ch-invitation.html#ideas"><i class="fa fa-check"></i><b>5.7</b> Ideas</a></li>
+<li class="chapter" data-level="5.8" data-path="ch-invitation.html"><a href="ch-invitation.html#stories-1"><i class="fa fa-check"></i><b>5.8</b> Stories</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch-tools.html"><a href="ch-tools.html"><i class="fa fa-check"></i><b>6</b> Computer tools</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="ch-tools.html"><a href="ch-tools.html#r"><i class="fa fa-check"></i><b>6.0.1</b> R</a></li>
+<li class="chapter" data-level="6.1" data-path="ch-tools.html"><a href="ch-tools.html#rstudio"><i class="fa fa-check"></i><b>6.1</b> Rstudio</a></li>
+<li class="chapter" data-level="6.2" data-path="ch-tools.html"><a href="ch-tools.html#ggplot"><i class="fa fa-check"></i><b>6.2</b> ggplot</a></li>
+<li class="chapter" data-level="6.3" data-path="ch-tools.html"><a href="ch-tools.html#tidyverse"><i class="fa fa-check"></i><b>6.3</b> tidyverse</a></li>
+<li class="chapter" data-level="6.4" data-path="ch-tools.html"><a href="ch-tools.html#r-markdown"><i class="fa fa-check"></i><b>6.4</b> R Markdown</a></li>
+<li class="chapter" data-level="6.5" data-path="ch-tools.html"><a href="ch-tools.html#git-and-github"><i class="fa fa-check"></i><b>6.5</b> Git and Github</a></li>
+<li class="chapter" data-level="6.6" data-path="ch-tools.html"><a href="ch-tools.html#reading"><i class="fa fa-check"></i><b>6.6</b> Reading</a></li>
+<li class="chapter" data-level="6.7" data-path="ch-tools.html"><a href="ch-tools.html#resources"><i class="fa fa-check"></i><b>6.7</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="look-data.html"><a href="look-data.html"><i class="fa fa-check"></i><b>7</b> Look at Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="look-data.html"><a href="look-data.html#review"><i class="fa fa-check"></i><b>7.1</b> Review</a></li>
+<li class="chapter" data-level="7.2" data-path="look-data.html"><a href="look-data.html#goals"><i class="fa fa-check"></i><b>7.2</b> Goals</a></li>
+<li class="chapter" data-level="7.3" data-path="look-data.html"><a href="look-data.html#problems-with-numerical-summaries"><i class="fa fa-check"></i><b>7.3</b> Problems with numerical summaries</a></li>
+<li class="chapter" data-level="7.4" data-path="look-data.html"><a href="look-data.html#good-and-bad-figures"><i class="fa fa-check"></i><b>7.4</b> Good and bad figures</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="look-data.html"><a href="look-data.html#chart-junk"><i class="fa fa-check"></i><b>7.4.1</b> Chart junk</a></li>
+<li class="chapter" data-level="7.4.2" data-path="look-data.html"><a href="look-data.html#distracting-colours-images-or-shapes"><i class="fa fa-check"></i><b>7.4.2</b> Distracting colours, images or shapes</a></li>
+<li class="chapter" data-level="7.4.3" data-path="look-data.html"><a href="look-data.html#bad-data"><i class="fa fa-check"></i><b>7.4.3</b> Bad data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="look-data.html"><a href="look-data.html#perception-guidelines-and-cautions"><i class="fa fa-check"></i><b>7.5</b> Perception guidelines and cautions</a></li>
+<li class="chapter" data-level="7.6" data-path="look-data.html"><a href="look-data.html#decoding-graphs"><i class="fa fa-check"></i><b>7.6</b> Decoding graphs</a></li>
+<li class="chapter" data-level="7.7" data-path="look-data.html"><a href="look-data.html#where-to-put-0"><i class="fa fa-check"></i><b>7.7</b> Where to put 0?</a></li>
+<li class="chapter" data-level="7.8" data-path="look-data.html"><a href="look-data.html#lines-shapes-or-connect-the-dots"><i class="fa fa-check"></i><b>7.8</b> Lines, shapes, or connect the dots?</a></li>
+<li class="chapter" data-level="7.9" data-path="look-data.html"><a href="look-data.html#thinking-about-your-goals"><i class="fa fa-check"></i><b>7.9</b> Thinking about your goals</a></li>
+<li class="chapter" data-level="7.10" data-path="look-data.html"><a href="look-data.html#sources"><i class="fa fa-check"></i><b>7.10</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="first-plot.html"><a href="first-plot.html"><i class="fa fa-check"></i><b>8</b> Making your first plot</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="first-plot.html"><a href="first-plot.html#goals-1"><i class="fa fa-check"></i><b>8.1</b> Goals</a></li>
+<li class="chapter" data-level="8.2" data-path="first-plot.html"><a href="first-plot.html#required-elements-for-a-plot"><i class="fa fa-check"></i><b>8.2</b> Required elements for a plot</a></li>
+<li class="chapter" data-level="8.3" data-path="first-plot.html"><a href="first-plot.html#your-first-plot"><i class="fa fa-check"></i><b>8.3</b> Your first plot</a></li>
+<li class="chapter" data-level="8.4" data-path="first-plot.html"><a href="first-plot.html#improving-your-plot"><i class="fa fa-check"></i><b>8.4</b> Improving your plot</a></li>
+<li class="chapter" data-level="8.5" data-path="first-plot.html"><a href="first-plot.html#exercises"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.6" data-path="first-plot.html"><a href="first-plot.html#sources-1"><i class="fa fa-check"></i><b>8.6</b> Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html"><i class="fa fa-check"></i><b>9</b> What is version control software?</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#what-software-is-used-for-version-control"><i class="fa fa-check"></i><b>9.1</b> What software is used for version control?</a></li>
+<li class="chapter" data-level="9.2" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#why-is-version-control-used-in-data-visualization"><i class="fa fa-check"></i><b>9.2</b> Why is version control used in data visualization?</a></li>
+<li class="chapter" data-level="9.3" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#how-will-we-use-version-control"><i class="fa fa-check"></i><b>9.3</b> How will we use version control?</a></li>
+<li class="chapter" data-level="9.4" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#introduction-to-git"><i class="fa fa-check"></i><b>9.4</b> Introduction to git</a></li>
+<li class="chapter" data-level="9.5" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#using-git-with-rstudio"><i class="fa fa-check"></i><b>9.5</b> Using git with Rstudio</a></li>
+<li class="chapter" data-level="9.6" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#setup"><i class="fa fa-check"></i><b>9.6</b> Setup</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#on-rstudio.cloud"><i class="fa fa-check"></i><b>9.6.1</b> On rstudio.cloud</a></li>
+<li class="chapter" data-level="9.6.2" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#on-a-macintosh-osx-computer"><i class="fa fa-check"></i><b>9.6.2</b> On a Macintosh (OSX) computer</a></li>
+<li class="chapter" data-level="9.6.3" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#on-a-windows-computer"><i class="fa fa-check"></i><b>9.6.3</b> On a Windows computer</a></li>
+<li class="chapter" data-level="9.6.4" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#set-up-a-github-account"><i class="fa fa-check"></i><b>9.6.4</b> Set up a github account</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#practice-tasks"><i class="fa fa-check"></i><b>9.7</b> Practice tasks</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#create-a-project"><i class="fa fa-check"></i><b>9.7.1</b> Create a project</a></li>
+<li class="chapter" data-level="9.7.2" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#create-a-new-markdown-file"><i class="fa fa-check"></i><b>9.7.2</b> Create a new markdown file</a></li>
+<li class="chapter" data-level="9.7.3" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#stage-and-commit-your-changes"><i class="fa fa-check"></i><b>9.7.3</b> Stage and commit your changes</a></li>
+<li class="chapter" data-level="9.7.4" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#connect-to-github"><i class="fa fa-check"></i><b>9.7.4</b> Connect to github</a></li>
+<li class="chapter" data-level="9.7.5" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#push-your-changes"><i class="fa fa-check"></i><b>9.7.5</b> Push your changes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#common-steps-for-each-assignment"><i class="fa fa-check"></i><b>9.8</b> Common steps for each assignment</a></li>
+<li class="chapter" data-level="9.9" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#your-first-assignment-from-github"><i class="fa fa-check"></i><b>9.9</b> Your first assignment from github</a></li>
+<li class="chapter" data-level="9.10" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#resources-1"><i class="fa fa-check"></i><b>9.10</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html"><i class="fa fa-check"></i><b>10</b> Accessibility, Bias, and Ethics</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#accessibility"><i class="fa fa-check"></i><b>10.1</b> Accessibility</a></li>
+<li class="chapter" data-level="10.2" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#data-collection-and-analysis"><i class="fa fa-check"></i><b>10.2</b> Data collection and analysis</a></li>
+</ul></li>
 </ul>
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="what-is-version-control-software" class="section level1" number="7">
-<h1>
-<span class="header-section-number">7</span> What is version control software?<a class="anchor" aria-label="anchor" href="#what-is-version-control-software"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Visualization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="what-is-version-control-software" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> What is version control software?</h1>
 <p><a href="https://en.wikipedia.org/wiki/Version_control">Version control</a> software is used to manage the process of creating software. It is commonly used to track changes, manage the revision process of correcting errors and adding new features, tracking the history of a project through different versions, synchronizing contributions from many different people, and faciliating the distribution to a broad audience. Version control software is most commonly applied to the production of complex projects like software, but it can be used for text documents, data, and many other applications.</p>
-<div id="what-software-is-used-for-version-control" class="section level2" number="7.1">
-<h2>
-<span class="header-section-number">7.1</span> What software is used for version control?<a class="anchor" aria-label="anchor" href="#what-software-is-used-for-version-control"><i class="fas fa-link"></i></a>
-</h2>
+<div id="what-software-is-used-for-version-control" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> What software is used for version control?</h2>
 <p>Version control software has a history dating back several decades, so there are <a href="https://en.wikipedia.org/wiki/Comparison_of_version-control_software">many different tools available</a>. We will be using one of the most popular packages, known as git (<a href="https://en.wikipedia.org/wiki/Git">Wikipedia</a>, <a href="https://git-scm.com/">homepage</a>). Git keeps the entire history of a project on your own computer and does not require any central repository. Since version control software is often used to coordinate the work of many authors and to distribute the product, central repositories such as GitHub (<a href="GitHub">Wikipedia</a>, <a href="https://github.com/">homepage</a>) have become very popular, to the point that some people see them as an integrated set of tools. Other popular version control software packages include <a href="https://en.wikipedia.org/wiki/Mercurial">Mercurial</a> and <a href="https://en.wikipedia.org/wiki/Apache_Subversion">Subversion</a> and central repositories such as <a href="https://en.wikipedia.org/wiki/Bitbucket">bitbucket</a> and <a href="https://en.wikipedia.org/wiki/Comparison_of_source-code-hosting_facilities">more</a>.</p>
 <p>We will be using git and github in this book. Rstudio works well with Mercurial as well.</p>
 </div>
-<div id="why-is-version-control-used-in-data-visualization" class="section level2" number="7.2">
-<h2>
-<span class="header-section-number">7.2</span> Why is version control used in data visualization?<a class="anchor" aria-label="anchor" href="#why-is-version-control-used-in-data-visualization"><i class="fas fa-link"></i></a>
-</h2>
+<div id="why-is-version-control-used-in-data-visualization" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Why is version control used in data visualization?</h2>
 <p>Data visualization is the process of combining data with computer code to create a visualization. Both of these parts can change with new information and new ideas, can require synthesis of skills from multiple authors, and benefit from transparency in design and distribution. As a result, version control software is a natural tool to help with the work of data visualization.</p>
 <p>Suppose you develop a data visualization and you want to distribute the result, but you anticipate updating the data and revising the analyses. This sequence of steps is very similar to software development: an initial version is produced and released to users, changes are made, new versions are produced. Users (of software and data visulizations) want to know what version they are using, if there are any updates, and what the changes were between the versions. Version control software can help with these tasks and, once the key concepts are understood, without much extra effort on the part of the team producing the data visualization.</p>
 <p>Just as software can be developed without version control software, so can data visualizations. In this course we will integrate just enough use of version control to help you see how it can be helpful and to get you past the uncomfortable stage of knowing what it is without knowing the basics of how to use it.</p>
 </div>
-<div id="how-will-we-use-version-control" class="section level2" number="7.3">
-<h2>
-<span class="header-section-number">7.3</span> How will we use version control?<a class="anchor" aria-label="anchor" href="#how-will-we-use-version-control"><i class="fas fa-link"></i></a>
-</h2>
-<p>Most evaluations in our course will require you to use git and github. Depending on how you work on your final project, you may use it as a tool for collaboration.</p>
+<div id="how-will-we-use-version-control" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> How will we use version control?</h2>
+<p>Most evaluations in our course will require you to use git and github. Depending on how you work on your final project, you may use it as a tool for collaboration. This course will emphasize the most basic uses of git and give you an opportunity to practice core elements of using git.</p>
 </div>
-<div id="introduction-to-git" class="section level2" number="7.4">
-<h2>
-<span class="header-section-number">7.4</span> Introduction to git<a class="anchor" aria-label="anchor" href="#introduction-to-git"><i class="fas fa-link"></i></a>
-</h2>
-<p>Key concepts</p>
+<div id="introduction-to-git" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> Introduction to git</h2>
+<p>Git organizes data in a <em>repository</em>, commonly called a <em>repo</em>. The repo contains a copy of all the files you ask git to track and it tracks all changes to make to the files. One you create a repository you must <em>stage</em> or add files to the repository. Staging is a declaration that the current version of a file is the one you want to added to the repository. Each file must be staged as a separate step. (In Rstudio this just means checking a box.) Once you have staged all the files you want, you <em>commit</em> them to the repository. This updates the repository, moving files from the staged area. New files are stored in their entirety. If a file has been changed, only the differences between the old and new versions are retained. All of these changes happen on your own computer, in a folder called <code>.git</code> used by git to keep track of the repository. If you are using a service like github you can then <em>push</em> your changes to the <em>remote</em> location so that they can easily be obtained by others.</p>
+</div>
+<div id="using-git-with-rstudio" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Using git with Rstudio</h2>
+<p>Here are the most important steps for using git with Rstudio. It looks like a lot of steps, because I’ve broken down each task into simple steps. In practice, once you are used to the process, it’s all quite simple. I’ve prepared a video walkthrough (link) of each step that you can follow along with.</p>
 <ul>
-<li><p>A tool for managing files on your computer
-** Rstudio projects
-** Individual files (Rmd, html, csv, and more)</p></li>
-<li><p>A local git repository
-** Staging files
-** Committing changes
-** Using the diff tool to examine changes</p></li>
+<li>Check to be sure git is working on your computer</li>
+<li>Create a new Rstudio project in a new folder and enable version control</li>
+<li>Add a file to your project</li>
+<li>Stage your files to your local git repository</li>
+<li>Commit your staged changes to your local git repository</li>
+<li>Create a remote repository on github</li>
+<li>Tell Rstudio and git where to find this remote repository</li>
+<li>Push your changes to your github repository</li>
+<li>Revise a file in your project (including renaming, creating new files)</li>
+<li>Stage those changes</li>
+<li>Commit those changes</li>
+<li>Push the changes</li>
+</ul>
+<p>An important variation on this process in our course will arise with assignments. For assignments, I will create a repository for you on github containing instructions and possibly some data files. You will create a new Rstudio project on your computer based on this repository (known as <em>cloning</em> a repository). This takes care of a lot of the steps above: creating the repository, adding files, creating a github repository, and connecting your local repository to the remote location. Then you just focus on the main steps: staging, committing, and pushing.</p>
+</div>
+<div id="setup" class="section level2" number="9.6">
+<h2><span class="header-section-number">9.6</span> Setup</h2>
+<div id="on-rstudio.cloud" class="section level3" number="9.6.1">
+<h3><span class="header-section-number">9.6.1</span> On rstudio.cloud</h3>
+<p>Git is already installed on rstudio.cloud. There are several ways to confirm this.</p>
+<ul>
+<li>You can click on the “terminal” tab and type <code>git</code>. You will see a help message instead of an error message.</li>
+<li>Under the menu item Tools &gt; Version Control &gt; Project setup, you will see git as a choice in the popup menu for “version control system” instead of “none”.</li>
+<li>Using File &gt; New Project &gt; Version Control &gt; Git to create a new project using a remote repository (such as this sample) will work.</li>
 </ul>
 </div>
-<div id="using-git-with-rstudio" class="section level2" number="7.5">
-<h2>
-<span class="header-section-number">7.5</span> Using git with Rstudio<a class="anchor" aria-label="anchor" href="#using-git-with-rstudio"><i class="fas fa-link"></i></a>
-</h2>
-<p>Watch a video walkthrough of these steps (link)</p>
+<div id="on-a-macintosh-osx-computer" class="section level3" number="9.6.2">
+<h3><span class="header-section-number">9.6.2</span> On a Macintosh (OSX) computer</h3>
+<p>To install git, open “Terminal”, either within R or using the application Terminal found in the Applications &gt; Utilities folder, and type</p>
 <ul>
-<li>Checking to be sure git is working on your computer</li>
-<li>Creating a new Rstudio project and enabling version control</li>
-<li>Adding a file to your project</li>
-<li>Staging changes to your files to be committed to your local git repository</li>
-<li>Committing your staged changes to your local git repository</li>
-<li>Pushing your changes to your github repository</li>
+<li>xcode-select –install</li>
 </ul>
-<p>Setup</p>
-<div id="on-a-macintosh-osx-computer" class="section level3" number="7.5.1">
-<h3>
-<span class="header-section-number">7.5.1</span> On a Macintosh (OSX) computer<a class="anchor" aria-label="anchor" href="#on-a-macintosh-osx-computer"><i class="fas fa-link"></i></a>
-</h3>
+<p>and wait a few minutes.</p>
+<p>Type <code>git</code> at the terminal to check that the installation worked.</p>
 </div>
-<div id="on-a-windows-computer" class="section level3" number="7.5.2">
-<h3>
-<span class="header-section-number">7.5.2</span> On a Windows computer<a class="anchor" aria-label="anchor" href="#on-a-windows-computer"><i class="fas fa-link"></i></a>
-</h3>
+<div id="on-a-windows-computer" class="section level3" number="9.6.3">
+<h3><span class="header-section-number">9.6.3</span> On a Windows computer</h3>
+<p>Download git from <a href="https://git-scm.com/">git-scm</a> using the <a href="https://git-scm.com/downloads">download</a> link. Run the installer, accepting all the default options in the many dialog boxes that appear.</p>
+<p>When you are done, type <code>git</code> in the Rstudio terminal. If you see some help text displayed instead of an error message you know git is installed.</p>
 </div>
-<div id="set-up-a-github-account" class="section level3" number="7.5.3">
-<h3>
-<span class="header-section-number">7.5.3</span> Set up a github account<a class="anchor" aria-label="anchor" href="#set-up-a-github-account"><i class="fas fa-link"></i></a>
-</h3>
-<p>Create account
-Link to my course as student
-Get authorization key onto your computer</p>
+<div id="set-up-a-github-account" class="section level3" number="9.6.4">
+<h3><span class="header-section-number">9.6.4</span> Set up a github account</h3>
+<ul>
+<li>Create a free account at <a href="https://github.com/join">github.com</a></li>
+<li>Tell me your github account name by filling in the brightspace survey for Task 1.</li>
+<li>In a day or less you will get an invitation by email to join the course on github. Accept the invitation.</li>
+<li>When you pull files from or push files to github you will need to enter your password. An authorization key can be place on your computer to let you skip this authentication step. (Instructions to come.)</li>
+</ul>
+<p><strong>Do not move on to the next steps until you have git working properly on your computer.</strong> If you can’t get it working, use <a href="https://rstudio.cloud/project/1998812">rstudio.cloud</a> for now.</p>
 </div>
-<div id="common-steps-for-each-assignment" class="section level3" number="7.5.4">
-<h3>
-<span class="header-section-number">7.5.4</span> Common steps for each assignment<a class="anchor" aria-label="anchor" href="#common-steps-for-each-assignment"><i class="fas fa-link"></i></a>
-</h3>
+</div>
+<div id="practice-tasks" class="section level2" number="9.7">
+<h2><span class="header-section-number">9.7</span> Practice tasks</h2>
+<div id="create-a-project" class="section level3" number="9.7.1">
+<h3><span class="header-section-number">9.7.1</span> Create a project</h3>
+</div>
+<div id="create-a-new-markdown-file" class="section level3" number="9.7.2">
+<h3><span class="header-section-number">9.7.2</span> Create a new markdown file</h3>
+</div>
+<div id="stage-and-commit-your-changes" class="section level3" number="9.7.3">
+<h3><span class="header-section-number">9.7.3</span> Stage and commit your changes</h3>
+</div>
+<div id="connect-to-github" class="section level3" number="9.7.4">
+<h3><span class="header-section-number">9.7.4</span> Connect to github</h3>
+</div>
+<div id="push-your-changes" class="section level3" number="9.7.5">
+<h3><span class="header-section-number">9.7.5</span> Push your changes</h3>
+<ul>
+<li>A tool for managing files on your computer
+<ul>
+<li>Rstudio projects</li>
+<li>Individual files (Rmd, html, csv, and more)</li>
+</ul></li>
+<li>A local git repository
+<ul>
+<li>Staging files</li>
+<li>Committing changes</li>
+<li>Using the diff tool to examine changes</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="common-steps-for-each-assignment" class="section level2" number="9.8">
+<h2><span class="header-section-number">9.8</span> Common steps for each assignment</h2>
 <p>New project &gt; New Directory
 Provide directory name, indicate the subdirectory, make sure “create a git repository” is checked.</p>
 <p>Create an Rmd file. Save the file.</p>
@@ -137,71 +417,81 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
 <p>Look on github to see your files are there now.</p>
 <p>Clean up by deleting the folder from your computer and the repository from github. (Settings / scroll to bottom / Delete repository / Type name to confirm / Type github password to confirm.)</p>
 </div>
+<div id="your-first-assignment-from-github" class="section level2" number="9.9">
+<h2><span class="header-section-number">9.9</span> Your first assignment from github</h2>
+<p>In the task for the next lesson you’ll practice cloning a repository from github to create a new project on your computer (or rstudio.cloud account). This is how we will do all the assignments</p>
 </div>
-<div id="using-github-with-rstudio" class="section level2" number="7.6">
-<h2>
-<span class="header-section-number">7.6</span> Using github with Rstudio<a class="anchor" aria-label="anchor" href="#using-github-with-rstudio"><i class="fas fa-link"></i></a>
-</h2>
-</div>
-<div id="resources-1" class="section level2" number="7.7">
-<h2>
-<span class="header-section-number">7.7</span> Resources<a class="anchor" aria-label="anchor" href="#resources-1"><i class="fas fa-link"></i></a>
-</h2>
+<div id="resources-1" class="section level2" number="9.10">
+<h2><span class="header-section-number">9.10</span> Resources</h2>
 <ul>
-<li>Rstudio <a href="https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&amp;mode=desktop">help</a>
-</li>
+<li>Rstudio <a href="https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&amp;mode=desktop">help</a></li>
 <li><a href="https://happygitwithr.com/">Happy Git with R</a></li>
 <li><a href="https://www.maxpou.fr/git-cheat-sheet">Advanced Git cheat sheet</a></li>
 </ul>
-</div>
-</div>
-  <div class="chapter-nav">
-<div class="prev"><a href="computer-tools.html"><span class="header-section-number">6</span> Computer tools</a></div>
-<div class="empty"></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#what-is-version-control-software"><span class="header-section-number">7</span> What is version control software?</a></li>
-<li><a class="nav-link" href="#what-software-is-used-for-version-control"><span class="header-section-number">7.1</span> What software is used for version control?</a></li>
-<li><a class="nav-link" href="#why-is-version-control-used-in-data-visualization"><span class="header-section-number">7.2</span> Why is version control used in data visualization?</a></li>
-<li><a class="nav-link" href="#how-will-we-use-version-control"><span class="header-section-number">7.3</span> How will we use version control?</a></li>
-<li><a class="nav-link" href="#introduction-to-git"><span class="header-section-number">7.4</span> Introduction to git</a></li>
-<li>
-<a class="nav-link" href="#using-git-with-rstudio"><span class="header-section-number">7.5</span> Using git with Rstudio</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#on-a-macintosh-osx-computer"><span class="header-section-number">7.5.1</span> On a Macintosh (OSX) computer</a></li>
-<li><a class="nav-link" href="#on-a-windows-computer"><span class="header-section-number">7.5.2</span> On a Windows computer</a></li>
-<li><a class="nav-link" href="#set-up-a-github-account"><span class="header-section-number">7.5.3</span> Set up a github account</a></li>
-<li><a class="nav-link" href="#common-steps-for-each-assignment"><span class="header-section-number">7.5.4</span> Common steps for each assignment</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#using-github-with-rstudio"><span class="header-section-number">7.6</span> Using github with Rstudio</a></li>
-<li><a class="nav-link" href="#resources-1"><span class="header-section-number">7.7</span> Resources</a></li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/105-version-control.rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/105-version-control.rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
 
 </div>
-</div> <!-- .container -->
+</div>
+            </section>
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2020-12-10.</p>
+          </div>
+        </div>
+      </div>
+<a href="first-plot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="accessibility-bias-and-ethics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AndrewIrwin/data-visualization/edit/master/105-version-control.rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AndrewIrwin/data-visualization/blob/master/105-version-control.rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -215,4 +505,5 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
   })();
 </script>
 </body>
+
 </html>

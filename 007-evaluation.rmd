@@ -8,7 +8,7 @@ Tasks for each lesson are described here. Each task is designed to demonstrate a
 
 Tasks will be evaluated on a 0-2 scale. The primary goal of each task is to perform the task, so the assessment will be 2 if the work is complete or mostly complete, 0 if the work is mostly incomplete, and 1 for roughly half complete tasks.
 
-### Lesson 1
+### Lesson 1 {#task_1}
 
 Find two data visualizations that you find informative, compelling, or in need of improvement.
 
@@ -20,16 +20,18 @@ The goal of this project isn't to be right or wrong, but rather to start the pro
 
 Submit your work as a single PDF on Brightspace.
 
-### Lesson 2
+### Lesson 2 {#task_2}
 
-Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted).
+Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted). There is nothing to submit for this task.
 
-### Lesson 3
+### Lesson 3 {#task_3}
+
+See the instructions in the [syllabus](#syllabus_software)
 
 1. Install R, Rstudio, and the packages identified in Healy, Chapter 1.
 2. Install git.
 3. Create a github account. 
-2. Login to [rstudio.cloud](https://rstudio.cloud/) which can be used if you have trouble using R on your own computer.
+2. Login to [rstudio.cloud](https://rstudio.cloud/project/1998812). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer.
 5. Ask for help with any of these tasks if you need it. 
 
 Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name.

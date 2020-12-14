@@ -1,0 +1,34 @@
+?meeting-2020-01-07
+========================================================
+author: Andrew Irwin
+date: 2020-01-07
+autosize: true
+
+First Slide
+========================================================
+
+For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+<div class="notes">
+
+Presenter notes
+</div>
+
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```

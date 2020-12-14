@@ -1,0 +1,19 @@
+# Top data visualization tips
+
+From Claus Wilke
+
+Use larger axis labels. Always look at scaled-down versions of your figures to make sure the axis labels are appropriately sized. [Link](https://clauswilke.com/dataviz/small-axis-labels.html)
+
+
+Never assume your audience can rapidly process complex visual displays. When you’re trying to show too much data at once you may end up not showing anything. [Link](https://clauswilke.com/dataviz/telling-a-story.html#make-a-figure-for-the-generals)
+
+
+Use direct labeling instead of colors when you need to distinguish between more than about eight categorical items.
+[Link](https://clauswilke.com/dataviz/color-pitfalls.html#encoding-too-much-or-irrelevant-information)
+
+To make sure your figures work for people with colour vision deficiency, don’t just rely on specific color scales. Instead, test your figures in a simulator. [Link](https://clauswilke.com/dataviz/color-pitfalls.html#not-designing-for-color-vision-deficiency)
+
+If there is a clear visual ordering in your data, make sure to match it in the legend. [Link](https://clauswilke.com/dataviz/redundant-coding.html#designing-legends-with-redundant-coding)
+
+Whenever possible, design your figures so they don’t need a legend. [Link](https://clauswilke.com/dataviz/redundant-coding.html#designing-figures-without-legends)
+

@@ -1,9 +1,56 @@
 
 # Asking questions and getting help
 
-When you are learning a new subject or skill, you will have a lot of questions. Detailed questions about a particular skill. General questions about a topic. Big-picture questions about how to apply the material. Regardless of the question, asking questions well is a [superpower](https://jvns.ca/blog/2014/06/13/asking-questions-is-a-superpower/). Why? A question is a way of crystallizing the uncertainty in your mind about a specific topic. The more specific your question, the easier it is to answer, and the more likely it is that the response will be helpful to you. Sometimes simply asking a question will lead you to the steps to answer the question for yourself. In fact, asking questions of yourself is an important part of learning and thinking.
+When you are learning a new subject or skill, you will have a lot of questions. Detailed questions about a particular skill. General questions about a topic. Big-picture questions about how to apply the material. Not knowing where to begin, how to make progress, or what questions to ask!
 
-Asking good questions can be challenging, especially in asynchronous learning. In a classroom, it's fairly easy: Can you give another example? Why did you do that calculation? What does the answer mean? Many questions you might ask in an in-person class don't translate well to other contexts: email, office hours, or online forums, because the immediate context of a class is missing. So it's up to you to add that context when you ask a question.
+Regardless of the question, asking questions well is a [superpower](https://jvns.ca/blog/2014/06/13/asking-questions-is-a-superpower/). Why? A question is a way of crystallizing the uncertainty in your mind about a specific topic. The more specific your question, the easier it is to answer, and the more likely it is that the response will be helpful to you. Sometimes simply asking a question will lead you to the steps to answer the question for yourself. Broad general questions are valuable too, primarily because they help you develop and organize more questions. Asking questions of yourself and struggling to answer them is an important part of learning and thinking.
+
+Asking good questions can be challenging, especially in asynchronous learning. In a classroom, it's fairly easy: Can you give another example? Why did you do that calculation? What does the answer mean? Many questions you might ask in person don't translate well to other contexts: email, office hours, or online forums, because the immediate context of group discussion is missing. So it's up to you to add that context when you ask a question.
+
+Here I describe several different ways to get answers to your questions. Knowing which method to use is itself a skill, so I provide some guidance for that as well.
+
+## Starting out
+
+At the start of the course you will have a bunch of computer tasks (installing R and Rstudio, installing R packagesm understanding the basics of Rstudio, working with git and github). These will range from easy to difficult depending on your previous experience. I have tried to provide written and video information to guide you, but if you get stuck on any of these, or the work associated with a "task" at any point in the course, ask for help right away. 
+
+## Learning R basics
+
+As you start to write R commands and make R markdown documents you will encounter problems arising from typos (forgetting, or not knowing where to place) commas, brackets, backticks, quotation marks, pipes (%>%), and many other bits of [syntax](https://en.wikipedia.org/wiki/Syntax_(programming_languages)) necessary for communcation with the computer. The error messages will frequently be hard to decipher. The best way to learn to solve these problems is the following: take a working R markdown document or example of R code and change it slightly. Make a prediction of what will happen and then get the computer to process the code. Compare what happens to what you predicted. Do this regularly until you can reliably predict outcomes of any changes you can think of. This is "playing computer" in your head -- try to understand how it will react to your input. When something happens that you don't understand: ask someone why. Describe what you did, what you thought would happen, and what really happened.
+
+## Problem solving
+
+Once you have developed some fluency for working with R, you will start to learn to solve problems. This means that you are trying to accomplish a data visulization task, such as make a single plot, use colour in some way, change the kind of plot, add text to an axis, or thousands of other tasks. At the start you will be just doing tasks I've given you and later on you will be trying to achieve your own goals by solving problems. The method described above is useful here: when you have a working example, change it in some way and predict the result. Make changes that you think will lead to good outcomes, but also make playful or "silly" changes that will lead to poor quality graphs but still help you learn to use the tools. This kind of experimentation is essential for develop a robust and accurate mental model of how R (or any other) computer software works.
+
+## Learning new methods R
+
+The tools available within R are so extensive that you can never learn them all by being taught by a course or a textbook or a website. To really master R you need to learn how to learn new tools.
+
+R functions have **help pages** -- accessed from the help tab in Rstudio or by prefacing the function with a '?' in the R console. These help pages have a very specific style and require practice to [learn how to read them](https://socviz.co/appendix.html#a-little-more-about-r). One of the best features of the help page, especially when you are starting out, is the examples at the bottom of the page. Usually these can be simply cut and pasted into the console and you can observe the results to see how the function author intended them to be used.
+
+Many R packages have **vignettes**. These are extended documents intended to explain how to use a key feature of the package. You can find the vignettes on the web page where you found the software (CRAN or github) or using the vignette function. Read the help page -- and especially the examples -- to see how to use the `vignette` function.
+
+We are focussing on the tidyverse set of packages. The [tidyverse](https://www.tidyverse.org/) website contains help, examples, and reference documentation for these packages. These web pages combine the features of [books](https://www.tidyverse.org/learn/). tutorials, vignettes, and help pages. All are worth your time! Keep an eye out for [cheatsheets](https://rstudio.com/resources/cheatsheets/) that are especially helpful after you learn the basics of a package.
+
+One of the many reasons we are using git and github in this course is that it will make it easier for you to ask me a question. If you have a problem with an R markdown document or making a function work the way you think it should or you just don't know how to interpret the results of a calculation, you can ask me. But how do you know how much information to give me? And how do you make that easy? Send an email with the question -- what are you trying to do, what is the problem or error message, and why do you think might be going wrong. Put the computer code into an R document, commit the changes to your project, and push it to Github. Then tell me the name of the repository and file and I'll have the full set of code that lead to your problem. That will make it much easier for me to help you.
+
+Reprex
+
+Blogs
+
+Books
+
+Forums. Stack exchange. Stack overflow. Statistics.
+
+Google
+
+
+
+
+## Solving computer problems ("Debugging")
+
+
+## Asking questions
+
 
 In the suggestions below, I am imagining your are preparing a question to help you learn a concept or skill in a course. You could be asking your instructor, a classmate, or even yourself. It's important to ask questions -- and [I want you to ask questions](https://jvns.ca/blog/2014/04/04/ask-if-you-have-questions-isnt-enough/), so much that you should consider it part of your assigned work to formulate questions.
 
@@ -40,4 +87,9 @@ Learning technical skills well enough so that you can use them again
 - Making a video presentation
 - Introduction to main features of Rstudio
 - Lesson 16 Getting help from R and online
+
+## More advanced help
+
+* [What they forgot to teach you about R](https://rstats.wtf/index.html)
+  * including [Debugging tools](https://rstats.wtf/debugging-r-code.html)
 

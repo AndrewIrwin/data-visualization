@@ -2,7 +2,7 @@
 
 Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). Most sessions will be recorded and posted on Brightspace.
 
-Important dates
+## Important dates
 
 * Wed 6 Jan: Term begins
 * Fri 5 Feb: Munro day, University closed
@@ -22,14 +22,17 @@ We have 24 synchronous sessions. The last two will be used for oral presentation
 
 ### Week 1: Jan 6-8
 
-- [Lesson 1](#invitation) An Invitation to Data Visualization (Chapter \@ref(invitation))
-- Lesson 2 The tools we will use and why: R, Rstudio, ggplot, dplyr, markdown, git, github. [Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted)
+- [Lesson 1](#ch_invitation) An Invitation to Data Visualization (Chapter \@ref(ch_invitation), Video for Lesson 1, [Slides](slides/lesson-01.html))
+- Task 1. [Instructions](#task_1). Submit on Brightspace. Due by the end of the day on Monday 11 January.
+- First synchronous meeting Thursday 7 January, 8:35 Atlantic on Collaborate (Brightspace)
+- [Lesson 2](#ch_tools) The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. (Chapter \@ref(ch_tools), Video for Lesson 2, [Slides](slides/lesson-02.html))
 - Lesson 3 Computer preliminaries. Installing R, Rstudio, packages, creating github account
+- Task 2. [Instructions](#task_2). Submit on Brightspace. Due by the end of the day on Monday 11 January.
 
 ### Week 2: Jan 11-15
 
-- Lesson 4 Look at data. [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata)
-- Lesson 5 Get started. [Healy Section 2.5-2.6](https://socviz.co/gettingstarted.html#gettingstarted)
+- [Lesson 4](#look-data) Look at data. 
+- [Lesson 5](#first-plot) Making your first plot. 
 - Lesson 6 Version control concepts and working with git
 - Exercise 1. Make a simple markdown document with a figure and commit to a github repository
 

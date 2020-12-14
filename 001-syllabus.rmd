@@ -70,18 +70,18 @@ Tasks are due on Friday of the week they are assigned, unless otherwise noted. L
 
 Grades will be reported on [Brightspace](https://dal.brightspace.com/d2l/home/159870)
 
-## Software
+## Software {#syllabus_software}
 
 The statistical software R/RStudio and version control software git will be used in this course. No prior experience with
 R/RStudio is assumed, and we'll take class time to learn the software.
 
-* To download and install R got to [r-project.org](https://www.r-project.org/) and click on the link to [Download R](http://cran.r-project.org/mirrors.html)
+* To download and install R go to [r-project.org](https://www.r-project.org/) and click on the link to [Download R](http://cran.r-project.org/mirrors.html)
 * To download and install Rstudio, go to [Rstudio.com](https://www.rstudio.com/) and click on the link do [Download Rstudio](https://rstudio.com/products/rstudio/download/)
 * To download and install git 
   * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win)
   * on Macintosh, use the Terminal app and type 'xcode-select --install' to download and install git.
 
-These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [rstudio.cloud](https://rstudio.cloud/) Everyone should learn to use the cloud service as a backup in case of problems with setting up the software on their own computer.
+These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [rstudio.cloud](https://rstudio.cloud/project/1998812) Everyone should learn to use the cloud service as a backup in case of problems with setting up the software on their own computer.
 
 R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login.
 
