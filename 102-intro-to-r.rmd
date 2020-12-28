@@ -1,5 +1,5 @@
 
-# Computer tools {#ch_tools}
+# Computer tools {#ch-tools}
 
 We will use R and Rstudio in this course. R is widely used to analyze data and comes with many add-on packages for statistical analysis, data visualization, and specialized tools for many disciplines and applications. We will just scratch the surface of what R can do, but by the end of the course you should feel comfortable learning to use R for data visulization and you will have the skills to learn how to use R for many other tasks. Rstudio is a graphical user interface for R with many convenient features including tools to support report writing, getting help, and project management. For data visualization we will use '[ggplot2](https://en.wikipedia.org/wiki/Ggplot2)', for data analysis we will use the '[tidyverse](https://www.tidyverse.org/)' style of programming, for report writing we will use '[R markdown](https://rmarkdown.rstudio.com/)', and for project management we will use R projects and '[git](https://git-scm.com/)' version control. All of these computer terms will mean much more to you later on in the course!
 

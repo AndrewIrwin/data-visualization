@@ -28,12 +28,12 @@ The three lessons introduce the content of the course, the tools we will use, an
 
 Work on these elements in the following suggested order:
 
-- Lesson 1: An Invitation to Data Visualization. [Notes](#ch_invitation), Video, [Slides](slides/lesson-01.html).
+- Lesson 1: An Invitation to Data Visualization. [Notes](#ch-invitation), Video, [Slides](slides/lesson-01.html).
 - Synchronous meeting Thursday 7 January, 8:35 Atlantic on Collaborate (Brightspace)
-- Lesson 2: The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. [Notes](#ch_tools), Video, [Slides](slides/lesson-02.html)
+- Lesson 2: The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. [Notes](#ch-tools), Video, [Slides](slides/lesson-02.html)
 - Lesson 3: Installing R, Rstudio, packages, creating github account. [Notes](#setup), [Video](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726).
-- Task 1. [Instructions](#task_1). Submit on Brightspace.
-- Task 2. [Instructions](#task_2). Submit on Brightspace.
+- Task 1. [Instructions](#task-1). Submit on Brightspace.
+- Task 2. [Instructions](#task-2). Submit on Brightspace.
 
 Tasks 1 and 2 are due Monday 11 January at 9:00 am Atlantic time.
 
@@ -42,13 +42,13 @@ Tasks 1 and 2 are due Monday 11 January at 9:00 am Atlantic time.
 The three lessons this week discuss how we perceive visualizations, how to make your own simple scatterplot, and the how and why of using git in this course.
 
 - Lesson 4: Look at data. [Notes](#look-data), Video, [Slides](slides/lesson-04.html)
-- Task 3. [Instructions](#task_3). Submit on Brightspace.
+- Task 3. [Instructions](#task-3). Submit on Brightspace.
 - Synchronous meeting Tuesday 12 January, 8:35 Atlantic on Collaborate.
 - Lesson 5: Making your first plot. [Notes](#first-plot), Video, [Slides](slides/lesson-05.html)
 - Lesson 6: Version control concepts and working with git. [Notes](#vcs).
-- Task 4. [Instructions](#task_4). Nothing to submit. This is preparation for Assignment 1.
+- Task 4. [Instructions](#task-4). Nothing to submit. This is preparation for Assignment 1.
 - Synchronous meeting Thursday 14 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-01.rmd), [html](static/live-coding-01.html)
-- Assignment 1. [Instructions](#assignment_1). Submit on github.
+- Assignment 1. [Instructions](#assignment-1). Submit on github.
 
 Tasks 3 and 4 are due Monday 18 January at 9:00 am Atlantic time. There is nothing to submit for Task 4, but you can't do Assignment 1 without doing it first, so please don't delay.
 

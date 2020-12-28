@@ -2,12 +2,19 @@ bookdown::bs4_book:
   theme:
     primary: "#9437FF"   #  "#637238"
   repo: https://github.com/AndrewIrwin/data-visualization
+  # need development version
+  # devtools::install_github('rstudio/bookdown')
+  # also bslib, downlit
+  # remotes::install_github("rstudio/bslib")
+  # install.packages("downlit")
 bookdown::gitbook:
   lib_dir: assets
   split_by: chapter
   config:
     toolbar:
       position: static
+    sharing: no
+    download: null
 bookdown::pdf_book:
   keep_tex: yes
 bookdown::html_book:

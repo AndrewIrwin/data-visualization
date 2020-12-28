@@ -13,7 +13,7 @@ Tasks will be evaluated on a 0-10 scale on the following rubric:
 * 8: Complete and meets expectations.
 * 9-10: Complete and excells in some respect: organization, clarity, creativity. 
 
-### Task 1 (Lesson 1) {#task_1}
+### Task 1 (Lesson 1) {#task-1}
 
 Find two data visualizations that you find informative, compelling, or in need of improvement.
 
@@ -31,7 +31,7 @@ Submit your work as a single PDF on Brightspace.
 
 Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted). There is nothing to submit for this task.
 
-### Task 2 (Lesson 3) {#task_2}
+### Task 2 (Lesson 3) {#task-2}
 
 See the instructions in the [syllabus](#syllabus_software) or in [Lesson 3 notes](#setup)
 
@@ -43,7 +43,7 @@ See the instructions in the [syllabus](#syllabus_software) or in [Lesson 3 notes
 
 Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name.
 
-### Task 3 (Lesson 4) {#task_3}
+### Task 3 (Lesson 4) {#task-3}
 
 1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in [Lesson 1](#ch_invitation). The vertical scale does not start at 0. Use the ideas in [Healy Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
 
@@ -55,7 +55,7 @@ c. In your judgment, is this visualization effective or too complex. Watch the [
 
 Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace.
 
-### Task 4 (Lesson 6) {#task_4}
+### Task 4 (Lesson 6) {#task-4}
 
 Use Rstudio to create a new project from a github repository. You will use this repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
 
@@ -89,7 +89,7 @@ Assesment rubric:
 * 4 excellent work, clearly presented and thoughtfully designed
 
 
-### Assignment 1 {#assignment_1}
+### Assignment 1 {#assignment-1}
 
 Make a simple markdown document with a figure and commit to a github repository
 

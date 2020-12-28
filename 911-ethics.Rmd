@@ -1,7 +1,7 @@
 
 # Accessibility, Bias, and Ethics
 
-Data visualization is about representing, including selecting, simplifying and organizing, data. It's an activity done by humans, for questions generated and presented to humans, even if the underlying topic is about the natural world. As as a result, it is always important to think carefully about the human element. What steps can be taken to make our work accessible to as many people as possible? How may bias or discrimination enter into data collection, selection, analysis and interpretation? What are the ethical considerations to be considered in our work with [data](https://en.wikipedia.org/wiki/Information_ethics) and the process of [researh](https://en.wikipedia.org/wiki/Research#Research_ethics)?
+Data visualization is about representing, including selecting, simplifying and organizing, data. It's an activity done by humans, for questions generated and presented to humans, even if the underlying topic is about the natural world. As as a result, it is always important to think carefully about the human element. What steps can be taken to make our work accessible to as many people as possible? How may bias or discrimination enter into data collection, selection, analysis and interpretation? What are the ethical considerations to be considered in our work with [data](https://en.wikipedia.org/wiki/Information_ethics) and the process of [research](https://en.wikipedia.org/wiki/Research#Research_ethics)?
 
 This course only touches on these topics long enough to alert you to their importance.
 

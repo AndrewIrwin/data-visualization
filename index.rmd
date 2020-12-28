@@ -7,13 +7,17 @@ site: bookdown::bookdown_site
 
 # Welcome
 
-Data visualization is a critical skill for anyone interested in using data to think and persuade. Its essence is converting raw data into a visual form that can be more easily apprehended than the full dataset. As a result, almost every data visualization is a simplification and approximation of a raw dataset, and thus involves a perspective -- the goals and biases of the person producing the visualization.
+Data visualization is a critical skill for anyone interested in using data to think and persuade. 
 
-This course focusses on three aspects: what makes a good data visualization, designing and improving a visualization, and the technical computer skills needed to create visualizations.
+This course focusses on three aspects of data visualization: 
+
+* What makes a good data visualization?
+* Designing, improving, and communicating with visualizations, and 
+* the technical computer skills needed to create visualizations.
 
 ##  What is Data Visualization?
 
-Data visualization is the practice of turning data into graphics, which can be more easily interpreted than the raw data while remaining faithful to the original data and not misleading the intended audience. 
+Data visualization is the practice of turning data into graphics, which can be more easily interpreted than the raw data while remaining faithful to the original data and not misleading the intended audience. Almost every data visualization is a simplification and approximation of a raw dataset, and thus involves a perspective--the goals and biases of the person producing the visualization.
 
 Data visualization approaches vary. For some purposes, highly customized graphic design and visual style are paramount. That's not our focus. We emphasize standardized graphical presentations -- which span a wide variety of visualizations -- that minimize the use of graphical elements not directly linked to the data.
 
@@ -29,7 +33,7 @@ By the end of the course you will be familiar with several aspects of data visua
 
 - Understand the relationship between the structure of your data and the perceptual features of your graphics.
 - Describe aesthetic aspects of good plots. 
-- Use length, shape, size, colour, and other features to effectively display data and enable comparitive visual interpretation.
+- Use length, shape, size, colour, annotations, and other features to effectively display data and enable comparitive visual interpretation.
 
 *Visualization as communication*
 
@@ -43,7 +47,7 @@ By the end of the course you will be familiar with several aspects of data visua
 - Learn the basics of using R, Rstudio, several R add-on packages, and git
 - Read data in several different formats into R
 - Create graphs with ggplot2 for continuous and categorical variables with informative legends.
-- Add error bars, linear models (OLS, robust regression, polynomials, quantile regression), smooths (LOESS, GAM), labels, and other annotations to a graph
+- Add error bars, linear models, smooths, labels, and other annotations to a graph
 - Create small-multiple (facetted) plots.
 - Use the principles of [tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) tables to facilitate transformation and analysis of data. Reshape data to make it tidy.
 - Summarize and transform data using dplyr

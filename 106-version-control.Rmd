@@ -166,9 +166,9 @@ In the _task_ for this lesson you'll clone an exiting repository I created for y
 
 ## Resources
 
-* Rstudio [help](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&mode=desktop)
+* Rstudio [help](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&mode=desktop) for git
 * [Happy Git with R](https://happygitwithr.com/)
+* Highlights of key features of git and github for [developers](https://dev.to/firangizg/git-github-key-things-you-will-want-to-remember-5390)
 * [Advanced Git cheat sheet](https://www.maxpou.fr/git-cheat-sheet)
 * A more advanced look at the [internals of git](https://www.freecodecamp.org/news/git-internals-objects-branches-create-repo/)
-* Highlights of key features of git and github for [developers](https://dev.to/firangizg/git-github-key-things-you-will-want-to-remember-5390)
 
