@@ -1,0 +1,109 @@
+# Non-metric multidimensional scaling {#nmds}
+
+```{r}
+library(tidyverse)
+library(fields)
+library(ggmap)
+library(vegan)
+library(ggrepel)
+library(broom)
+# library(ggvegan) # remotes::install_github("gavinsimpson/ggvegan") 
+```
+
+Multidimensional scaling (MDS) is another approach to ordination. In this case, the starting point is a similarity, or distance matrix, providing measurements between all pairs of data. Many different functions are used to compute this simility matrix. Commonly distance functions are used. If quantitative data have very skewed distributions, or there is no good way to interpret the distance between points, the data may be converted to ranks (1, 2, 3, ...) before the similarity measure is computed; then the method is called nonmetric multidimensional scaling (NMDS) in recognition of the fact that the information being presented is not related to a distance.
+
+### Cities on a map
+
+An easy to understand example of MDS starts with a matrix giving the distance between each pair of cities in a set. The MDS visualization then scatters these points across the plane, reconstructing the geographic separation of the points. 
+
+The dataset below is built from a database of world cities, selected to have only cities of more than 5 million plus some cities in Canada. I included a maximum of 4 cities per country so that one one region of the globe was too strongly concentrated in points. You can get the data from [simplemaps](https://simplemaps.com/resources/free-country-cities) and make your own subset.
+
+```{r}
+# cities0 <- read_csv("~/Downloads/simplemaps_worldcities_basicv1.73/worldcities.csv", n_max = 1000) # This is the original data
+# Keep the 25 largest cities, plus a few from Canada; this is the filtering code
+# cities <- cities0 %>% filter(iso2 == "CA" | population > 5000000) %>% group_by(iso2) %>% filter(dense_rank(-population) < 5) 
+# cities <- bind_rows(cities, cities0 %>% filter(city == "Halifax", iso2 == "CA"))
+# write_csv(cities, "static/selected_cities.csv")
+cities <- read_csv("static/selected_cities.csv")
+city_distance <- rdist.earth(cities %>% select(lng, lat) %>% as.matrix(), miles=FALSE) # geodesic distance
+city_distance <- dist(cities %>% select(lng, lat) %>% as.matrix()) #  distance in equirectangular projection
+  # https://en.wikipedia.org/wiki/Equirectangular_projection
+mymap <- get_stamenmap(bbox = c(left = -150, bottom = -60, right = 175, top = 75), zoom=3, maptype = "terrain-background")
+ggplot(cities, aes(x=lng, y=lat)) + 
+  geom_point() +
+  geom_text_repel(aes(label=city), size=2) 
+
+ggmap(mymap) + 
+  geom_point(data = cities, aes(x=lng, y=lat)) +
+  geom_text_repel(data = cities, aes(x =lng, label=city), size=2) 
+```
+
+Perform [MDS](https://en.wikipedia.org/wiki/Multidimensional_scaling) (principal coordinates analysis). The direction of the 
+two main axes could be reversed relative to the original map; I've reversed the x and y axes to match our customary view of the world.
+
+```{r}
+mds1 <- cmdscale(city_distance)
+colnames(mds1) <- c("V1", "V2")
+# plot(mds1)
+bind_cols(cities, as_tibble(mds1)) %>%
+  ggplot(aes(x=V1, y=V2)) + 
+  geom_point() + 
+  geom_text_repel(aes(label=city), size=2) +
+  scale_x_reverse() + scale_y_reverse() +
+  labs(title="Map reconstructed from distance matrix")
+```
+
+
+
+```{r}
+nmds1 <- metaMDS(city_distance)
+plot(nmds1)
+```
+
+With R 4.0 you can use ggvegan to use `autoplot`
+
+```{r}
+morse.dist <- read.delim ('https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/morsecodes-dist.txt', row.names = 1, head = T)
+names (morse.dist) <- rownames (morse.dist)
+NMDS <- metaMDS (morse.dist)
+NMDS
+ordiplot (NMDS, cex = 1.5, type = 't')
+stressplot (NMDS)
+# autoplot(nmds1)
+plot(NMDS$dist, NMDS$dhat )
+```
+
+```{r}
+morse.attr <- read.delim ('https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/morsecodes-attr.txt', row.names = 1, head = T)
+ef <- envfit (NMDS, morse.attr)
+ordiplot (NMDS, cex = 1.5, type = 't')
+plot (ef)
+```
+
+Use `str(ef)` to examine the structure of the result. Then plot the points and arrows using ggplot.
+
+```{r}
+arrows1 <- ef$vectors$arrows %>% as_tibble(rownames="code")
+as_tibble(NMDS$points, rownames="code") %>%
+  ggplot(aes(x=MDS1, y = MDS2, label=code)) + geom_text() +
+  geom_text_repel(data = arrows1, aes(x=10*NMDS1, y=10*NMDS2)) +
+  geom_segment(data = arrows1, aes(x=10*NMDS1, y=10*NMDS2, xend=0, yend=0))
+```
+
+Stressplot
+
+```{r}
+stressplot(NMDS)
+```
+
+### Morse code experiment
+
+
+
+## Further reading
+
+* [Vegan](https://cran.r-project.org/web/packages/vegan/vignettes/intro-vegan.pdf) package and the [ggvegan](https://github.com/gavinsimpson/ggvegan) package
+* https://jonlefcheck.net/2012/10/24/nmds-tutorial-in-r/
+* https://rpubs.com/collnellphd/GWU_nmds
+
+* [Morse code](https://www.davidzeleny.net/anadat-r/doku.php/en:data:morse) experiment description and [analysis](https://www.davidzeleny.net/anadat-r/doku.php/en:pcoa_nmds_examples)

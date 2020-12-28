@@ -66,6 +66,17 @@ A few [suggestions](https://jvns.ca/blog/good-questions/):
 
 -   Say what you think comes next or where you think you are stuck (I'm trying to figure out X, I don't know why the plot looks like Y)
 
+## Asking a complete question
+
+If you are trying to solve a problem with R, and the code is not working as you expect, ...
+
+Making a minimal reproducible example (reprex) for your question.
+
+https://www.tidyverse.org/help/#reprex
+
+The reprex function tests your code to see if you've included all the necessary to enable someone else to understand your code. This includes which libraries you are using and any variables that must be defined. Select your code that demonstrates the problem, then copy it to the clipboard. Type `reprex()` in the R Console. If your example is complete, it will appear in the preview window on the lower right. This can be cut and pasted into an email.
+
+
 ## How to learn material in this course
 
 Levels of the course - required outcomes

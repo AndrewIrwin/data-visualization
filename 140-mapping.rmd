@@ -1,20 +1,232 @@
 # Making maps
 
-Maps of Canada
+```{r include=FALSE}
+library(tidyverse)
+library(ggmap)
+library(mapproj)
+library(patchwork)
+```
 
-Hidden lecture where I prepare data and write functions
 
-https://tengl.net/blog/2020/1/7/drawing-canada-maps-in-r
+There are many ways to make maps with R. The two general types are: vector maps where regions are defined by a set of points around the boundary and tile maps where a pre-drawn map is downloaded from a cloud service such as Google maps. Vector maps are drawn from a series of points and so can be drawn using many different projections, giving you the freedom to choose the projection most suitable for your map. Tile maps are images and can't be reprojected, but can have a lot of information on them in the form of colours for terrain, labels, and points of interest. Tile maps can be used in a pan-and-zoom mode like many familiar online mapping tools.
 
-get province and census division shape files from stats canada
-https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-s-eng.cfm?year=19
+## Vector map
 
-Election data and bounaries and chloropleths and populated weighted chloropleths
-https://cran.r-project.org/web/packages/mapcan/readme/README.html
+Here is a map of the 48 continental US states, with a quantiative variable used to shade each region.
 
-Wind turbines in Maritimes
+```{r}
+states_map <- map_data("state")
+crimes <- as_tibble(USArrests, rownames="state") %>% mutate(state = tolower(state))
+ggplot(crimes, aes(map_id = state)) +
+    geom_map(aes(fill = Murder), map = states_map) +
+    expand_limits(x = states_map$long, y = states_map$lat)
+```
+
+Here's a map of France using an azimuthal equal area projection (see `mapproj::mapproject()` for more)
+
+```{r}
+map_data <- map_data('france')  %>% fortify()
+ggplot(data = map_data, aes(group = group, map_id=region)) + 
+       geom_map(map = map_data,
+                  aes(x = long, y = lat),
+                  fill = "white", colour = "#7f7f7f", alpha = 0.5, size=0.5)  +
+  coord_map("azequalarea")
+```
+
+```{r}
+WorldData <- map_data('world')  %>% fortify()
+ggplot(WorldData, aes(group=group, map_id=region)) + 
+  geom_map(map = WorldData,
+           aes(x = long, y = lat),
+                  fill = "white", colour = "#7f7f7f", alpha = 0.5, size=0.5)
+```
+
+Polar projection of North pole and High Arctic.
+
+```{r}
+p1 <- ggplot(WorldData, aes(group=group, map_id=region)) + 
+  geom_map(map = WorldData, aes(long, lat),
+                  fill = "gray80", colour = "#7f7f7f", alpha = 0.5, size=0.5) +
+  labs(x="", y="") + theme_bw() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank(), rect = element_blank())
+p2a <- p1 + coord_map("perspective", 2.5, orientation=c(75, -100, 0))  # observer distance 2 Earth radii 
+p2b <- p1 + coord_map("perspective", 2.5, orientation=c(-75, 80, 0)) # try also orthographic, with no observer distance
+p2a + p2b
+```
+
+
+Detailed maps of Canada are not part of the `maps` package in R, so we need to do a bit of extra work. We will obtain map files called "shapefiles" from Statistics Canada and learn to use them with R. This is well worth learning as many maps are distributed in this format after being developed with GIS software.
+
+Here are some packages we need to get the job done.
+
+```{r message=FALSE}
+library(sf) # the base package manipulating shapes
+library(rgdal) # geo data abstraction library
+library(geojsonio) # geo json input and output
+library(spdplyr) # the `dplyr` counterpart for shapes
+library(rmapshaper) # the package that allows geo shape transformation
+```
+
+I have followed [these instructions](https://tengl.net/blog/2020/1/7/drawing-canada-maps-in-r) to get and transform the shape files for 2016 census divisions in Canada. There are many [other options](https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2016-eng.cfm).
+
+Here is some code to simplify these very detailed shapefiles down to simpler maps.
+
+```
+canada_raw = readOGR(dsn = "~/Downloads/lcd_000b16a_e", layer = "lcd_000b16a_e", encoding = 'latin1') 
+canada_raw_json <- geojson_json(canada_raw)  # takes a few minutes
+canada_raw_sim <- ms_simplify(canada_raw_json) # also takes a few minutes
+geojson_write(canada_raw_sim, file = "static/canada_cd_sim.geojson") 
+```
+
+
+Draw the map
+
+```{r}
+canada_cd <- st_read("static/canada_cd_sim.geojson", quiet = TRUE) # 1
+```
+
+Check to see the data are valid and remove any problems. this is not the problem...
+
+```{r}
+# sum(st_is_valid(canada_cd) == FALSE)
+# canada_cd1 <- st_make_valid(canada_cd)
+```
+
+
+```{r}
+crs_string = "+proj=lcc +lat_1=49 +lat_2=77 +lon_0=-91.52 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs" # 2
+# crs_string = "+proj=lcc +lat_1=49 +lat_2=77 +lon_0=-91.52 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs" # 2
+# crs_string = "+proj=moll +lon_wrap=0 +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs +towgs84=0,0,0"
+
+# Define the maps' theme -- remove axes, ticks, borders, legends, etc.
+theme_map <- function(base_size=9, base_family="") { # 3
+	# require(grid)
+	theme_bw(base_size=base_size, base_family=base_family) %+replace%
+		theme(axis.line=element_blank(),
+			  axis.text=element_blank(),
+			  axis.ticks=element_blank(),
+			  axis.title=element_blank(),
+			  panel.background=element_blank(),
+			  panel.border=element_blank(),
+			  panel.grid=element_blank(),
+			  panel.spacing=unit(0, "lines"),
+			  plot.background=element_blank(),
+			  legend.justification = c(0,0),
+			  legend.position = c(0,0)
+		)
+}
+# Define the filling colors for each province; max allowed is 9 but good enough for the 13 provinces + territories
+map_colors <- RColorBrewer::brewer.pal(9, "Pastel1") %>% rep(37) # 4
+
+# Plot the maps
+ggplot() +
+	geom_sf(aes(fill = PRUID), color = "gray60", size = 0.1, data = canada_cd1 ) + # 5
+	coord_sf(crs = crs_string) + # 6
+  scale_fill_manual(values = map_colors) +
+	guides(fill = FALSE) +
+	theme_map() +
+	theme(panel.grid.major = element_line(color = "white"),
+		  legend.key = element_rect(color = "gray40", size = 0.1))
+```
+
+Add cities to the map
+
+```{r}
+city_coords <- tribble( ~city, ~lat, ~long,
+"Vancouver",	49.2827,	-123.1207,
+"Calgary",	51.0447,	-114.0719,
+"Edmonton",	53.5461,	-113.4938,
+"Toronto",	43.6532,	-79.3832,
+"Ottawa",	45.4215,	-75.6972,
+"Montreal",	45.5017, 	-73.5673,
+"Halifax", 44.6488, -63.5752)
+```
+
+Map the latitude and longitudes to map coordinates.
+
+```{r}
+sf_cities = city_coords %>%
+	select(long, lat) %>% # 1
+	as.matrix() %>% # 2
+	st_multipoint(dim = 'XY') %>% # 3
+	st_sfc() %>% # 4
+	st_set_crs(4269) # 5
+```
+
+Make map
+
+```{r}
+ggplot() +
+	geom_sf(aes(fill = PRUID), color = "gray60", size = 0.1, data = canada_cd) +
+	geom_sf(data = sf_cities, color = '#001e73', alpha = 0.5, size = 3) + # 17
+	coord_sf(crs = crs_string) +
+	scale_fill_manual(values = map_colors) +
+	guides(fill = FALSE) +
+	theme_map() +
+	theme(panel.grid.major = element_line(color = "white"),
+		  legend.key = element_rect(color = "gray40", size = 0.1))
+```
+
+
+## Tile map
+
+Many online services generate tile maps. Generally a small number of maps are available for free and then further maps require a subcription. For causal use the free service tier is almost always sufficient. To keep track of your usage you generally need to sign up for an API key.
+
+Here we will use tile maps from the [openstreetmap](https://www.openstreetmap.org/) database rendered by [Stamen Maps](http://maps.stamen.com/). We will use the `ggmap` package to download and draw the map.
+
+There are two steps. First download the tiles needed for your map by specifiying
+
+* the bounding box in degrees latitude and longitude,
+* the [zoom level](https://wiki.openstreetmap.org/wiki/Zoom_levels) of the map, and
+* the type of the tiles (terrain, terrain-background, etc. See the help for `get_stamenmap` for more.)
+
+Always start with a small zoom level -- if you make it too big you will download a lot of unecessary data, which takes time and imposes a burden on the service.
+
+```{r}
+mymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, right = -50, top = 60), zoom=4, maptype = "terrain")
+ggmap(mymap_terrain)  
+```
+
+This is a regular ggplot, so you can add lines and points to a map easily, using latitude and longitude as coordinates. Placing text on  map in a readable and attractive way can be quite a challenge.
+
+```{r}
+my_points <- tibble(lat = c(43+57/60, 49+53/60),
+                    lon = c(-59-55/60, -97-9/60),
+                    label = c("Sable Is.", "Winnipeg")
+)
+ggmap(mymap_terrain)  +
+  geom_point(data =my_points, color="brown") + 
+  geom_text(data = my_points, aes(label=label))
+
+```
+
+You can also zoom in on urban areas.
+
+```{r}
+mymap_halifax <- get_stamenmap(bbox = c(left = -63.6-0.1, bottom = 44.60, right = -63.6+0.1, top = 44.75), 
+                               zoom=12, maptype = "toner-lite")
+ggmap(mymap_halifax)  
+```
+
+
+
+
+## Further reading
+
+* [Wilke](https://clauswilke.com/dataviz/geospatial-data.html)
+* [Healy](https://socviz.co/maps.html#maps)
+* Mapping example in [NMDS](#nmds) lesson.
+* A collection of maps from a [30 day challenge](https://github.com/AlexandraKapp/30daymapchallenge)
+* Maps using [ggmap + openstreetmaps](https://www.earthdatascience.org/courses/earth-analytics/lidar-raster-data-r/ggmap-basemap/)
+* The [PROJ](http://www.euref.eu/documentation/Tutorial2019/t-01-Evers.pdf) tool for projecting map coordiates
+* R journal article on [mapping with mapmisc](https://journal.r-project.org/archive/2016-1/brown.pdf)
+* Finding and fixing problems with [simple feature geometry](https://www.r-spatial.org/r/2017/03/19/invalid.html) and a [book](https://keen-swartz-3146c4.netlify.app/), especially section 8.4
+
+### Maps of Canada
+
+* https://tengl.net/blog/2020/1/7/drawing-canada-maps-in-r
+* Province and census division shape files from stats canada https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-s-eng.cfm?year=19
+* Election data and bounaries and chloropleths and populated weighted chloropleths https://cran.r-project.org/web/packages/mapcan/readme/README.html
+* Wind turbines in Maritimes
 https://discuss.ropensci.org/t/osmdata-rnaturalearth-and-magick-for-tidytuesday/2255
-
-Set of a bunch of maps
-https://github.com/AlexandraKapp/30daymapchallenge
 

@@ -6,35 +6,63 @@ All the work students will complete for evaluation and credit in the course is d
 
 Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
 
-Tasks will be evaluated on a 0-2 scale. The primary goal of each task is to perform the task, so the assessment will be 2 if the work is complete or mostly complete, 0 if the work is mostly incomplete, and 1 for roughly half complete tasks.
+Tasks will be evaluated on a 0-10 scale on the following rubric:
 
-### Lesson 1 {#task_1}
+* 0-5: Work missing or mostly incomplete.
+* 6-7: Mostly complete or complete with major deficiencies.
+* 8: Complete and meets expectations.
+* 9-10: Complete and excells in some respect: organization, clarity, creativity. 
+
+### Task 1 (Lesson 1) {#task_1}
 
 Find two data visualizations that you find informative, compelling, or in need of improvement.
 
 Create a document that shows each visualization (the figure, or a snapshot of a dynamic visualization), provides the source (e.g., url and publication details if applicable). In a few sentences describe 
+
 1. the data behind the visualization, 
 2. main message conveyed by the visualization,
 3. one or two features of the visualization that make it effective or suggestions for improvement. 
-The goal of this project isn't to be right or wrong, but rather to start the process of looking at data visualizations through the perspective of creator, designer, and critic.
+
+The goal of this project isn't to be right or wrong, but rather to start the process of looking at data visualizations through the perspective of creator, designer, and critic. It's okay if you find visualizations from secondary sources and not the creator or original publisher. Include the reference to the source you used to find the visualiztions.
 
 Submit your work as a single PDF on Brightspace.
 
-### Lesson 2 {#task_2}
+### Bonus task (Lesson 2)
 
 Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted). There is nothing to submit for this task.
 
-### Lesson 3 {#task_3}
+### Task 2 (Lesson 3) {#task_2}
 
-See the instructions in the [syllabus](#syllabus_software)
+See the instructions in the [syllabus](#syllabus_software) or in [Lesson 3 notes](#setup)
 
-1. Install R, Rstudio, and the packages identified in Healy, Chapter 1.
+1. Install R, Rstudio, and the packages identified in Healy's [Preface](https://socviz.co/index.html#install).
 2. Install git.
 3. Create a github account. 
 2. Login to [rstudio.cloud](https://rstudio.cloud/project/1998812). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer.
 5. Ask for help with any of these tasks if you need it. 
 
 Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name.
+
+### Task 3 (Lesson 4) {#task_3}
+
+1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in [Lesson 1](#ch_invitation). The vertical scale does not start at 0. Use the ideas in [Healy Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
+
+2. Hans Rosling's visualizations (as shown in [Lesson 1](#ch_invitation)) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
+
+a. For the plot linked above, what variables are shown for each of x and y position, color, and symbol size?
+b. According to [Healy Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
+c. In your judgment, is this visualization effective or too complex. Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://bit.ly/3oAb0Uq) before answering the question.
+
+Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace.
+
+### Task 4 (Lesson 6) {#task_4}
+
+Use Rstudio to create a new project from a github repository. You will use this repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
+
+* Look for an invitation in your email sent earlier this week.
+* Copy the link.
+* Use Rstudio, menu File > New Project > From repository...
+
 
 ### Lesson 5
 
@@ -61,7 +89,10 @@ Assesment rubric:
 * 4 excellent work, clearly presented and thoughtfully designed
 
 
-### Assignment 1
+### Assignment 1 {#assignment_1}
+
+Make a simple markdown document with a figure and commit to a github repository
+
 
 learn, describe, and use a ggplot extension. 5% (Week 7, after break)
 - ggrepel, cowplot, patchwork, viridislite

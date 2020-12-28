@@ -1,0 +1,51 @@
+# How do I know it's right? {#testing}
+
+An introduction to testing.
+
+You've made a plot. All the calculations necessary are in a single Rmd file -- data collecting, cleaning, and creating the figure. You can revise the data and reproduce the plot any time you want.
+
+But then a thought occurrs to you -- how do I know I did the calculations correctly? The computer saves us time by doing calculations for us, but the price is that you can't keep track of everything it does.
+
+There are lots of ways for errors to creep in. Missing values when you thought there were none. Unexpected levels of factors (too many or too few). Detectable errors in the data such as impossible values.
+
+The best idea to counteract all these problems is testing. The secret is to get the computer to perform the tests for you.
+
+A lot of testing is done for you before you even start R: most (we hope all) the packages you use are carefully tested to be sure they work as intended. Still -- you might misunderstand what the packages are supposed to do! Or you might make a typo and use the wrong variable name somewhere. Or you might get the logic of your calculation wrong. So you should test your work in as many ways as you can.
+
+The most important reason to test is that you will catch mistakes. Possibly the second most important reason for doing testing -- and being explicit about it -- is that it can help the people who use your analysis have more confidence in it. This includes you in the future!
+
+## Data quality assurance
+
+dlookr
+https://cran.r-project.org/web/packages/dlookr/vignettes/diagonosis.html
+
+pointblank
+
+dataMaid https://github.com/ekstroem/dataMaid
+(does codebooks too)
+
+## Software testing
+
+develop code
+wrap in a function
+testthat
+tinytest
+
+
+
+## Example data with known results
+
+things change -- data formats, packages you depend on.
+Might even have someone fix a mistake in a package you use, which could fix an error you didn't know was there... but you'd like to know that.
+
+tiny data sets
+pathological datasets with problematic data
+demonstration data with sample output
+
+## Lessons for this course
+
+We are not integrating testing into our work in this course. This one little lesson is here to alert you to this problem, ensure you know many people think carefully about this, and to show you the first steps to developing a good quality assurance plan. Be aware that testing takes time -- possibly as much time as "the rest" of the work you do for data analysis.
+
+
+
+

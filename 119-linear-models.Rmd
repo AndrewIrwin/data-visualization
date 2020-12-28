@@ -1,0 +1,102 @@
+
+# Linear models {#linear-models}
+
+Linear regression is a powerful technique for finding a line that approximates a set of data. For the approximation to be a good one, the linear model must be appropriate for the data, which can sometimes be determined by reasoning about the processes that generate the data, and are sometimes justified based on statistical properties of the data. We will use linear models as a tool without elaboration of the methods or theoretical background; you should learn about those in a different statistical course.
+
+We will explore how to create a linear model, which can include a lot more than straight lines, and then discuss how to add those models to a visualization.
+
+## Making linear models
+
+We will always make linear models with variables from a data frame. Designate one variable the response variable, which we will attempt to predict using one or more other variables (called predictors.) You are not restricted to just variables in your data frame; you can transform the varaibles first, for example by squaring, taking logarithms, or applying some other function. Additionally, you can use categorical (or factor) variables as predictors and are not restricted to only quantitative variables. Be aware that the more variables or transformations you add to your list of predictors, the more likely they will be correlated and your model will be very hard to interpret. These issues are discussed in statistics courses on regression.
+
+Once your data frame is created, write the linear model as a "formula" object, meaning as an equation but with a `~` instead of an `=` to indicate that you are modelling the left hand side and allowing for a specific model for the mismatch between predictors and response.
+
+We have seen that the price of a diamond increases a bit faster than linearly as the mass of the diamond increases, we will try both a linear model and a quadratic model for data in the `diamonds` dataframe.
+
+```{r}
+linear_model1 <- lm(price ~ carat, data = diamonds)
+summary(linear_model1)
+quadratic_model1 <- lm(price ~ carat + carat2, 
+                       data = diamonds %>% mutate(carat2 = carat^2))
+summary(quadratic_model1)
+```
+
+<!--- This does not work for some reason.
+
+```{r}
+library(equatiomatic)
+```
+
+You can write the formulas for the regression lines using the `equatiomatic` package.
+
+* `r extract_eq(linear_model1)`
+* `r extract_eq(quadratic_model1)`
+
+and you can fill in the results showing the numeric coefficients in the equations:
+
+* `r extract_eq(linear_model1, use_coefs=TRUE, fix_signs=TRUE)`
+* `r extract_eq(quadratic_model1, use_coefs=TRUE, fix_signs=TRUE)`
+
+--->
+
+
+
+These results are the jumping off point for a lot more exploration.
+
+
+## Adding linear models to visualizations
+
+What we really want to do is to add a line to a graph. There are easy ways to do this with ggplot that don't require you to make a separate model; instead we will just add a "smooth" geometry (`geom_smooth`) to a ggplot.
+
+We start with a straight line.
+
+```{r}
+diamonds %>% filter(cut == "Ideal", color == "G") %>%
+  ggplot(aes(x=carat, y = price)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Now try a quadratic.
+
+```{r}
+diamonds %>% filter(cut == "Ideal", color == "G") %>%
+  ggplot(aes(x=carat, y = price)) + 
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ poly(x,2))
+```
+
+That's better, but it's still not great. If we just want to highlight the pattern in the data, we can use a smooth that doesn't work from a simple formula, such as `loess` or `gam`.
+
+```{r}
+diamonds %>% filter(cut == "Ideal", color == "G") %>%
+  ggplot(aes(x=carat, y = price)) + 
+  geom_point() +
+  geom_smooth(method = "loess")
+```
+
+This smooth has an "S" shape -- price increases slowly for the smallest diamonds, then quickly, then slowly again for the largest diamonds.  We get a similar result from a `gam` smooth.
+
+```{r}
+diamonds %>% filter(cut == "Ideal", color == "G") %>%
+  ggplot(aes(x=carat, y = price)) + 
+  geom_point() +
+  geom_smooth(method = "gam")
+```
+
+The `geom_smooth` is especially powerful for facetted plots. The smooth is automatically computed and plotted for each facet separately. 
+
+```{r}
+diamonds %>% 
+  filter(color %in% c("D", "F", "H", "J"), 
+         clarity %in% c("SI1", "VS1", "IF")) %>%
+  ggplot(aes(x=carat, y=price)) + 
+  geom_point(aes(color=cut)) +
+  facet_grid(color ~ clarity) + 
+  scale_colour_viridis_d(begin=0, end =0.8) +
+  geom_smooth(color = "black", size=0.75)  # uses loess
+  # geom_smooth(method = "lm", formula = y ~ poly(x,2), color = "black", size = 0.5) # alternate version
+```
+
+Notice that I've moved the `color=cut` from the ggplot function to the `geom_point` function as the aesthetic for only the points. If the colour was specified in the first ggplot function, the `geom_smooth` would "inherit" this aesthetic mapping and would make a separate smooth for each cut (5 lines per panel). There are not enough data in some panels for some cuts to do a good job, so I revised the plot to only draw one smooth per facet. You should move the `color=cut` back to the ggplot call to see how the result changes.
+

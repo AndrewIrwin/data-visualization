@@ -1,29 +1,124 @@
-# TMI about R
+# More details about R {#r-details}
 
-Too much information about R: I want to know but I don’t want to ask.
+R is a big software package. It's developed over decades of use. It has millions of regular users across many disciplines in teaching,  academic research and professional applications.  It's a computer programming language, and a tool for accessing thousands of data analysis tools, and a great interactive environment for exploring, analyzing, and visualizing data. You won't learn it all.
 
-Important information that de-mystifies r. Mental model of why it works thus way.
+The approach in this course is to teach you how to use R in a particular style, with an emphasis on the ggplot and tidyverse packages. The R markdown documents we write balance interactive use with a documentation of the sequence of steps used in any analysis. I have omitted a lot of details that might be called "fundamentals" and instead focussed on getting work done quickly. In this lesson I fill in some of the gaps. My reasoning is that most important to want to learn a tool before you spend too much time on details, so this course empahsizes what you can do with R. On the other hand, I hope you will use R for a long time on many projects, and once you reach the point you know you will do that, you should start developing a solid mental model of how R works so that you can build robust understandings of how to accomplish tasks with R and get beyond copy, paste,  search, and experiment. Without these fundamentals, its easy to make up incorrect ideas about why and how R works and then get really confused and frustrated. 
 
-A series of q and a about r. Not tested or part of The course.
+A simple introduction to the basics of R appears in [Healy Appendix](https://socviz.co/appendix.html#appendix). A different approach is taken in the R for Data Science book, which introduces the basics of many topics, such as  [tibbles](https://r4ds.had.co.nz/tibbles.html), 
+[strings](https://r4ds.had.co.nz/strings.html), [factors](https://r4ds.had.co.nz/factors.html) and 
+[dates](https://r4ds.had.co.nz/dates-and-times.html), [functions](https://r4ds.had.co.nz/functions.html) and [vectors](https://r4ds.had.co.nz/vectors.html) 
+together with their applications one chapter at a time.
 
-Computer software is full of technical details. Too little understanding and you just get confused and make up rules for yourself. Too much detail and you don’t know why it matters so you get bored and disengaged. Course approach is a just in fine and just enough information. These videos tell you a little bit more.
+## What kinds of data structures does R use?
 
-What is a data frame? Or tibble. Or data table?
+R has many basic types: logical, numeric (double), character, factor. Any combination of these types can be combined into lists. Elements of lists can be named so that they work like dictionaries. Vectors, matrices, and higher dimensional arrays are all composed of the same type of data, usually numeric, factor, or logical.
 
-What is the difference between strings and factors?
+Lists are a very powerful type because they can be given attributes that identify them as special structures with particular intepretations. The most common special list is a data frame, data table or tibble. (The tibble is a refined kind of data frame.) You probably think of a tibble as a matrix where each column can be of a different type. How is this accomplished? It's a list of vectors. Each vector corresponds to a column or variable in the data frame with its own name and data type.
 
-What’s the pipe? Why does ggplot use +?
+Here are some R commands you can use to decode the structure of any object you have in your workspace. I'll demonstrate on the `diamonds` tibble. As always, experiment with these commands by trying them on other objects such as `cars` (a data frame).
 
-What are packages? What’s the difference between installing one and using one? Why is r organized thus way?
+```{r}
+typeof(diamonds)  # it's a list
+class(diamonds) # which works as a data.frame and also as a tbl (tibble)
+str(diamonds)
+class(diamonds$carat)
+class(diamonds$cut)  # its a factor, and the factor is ordered (factors can be unordered)
+class(as.matrix(diamonds %>% select(depth, table, price)))  # if you pick columns of the same type, you can convert them to a matrix
+class(as.matrix(diamonds %>% select(cut, color, clarity)))  
+```
 
-Too many equals signs. = == <- all.equal. Waldo package.
+## What is the difference between strings and factors?
+
+A string is just a sequence of text, enclosed by single or double quotation marks. You can display strings, and search for text, and do other text-type things with them, but you can't (of course) do calculations with them.
+
+You can convert a vector of strings into a vector of factors. This assigns an integer to each different element in the vector. Why would you do this?  The numbers can be assigned to give a particular order to the factors (strings) that is different from alphabetical. The factors can be used in statistical models as though they are numbers, as though they were the indexes you use on a variable in math class (e.g., $x_1, x_2, \dots$).
+
+Here are some simple examples.
+
+```{r}
+v <- c("Apple", "Bananna", "Cat", "Apple", "Orange")
+typeof(v)
+f <- factor(v)
+typeof(f)
+as.numeric(f)
+f
+```
+
+The `forcats` package has lots of great functions for working with factors which can help you control how your plots are drawn. That's the main use we will have for them in this course.
+
+## What’s the pipe? 
+
+The pipe `%>%` is a way to write function composition. In our data analysis we build up calculations from lots of different functions such as `select`, `group_by`, `arrange`, `filter`, `summarize`, `distinct` and many more described in R for Data Science. Each function starts with a tibble, does something to it, and produces a revised tibble. It's very natural to develop a complex series of calculations like a recipe in a cookbook. (Sometimes these recipes are called pipelines!) Before pipes were invented there were basically two options; write the functions down in reverse order, or create lots of temporary variables to store the intermediate results and then discard them. Pipelines are easier to write and easier to read. Here's an example of the three styles, based on a simple analysis of the `diamonds` data.
+
+Pipeline:
+
+```{r}
+diamonds %>% filter(cut=="Ideal") %>% group_by(color) %>% summarize(mean_price = mean(price))
+```
+
+Temporary variables:
+
+```{r}
+d1 <- filter(diamonds, cut=="Ideal")
+d2 <- group_by(d1, color) 
+summarize(d2, mean_price = mean(price))
+```
+Composition:
+
+```{r}
+summarize(
+  group_by(
+    filter(diamonds, cut == "Ideal"), color
+  ), mean_price = mean(price)
+)
+```
+
+Which do you think is easier to understand?  What if the pipline was longer? Or shorter?
+
+Note: as of late 2020, a new kind of pipe is becoming part of R. It looks like this `|>` and works a bit like the existing pipe we use but has some differences. It's not in this course at all yet since the official release of R doesn't have it. This is another example of how R (and all computer systems) change over time. These sorts of big changes are very rare with R because so many people use it for so many purposes. 
+
+## Why does ggplot use +?
+
+When we make plots with ggplot we do something very similar -- we start with a tibble or data frame, but then we make a plot, and then modify it step by step, setting geometries, adding more data, creating facets, setting scales, altering the theme. This seems a lot like a pipeline. Why do we use `+` to connect different `ggplot2` commands?
+
+Simple. The developer [didn't know about](https://www.reddit.com/r/dataisbeautiful/comments/3mp9r7/im_hadley_wickham_chief_scientist_at_rstudio_and/cvi19ly/) the pipe operator in R when ggplot was developed. Adding a feature to a plot seemed like a "plus" operation, so that was chosen. The developer says if he was starting over today, ggplot would use pipes, but its not practical to change at this point. Too many people use it with the `+`. Some [people think](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/5) of functions as verbs and ggplot commands as nouns, and justify the difference that way. Software development is a complicated human activity that takes place over time and develops quirks and lore.
+
+
+## What are packages? What’s the difference between installing one and using one? Why is r organized this way?
+
+There are thousands of R packages. So many that it seems you are always needing to install a new one. Worse, sometimes you want a function, but you can't remember which package it's installed in -- so then you can't use it. (There is a solution to this: use the double ?? followed by the fuction name in the console to search for a function across all packages available on your computer.) Why this complication?
+
+There are several reasons.
+
+* New packages are developed frequently, by different people. And some packages get abandoned too. Packages create modularity that makes it easier to test and fix problems with packages across different groups of developers.
+* The `library` command tells R you want to use a particular package in your current session. Not loading all packages can save time, computer resources, and avoid name collisions (see below).
+* Most people only use a small fraction of all the packages available -- you simply don't need to install them all.
+* Two packages can use the same name for a different function or different dataset. If there were no packages, everyone using R would have to coordinate the naming of everything across all the packages. An impossible task. Sometimes when you load a package with `library` you'll get a message that an existing function has been redefined (or masked) by this new package. You can always add the package name and two colons, `dplyr::filter` for example, to refer to a function in a particular package.
+
+## Why are there so many kinds of "equals signs"?
+
+There are many different concepts behind the humble equals sign used in mathematics. In R we use different symbols: `=`, `==`, `<-` and even some special functions like `all.equal` and `near`. Even with all these differences `=` can mean different things in different contexts, and there is a special version of `<-` written in the other way: `->`. The pipe adds its own twist, you can write `%<>%` as a combined assignment operator and pipe.
+
+So what does each mean?
+
+* `a <- b` means assign the name `a` to the object `b`. (You can use `=` for this, but I encourage you not to.)
+* `a == b` is a comparison between `a` and `b` with the result `TRUE` if they are the same and otherwise `FALSE`. (The notion of "same" in computing is surprisingly complicated, but for basic types, in particular strings, this is fairly straightforward.)
+* `a = b` is used when naming elements of a list or arguments to a function, for example `ggplot(mapping = aes(...))` or `list(a= "apple", b="bananna")`.
+* `near(1.25, 1.253, tol = 0.01)` in the `dplyr` package is used to compare numbers to see if they are close together.
+
+The `waldo` package has functions for testing equality of data frames and showing differences.
+
+
+## Numbers
+
+R is 
 
 NA nan inf -inf
 Testing for Na. Replacing. If then functions.
 
-What’s a function?
+## What’s a function?
 
-What’s a formula?
+## What’s a formula?
 Lm facet also t.test gam
 
 Grammar? Gg gt
@@ -32,7 +127,7 @@ SQL as another example
 
 —-
 
-Cure videos
+Cue videos
 
 How to get help from the Internet?
 

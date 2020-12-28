@@ -1,6 +1,6 @@
-# Detailed outline
+# Detailed outline {#outline}
 
-Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or possibly earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). Most sessions will be recorded and posted on Brightspace.
+Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). Most sessions will be recorded and posted on Brightspace.
 
 ## Important dates
 
@@ -20,21 +20,39 @@ We have 24 synchronous sessions. The last two will be used for oral presentation
 
 **This is a tentative schedule which will be revised throughout the term.**
 
+Each lesson has written notes, a recorded video, and slides. There is a fair amount of duplication among these materials. Some students will prefer the video, others will prefer the written notes and slides. I suggest you learn which you prefer, or if you need to watch the video and read the notes, by experimentation. The tasks are designed to be sure you know the most important parts of each lesson.
+
 ### Week 1: Jan 6-8
 
-- [Lesson 1](#ch_invitation) An Invitation to Data Visualization (Chapter \@ref(ch_invitation), Video for Lesson 1, [Slides](slides/lesson-01.html))
-- Task 1. [Instructions](#task_1). Submit on Brightspace. Due by the end of the day on Monday 11 January.
-- First synchronous meeting Thursday 7 January, 8:35 Atlantic on Collaborate (Brightspace)
-- [Lesson 2](#ch_tools) The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. (Chapter \@ref(ch_tools), Video for Lesson 2, [Slides](slides/lesson-02.html))
-- Lesson 3 Computer preliminaries. Installing R, Rstudio, packages, creating github account
-- Task 2. [Instructions](#task_2). Submit on Brightspace. Due by the end of the day on Monday 11 January.
+The three lessons introduce the content of the course, the tools we will use, and show you how to get your computer set up for the course.
+
+Work on these elements in the following suggested order:
+
+- Lesson 1: An Invitation to Data Visualization. [Notes](#ch_invitation), Video, [Slides](slides/lesson-01.html).
+- Synchronous meeting Thursday 7 January, 8:35 Atlantic on Collaborate (Brightspace)
+- Lesson 2: The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. [Notes](#ch_tools), Video, [Slides](slides/lesson-02.html)
+- Lesson 3: Installing R, Rstudio, packages, creating github account. [Notes](#setup), [Video](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726).
+- Task 1. [Instructions](#task_1). Submit on Brightspace.
+- Task 2. [Instructions](#task_2). Submit on Brightspace.
+
+Tasks 1 and 2 are due Monday 11 January at 9:00 am Atlantic time.
 
 ### Week 2: Jan 11-15
 
-- [Lesson 4](#look-data) Look at data. 
-- [Lesson 5](#first-plot) Making your first plot. 
-- Lesson 6 Version control concepts and working with git
-- Exercise 1. Make a simple markdown document with a figure and commit to a github repository
+The three lessons this week discuss how we perceive visualizations, how to make your own simple scatterplot, and the how and why of using git in this course.
+
+- Lesson 4: Look at data. [Notes](#look-data), Video, [Slides](slides/lesson-04.html)
+- Task 3. [Instructions](#task_3). Submit on Brightspace.
+- Synchronous meeting Tuesday 12 January, 8:35 Atlantic on Collaborate.
+- Lesson 5: Making your first plot. [Notes](#first-plot), Video, [Slides](slides/lesson-05.html)
+- Lesson 6: Version control concepts and working with git. [Notes](#vcs).
+- Task 4. [Instructions](#task_4). Nothing to submit. This is preparation for Assignment 1.
+- Synchronous meeting Thursday 14 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-01.rmd), [html](static/live-coding-01.html)
+- Assignment 1. [Instructions](#assignment_1). Submit on github.
+
+Tasks 3 and 4 are due Monday 18 January at 9:00 am Atlantic time. There is nothing to submit for Task 4, but you can't do Assignment 1 without doing it first, so please don't delay.
+
+Assignment 1 is due Wednesday 20 January at 6:00 pm Atlantic time.
 
 ### Week 3: Jan 18-22
 
@@ -47,14 +65,15 @@ We have 24 synchronous sessions. The last two will be used for oral presentation
 - Lesson 10 Summarizing data with dplyr (group_by, filter, mutate, summarize)
 - Lesson 11 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
 - Lesson 12 Graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
+- Lesson XX. Plot geometries.
 
 - Lesson 2. Describe, summarize, and display data using tables and plots
 
 ### Week 5: Feb 1-5
 
-- Lesson 13 Reading data (csv, tsv, xlsx); import menu item; r commands
-- Lesson 14 Plotting small multiples (facets)
-- Lesson 15 A bit more about R. [Healy Appendix](https://socviz.co/appendix.html#appendix)
+- [Lesson 13](#reading-data) Reading data (csv, tsv, xlsx); import menu item; r commands
+- [Lesson 14]{#facets} Plotting small multiples (facets)
+- [Lesson 15](#r-details) A bit more about R. 
 
 ### Week 6: Feb 8-12
 
@@ -77,7 +96,7 @@ We have 24 synchronous sessions. The last two will be used for oral presentation
 ### Week 9: Mar 8-12
 
 - Lesson 25 Draw maps. [Healy Chapter 7](https://socviz.co/maps.html#maps)
-- Lesson 26 Making maps and chloropleths
+- Lesson 26 Making maps and chloropleths. Heatmaps.
 - Lesson 27 Refine your plots. [Healy Chapter 8](https://socviz.co/refineplots.html#refineplots)
 
 ### Week 10: Mar 15-19

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 What is version control software? | Data Visualization</title>
   <meta name="description" content="Chapter 9 What is version control software? | Data Visualization" />
-  <meta name="generator" content="bookdown 0.21.5 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 What is version control software? | Data Visualization" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Andrew Irwin" />
 
 
-<meta name="date" content="2020-12-14" />
+<meta name="date" content="2020-12-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
   
 <link rel="prev" href="first-plot.html"/>
-<link rel="next" href="accessibility-bias-and-ethics.html"/>
-<script src="assets/header-attrs-2.5.3/header-attrs.js"></script>
+<link rel="next" href="linear-models.html"/>
+<script src="assets/header-attrs-2.6.2/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -118,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 </head>
 
@@ -270,10 +271,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.9" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#your-first-assignment-from-github"><i class="fa fa-check"></i><b>9.9</b> Your first assignment from github</a></li>
 <li class="chapter" data-level="9.10" data-path="what-is-version-control-software.html"><a href="what-is-version-control-software.html#resources-1"><i class="fa fa-check"></i><b>9.10</b> Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html"><i class="fa fa-check"></i><b>10</b> Accessibility, Bias, and Ethics</a>
+<li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Linear models</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#accessibility"><i class="fa fa-check"></i><b>10.1</b> Accessibility</a></li>
-<li class="chapter" data-level="10.2" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#data-collection-and-analysis"><i class="fa fa-check"></i><b>10.2</b> Data collection and analysis</a></li>
+<li class="chapter" data-level="10.1" data-path="linear-models.html"><a href="linear-models.html#making-linear-models"><i class="fa fa-check"></i><b>10.1</b> Making linear models</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-models.html"><a href="linear-models.html#adding-linear-models-to-visualizations"><i class="fa fa-check"></i><b>10.2</b> Adding linear models to visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html"><i class="fa fa-check"></i><b>11</b> Accessibility, Bias, and Ethics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#accessibility"><i class="fa fa-check"></i><b>11.1</b> Accessibility</a></li>
+<li class="chapter" data-level="11.2" data-path="accessibility-bias-and-ethics.html"><a href="accessibility-bias-and-ethics.html#data-collection-and-analysis"><i class="fa fa-check"></i><b>11.2</b> Data collection and analysis</a></li>
 </ul></li>
 </ul>
 
@@ -427,6 +433,7 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
 <li>Rstudio <a href="https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&amp;mode=desktop">help</a></li>
 <li><a href="https://happygitwithr.com/">Happy Git with R</a></li>
 <li><a href="https://www.maxpou.fr/git-cheat-sheet">Advanced Git cheat sheet</a></li>
+<li>A more advanced look at the <a href="https://www.freecodecamp.org/news/git-internals-objects-branches-create-repo/">internals of git</a></li>
 </ul>
 
 </div>
@@ -437,7 +444,7 @@ Provide directory name, indicate the subdirectory, make sure “create a git rep
         </div>
       </div>
 <a href="first-plot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="accessibility-bias-and-ethics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

@@ -30,3 +30,6 @@ The following resources are in the form of checklists or questions to think abou
 
 If you find discussions of these topics you find particularly thought provoking or informative, please share them with me.
 
+## Further reading
+
+* Data Science in a Box notes on [ethics](https://datasciencebox.org/ethics.html)

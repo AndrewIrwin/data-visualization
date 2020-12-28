@@ -1,0 +1,32 @@
+# K mean clustering {#k-means}
+
+
+Make clusters from points.
+
+
+```{r}
+
+library(palmerpenguins)
+library(tidyverse)
+library(broom)
+```
+
+Perform the calculations
+
+
+```{r}
+penguins_no_na <- penguins %>% na.omit()
+kclust <- kmeans(penguins_no_na %>% select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) %>% as.matrix() %>% scale(),
+                 centers = 3)
+kclust
+kc1 <- augment(kclust, penguins_no_na)
+tidy(kclust)
+ggplot(kc1, aes(x=bill_length_mm, y = bill_depth_mm, color=.cluster, shape=species)) + geom_point()
+```
+
+
+
+## Further reading
+
+https://www.tidymodels.org/learn/statistics/k-means/
+

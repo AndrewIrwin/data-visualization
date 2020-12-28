@@ -6,6 +6,8 @@
 * [Introduction to Data Science](https://www.introds.org/) at University of Edinburg by Mine Çetinkaya-Rundel
 * Web page for Kieran Healy's [Data visualization](http://socviz880.co/) course
 * [Stat 545](https://stat545.com/)
+* https://psyteachr.github.io/msc-data-skills/
+* [Data Science in a Box](https://datasciencebox.org/)
 
 ## Books
 

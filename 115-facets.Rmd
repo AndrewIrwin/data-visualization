@@ -1,0 +1,56 @@
+# Multiple graphs {#facets}
+
+When a plot has too much data, or you want to emphasize a particular comparison across categories or numerical values, it is often a good idea to split the graph into several subplots. Like any method, this can be overdone, for example by producing a complex array of too many plots that distract and confuse the reader. Done well, the multiple plots let patterns jump off the page.
+
+Making a sequence or array of similar plots goes by a variety of names: small multiples, lattice, or facets. We'll call them facets because that's the name ggplot uses.
+
+Facetted plots are often useful with datasets that have one or more categorical variables and lots of observations. We'll use the `diamonds` dataset. Let's start by using `glimpse` to see what's there.
+
+```{r}
+glimpse(diamonds)
+```
+
+As a consequence of years of relentless advertising, you may be aware of four widely reported characteristics of diamonds that influence their price: cut, colour, clarity, and carats. Let's make a plot of price vs carets (mass).
+
+```{r}
+p1 <- diamonds %>% ggplot(aes(x=carat, y=price)) + geom_point()
+p1
+```
+
+Clearly there is some structure there. Let's split this plot according to colour and clarity.
+
+```{r}
+p1 + facet_grid(color ~ clarity)
+```
+
+Those plots are really small. Let's pick out just a few colours and clarity values to make an easier to read plot. There are only 5 level for cut, so we'll try to use a discrete color range to highlight the differences within each panel due to cut,
+
+```{r}
+diamonds %>% 
+  filter(color %in% c("D", "F", "H", "J"), 
+         clarity %in% c("SI1", "VS1", "IF")) %>%
+  ggplot(aes(x=carat, y=price, color=cut)) + geom_point() +
+  facet_grid(color ~ clarity) + 
+  scale_colour_viridis_d(begin=0, end =0.8) 
+```
+
+If you want to display many levels of a categorical variable across many panels, the `facet_wrap` function is available. We'll do this here for just one colour.
+
+```{r}
+diamonds %>% 
+  filter(color %in% c("F")) %>%
+  ggplot(aes(x=carat, y=price, color=cut)) + geom_point() +
+  facet_wrap( ~ clarity) + 
+  scale_colour_viridis_d(begin=0, end =0.8)
+```
+
+## Compositing
+
+If you want to combine graphs together into a grid layout, but the graphs don't share axes, then it may be easier to draw the graphs separately and then combine them together into a layout with the `patchwork` package. This package is both simple to use and quite powerful, enabling complex layouts, labelling subplots with codes to aid identification, and combining guides for colours and shapes across panels. The [documentation](https://patchwork.data-imaginist.com/) is excellent.
+
+
+## Further reading
+
+* `cowplot` package
+
+

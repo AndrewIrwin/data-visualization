@@ -1,0 +1,125 @@
+# Solving common problems with R and Rstudio {#common-problems}
+
+It's really common, and frustrating, for beginners to encounter a problem with any software and have no idea how to fix the problem. Computer software, especially programming languages, require precision and attention to detail that you need to learn how to be attentive to.
+
+A really good strategy to get good at finding errors is to take code that works and deliberately introduce an error. Then notice what goes wrong and see how one small change can fix it.
+
+If you get stuck with a "computer error" ask for help before you get too frustrated. A few moments from a different set of eyes or with someone more experienced can make a huge difference. Then use the experience to develop your own strategies for getting "unstuck" and help others with the same problems.
+
+## Really common errors
+
+It's very common to forget a key piece of punctuation -- a bracket or comma for example. Look out for the red underlines and stop symbols in the left margin that Rstudio provides. It's trying to "spell check" your code. The marks don't always occurr in the right place, and sometimes there are lots of red marks even if there is only one problem. Use the markings as indicators to focus your attention while you look for errors.
+
+Delete a bracket or comma in the code below. Move the insertion point to a new location. Wait a second. Look at the highlight marks Rstudio provides and try to use that guide to find the problem. Not all errors will get caught this way. For example change an `=` to a `-` (a typo I make all the time) and notice there is no visual clue of the error. The code is interpretable by R, but probably is not what you want. Still -- how's the computer supposed to know?
+
+```{r}
+diamonds %>%
+  group_by(cut) %>%
+  summarize(mean_price = mean(price),
+            median_table = median(table))
+```
+## Unknown column name
+
+The variables (or columns) in a dataset must be spelled exactly as they appear. The computer distinguished between upper and lower case, but your brain sometimes doens't notice the difference. If there are spaces in a variable name, you have to include single backticks around the name. Don't put the variable names in single or double quotation marks, especially in a ggplot. If you are unsure of the spelling of a variable name, use `skim` in the `skimr` package to summarise the dataframe.
+
+```{r}
+library(skimr)
+skim(diamonds)
+```
+
+Now, write code to summarize or plot this data, but make mistakes in the variable names to see what goes wrong. For example, put `price` in quotation marks. Or use a capital `P`.
+
+```{r}
+diamonds %>% filter(carat > 1, carat < 2, color=="G") %>%
+  ggplot(aes(x=price, y= clarity)) + geom_boxplot() + scale_x_log10()
+```
+
+## Using the wrong equals sign
+
+In computing, and R in particular, there are several different ways to use an equals sign.
+
+* `<-` when defining a new variable (although this is a matter of style, since `=` can be used here)
+* `=` when defining new variables in a summarize or mutate function (and many other places)
+* `==` when making a comparion between a variable and its value
+
+I use all three below. Change each one to the wrong usage (one at a time) to see what errors arise.
+
+```{r}
+summary_table <- diamonds %>% 
+  filter(color == "G") %>%
+  group_by(clarity) %>%
+  summarize(median_price = median(price))
+summary_table
+```
+
+## An error while making a ggplot
+
+It's a good idea to split your long list of ggplot functions across multiple lines. When you do this, always end each line with a `+` sign
+to indicate that the plot instructions continue on the next line. R reads one line at a time and if the code could be complete with that line, 
+then R assumes it is complete. A `+` at the end of the line implies there is more code to come, and so R looks for that.
+
+Erase a `+` sign at the end of one of these lines to see the result. Then experiment with removing a comma or a bracket here and there. What happens if you forget the `aes` function? What if you omit the `geom_point() +` line?
+
+```{r}
+cars %>% ggplot(aes(x=dist, y = speed)) +
+  geom_point() +
+  labs(x="Stopping distance (feet)",
+       y = "Speed (mph)",
+       title = "Scatterplot from cars dataframe")
+```
+
+## An error in a series of functions connected by pipes
+
+The pipe (`%>%`) is used to connect functions together by composition. As with ggplot, it's a good idea to break up a long series of steps into
+several lines, but then you must end each line with a pipe to tell R that more functions are coming. Delete one of the pipes below and see what error occurrs.
+
+```{r}
+diamonds %>% 
+  group_by(cut) %>%
+  summarize(mean_price = mean(price),
+            median_table = median(table))
+```
+
+## Object not found
+
+You are attempting to use a function defined in a library that you have not told R you want to use. Add a `library` function to tell R you are using that library. (This is a necessary step since there are thousands of possible libraries, and different libraries can redefine the same function in different ways, so you have to say which you are using.)
+
+You are attempting to use a variable (e.g., the result of a data manipulation, model, or plot) before you have defined it using the arrow assignment operator (`<-`). Make sure you define variables before you use them
+
+## There is no package called 'XXX'
+
+You are attempting to use a pacakge with the `library` function, but the function doesn't do what you want and gives you an error.
+Use `install.packages` to download the package from the internet. Or use the menu item Tools > Install packages.
+
+
+## Rstudio "play" button disappears from my Rmd document
+
+Sometimes the code blocks in your Rmd document don't show a green "play arrow" in the upper right. This probably happens because somewhere higher up in the document you are missing or have extra backticks.
+ 
+Start at the top of the document and check each code block to see if the play button is still there.
+When you find where the button disappears, examine the start and end of that code block, and the one before it, carefully. Look for spaces at the start of the line and deviations from the three back ticks pattern.
+ 
+## My Rmd won't "knit" and I don't understand the error
+
+Any error in your Rmd document will cause the knit process to abort. This is a safety procedure -- an incomplete document is designed to create an error instead of an incomplete result. The most common causes are
+
+* failing to use the necessary `library` functions
+* not loading the required data before you use it
+* editing your document so you inadvertently perform calculations out of order, so you try to use the result of a calculation before creating it
+
+Look for the "code chunk" where the problem occurs and use the pop-up menu at the bottom of the code editing window to find that code chunk.
+
+
+
+## Knit that file anyway
+
+Plow through errors to help me find the problem..
+
+https://bookdown.org/yihui/rmarkdown-cookbook/opts-error.html
+
+
+## Resources
+
+* [Common R markdown errors](https://rmd4sci.njtierney.com/common-problems-with-rmarkdown-and-some-solutions.html)
+* [Deciphering error messages](https://ismayc.github.io/rbasics-book/6-errors.html)
+

@@ -1,0 +1,21 @@
+# Tables
+
+Why do we make summary tables?
+
+## Creating tables
+
+dplyr
+
+## Presenting and formatting tables
+
+kable, kableExtra
+
+Many others: DT etc
+
+
+
+
+
+## Further reading
+
+* Winners of the Rstudio [2020 table](https://blog.rstudio.com/2020/12/23/winners-of-the-2020-rstudio-table-contest/) contest

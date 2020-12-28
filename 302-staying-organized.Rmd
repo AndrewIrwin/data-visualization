@@ -4,6 +4,12 @@ When you first start learning a computing tool like R, most people just put thei
 
 Here are some suggestions to help you get and stay organized.
 
+## Put everything in a folder
+
+Many people just dump files at random on their Desktop, Documents, or Downloads directory. That's a recipe for chaos, as you eventually use the same file name as you did a few weeks ago (like example.Rmd) and you overwrite something or just mix up different projects.
+
+Create a new directory called something meaningful like "R projects" or "Data visualization" wherever you keep your other files. (I put mine in 'Dropbox' so I don't have to worry about backups.) Then whenever you start a new project (assignment, lesson, etc.) start a new project in a new sub-folder (see below.)
+
 ## Projects
 
 Whenever I start a new project, I create a new folder. When I open R, instead of creating a new R markdown file right away, I first start a new project (File > New Project...). This new project can be in this new folder (directory) or you can create a new folder. 
