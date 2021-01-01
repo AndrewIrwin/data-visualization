@@ -444,7 +444,7 @@ Project report due Friday 9 April, 6:00 pm Atlantic. Submit on github.
 
 <!--chapter:end:002-detailed-outline.rmd-->
 
-# Agendas for synchronous meetings {#sync}
+# Synchronous meeting agendas {#sync}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -554,7 +554,7 @@ Presentations may be made live or can be pre-recorded.
 
 <!--chapter:end:003-synchronous.rmd-->
 
-# Evaluation (#evaluation)
+# Evaluation {#evaluation}
 
 All the work students will complete for evaluation and credit in the course is described below.
 

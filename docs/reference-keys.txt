@@ -54,7 +54,6 @@ tue-26-jan-835
 thu-28-jan-835
 thu-1-april-835
 tue-6-april-835
-evaluation-evaluation
 tasks
 task-1
 bonus-task-lesson-2
