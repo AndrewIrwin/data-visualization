@@ -1,0 +1,19 @@
+# Collaborating with github {#collaboration}
+
+The basics
+
+Push and pull
+
+working on different sections
+
+conflicts (in the repository)
+
+Authority model 
+Pull requests
+
+
+## Further reading
+
+* Software Carpentry [lessons on git and github](https://swcarpentry.github.io/git-novice/)
+* [Collaboration tutorial](https://uoftcoders.github.io/studyGroup/lessons/git/collaboration/lesson/) from University of Toronto, including our case of two people working together without a team lead managing changes
+* Using [github for collaboration](https://mitgcm-example.readthedocs.io/en/latest/contributing/contributing.html#using-git-and-github) on a software package (the MIT general circulation model)

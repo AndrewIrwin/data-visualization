@@ -1,0 +1,83 @@
+---
+title: "Data Visualization"
+subtitle: "Course Mechanics"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-01-05 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+#  Syllabus
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+* Weekly routine
+
+* Evaluation
+
+* Course resources
+
+
+
+???
+
+Hi. I'm Andrew Irwin, your instructor. I'm an applied mathematician and statistician. I develop applications of mathematics and statistics to study problems in biological oceanography. I use all the methods in this course in my research as a matter of routine. I teach many of the skills of this course to my research students, so I'm excited that we have created this new course at Dalhousie so you can learn the princples and practice of data visualization.
+
+This short video is to describe how this online course will work and what you need to do to succeed. A separate video will introduce you to the course goals.
+
+---
+class: middle
+
+# Weekly Routine
+
+* Everything is listed in the "Detailed Outline"
+
+* Recorded lectures
+
+* Synchronous meetings
+  * Tuesday discussions
+  * Thursday live coding
+
+* Assigned work for evaluation
+
+
+---
+class: middle
+  
+# Evaluation
+
+* Tasks
+
+* Assignments
+
+* Project
+  
+
+---
+class: middle
+
+# Course Resources
+
+* Brightspace
+
+* Course Notes
+
+* Textbooks
+  * Healy. Data Visualization.
+  * Wilke. Fundamentals of Data Visualization
+  * Grolemund & Wickham. R for Data Science
+
+* Software
+  * R, Rstudio, git
+  

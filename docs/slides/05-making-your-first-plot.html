@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## Making your first plot
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-01-13 (updated: 2020-12-29)
+
+---
+
+class: middle
+
+
+
+# Use the ggplot2 library
+
+Do this once (if you haven't done it already):
+
+```
+install.packages("tidyverse")
+```
+
+Add this line to every R markdown document:
+
+
+```r
+library(tidyverse)
+```
+
+---
+class: middle
+
+# Get some data
+
+
+```r
+str(mtcars)
+```
+
+```
+## 'data.frame':	32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+```
+
+---
+
+# First plot
+
+
+```r
+mtcars %&gt;%
+  ggplot(aes(x = wt,
+             y = mpg)) +
+  geom_point()
+```
+--
+.pull-left[
+The "pipe" symbol (`%&gt;%`) is function composition. `f(g(x))` can be written `x %&gt;% g %&gt;% f`.
+
+`aes` is a function to define aesthetic associations between features of your plot and variables in the dataset.
+
+Parts of a ggplot are added togther with `+`
+
+The kind of plot is called its "geometry". A scatterplot is `geom_point`.
+]
+
+--
+.pull-right[
+&lt;img src="05-making-your-first-plot_files/figure-html/fig0-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+# What if you forget ... ?
+
+
+```r
+mtcars %&gt;%
+  ggplot(aes(x = wt,
+             y = mpg))
+```
+
+--
+.pull-left[
+Try "forgetting" other parts of the code to see what goes wrong.
+]
+.pull-right[
+&lt;img src="05-making-your-first-plot_files/figure-html/fig1-1.png" width="672" height="80%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+# Add some colour
+
+
+```r
+mtcars %&gt;%
+  ggplot(aes(x = wt,
+             y = mpg,
+*            color = factor(cyl))) +
+  geom_point()
+```
+
+--
+.pull-left[
+`cyl` is a number, so I must turn it into a categorical variable (factor) to get a discrete colour scale.
+
+Try using `cyl` instead of `factor(cyl)`.
+]
+.pull-right[
+&lt;img src="05-making-your-first-plot_files/figure-html/fig2-1.png" width="768" height="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Make the text larger
+
+
+```r
+mtcars %&gt;%
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + 
+  geom_point() +
+* theme(text = element_text(size = 28))
+```
+
+---
+# Make the text larger
+
+&lt;img src="05-making-your-first-plot_files/figure-html/fig3-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Make the symbols larger
+
+
+```r
+mtcars %&gt;%
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + 
+* geom_point(size=3) +
+  theme(text = element_text(size = 28)) 
+```
+
+--
+
+I'm setting the size of all the symbols, not connecting a variable to the size aesthetic. So don't use `aes`.
+
+---
+# Make the symbols larger
+
+&lt;img src="05-making-your-first-plot_files/figure-html/fig3b-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Customize the labels
+
+
+```r
+mtcars %&gt;%
+  ggplot(aes(x = wt,
+             y = mpg,
+             color = factor(cyl))) + 
+  geom_point(size=3) +
+  theme(text = element_text(size = 28)) +
+* labs(x = "Car mass (x 1000 pounds)",
+*      y = "Fuel consumption (mpg)",
+*      color = "Number of\nCylinders",
+*      title = "Car road test results",
+*      caption = "from Motor Trend magazine")
+```
+
+---
+# Customize the labels
+
+&lt;img src="05-making-your-first-plot_files/figure-html/fig4-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+
+# Summary
+
+* Start with data
+
+* Pipe (`%&gt;%`) into `ggplot`
+
+* Define the aesthetics: `aes(x = ..., y = ..., color = ..., shape = ...)`
+
+* Define the geometry: `geom_point` shown here, but there are lots more
+
+* Customize text
+
+---
+class: middle
+
+# Suggested reading
+
+* Course notes: Making your first plot
+
+* Healy. Section 2.6. Make your first figure
+
+* R2DS. Chapter 3: Data visualization
+
+---
+class: middle, inverse
+
+# Task and Assignment
+
+* Try these plotting commands on your own 
+
+* Assigment 1: Your first plotting exercises
+
+  * Do Task 4 following Lesson 6 on git and github first
+
+
+---
+# Datasets to experiment with
+
+* mtcars, iris and many other well-known data in datasets package
+* penguins in palmerpenguins package
+* gapminder in gapminder package  (but see website too [Gapminder](https://gapminder.org))
+* diamonds in ggplot2 package
+* nycflights13 in dbplyr package
+
+Use `str(mtcars)` (or other dataset) and `View(mtcars)` to look at the data.
+
+Use ?mtcars to get documentation for the dataset, or use the search in the "Help" panel.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

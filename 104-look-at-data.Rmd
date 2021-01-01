@@ -58,7 +58,7 @@ The aspect ratio ([Healy](https://socviz.co/lookatdata.html#what-makes-bad-figur
 
 The checkerboard illusion ([Healy](https://socviz.co/lookatdata.html#perception-and-data-visualization) Figure 1.14) is an example of how our brains process brightness in the context of neighbouring parts of the image. The squares labeled A and B are the same colour, represented by the same underlying data, but look completely different. Colour or grayscale brightness, as a result, is not a good way to indicate a quantity to be compared across regions of a plot. (By contrast, a small number of colours can be very effective at distinguishing a small number of categories.)
 
-```{r fig.cap="The checker shadow illusion. [Wikipedia](https://en.wikipedia.org/wiki/Checker_shadow_illusion)"}
+```{r echo=FALSE, out.width = "80%", fig.cap="The checker shadow illusion. [Wikipedia](https://en.wikipedia.org/wiki/Checker_shadow_illusion)"}
 knitr::include_graphics("static/checker-shadow-illusion.png")
 ```
 
@@ -96,7 +96,7 @@ p1 + p2
 
 A common question when plotting a scatter plot of two quantitative variables is whether to use lines, points, or both for the data (see the sketch below.) Which is appropriate? Often data points are discrete and little is known about values between the points; lines can thus be misleading because they give a visual indication of data between points. Lines act as guides joining points with the same symbol, which gives a stronger visual impression and can simplify the message of a complex plot. If the underlying data are continuous and the lines are a reasonable representation of the process being represented, then symbols may be unnecessary. In short, the most appropriate representation depends on your understanding of the data and the message to be communicated.
 
-```{r fig.cap="Points or lines?"}
+```{r echo=FALSE, fig.cap="Points or lines?", out.width="80%"}
 knitr::include_graphics("static/points-lines.png")
 ```
 

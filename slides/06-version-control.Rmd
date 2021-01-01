@@ -1,0 +1,114 @@
+---
+title: "Data Visualization"
+subtitle: "Version control"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-01-15 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+# What is version control software for?
+
+* Managing changes to files
+
+* Tracking versions between major revisions 
+
+* Sharing data, code, and results with team members
+
+* Sharing data, code, and results with the world 
+---
+class: middle
+
+# Why is version control software important for visualizations?
+
+* Manage changes to data
+
+* Facilitate collaboration
+
+* Organize revision to methods
+
+* Manage your archive of past methods and results
+
+* Distribute data, methods and results
+
+---
+class: middle
+
+# Core git concepts
+
+* Working directory
+
+* Repository
+
+* stage (add) files
+
+* commit to repository
+
+* Commit messages
+
+---
+class: middle
+
+# What is github?
+
+* Internet service to manage repostory in remote location ("remotes")
+
+* Collaboration tool
+
+* Many other services (error checking, websites, teams, feedback)
+
+* _Need a free account_. Sign up at github.com
+
+---
+class: middle
+
+# How to use git and github with Rstudio?
+
+* Create a project with a git repository
+
+* Use the "git" pane to stage, commit, and push to remote (github)
+
+---
+class: inverse, middle
+
+# Demonstrations
+
+* See step-by-step instructions in lesson
+
+
+---
+class: middle
+
+# Suggested reading
+
+* Course notes: Version control
+
+* [Intro to Data Science](https://www.introds.org/) course slides on [version control](https://ids-s1-20.github.io/slides/week-01/w1-d06-toolkit-git/w1-d06-toolkit-git.html#1)
+
+* [Data science in a box](https://datasciencebox.org/) chapter on [version control](https://datasciencebox.org/version-control.html)
+
+* Bryan and others. [Happy git with R](https://happygitwithr.com/)
+
+
+---
+class: middle, inverse
+
+# Task
+
+* Task 4: 
+  * Check out the github repository for your assignment 1
+
+

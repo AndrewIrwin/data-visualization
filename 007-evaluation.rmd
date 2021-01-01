@@ -1,4 +1,4 @@
-# Evaluation
+# Evaluation (#evaluation)
 
 All the work students will complete for evaluation and credit in the course is described below.
 
@@ -6,12 +6,12 @@ All the work students will complete for evaluation and credit in the course is d
 
 Tasks for each lesson are described here. Each task is designed to demonstrate a particular skill or idea from the lesson or prepare for the next lesson.
 
-Tasks will be evaluated on a 0-10 scale on the following rubric:
+Tasks will usually be evaluated on a 0-10 scale on the following rubric:
 
 * 0-5: Work missing or mostly incomplete.
 * 6-7: Mostly complete or complete with major deficiencies.
 * 8: Complete and meets expectations.
-* 9-10: Complete and excells in some respect: organization, clarity, creativity. 
+* 9-10: Complete and excels in some respect: organization, clarity, creativity. 
 
 ### Task 1 (Lesson 1) {#task-1}
 
@@ -41,7 +41,7 @@ See the instructions in the [syllabus](#syllabus_software) or in [Lesson 3 notes
 2. Login to [rstudio.cloud](https://rstudio.cloud/project/1998812). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer.
 5. Ask for help with any of these tasks if you need it. 
 
-Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name.
+Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name in one of the quiz questions.
 
 ### Task 3 (Lesson 4) {#task-3}
 
@@ -53,26 +53,61 @@ a. For the plot linked above, what variables are shown for each of x and y posit
 b. According to [Healy Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
 c. In your judgment, is this visualization effective or too complex. Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://bit.ly/3oAb0Uq) before answering the question.
 
-Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace.
+Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace. Assesment: 10 points total, 5 points per question.
 
 ### Task 4 (Lesson 6) {#task-4}
 
-Use Rstudio to create a new project from a github repository. You will use this repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
+Use Rstudio to create a new project from the github repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
 
 * Look for an invitation in your email sent earlier this week.
 * Copy the link.
-* Use Rstudio, menu File > New Project > From repository...
+* Use Rstudio, menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer (or in your Rstudio.cloud workspace.)
+* If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu). rstudio.cloud must be linked to your github account to access private repositories. You'll get instructions on how to do this when you try to create a new project from a github repository. 
 
-
-### Lesson 5
+### Task 5 (Lesson 5) {#task-5}
 
 Make the plot from Healy Section 2.6. Look at the other variables in the gapminder dataset and make some other plots of your choosing. Put your plots in an Rmd. Knit the R markdown file. Nothing to submit. Ask for help if you have problems.
 
-### Lesson 6
+### Task 6 (Lesson X) {#task-6}
 
-Check out a github repository from online course. Add a plot to the Rmd document you find there. Commit your changes and push the Rmd file back to github.
+Using scales effectively. Improving figures.
+Diverging continuous colour
+Colour blind tester
+Hiding guides. Unifying guides.
 
-**More to come.**
+### Task 7 (Lesson X) {#task-7}
+dplyr summarize
+
+### Task 8 (Lesson X) {#task-8}
+tables
+
+### Task 9 (Lesson X) {#task-9}
+Reading data
+
+### Task 10 (Lesson X) {#task-10}
+Facets
+
+### Task 11 (Lesson X) {#task-11}
+Work with models
+
+### Task 12 (Lesson X) {#task-12}
+Add smooths to plots
+
+### Task 13 (Lesson X) {#task-13}
+PCA
+### Task 14 (Lesson X) {#task-14}
+MDS, Kmeans
+
+### Task 15 (Lesson X) {#task-15}
+### Task 16 (Lesson X) {#task-16}
+### Task 17 (Lesson X) {#task-17}
+### Task 18 (Lesson X) {#task-18}
+### Task 19 (Lesson X) {#task-19}
+
+### Task 20 (Lesson X) {#task-20}
+### Task 21 (Lesson X) {#task-21}
+### Task 22 (Lesson X) {#task-22}
+
 
 ## Assignments
 
@@ -80,38 +115,51 @@ Assignments are opportunities to apply and combine the skills from several lesso
 
 Assignments should be submitted to the relevant github repository, generally as an R markdown document.
 
-Assesment rubric:
-
-* 0 none of the objectives met; document has errors that prevent knitting
-* 1 some objectives met
-* 2 some objectives met
-* 3 no substantive errors
-* 4 excellent work, clearly presented and thoughtfully designed
-
 
 ### Assignment 1 {#assignment-1}
 
-Make a simple markdown document with a figure and commit to a github repository
+Make a simple markdown document with a figure and commit to a github repository. Ensures you know a foundation of of using git, github, R markdown, and ggplot to build new knowledge and skills on top.
+
+### Assignment 2 {#assignment-2}
+
+learn, describe, and use a ggplot extension. 
+- ggridges, ggupset, ggrepel, cowplot, patchwork, viridislite
+- violin, uncertainty displays (half eye, etc)
 
 
-learn, describe, and use a ggplot extension. 5% (Week 7, after break)
-- ggrepel, cowplot, patchwork, viridislite
+### Assignment 3 {#assignment-3}
 
-### Assignment 2
-
-learn, describe, and use a table layout package. 5%  (Week 9)
+learn, describe, and use a table layout package.
 - DT, gt, flextable, kable/kableExtra
 
-(Do one as a 5 minute video with script and slides. Do the other as a rmd tutorial.)
+### Assignment 4 {#assignment-4}
 
-### Assignment 3
+[Tidy Tuesday]() is a weekly activity to support people learning to use R for data analysis and visualization. Each week a new dataset is posted and interested participants post their visualizations. Some are complex pieces of work by people with lots of experience, but many are the work of beginners just learning to make good visualizations. I encourage you to explore the datasets and example visualizations others have made as a source of ideas and inspiration.
 
-Mini-project: Tidy Tuesday 1. 5% (Week 10)
+For the next two assignments, I'll select a few datasets and ask you to work with one of those for your assignment.
 
-### Assignment
+For this assignment you will make scatter plots with smooths (linear, loess, or gam) and dimensionality reduction (PCA or MDS). The goal is to gain some insight into the data and present some aspect of the data in a visually appealing way. You may be able to use the data as its presented, or you may need to transform it in some way first (for example using the dplyr tools). You should feel free to show a subset of the data if you think that makes a better visualization to highlight a particular feature of the data.
 
-Mini-project: Tidy Tuesday 2. 5% (Week 11)
+Present your work as a short R markdown report. You should describe the dataset, explain any analysis or transformations you did, present at least 2 visualizations, and describe the main messages conveyed by your visualization. Full instructions are in the repostory.
 
+### Assignment 5 {#assignment-5}
+
+This is the second Tidy Tuesday assignment. You should create a map and some other analysis such as a data table or other visualization already discussed in class.
+
+Organize your work as a slide presentation with presenter notes. An example and instructions are in the repository.
+
+### Assignment 6 {#assignment-6}
+
+This is a peer evaluation assignment. You should provide, in separate documents as described in the repository,
+
+* confidental feedback on your team mates work for the term project
+* a peer evaluation of two oral presentations from other teams, which will be shared with the presenters.
+
+You should provide thoughtful and constructive feedback on the work of your classmates. Everyone's work has good aspects and areas where there could be improvement; you should aim to provide useful feedback in both areas.
+
+Your assignment for the peer evaluation is in the project planning repository we all share. Pull an updated version from github after XXX to see your assigment. Remember to do this before the first day of presentations so you know which presentation to evaluate!
+
+A rubric and guide for your evaluations is in the repository for this assignment.
 
 ## Term project
 
@@ -122,12 +170,12 @@ You should create compelling visualizations of your data. Pay attention to your 
 ### Deliverables
 
 * Proposal - due Fiday 12 March at 6:00 pm
-* Presentation - due Friday 2 April at 6:00 pm as pre-recorded video or live presentation in class on March 30 or April 1.
+* Presentation - due Thursday 1 April or Tuesday 6 April during synchronous meeting.
 * Report - due Friday 9 April at 6:00 pm
 
-Work in pairs. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
-Use a single github repository for the proposal, presentation, and final report. If you work in pairs, producing joint work, use the repository for one team member and add the other member to the repository.
+Use a single github repository for the proposal, presentation, and final report. If you work in pairs, producing joint work, use the repository for one team member and add the other member to the repository. See the notes on [collaboration with github](#collaboration) for guidance.
 
 ### Proposal
 

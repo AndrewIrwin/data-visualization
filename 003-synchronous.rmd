@@ -1,0 +1,107 @@
+# Agendas for synchronous meetings {#sync}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We have 24 synchronous sessions. The last two will be used for oral presentations.
+
+## Thu 7 Jan 8:35
+
+Before the meeting: 
+
+* Review Week 0 material (in the [detailed outline](#outline))
+* Watch the video for Lesson 1
+
+Meeting agenda:
+
+* Course goals
+* How the course works
+* Purpose of each component (recorded videos, notes, slides, textbook readings, evaluation activities)
+* Questions and discussion
+
+## Tue 12 Jan 8:35
+
+Before the meeting:
+
+* Complete Tasks 1 and 2 (in [Evaluation](#evaluation))
+* lesson 4 (video, notes)
+
+Meeting agenda:
+
+* Discuss and resolve problems with setting up R, Rstudio, git
+* Discuss Lesson 4 ideas and Task 3 questions
+
+## Thu 14 Jan 8:35
+
+Before the meeeting:
+
+* Lesson 5, 6
+
+Meeting agenda:
+
+* Introduce how R markdown documents work and why we use them
+* Live coding examples from Lesson 5 and Lesson 6
+* Questions and discussion
+
+## Tue 19 Jan 8:35
+
+Before the meeeting:
+
+* Lesson 7
+
+Meeting agenda:
+
+* Questions and discussion arising from Lesson 7
+* Troubleshooting Assignment 1 (due yesterday, but any ligering questions should be resolved as soon as possible)
+
+## Thu 21 Jan 8:35
+
+Before the meeeting:
+
+* Lesson 8
+
+Meeting agenda:
+
+* Live coding examples of using ggplot
+
+## Tue 26 Jan 8:35
+
+Before the meeeting:
+
+* Lesson 10
+
+Meeting agenda:
+
+* Utility of tidy data organization
+* Why and how we summarize data
+
+## Thu 28 Jan 8:35
+
+Before the meeeting:
+
+* Lesson 11
+
+Meeting agenda:
+
+* Live coding examples using `dplyr` tools
+
+
+
+
+## Thu 1 April 8:35
+
+Oral presentations day 1. Each presentation will be a maximum of 5 minutes, so there will be time for about 12 presentations.
+
+A sign-up sheet will be posted on Brightspace once the proposals have been submitted.
+
+Presentations may be made live or can be pre-recorded.
+
+## Tue 6 April 8:35
+
+Oral presentations day 2. Each presentation will be a maximum of 5 minutes, so there will be time for about 12 presentations.
+
+A sign-up sheet will be posted on Brightspace once the proposals have been submitted.
+
+Presentations may be made live or can be pre-recorded.
+

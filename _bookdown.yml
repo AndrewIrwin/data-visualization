@@ -11,6 +11,7 @@ new-session: yes
 rmd_files: [ "index.rmd", 
              "001-syllabus.rmd",
              "002-detailed-outline.rmd",
+             "003-synchronous.rmd",
              "007-evaluation.rmd",
              "101-introduction.rmd",
              "102-intro-to-r.rmd",
@@ -18,6 +19,9 @@ rmd_files: [ "index.rmd",
              "104-look-at-data.rmd",
              "105-first-plot.rmd",
              "106-version-control.rmd",
+             "107-grammar-graphics.Rmd",
+             "108-ggplot.Rmd",
              "119-linear-models.rmd",
-
+             "305-data.rmd",
+             "302-staying-organized.rmd",
              "911-ethics.rmd"]

@@ -21,12 +21,12 @@ gg_miss_var(penguins)
 ```
 
 ```{r}
-codebook(penguins)  # not sure this works or does anythign interesting. Can create a csv file to document the dataset.
+# codebook(penguins)  # not sure this works or does anythign interesting. Can create a csv file to document the dataset.
 ```
 
 Citation: Allison Marie Horst and Alison Presmanes Hill and Kristen B Gorman (2020) palmerpenguins: Palmer Archipelago (Antarctica) penguin data. version 0.1.0,  https://allisonhorst.github.io/palmerpenguins/
 
-```{r fig.cap="Adelie penguin colonies on Torgerson Island (Andrew Irwin, January 2012)}
+```{r fig.cap="Adelie penguin colonies on Torgerson Island (Andrew Irwin, January 2012)"}
 knitr::include_graphics("static/torgerson-landscape-adelie-colonies.jpg")
 ```
 
@@ -58,7 +58,9 @@ if (download_big_files) {
 Compute quantiles of windspeed for each of 36 directions
 
 ```{r}
-w %>% group_by(wind_dir) %>%
+selected_weather_hour %>% 
+  filter(TC_id == "YHZ") %>%
+  group_by(wind_dir) %>%
   filter(!is.na(wind_spd)) %>%
   filter(wind_dir != 0) %>%
   summarize(wind_min = min(wind_spd), wind_max = max(wind_spd), wind_median = median(wind_spd),

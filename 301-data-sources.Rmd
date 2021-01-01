@@ -1,26 +1,25 @@
 # Data sources
 
-## built-in and exisiting packages
+## Built-in and exisiting packages
 
-datasets
-palmerpenguins
-gapminder (but see website too [Gapminder]() )
+Go-to datasets useful for lots of simple visualizations:
 
-## websites
+* mtcars and many other well-known data in datasets package
+* penguins in palmerpenguins package
+* gapminder in gapminder package  (but see website too [Gapminder](https://gapminder.org))
+* diamonds in ggplot2 package
+* nycflights13 in dbplyr package
 
-[Our World In Data](https://ourworldindata.org/) a curated set of over 3000 charts with documentation and open source data.
+## Websites with data collections
 
+* [Our World In Data](https://ourworldindata.org/) a curated set of over 3000 charts with documentation and open source data.
+* [Awesome data](https://github.com/awesomedata/awesome-public-datasets) project
 * One person's collection of [data](https://github.com/tacookson/data) of various sources
 
-## student project
 
-find a dataset
-document it here
+## Distribution of data
 
-
-## distribution of data
-
-[FAIR](https://en.wikipedia.org/wiki/FAIR_data)
+* [FAIR](https://en.wikipedia.org/wiki/FAIR_data)
 
 ## Canadian COVID data
 

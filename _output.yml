@@ -7,6 +7,10 @@ bookdown::bs4_book:
   # also bslib, downlit
   # remotes::install_github("rstudio/bslib")
   # install.packages("downlit")
+  # Build
+  # knit all Rmd files in slides/
+  # cp -R static docs # files used in slides will be missed by book building process (images, js)
+  # cp -r slides/lib docs/slides/  # these files get missed too?
 bookdown::gitbook:
   lib_dir: assets
   split_by: chapter

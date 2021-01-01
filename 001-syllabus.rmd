@@ -24,9 +24,9 @@ At least one MATH or STAT course at or above the 1000 level. No experience with 
  
 Course notes:
 
-- Andrew J Irwin (2021) [Data visualization](https://andrewirwin.github.io/data-visualization/) _Will be revised throughout the course._
+- Andrew J Irwin (2021) [Data visualization](https://andrewirwin.github.io/data-visualization/) _Will be written and revised during the course._
 
-Textbook: 
+Required textbook: 
 
 - Kieran Healy (2018) [Data Visualization: A Practical Introduction](https://socviz.co). Princeton University Press. 
 
@@ -37,57 +37,84 @@ Supplemental textbooks:
 
 The textbook and supplemental textbooks are available in printed form and online. The online versions are free to use. You are not required to buy the books on paper. All three are excellent books with very distinct goals.
 
+There are a lot of materials for this course. The course videos and notes highlight the most important information, with many references  to the textbooks and other online materials.
+
 ## Course structure
 
 Each week will be structured around the following components:
 
-- Recorded mini-lectures for each lesson (linked to course notes and slides)
-- Reading course notes and excerpts from the textbooks linked to each lesson
-- Interactive discussion of the week's lessons (Tuesday, 8:30 am Atlantic)
-- Live coding tutorial / lab (linked to materials created before and during the meeting, Thursday 8:30 am Atlantic)
+- Watching recorded mini-lectures for each lesson
+- Reading course notes and excerpts from the textbooks
+- Interactive discussion of the week's lessons (Tuesday 8:30 am Atlantic)
+- Live coding tutorial / lab (Thursday 8:30 am Atlantic)
 - Opportunities to develop and demonstrate your knowledge (tasks, assignments, and a term project)
 
-*Follow the [detailed outline](#outline) for each week's plan to keep you on track.*
+**Follow the [detailed outline](#outline) for each week's plan to keep you on track.**
 
-If you have questions about the course material, please ask them during the Tuesday synchronous meetings. If your question can't wait, write it on the Piazza [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public or on the discussion forum where everyone in the class can benefit from the exchange. Please feel free to use the discussion forum to talk with other classmates and help each other.
+If you have questions about the course material, please ask them during the  synchronous meetings. If your question can't wait, write it on the Piazza [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public where everyone in the class can benefit from the exchange. Please  use the discussion forum to talk with other classmates and help each other.
 
-We will use Collaborate Ultra accessed through [Brightspace](https://dal.brightspace.com/d2l/home/159870) for the interactive sessions. Generally these will be recorded so that you can watch them later if you are unable to participate. You are strongly encouraged to come to these meetings. The interactive sessions are the primary forum for asking questions and discussing course material. These regular meetings will help give your work on the course structure. I strongly encourage you to "raise your hand" during the discussion and ask questions using your voice. Some students prefer to use the chat to ask questions, and that is fine with me, but from my perspective it leads to a more disjointed and less useful interaction.
+We will use Collaborate Ultra accessed through [Brightspace](https://dal.brightspace.com/d2l/home/159870) for the interactive sessions, which will help structure your work. These will usually be recorded so that you can watch them later if you are unable to participate. You are strongly encouraged to come to these meetings since the interactive sessions are the primary forum for asking questions and discussing course material. I strongly encourage you to "raise your hand" during the discussion and ask questions using your voice. Some students prefer to use the chat to ask questions, and that is fine with me, but from my perspective it leads to a more disjointed and less useful interaction. 
+
+**Plan to review the [agenda](#sync) for each meeting before it begins.**
 
 ## Evaluation
 
-_Tasks_ are opportunities to test your understanding of the key concepts from each lesson and demonstrate you have developed basic profiency with some computing skills. Most lessons will have a task for you to complete.
+_Tasks_ are opportunities to test your understanding of the key concepts from the lessons and demonstrate you have developed basic proficiency with essential computing skills. Most lessons will have a task for you to complete.
 
-_Assignments_ combine skills from multiple lessons into a meaningful data visualization activity. These will require using skills from multiple tasks and applying the content of lessons in thoughtful and sometimes creative ways.
+_Assignments_ combine skills from multiple lessons into a meaningful data visualization activity. These are opportunities to apply the content of lessons in thoughtful and sometimes creative ways.
 
-The _final project_ is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present to a reader an analysis of a dataset of your choice. The proposal will select a dataset and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and a couple of key visualizations. The report will be a polished document showing off many of the ideas of the course using this dataset.
+The _final project_ is an opportunity to combine many of the skills learned in the course. You will explore, analyze, and present to a reader an analysis of a dataset of your choice. Your proposal will select a dataset and describe some of your planned analyses. The oral presentation will be a 5 minute overview of your data and key visualizations. The report will be a polished reproducible document demonstrating many of the ideas of the course using your selected dataset.
 
-* Tasks for most lessons (30%, roughly 2 per week, equally weighted)
+* Tasks for most lessons (30%, roughly 2 per week, due weekly, equally weighted)
 * Assignments (40%, roughly 1 every two weeks, equally weighted)
 * Term project, divided into three components
   * Proposal, due Friday 5 March, 5%
   * Oral presentation, due Thursday 1 April, 10%
   * Report, due Friday 9 April, 15%
 
-Tasks are due on Wednesdays. Assignments are due on Monday mornings. Late work will be accepted without penalty until the work is graded or solutions are posted. After that, no later work will be accepted, but your two lowest (or missing) _task_ marks will be dropped from your evaluation. If an additional accommodation is requested and granted, the value of that work will be redistributed to other tasks or assignments. *If you anticipate not being able to submit the proposal, oral presentation, or report on time, please contact me by email.*
+Tasks are due on Monday. Assignments are due on Wednesday. Late work will be accepted without penalty until the work is graded or solutions are posted. After that, no later work will be accepted, but your two lowest (or missing) _task_ marks will be dropped from your evaluation. If an additional accommodation is requested and granted, the value of that work will be redistributed to other tasks or assignments. *If you anticipate not being able to submit the proposal, oral presentation, or report on time, please contact me by email.*
 
 Grades will be reported on [Brightspace](https://dal.brightspace.com/d2l/home/159870)
 
 ## Software {#syllabus_software}
 
-The statistical software R and RStudio and version control software git will be used in this course. No prior experience with
+We will use the statistical software R and RStudio and version control software git. No prior experience with
 R, RStudio or git is assumed. We'll take class time to learn the software.
 
 * To download and install R go to [r-project.org](https://www.r-project.org/) and click on the link to [download R](http://cran.r-project.org/mirrors.html)
 * To download and install Rstudio, go to [Rstudio.com](https://www.rstudio.com/) and click on the link to [download Rstudio](https://rstudio.com/products/rstudio/download/)
 * To download and install git: 
   * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win)
-  * on Macintosh, use the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type 'xcode-select --install' to download and install git.
+  * on Macintosh, use the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type `xcode-select --install` to download and install git.
 
 These tools can be installed on Linux computers as well. Contact me if you have trouble. If you have a Chromebook you can use all these tools through the cloud service [rstudio.cloud](https://rstudio.cloud/project/1998812). Everyone should learn to use the cloud service as a backup in case of problems with setting up the software on their own computer.
 
 R and Rstudio are available on Dalhousie computer labs, but the git version control software must be installed following the instructions for Windows computers above. Since all your user files are erased from lab computers when you log out, this process must be repeated on each login.
 
 [Videos](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726) demonstrating how to install this software are on Brightspace.
+
+## Course Policies
+
+Credit will not be given for assignments submitted after grading is complete or the solutions are posted. If you miss an assignment due to illness or other event outside your control, contact me for an accommodation. If an accomodation is granted, assignment weight will be shifted to the rest of the assignments. Your two lowest _Task_ grades will be dropped from the calculation of your final grade automatically and as a result I will be reluctant to offer accommodation for late or missed tasks.
+
+Your goal in this course is to learn the principles and skills of data visualization. Most people benefit from a mixture of collaborative and independent work. The general guideline is that work you submit should be your own---your ideas, your thoughts, your choices, your code, your typing. You are encouraged to discuss your work with the instructor and students. When you help another student, be careful you don't help them so much that you inhibit their learning.
+
+_Tasks_ are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own. _Assignments_ are assessments of your skills and should be done independently. The _final project_ and its components may be done in groups, but the work on the project should only be the work of members of the group.
+
+Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to learn from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
+ 
+## Important dates
+
+* Wed 6 Jan: Term begins
+* Fri 5 Feb: Munro day, University closed
+* 15-19 Feb: Study break
+* Fri 12 March: Project proposal due
+* Fri 2 Apr: Good Friday, University closed
+* Tue 6 Apr: Last Tuesday/Thursday class
+* Thu 8 Apr: Last day of classes
+* Fri 9 Apr: Final project due
+* 10-23 Apr: Exam period
+
 
 ## Letter grades
 
@@ -106,16 +133,6 @@ grade_table %>% unite(`Grade range`, min_grade, max_grade, sep="-") %>%
         rename(`Letter grade`=letter) %>% gt() %>% cols_align("center")
 ```
 
-## Course Policies
-
-Credit will not be given for assignments submitted after grading is complete or the solutions are posted. If you miss an assignment due to illness or other event outside your control, contact me for an accommodation. If an accomodation is granted, assignment weight will be shifted to the rest of the assignments. Your two lowest _Task_ grades will be dropped from the calculation of your final grade automatically and as a result I will be reluctant to offer accommodation for late or missed tasks.
-
-Your goal in this course is to learn the principles and skills of data visualization. Most people benefit from a mixture of collaborative and independent work. The general guideline is that work you submit should be your own---your ideas, your thoughts, your choices, your code, your typing. You are encouraged to discuss your work with the instructor and students. If you help another student, be careful you don't help them so much that you inhibit their learning.
-
-_Tasks_ are primarily designed to help you learn and you are encouraged to seek assistance from classmates, but work you submit must be your own. _Assignments_ are assessments of your skills and should be done independently. The _final project_ and its components may be done in groups, but the work on the project should only be the work of members of the group.
-
-Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to learn from many different sources; if you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
- 
 
 ## University Policies and Statements
 
