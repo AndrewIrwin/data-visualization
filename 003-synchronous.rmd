@@ -1,4 +1,4 @@
-# Agendas for synchronous meetings {#sync}
+# Synchronous meeting agendas {#sync}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

@@ -1,6 +1,6 @@
-# Data Abstracts and Dictionaries {#data}
+# Data Sources, Abstracts and Dictionaries {#data}
 
-```{r echo=FALSE}
+```{r include=FALSE}
 library(naniar)
 library(palmerpenguins)
 library(codebook)

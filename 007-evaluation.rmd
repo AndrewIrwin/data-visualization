@@ -1,4 +1,4 @@
-# Evaluation (#evaluation)
+# Evaluation {#evaluation}
 
 All the work students will complete for evaluation and credit in the course is described below.
 
