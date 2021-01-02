@@ -45,13 +45,13 @@ Each week will be structured around the following components:
 
 - Watching recorded mini-lectures for each lesson
 - Reading course notes and excerpts from the textbooks
-- Interactive discussion of the week's lessons (Tuesday 8:30 am Atlantic)
+- Scheduled office hours (Tuesday 8:30 am Atlantic). Come if you have questions or want to listen in to discussions about course material based on questions asked by other students.
 - Live coding tutorial / lab (Thursday 8:30 am Atlantic)
 - Opportunities to develop and demonstrate your knowledge (tasks, assignments, and a term project)
 
 **Follow the [detailed outline](#outline) for each week's plan to keep you on track.**
 
-If you have questions about the course material, please ask them during the  synchronous meetings. If your question can't wait, write it on the Piazza [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public where everyone in the class can benefit from the exchange. Please  use the discussion forum to talk with other classmates and help each other.
+If you have questions about the course material, please ask them during the  synchronous meetings or office hours. If your question can't wait, write it on the Piazza [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public where everyone in the class can benefit from the exchange. Please  use the discussion forum to talk with other classmates and help each other.
 
 We will use Collaborate Ultra accessed through [Brightspace](https://dal.brightspace.com/d2l/home/159870) for the interactive sessions, which will help structure your work. These will usually be recorded so that you can watch them later if you are unable to participate. You are strongly encouraged to come to these meetings since the interactive sessions are the primary forum for asking questions and discussing course material. I strongly encourage you to "raise your hand" during the discussion and ask questions using your voice. Some students prefer to use the chat to ask questions, and that is fine with me, but from my perspective it leads to a more disjointed and less useful interaction. 
 

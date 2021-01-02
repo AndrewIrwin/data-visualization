@@ -1,6 +1,6 @@
 # Detailed outline {#outline}
 
-Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). There is an [agenda](#sync) for each session.  Most sessions will be recorded and posted on Brightspace.
+Synchronous sessions will be held on Thursday starting at 8:35 and ending at 9:55 or earlier. You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). There is an [agenda](#sync) for each session.  Most sessions will be recorded and posted on Brightspace. The other synchronous time in the timetable (Tuesday starting at 8:35) will be used for drop-in office hours. 
 
 ## Course calendar
 
@@ -33,12 +33,14 @@ The three lessons this week discuss how we perceive visualizations, how to make 
 
 - Lesson 4: Look at data. [Notes](#look-data), Video, [Slides](slides/04-look-at-data.html)
 - Task 3. [Instructions](#task-3). Submit on Brightspace.
-- Synchronous meeting Tuesday 12 January, 8:35 Atlantic on Collaborate.  [Agenda](#sync).
+- Office hours. Tuesday 12 January, 8:35 Atlantic on Collaborate. 
 - Lesson 5: Making your first plot. [Notes](#first-plot), Video, [Slides](slides/05-making-your-first-plot.html)
 - Lesson 6: Version control concepts and working with git. [Notes](#vcs), Video, [Slides](slides/06-version-control.html).
 - Synchronous meeting Thursday 14 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-01.rmd), [html](static/live-coding-01.html).  [Agenda](#sync).
 - Task 4. [Instructions](#task-4). Nothing to submit. This is preparation for Assignment 1.
 - Assignment 1. [Instructions](#assignment-1). Submit on github.
+
+Connect your github account to our course on github and get access to the repository for Task 4 and Assignment 1 by clicking [here](https://classroom.github.com/a/FWE3dcDr). You will be asked to join the github organization "Dalhousie-AndrewIrwin-Teaching" and then select your name from a list of students. If your name does not appear in the list, please contact me so I can add your name to the list of students.
 
 Tasks 3 and 4 are due Monday 18 January at 9:00 am Atlantic time. There is nothing to submit for Task 4, but you can't do Assignment 1 without doing it first, so please don't delay.
 
@@ -47,21 +49,21 @@ Assignment 1 is due Wednesday 20 January at 6:00 pm Atlantic time.
 ### Week 3: Jan 18-22
 
 - Lesson 7 Introduction to the Grammar of Graphics. [Notes](#grammar), Video, [Slides](slides/07-grammar.html)
-- Synchronous meeting Tuesday 19 January, 8:35 Atlantic on Collaborate. [Agenda](#sync).
+- Office hours. Tuesday 19 January, 8:35 Atlantic on Collaborate.
 - Task 5. Check out from and sumbit on github.
 - Lesson 8 Make a plot. [Notes](#ggplot), Video, [Slides](slides/08-ggplot.html)
 - Lesson 9 Scales: shape, color, lines, and more. [Notes](#ggplot2), Video, [Slides](slides/09-ggplot-custom.html)
 - Synchronous meeting Thursday 21 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-02.rmd), [html](static/live-coding-02.html).  [Agenda](#sync).
 - Task 6. Check out from and submit on github.
 
-Tasks 5 and 6 are due Monday 25 January at 9:00 am Atlantic time. Complete both tasks as part of the same repository. You will receive an invitation to the repository on Monday 18 January.
+Tasks 5 and 6 are due Monday 25 January at 9:00 am Atlantic time. Complete both tasks as part of the same repository. Click [here](no link yet) to get the repository for tasks-5+6.
 
 No assignment this week.
 
 ### Week 4: Jan 25-29
 
 - Lesson 10 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
-- Synchronous meeting Tuesday 26 January, 8:35 Atlantic on Collaborate. [Agenda](#sync).
+- Office hours. Tuesday 26 January, 8:35 Atlantic on Collaborate.
 - Task 7. Check out from and sumbit on github.
 - Lesson 11 Summarizing data with dplyr (group_by, filter, mutate, summarize)
 - Lesson 12 Display and graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
@@ -72,19 +74,19 @@ Tasks 7 and 8 are due Monday 1 February at 9:00 am Atlantic time. Complete both 
 
 Assignment 2 is due Wednesday 3 February at 6:00 pm Atlantic time.
 
-You will get an invitation to two repostories (tasks-7+8 and assignment-2) on Monday 25 January.
+Click the following links to get two repostories: [tasks-7+8](no link yet) and [assignment-2](no link yet).
 
 
 ### Week 5: Feb 1-5
 
 - [Lesson 13](#reading-data) Reading data (csv, tsv, xlsx); import menu item; r commands
-- Synchronous meeting Tuesday 2 February, 8:35 Atlantic on Collaborate. [Agenda](#sync).
+- Office hours. Tuesday 2 February, 8:35 Atlantic on Collaborate.
 - [Lesson 14](#pivot) Reshaping data
 - [Lesson 14](#facets) Plotting small multiples (facets)
 
 Tasks 9 and 10 are due Monday 8 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 
-You will get an invitation to a repostory (tasks-9+10) on Monday 1 February.
+Click [here](no link yet) to add the repostory for tasks-9+10.
 
 ### Week 6: Feb 8-12
 
@@ -95,7 +97,7 @@ You will get an invitation to a repostory (tasks-9+10) on Monday 1 February.
 Tasks 11 and 12 are due Monday 22 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 Assignment 3 is due Friday 12 February at 6:00 pm Atlantic time. (Change in due date to keep time free during the break for other projects.)
 
-You will get an invitation to two repostories (tasks-11+12 and assignment-3) on Monday 8 February.
+Follow these links to get two repostories: [tasks-11+12](no link yet) and [assignment-3](no link yet).
 
 You will receive an invitation to a term project repository on Friday 12 February.
 

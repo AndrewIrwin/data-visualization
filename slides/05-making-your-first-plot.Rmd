@@ -210,7 +210,7 @@ class: middle
 
 * Healy. Section 2.6. Make your first figure
 
-* R2DS. Chapter 3: Data visualization
+* R4DS. Chapter 3: Data visualization
 
 ---
 class: middle, inverse

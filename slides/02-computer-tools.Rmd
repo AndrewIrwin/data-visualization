@@ -4,7 +4,7 @@ subtitle: "Computer Tools"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
 date: "2021-01-08 (updated: `r Sys.Date()`)"
-ratio: "16:9"
+ratio: "4:3"
 output:
   xaringan::moon_reader:
     css: [default, hygge, useR-fonts]

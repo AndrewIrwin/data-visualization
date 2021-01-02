@@ -95,7 +95,7 @@ class: middle, center, inverse
 ---
 class: middle
 
-```{r, fig.cap="Still from CBC Canadian Federal election coverage, October 21, 2019. Does the three-dimensional bar chart help you understand the election outcome? Are the bars the right height? Is it helpful to have the bar chart appear in the middle of the studio set? Can you judge the height of the bars?", fig.align="center", out.width="75%"}
+```{r echo=FALSE, fig.cap="Still from CBC Canadian Federal election coverage, October 21, 2019. Does the three-dimensional bar chart help you understand the election outcome? Are the bars the right height? Is it helpful to have the bar chart appear in the middle of the studio set? Can you judge the height of the bars?", fig.align="center", out.width="75%"}
 knitr::include_graphics("../static/cbc-2019-oct-21-election.jpg")
 ```
 
@@ -121,26 +121,6 @@ class: middle, center, inverse
 
 # Visual perception
 
----
-class: middle
-
-```{r echo=FALSE, out.width = "100%", fig.cap="The checker shadow illusion."}
-knitr::include_graphics("../static/checker-shadow-illusion.jpg")
-```
-
----
-class: middle
-
-```{r echo=FALSE, out.width = "100%", fig.cap="The checker shadow illusion."}
-knitr::include_graphics("../static/checker-shadow-illusion-selected2.jpg")
-```
-
----
-class: middle
-
-```{r echo=FALSE, out.width = "100%", fig.cap="The checker shadow illusion."}
-knitr::include_graphics("../static/checker-shadow-illusion-selected3.jpg")
-```
 
 ---
 class: middle
@@ -181,6 +161,27 @@ class: middle
 
 ```{r echo=FALSE, out.width = "80%", fig.cap="Wilke. Fig. 10.6."}
 knitr::include_graphics("../static/marketshare-side-by-side-1.png")
+```
+
+---
+class: middle
+
+```{r echo=FALSE, out.width = "100%", fig.cap="The checker shadow illusion."}
+knitr::include_graphics("../static/checker-shadow-illusion.jpg")
+```
+
+---
+class: middle
+
+```{r echo=FALSE, out.width = "100%", fig.cap="The checker shadow illusion."}
+knitr::include_graphics("../static/checker-shadow-illusion-selected2.jpg")
+```
+
+---
+class: middle
+
+```{r echo=FALSE, out.width = "100%", fig.cap="The checker shadow illusion."}
+knitr::include_graphics("../static/checker-shadow-illusion-selected3.jpg")
 ```
 
 
