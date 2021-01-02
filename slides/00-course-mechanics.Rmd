@@ -44,13 +44,17 @@ class: middle
 * Everything is listed in the "Detailed Outline"
 
 * Recorded lectures
-
-* Synchronous meetings
-  * Tuesday discussions
-  * Thursday live coding
-
+  * Read course notes
+  * Read textbook
+  * Practice skills
+  
+* Synchronous meetings: Thursday 8:30 am Atlantic
+  * Question & Answer time
+  * Live demonstrations of course skills
+  
 * Assigned work for evaluation
 
+* Tuesday 8:30 am Atlantic: Office hours for individual Q & A
 
 ---
 class: middle

@@ -3,14 +3,14 @@ fig:co2-full-record
 fig:gapminder-fertility
 fig:env-canada-weather
 fig:weatherspark
-fig:unnamed-chunk-3
 fig:unnamed-chunk-4
 fig:unnamed-chunk-5
 fig:unnamed-chunk-6
 fig:unnamed-chunk-7
-fig:unnamed-chunk-49
-fig:unnamed-chunk-51
-tab:unnamed-chunk-54
+fig:unnamed-chunk-8
+fig:unnamed-chunk-50
+fig:unnamed-chunk-52
+tab:unnamed-chunk-55
 welcome
 what-is-data-visualization
 what-is-the-purpose-of-data-visualization
@@ -45,7 +45,7 @@ week-12-mar-29-april-1
 week-13-apr-5-8
 bonus-material
 sync
-thu-7-jan-835
+sync-1
 tue-12-jan-835
 thu-14-jan-835
 tue-19-jan-835

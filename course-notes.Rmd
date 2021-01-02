@@ -116,13 +116,13 @@ Each week will be structured around the following components:
 
 - Watching recorded mini-lectures for each lesson
 - Reading course notes and excerpts from the textbooks
-- Interactive discussion of the week's lessons (Tuesday 8:30 am Atlantic)
+- Scheduled office hours (Tuesday 8:30 am Atlantic). Come if you have questions or want to listen in to discussions about course material based on questions asked by other students.
 - Live coding tutorial / lab (Thursday 8:30 am Atlantic)
 - Opportunities to develop and demonstrate your knowledge (tasks, assignments, and a term project)
 
 **Follow the [detailed outline](#outline) for each week's plan to keep you on track.**
 
-If you have questions about the course material, please ask them during the  synchronous meetings. If your question can't wait, write it on the Piazza [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public where everyone in the class can benefit from the exchange. Please  use the discussion forum to talk with other classmates and help each other.
+If you have questions about the course material, please ask them during the  synchronous meetings or office hours. If your question can't wait, write it on the Piazza [discussion forum](https://piazza.com/dal.ca/winter2021/stat2430/home). If you have questions specific to your situation that should not be shared with the class, please send me an [email](a.irwin@dal.ca). Please only use email for communication that should be private, as general questions are best asked in public where everyone in the class can benefit from the exchange. Please  use the discussion forum to talk with other classmates and help each other.
 
 We will use Collaborate Ultra accessed through [Brightspace](https://dal.brightspace.com/d2l/home/159870) for the interactive sessions, which will help structure your work. These will usually be recorded so that you can watch them later if you are unable to participate. You are strongly encouraged to come to these meetings since the interactive sessions are the primary forum for asking questions and discussing course material. I strongly encourage you to "raise your hand" during the discussion and ask questions using your voice. Some students prefer to use the chat to ask questions, and that is fine with me, but from my perspective it leads to a more disjointed and less useful interaction. 
 
@@ -263,7 +263,26 @@ Please follow the following links for additional resources and support.
 
 # Detailed outline {#outline}
 
-Synchronous sessions will be held on Tuesday and Thursday starting at 8:35 and ending by 9:55 (or earlier.) You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). There is an [agenda](#sync) for each session.  Most sessions will be recorded and posted on Brightspace.
+```{r include=FALSE}
+library(tidyverse)  # fussy, but might be useful later on
+library(knitr)
+library(kableExtra)
+schedule <- tribble(
+  ~item, ~date, ~title, ~notes, ~video, ~slides, ~link_name, ~link_url,
+  "Leson 1", NA, "An Invitation to Data Visualization", "(#ch-invitation)", "(https://dal.brightspace.com/d2l/le/content/159870/viewContent/2139938/View)", "(slides/01-invitation.html)", NA, NA,
+  "Synchronous meeting", "2021-01-07 08:35", "[Agenda](#sync-1)", NA, NA, NA, "Collaborate (Brightspace)", "(https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View)",
+)
+sh <- function(i, shedule = schedule) {
+  schedule %>% slice(i) %>%
+    mutate(notes = case_when(!is.na(notes) ~ paste0("[Notes]", notes), TRUE ~ notes),
+           video = case_when(!is.na(video) ~ paste0("[Video]", video), TRUE ~ video),
+           slides = case_when(!is.na(slides) ~ paste0("[Slides]", slides), TRUE ~ slides),
+           link = case_when(!is.na(link_url) ~ paste0("[", link_name, "]", link_url), TRUE ~ as.character(NA))) %>%
+    kable() %>% kableExtra::kable_styling()
+}
+```
+
+Synchronous sessions will be held on Thursday starting at 8:35 and ending at 9:55 or earlier. You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). There is an [agenda](#sync) for each session.  Most sessions will be recorded and posted on Brightspace. The other synchronous time in the timetable (Tuesday starting at 8:35) will be used for drop-in office hours. 
 
 ## Course calendar
 
@@ -277,77 +296,76 @@ An introduction to the course is provided by a welcome presentation called Cours
 
 ### Week 1: Jan 6-8
 
-These three lessons introduce the content of the course, the tools we will use, and show you how to get your computer set up for the course.
+These lessons introduce the content of the course and the tools we will use. 
 
 Work on these elements in the following suggested order:
 
-- Lesson 1: An Invitation to Data Visualization. [Notes](#ch-invitation), Video, [Slides](slides/01-invitation.html).
-- Synchronous meeting Thursday 7 January, 8:35 Atlantic on Collaborate (Brightspace). [Agenda](#sync).
+- Lesson 1: An Invitation to Data Visualization. [Notes](#ch-invitation), [Video](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2139938/View), [Slides](slides/01-invitation.html).
+- Synchronous meeting Thursday 7 January, 8:35 Atlantic on [Collaborate (Brightspace)](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View). [Agenda](#sync).
 - Lesson 2: The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. [Notes](#ch-tools), Video, [Slides](slides/02-computer-tools.html)
-- Lesson 3: Installing R, Rstudio, packages, creating github account. [Notes](#setup), [Video](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726).
 - Task 1. [Instructions](#task-1). Submit on Brightspace.
-- Task 2. [Instructions](#task-2). Submit on Brightspace.
 
-Tasks 1 and 2 are due Monday 11 January at 9:00 am Atlantic time.
+Task 1 is due Monday 11 January at 9:00 am Atlantic time.
 
 ### Week 2: Jan 11-15
 
-The three lessons this week discuss how we perceive visualizations, how to make your own simple scatterplot, and the how and why of using git in this course.
+The three lessons this week show you how to get your computer set up for the course, discuss how we perceive visualizations, and how to make your own simple scatter plot.
 
+- Lesson 3: Installing R, Rstudio, packages, creating github account. [Notes](#setup), [Video](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726).
+- Task 2. [Instructions](#task-2). Submit on Brightspace.
+- Office hours. Tuesday 12 January, 8:35 Atlantic on Collaborate. If you are having trouble with Task 2, come at this time for help.
 - Lesson 4: Look at data. [Notes](#look-data), Video, [Slides](slides/04-look-at-data.html)
 - Task 3. [Instructions](#task-3). Submit on Brightspace.
-- Synchronous meeting Tuesday 12 January, 8:35 Atlantic on Collaborate.  [Agenda](#sync).
 - Lesson 5: Making your first plot. [Notes](#first-plot), Video, [Slides](slides/05-making-your-first-plot.html)
-- Lesson 6: Version control concepts and working with git. [Notes](#vcs), Video, [Slides](slides/06-version-control.html).
 - Synchronous meeting Thursday 14 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-01.rmd), [html](static/live-coding-01.html).  [Agenda](#sync).
-- Task 4. [Instructions](#task-4). Nothing to submit. This is preparation for Assignment 1.
-- Assignment 1. [Instructions](#assignment-1). Submit on github.
 
-Tasks 3 and 4 are due Monday 18 January at 9:00 am Atlantic time. There is nothing to submit for Task 4, but you can't do Assignment 1 without doing it first, so please don't delay.
+Tasks 2 and 3 are due Monday 18 January at 9:00 am Atlantic time. 
 
-Assignment 1 is due Wednesday 20 January at 6:00 pm Atlantic time.
 
 ### Week 3: Jan 18-22
 
+These lessons show you how and why we will use git in this course, describe the design of the grammar of graphics which we will use to make visualizations, and show you more examples of making plots.
+
+- Lesson 6: Version control concepts and working with git. [Notes](#vcs), Video, [Slides](slides/06-version-control.html).
+- Task 4. [Instructions](#task-4). Nothing to submit. This is preparation for Assignment 1. Everyone who *submits* Assignment 1 on time will get 10/10 for this task.
+- Office hours. Tuesday 19 January, 8:35 Atlantic on Collaborate. If you are having trouble with Task 4, come to these office hours with your questions.
 - Lesson 7 Introduction to the Grammar of Graphics. [Notes](#grammar), Video, [Slides](slides/07-grammar.html)
-- Synchronous meeting Tuesday 19 January, 8:35 Atlantic on Collaborate. [Agenda](#sync).
-- Task 5. Check out from and sumbit on github.
 - Lesson 8 Make a plot. [Notes](#ggplot), Video, [Slides](slides/08-ggplot.html)
-- Lesson 9 Scales: shape, color, lines, and more. [Notes](#ggplot2), Video, [Slides](slides/09-ggplot-custom.html)
+
+- Assignment 1. [Instructions](#assignment-1). Submit on github.
 - Synchronous meeting Thursday 21 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-02.rmd), [html](static/live-coding-02.html).  [Agenda](#sync).
-- Task 6. Check out from and submit on github.
 
-Tasks 5 and 6 are due Monday 25 January at 9:00 am Atlantic time. Complete both tasks as part of the same repository. You will receive an invitation to the repository on Monday 18 January.
+Connect your github account to our course on github and get access to the repository for Task 4 and Assignment 1 by clicking [here](https://classroom.github.com/a/FWE3dcDr). You will be asked to join the github organization "Dalhousie-AndrewIrwin-Teaching" and then select your name from a list of students. If your name does not appear in the list, please contact me so I can add your name to the list of students.
 
-No assignment this week.
+Assignment 1 is due Wednesday 27 January at 6:00 pm Atlantic time.
 
 ### Week 4: Jan 25-29
 
 - Lesson 10 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
-- Synchronous meeting Tuesday 26 January, 8:35 Atlantic on Collaborate. [Agenda](#sync).
-- Task 7. Check out from and sumbit on github.
+- Office hours. Tuesday 26 January, 8:35 Atlantic on Collaborate.
+- Task 5. Check out from and sumbit on github.
 - Lesson 11 Summarizing data with dplyr (group_by, filter, mutate, summarize)
 - Lesson 12 Display and graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
 - Synchronous meeting Thursday 28 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-03.rmd), [html](static/live-coding-03.html).  [Agenda](#sync).
-- Task 8. Check out from and submit on github.
+- Task 6. Check out from and submit on github.
 
-Tasks 7 and 8 are due Monday 1 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
+Tasks 5 and 6 are due Monday 1 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 
 Assignment 2 is due Wednesday 3 February at 6:00 pm Atlantic time.
 
-You will get an invitation to two repostories (tasks-7+8 and assignment-2) on Monday 25 January.
+Click the following links to get two repostories: [tasks-5+6](no link yet) and [assignment-2](no link yet).
 
 
 ### Week 5: Feb 1-5
 
 - [Lesson 13](#reading-data) Reading data (csv, tsv, xlsx); import menu item; r commands
-- Synchronous meeting Tuesday 2 February, 8:35 Atlantic on Collaborate. [Agenda](#sync).
+- Office hours. Tuesday 2 February, 8:35 Atlantic on Collaborate.
 - [Lesson 14](#pivot) Reshaping data
-- [Lesson 14](#facets) Plotting small multiples (facets)
+- [Lesson 15](#facets) Plotting small multiples (facets)
+- Lesson 16 Scales: shape, color, lines, and more. [Notes](#ggplot2), Video, [Slides](slides/09-ggplot-custom.html)
+- Task 7 and 8. Check out from and submit on github.
 
-Tasks 9 and 10 are due Monday 8 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
-
-You will get an invitation to a repostory (tasks-9+10) on Monday 1 February.
+Tasks 7 and 8 are due Monday 8 February at 9:00 am Atlantic time. Complete both tasks using the same [repository](no link yet). 
 
 ### Week 6: Feb 8-12
 
@@ -358,7 +376,7 @@ You will get an invitation to a repostory (tasks-9+10) on Monday 1 February.
 Tasks 11 and 12 are due Monday 22 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 Assignment 3 is due Friday 12 February at 6:00 pm Atlantic time. (Change in due date to keep time free during the break for other projects.)
 
-You will get an invitation to two repostories (tasks-11+12 and assignment-3) on Monday 8 February.
+Follow these links to get two repostories: [tasks-11+12](no link yet) and [assignment-3](no link yet).
 
 You will receive an invitation to a term project repository on Friday 12 February.
 
@@ -395,6 +413,8 @@ Tasks 17 and 18 are due Monday 15 March  at 9:00 am Atlantic time. Complete both
 - Lesson 26 Making maps and chloropleths. Heatmaps.
 - Lesson 27 Refine your plots. [Healy Chapter 8](https://socviz.co/refineplots.html#refineplots). Ordering factors.
 
+- Synchronous session. Thursday 18 March. Review of selected work from Assigment 4 (sharing ideas and techniques)
+
 Tasks 19 and 20 are due Monday 22 March  at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 
 Assignment 5 is due Wednesday 24 March at 6:00 pm Atlantic time.
@@ -404,6 +424,8 @@ Assignment 5 is due Wednesday 24 March at 6:00 pm Atlantic time.
 - Lesson 28 Themes
 - Lesson 29 Annotations
 - Lesson 30 Graphics output (PDF, png, sizes, colors, themes; ragg) repurposing graphics for different media and purposes
+
+- Synchronous session. Thursday 18 March. Review of selected work from Assigment 5 (sharing ideas and techniques) and problem solving for visualizations you are trying to create for presentation in a week. Send me your questions or challenges in advance.
 
 Tasks 21 and 22 are due Monday 29 March  at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 
@@ -450,9 +472,9 @@ Project report due Friday 9 April, 6:00 pm Atlantic. Submit on github.
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-We have 24 synchronous sessions. The last two will be used for oral presentations.
+We have 13 synchronous sessions. The last two will be used for oral presentations.
 
-## Thu 7 Jan 8:35
+## Thu 7 Jan 8:35 {#sync-1}
 
 Before the meeting: 
 
@@ -465,24 +487,17 @@ Meeting agenda:
 * How the course works
 * Purpose of each component (recorded videos, notes, slides, textbook readings, evaluation activities)
 * Questions and discussion
+* Demonstration of basics of Rstudio
 
 ## Tue 12 Jan 8:35
 
-Before the meeting:
-
-* Complete Tasks 1 and 2 (in [Evaluation](#evaluation))
-* lesson 4 (video, notes)
-
-Meeting agenda:
-
-* Discuss and resolve problems with setting up R, Rstudio, git
-* Discuss Lesson 4 ideas and Task 3 questions
+This is a drop-in office hour. Come with questions about the course. In particular, if you are having difficulty settung up R, Rstudio, git, bring those questions.
 
 ## Thu 14 Jan 8:35
 
 Before the meeeting:
 
-* Lesson 5, 6
+* Work up to Lesson 4 or 5
 
 Meeting agenda:
 
@@ -492,20 +507,13 @@ Meeting agenda:
 
 ## Tue 19 Jan 8:35
 
-Before the meeeting:
-
-* Lesson 7
-
-Meeting agenda:
-
-* Questions and discussion arising from Lesson 7
-* Troubleshooting Assignment 1 (due yesterday, but any ligering questions should be resolved as soon as possible)
+This is a drop-in office hour. Come with questions about the course. In particular, you may want to bring questions about Assignment 1 (it was due yesterday, but any ligering questions should be resolved as soon as possible).
 
 ## Thu 21 Jan 8:35
 
 Before the meeeting:
 
-* Lesson 8
+* Work up to Lesson 8
 
 Meeting agenda:
 
@@ -513,14 +521,7 @@ Meeting agenda:
 
 ## Tue 26 Jan 8:35
 
-Before the meeeting:
-
-* Lesson 10
-
-Meeting agenda:
-
-* Utility of tidy data organization
-* Why and how we summarize data
+This is a drop-in office hour. Come with questions about the course.
 
 ## Thu 28 Jan 8:35
 
@@ -535,6 +536,7 @@ Meeting agenda:
 
 
 
+
 ## Thu 1 April 8:35
 
 Oral presentations day 1. Each presentation will be a maximum of 5 minutes, so there will be time for about 12 presentations.
@@ -544,6 +546,8 @@ A sign-up sheet will be posted on Brightspace once the proposals have been submi
 Presentations may be made live or can be pre-recorded.
 
 ## Tue 6 April 8:35
+
+This is not an office hour day, but instead is a required synchronous session.
 
 Oral presentations day 2. Each presentation will be a maximum of 5 minutes, so there will be time for about 12 presentations.
 
@@ -899,7 +903,7 @@ A common observation is that humans [learn from stories](https://en.wikipedia.or
 
 Wilke's book has an excellent argument in favour of [storytelling with data](https://clauswilke.com/dataviz/telling-a-story.html) which he tells in a [video](https://www.youtube.com/watch?v=g-AzIYsyqvo) (starting at time 6:42). His essential elements of a story are an arc including an opening, challenge, action, and resolution, which results in an emotional reaction such as excitement, curiosity or surprise. The principle is that the emotional response from the resolution of the challenge gets your audience engaged and helps them retain your message.
 
-It may seem that a graph is far removed from a story. A pair of graphs, or a dynamic graph, or even just an original graph and an updated graph can be used to tell a story. For example, return to the carbon dioxide figures at the top of this section. Two years of data show a seasonal cycle in atmospheric carbon dioxide with a modest year over year trend. Suppose that was all you knew about carbon dioxide. It would be hard to know why there was a problem. Now look at the record since 1958. It's now clear that there is a long-term increase and the interannual variation is small in comparion. If you find the 800,000 year record from ice cores, you will see even more context -- current atmospheric carbon dioxide concentrations are outside the range of documented variability for the past 800k years.
+It may seem that a graph is far removed from a story. A pair of graphs, or a dynamic graph, or even just an original graph and an updated graph can be used to tell a story. For example, return to the carbon dioxide figures at the top of this section. Two years of data show a seasonal cycle in atmospheric carbon dioxide with a modest year over year trend. Suppose that was all you knew about carbon dioxide. It would be hard to know why there was a problem. Now look at the record since 1958. It's now clear that there is a long-term increase and the interannual variation is small in comparison. If you find the [800,000 year record from ice cores](https://www.climate.gov/news-features/understanding-climate/climate-change-atmospheric-carbon-dioxide), you will see even more context -- current atmospheric carbon dioxide concentrations are outside the range of documented variability for the past 800k years.
 
 We will return to the theme of story telling frequently in the course, particularly in assignments. 
 
@@ -1838,9 +1842,9 @@ Notice that I've moved the `color=cut` from the ggplot function to the `geom_poi
 
 <!--chapter:end:119-linear-models.rmd-->
 
-# Data Abstracts and Dictionaries {#data}
+# Data Sources, Abstracts and Dictionaries {#data}
 
-```{r echo=FALSE}
+```{r include=FALSE}
 library(naniar)
 library(palmerpenguins)
 library(codebook)

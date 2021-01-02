@@ -85,7 +85,7 @@
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gapminder</span>, 
        mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span><span class="va">lifeExp</span>, x<span class="op">=</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
 </div>
 <div id="improving-your-plot" class="section level2" number="10.3">
 <h2>
@@ -104,20 +104,20 @@
          y<span class="op">=</span><span class="st">"y axis label"</span>,
          caption<span class="op">=</span><span class="st">"A caption."</span>,
          tag<span class="op">=</span><span class="st">"A."</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Almost everyone makes the text on their figures too small. How small is too small is obviously a matter of judgement, but it depends on your age (and vision), the medium (on screen for yourself, on a website, in a presentation, printed on paper), and whether the figure is made by you for you, or if you are trying to reach a wider audience. It’s essential to know how to make text bigger! Many visual aspects of a ggplot can be controlled as part of the <code>theme</code>; we will introduce these gradually throughout the course and summarize some of the most important themes in a lesson near the end of the course.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">18</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Let’s make a simple use of colour. There are many countries, so that’s not a good choice for a colour feature – there will be too many to distinguish. Let’s colour points by continent. All we need to do is to link the variable <code>continent</code> to the colour aesthetic.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">continent</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p>Gross domestic product varies widely across countries. The uneven spread over the x-axis makes the visualization hard to read. It’s got a couple of other features, notably the fact that it is always bigger than 0 and that we tend to be interested in multiplicative comparisons, that mean a log-transformation makes a better plot. (This is debatable if you are not used to reading or noticing log scales. Log scales are very useful and well worth the trouble to learn about, so put that on your “to do list” if you haven’t learned how to read them yet.) ggplot makes changing the scale farily easily, at least for a few special cases. The stuff in brackets after <code>scale_x_log10</code> is optional and makes the labels look a bit prettier. (Notice we’re using a function from a new package here.)</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span>
 <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/trans_format.html">trans_format</a></span><span class="op">(</span><span class="st">'log10'</span>, <span class="fu"><a href="https://scales.r-lib.org//reference/label_parse.html">math_format</a></span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>This formatting of the numbers on the x-axis is a bit tricky to get right and to explain. In fact its the sort of thing you might keep in a file of examples if, like me, you really don’t like to see <span class="math inline">\(10^3\)</span> formatted as <span class="math inline">\(1.0e3\)</span>. (Try <code>labels = scientific</code> to see this other format.)</p>
 </div>
 <div id="exercises" class="section level2" number="10.4">

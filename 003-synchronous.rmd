@@ -6,7 +6,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 We have 13 synchronous sessions. The last two will be used for oral presentations.
 
-## Thu 7 Jan 8:35
+## Thu 7 Jan 8:35 {#sync-1}
 
 Before the meeting: 
 
@@ -19,6 +19,7 @@ Meeting agenda:
 * How the course works
 * Purpose of each component (recorded videos, notes, slides, textbook readings, evaluation activities)
 * Questions and discussion
+* Demonstration of basics of Rstudio
 
 ## Tue 12 Jan 8:35
 
@@ -28,7 +29,7 @@ This is a drop-in office hour. Come with questions about the course. In particul
 
 Before the meeeting:
 
-* Lesson 5, 6
+* Work up to Lesson 4 or 5
 
 Meeting agenda:
 
@@ -44,7 +45,7 @@ This is a drop-in office hour. Come with questions about the course. In particul
 
 Before the meeeting:
 
-* Lesson 8
+* Work up to Lesson 8
 
 Meeting agenda:
 
