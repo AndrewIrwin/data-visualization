@@ -16,3 +16,9 @@ ghclass package for teaching with github
 github workshop for teaching https://mine-cetinkaya-rundel.github.io/teach-r-online/
 sugrrants package for visualizing course components
 
+## Miscellaneous
+
+separate and unite
+
+bind_rows
+bind_cols

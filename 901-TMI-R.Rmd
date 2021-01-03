@@ -27,6 +27,15 @@ class(as.matrix(diamonds %>% select(depth, table, price)))  # if you pick column
 class(as.matrix(diamonds %>% select(cut, color, clarity)))  
 ```
 
+## data frame, tibbles, and data tables
+
+When R was young, there was one way to organize data into the tables we are using throughout this course: the data frame. This data structure is made from a list of vectors; each column is an entry in the list and all the data in each list (column) must be of the same time. Over time, people wanted to add new features to data tables, but existing code written and deployed made this difficult. So two new kinds of data frames were created.
+
+A [tibble](https://r4ds.had.co.nz/tibbles.html) is a data frame, but it has some extra features. Most notably the way it is displayed in R has been improved. Only a few rows and colums are shown (unless you ask for more) with the rest of the information provided as a summary. Tibbles are widely used by the tidyverse pacakges.
+
+A [data table](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html) is a kind of data frame where all the code has been written with the goal of increasing calculation speed. Some of the methods for manipulating data tables are quite different from what we have learned in this course; some of the examples from R4DS chapter on data transformations are demonstrated [here](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html).
+
+
 ## What is the difference between strings and factors?
 
 A string is just a sequence of text, enclosed by single or double quotation marks. You can display strings, and search for text, and do other text-type things with them, but you can't (of course) do calculations with them.

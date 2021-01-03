@@ -37,6 +37,7 @@ penguins %>% ggplot(aes(x = bill_length_mm, bill_depth_mm, color = species, fill
 
 ### Continuous scales
 
+## Using factor ordering to change plots
 
 ## Further reading
 

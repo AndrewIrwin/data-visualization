@@ -1,5 +1,5 @@
 book_filename: "course-notes"
-delete_merged_file: false
+delete_merged_file: true
 language:
   ui:
     chapter_name: "Chapter "
@@ -21,7 +21,10 @@ rmd_files: [ "index.rmd",
              "106-version-control.rmd",
              "107-grammar-graphics.Rmd",
              "108-ggplot.Rmd",
+             "111-summarizing-data.rmd",
+             "113-reading-data.rmd",
              "119-linear-models.rmd",
-             "305-data.rmd",
+             "301-data-sources.rmd",
+             # "305-data.rmd",
              "302-staying-organized.rmd",
              "911-ethics.rmd"]

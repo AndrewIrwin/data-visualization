@@ -198,5 +198,5 @@ Project report due Friday 9 April, 6:00 pm Atlantic. Submit on github.
 - How do I know I've done it right?
 - Text data and regular expressions introduction
 - Examples of building up figures step by step
-
+- Working with dates and times
 
