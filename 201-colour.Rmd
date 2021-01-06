@@ -26,3 +26,9 @@ NIH statistics and other data https://ghr.nlm.nih.gov/condition/color-vision-def
 Wikipedia https://en.wikipedia.org/wiki/Color_blindness
 
 Simulate what yuor ggplot looks like to someone with colour vision deficiency https://github.com/clauswilke/colorblindr
+
+## Suggested reading
+
+* Healy
+* Wilke
+* [Color Brewer](https://colorbrewer2.org/#type=sequential&scheme=Reds&n=4) - interactive website to select and illustrate use of color scales on maps.

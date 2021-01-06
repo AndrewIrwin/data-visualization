@@ -9,7 +9,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,12 +62,24 @@
 <h1>
 <span class="header-section-number">12</span> Grammar of Graphics<a class="anchor" aria-label="anchor" href="#grammar"><i class="fas fa-link"></i></a>
 </h1>
+<div id="goals-6" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Goals<a class="anchor" aria-label="anchor" href="#goals-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this lesson I will explain the concept behind the “grammar of graphics”. The emphasis is on the idea and not the particular computing environment (R and ggplot2) that we will use.</p>
+<p>Your <a href="#task-b3">task</a> for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson</p>
+</div>
+<div id="introduction-5" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-5"><i class="fas fa-link"></i></a>
+</h2>
 <p>By the end of this lesson you should understand the design of the grammar of graphics. This will help you develop a mental model of what the R functions for plotting do, making the process easier to remember and modify to suit your own goals.</p>
 <p>The next lesson will show you the R commands that accompany each concept.</p>
 <p>After both lessons, and some practice, you should be able to create new visualizations of many different types, customize them, and be ready to learn many more methods and extensions to the basics.</p>
-<div id="the-layers-of-a-plot" class="section level2" number="12.1">
+</div>
+<div id="the-layers-of-a-plot" class="section level2" number="12.3">
 <h2>
-<span class="header-section-number">12.1</span> The layers of a plot<a class="anchor" aria-label="anchor" href="#the-layers-of-a-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> The layers of a plot<a class="anchor" aria-label="anchor" href="#the-layers-of-a-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>A plot is assembled in layers (see below), starting with data, then adding aesthetic mappings from variables to features, geometries that determine how the features are displayed, optional facets for splitting the plot into subplots, statistics for computing new variables from the data, a coordinate system (usuallly Cartesian), and finally themes for modifying the appearance of the plot independently from the data.</p>
 <div class="inline-figure">
@@ -74,66 +87,68 @@
 ## Data</div>
 <p>Data always come from a data frame (or tibble) with columns representing variables and each row corresponding to a different observation. We’ll have a lot more to say about organizing and manipulating data <a href="#todydata">later</a>.</p>
 </div>
-<div id="aesthetic-mappings" class="section level2" number="12.2">
+<div id="aesthetic-mappings" class="section level2" number="12.4">
 <h2>
-<span class="header-section-number">12.2</span> Aesthetic mappings<a class="anchor" aria-label="anchor" href="#aesthetic-mappings"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> Aesthetic mappings<a class="anchor" aria-label="anchor" href="#aesthetic-mappings"><i class="fas fa-link"></i></a>
 </h2>
 <p>Variables in your data are connected to features of your visualization, such as position on the x and y axes, colours, shapes, sizes, and other features with a mapping that connects the two.</p>
 <p>Each mapping has an associated scale. If a variable is represented on the x axis, the scale translates a numerical value onto a position. For the aesthetic shape, the scale converts a categorical value into a square, circle or other shape. Similarly for colours, line types, symbol sizes and more.</p>
 <p>Aesthetic mappings can be used in several ways in the same plot, for example to help place symbols and text labels. A process called inheritance allows this to happen. Inherited aesthetics can be overridden too; thinking this through can be a subtle but have dramatic effects on your plot. Be on the lookout when we get to examples.</p>
 <p>Sometimes you will want to customize a plot by making all symbols quares or changing all the lines to green. You don’t use aesthetic mappings for this, because you are not connecting a variable to a feature of the graph. Instead you will override the default plot appearance specifying a particular colour or shape as part of the geometry.</p>
 </div>
-<div id="geometries" class="section level2" number="12.3">
+<div id="geometries" class="section level2" number="12.5">
 <h2>
-<span class="header-section-number">12.3</span> Geometries<a class="anchor" aria-label="anchor" href="#geometries"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5</span> Geometries<a class="anchor" aria-label="anchor" href="#geometries"><i class="fas fa-link"></i></a>
 </h2>
 <p>A geometry is a visual representation of data: points, lines, shaded regions, boxplots, histograms, tiles, text labels, and many, many more. The representation is defined by the geometry using the data mapped to aesthetic features (position, colour) of the geometry. You need at least one geometry to create a plot, but you can combine two or more geometries (lines and points for example) to make more complex plots.</p>
 </div>
-<div id="facets" class="section level2" number="12.4">
+<div id="facets" class="section level2" number="12.6">
 <h2>
-<span class="header-section-number">12.4</span> Facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.6</span> Facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
 </h2>
 <p>A simple plot has one facet – think about standard x-y plots. You can also separate out the data in one plot into many facets, using a variable from the dataset to define which data appear on each facets. Depending on the data you might arrange facets in a grid with common x and y axes on all the facets. Or you might arrange them in a line with different scales on each facet. Facets can make complex plots! We will skip over facets on our discussion of making plots in the next lesson, but come back to them later.</p>
 </div>
-<div id="statistics" class="section level2" number="12.5">
+<div id="statistics" class="section level2" number="12.7">
 <h2>
-<span class="header-section-number">12.5</span> Statistics<a class="anchor" aria-label="anchor" href="#statistics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7</span> Statistics<a class="anchor" aria-label="anchor" href="#statistics"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sometimes you want to use a variable for a feature – position on the y axis – but before you do that, you want to perform some computations. Perhaps you want to plot a mean or compute a standard error of the mean. Or maybe you want to count the number of occurrences of a level of a categorical variable. There are two ways to go about this. You can compute the derived variables “by hand” – writing R code to do it. Or you can use <code>stat</code> features of a plot to compute these for you. For routine plots like bar graphs, histograms, and boxplots, its generally easiest to let ggplot do these calculations for you. For less commonly used plot types, or custom plots you invent, you will want do to the calculations yourself. We’ll talk about summarizing data in a future <a href="#summarize">lesson</a>.</p>
 </div>
-<div id="coordinates" class="section level2" number="12.6">
+<div id="coordinates" class="section level2" number="12.8">
 <h2>
-<span class="header-section-number">12.6</span> Coordinates<a class="anchor" aria-label="anchor" href="#coordinates"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.8</span> Coordinates<a class="anchor" aria-label="anchor" href="#coordinates"><i class="fas fa-link"></i></a>
 </h2>
 <p>Usually we plot data on the familiar (Cartesian) x-y axes. But you can use polar coordinates. Or project a 3d model onto a plane. Or draw lots of other shapes like trees or maps. Cartesian coordinates are so familiar we usually pass over this choice without even thinking.</p>
 </div>
-<div id="themes" class="section level2" number="12.7">
+<div id="themes" class="section level2" number="12.9">
 <h2>
-<span class="header-section-number">12.7</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.9</span> Themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
 </h2>
 <p>All other features of the visualization are combined into the idea of the theme. This includes colour schemes, line thicknesses, how tick marks are drawn, the font type and size, and where legends are placed. We will look at these features – in fact we’ve already seen a simple example of changing font size – throughout the course and collect a bunch of examples <a href="grammar.html#themes">at the end</a>.</p>
 </div>
-<div id="extensions" class="section level2" number="12.8">
+<div id="extensions" class="section level2" number="12.10">
 <h2>
-<span class="header-section-number">12.8</span> Extensions<a class="anchor" aria-label="anchor" href="#extensions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.10</span> Extensions<a class="anchor" aria-label="anchor" href="#extensions"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are several kinds of extensions to the basic <code>ggplot</code> plots. Many R packages define new geometries, colour palettes, map projections, and themes. A few packages define amazing new ways of transforming ggplots, for example to create <a href="https://gganimate.com/articles/gganimate.html">animations</a> or three dimesnional rendering using <a href="https://github.com/tylermorganwall/rayshader">raytracing</a>.</p>
 </div>
-<div id="summary" class="section level2" number="12.9">
+<div id="summary" class="section level2" number="12.11">
 <h2>
-<span class="header-section-number">12.9</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.11</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h2>
 <p>That’s the basic idea behind the grammar of graphics approach to plotting. It takes a bit of getting used to, and seems like a lot of work when you first get started, but you’ll see that the flexibility and structure the grammar provides allows you to think creatively to build a huge number of visualizations from these few elements.</p>
 </div>
-<div id="further-reading-3" class="section level2" number="12.10">
+<div id="further-reading-3" class="section level2" number="12.12">
 <h2>
-<span class="header-section-number">12.10</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.12</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-3"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>A chapter on these ggplot concepts from a <a href="https://rafalab.github.io/dsbook/ggplot2.html">data science course</a>
 </li>
 <li>A ggplot <a href="https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">cheatsheet</a> summarizing a huge amount of information in two pages</li>
 <li><a href="http://erikaris.com/2020/02/11/understanding-ggplot-the-grammar-of-graphic/">Understanding ggplot</a></li>
+<li>The <a href="https://www.r-graph-gallery.com/">R graph gallery</a>
+</li>
 </ul>
 </div>
 </div>
@@ -144,16 +159,18 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#grammar"><span class="header-section-number">12</span> Grammar of Graphics</a></li>
-<li><a class="nav-link" href="#the-layers-of-a-plot"><span class="header-section-number">12.1</span> The layers of a plot</a></li>
-<li><a class="nav-link" href="#aesthetic-mappings"><span class="header-section-number">12.2</span> Aesthetic mappings</a></li>
-<li><a class="nav-link" href="#geometries"><span class="header-section-number">12.3</span> Geometries</a></li>
-<li><a class="nav-link" href="#facets"><span class="header-section-number">12.4</span> Facets</a></li>
-<li><a class="nav-link" href="#statistics"><span class="header-section-number">12.5</span> Statistics</a></li>
-<li><a class="nav-link" href="#coordinates"><span class="header-section-number">12.6</span> Coordinates</a></li>
-<li><a class="nav-link" href="#themes"><span class="header-section-number">12.7</span> Themes</a></li>
-<li><a class="nav-link" href="#extensions"><span class="header-section-number">12.8</span> Extensions</a></li>
-<li><a class="nav-link" href="#summary"><span class="header-section-number">12.9</span> Summary</a></li>
-<li><a class="nav-link" href="#further-reading-3"><span class="header-section-number">12.10</span> Further reading</a></li>
+<li><a class="nav-link" href="#goals-6"><span class="header-section-number">12.1</span> Goals</a></li>
+<li><a class="nav-link" href="#introduction-5"><span class="header-section-number">12.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#the-layers-of-a-plot"><span class="header-section-number">12.3</span> The layers of a plot</a></li>
+<li><a class="nav-link" href="#aesthetic-mappings"><span class="header-section-number">12.4</span> Aesthetic mappings</a></li>
+<li><a class="nav-link" href="#geometries"><span class="header-section-number">12.5</span> Geometries</a></li>
+<li><a class="nav-link" href="#facets"><span class="header-section-number">12.6</span> Facets</a></li>
+<li><a class="nav-link" href="#statistics"><span class="header-section-number">12.7</span> Statistics</a></li>
+<li><a class="nav-link" href="#coordinates"><span class="header-section-number">12.8</span> Coordinates</a></li>
+<li><a class="nav-link" href="#themes"><span class="header-section-number">12.9</span> Themes</a></li>
+<li><a class="nav-link" href="#extensions"><span class="header-section-number">12.10</span> Extensions</a></li>
+<li><a class="nav-link" href="#summary"><span class="header-section-number">12.11</span> Summary</a></li>
+<li><a class="nav-link" href="#further-reading-3"><span class="header-section-number">12.12</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -171,7 +188,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-02.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

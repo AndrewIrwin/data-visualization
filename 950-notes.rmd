@@ -18,7 +18,11 @@ sugrrants package for visualizing course components
 
 ## Miscellaneous
 
-separate and unite
 
 bind_rows
 bind_cols
+
+
+Plotting functions (algebraic form: x^2, etc. or from regression line predictions)
+tibble. seq. expand.grid. mutate. plot.
+

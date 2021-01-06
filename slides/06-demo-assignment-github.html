@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## Accessing tasks and assignments on github
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-01-15 (updated: 2021-01-04)
+
+---
+
+class: middle
+
+
+
+# Task
+
+* Task 4: 
+  * Check out the github repository for your assignment 1
+
+---
+class: middle, inverse
+
+# Steps
+
+* Click the link to access the repository on the detailed outline
+
+* Copy the link provided by github
+  
+* Create a new R project from github repo
+
+* Do the assignment
+  
+* Push the changes to github
+
+---
+class: middle
+
+# Click the link to access the repository on the detailed outline
+
+  * This will create a copy of the task/assignment as a repository on your github account
+  * The first time you do this, you may be asked to authorize access to your github account by the course (Dalhousie-AndrewIrwin-Teaching)
+  * You will be asked to find your name in a list of students registered in the course. If you are not listed, contact me for help
+  * You will get an email notification from github
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/step-1a-join-repo.png" width="3285" /&gt;
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/step-1b-accepted-repo.png" width="3965" /&gt;
+
+---
+class: middle
+# Copy the link provided by github
+
+&lt;img src="../static/git-demo/step-2a-get-repo-url.png" width="3965" /&gt;
+
+---
+class: middle
+
+# Create a new project from github: Windows &amp; Mac
+  
+* Check if git is installed
+
+* Create new project
+
+* Authenticate
+
+* Tell git your name (once only)
+  * git config --global user.email "you@example.com"
+  * git config --global user.name "Your Name"
+ 
+---
+class: middle
+
+## Check git is installed
+
+&lt;img src="../static/git-demo/windows-git-not-installed.png" width="1299" /&gt;
+
+Go back to Syllabus or Lesson 3: Version Control for instructions.
+
+---
+class: middle
+
+## Check git is installed
+
+&lt;img src="../static/git-demo/windows-git-success.png" width="1609" /&gt;
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/windows-clone-repo-github.png" width="1536" /&gt;
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/windows-ready-to-go.png" width="3183" /&gt;
+
+---
+class: middle
+
+# rstudio.cloud
+
+* Create new project (not from github)
+
+* git clone &lt;paste link from github&gt;
+
+* Tell git your name (once only)
+  * git config --global user.email "you@example.com"
+  * git config --global user.name "Your Name"
+
+* Open new project
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/cloud-0-create-project.png" width="3016" /&gt;
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/cloud-1-clone.png" width="2948" /&gt;
+
+---
+class: middle
+
+&lt;img src="../static/git-demo/cloud-2-finished.png" width="2935" /&gt;
+
+
+---
+class: middle
+# Do the assignment
+
+* Stage and commit your changes to your local repository
+
+---
+class: middle
+
+# Push the changes to github
+  
+* You may get a warning email about password authentication being discontinued later this year
+* You can switch to an alternative authentication method, but there is no hurry
+
+---
+class: middle
+
+# Pull my changes to get your assessment
+
+* Wait a few days! (I will send a notification email.)
+* Grades will also appear on Brightspace
+  
+  
+
+Prompt to "sign in with your browser" (authorize credential manager from browser)
+
+
+
+Use PAT (personal access token) system.
+https://github.com/settings/tokens/new
+Later
+
+---
+class: middle, inverse, center
+
+# All done!
+
+# Congratulations
+
+---
+# Debris
+
+  * https://github.com/Dalhousie-AndrewIrwin-Teaching/assignment-1-stat2430-student.git
+    * Optionally add your user name as follows:
+    * https://stat2430-student@github.com/Dalhousie-AndrewIrwin-Teaching...
+
+  * You may be asked to restart Rstudio
+
+
+Session &gt; Restart R
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

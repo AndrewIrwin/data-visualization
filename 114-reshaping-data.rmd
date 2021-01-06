@@ -1,0 +1,120 @@
+# Reshaping data {#pivot}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gapminder)
+library(hablar)
+```
+
+There are many ways to organize data in an array. The key principles we're following are
+
+* each row is a different observation, and
+* each column is a different variable.
+
+This organization tends to make for very long tables. For example, the `gapminder` data has 1704 rows: 12 years of data for 142 countries. We might want to show median life expectancy for each continent (5 rows) in three different years. This would make a nice compact table, but it seems like the data is not in the right shape for this.
+
+## Pivot wider
+
+We'll start by selecting three years (1987, 1997, 2007) and computing the median life expectancy for each continent in each year. (The median for the continent may not be representative of all countries in the continent, but we'll worry about that some other time.)
+
+
+```{r}
+t1 <- gapminder %>% 
+  filter(year %in% c(1987, 1997, 2007)) %>%
+  group_by(continent, year) %>%
+  summarise(median_life_expectancy = median(lifeExp), .groups = "drop")
+t1
+```
+
+Now we can see the data and it's not too large, the reshaping problem is clearer. I'd like to create a table with one row for each continent, one column for each year and the numbers in the grid should be the median life expectancy. This reshaping is called a pivot, specifically a pivot to make a wider table, and we simply need to specify the current column to use as the new names (year) and the current column to use as the values for the new grid (median_life_expectancy).
+
+```{r}
+t1 %>% pivot_wider(names_from = year, values_from = median_life_expectancy)
+```
+
+Let's practice our table formatting skills to make this look a bit better:
+
+```{r}
+t2 <- t1 %>% pivot_wider(names_from = year, values_from = median_life_expectancy)
+t2 %>% rename(Continent = continent) %>%
+  arrange(-`2007`) %>%
+  kable(digits = 1) %>%
+  column_spec(1, bold=TRUE) %>%
+  kable_styling(full_width = FALSE)
+```
+
+
+## Pivot longer
+
+Sometimes data a provided in a "wide" format, like the summary table above. This is often very convient for data entry and visual inspection. Suppose you wanted to use the years in the table shown above as a aesthetic in a plot, or a grouping variable in a summarise operation. You can't! So you might want to pivot the table to make it longer.
+
+`pivot_longer` undoes the `pivot_wider` operation. You need to give the set of variables to be stacked and a name for the new variable to be filled with those column headings. Here's how to perform the inverse of the `pivot_wider` shown above. Since our variable names are just numbers (which are not standard column names in data tables), we need to put backticks around them. (The plain expression 1987:2007 would be interpreted quite differently by R. Try it in the console. )
+
+```{r}
+t3 <- t2 %>% pivot_longer(cols = `1987`:`2007`, names_to = "year", values_to = "median_life_expectancy")
+t3
+```
+
+There is an important difference between the original table `t1` and this recovered table `t3`: the year variable in t1 was an integer (numeric) but the year variable in `t3` is character (text). This will matter if you want to calculate with the new year variable or put it on a quantitative scale. The `hablar` package makes it really easy to convert variables from one type to another:
+
+```{r}
+t3 %>% convert(int(year))
+```
+
+The dataset `who` in the `tidyr` package is counts of tuberculosis cases by country and year. It is in wide format with many columns (new...) describing diagnosis method, sesx, and age category. There are also a lot of missing data when the data are shown in this wide format. 
+
+Let's pivot this data to make it long.
+
+```{r}
+who_long <- who %>% pivot_longer(new_sp_m014:newrel_f65, names_to = "category", values_to = "counts")
+head(who_long)
+```
+
+the original data had 7240 observations and 60 columns (4 that we've kept and 56 that we have pivoted). As a result our new table `who_long` has 6 columns (4+2) and 56 x 7240 = 405,440 rows. Let's see how many of the count data are missing.
+
+```{r}
+who_long %>% summarize(count_NA = sum(is.na(counts)))
+```
+
+A lot of them! In fact 81% of the data in the original matrix are NA. So let's discard them using `na.omit` or `filter(!is.na(counts))`. You can also use `values_drop_na = TRUE` in the `pivot_longer` function call. That will make a much smaller table. If you look at the smaller table, you'll see there are 0 counts. So NA did not simply mean 0. (You should never use NA to mean 0; it should mean missing. But some people do.) 
+
+```{r}
+who_long <- who_long %>% filter(!is.na(counts))
+```
+
+## Separate and Unite
+
+How can we decode the category into three columns: diagnosis, sex, and age group? The `separate` function is made for this. The easiest way to use separate is if the variable you are separating is consistently structured with the same character between each column, such as new_rel_f_2534. That's not the case here: some values start with `new_` and some are missing the underscore after the `new`. Also there is no underscore between sex and age group. So we will do a bit of pre-processing using the `stringr` package before we use separate.
+
+First, I'll remove "new" or "new_" (described concisely by a "regular expression" using new_*). Then I'll change `_f` to `_f_` and `_m` to `_m_`. When you first start learning to do these kinds of manipulations, you should check through a lot of the cases to be sure all the transformations worked the way you expect.
+
+```{r}
+who_long %>% mutate(category = str_remove(category, "new_*"),
+                    category = str_replace(category, "_f", "_f_"),
+                    category = str_replace(category, "_m", "_m_")
+                    ) %>% 
+  head()
+```
+
+Now, we will use `separate` to convert `category` into three columns using the underscore as a separator.
+
+```{r}
+who_new <- who_long %>% mutate(category = str_remove(category, "new_*"),
+                    category = str_replace(category, "_f", "_f_"),
+                    category = str_replace(category, "_m", "_m_")
+                    ) %>% 
+  separate(col = category, into = c("diagnosis", "sex", "age_group"), sep="_")
+who_new %>% head()
+```
+
+Now we can use the `dplyr` methods group_by and summarize to count cases by sex, age group, diagnosis, country, and year. Or we can use these new variables in data visualizations for facets or colours.
+
+Sometimes you will want to do the reverse operation: combining two or more columns together. For example, if I have some biological data with the variables genus and species, I might want to combine the two, since a species is usually described by both together (Homo is our genus, and sapiens is our species name). That's a job for `unite`.
+
+
+## Suggested reading
+
+* R4DS [Section 12.3 Pivoting](https://r4ds.had.co.nz/tidy-data.html#pivoting)
+* R4DS [Sextion 12.4 Separate and Unite](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting)
+* Vignette on [kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) for formatting tables.

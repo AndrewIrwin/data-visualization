@@ -1,0 +1,65 @@
+# Format tables
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+We're spending a lot of time in this course making graphic visualizations of data. In this one lesson we will take a detour and learn to make nice looking tables with text and numbers in them. There are a bunch of packages for doing this (see Assignment X). We'll use `kable` table formatting here because it works nicely in documents we knit to HTML.
+
+Let's use a simple table to demonstrate the main features. I want some text, some numbers, and not too many rows or columns. I'll summarize the data in the `palmerpenguins` table into a small table.
+
+```{r echo = FALSE}
+t1 <- penguins %>% group_by(species, island) %>%
+  summarize(body_mass_g = mean(body_mass_g, na.rm=TRUE), 
+            count = sum(!is.na(body_mass_g),
+            .groups = "drop")
+t1
+```
+
+The function `kable` turns this into a formatted table.
+
+```{r}
+kable(t1)
+```
+
+## Header rows
+
+First we'd like to rename the columns. There are two ways to do this: using `rename` to change the actual column names before formatting the table, or using column formatting to just affect the table appearance.
+
+```{r}
+t1 %>% rename(`Body mass (g)` = body_mass_g) %>% kable()
+```
+
+```{r}
+t1 %>% kable(col.names = c("Species", "Island", "Body mass (g)", "Count"))
+```
+
+## Column alignment
+
+Commonly numbers are right justified and text is left justified. That's what's done automatically. You can specify each column as left, centre, or right justified using the letters l, c, or r for each column. Here we'll center the justify the numbers to demonstrate.
+
+```{r}
+t1 %>% kable(align = "llcc")
+```
+
+Column names, alignment
+
+
+## Formatting numbers
+
+## Colour, font, and text rotation
+
+## Captions
+
+
+## Adding sums and percentages
+
+janitor
+
+
+## Further reading
+
+* Using [kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) to format tables
+* Vignette on using [kable and kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)

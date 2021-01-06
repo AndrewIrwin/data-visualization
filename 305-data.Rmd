@@ -154,5 +154,9 @@ p1
 
 ## Other interesting multivariate data for analysis
 
+## Suggested reading
+
+* https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/
+* https://gist.github.com/timvisee/fcda9bbdff88d45cc9061606b4b923ca
 
 
