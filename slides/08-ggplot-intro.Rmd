@@ -1,0 +1,168 @@
+---
+title: "Data Visualization"
+subtitle: "Using the grammar of graphics (ggplot2)"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-01-20 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(socviz)
+library(tidyverse)
+```
+
+# ggplot2 examples
+
+A series of examples to demonstrate how to use the grammar of graphics to plan and create visualizations.
+
+Using `gss_sm` and `gss_cat` in the `socviz` package which contains a general social survey with 2867 observations (rows) and 32 variables (columns).
+
+Basic examples using selected geometries, plus some elaborations.
+
+---
+class: middle, inverse
+# What data do you have?
+
+* One (or two) categorical: `geom_bar`
+
+* One quantitative: `geom_histogram`
+
+* One categorical and one quantitative: `geom_boxplot`
+
+* Two quantitative: `geom_point`
+
+---
+class: middle
+### One categorical variable
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(y = region)) + geom_bar()
+```
+
+---
+class: middle
+### Two categorical variables
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(y = region, fill = degree)) + geom_bar() 
+```
+
+---
+class: middle
+#### Two categorical variables, using area for counts
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(y=income16, x = happy)) + geom_count()
+```
+
+---
+class: middle
+### Same data using bars
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(y=income16, fill = happy)) + geom_bar() 
+```
+
+---
+class: middle
+#### Same data, too many colors
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(fill=income16, x = happy)) + geom_bar() 
+```
+
+---
+class: middle
+### One quantitative variable
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(x = age)) + geom_histogram()
+```
+
+---
+class: middle
+#### One categorical, one quantitative variable
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_sm %>% ggplot(aes(x = age, y=factor(childs))) + 
+  geom_boxplot() + #<<
+  labs(y="Number of children") #<<
+```
+
+
+---
+class: middle
+#### Two quantitative variables
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_cat %>% slice_sample(n=2000) %>% 
+  ggplot(aes(x = age, y= tvhours)) + 
+  geom_point(size=0.2) #<<
+```
+
+---
+class: middle
+#### Two quantitative variables
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_cat %>% slice_sample(n=2000) %>% 
+  ggplot(aes(x = age, y= tvhours)) + 
+  geom_jitter(size=0.2) + #<<
+  geom_smooth() #<<
+```
+
+---
+class: middle
+#### Two quantitative variables, show variability in one
+
+```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
+gss_cat %>% ggplot(aes(x = age, y = tvhours )) + 
+  stat_summary(fun.data = "mean_se") #<<
+```
+
+---
+class: middle
+
+# Summary
+
+* Showed variations on introductory example with 1 or 2 categorical and quantitative variables
+
+* Demonstrated a few embelishments (colours, standard deviations, symbol area, smooths, jitter points)
+
+* Showed some visualizations that "don't work" -- too many categories
+
+
+
+---
+class: middle
+
+# Further reading
+
+* Lots more examples with different data in the course notes
+
+* "Extras" including axis labels, text on figures, other annotations
+
+---
+class: middle, inverse
+
+## Task
+
+Practice these graphs by
+
+* reproducing them, and
+
+* modifying them by changing variables used in aesthetic mappings.
+
+If you would like, use other data sources described in "Data Sources" chapter in course notes.
+

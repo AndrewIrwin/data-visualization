@@ -1,7 +1,8 @@
-# Using points, lines, colours, and shapes (#ggplot2)
+# Using points, lines, colours, and shapes (#scales)
 
 ```{r include=FALSE}
 library(tidyverse)
+library(palmerpenguins)
 ```
 
 In the previous lesson you learned the computer skills to make a huge variety of plots. Here we will focus on how to use colors, shapes, lines, and text effectively on a visualization.
@@ -17,7 +18,8 @@ In the previous lesson you learned the computer skills to make a huge variety of
 ### Shapes, colours, and fills
 
 ```{r}
-penguins %>% ggplot(aes(x = bill_length_mm, bill_depth_mm, color = species, fill = sex, shape = species)) + geom_point()
+penguins %>% ggplot(aes(x = bill_length_mm, y= bill_depth_mm, 
+                        color = sex, shape = species)) + geom_point()
 ```
 
 

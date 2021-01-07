@@ -1,0 +1,160 @@
+# Plot geometries {#geom}
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggridges)
+library(hexbin)
+```
+
+Every visualization needs at least three elements:
+
+* data
+* a mapping between variables in the data and aesthetic features of the plot, and
+* one or more geometries, describing how the data should be displayed.
+
+Everything else can be filled in automatically by software. You may not like some of the choices -- colours or text sizes -- but the choices will be OK, at least for a draft plot. But without these three elements (data, aesthetics, geometry) there is no plot to improve.
+
+This lesson will introduce you to a large number of geometries. Web sites such as the [R Graph Gallery](https://www.r-graph-gallery.com/) and Claus Wilke's [Directory of Visualizations](https://clauswilke.com/dataviz/directory-of-visualizations.html) will introduce you to even more options.
+
+There is an important relationship between the data available to you and the best way to visualize the data. The key factors are
+
+* the types of variables: cateogorical and quantitative
+* the number of variables (one or two of one type, more than two of one type, both types)
+* the number of observations (a few, many, or a huge number)
+
+We use the `palmerpenguins` data for most of these examples  as it has 3 categorical variables and 4 quantitative variables. (I'm treating Year as categorical, but you could interpret as quantitative.) I'll keep these plots as simple as possible, with two exceptions. I'll define a theme to control some elements of the layout and I'll use `patchwork` to display multiple plots compactly. See lessons near the end of the course for more on these packages.
+
+Our packages are
+
+```{r message=FALSE}
+library(tidyverse) 
+library(palmerpenguins) # for the data
+library(patchwork) # for combining visualizations
+```
+
+I've defined a theme to make text a bit bigger than normal and remove the gray background from the figures.
+
+```{r]
+my_theme <- theme_bw() + theme(text=element_text(size=14))
+```
+
+## One categorical variable
+
+Bar charts are commonly used to summarize the number of observations of each level in cateogorical variables. Bars cab be drawn vertically or horizontally, as determined by the aesthetic mapping.
+
+```{r}
+p1 <- penguins %>% ggplot(aes(x = species)) + geom_bar() + my_theme
+p2 <- penguins %>% ggplot(aes(y = island)) + geom_bar() + my_theme
+p1 + p2
+```
+
+## Multiple categorical variables
+
+With two categories (species and island), you can use colours for one and the x-axis for the other. The three visualizations below all use the same data. The variable used for colour can be shown as total counts divided into cateogries by stacking (panel A), by stacked proportions (B), or by side-by-side bars (C). Choose the layout that best highlights the point you want to make. (The label on panel B is incorrect; it's the proportion found on each island.)
+
+```{r}
+p1 <- penguins %>% ggplot(aes(x = species, fill=island)) + geom_bar() + my_theme
+p2 <- penguins %>% ggplot(aes(x = species, fill=island)) + geom_bar(position="fill") + my_theme
+p3 <- penguins %>% ggplot(aes(x = species, fill=island)) + geom_bar(position=position_dodge2(preserve="single")) + my_theme 
+p1 + p2 + p3 + guide_area() + plot_layout(nrow=2, ncol=2, guides = "collect") + plot_annotation(tag_levels = "A")
+```
+
+
+## One quantitative variable
+
+With one quantitative variable, it's often desirable to show the distribution of the variable. The three standard ways are using boxplots (A), histograms (B), or smooth densities (C). You can show multiples of each of these using a categorical variable mapped on to the y-axis or fill colour. 
+
+This first set shows boxplots.
+
+```{r warning=FALSE, out.height=3}
+p1 <- penguins %>% ggplot(aes(x = body_mass_g, y = sex)) + geom_boxplot() + my_theme
+p2 <- penguins %>% ggplot(aes(x = body_mass_g, y = sex, color=species)) + geom_boxplot() + my_theme
+p1 + p2 
+```
+
+Now we show the same data using histograms. Bars can be stacked or shown side-by-side. The side-by-side (dodged) bars are hard to read in this example, but can be useful with fewer bars. We'll see another version when we discuss [facetted plots](#facets).
+
+```{r warning=FALSE}
+p1 <- penguins %>% ggplot(aes(x = body_mass_g, fill = sex)) + 
+  geom_histogram(bins=10) + my_theme
+p2 <- penguins %>% ggplot(aes(x = body_mass_g, fill = sex)) + 
+  geom_histogram(bins=10, position = "dodge") + my_theme
+p1 + p2
+```
+
+Histograms require a choice for either the `binwidth` or the number of `bins`. If the bins are too wide, important features can be lost, while narrow bins will accentuate small fluctuations (because the number of observation in each bin can get quite small.) Density plots are a continuous version of histograms. The problem of overlapping regions can be partly overcome by making the fill colour partly transparent (`alpha = 0.5`) or by stacking the densities. Another solution is to use ridges (from the `ggridges` package), specifying both a y and fill aesthetic to spread out the three density plots. There is no common baseline, so the quantitative scale is lost from the y-axis.
+
+```{r warning=FALSE}
+p1 <- penguins %>% ggplot(aes(x = body_mass_g, fill = sex)) + 
+  geom_density(alpha = 0.5) + my_theme
+p2 <- penguins %>% ggplot(aes(x = body_mass_g, fill = sex)) + 
+  geom_density(alpha = 0.5, position="stack") + my_theme
+p3 <- penguins %>% ggplot(aes(x = body_mass_g, y = sex, fill=sex)) + 
+  geom_density_ridges(alpha = 0.5) + my_theme
+p1 + p2 + p3 + plot_layout(guides = "collect")
+```
+
+Consider the different messages conveyed by each. In the first, the relative distributions can be compared quantitatively. In the second, the three groups divide up the total density, and in the third, the shapes of the three densities are contrasted. In all cases, note that we are displaying _densities_; the area under the curves is the same for each type, so the visualization does not show the relative numbers of penguins of each sex (male, female, or missing).
+
+You can preserve the relative abundance information in the density plots by adding `after_stat(count)` to each aesthetic mapping.
+
+```{r warning=FALSE}
+p1 <- penguins %>% ggplot(aes(x = body_mass_g, after_stat(count), fill = sex)) + 
+  geom_density(alpha = 0.5) + my_theme
+p2 <- penguins %>% ggplot(aes(x = body_mass_g, after_stat(count), fill = sex)) + 
+  geom_density(alpha = 0.5, position="stack") + my_theme
+p1 + p2 + plot_layout(guides = "collect")
+```
+
+
+## Two quantitative variables
+
+The most common way to show two quantitative variables is the scatter plot. These are often read as implying a cause-and-effect relationship, perhaps because of the way the x and y axes are used in math class. These plots are simply showing data. Sometimes it is worth swapping your x and y asthetics, just to change your perspective.
+
+If data for the x or y aesthetic is missing, the point is not shown. Discrete scales (colours and shapes) can show missing data easily. By default a missing value used for colour is shown in gray and a missing value for shape is not shown. Sex is missing for some penguins, so here I show how to pick a shape for those observations.
+
+```{r}
+penguins %>%
+  ggplot(aes(x=bill_length_mm, y= bill_depth_mm, color=species, shape=sex)) + geom_point() + 
+  scale_shape_discrete(na.value=25) + my_theme
+```
+
+If there are a lot of data, the points overlap a lot and the patterns can be hard to see. This dataset has a moderate density of points, but we can use the two-dimensional histograms as a demonstration plot.
+
+```{r warning=FALSE}
+p1 <- penguins %>%  ggplot(aes(x=bill_length_mm, y= bill_depth_mm)) + geom_bin2d() +
+  scale_fill_gradient(limits=c(0,6)) + my_theme
+p2 <- penguins %>%  ggplot(aes(x=bill_length_mm, y= bill_depth_mm)) + geom_hex() +
+  scale_fill_gradient(limits=c(0,6)) + my_theme
+p1 + p2 + plot_layout(guides="collect")
+
+```
+
+## Layering geometries
+
+You can use two or more geometries in the same visualization. A common use is to add error bars to points using `geom_errorbar`. We start by grouping all observations by species and island, then compute the mean and standard deviation of each variable to be plotted. 
+
+```{r}
+penguins %>%
+  na.omit() %>%
+  group_by(species, island) %>%
+  summarize(bill_length_mean = mean(bill_length_mm),
+            bill_length_sd = sd(bill_length_mm),
+            bill_depth_mean = mean(bill_depth_mm),
+            bill_depth_sd = sd(bill_depth_mm),
+            ) %>%
+  ggplot(aes(x = bill_length_mean, y = bill_depth_mean, color=species, shape = island)) +
+  geom_point() + 
+  geom_linerange(aes(xmin = bill_length_mean - bill_length_sd, xmax = bill_length_mean + bill_length_sd)) + 
+  geom_linerange(aes(ymin = bill_depth_mean - bill_depth_sd, ymax = bill_depth_mean + bill_depth_sd )) +
+  my_theme
+
+```
+
+
+## Resources
+
+* Directory of Visualizations in [Wilke Chapter 5](https://clauswilke.com/dataviz/directory-of-visualizations.html)
+* The [R Graph Gallery](https://www.r-graph-gallery.com/index.html)
+
+

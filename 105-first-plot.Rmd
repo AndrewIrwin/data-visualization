@@ -4,6 +4,14 @@
 guc <- paste0("https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/", knitr::current_input())
 ```
 
+## Goals
+
+In this lesson I will show you how to create a basic plot and then demonstrate a sequence of  refinements to the plot.
+
+Your [task](#task-b2) for this lesson is repeat the steps demonstrated here or in the accompanying video. Refer to [Healy Section 2.6](https://socviz.co/gettingstarted.html#make-your-first-figure) for a different basic plot.
+
+## Introduction
+
 In this lesson you will start to learn how to use ggplot to visualize data. There is one simple example with several exercises, designed to make the essentials clear in your mind. All plots share the three features explained below, but many plots we draw later in the course are much more complex. 
 
 You can read these notes as a static document in a web browser, but it's better to download the R markdown file [here](`r guc`), open it in Rstudio, and edit the examples as you read.

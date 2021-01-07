@@ -1,8 +1,10 @@
 # Invitation to Data Visualization {#ch-invitation}
 
+## Goals
+
 In this lesson I will provide some examples of interesting and influential data visualizations.
 
-In the task for this lesson, I will ask you to identify two visualizations you find interesting and provide a brief description and analysis of each.
+In the [task](#task-1) for this lesson, I will ask you to identify two visualizations you find interesting and provide a brief description and analysis of each.
 
 ## Atmospheric carbon dioxide concentration
 

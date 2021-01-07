@@ -1,0 +1,226 @@
+---
+title: "Data Visualization"
+subtitle: "Summarizing data (dplyr)"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-01-27 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(rmarkdown)
+library(knitr)
+library(kableExtra)
+```
+
+# Transforming data
+
+How can we  
+  * transform data, or 
+  * reduce a large number of observations to a smaller number?
+
+* Compute derived quanties (ratios, change units) 
+
+* Count observations in categories
+
+* Compute means and standard deviations 
+  * Combine replicates
+  * Average over cateogories
+
+* Highlight special cases
+
+---
+class: middle, inverse
+# dplyr examples
+
+Transforming and reducing observations using 
+
+* `mutate`
+
+* `filter`
+
+* `group_by`
+
+* `summarize`
+
+We will use the `ChickWeight` data in the `datasets` package.
+
+
+---
+class: middle
+
+# Data
+
+```{r}
+glimpse(ChickWeight)
+```
+
+---
+class: middle
+# Use summarize to count observations
+
+```{r}
+ChickWeight %>% summarize(count = n()) %>% kable()
+```
+
+---
+class: middle
+# Count observations in groups
+
+```{r}
+ChickWeight %>%
+  group_by(Diet) %>% #<<
+  summarize(count = n(), .groups="drop") %>%
+  kable()
+```
+
+
+---
+class: middle
+## Two grouping factors
+
+```{r}
+ChickWeight %>%
+  group_by(Diet, Chick) %>% #<<
+  summarize(count = n(), .groups = "drop") %>%
+  paged_table()
+```
+
+---
+class: middle
+### Compute any function you want
+
+```{r}
+ChickWeight %>%
+  group_by(Chick, Diet) %>% 
+  summarize(count = n(), 
+            max_time = max(Time), 
+            median_weight = median(weight),
+            increase_weight = max(weight) - min(weight),
+            .groups="drop") %>%
+    paged_table()
+```
+
+---
+class: middle
+### Use mutate to create new columns for each observation
+
+```{r}
+ChickWeight %>% as_tibble() %>%
+  mutate(growth = weight / Time) %>%
+  paged_table()
+```
+
+---
+class: middle
+### Use mutate to create new columns for each observation
+
+```{r}
+ChickWeight %>% as_tibble() %>%
+  mutate(growth = (weight-min(weight)) / Time) %>%
+  paged_table()
+```
+
+---
+class: middle
+### Exclude observations with filter
+
+```{r}
+ChickWeight %>% as_tibble() %>%
+  filter(Time >= 10) %>% 
+  arrange(Time) %>%
+  paged_table()
+```
+
+
+---
+class: middle
+### Exclude observations with filter
+
+```{r}
+ChickWeight %>% as_tibble() %>%
+  filter(Time == 10) %>% 
+  group_by(Diet) %>% 
+  summarize(weight_10 = mean(weight), .groups = "drop") %>%
+  kable()
+```
+
+---
+class: middle
+# Combine all three
+
+* Compute max weight for each chick and diet over all time.
+* Filter out chicks that reach a target weight
+* Count the number of observations per chick and diet treatment
+
+```{r eval=FALSE}
+ChickWeight %>% as_tibble() %>%
+  group_by(Diet, Chick) %>%
+  mutate(max_weight = max(weight)) %>%
+  filter(max_weight > 110) %>%
+  group_by(Diet, Chick) %>%
+  summarize(n = n()) %>%
+  summarize(count_chicks = n(), .groups = "drop") %>%
+  kable()
+```
+
+---
+class: middle
+# Combine all three
+
+* Compute max weight for each chick and diet over all time.
+* Filter out chicks that reach a target weight
+* Count the number of observations per chick and diet treatment
+
+```{r echo=FALSE, message=FALSE}
+ChickWeight %>% as_tibble() %>%
+  group_by(Diet, Chick) %>%
+  mutate(max_weight = max(weight)) %>%
+  filter(max_weight > 110) %>%
+  group_by(Diet, Chick) %>%
+  summarize(n = n()) %>%
+  summarize(count_chicks = n(), .groups = "drop") %>%
+  kable()
+```
+
+---
+class: middle
+
+# Summary
+
+* Use `mutate` to define a new variable for all observations
+
+* Use `summarize` to compute functions (count, mean, ...) to reduce many observations to one
+
+* Use `group_by` to split, summarize, and combine data
+
+* Use `filter` to select observations
+
+
+---
+class: middle
+
+# Further reading
+
+* Lots more examples with different data in the course notes
+
+* R4DS [Chapter 5 Data transformations](https://r4ds.had.co.nz/transform.html)
+
+---
+class: middle, inverse
+
+# Task
+
+Practice these skills by doing the calculations in Task 6.
+

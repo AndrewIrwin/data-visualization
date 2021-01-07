@@ -1,5 +1,13 @@
 # Setting up your computer {#setup}
 
+## Goals
+
+In this lesson you will start using the computer tools introduced in the previous lesson.
+
+Your [task](#task-2) for this lesson is to follow along with the instructions and provide some information on Brightspace at the link marked Task 2.
+
+## Introduction
+
 The statistical software R and RStudio and version control software git will be used in this course. No prior experience with
 R, RStudio or git is assumed. We'll take class time to learn the software.
 
@@ -49,7 +57,8 @@ my_packages <- c("tidyverse", "broom", "coefplot", "cowplot",
                  "gapminder", "GGally", "ggrepel", "ggridges", "gridExtra",
                  "here", "interplot", "margins", "maps", "mapproj",
                  "mapdata", "MASS", "quantreg", "rlang", "scales",
-                 "survey", "srvyr", "viridis", "viridisLite", "devtools")
+                 "survey", "srvyr", "viridis", "viridisLite", 
+                 "socviz", "devtools", "patchwork")
 
 install.packages(my_packages)
 ```

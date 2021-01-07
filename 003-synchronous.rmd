@@ -1,6 +1,6 @@
 # Synchronous meeting agendas {#sync}
 
-```{r setup, include=FALSE}
+```{r include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -25,7 +25,7 @@ Meeting agenda:
 
 This is a drop-in office hour. Come with questions about the course. In particular, if you are having difficulty settung up R, Rstudio, git, bring those questions.
 
-## Thu 14 Jan 8:35
+## Thu 14 Jan 8:35 {#sync-2}
 
 Before the meeeting:
 
@@ -41,7 +41,7 @@ Meeting agenda:
 
 This is a drop-in office hour. Come with questions about the course. In particular, you may want to bring questions about Assignment 1 (it was due yesterday, but any ligering questions should be resolved as soon as possible).
 
-## Thu 21 Jan 8:35
+## Thu 21 Jan 8:35 {#sync-3}
 
 Before the meeeting:
 
@@ -55,7 +55,7 @@ Meeting agenda:
 
 This is a drop-in office hour. Come with questions about the course.
 
-## Thu 28 Jan 8:35
+## Thu 28 Jan 8:35 {#sync-4}
 
 Before the meeeting:
 
@@ -69,7 +69,7 @@ Meeting agenda:
 
 
 
-## Thu 1 April 8:35
+## Thu 1 April 8:35 {#sync-12}
 
 Oral presentations day 1. Each presentation will be a maximum of 5 minutes, so there will be time for about 12 presentations.
 
@@ -77,7 +77,7 @@ A sign-up sheet will be posted on Brightspace once the proposals have been submi
 
 Presentations may be made live or can be pre-recorded.
 
-## Tue 6 April 8:35
+## Tue 6 April 8:35 {#sync-13}
 
 This is not an office hour day, but instead is a required synchronous session.
 

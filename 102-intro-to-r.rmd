@@ -1,6 +1,14 @@
 
 # Computer tools {#ch-tools}
 
+## Goals
+
+In this lesson I will explain what computer tools we will use, how they were selected, and why they are useful.
+
+In the [task](#task-b1) for this lesson, I will ask you to read [Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
+
+## Introduction
+
 We will use R and Rstudio in this course. R is widely used to analyze data and comes with many add-on packages for statistical analysis, data visualization, and specialized tools for many disciplines and applications. We will just scratch the surface of what R can do, but by the end of the course you should feel comfortable learning to use R for data visulization and you will have the skills to learn how to use R for many other tasks. Rstudio is a graphical user interface for R with many convenient features including tools to support report writing, getting help, and project management. For data visualization we will use '[ggplot2](https://en.wikipedia.org/wiki/Ggplot2)', for data analysis we will use the '[tidyverse](https://www.tidyverse.org/)' style of programming, for report writing we will use '[R markdown](https://rmarkdown.rstudio.com/)', and for project management we will use R projects and '[git](https://git-scm.com/)' version control. All of these computer terms will mean much more to you later on in the course!
 
 In this lesson I will explain why we use each of these tools and the main features that make each useful. Your task for this lesson is to get your computer set up with the necessary software so that you are ready for the rest of the course.

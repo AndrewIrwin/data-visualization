@@ -1,5 +1,13 @@
 # Grammar of Graphics {#grammar}
 
+## Goals
+
+In this lesson I will explain the concept behind the "grammar of graphics". The emphasis is on the idea and not the particular computing environment (R and ggplot2) that we will use. 
+
+Your [task](#task-5) for this lesson is to review some material on ggplot to connect the ideas from the previous lesson to the concept of the grammar of graphics to prepare you for starting to learn the details in the next lesson. There are a few multiple choice questions to answer in this week's task repository.
+
+## Introduction
+
 By the end of this lesson you should understand the design of the grammar of graphics. This will help you develop a mental model of what the R functions for plotting do, making the process easier to remember and modify to suit your own goals.
 
 The next lesson will show you the R commands that accompany each concept.
@@ -13,6 +21,7 @@ A plot is assembled in layers (see below), starting with data, then adding aesth
 ```{r echo=FALSE, out.width="80%", fig.align="center", fig.caption="Summary of the layers in a ggplot. From erikaris.com/2020/02/11/understanding-ggplot-the-grammar-of-graphic/"}
 knitr::include_graphics("static/ggplot-layers.png")
 ```
+
 ## Data
 
 Data always come from a data frame (or tibble) with columns representing variables and each row corresponding to a different observation. We'll have a lot more to say about organizing and manipulating data [later](#todydata).
@@ -61,5 +70,6 @@ That's the basic idea behind the grammar of graphics approach to plotting. It ta
 * A chapter on these ggplot concepts from a [data science course](https://rafalab.github.io/dsbook/ggplot2.html)
 * A ggplot [cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) summarizing a huge amount of information in two pages
 * [Understanding ggplot](http://erikaris.com/2020/02/11/understanding-ggplot-the-grammar-of-graphic/)
-
+* The [R graph gallery](https://www.r-graph-gallery.com/)
+* Wickham's [article](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098) on the grammar of graphics
 

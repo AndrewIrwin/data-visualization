@@ -4,87 +4,60 @@
 library(tidyverse)  # fussy, but might be useful later on
 library(knitr)
 library(kableExtra)
-schedule <- tribble(
-  ~item, ~date, ~title, ~notes, ~video, ~slides, ~link_name, ~link_url,
-  "Leson 1", NA, "An Invitation to Data Visualization", "(#ch-invitation)", "(https://dal.brightspace.com/d2l/le/content/159870/viewContent/2139938/View)", "(slides/01-invitation.html)", NA, NA,
-  "Synchronous meeting", "2021-01-07 08:35", "[Agenda](#sync-1)", NA, NA, NA, "Collaborate (Brightspace)", "(https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View)",
-)
-sh <- function(i, shedule = schedule) {
-  schedule %>% slice(i) %>%
-    mutate(notes = case_when(!is.na(notes) ~ paste0("[Notes]", notes), TRUE ~ notes),
-           video = case_when(!is.na(video) ~ paste0("[Video]", video), TRUE ~ video),
-           slides = case_when(!is.na(slides) ~ paste0("[Slides]", slides), TRUE ~ slides),
-           link = case_when(!is.na(link_url) ~ paste0("[", link_name, "]", link_url), TRUE ~ as.character(NA))) %>%
-    kable() %>% kableExtra::kable_styling()
-}
+library(readxl)
+library(lubridate)
+cal <- read_excel("schedule.xlsx")
 ```
 
 Synchronous sessions will be held on Thursday starting at 8:35 and ending at 9:55 or earlier. You can find the link to these sessions on [Brightspace](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083791). There is an [agenda](#sync) for each session.  Most sessions will be recorded and posted on Brightspace. The other synchronous time in the timetable (Tuesday starting at 8:35) will be used for drop-in office hours. 
 
+Each lesson has written notes, a recorded video, slides, and links to textbook readings in the notes. Some students will prefer to begin with the video, others will prefer to begin with the written notes and slides. I suggest you learn which you prefer by experimentation. The tasks are designed to help you be sure you know the most important parts of each lesson.
+
 ## Course calendar
+
+Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. Assignment and project component due dates are listed below. Dates for non-synchronous components are guides to help you  pace your work. 
 
 **This is a tentative schedule which will be revised throughout the term.**
 
-Each lesson has written notes, a recorded video (with slides), and links to textbook readings. There is some duplication across these materials. Some students will prefer to begin with the video, others will prefer to begin with the written notes and slides. I suggest you learn which you prefer by experimentation. The tasks are designed to be sure you know the most important parts of each lesson.
+```{r echo=FALSE}
+my_paste= function(a,b) {
+  case_when( is.na(a) | is.na(b) ~ as.character(NA),
+             TRUE ~ paste0("[", a, "](", b, ")")
+  )
+}
+row_packing <- table(cal$Week)
+attr(row_packing, "names") <- paste0("Week ", attr(row_packing, "names"))
+options(knitr.kable.NA = '')
+cal %>% select(-Day, -Week) %>%
+  arrange(Date) %>%
+  mutate(Date = strftime(Date+12*3600, format = "%a %e %b", tz = "America/Halifax"), # timezone error? Excel bug?
+         Notes = my_paste(notes, notes_link),
+         Video = my_paste(video, video_link),
+         Slides = my_paste(slides, slides_link),
+         Tasks = my_paste(tasks, tasks_link)
+         ) %>%
+  select(-notes, -notes_link, -tasks, -tasks_link,
+         -video, -video_link, -slides, -slides_link) %>%
+  select(Date, Lesson, everything()) %>%
+  unite("Links", Notes:Tasks, sep = ", ", na.rm=TRUE) %>%
+  kable() %>%
+  pack_rows(index = row_packing) %>%
+  kable_styling() 
+  
+```
 
-### Week 0: Before the course begins
-
-An introduction to the course is provided by a welcome presentation called Course Mechanics: [video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9eabe994-44ad-42b8-9db3-aca00024fe2b) and [slides](slides/00-course-mechanics.html). After you watch this video, review the [course welcome](#welcome) and [syllabus](#syllabus). Then move on to Week 1.
-
-### Week 1: Jan 6-8
-
-These lessons introduce the content of the course and the tools we will use. 
-
-Work on these elements in the following suggested order:
-
-- Lesson 1: An Invitation to Data Visualization. [Notes](#ch-invitation), [Video](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2139938/View), [Slides](slides/01-invitation.html).
-- Synchronous meeting Thursday 7 January, 8:35 Atlantic on [Collaborate (Brightspace)](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View). [Agenda](#sync).
-- Lesson 2: The tools we will use and why: R, Rstudio, ggplot, tidyverse, markdown, git, github. [Notes](#ch-tools), Video, [Slides](slides/02-computer-tools.html)
-- Task 1. [Instructions](#task-1). Submit on Brightspace.
-
-Task 1 is due Monday 11 January at 9:00 am Atlantic time.
-
-### Week 2: Jan 11-15
-
-The three lessons this week show you how to get your computer set up for the course, discuss how we perceive visualizations, and how to make your own simple scatter plot.
-
-- Lesson 3: Installing R, Rstudio, packages, creating github account. [Notes](#setup), [Video](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726).
-- Task 2. [Instructions](#task-2). Submit on Brightspace.
-- Office hours. Tuesday 12 January, 8:35 Atlantic on Collaborate. If you are having trouble with Task 2, come at this time for help.
-- Lesson 4: Look at data. [Notes](#look-data), Video, [Slides](slides/04-look-at-data.html)
-- Task 3. [Instructions](#task-3). Submit on Brightspace.
-- Lesson 5: Making your first plot. [Notes](#first-plot), Video, [Slides](slides/05-making-your-first-plot.html)
-- Synchronous meeting Thursday 14 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-01.rmd), [html](static/live-coding-01.html).  [Agenda](#sync).
-
-Tasks 2 and 3 are due Monday 18 January at 9:00 am Atlantic time. 
-
+## Additional detail
 
 ### Week 3: Jan 18-22
 
-These lessons show you how and why we will use git in this course, describe the design of the grammar of graphics which we will use to make visualizations, and show you more examples of making plots.
-
-- Lesson 6: Version control concepts and working with git. [Notes](#vcs), Video, [Slides](slides/06-version-control.html).
-- Task 4. [Instructions](#task-4). Nothing to submit. This is preparation for Assignment 1. Everyone who *submits* Assignment 1 on time will get 10/10 for this task.
-- Office hours. Tuesday 19 January, 8:35 Atlantic on Collaborate. If you are having trouble with Task 4, come to these office hours with your questions.
-- Lesson 7 Introduction to the Grammar of Graphics. [Notes](#grammar), Video, [Slides](slides/07-grammar.html)
-- Lesson 8 Make a plot. [Notes](#ggplot), Video, [Slides](slides/08-ggplot.html)
-
-- Assignment 1. [Instructions](#assignment-1). Submit on github.
-- Synchronous meeting Thursday 21 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-02.rmd), [html](static/live-coding-02.html).  [Agenda](#sync).
-
-Connect your github account to our course on github and get access to the repository for Task 4 and Assignment 1 by clicking [here](https://classroom.github.com/a/FWE3dcDr). You will be asked to join the github organization "Dalhousie-AndrewIrwin-Teaching" and then select your name from a list of students. If your name does not appear in the list, please contact me so I can add your name to the list of students.
-
-Assignment 1 is due Wednesday 27 January at 6:00 pm Atlantic time.
+Connect your github account to our course on github and get access to the repository for Task 4 and Assignment 1 by clicking [here](https://classroom.github.com/a/Qb-MKdW3). You will be asked to join the github organization "Dalhousie-AndrewIrwin-Teaching" and then select your name from a list of students. If your name does not appear in the list, please contact me so I can add your name to the list of students. A detailed walk-through of the steps for Task 4 is available as [video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=540e63cc-65b7-441f-b234-aca60134e6bd) and [slides](slides/06-demo-assignment-github.html).
 
 ### Week 4: Jan 25-29
 
-- Lesson 10 Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
-- Office hours. Tuesday 26 January, 8:35 Atlantic on Collaborate.
-- Task 5. Check out from and sumbit on github.
+- Lesson 16 Scales: shape, color, lines, and more. [Notes](#ggplot2), Video, [Slides](slides/09-ggplot-custom.html)
 - Lesson 11 Summarizing data with dplyr (group_by, filter, mutate, summarize)
-- Lesson 12 Display and graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
+- Lesson 12 Format tables
 - Synchronous meeting Thursday 28 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-03.rmd), [html](static/live-coding-03.html).  [Agenda](#sync).
-- Task 6. Check out from and submit on github.
 
 Tasks 5 and 6 are due Monday 1 February at 9:00 am Atlantic time. Complete both tasks using the same repository. 
 
@@ -99,8 +72,11 @@ Click the following links to get two repostories: [tasks-5+6](no link yet) and [
 - Office hours. Tuesday 2 February, 8:35 Atlantic on Collaborate.
 - [Lesson 14](#pivot) Reshaping data
 - [Lesson 15](#facets) Plotting small multiples (facets)
-- Lesson 16 Scales: shape, color, lines, and more. [Notes](#ggplot2), Video, [Slides](slides/09-ggplot-custom.html)
 - Task 7 and 8. Check out from and submit on github.
+
+Now review  Show the right numbers. [Healy Chapter 4](https://socviz.co/groupfacettx.html#groupfacettx)
+Display and graph tables, add labels, make notes. [Healy Chapter 5](https://socviz.co/workgeoms.html#workgeoms)
+
 
 Tasks 7 and 8 are due Monday 8 February at 9:00 am Atlantic time. Complete both tasks using the same [repository](no link yet). 
 

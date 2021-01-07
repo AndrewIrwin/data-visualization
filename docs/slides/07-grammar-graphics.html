@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## Grammar of Graphics
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-01-19 (updated: 2021-01-06)
+
+---
+
+class: middle
+
+
+
+# What is the grammar of graphics?
+
+* A way of describing a visualization 
+
+  * Data
+  * Mapping from data to aesthetic features
+  * Geometry for representing data
+  * Scales
+  * Facets
+  * Statistics
+  * Coordinates
+  * Themes
+  
+---
+class: middle, center
+
+&lt;img src="../static/ggplot-layers.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+## Data
+
+We will always be using "tidy data" arranged in an array
+
+  * columns are variable
+  * rows are observations
+
+This arrangement makes it easy to use one variable for each aesthetic feature of a plot (axis position, colour, facet, text labels, ...)
+
+---
+class: middle
+## Aesthetic mappings
+
+We map variables to features of the graph
+
+  * x axis position
+  * y axis position
+  * colour (outline, fill)
+  * shape
+  * line type
+  * size
+  * error bar extent
+  * many more used less frequently, depending on the geometry
+
+Discrete and quantitative variables are handled the same way. The details of the scale and geometry will determine their interprettion.
+
+---
+class: middle
+## Scales
+
+* range of values on x or y axis; formatting of axis labels
+
+* mapping from values to a discrete or continuous colour scale; choice of colours
+
+* mapping from values to a shape, or line thickness, or symbol size
+
+
+---
+class: middle
+
+## Geometry
+What kind of plot do you want?
+
+.pull-left[
+&lt;img src="../static/geoms-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+&lt;img src="../static/geoms-2.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: middle
+
+## Facets
+
+&lt;img src="../static/ggplot-facet.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+
+## Statistics &amp; Coordinates
+
+* Do you want to perform calculations on your data before plotting?
+
+  * Calculate average and standard deviation
+  * Smooth data
+  * Add a regression line
+  
+* What coordinate system do you want to use?
+
+  * Cartesian (x-y) 
+    * Fixed aspect ratio
+  * Polar (r, `\(\theta\)`)
+  * Map projections
+
+
+---
+class: middle
+
+# Theme
+
+All the "non-data ink":
+
+* Titles, axis labels, tick marks
+* Background shading, box around plot
+* How and where the legend (colour, shape) is displayed
+* Other annotations - shading, text
+
+---
+class: middle
+
+# Summary
+
+The grammar of graphics is a way of describing a visulization. 
+
+`ggplot2` is a computer implementation of this idea.
+
+(Also implemented in python (plotnine), javascript (D3), julia (Gadfly).)
+
+---
+class: middle
+
+# Suggested reading
+
+* Course notes
+
+---
+# Self-quiz / Bonus task
+
+Aesthetics are mappings between variables in your dataset and your visualization, defined using the `aes` function.
+
+Which of the following is a possible aesthetic mapping for the `gapminder` data set?
+
+1. `aes(country = x, pop = y)`
+2. `aes(x = country, y = pop)`
+3. `aes(x &lt;- country, y &lt;- pop)`
+
+---
+# Self-quiz / Bonus task
+
+The geometry (or geom) of a plot determines how the data are displayed in your visualization. 
+
+Select the true statement.
+
+1. You can have only one geometry, such as `geom_point` per plot
+2. You can use mutiple geoms per plot, for example combining both `geom_plot` and `geom_line`.
+
+
+---
+# Self-quiz / Bonus task
+
+True or false: To change all the points in a scatterplot to red circles, you need to add variables to your data frame with values "red" and "circle" and map those variables to the colour and shape aesthetic.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

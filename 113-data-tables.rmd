@@ -13,7 +13,7 @@ Let's use a simple table to demonstrate the main features. I want some text, som
 ```{r echo = FALSE}
 t1 <- penguins %>% group_by(species, island) %>%
   summarize(body_mass_g = mean(body_mass_g, na.rm=TRUE), 
-            count = sum(!is.na(body_mass_g),
+            count = sum(!is.na(body_mass_g)),
             .groups = "drop")
 t1
 ```
@@ -63,3 +63,5 @@ janitor
 
 * Using [kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) to format tables
 * Vignette on using [kable and kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+* https://people.ok.ubc.ca/jpither/modules/Tables_markdown.html
+

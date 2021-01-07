@@ -1,5 +1,13 @@
 # Using the grammar of graphics {#ggplot}
 
+## Goals
+
+In this lesson I will demonstrate how to use R and ggplot2 to make visualizations using the ideas from the previous lesson. The emphasis is on the mechanics of making the visualizations. In time we will integrate the ideas about what features of visualizations work best to convey an idea that were introduced at the start of the course.
+
+Your [task](#task-b4) for this lesson is to practice these skills by generating a series of graphs using different geometries and aesthetic mappings.
+
+## Introduction
+
 By the end of this lesson you should understand how to make many different plots using ggplot. The mental model developed in the previous lesson will connect directly to the R commands in this lesson.
 
 Incidentally, Hadley Wickham, who originally developed `ggplot2` is from New Zealand and one consequence is that he allows for "British" and "American" spellings of some words. So you can use `color` or `colour`. In a future lesson when we summarize data you'll see we can write `summarize` or `summarise`. If I switch back and forth, don't get confused. Both are OK.

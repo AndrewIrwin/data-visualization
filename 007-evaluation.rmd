@@ -27,7 +27,9 @@ The goal of this project isn't to be right or wrong, but rather to start the pro
 
 Submit your work as a single PDF on Brightspace.
 
-### Bonus task (Lesson 2)
+Due Monday 11 January at 9:00 am Atlantic.
+
+### Bonus task (Lesson 2)  {#task-b1}
 
 Read [Healy, Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted). There is nothing to submit for this task.
 
@@ -41,44 +43,58 @@ See the instructions in the [syllabus](#syllabus_software) or in [Lesson 3 notes
 2. Login to [rstudio.cloud](https://rstudio.cloud/project/1998812). This is a complete R, Rstudio, and git setup "in the cloud" that can be used if you have trouble using R on your own computer.
 5. Ask for help with any of these tasks if you need it. 
 
-Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name in one of the quiz questions.
+Answer the quiz on Brightspace which will ask if you were successful with each task or if you need help. Provide your github name in one of the quiz questions. 
+
+Due Monday 18 January at 9:00 am Atlantic.
 
 ### Task 3 (Lesson 4) {#task-3}
 
-1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in [Lesson 1](#ch_invitation). The vertical scale does not start at 0. Use the ideas in [Healy Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
+1. Some people feel very strongly about the placement of 0 on the vertical scale of plots. Look again at the carbon dioxide plots in [Lesson 1](#ch-invitation). The vertical scale does not start at 0. Use the ideas in [Healy Chapter 1.6](https://socviz.co/lookatdata.html#problems-of-honesty-and-good-judgment) to describe how you would interpret vertical position on the carbon dioxide plots and how you could interpret this position if 0 was included on the vertical scale.
 
-2. Hans Rosling's visualizations (as shown in [Lesson 1](#ch_invitation)) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
+2. Hans Rosling's visualizations (as shown in [Lesson 1](#ch-invitation)) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
 
-a. For the plot linked above, what variables are shown for each of x and y position, color, and symbol size?
-b. According to [Healy Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
-c. In your judgment, is this visualization effective or too complex. Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://bit.ly/3oAb0Uq) before answering the question.
+a. For Rosling's plot showin in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?
+b. According to [Healy Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://bit.ly/3oAb0Uq) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
 
 Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace. Assesment: 10 points total, 5 points per question.
+
+Due Monday 18 January at 9:00 am Atlantic.
+
+### Bonus task (Lesson 5) {#task-b2}
+
+Repeat the examples from Lesson 5 and/or the accompanying video in Rstudio until you are comfortable with the basics of making a plot. We will learn much more about plotting starting the lesson after next. 
+
+There is nothing to submit for this task.
 
 ### Task 4 (Lesson 6) {#task-4}
 
 Use Rstudio to create a new project from the github repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
 
-* Look for an invitation in your email sent earlier this week.
-* Copy the link.
+* Get the link for the repository [here](https://classroom.github.com/a/Qb-MKdW3).
 * Use Rstudio, menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer (or in your Rstudio.cloud workspace.)
 * If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu). rstudio.cloud must be linked to your github account to access private repositories. You'll get instructions on how to do this when you try to create a new project from a github repository. 
 
-### Task 5 (Lesson 5) {#task-5}
+There is nothing to submit for this task, but please complete it by Monday 18 January or ask questions at office hours on Tuesday 19 January if you are having trouble. Everyone who *submits* Assignment 1 on time will get 10/10 for this task.
 
-Make the plot from Healy Section 2.6. Look at the other variables in the gapminder dataset and make some other plots of your choosing. Put your plots in an Rmd. Knit the R markdown file. Nothing to submit. Ask for help if you have problems.
+### Bonus task (Lesson 7) {#task-b3}
 
-### Task 6 (Lesson X) {#task-6}
+Answer the questions at the end of the mini-lecture video. 
 
-Using scales effectively. Improving figures.
-Diverging continuous colour
-Colour blind tester
-Hiding guides. Unifying guides.
+In addition, I suggest the following reading with nothing to submit:
 
-### Task 7 (Lesson X) {#task-7}
+* Browse the [R graph gallery](https://www.r-graph-gallery.com/) to explore the huge variety of visualiaations you can make with R. Practice thinking about how the language of aesthetic mappings, geometries, and scales can be used to describe these visualizations.
+* Read through the ggplot [cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) to see how the concepts of the grammar of graphics will be connected to computer code. Don't worry about the details -- you will practice making visualizations using these tools over many future lessons.
+
+### Bonus task (Lesson 8) {#task-b4}
+
+Practice using ggplot to make graphs by reproducing examples from mini-lecture or notes, and modifying them by changing variables used in aesthetic mappings. If you would like, use other data sources described in "Data Sources" chapter in course notes.
+
+There is nothing to submit for this task.
+
+### Task 5 (Lesson 9) {#task-5}
 dplyr summarize
 
-### Task 8 (Lesson X) {#task-8}
+### Task 6 (Lesson 10) {#task-6}
 tables
 
 ### Task 9 (Lesson X) {#task-9}
@@ -99,6 +115,13 @@ PCA
 MDS, Kmeans
 
 ### Task 15 (Lesson X) {#task-15}
+
+Using scales effectively. Improving figures.
+Diverging continuous colour
+Colour blind tester
+Hiding guides. Unifying guides.
+
+
 ### Task 16 (Lesson X) {#task-16}
 ### Task 17 (Lesson X) {#task-17}
 ### Task 18 (Lesson X) {#task-18}
@@ -118,7 +141,11 @@ Assignments should be submitted to the relevant github repository, generally as 
 
 ### Assignment 1 {#assignment-1}
 
-Make a simple markdown document with a figure and commit to a github repository. Ensures you know a foundation of of using git, github, R markdown, and ggplot to build new knowledge and skills on top.
+Make a  markdown document with a figure and commit to a github repository. Ensures you know the foundation of  using git, github, R markdown, and ggplot to build new knowledge and skills on top.
+
+Click [here](https://classroom.github.com/a/Qb-MKdW3) to copy the repository to your github account. This is the same repository you created in Task 4, so you don't need to do it again.
+
+Due Wednesday 27 January at 6:00 pm Atlantic time.
 
 ### Assignment 2 {#assignment-2}
 
@@ -169,7 +196,7 @@ You should create compelling visualizations of your data. Pay attention to your 
 
 ### Deliverables
 
-* Proposal - due Fiday 12 March at 6:00 pm
+* Proposal - due Friday 12 March at 6:00 pm
 * Presentation - due Thursday 1 April or Tuesday 6 April during synchronous meeting.
 * Report - due Friday 9 April at 6:00 pm
 

@@ -1,5 +1,13 @@
 # What is version control software? {#vcs}
 
+## Goals
+
+In this lesson I will explain what version control is and why we use it. I will also demonstrate how we will use version control with Rstudio and github in this course for tasks, assignments, and the term project.
+
+Your [task](#task-4) for this lesson is to get the repository (see below for what this means) for Assignment 1 on to your computer so you are ready to work on the assignment.
+
+## Introduction
+
 [Version control](https://en.wikipedia.org/wiki/Version_control) software is used to manage the process of creating software. It is commonly used to track changes, manage the revision process of correcting errors and adding new features, tracking the history of a project through different versions, synchronizing contributions from many different people, and faciliating the distribution to a broad audience. Version control software is most commonly applied to the production of complex projects like software, but it can be used for text documents, data, and many other applications.
 
 ## What software is used for version control?
@@ -162,7 +170,9 @@ If you don't want to keep this repository, you can get rid of it in two steps.
 
 ## Your first assignment from github
 
-In the _task_ for this lesson you'll clone an exiting repository I created for you on github to create a new project on your computer (or rstudio.cloud account). This will be the first step for assignment 1.
+In the _task_ for this lesson you'll clone an exiting repository I created for you on github to create a new project on your computer (or rstudio.cloud account). This will be the first step for assignment 1. This task is simpler than the steps shown above, since I have created the repository on github already; your task is to clone a copy onto your computer.
+
+Please watch the Task 4 video for step-by-step instructions.
 
 ## Resources
 
@@ -172,4 +182,4 @@ In the _task_ for this lesson you'll clone an exiting repository I created for y
 * Highlights of key features of git and github for [developers](https://dev.to/firangizg/git-github-key-things-you-will-want-to-remember-5390)
 * [Advanced Git cheat sheet](https://www.maxpou.fr/git-cheat-sheet)
 * A more advanced look at the [internals of git](https://www.freecodecamp.org/news/git-internals-objects-branches-create-repo/)
-
+* Article on [teaching statistics with git and github](https://www.tandfonline.com/doi/full/10.1080/10691898.2019.1617089), for students and instructors.

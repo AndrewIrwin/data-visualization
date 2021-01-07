@@ -159,6 +159,27 @@ diamonds %>% group_by(cut, clarity, color) %>%
 
 You can also use `ungroup()` following a `summarise` to discard all grouping if you don't want to use the `.groups` argument.
 
+## Example
+
+These methods can be combined together to produce elaborate queries. For example, let's use mutate to compute a price per carat ratio, then find the median of this ratio over all diamonds grouped by cut, color, and clarity. Also report the sample size used for each median. Finally we will extract the top 2 ratios for each cut type (using a grouped slice) and arrange the resulting table from largest to smallest ratio.
+
+```{r}
+diamonds %>%
+  mutate(price_per_carat = price / carat) %>%
+  group_by(color, clarity, cut) %>%
+  summarise(median_price_per_carat = median(price_per_carat), 
+            n = n(),
+            .groups = "drop") %>%
+  arrange(-median_price_per_carat) %>%
+  group_by(cut) %>%
+  slice_head(n=2) %>%
+  arrange(-median_price_per_carat)
+```
+
+When I did this calculation the first time, I forgot the first `arrange`. Why is it needed before the grouped `slice_head`? (Remove it and see how the result changes. Try removing the slice_head to see the full results.) Why is the second `arrange` needed?
+
+The top 4 price per carat categories are all the best colour (D) and clarity (IF), but cut seems to be less important in determining this ratio. One of the top 10 categories has a lot of diamonds in it (763), while the other groups have very few diamonds relative to the size of the whole dataset (more than 50,000).
+
 ## What does this have to do with data visualization?
 
 These tools are very useful for exploring data; helping you understand the structure of your data. This will help you make better visualizations. In particular, the humble `n` function which counts rows should be used frequently when you summarize with mean or median to let you know if you have very few observations or too many for a good plot.

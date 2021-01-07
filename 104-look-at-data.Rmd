@@ -1,5 +1,13 @@
 # Look at Data {#look-data}
 
+## Goals
+
+In this lesson I will describe some of the decisions that should influence how you visualize data, including your motivation for visualizing and knowledge of human visual perception that influence what we "see" when we look at a visualization.
+
+Your [task](#task-3) for this lesson is to answer two specific questions about choices made when visualizing data, drawing on your own experience and the ideas presented below. You should also become familiar with [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata) which contains much more on these topics.
+
+## Introduction
+
 We're learning to make data visualizations, so naturally we want to make good ones. What makes one visualization good and another bad? Are there specific qualities to emulate or avoid? How can we meaningfully discuss visualization quality without emphasizing personal preferences and taste? [Healy Chapter 1](https://socviz.co/lookatdata.html#lookatdata) has many good answers to these questions, while recognizing that the subject is somewhat subjective. 
 
 In this lesson we will try to develop some tentative answers to the following questions:
