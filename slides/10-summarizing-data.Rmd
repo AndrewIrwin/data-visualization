@@ -3,7 +3,7 @@ title: "Data Visualization"
 subtitle: "Summarizing data (dplyr)"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
-date: "2021-01-27 (updated: `r Sys.Date()`)"
+date: "2021-01-25 (updated: `r Sys.Date()`)"
 ratio: "16:9"
 output:
   xaringan::moon_reader:
@@ -222,5 +222,5 @@ class: middle, inverse
 
 # Task
 
-Practice these skills by doing the calculations in Task 6.
+Practice these skills by doing the calculations in Task 5.
 

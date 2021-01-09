@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 14 Using points, lines, colours, and shapes | Data Visualization</title>
+<meta name="author" content="Andrew Irwin">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Visualization</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 14</span> Using points, lines, colours, and shapes</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="scales" class="section level1" number="14">
+<h1>
+<span class="header-section-number">14</span> Using points, lines, colours, and shapes<a class="anchor" aria-label="anchor" href="#scales"><i class="fas fa-link"></i></a>
+</h1>
+<p>In the previous lesson you learned the computer skills to make a huge variety of plots. Here we will focus on how to use colors, shapes, lines, and text effectively on a visualization.</p>
+<p>In <a href="">Section 1.3</a> Healy discusses perceptual features of shapes, colours, and lines, in scatter and line plots in particular. Depending on the number of data points and their spatial patter, colours and lines in particular can be effective tools for creating spatial structure and helping a message “pop” off the page. I’ll draw a few graphs – an you should experiment with creating some versions of your own – and then discuss which work best.</p>
+<p>We’ll make some scatter plots with the <code>palmerpenguin</code> data because there are several quantitative variables and several categorical variables with different kinds of structure.</p>
+<div id="shapes-colours-and-size" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Shapes, colours, and size<a class="anchor" aria-label="anchor" href="#shapes-colours-and-size"><i class="fas fa-link"></i></a>
+</h2>
+<p>First a simple scatterplot with no colour or shape of flipper length against body mass. As you might expect, there is a positive correlation – heavier penguins are bigger penguins.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<p>How do you think the categorical variables sex, species, and island might structure these data? Draw a few variations using colour and shape and possibly size. (There are quite a few possible choices for assiging 2 or 3 variables to 2 or 3 aesthetics.)</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, 
+                        color <span class="op">=</span> <span class="va">sex</span>, shape <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, 
+                        color <span class="op">=</span> <span class="va">species</span>, shape <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-3-2.png" width="672"></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, 
+                        color <span class="op">=</span> <span class="va">island</span>, shape <span class="op">=</span> <span class="va">species</span>, size <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_size_discrete</span><span class="op">(</span>na.value <span class="op">=</span> <span class="fl">0</span>, range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-3-3.png" width="672"></div>
+<ul>
+<li>Which features (shape, colour, or size) are most noticable?</li>
+<li>Which of the three graphs is most easily interpreted at a glance? What message you take away?</li>
+<li>R warns that using size for a discrete variable (male, female) is not advisable. Size is best for continuous quantitative variables. Why might this be true?</li>
+</ul>
+<p>You might think that colour is the most noticable. So let’s try making new categories for each combination of species and sex and using this new variable for colour. (We will talk about the <code>unite</code> function in a future lesson.)</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">unite</span><span class="op">(</span><span class="va">species_sex</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, color <span class="op">=</span> <span class="va">species_sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<p>That’s a lot of colours, but might be okay, particularly if we dropped the observations with missing sex and make some custom colours that paired males and females. (We’ll talk about <code>filter</code> when we discuss summarizing and transforming data.)</p>
+<p>Colours are notoriously hard to select by hand. A good visual tool on the web is <a href="https://colorbrewer2.org/">Color Brewer</a>. You can display a set of discrete, continuous, or binned scales using functions in the <code>RColorBrewer</code> package (see the help for more).</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">display.brewer.all</span><span class="op">(</span><span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<p>Here’s a version using the “Spectral” colour scale.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">unite</span><span class="op">(</span><span class="va">species_sex</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">species</span>, <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, color <span class="op">=</span> <span class="va">species_sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Spectral"</span><span class="op">)</span> <span class="co"># values=brewer.pal(6,"Spectral"))</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<p>These colors looked okay in the palette, but on the plot we see a few problems:</p>
+<ul>
+<li>The colours are not all the same brightness; the yellow and orange are much harder to see.</li>
+<li>The red, yellow, orange and light orange points are close together and generally blur together.</li>
+<li>There is a red and green on the same plot; this causes problems for people with colour vision deficiency. Cut and paste this figure into</li>
+</ul>
+<div id="points-vs-lines" class="section level3" number="14.1.1">
+<h3>
+<span class="header-section-number">14.1.1</span> Points vs lines<a class="anchor" aria-label="anchor" href="#points-vs-lines"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="shapes" class="section level3" number="14.1.2">
+<h3>
+<span class="header-section-number">14.1.2</span> Shapes<a class="anchor" aria-label="anchor" href="#shapes"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="colours" class="section level3" number="14.1.3">
+<h3>
+<span class="header-section-number">14.1.3</span> Colours<a class="anchor" aria-label="anchor" href="#colours"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="shapes-colours-and-fills" class="section level3" number="14.1.4">
+<h3>
+<span class="header-section-number">14.1.4</span> Shapes, colours, and fills<a class="anchor" aria-label="anchor" href="#shapes-colours-and-fills"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">bill_length_mm</span>, y<span class="op">=</span> <span class="va">bill_depth_mm</span>, 
+                        color <span class="op">=</span> <span class="va">sex</span>, shape <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+</div>
+</div>
+<div id="lines" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Lines<a class="anchor" aria-label="anchor" href="#lines"><i class="fas fa-link"></i></a>
+</h2>
+<div id="line-types" class="section level3" number="14.2.1">
+<h3>
+<span class="header-section-number">14.2.1</span> Line types<a class="anchor" aria-label="anchor" href="#line-types"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="line-thickness" class="section level3" number="14.2.2">
+<h3>
+<span class="header-section-number">14.2.2</span> Line thickness<a class="anchor" aria-label="anchor" href="#line-thickness"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="line-colour" class="section level3" number="14.2.3">
+<h3>
+<span class="header-section-number">14.2.3</span> Line colour<a class="anchor" aria-label="anchor" href="#line-colour"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="colour" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> Colour<a class="anchor" aria-label="anchor" href="#colour"><i class="fas fa-link"></i></a>
+</h2>
+<div id="discrete-scales" class="section level3" number="14.3.1">
+<h3>
+<span class="header-section-number">14.3.1</span> Discrete scales<a class="anchor" aria-label="anchor" href="#discrete-scales"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="continuous-scales" class="section level3" number="14.3.2">
+<h3>
+<span class="header-section-number">14.3.2</span> Continuous scales<a class="anchor" aria-label="anchor" href="#continuous-scales"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="using-factor-ordering-to-change-plots" class="section level2" number="14.4">
+<h2>
+<span class="header-section-number">14.4</span> Using factor ordering to change plots<a class="anchor" aria-label="anchor" href="#using-factor-ordering-to-change-plots"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="further-reading-5" class="section level2" number="14.5">
+<h2>
+<span class="header-section-number">14.5</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-5"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Wilke. <a href="https://clauswilke.com/dataviz/color-basics.html">Chapter 4. Color scales</a>.</li>
+<li>Healy. <a href="https://socviz.co/lookatdata.html#perception-and-data-visualization">Sections 1.3-1.5. Perception and Decoding</a>
+</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-07.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

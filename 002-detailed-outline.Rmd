@@ -54,7 +54,6 @@ Connect your github account to our course on github and get access to the reposi
 
 ### Week 4: Jan 25-29
 
-- Lesson 16 Scales: shape, color, lines, and more. [Notes](#ggplot2), Video, [Slides](slides/09-ggplot-custom.html)
 - Lesson 11 Summarizing data with dplyr (group_by, filter, mutate, summarize)
 - Lesson 12 Format tables
 - Synchronous meeting Thursday 28 January, 8:35 Atlantic on Collaborate. Live coding material: [R markdown](static/live-coding-03.rmd), [html](static/live-coding-03.html).  [Agenda](#sync).

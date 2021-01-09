@@ -1,6 +1,6 @@
 # Data sources {#data-sources}
 
-## Built-in and exisiting packages
+## Built-in and existing packages
 
 Go-to datasets useful for lots of simple visualizations:
 
@@ -10,6 +10,13 @@ Go-to datasets useful for lots of simple visualizations:
 * diamonds in ggplot2 package
 * nycflights13 in dbplyr package
 * gss_sm, gss_cat, gss_sib, gss_lon and gss_lon in socviz package
+
+## Tidy Tuesday
+
+Tidy Tuesday is a project to encourage people to develop skills at data visualization and analysis using the tidyverse packages in R. Each week a new data set is posted and participants experiment to create new visualzations. Some people share their work on github and social media.
+
+* Tidy Tuesday [website](https://github.com/rfordatascience/tidytuesday) describes the project and has a catalog of available datasets from previous weeks.
+* The R package to access the data is called `tidytuesdayR`. Examples of using the package are [here](https://github.com/thebioengineer/tidytuesdayR)
 
 ## R packages for accessing data
 

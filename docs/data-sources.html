@@ -45,8 +45,8 @@
 <li><a class="" href="vcs.html"><span class="header-section-number">11</span> What is version control software?</a></li>
 <li><a class="" href="grammar.html"><span class="header-section-number">12</span> Grammar of Graphics</a></li>
 <li><a class="" href="ggplot.html"><span class="header-section-number">13</span> Using the grammar of graphics</a></li>
-<li><a class="" href="using-points-lines-colours-and-shapes-scales.html"><span class="header-section-number">14</span> Using points, lines, colours, and shapes (#scales)</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">15</span> Summarizing data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">14</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">15</span> Facetted graphs</a></li>
 <li><a class="" href="reading-data.html"><span class="header-section-number">16</span> Reading data</a></li>
 <li><a class="" href="pivot.html"><span class="header-section-number">17</span> Reshaping data</a></li>
 <li><a class="" href="format-tables.html"><span class="header-section-number">18</span> Format tables</a></li>
@@ -65,9 +65,9 @@
 <h1>
 <span class="header-section-number">20</span> Data sources<a class="anchor" aria-label="anchor" href="#data-sources"><i class="fas fa-link"></i></a>
 </h1>
-<div id="built-in-and-exisiting-packages" class="section level2" number="20.1">
+<div id="built-in-and-existing-packages" class="section level2" number="20.1">
 <h2>
-<span class="header-section-number">20.1</span> Built-in and exisiting packages<a class="anchor" aria-label="anchor" href="#built-in-and-exisiting-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.1</span> Built-in and existing packages<a class="anchor" aria-label="anchor" href="#built-in-and-existing-packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>Go-to datasets useful for lots of simple visualizations:</p>
 <ul>
@@ -79,9 +79,20 @@
 <li>gss_sm, gss_cat, gss_sib, gss_lon and gss_lon in socviz package</li>
 </ul>
 </div>
-<div id="r-packages-for-accessing-data" class="section level2" number="20.2">
+<div id="tidy-tuesday" class="section level2" number="20.2">
 <h2>
-<span class="header-section-number">20.2</span> R packages for accessing data<a class="anchor" aria-label="anchor" href="#r-packages-for-accessing-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.2</span> Tidy Tuesday<a class="anchor" aria-label="anchor" href="#tidy-tuesday"><i class="fas fa-link"></i></a>
+</h2>
+<p>Tidy Tuesday is a project to encourage people to develop skills at data visualization and analysis using the tidyverse packages in R. Each week a new data set is posted and participants experiment to create new visualzations. Some people share their work on github and social media.</p>
+<ul>
+<li>Tidy Tuesday <a href="https://github.com/rfordatascience/tidytuesday">website</a> describes the project and has a catalog of available datasets from previous weeks.</li>
+<li>The R package to access the data is called <code>tidytuesdayR</code>. Examples of using the package are <a href="https://github.com/thebioengineer/tidytuesdayR">here</a>
+</li>
+</ul>
+</div>
+<div id="r-packages-for-accessing-data" class="section level2" number="20.3">
+<h2>
+<span class="header-section-number">20.3</span> R packages for accessing data<a class="anchor" aria-label="anchor" href="#r-packages-for-accessing-data"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>OECD for data from the OECD</li>
@@ -89,9 +100,9 @@
 <li>cancensus for data from the Canadian census and National household survey</li>
 </ul>
 </div>
-<div id="websites-with-data-collections" class="section level2" number="20.3">
+<div id="websites-with-data-collections" class="section level2" number="20.4">
 <h2>
-<span class="header-section-number">20.3</span> Websites with data collections<a class="anchor" aria-label="anchor" href="#websites-with-data-collections"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.4</span> Websites with data collections<a class="anchor" aria-label="anchor" href="#websites-with-data-collections"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -101,33 +112,33 @@
 <li>One person’s collection of <a href="https://github.com/tacookson/data">data</a> of various sources</li>
 </ul>
 </div>
-<div id="distribution-of-data" class="section level2" number="20.4">
+<div id="distribution-of-data" class="section level2" number="20.5">
 <h2>
-<span class="header-section-number">20.4</span> Distribution of data<a class="anchor" aria-label="anchor" href="#distribution-of-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.5</span> Distribution of data<a class="anchor" aria-label="anchor" href="#distribution-of-data"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/FAIR_data">FAIR</a></li>
 </ul>
 </div>
-<div id="canadian-covid-data" class="section level2" number="20.5">
+<div id="canadian-covid-data" class="section level2" number="20.6">
 <h2>
-<span class="header-section-number">20.5</span> Canadian COVID data<a class="anchor" aria-label="anchor" href="#canadian-covid-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.6</span> Canadian COVID data<a class="anchor" aria-label="anchor" href="#canadian-covid-data"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
 <a href="https://health-infobase.canada.ca/covid-19/visual-data-gallery/">Federal</a>, <a href="https://experience.arcgis.com/experience/a6f23959a8b14bfa989e3cda29297ded">BC</a>, <a href="https://www.alberta.ca/stats/covid-19-alberta-statistics.htm">AB</a>, <a href="https://dashboard.saskatchewan.ca/health-wellness/covid-19/cases">SK</a>, <a href="https://www.arcgis.com/apps/opsdashboard/index.html#/29e86894292e449aa75763b077281b5b?rha=Winnipeg">MB</a>, <a href="https://covid-19.ontario.ca/data">ON</a>, <a href="https://www.inspq.qc.ca/covid-19/donnees/par-region">QC</a>, <a href="https://experience.arcgis.com/experience/8eeb9a2052d641c996dba5de8f25a8aa">NB</a>, <a href="https://www.princeedwardisland.ca/en/information/health-and-wellness/pei-covid-19-case-data">PE</a>, <a href="https://novascotia.ca/coronavirus/data/">NS</a>,</li>
 </ul>
 </div>
-<div id="useful-packages" class="section level2" number="20.6">
+<div id="useful-packages" class="section level2" number="20.7">
 <h2>
-<span class="header-section-number">20.6</span> Useful packages<a class="anchor" aria-label="anchor" href="#useful-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.7</span> Useful packages<a class="anchor" aria-label="anchor" href="#useful-packages"><i class="fas fa-link"></i></a>
 </h2>
 <p>datapasta</p>
 <p>web app for getting data from graphs datathief (Mohammad has one he likes)</p>
 </div>
-<div id="describing-data" class="section level2" number="20.7">
+<div id="describing-data" class="section level2" number="20.8">
 <h2>
-<span class="header-section-number">20.7</span> Describing data<a class="anchor" aria-label="anchor" href="#describing-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">20.8</span> Describing data<a class="anchor" aria-label="anchor" href="#describing-data"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://data.research.cornell.edu/content/readme" class="uri">https://data.research.cornell.edu/content/readme</a></p>
 
@@ -140,13 +151,14 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data-sources"><span class="header-section-number">20</span> Data sources</a></li>
-<li><a class="nav-link" href="#built-in-and-exisiting-packages"><span class="header-section-number">20.1</span> Built-in and exisiting packages</a></li>
-<li><a class="nav-link" href="#r-packages-for-accessing-data"><span class="header-section-number">20.2</span> R packages for accessing data</a></li>
-<li><a class="nav-link" href="#websites-with-data-collections"><span class="header-section-number">20.3</span> Websites with data collections</a></li>
-<li><a class="nav-link" href="#distribution-of-data"><span class="header-section-number">20.4</span> Distribution of data</a></li>
-<li><a class="nav-link" href="#canadian-covid-data"><span class="header-section-number">20.5</span> Canadian COVID data</a></li>
-<li><a class="nav-link" href="#useful-packages"><span class="header-section-number">20.6</span> Useful packages</a></li>
-<li><a class="nav-link" href="#describing-data"><span class="header-section-number">20.7</span> Describing data</a></li>
+<li><a class="nav-link" href="#built-in-and-existing-packages"><span class="header-section-number">20.1</span> Built-in and existing packages</a></li>
+<li><a class="nav-link" href="#tidy-tuesday"><span class="header-section-number">20.2</span> Tidy Tuesday</a></li>
+<li><a class="nav-link" href="#r-packages-for-accessing-data"><span class="header-section-number">20.3</span> R packages for accessing data</a></li>
+<li><a class="nav-link" href="#websites-with-data-collections"><span class="header-section-number">20.4</span> Websites with data collections</a></li>
+<li><a class="nav-link" href="#distribution-of-data"><span class="header-section-number">20.5</span> Distribution of data</a></li>
+<li><a class="nav-link" href="#canadian-covid-data"><span class="header-section-number">20.6</span> Canadian COVID data</a></li>
+<li><a class="nav-link" href="#useful-packages"><span class="header-section-number">20.7</span> Useful packages</a></li>
+<li><a class="nav-link" href="#describing-data"><span class="header-section-number">20.8</span> Describing data</a></li>
 </ul>
 
       <div class="book-extra">
@@ -164,7 +176,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-06.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

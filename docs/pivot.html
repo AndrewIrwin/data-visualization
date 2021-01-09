@@ -45,8 +45,8 @@
 <li><a class="" href="vcs.html"><span class="header-section-number">11</span> What is version control software?</a></li>
 <li><a class="" href="grammar.html"><span class="header-section-number">12</span> Grammar of Graphics</a></li>
 <li><a class="" href="ggplot.html"><span class="header-section-number">13</span> Using the grammar of graphics</a></li>
-<li><a class="" href="using-points-lines-colours-and-shapes-scales.html"><span class="header-section-number">14</span> Using points, lines, colours, and shapes (#scales)</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">15</span> Summarizing data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">14</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">15</span> Facetted graphs</a></li>
 <li><a class="" href="reading-data.html"><span class="header-section-number">16</span> Reading data</a></li>
 <li><a class="active" href="pivot.html"><span class="header-section-number">17</span> Reshaping data</a></li>
 <li><a class="" href="format-tables.html"><span class="header-section-number">18</span> Format tables</a></li>
@@ -76,7 +76,7 @@
 <span class="header-section-number">17.1</span> Pivot wider<a class="anchor" aria-label="anchor" href="#pivot-wider"><i class="fas fa-link"></i></a>
 </h2>
 <p>We’ll start by selecting three years (1987, 1997, 2007) and computing the median life expectancy for each continent in each year. (The median for the continent may not be representative of all countries in the continent, but we’ll worry about that some other time.)</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1987</span>, <span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -101,7 +101,7 @@
 ## 14 Oceania    1997                   78.2
 ## 15 Oceania    2007                   80.7</code></pre>
 <p>Now we can see the data and it’s not too large, the reshaping problem is clearer. I’d like to create a table with one row for each continent, one column for each year and the numbers in the grid should be the median life expectancy. This reshaping is called a pivot, specifically a pivot to make a wider table, and we simply need to specify the current column to use as the new names (year) and the current column to use as the values for the new grid (median_life_expectancy).</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">year</span>, values_from <span class="op">=</span> <span class="va">median_life_expectancy</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 4
 ##   continent `1987` `1997` `2007`
@@ -112,7 +112,7 @@
 ## 4 Europe      74.8   76.1   78.6
 ## 5 Oceania     75.3   78.2   80.7</code></pre>
 <p>Let’s practice our table formatting skills to make this look a bit better:</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t2</span> <span class="op">&lt;-</span> <span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">year</span>, values_from <span class="op">=</span> <span class="va">median_life_expectancy</span><span class="op">)</span>
 <span class="va">t2</span> <span class="op">%&gt;%</span> <span class="fu">rename</span><span class="op">(</span>Continent <span class="op">=</span> <span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">arrange</span><span class="op">(</span><span class="op">-</span><span class="va">`2007`</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -214,7 +214,7 @@ Africa
 </h2>
 <p>Sometimes data a provided in a “wide” format, like the summary table above. This is often very convient for data entry and visual inspection. Suppose you wanted to use the years in the table shown above as a aesthetic in a plot, or a grouping variable in a summarise operation. You can’t! So you might want to pivot the table to make it longer.</p>
 <p><code>pivot_longer</code> undoes the <code>pivot_wider</code> operation. You need to give the set of variables to be stacked and a name for the new variable to be filled with those column headings. Here’s how to perform the inverse of the <code>pivot_wider</code> shown above. Since our variable names are just numbers (which are not standard column names in data tables), we need to put backticks around them. (The plain expression 1987:2007 would be interpreted quite differently by R. Try it in the console. )</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t3</span> <span class="op">&lt;-</span> <span class="va">t2</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">`1987`</span><span class="op">:</span><span class="va">`2007`</span>, names_to <span class="op">=</span> <span class="st">"year"</span>, values_to <span class="op">=</span> <span class="st">"median_life_expectancy"</span><span class="op">)</span>
 <span class="va">t3</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 3
@@ -236,7 +236,7 @@ Africa
 ## 14 Oceania   1997                    78.2
 ## 15 Oceania   2007                    80.7</code></pre>
 <p>There is an important difference between the original table <code>t1</code> and this recovered table <code>t3</code>: the year variable in t1 was an integer (numeric) but the year variable in <code>t3</code> is character (text). This will matter if you want to calculate with the new year variable or put it on a quantitative scale. The <code>hablar</code> package makes it really easy to convert variables from one type to another:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t3</span> <span class="op">%&gt;%</span> <span class="fu">convert</span><span class="op">(</span><span class="fu">int</span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 15 x 3
 ##    continent  year median_life_expectancy
@@ -258,7 +258,7 @@ Africa
 ## 15 Oceania    2007                   80.7</code></pre>
 <p>The dataset <code>who</code> in the <code>tidyr</code> package is counts of tuberculosis cases by country and year. It is in wide format with many columns (new…) describing diagnosis method, sesx, and age category. There are also a lot of missing data when the data are shown in this wide format.</p>
 <p>Let’s pivot this data to make it long.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">who_long</span> <span class="op">&lt;-</span> <span class="va">who</span> <span class="op">%&gt;%</span> <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">new_sp_m014</span><span class="op">:</span><span class="va">newrel_f65</span>, names_to <span class="op">=</span> <span class="st">"category"</span>, values_to <span class="op">=</span> <span class="st">"counts"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">who_long</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 6
@@ -271,14 +271,14 @@ Africa
 ## 5 Afghanistan AF    AFG    1980 new_sp_m4554     NA
 ## 6 Afghanistan AF    AFG    1980 new_sp_m5564     NA</code></pre>
 <p>the original data had 7240 observations and 60 columns (4 that we’ve kept and 56 that we have pivoted). As a result our new table <code>who_long</code> has 6 columns (4+2) and 56 x 7240 = 405,440 rows. Let’s see how many of the count data are missing.</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">who_long</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>count_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   count_NA
 ##      &lt;int&gt;
 ## 1   329394</code></pre>
 <p>A lot of them! In fact 81% of the data in the original matrix are NA. So let’s discard them using <code>na.omit</code> or <code><a href="https://rdrr.io/r/stats/filter.html">filter(!is.na(counts))</a></code>. You can also use <code>values_drop_na = TRUE</code> in the <code>pivot_longer</code> function call. That will make a much smaller table. If you look at the smaller table, you’ll see there are 0 counts. So NA did not simply mean 0. (You should never use NA to mean 0; it should mean missing. But some people do.)</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">who_long</span> <span class="op">&lt;-</span> <span class="va">who_long</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="separate-and-unite" class="section level2" number="17.3">
@@ -287,7 +287,7 @@ Africa
 </h2>
 <p>How can we decode the category into three columns: diagnosis, sex, and age group? The <code>separate</code> function is made for this. The easiest way to use separate is if the variable you are separating is consistently structured with the same character between each column, such as new_rel_f_2534. That’s not the case here: some values start with <code>new_</code> and some are missing the underscore after the <code>new</code>. Also there is no underscore between sex and age group. So we will do a bit of pre-processing using the <code>stringr</code> package before we use separate.</p>
 <p>First, I’ll remove “new” or “new_” (described concisely by a “regular expression” using new_*). Then I’ll change <code>_f</code> to <code>_f_</code> and <code>_m</code> to <code>_m_</code>. When you first start learning to do these kinds of manipulations, you should check through a lot of the cases to be sure all the transformations worked the way you expect.</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">who_long</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>category <span class="op">=</span> <span class="fu">str_remove</span><span class="op">(</span><span class="va">category</span>, <span class="st">"new_*"</span><span class="op">)</span>,
                     category <span class="op">=</span> <span class="fu">str_replace</span><span class="op">(</span><span class="va">category</span>, <span class="st">"_f"</span>, <span class="st">"_f_"</span><span class="op">)</span>,
                     category <span class="op">=</span> <span class="fu">str_replace</span><span class="op">(</span><span class="va">category</span>, <span class="st">"_m"</span>, <span class="st">"_m_"</span><span class="op">)</span>
@@ -303,7 +303,7 @@ Africa
 ## 5 Afghanistan AF    AFG    1997 sp_m_4554      5
 ## 6 Afghanistan AF    AFG    1997 sp_m_5564      2</code></pre>
 <p>Now, we will use <code>separate</code> to convert <code>category</code> into three columns using the underscore as a separator.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">who_new</span> <span class="op">&lt;-</span> <span class="va">who_long</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>category <span class="op">=</span> <span class="fu">str_remove</span><span class="op">(</span><span class="va">category</span>, <span class="st">"new_*"</span><span class="op">)</span>,
                     category <span class="op">=</span> <span class="fu">str_replace</span><span class="op">(</span><span class="va">category</span>, <span class="st">"_f"</span>, <span class="st">"_f_"</span><span class="op">)</span>,
                     category <span class="op">=</span> <span class="fu">str_replace</span><span class="op">(</span><span class="va">category</span>, <span class="st">"_m"</span>, <span class="st">"_m_"</span><span class="op">)</span>
@@ -363,7 +363,7 @@ Africa
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-06.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

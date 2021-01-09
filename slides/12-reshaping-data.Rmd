@@ -1,9 +1,9 @@
 ---
 title: "Data Visualization"
-subtitle: "Using the grammar of graphics (ggplot2)"
+subtitle: "Reshaping data"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
-date: "2021-01-20 (updated: `r Sys.Date()`)"
+date: "2021-02-01 (updated: `r Sys.Date()`)"
 ratio: "16:9"
 output:
   xaringan::moon_reader:
@@ -22,13 +22,9 @@ library(socviz)
 library(tidyverse)
 ```
 
-# ggplot2 examples
+# Wide and Long data
 
-A series of examples to demonstrate how to use the grammar of graphics to plan and create visualizations.
-
-Using `gss_sm` and `gss_cat` in the `socviz` package which contains a general social survey with 2867 observations (rows) and 32 variables (columns).
-
-Basic examples using selected geometries, plus some elaborations.
+* Pivoting data
 
 ---
 class: middle, inverse

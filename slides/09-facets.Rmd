@@ -1,0 +1,181 @@
+---
+title: "Data Visualization"
+subtitle: "Splitting graphs into facets"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-01-27 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(palmerpenguins)
+library(gapminder)
+```
+
+# Splitting a plot into facets
+
+* Using one categorical variable
+
+* Using two categorical variables
+
+* Using quantitative variables
+
+---
+class: middle, inverse
+# One categorical variable
+
+* `facet_wrap( ~ variable)`
+
+---
+class: middle
+
+```{r}
+mtcars %>% ggplot(aes(x =wt, y=mpg)) + geom_point()
+```
+
+---
+class: middle
+
+```{r}
+mtcars %>% ggplot(aes(x =wt, y=mpg)) + geom_point() +
+  facet_wrap(~cyl)
+```
+
+---
+class: middle
+
+```{r warning=FALSE}
+penguins %>%
+  ggplot(aes(x=body_mass_g, y= flipper_length_mm, color = sex)) +
+  geom_point() + 
+  facet_wrap( ~ species)
+```
+
+
+---
+class:middle, inverse
+
+# Using two categorical variables
+
+* `facet_grid( y ~ x)`
+* `facet_wrap( ~ x + y)`
+---
+class: middle
+
+```{r}
+mtcars %>% ggplot(aes(x =wt, y=mpg)) + geom_point() +
+  facet_grid(gear~cyl)
+```
+
+---
+class: middle
+
+```{r}
+mtcars %>% ggplot(aes(x =wt, y=mpg)) + geom_point() +
+  facet_grid(gear~cyl, 
+             labeller = labeller(.cols = function(x) paste(x, " cylinders"),
+                                 .rows = label_both))
+```
+
+
+---
+class: middle
+
+```{r warning=FALSE}
+penguins %>%
+  ggplot(aes(x=body_mass_g, y= flipper_length_mm, color = sex)) +
+  geom_point() + 
+  facet_wrap(~ species + island)
+```
+
+
+---
+class: middle
+
+```{r}
+gapminder %>%
+  ggplot(aes(x=year, y = lifeExp, group = country)) + 
+  geom_line() +
+  facet_grid( continent ~ . )
+```
+
+---
+class: middle
+
+```{r message=FALSE}
+gapminder %>%
+  ggplot(aes(x=year, y = lifeExp)) + 
+  geom_line(aes(group = country), color = "gray40", size=0.25) +
+  geom_smooth(method = "lm", color = "blue", se=FALSE) + 
+  facet_grid( continent ~ . )
+```
+
+---
+class: middle, inverse
+
+# Splitting on a quantitative variable
+
+* Start by converting the quantitative variable into a cateogorical one
+
+For example:
+
+```{r}
+penguins %>% 
+  mutate(bill_categories = cut_number(bill_length_mm, n = 4)) %>%
+  select(species, bill_length_mm, bill_categories, everything())
+```
+
+---
+class: middle
+
+```{r warning=FALSE}
+penguins %>% 
+  mutate(bill_categories = cut_number(bill_length_mm, n = 3)) %>%
+  ggplot(aes(x= body_mass_g, y = flipper_length_mm, color = species)) + 
+  geom_point() + 
+  facet_wrap( ~ bill_categories)
+```
+
+---
+class: middle
+
+# Summary
+
+* `facet_wrap()`, `facet_grid()`
+
+* You can set the number of rows and columns with `nrow = Y` or `ncol=X`
+
+* You can label facets with both the variable and value using `labeller = labeller(.rows = label_both)`
+
+
+---
+class: middle
+
+# Further reading
+
+* More examples with different data in the course notes
+
+* R4DS [Section 3.5](https://r4ds.had.co.nz/data-visualisation.html#facets)
+
+* Wilke [Multi-panel figures](https://clauswilke.com/dataviz/multi-panel-figures.html) discussing facets and other suggestions for combining different views of data together into one figure
+
+* Healy [Section 4.3](https://socviz.co/groupfacettx.html#facet-to-make-small-multiples)
+
+---
+class: middle, inverse
+
+# Task
+
+Practice these skills by making the plots in Task 6.
+

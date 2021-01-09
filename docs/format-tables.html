@@ -45,8 +45,8 @@
 <li><a class="" href="vcs.html"><span class="header-section-number">11</span> What is version control software?</a></li>
 <li><a class="" href="grammar.html"><span class="header-section-number">12</span> Grammar of Graphics</a></li>
 <li><a class="" href="ggplot.html"><span class="header-section-number">13</span> Using the grammar of graphics</a></li>
-<li><a class="" href="using-points-lines-colours-and-shapes-scales.html"><span class="header-section-number">14</span> Using points, lines, colours, and shapes (#scales)</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">15</span> Summarizing data</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">14</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">15</span> Facetted graphs</a></li>
 <li><a class="" href="reading-data.html"><span class="header-section-number">16</span> Reading data</a></li>
 <li><a class="" href="pivot.html"><span class="header-section-number">17</span> Reshaping data</a></li>
 <li><a class="active" href="format-tables.html"><span class="header-section-number">18</span> Format tables</a></li>
@@ -76,7 +76,7 @@
 ## 4 Chinstrap Dream           3733.     1
 ## 5 Gentoo    Biscoe          5076.     1</code></pre>
 <p>The function <code>kable</code> turns this into a formatted table.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">kable</span><span class="op">(</span><span class="va">t1</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -171,7 +171,7 @@ Biscoe
 <span class="header-section-number">18.1</span> Header rows<a class="anchor" aria-label="anchor" href="#header-rows"><i class="fas fa-link"></i></a>
 </h2>
 <p>First we’d like to rename the columns. There are two ways to do this: using <code>rename</code> to change the actual column names before formatting the table, or using column formatting to just affect the table appearance.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">rename</span><span class="op">(</span>`Body mass (g)` <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -261,7 +261,7 @@ Biscoe
 </tr>
 </tbody>
 </table></div>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Island"</span>, <span class="st">"Body mass (g)"</span>, <span class="st">"Count"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -357,7 +357,7 @@ Biscoe
 <span class="header-section-number">18.2</span> Column alignment<a class="anchor" aria-label="anchor" href="#column-alignment"><i class="fas fa-link"></i></a>
 </h2>
 <p>Commonly numbers are right justified and text is left justified. That’s what’s done automatically. You can specify each column as left, centre, or right justified using the letters l, c, or r for each column. Here we’ll center the justify the numbers to demonstrate.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>align <span class="op">=</span> <span class="st">"llcc"</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -513,7 +513,7 @@ Biscoe
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-06.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

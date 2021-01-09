@@ -1,6 +1,6 @@
 ---
 title: "Data Visualization"
-subtitle: "Using the grammar of graphics (ggplot2)"
+subtitle: "Displaying tables"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
 date: "2021-01-20 (updated: `r Sys.Date()`)"
