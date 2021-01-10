@@ -92,10 +92,15 @@ Practice using ggplot to make graphs by reproducing examples from mini-lecture o
 There is nothing to submit for this task.
 
 ### Task 5 (Lesson 9) {#task-5}
-dplyr summarize
+
+Exercises to practice filter, group_by, summarize, and mutate.
+
+Click [here](https://classroom.github.com/a/lrSAY6Z8) to add the repository for tasks 5 and 6 to your github account. Then create a new R project on your computer using the link to your repository you get from github.
 
 ### Task 6 (Lesson 10) {#task-6}
-tables
+
+Exercises to practice making facetted plots. The questions are in the repository for tasks 5 and 6.
+
 
 ### Task 9 (Lesson X) {#task-9}
 Reading data

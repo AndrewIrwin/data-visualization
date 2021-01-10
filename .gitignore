@@ -5,3 +5,5 @@
 .DS_Store
 not-for-git
 selected*rds
+_bookdown_files/*
+~*xlsx
