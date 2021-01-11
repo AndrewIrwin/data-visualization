@@ -25,7 +25,7 @@ Data visualization approaches vary. For some purposes, highly customized graphic
 
 Data visualization is used to help tell [stories](https://clauswilke.com/dataviz/telling-a-story.html) with data. The usual goal is to communicate an interpretation of a dataset to a particular audience, to make an argument you have worked out from an analysis of the data. The visualization is a device to help you do that. Visualizations are best when accompanied by written explanations; even if a [picture is worth a thousand words](https://en.wikipedia.org/wiki/A_picture_is_worth_a_thousand_words), visualizations do not usually stand on their own. Once the message is understood and internalized, a good visualization can sometimes tell the story "by itself".
   
-## Course Goals
+## Course Goals {#goals}
 
 By the end of the course you will be familiar with several aspects of data visualzation.
 

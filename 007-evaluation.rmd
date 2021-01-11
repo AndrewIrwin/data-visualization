@@ -120,6 +120,10 @@ Reshaping data
 
 Displaying tables
 
+### Bonus task (Lesson 14) {#task-b6}
+
+The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
+
 ### Task 11 (Lesson X) {#task-11}
 Work with models
 
@@ -128,6 +132,7 @@ Add smooths to plots
 
 ### Task 13 (Lesson X) {#task-13}
 PCA
+
 ### Task 14 (Lesson X) {#task-14}
 MDS, Kmeans
 
@@ -165,6 +170,12 @@ Click [here](https://classroom.github.com/a/Qb-MKdW3) to copy the repository to 
 Due Wednesday 27 January at 6:00 pm Atlantic time.
 
 ### Assignment 2 {#assignment-2}
+
+There are so many packages and functions to make visualizations, that its really important to be able to read documentation and learn new functions. Fortunately, the design of ggplot means that many functions work very similarly and so once you have learned the basics, it's quite easy to learn more on your own.
+
+The purpose of this assignment is for you to practice this sort of learning. I've picked out a few functions that work much like the examples we've looked at already. Your assignment is to pick out two of these and make a R markdown document describing how they work. This is the sort of practice I do all the time when I learn a new R skill.
+
+Look in the [repository](link to come soon) for a template for this assignment.
 
 learn, describe, and use a ggplot extension. 
 - ggridges, ggupset, ggrepel, cowplot, patchwork, viridislite
