@@ -68,7 +68,7 @@ Git is already installed on rstudio.cloud. There are several ways to confirm thi
 
 To install git, open "Terminal", either within R or using the application Terminal found in the Applications > Utilities folder, and type
 
-* xcode-select --install
+* `xcode-select --install`
 
 and wait a few minutes. 
 
@@ -139,13 +139,13 @@ Repositories on github can be public (so anyone can see them) or private (so tha
 
 * Go to github.com. 
 * Click the bright green button "New" on the left next to the word "Repositories".
-* Give your repository a name. Don't use spaces; use - or _ to connect words. I suggest "my_first_repository".
+* Give your repository a name. Don't use spaces; use - or _ to connect words. I suggest "my-first-repository".
 * Click the radio button beside "Private"
 * Don't check any other boxes. 
 * Click the green button "Create repository"
 * Copy the third last line of code on the next screen: `git branch -M main`.
 * Go back to Rstudio. Paste the git command into the "Terminal" window and hit enter.
-* Copy the second last line of code on the next screen. On my example its `git remote add origin https://github.com/AndrewIrwin/my_first_repository.git`. Your's will have your github name and repository name. Paste it into the Terminal window.
+* Copy the second last line of code on the next screen. On my example its `git remote add origin https://github.com/AndrewIrwin/my-first-repository.git`. Yours will have your github name and repository name. Paste it into the Terminal window.
 * Do the same thing with the last line of code: `git push -u origin main`
 * Go back to github and refresh your window. You should see your three files from your R project there in the web browser now.
 

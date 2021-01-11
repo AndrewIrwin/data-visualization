@@ -9,6 +9,8 @@ fig:unnamed-chunk-8
 fig:unnamed-chunk-9
 fig:unnamed-chunk-10
 tab:unnamed-chunk-68
+tab:unnamed-chunk-88
+tab:unnamed-chunk-89
 welcome
 what-is-data-visualization
 what-is-the-purpose-of-data-visualization
@@ -61,8 +63,9 @@ task-b3
 task-b4
 task-5
 task-6
-task-9
-task-10
+task-b5
+task-7
+task-8
 task-11
 task-12
 task-13
@@ -224,9 +227,9 @@ format-tables
 header-rows
 column-alignment
 formatting-numbers
-colour-font-and-text-rotation
+color-highlights-and-other-styles
 captions
-adding-sums-and-percentages
+putting-it-all-together
 further-reading-8
 linear-models
 making-linear-models
