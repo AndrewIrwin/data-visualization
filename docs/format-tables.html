@@ -65,16 +65,16 @@
 <h1>
 <span class="header-section-number">18</span> Format tables<a class="anchor" aria-label="anchor" href="#format-tables"><i class="fas fa-link"></i></a>
 </h1>
-<p>We’re spending a lot of time in this course making graphic visualizations of data. In this one lesson we will take a detour and learn to make nice looking tables with text and numbers in them. There are a bunch of packages for doing this (see Assignment X). We’ll use <code>kable</code> table formatting here because it works nicely in documents we knit to HTML.</p>
+<p>We’re spending a lot of time in this course making graphic visualizations of data. In this one lesson we will take a detour and learn to make nice looking tables with text and numbers in them. There are a bunch of packages for doing this (see Assignment X). We’ll use the <code>kable</code> table formatting function in this lesson (from the packages <code>knitr</code> and <code>kableExtra</code>).</p>
 <p>Let’s use a simple table to demonstrate the main features. I want some text, some numbers, and not too many rows or columns. I’ll summarize the data in the <code>palmerpenguins</code> table into a small table.</p>
 <pre><code>## # A tibble: 5 x 4
-##   species   island    body_mass_g count
-##   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt; &lt;int&gt;
-## 1 Adelie    Biscoe          3710.     1
-## 2 Adelie    Dream           3688.     1
-## 3 Adelie    Torgersen       3706.     1
-## 4 Chinstrap Dream           3733.     1
-## 5 Gentoo    Biscoe          5076.     1</code></pre>
+##   species   island    count body_mass_g
+##   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;
+## 1 Adelie    Biscoe       44       3710.
+## 2 Adelie    Dream        56       3688.
+## 3 Adelie    Torgersen    51       3706.
+## 4 Chinstrap Dream        68       3733.
+## 5 Gentoo    Biscoe      123       5076.</code></pre>
 <p>The function <code>kable</code> turns this into a formatted table.</p>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">kable</span><span class="op">(</span><span class="va">t1</span><span class="op">)</span></code></pre></div>
@@ -87,10 +87,10 @@ species
 island
 </th>
 <th style="text-align:right;">
-body_mass_g
+count
 </th>
 <th style="text-align:right;">
-count
+body_mass_g
 </th>
 </tr></thead>
 <tbody>
@@ -102,10 +102,10 @@ Adelie
 Biscoe
 </td>
 <td style="text-align:right;">
-3709.659
+44
 </td>
 <td style="text-align:right;">
-1
+3709.659
 </td>
 </tr>
 <tr>
@@ -116,10 +116,10 @@ Adelie
 Dream
 </td>
 <td style="text-align:right;">
-3688.393
+56
 </td>
 <td style="text-align:right;">
-1
+3688.393
 </td>
 </tr>
 <tr>
@@ -130,10 +130,10 @@ Adelie
 Torgersen
 </td>
 <td style="text-align:right;">
-3706.373
+51
 </td>
 <td style="text-align:right;">
-1
+3706.373
 </td>
 </tr>
 <tr>
@@ -144,10 +144,10 @@ Chinstrap
 Dream
 </td>
 <td style="text-align:right;">
-3733.088
+68
 </td>
 <td style="text-align:right;">
-1
+3733.088
 </td>
 </tr>
 <tr>
@@ -158,10 +158,10 @@ Gentoo
 Biscoe
 </td>
 <td style="text-align:right;">
-5076.016
+123
 </td>
 <td style="text-align:right;">
-1
+5076.016
 </td>
 </tr>
 </tbody>
@@ -170,7 +170,7 @@ Biscoe
 <h2>
 <span class="header-section-number">18.1</span> Header rows<a class="anchor" aria-label="anchor" href="#header-rows"><i class="fas fa-link"></i></a>
 </h2>
-<p>First we’d like to rename the columns. There are two ways to do this: using <code>rename</code> to change the actual column names before formatting the table, or using column formatting to just affect the table appearance.</p>
+<p>Often you will want to rename or reformat the column headings. There are two ways to do this: using <code>rename</code> to change the actual column names before formatting the table, or using column formatting to just affect the table appearance. You can rename just one column using <code>rename</code>, but with the second version below (<code>col.names</code>) you need to provide all the column names in the correct order.</p>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">rename</span><span class="op">(</span>`Body mass (g)` <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
@@ -182,10 +182,10 @@ species
 island
 </th>
 <th style="text-align:right;">
-Body mass (g)
+count
 </th>
 <th style="text-align:right;">
-count
+Body mass (g)
 </th>
 </tr></thead>
 <tbody>
@@ -197,10 +197,10 @@ Adelie
 Biscoe
 </td>
 <td style="text-align:right;">
-3709.659
+44
 </td>
 <td style="text-align:right;">
-1
+3709.659
 </td>
 </tr>
 <tr>
@@ -211,10 +211,10 @@ Adelie
 Dream
 </td>
 <td style="text-align:right;">
-3688.393
+56
 </td>
 <td style="text-align:right;">
-1
+3688.393
 </td>
 </tr>
 <tr>
@@ -225,10 +225,10 @@ Adelie
 Torgersen
 </td>
 <td style="text-align:right;">
-3706.373
+51
 </td>
 <td style="text-align:right;">
-1
+3706.373
 </td>
 </tr>
 <tr>
@@ -239,10 +239,10 @@ Chinstrap
 Dream
 </td>
 <td style="text-align:right;">
-3733.088
+68
 </td>
 <td style="text-align:right;">
-1
+3733.088
 </td>
 </tr>
 <tr>
@@ -253,16 +253,16 @@ Gentoo
 Biscoe
 </td>
 <td style="text-align:right;">
-5076.016
+123
 </td>
 <td style="text-align:right;">
-1
+5076.016
 </td>
 </tr>
 </tbody>
 </table></div>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Island"</span>, <span class="st">"Body mass (g)"</span>, <span class="st">"Count"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Island"</span>, <span class="st">"Count"</span>,  <span class="st">"Body mass (g)"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:left;">
@@ -272,10 +272,10 @@ Species
 Island
 </th>
 <th style="text-align:right;">
-Body mass (g)
+Count
 </th>
 <th style="text-align:right;">
-Count
+Body mass (g)
 </th>
 </tr></thead>
 <tbody>
@@ -287,10 +287,10 @@ Adelie
 Biscoe
 </td>
 <td style="text-align:right;">
-3709.659
+44
 </td>
 <td style="text-align:right;">
-1
+3709.659
 </td>
 </tr>
 <tr>
@@ -301,10 +301,10 @@ Adelie
 Dream
 </td>
 <td style="text-align:right;">
-3688.393
+56
 </td>
 <td style="text-align:right;">
-1
+3688.393
 </td>
 </tr>
 <tr>
@@ -315,10 +315,10 @@ Adelie
 Torgersen
 </td>
 <td style="text-align:right;">
-3706.373
+51
 </td>
 <td style="text-align:right;">
-1
+3706.373
 </td>
 </tr>
 <tr>
@@ -329,10 +329,10 @@ Chinstrap
 Dream
 </td>
 <td style="text-align:right;">
-3733.088
+68
 </td>
 <td style="text-align:right;">
-1
+3733.088
 </td>
 </tr>
 <tr>
@@ -343,10 +343,10 @@ Gentoo
 Biscoe
 </td>
 <td style="text-align:right;">
-5076.016
+123
 </td>
 <td style="text-align:right;">
-1
+5076.016
 </td>
 </tr>
 </tbody>
@@ -368,10 +368,10 @@ species
 island
 </th>
 <th style="text-align:center;">
-body_mass_g
+count
 </th>
 <th style="text-align:center;">
-count
+body_mass_g
 </th>
 </tr></thead>
 <tbody>
@@ -383,10 +383,10 @@ Adelie
 Biscoe
 </td>
 <td style="text-align:center;">
-3709.659
+44
 </td>
 <td style="text-align:center;">
-1
+3709.659
 </td>
 </tr>
 <tr>
@@ -397,10 +397,10 @@ Adelie
 Dream
 </td>
 <td style="text-align:center;">
-3688.393
+56
 </td>
 <td style="text-align:center;">
-1
+3688.393
 </td>
 </tr>
 <tr>
@@ -411,10 +411,10 @@ Adelie
 Torgersen
 </td>
 <td style="text-align:center;">
-3706.373
+51
 </td>
 <td style="text-align:center;">
-1
+3706.373
 </td>
 </tr>
 <tr>
@@ -425,10 +425,10 @@ Chinstrap
 Dream
 </td>
 <td style="text-align:center;">
-3733.088
+68
 </td>
 <td style="text-align:center;">
-1
+3733.088
 </td>
 </tr>
 <tr>
@@ -439,36 +439,409 @@ Gentoo
 Biscoe
 </td>
 <td style="text-align:center;">
-5076.016
+123
 </td>
 <td style="text-align:center;">
-1
+5076.016
 </td>
 </tr>
 </tbody>
 </table></div>
-<p>Column names, alignment</p>
 </div>
 <div id="formatting-numbers" class="section level2" number="18.3">
 <h2>
 <span class="header-section-number">18.3</span> Formatting numbers<a class="anchor" aria-label="anchor" href="#formatting-numbers"><i class="fas fa-link"></i></a>
 </h2>
+<p>Any number that comes from a calculation (such as a mean) will have a lot of decimal places displayed unless you change this. You can control the number of decimal places to show using rounding. (Use a negative number of digits to round to the left of the decimal point, for example <code>digits=-1</code> to round to the tens place.) Give either one number to use for all columns, or provide a vector to control the number of digits separately for each column.</p>
+<p>You can add a comma (or space for SI or . for European styles) to separate the thousands or millions using <code>format.args = list(big.mark = ",")</code>. See the help for <code>format</code> for more options.</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">1</span>, format.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+species
+</th>
+<th style="text-align:left;">
+island
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+body_mass_g
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+3,709.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+3,688.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Torgersen
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+3,706.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chinstrap
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+3,733.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gentoo
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+5,076.0
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
-<div id="colour-font-and-text-rotation" class="section level2" number="18.4">
+<div id="color-highlights-and-other-styles" class="section level2" number="18.4">
 <h2>
-<span class="header-section-number">18.4</span> Colour, font, and text rotation<a class="anchor" aria-label="anchor" href="#colour-font-and-text-rotation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.4</span> Color, highlights, and other styles<a class="anchor" aria-label="anchor" href="#color-highlights-and-other-styles"><i class="fas fa-link"></i></a>
 </h2>
+<p>There are a lot of options for changing the appearance of text in the <code>kableExtra</code> package. If you are interested, look at the <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">vignette</a> linked in the further reading.</p>
+<p>The two styles I use frequently are alternating shading to help you read across rows and making the columns only wide enough to display your data.</p>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span>, bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+species
+</th>
+<th style="text-align:left;">
+island
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+body_mass_g
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+3709.659
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+3688.393
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Torgersen
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+3706.373
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chinstrap
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+3733.088
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gentoo
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+5076.016
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 <div id="captions" class="section level2" number="18.5">
 <h2>
 <span class="header-section-number">18.5</span> Captions<a class="anchor" aria-label="anchor" href="#captions"><i class="fas fa-link"></i></a>
 </h2>
+<p>You can add a caption to a table with the <code>caption</code> argument to <code>kable</code>.</p>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The number and average mass of penguins by species and island."</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:unnamed-chunk-88">Table 18.1: </span>The number and average mass of penguins by species and island.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+species
+</th>
+<th style="text-align:left;">
+island
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+body_mass_g
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+3709.659
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+3688.393
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Torgersen
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+3706.373
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chinstrap
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+3733.088
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gentoo
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+5076.016
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
-<div id="adding-sums-and-percentages" class="section level2" number="18.6">
+<div id="putting-it-all-together" class="section level2" number="18.6">
 <h2>
-<span class="header-section-number">18.6</span> Adding sums and percentages<a class="anchor" aria-label="anchor" href="#adding-sums-and-percentages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.6</span> Putting it all together<a class="anchor" aria-label="anchor" href="#putting-it-all-together"><i class="fas fa-link"></i></a>
 </h2>
-<p>janitor</p>
+<p>Usually you will want to combine these features to get the look you want. Your goal should always be to make a table that clearly displays your data.</p>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">1</span>, format.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span>,
+             col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Island"</span>, <span class="st">"n"</span>, <span class="st">"Body mass (g)"</span><span class="op">)</span>,
+             caption<span class="op">=</span><span class="st">"The number and average mass of penguins by species and island."</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span>, bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-89">Table 18.2: </span>The number and average mass of penguins by species and island.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:left;">
+Island
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+Body mass (g)
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+3,709.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+3,688.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adelie
+</td>
+<td style="text-align:left;">
+Torgersen
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+3,706.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chinstrap
+</td>
+<td style="text-align:left;">
+Dream
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+3,733.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gentoo
+</td>
+<td style="text-align:left;">
+Biscoe
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+5,076.0
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 <div id="further-reading-8" class="section level2" number="18.7">
 <h2>
@@ -492,9 +865,9 @@ Biscoe
 <li><a class="nav-link" href="#header-rows"><span class="header-section-number">18.1</span> Header rows</a></li>
 <li><a class="nav-link" href="#column-alignment"><span class="header-section-number">18.2</span> Column alignment</a></li>
 <li><a class="nav-link" href="#formatting-numbers"><span class="header-section-number">18.3</span> Formatting numbers</a></li>
-<li><a class="nav-link" href="#colour-font-and-text-rotation"><span class="header-section-number">18.4</span> Colour, font, and text rotation</a></li>
+<li><a class="nav-link" href="#color-highlights-and-other-styles"><span class="header-section-number">18.4</span> Color, highlights, and other styles</a></li>
 <li><a class="nav-link" href="#captions"><span class="header-section-number">18.5</span> Captions</a></li>
-<li><a class="nav-link" href="#adding-sums-and-percentages"><span class="header-section-number">18.6</span> Adding sums and percentages</a></li>
+<li><a class="nav-link" href="#putting-it-all-together"><span class="header-section-number">18.6</span> Putting it all together</a></li>
 <li><a class="nav-link" href="#further-reading-8"><span class="header-section-number">18.7</span> Further reading</a></li>
 </ul>
 
@@ -513,7 +886,7 @@ Biscoe
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-09.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

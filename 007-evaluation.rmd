@@ -54,7 +54,8 @@ Due Monday 18 January at 9:00 am Atlantic.
 2. Hans Rosling's visualizations (as shown in [Lesson 1](#ch-invitation)) use many channels for conveying data: x and y position, color, size, an annotation for year in the plot background. The interactive versions use an animation for change over time, and mouse-over pop-ups to identify the country for each dot. These are very complex visualizations! 
 
 a. For Rosling's plot showin in Lesson 1, what variables are shown for each of x and y position, color, and symbol size?
-b. According to [Healy Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://bit.ly/3oAb0Uq) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
+b. According to [Healy Chapter 1](https://socviz.co/lookatdata.html#channels-for-representing-data) which of these 4 features is most difficult to make quantitative comparisons with? Why? Do you agree? 
+c. In your judgment, is this visualization effective or too complex? Watch the [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) or experiment with the [interactive version](https://bit.ly/3oAb0Uq) before answering the question. Does the live explanation provided in Rosling's oral presentation help you interpret the plot?
 
 Write answers for these two questions in a word processor (we'll start using R markdown soon) and submit as a single PDF on Brightspace. Assesment: 10 points total, 5 points per question.
 
@@ -101,12 +102,23 @@ Click [here](https://classroom.github.com/a/lrSAY6Z8) to add the repository for 
 
 Exercises to practice making facetted plots. The questions are in the repository for tasks 5 and 6.
 
+### Bonus task (Lesson 11) {#task-b5}
 
-### Task 9 (Lesson X) {#task-9}
-Reading data
+I will get you to practice reading files later on in the course. For now, 
 
-### Task 10 (Lesson X) {#task-10}
-Facets
+* pay attention to the code I use in future lessons for reading files, and
+* download the [excel file](https://github.com/AndrewIrwin/data-visualization/blob/master/static/test-data.xlsx?raw=true) from the lesson, practice reading it into R, editing it in excel, and confirming that you can read the changes with R. 
+
+You will want to practice this a bit over reading week or just after when you are looking for data to be used in your term project.
+
+
+### Task 7 (Lesson 12) {#task-7}
+
+Reshaping data
+
+### Task 8 (Lesson 13) {#task-8}
+
+Displaying tables
 
 ### Task 11 (Lesson X) {#task-11}
 Work with models

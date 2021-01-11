@@ -1,19 +1,21 @@
-# Format tables
+# Format tables {#format-tables}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(palmerpenguins)
 library(tidyverse)
+library(knitr)
+library(kableExtra)
 ```
 
-We're spending a lot of time in this course making graphic visualizations of data. In this one lesson we will take a detour and learn to make nice looking tables with text and numbers in them. There are a bunch of packages for doing this (see Assignment X). We'll use `kable` table formatting here because it works nicely in documents we knit to HTML.
+We're spending a lot of time in this course making graphic visualizations of data. In this one lesson we will take a detour and learn to make nice looking tables with text and numbers in them. There are a bunch of packages for doing this (see Assignment X). We'll use the `kable` table formatting function in this lesson (from the packages `knitr` and `kableExtra`). 
 
 Let's use a simple table to demonstrate the main features. I want some text, some numbers, and not too many rows or columns. I'll summarize the data in the `palmerpenguins` table into a small table.
 
 ```{r echo = FALSE}
 t1 <- penguins %>% group_by(species, island) %>%
-  summarize(body_mass_g = mean(body_mass_g, na.rm=TRUE), 
-            count = sum(!is.na(body_mass_g)),
+  summarize(count = sum(!is.na(body_mass_g)),
+            body_mass_g = mean(body_mass_g, na.rm=TRUE), 
             .groups = "drop")
 t1
 ```
@@ -26,14 +28,14 @@ kable(t1)
 
 ## Header rows
 
-First we'd like to rename the columns. There are two ways to do this: using `rename` to change the actual column names before formatting the table, or using column formatting to just affect the table appearance.
+Often you will want to rename or reformat the column headings. There are two ways to do this: using `rename` to change the actual column names before formatting the table, or using column formatting to just affect the table appearance. You can rename just one column using `rename`, but with the second version below (`col.names`) you need to provide all the column names in the correct order. 
 
 ```{r}
 t1 %>% rename(`Body mass (g)` = body_mass_g) %>% kable()
 ```
 
 ```{r}
-t1 %>% kable(col.names = c("Species", "Island", "Body mass (g)", "Count"))
+t1 %>% kable(col.names = c("Species", "Island", "Count",  "Body mass (g)"))
 ```
 
 ## Column alignment
@@ -44,20 +46,47 @@ Commonly numbers are right justified and text is left justified. That's what's d
 t1 %>% kable(align = "llcc")
 ```
 
-Column names, alignment
-
-
 ## Formatting numbers
 
-## Colour, font, and text rotation
+Any number that comes from a calculation (such as a mean) will have a lot of decimal places displayed unless you change this. You can control the number of decimal places to show using rounding. (Use a negative number of digits to round to the left of the decimal point, for example `digits=-1` to round to the tens place.) Give either one number to use for all columns, or provide a vector to control the number of digits separately for each column.
+
+You can add a comma (or space for SI or . for European styles) to separate the thousands or millions using `format.args = list(big.mark = ",")`. See the help for `format` for more options.
+
+
+```{r}
+t1 %>% kable(digits = 1, format.args = list(big.mark = ","))
+```
+
+## Color, highlights, and other styles
+
+There are a lot of options for changing the appearance of text in the `kableExtra` package. If you are interested, look at the [vignette](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) linked in the further reading.
+
+The two styles I use frequently are alternating shading to help you read across rows and making the columns only wide enough to display your data.
+
+```{r}
+t1 %>% kable() %>% kable_styling(full_width = FALSE, bootstrap_options = "striped")
+```
+
 
 ## Captions
 
+You can add a caption to a table with the `caption` argument to `kable`. 
 
-## Adding sums and percentages
+```{r}
+t1 %>% kable(caption = "The number and average mass of penguins by species and island.")
+```
 
-janitor
 
+## Putting it all together
+
+Usually you will want to combine these features to get the look you want. Your goal should always be to make a table that clearly displays your data.
+
+```{r}
+t1 %>% kable(digits = 1, format.args = list(big.mark = ","),
+             col.names = c("Species", "Island", "n", "Body mass (g)"),
+             caption="The number and average mass of penguins by species and island.") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
+```
 
 ## Further reading
 

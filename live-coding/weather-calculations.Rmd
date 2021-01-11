@@ -1,0 +1,24 @@
+---
+title: "Weather calculations"
+author: "Andrew Irwin"
+date: "11/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Today in history
+
+* compute quantiles of minimum and maximum temperature
+* compute fraction of days with precipitation, and amounts of precipitation.
+* compute proportion of runs of 3 days with 0, 1, 2, 3 days of preciptitation. are they independent?
+* compute distribution of changes between today and tomorrow in min, max temperature; presumably symmetric or nearly so, so also mean absolute difference
+* amount of snow on ground
+* sunrise, sunset, max sun angle, moon phase
+
+## Change over time (same day, differnet years)
+
+## climatologies

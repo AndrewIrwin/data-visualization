@@ -32,7 +32,7 @@ The steps below are demonstrated for a Windows and Macintosh computer in [videos
 
 * To download and install git: 
   * on Windows, go to [git-scm.org](https://git-scm.org) and click on the link to [download a version for Windows](https://git-scm.com/download/win)
-  * on Macintosh, use the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type 'xcode-select --install' to download and install git.
+  * on Macintosh, use the [Terminal app](https://www.dummies.com/computers/macs/mac-operating-systems/unix-terminal-application-on-your-macbook/) and type `xcode-select --install` to download and install git. There should be two minus signs in front of "install"; some web browsers may display this incorrectly as a dash (one symbol).
 
 ## rstudio.cloud
 

@@ -74,7 +74,7 @@
 <p>We will always make linear models with variables from a data frame. Designate one variable the response variable, which we will attempt to predict using one or more other variables (called predictors.) You are not restricted to just variables in your data frame; you can transform the varaibles first, for example by squaring, taking logarithms, or applying some other function. Additionally, you can use categorical (or factor) variables as predictors and are not restricted to only quantitative variables. Be aware that the more variables or transformations you add to your list of predictors, the more likely they will be correlated and your model will be very hard to interpret. These issues are discussed in statistics courses on regression.</p>
 <p>Once your data frame is created, write the linear model as a “formula” object, meaning as an equation but with a <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> instead of an <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> to indicate that you are modelling the left hand side and allowing for a specific model for the mismatch between predictors and response.</p>
 <p>We have seen that the price of a diamond increases a bit faster than linearly as the mass of the diamond increases, we will try both a linear model and a quadratic model for data in the <code>diamonds</code> dataframe.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">linear_model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">carat</span>, data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">linear_model1</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
@@ -95,7 +95,7 @@
 ## Residual standard error: 1549 on 53938 degrees of freedom
 ## Multiple R-squared:  0.8493, Adjusted R-squared:  0.8493 
 ## F-statistic: 3.041e+05 on 1 and 53938 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">quadratic_model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">carat</span> <span class="op">+</span> <span class="va">carat2</span>, 
                        data <span class="op">=</span> <span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>carat2 <span class="op">=</span> <span class="va">carat</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">quadratic_model1</span><span class="op">)</span></code></pre></div>
@@ -144,38 +144,38 @@ and you can fill in the results showing the numeric coefficients in the equation
 </h2>
 <p>What we really want to do is to add a line to a graph. There are easy ways to do this with ggplot that don’t require you to make a separate model; instead we will just add a “smooth” geometry (<code>geom_smooth</code>) to a ggplot.</p>
 <p>We start with a straight line.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-88-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-92-1.png" width="672"></div>
 <p>Now try a quadratic.</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html">poly</a></span><span class="op">(</span><span class="va">x</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-89-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-93-1.png" width="672"></div>
 <p>That’s better, but it’s still not great. If we just want to highlight the pattern in the data, we can use a smooth that doesn’t work from a simple formula, such as <code>loess</code> or <code>gam</code>.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"loess"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-90-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-94-1.png" width="672"></div>
 <p>This smooth has an “S” shape – price increases slowly for the smallest diamonds, then quickly, then slowly again for the largest diamonds. We get a similar result from a <code>gam</code> smooth.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"gam"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ s(x, bs = "cs")'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-91-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-95-1.png" width="672"></div>
 <p>The <code>geom_smooth</code> is especially powerful for facetted plots. The smooth is automatically computed and plotted for each facet separately.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">color</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"H"</span>, <span class="st">"J"</span><span class="op">)</span>, 
          <span class="va">clarity</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SI1"</span>, <span class="st">"VS1"</span>, <span class="st">"IF"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -185,8 +185,8 @@ and you can fill in the results showing the numeric coefficients in the equation
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>begin<span class="op">=</span><span class="fl">0</span>, end <span class="op">=</span><span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size<span class="op">=</span><span class="fl">0.75</span><span class="op">)</span>  <span class="co"># uses loess</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-92-1.png" width="672"></div>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-96-1.png" width="672"></div>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="co"># geom_smooth(method = "lm", formula = y ~ poly(x,2), color = "black", size = 0.5) # alternate version</span></code></pre></div>
 <p>Notice that I’ve moved the <code>color=cut</code> from the ggplot function to the <code>geom_point</code> function as the aesthetic for only the points. If the colour was specified in the first ggplot function, the <code>geom_smooth</code> would “inherit” this aesthetic mapping and would make a separate smooth for each cut (5 lines per panel). There are not enough data in some panels for some cuts to do a good job, so I revised the plot to only draw one smooth per facet. You should move the <code>color=cut</code> back to the ggplot call to see how the result changes.</p>
 
@@ -218,7 +218,7 @@ and you can fill in the results showing the numeric coefficients in the equation
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-09.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
