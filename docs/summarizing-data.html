@@ -199,11 +199,11 @@
 <pre><code>## # A tibble: 5 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.78 Very Good I     SI2      60.6    60  2130  5.91  5.93  3.59
-## 2  0.56 Very Good E     VS2      61.4    61  1819  5.28  5.31  3.25
-## 3  0.7  Ideal     H     SI1      61.2    56  2184  5.69  5.74  3.5 
-## 4  1.01 Very Good F     VS2      63.7    56  6289  6.29  6.34  4.02
-## 5  0.32 Ideal     E     VS2      62.8    54   900  4.38  4.35  2.74</code></pre>
+## 1  0.79 Ideal     E     VS2      62.2    55  3827  5.9   5.97  3.69
+## 2  1.03 Premium   I     SI1      58.4    60  3288  6.6   6.58  3.85
+## 3  1.25 Premium   I     SI1      59.7    59  5293  6.97  7.03  4.18
+## 4  0.33 Premium   H     VS1      59.5    59   743  4.53  4.48  2.68
+## 5  0.33 Very Good G     SI2      60      56   460  4.52  4.55  2.73</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
