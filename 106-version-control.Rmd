@@ -172,7 +172,7 @@ If you don't want to keep this repository, you can get rid of it in two steps.
 
 In the _task_ for this lesson you'll clone an exiting repository I created for you on github to create a new project on your computer (or rstudio.cloud account). This will be the first step for assignment 1. This task is simpler than the steps shown above, since I have created the repository on github already; your task is to clone a copy onto your computer.
 
-Please watch the Task 4 [video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=540e63cc-65b7-441f-b234-aca60134e6bd) for step-by-step instructions. (The [slides](slides/06-demo-assignment-github.html) are also available.)
+Please watch the Task 4 [video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7cb26d66-a26e-4b24-89b1-acaf01321690) for step-by-step instructions. (The [slides](slides/06-demo-assignment-github.html) are also available.)
 
 ## Resources
 
