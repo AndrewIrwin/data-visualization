@@ -30,7 +30,7 @@ class: middle, inverse
 
 # Steps
 
-* Click the link to access the repository on the detailed outline
+* Go to your account on github.com and find the repository for assignment-1. (See the Task 4 instructions for more help.)
 
 * Copy the link provided by github
   
@@ -45,24 +45,9 @@ class: middle
 
 # Click the link to access the repository on the detailed outline
 
-  * This will create a copy of the task/assignment as a repository on your github account
-  * The first time you do this, you may be asked to authorize access to your github account by the course (Dalhousie-AndrewIrwin-Teaching)
-  * You will be asked to find your name in a list of students registered in the course. If you are not listed, contact me for help
-  * You will get an email notification from github
-
----
-class: middle
-
-```{r echo=FALSE}
-knitr::include_graphics("../static/git-demo/step-1a-join-repo.png")
-```
-
----
-class: middle
-
-```{r echo=FALSE}
-knitr::include_graphics("../static/git-demo/step-1b-accepted-repo.png")
-```
+  * I have created a copy of the task/assignment as a repository on your github account
+  * If it is missing, make sure you have given me your github user name in Task 2. 
+  * Contact me if you can't find the repository or the link to create a new R project with it.
 
 ---
 class: middle
@@ -197,14 +182,3 @@ class: middle, inverse, center
 
 # Congratulations
 
----
-# Debris
-
-  * https://github.com/Dalhousie-AndrewIrwin-Teaching/assignment-1-stat2430-student.git
-    * Optionally add your user name as follows:
-    * https://stat2430-student@github.com/Dalhousie-AndrewIrwin-Teaching...
-
-  * You may be asked to restart Rstudio
-
-
-Session > Restart R

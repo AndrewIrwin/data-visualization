@@ -71,9 +71,9 @@ There is nothing to submit for this task.
 
 Use Rstudio to create a new project from the github repository for Assignment 1. This is a new task, but it's going to be a recurring task throughout the course. Here are step-by-step instructions. If you have trouble with this task, ask for help. It's very important.
 
-* Get the link for the repository [here](https://classroom.github.com/a/Qb-MKdW3).
+* Go to your github account and look for a repository called "assignment-1-" followed by your github user name. Get the link by clicking the green button labeled "Code". It should look like this: "https://github.com/Dalhousie-AndrewIrwin-Teaching/assignment-1-<your github name>.git" 
 * Using Rstudio on your computer, select menu File > New Project > From repository... > Git. Insert the link to the repository and tell R where to put the repository on your computer.
-* If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command `git clone <link from github>`. Finally, open the new folder in the Files pane and click on the "assignment-1.Rproj" link to switch to the project. You may be asked by rstudio.cloud to linked to your github account to access private repositories. 
+* If you use rstudio.cloud, start at the [projects](https://rstudio.cloud/projects) page and choose New Project from git repository (pop-up menu) or open your existing project for our course. Clone the github repository in your project using the terminal window and type the command `git clone <link from github>`. Finally, open the new folder in the Files pane and click on the "assignment-1.Rproj" link to switch to the project. You may be asked by rstudio.cloud to link to your github account to access private repositories. 
 
 There is a [video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=540e63cc-65b7-441f-b234-aca60134e6bd) to help you with this task. You can also look at the [slides](slides/06-demo-assignment-github.html).
 

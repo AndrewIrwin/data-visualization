@@ -1,0 +1,109 @@
+---
+title: "Live Coding Week 2"
+author: "Andrew Irwin"
+date: "2021-01-14 08:35"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gapminder)
+```
+
+Thursday synchronous sessions are opportunities for highlighting the main goals of the week, examples, and asking questions. I will provide an outline for each meeting as an R markdown document. You should download it to your computer and open it up in Rstudio. If you use rstudio.cloud, you will need to upload the document from your computer to the cloud service.
+
+## Outline
+
+* Examples of using Rstudio and R Markdown
+* Examples from Lessons 5 and 6 (Making your first plot and version control)
+* Questions and Discussion
+
+## Rstudio
+
+* Description of the four main panels (editor, console / terminal, environment / git, files / help)
+* Creating and opening R markdown files
+* Creating and opening R projects
+* What is your "environment"?
+* What are packages?
+
+## R Markdown
+
+R Markdown is a system for combining written text, computer code, and output such as plots and tables.
+
+Your "source" (Rmd) document can be "knitted" into a read-only report (in HTML, MS Office, or PDF format). This is a valuable step because the knitting process ensures that your document contains complete instructions for reproducing your analysis and visualizations.
+
+Help on formatting can be found under the Help > Markdown Quick Reference menu.
+
+
+## ggplot practice
+
+Let's make a simple scatter plot using gapminder data, showing population vs time, coloured by continent.
+
+```{r}
+
+
+```
+
+Store the plot in the environment with a simple name (like `p`):
+
+```{r}
+
+
+```
+
+Modify the plot by adding better axis labels.
+
+```{r}
+
+
+```
+
+
+Modify the plot by changing the population to a log scale.
+
+```{r}
+
+
+```
+
+Change the scatterplot to a line graph. Use country as a grouping variable to get a separate line for each country.
+
+
+```{r}
+
+
+```
+
+Make a boxplot of population, life expectancy, and GDP per capita for each continent over time.
+
+```{r}
+
+```
+
+Make a histogram of some of these data. Try position = "stack", "identity", "dodge", and "fill". Try a `freqpoly` instead of histogram. Try `y = after_stat(density)`.
+
+```{r}
+
+
+```
+
+Make a plot with two categorical variables (country, continent) to show the number of countries in each continent.  
+
+```{r}
+gapminder %>% distinct(country, continent)
+  
+```
+
+
+## github lookahead
+
+* Send me your github name (Task 2) if you haven't done that already
+* I will add you to our course ("Dalhousie-AndrewIrwin-Teaching")
+* Accept the invitation
+* I will put a repository called "Assignment-1-<github name>" in your repository.
+* Find the repository on github. Copy the link to the repo.
+* Create a new R project using this repository ("clone") using Rstudio.
+* Edit the files
+* Stage, Commit, and Push the changes.
+
