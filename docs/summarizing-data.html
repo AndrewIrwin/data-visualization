@@ -199,11 +199,11 @@
 <pre><code>## # A tibble: 5 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.47 Fair      F     SI2      67.6    57   719  4.81  4.72  3.23
-## 2  0.56 Ideal     D     VS2      61.2    56  2066  5.35  5.3   3.26
-## 3  1.52 Very Good I     VS2      61.7    55 10130  7.39  7.32  4.54
-## 4  0.41 Ideal     F     IF       61.4    56  1439  4.81  4.83  2.96
-## 5  1.5  Premium   E     SI1      61.5    58 11233  7.28  7.36  4.5</code></pre>
+## 1  0.78 Very Good I     SI2      60.6    60  2130  5.91  5.93  3.59
+## 2  0.56 Very Good E     VS2      61.4    61  1819  5.28  5.31  3.25
+## 3  0.7  Ideal     H     SI1      61.2    56  2184  5.69  5.74  3.5 
+## 4  1.01 Very Good F     VS2      63.7    56  6289  6.29  6.34  4.02
+## 5  0.32 Ideal     E     VS2      62.8    54   900  4.38  4.35  2.74</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
@@ -403,7 +403,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-11.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -6,4 +6,6 @@
 not-for-git
 selected*rds
 _bookdown_files/*
+_bookdown_files/course-notes_files/*
+_bookdown_files/course-notes_files/figure-html/*
 ~*xlsx
