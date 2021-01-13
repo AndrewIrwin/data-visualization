@@ -37,6 +37,10 @@ Meeting agenda:
 * Live coding examples from Lesson 5 and Lesson 6
 * Questions and discussion
 
+Links to the [HTML](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-02.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-02.rmd) versions of our live coding exercises for this meeting. To download the file you should right (or control) click the Rmd link to save the file to your computer. Read through the HTML version. Download the Rmd version to your computer and open it up in Rstudio. After class you can access the [knitted HTML](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-02-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-02-after-class.rmd) versions we created.
+
+
+
 ## Tue 19 Jan 8:35
 
 This is a drop-in office hour. Come with questions about the course. In particular, you may want to bring questions about Task 4 or Assignment 1.
