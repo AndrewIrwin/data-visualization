@@ -167,9 +167,16 @@ Assignments should be submitted to the relevant github repository, generally as 
 
 Make a  markdown document with a figure and commit to a github repository. Ensures you know the foundation of  using git, github, R markdown, and ggplot to build new knowledge and skills on top.
 
-Click [here](https://classroom.github.com/a/Qb-MKdW3) to copy the repository to your github account. This is the same repository you created in Task 4, so you don't need to do it again.
+Use the repository you created in Task 4.
 
 Due Wednesday 27 January at 6:00 pm Atlantic time.
+
+If, when you go to push your work back to github, you get an error about "Author identity unknown". you need to type the following two commands into the R terminal window:
+
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
 
 ### Assignment 2 {#assignment-2}
 

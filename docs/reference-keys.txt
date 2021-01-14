@@ -220,6 +220,8 @@ formatting-numbers
 color-highlights-and-other-styles
 captions
 putting-it-all-together
+adding-row-and-column-totals
+adding-grouping-for-rows-and-columns
 further-reading-8
 help
 asking-questions-to-learn

@@ -85,7 +85,7 @@
 <span class="header-section-number">14.1</span> Creating new variables with mutate<a class="anchor" aria-label="anchor" href="#creating-new-variables-with-mutate"><i class="fas fa-link"></i></a>
 </h2>
 <p>The diamonds data has dimensions (x, y, and z) and a mass (carat) of each diamond. It might be interesting to compare a <a href="https://en.wikipedia.org/wiki/Cuboid">cuboid</a> approximation of the diamond to its mass to get a quantitative measure of how different each diamond is from a box. To start, we’ll create a new variable called <code>box</code> defined by the product of x, y, and z. Then we’ll create the ratio <code>box_ratio</code> as the quotient of its mass (<code>carat</code>) and this volume.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>box <span class="op">=</span> <span class="va">x</span><span class="op">*</span><span class="va">y</span><span class="op">*</span><span class="va">z</span>,
          box_ratio <span class="op">=</span> <span class="va">carat</span> <span class="op">/</span> <span class="va">box</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -113,7 +113,7 @@
 </h2>
 <p>Tbe <code>diamonds</code> data has many rows (more than 50,000). You might be interested in just a subset of the rows. We use <code>filter</code> to select rows to keep from a table. (We can specify rows to remove and use the logical not operator <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code> to reverse the logic and keep all the other rows.)</p>
 <p>For example, there are only 5 diamonds of more than 4 carats:</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
@@ -125,7 +125,7 @@
 ## 4  5.01 Fair    J     I1       65.5    59 18018  10.7 10.5   6.98
 ## 5  4.5  Fair    J     I1       65.8    58 18531  10.2 10.2   6.72</code></pre>
 <p>You can combine filtering operations by chaining them together with commas, pipes, or using boolean logic (<code><a href="https://rdrr.io/r/base/Logic.html">&amp;</a></code> for and; <code><a href="https://rdrr.io/r/base/Logic.html">|</a></code> for or). The following three expressions all do the same thing.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"J"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Premium"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">3.0</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 10
 ##   carat cut     color clarity depth table price     x     y     z
@@ -134,7 +134,7 @@
 ## 2  3.51 Premium J     VS2      62.5    59 18701  9.66  9.63  6.03
 ## 3  3.01 Premium J     SI2      60.7    59 18710  9.35  9.22  5.64
 ## 4  3.01 Premium J     SI2      59.7    58 18710  9.41  9.32  5.59</code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"J"</span>, <span class="va">cut</span> <span class="op">==</span> <span class="st">"Premium"</span>, <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">3.0</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 10
 ##   carat cut     color clarity depth table price     x     y     z
@@ -143,7 +143,7 @@
 ## 2  3.51 Premium J     VS2      62.5    59 18701  9.66  9.63  6.03
 ## 3  3.01 Premium J     SI2      60.7    59 18710  9.35  9.22  5.64
 ## 4  3.01 Premium J     SI2      59.7    58 18710  9.41  9.32  5.59</code></pre>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"J"</span> <span class="op">&amp;</span> <span class="va">cut</span> <span class="op">==</span> <span class="st">"Premium"</span> <span class="op">&amp;</span> <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">3.0</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 10
 ##   carat cut     color clarity depth table price     x     y     z
@@ -153,7 +153,7 @@
 ## 3  3.01 Premium J     SI2      60.7    59 18710  9.35  9.22  5.64
 ## 4  3.01 Premium J     SI2      59.7    58 18710  9.41  9.32  5.59</code></pre>
 <p>The second example a convenient abbreviation of the first, but why would we want the third way? Because we can use a logical “or” instead of an and to make different kinds of selections. For example, we might want all the diamonds that meet <em>any</em> of three different tests.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"J"</span> <span class="op">|</span> <span class="va">cut</span> <span class="op">==</span> <span class="st">"Premium"</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">carat</span> <span class="op">&gt;</span> <span class="fl">4.0</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 10
 ##   carat cut     color clarity depth table price     x     y     z
@@ -169,7 +169,7 @@
 <span class="header-section-number">14.3</span> Getting just some rows and columns<a class="anchor" aria-label="anchor" href="#getting-just-some-rows-and-columns"><i class="fas fa-link"></i></a>
 </h2>
 <p>All of the tables above showed all 10 columns. Sometimes you only want some of the columns. Use <code>select</code> to extract and reorder columns:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">price</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">clarity</span>, <span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   price cut       color clarity carat
@@ -182,7 +182,7 @@
 ## 6   336 Very Good J     VVS2    0.24</code></pre>
 <p>You’ll notice I’ve used <code>head</code> to get just the first 6 rows of the data table. You can also use <code>tail</code> to get the last few rows. And you can modify the number of rows (see the help page for head and tail.)</p>
 <p>A more general method for extracting rows by number is <code>slice</code>.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">1000</span>, <span class="fl">5000</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
 ##   carat cut       color clarity depth table price     x     y     z
@@ -194,18 +194,18 @@
 ## 5  1.05 Very Good I     SI2      62.3    59  3742  6.42  6.46  4.01
 ## 6  1.12 Premium   J     SI2      60.6    59  2898  6.68  6.61  4.03</code></pre>
 <p>Sometimes with a large dataset I want to look at a random subset of all the rows. Use these variants on <code>slice_</code> for that task. (Try it yourself: you will get different rows each time.)</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 1.31  Premium   J     SI1      60.3  62    4490  7.12  7.04  4.26
-## 2 0.81  Very Good G     SI2      63.2  60    2095  5.82  5.79  3.67
-## 3 0.580 Good      E     VS1      61.5  61.9  2041  5.3   5.34  3.27
-## 4 1.55  Premium   J     VS2      60.7  59    7911  7.47  7.5   4.54
-## 5 0.39  Good      G     VS2      63.8  59     787  4.66  4.59  2.95</code></pre>
+##   carat cut     color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.31 Ideal   F     VVS1     61.2    57   878  4.42  4.4   2.7 
+## 2  0.61 Ideal   F     VVS2     62.2    55  2634  5.42  5.45  3.38
+## 3  0.3  Ideal   G     VS1      62.5    57   776  4.32  4.29  2.69
+## 4  0.31 Ideal   E     VVS2     61.3    55   864  4.34  4.37  2.67
+## 5  1    Premium E     VS2      62.1    59  6720  6.38  6.34  3.95</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Problem with `mutate()` input `^^--arrange_quosure_2`.
 ## ℹ '-' is not meaningful for ordered factors
@@ -225,7 +225,7 @@
 ##  9  3.01 Fair  I     18242
 ## 10  3.01 Fair  I     18242</code></pre>
 <p>You’ll notice that there are only a few levels of each of the categorical variables (cut, color, clarity). Suppose you want to see all combinations that exist? Use select to pick out those rows, then <code>distinct</code> to show only the rows that are different from each other. (There are 276 combinations, so I’m showing only the top 5, after sorting.)</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">cut</span>, <span class="va">clarity</span>, <span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">color</span>, <span class="va">clarity</span>, <span class="va">cut</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 3
 ##   cut       clarity color
@@ -241,7 +241,7 @@
 <span class="header-section-number">14.4</span> Summarizing data tables<a class="anchor" aria-label="anchor" href="#summarizing-data-tables"><i class="fas fa-link"></i></a>
 </h2>
 <p>These filtering and transformation functions are powerful and encourage a really useful way of probing a complext dataset. The <code>summarize</code> (or <code>summarise</code>) provides a way to apply a function to one or more variables across all the rows or colletions of rows. To use this effectively you want to think of functions that operate on a set of numbers and return just a single one, such as <code>mean</code>, <code>median</code>, <code>max</code>, <code>min</code>, <code>sd</code>, or the simplest of all <code>n</code> which counts the number of rows.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">summarise</span><span class="op">(</span>n_rows <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, 
                        mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
                        median_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
@@ -252,7 +252,7 @@
 ## 1  53940      3933.         2401       0.2</code></pre>
 <p>All the original data is gone, replaced by these four functions applied to all the data in the corresponding column. The name of the new column appears on the left side of the <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> and the calculation on the right. This is the same way we wrote the <code>mutate</code> function, but instead of creating a new variable and computing a value for each row, we get one value computed using all the rows.</p>
 <p>Rows can be grouped to get summaries for each level of the grouped varible. Let’s group on <code>cut</code> but otherwise repeat this calculation:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">cut</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarise</span><span class="op">(</span>n_rows <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, 
                        mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
@@ -268,7 +268,7 @@
 ## 5 Ideal      21551      3458.        1810       0.2</code></pre>
 <p>Now we get 5 rows.</p>
 <p>You can group on as many variables at once as you like; the result will have one row for each combination of levels from each grouped variable. (You can even group on quantitative varibles, but you usually don’t want to!)</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">cut</span>, <span class="va">clarity</span>, <span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarise</span><span class="op">(</span>n_rows <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, 
                        mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
@@ -287,7 +287,7 @@
 <p>Grouping doen’t do any calculations, it just makes a notation on a data frame that your grouping should be used for subsequent calculations that pay attention to grouping. After you summarise data, one grouping variable is removed (the last one) but the result is still grouped by the remaining variables. (See the notation: Groups: cut, clarity in the result above.)</p>
 <p><code>summarise</code> has an optional argument <code>.groups</code> to say what grouping you want to retain after the calculation is done. <code>drop_last</code> is the default, described above. Probably the next most frequently used choice is <code>drop</code> which ungroups all the rows. To see the diference, I’ll add another step, <code>count()</code>, which is equivalent to <code>summarise(n=n())</code> and counts rows.</p>
 <p>Using <code>drop_last</code> I get the number of rows for each level of cut and clarity (usually 7 for the levels of color: D, E, F, G, H, I, J) for all 40 combinations of cut and clarity (only a few shown here.)</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">cut</span>, <span class="va">clarity</span>, <span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarise</span><span class="op">(</span>n_rows <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, 
                        mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
@@ -307,7 +307,7 @@
 ## 5 Fair  VS1         7
 ## 6 Fair  VVS2        7</code></pre>
 <p>Change the options to <code>.groups = "drop"</code> and I get a very different result – just the number of combinations of cut, clarity, and color (276 of the maximum 5 x 8 x 7 = 280 which are possible):</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">cut</span>, <span class="va">clarity</span>, <span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarise</span><span class="op">(</span>n_rows <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, 
                        mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>,
@@ -326,7 +326,7 @@
 <span class="header-section-number">14.5</span> Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
 </h2>
 <p>These methods can be combined together to produce elaborate queries. For example, let’s use mutate to compute a price per carat ratio, then find the median of this ratio over all diamonds grouped by cut, color, and clarity. Also report the sample size used for each median. Finally we will extract the top 2 ratios for each cut type (using a grouped slice) and arrange the resulting table from largest to smallest ratio.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>price_per_carat <span class="op">=</span> <span class="va">price</span> <span class="op">/</span> <span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">color</span>, <span class="va">clarity</span>, <span class="va">cut</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -403,7 +403,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-13.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-14.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

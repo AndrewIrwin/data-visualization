@@ -41,13 +41,14 @@ Help on formatting can be found under the Help > Markdown Quick Reference menu.
 Let's make a simple scatter plot using gapminder data, showing population vs time, coloured by continent.
 
 ```{r}
-
+gapminder %>% ggplot(aes(x = year, y = pop)) + geom_point()
 
 ```
 
 Store the plot in the environment with a simple name (like `p`):
 
 ```{r}
+p1 <- gapminder %>% ggplot(aes(x = year, y = pop)) + geom_point()
 
 
 ```
@@ -55,7 +56,9 @@ Store the plot in the environment with a simple name (like `p`):
 Modify the plot by adding better axis labels.
 
 ```{r}
-
+p1 + labs(y = "Population", 
+          x = "Year", 
+          title = "Population of countries from gapminder data.")
 
 ```
 
@@ -63,7 +66,7 @@ Modify the plot by adding better axis labels.
 Modify the plot by changing the population to a log scale.
 
 ```{r}
-
+p1 + scale_y_log10()
 
 ```
 
@@ -71,27 +74,33 @@ Change the scatterplot to a line graph. Use country as a grouping variable to ge
 
 
 ```{r}
-
+gapminder %>% ggplot(aes(x=year, y=pop, group=country)) + geom_line() + scale_y_log10()
 
 ```
 
 Make a boxplot of population, life expectancy, and GDP per capita for each continent over time.
 
 ```{r}
-
+gapminder %>% ggplot(aes(y = gdpPercap, x = factor(year))) + geom_boxplot() + scale_y_log10()
 ```
 
 Make a histogram of some of these data. Try position = "stack", "identity", "dodge", and "fill". Try a `freqpoly` instead of histogram. Try `y = after_stat(density)`.
 
 ```{r}
+gapminder %>% ggplot(aes(x = gdpPercap)) + geom_histogram() + scale_x_log10()
+gapminder %>% ggplot(aes(x = gdpPercap, fill=factor(year))) + geom_histogram() + scale_x_log10() # ugly
 
+gapminder %>% ggplot(aes(x = gdpPercap, fill=continent)) + 
+  geom_histogram(position = "identity", bins = 7, alpha = 0.5) + 
+  scale_x_log10()
 
 ```
 
 Make a plot with two categorical variables (country, continent) to show the number of countries in each continent.  
 
 ```{r}
-gapminder %>% distinct(country, continent)
+gapminder %>% distinct(country, continent) %>%
+  ggplot(aes(y = continent)) + geom_bar()
   
 ```
 

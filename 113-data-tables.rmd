@@ -6,6 +6,8 @@ library(palmerpenguins)
 library(tidyverse)
 library(knitr)
 library(kableExtra)
+library(gapminder)
+library(janitor)
 ```
 
 We're spending a lot of time in this course making graphic visualizations of data. In this one lesson we will take a detour and learn to make nice looking tables with text and numbers in them. There are a bunch of packages for doing this (see Assignment X). We'll use the `kable` table formatting function in this lesson (from the packages `knitr` and `kableExtra`). 
@@ -86,6 +88,64 @@ t1 %>% kable(digits = 1, format.args = list(big.mark = ","),
              col.names = c("Species", "Island", "n", "Body mass (g)"),
              caption="The number and average mass of penguins by species and island.") %>%
   kable_styling(full_width = FALSE, bootstrap_options = "striped")
+```
+
+## Adding row and column totals
+
+We frequently make tables of counts of categorical variables. In these tables it can be helpful to add column or row totals. Sometimes we want to report those totals as percentages of a grand total. The `janitor` package makes it easy to add totals and percentages to rows and columns.
+
+We'll start with a matrix of counts showing the number of countries with life expectancy more than 75 years in each year and continent.
+
+```{r}
+t1 <- gapminder %>% filter(lifeExp > 75) %>%
+  group_by(year, continent) %>%
+  dplyr::summarize(n = n()) %>%
+  pivot_wider(names_from = "continent", values_from = "n", values_fill = 0)
+t1
+```
+
+Now we will add row totals. No sum is computed for the first column since it is assumed to be a label. 
+
+```{r}
+t1 %>% adorn_totals()
+```
+
+ If you think about this, you'll realize this doesn't make much sense! So let's add column totals instead. Again the first column is ignored, assuming it is a label.
+
+```{r}
+t1 %>% adorn_totals(where = "col") 
+```
+
+These tables are formatted differently compared to `data.frames` and `tibbles`, but they can still be reformatted as you would expect using `%>% kable() %>% kable_styling()`.
+
+Incidentally, the `janitor` package has a powerful table generating function `tabyl` which does the counting we started this section with. We still need the `filter` to retain only rows with life expectancy more than 75 years. The columns are reported alphabetically instead of according to the order they appear in the original dataset.
+
+```{r}
+gapminder %>% filter(lifeExp > 75) %>%
+  tabyl(year, continent) #  %>% adorn_totals(where="col")
+```
+
+## Adding grouping for rows and columns
+
+Sometimes it is desirable to add a grouping label over a series of columns. For example, the in the table showing totals above, we can add a header "Continent" over the appropriate columns. We do this to a `kable` formatted table using the function `add_header_row`. This function takes an argument which is a vector of pairs: labels for each column and the number of columns that label should span. There must be enough lables to span all the columns. We will add a blank label for the first and last column (spanning 1 column each), and a label "Continent" spanning the 5 continents.
+
+```{r}
+t1 %>% adorn_totals(where = "col") %>%
+  kable() %>%
+  add_header_above(c(" " = 1, 
+                  "Continent" = 5,
+                  " " = 1)) %>%
+  kable_styling(full_width = FALSE)
+```
+
+It can also be helpful to add grouping to rows. For example, we could label the first 5 rows as being part of the 20th century and the last 2 rows as being part of the 21st century. We add row labels one at a time, giving a label for the row and the numbers of the rows the header should span. We will do this with the `kableExtra` function `group_rows`.
+
+```{r}
+t1 %>% adorn_totals(where = "col") %>%
+  kable() %>%
+  group_rows("20th century", 1, 5) %>%
+  group_rows("21st century", 6, 7) %>%
+  kable_styling(full_width = FALSE)
 ```
 
 ## Further reading
