@@ -31,4 +31,5 @@ rmd_files: [ "index.rmd",
              "301-data-sources.rmd",
              # "305-data.rmd",
              "302-staying-organized.rmd",
-             "911-ethics.rmd"]
+             "911-ethics.rmd",
+             "999-metadata.rmd"]

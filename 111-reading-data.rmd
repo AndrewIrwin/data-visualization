@@ -148,4 +148,5 @@ A spreadsheet package (Excel, Numbers, LibreOffice Calc) is often used to enter 
 * [Tidy data](https://r4ds.had.co.nz/tidy-data.html)
 * A proposal for systematic [variable naming conventions](https://emilyriederer.netlify.app/post/column-name-contracts/) which helps with data validation as well. See the `pointblank` and `convo` packages.
 * Problems caused by using [Excel for entering and managing data](http://blogs.nature.com/naturejobs/2017/02/27/escape-gene-name-mangling-with-escape-excel/)
+* Arguments for fiscal austerity following the 2008-09 economic crisis may have been partly supported by [spreadsheet](https://www.theatlantic.com/business/archive/2013/04/who-is-defending-austerity-now/275200/) [errors](https://www.bbc.com/news/magazine-22223190).
 

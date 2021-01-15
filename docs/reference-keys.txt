@@ -267,3 +267,7 @@ accessibility-bias-and-ethics
 accessibility
 data-collection-and-analysis
 further-reading-9
+metadata
+about-the-author-and-course-instructor
+thanks-to-the-community
+license

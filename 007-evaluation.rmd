@@ -180,6 +180,8 @@ git config --global user.name "Your Name"
 
 ### Assignment 2 {#assignment-2}
 
+_Incomplete, being created._
+
 There are so many packages and functions to make visualizations, that its really important to be able to read documentation and learn new functions. Fortunately, the design of ggplot means that many functions work very similarly and so once you have learned the basics, it's quite easy to learn more on your own.
 
 The purpose of this assignment is for you to practice this sort of learning. I've picked out a few functions that work much like the examples we've looked at already. Your assignment is to pick out two of these and make a R markdown document describing how they work. This is the sort of practice I do all the time when I learn a new R skill.
@@ -193,8 +195,8 @@ learn, describe, and use a ggplot extension.
 
 ### Assignment 3 {#assignment-3}
 
-learn, describe, and use a table layout package.
-- DT, gt, flextable, kable/kableExtra
+learn, describe, and use a table layout package (not kable/kableExtra)
+- DT, gt, flextable,
 
 ### Assignment 4 {#assignment-4}
 

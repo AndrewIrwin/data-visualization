@@ -55,6 +55,7 @@
 <li><a class="" href="data-sources.html"><span class="header-section-number">21</span> Data sources</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">22</span> Staying organized</a></li>
 <li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">23</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="metadata.html"><span class="header-section-number">24</span> Metadata</a></li>
 </ul>
 
         <div class="book-extra">
@@ -197,13 +198,13 @@
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##   carat cut     color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.31 Ideal   F     VVS1     61.2    57   878  4.42  4.4   2.7 
-## 2  0.61 Ideal   F     VVS2     62.2    55  2634  5.42  5.45  3.38
-## 3  0.3  Ideal   G     VS1      62.5    57   776  4.32  4.29  2.69
-## 4  0.31 Ideal   E     VVS2     61.3    55   864  4.34  4.37  2.67
-## 5  1    Premium E     VS2      62.1    59  6720  6.38  6.34  3.95</code></pre>
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  0.5  Ideal     F     SI1      62.7    57  1378  5.09  5.06  3.18
+## 2  1.33 Very Good J     VS2      62.7    59  5785  6.97  7.01  4.38
+## 3  0.5  Premium   G     SI1      62.2    60  1286  5.07  5.03  3.14
+## 4  1.5  Premium   F     SI1      62.8    56 11154  7.36  7.3   4.6 
+## 5  0.32 Ideal     G     VVS1     61.1    55   814  4.43  4.45  2.71</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>

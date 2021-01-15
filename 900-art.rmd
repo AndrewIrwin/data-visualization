@@ -1,0 +1,42 @@
+# Computational aRt {#fun}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+```
+
+
+Some people use R to make computational, generative or algorithmic art. This can be a satisfying form of self-expression and it can also be an interesting way to create motivation to learn and repurpose tools.
+
+* https://ijeamakaanyene.github.io/aRt_ggplot/index.html#1
+* https://art.djnavarro.net/
+* https://www.data-imaginist.com/art
+
+## Clock
+
+```{r}
+N <- 5
+n <- now()
+mdhms <- tibble( y = 1:N, yend = 1:N,
+                 x = 0, xend = c(month(n)*60/12, day(n)*60/31, (hour(n) %% 12)*60/12, minute(n), second(n)),
+                 color = factor(1:N), 
+                 label = c("M", "D", "H", "M", "S"))
+mdhms %>% ggplot(aes(y=y, yend=yend, x = x)) + 
+  geom_segment(aes(xend=60), size = 0.5, color="gray80") + 
+  geom_segment(aes(xend=xend),
+               lineend = "round", size = 1.5,
+               color = factor(1:N)) + 
+  geom_point(aes(y = 1:N, x = xend)) + 
+  geom_text(aes(y = - 0.35 + (1:N), x = 30, label = label),
+                color = factor(1:N)) + 
+  annotate("text", label = year(n), x = 53.5, y = 0, size=5) + 
+  scale_x_continuous(limits = c(0,60)) + 
+  scale_y_continuous(limits = c(0, N)) + 
+  coord_polar() + 
+  theme(plot.background = element_rect(fill = "transparent"),
+        panel.background = element_rect(fill = "transparent"),
+        axis.title = element_blank(),
+        axis.ticks = element_blank(),
+        axis.text = element_blank(),)
+```

@@ -55,6 +55,7 @@
 <li><a class="" href="data-sources.html"><span class="header-section-number">21</span> Data sources</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">22</span> Staying organized</a></li>
 <li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">23</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="metadata.html"><span class="header-section-number">24</span> Metadata</a></li>
 </ul>
 
         <div class="book-extra">
@@ -66,13 +67,13 @@
 <h1>
 <span class="header-section-number">20</span> Linear models<a class="anchor" aria-label="anchor" href="#linear-models"><i class="fas fa-link"></i></a>
 </h1>
-<p>Linear regression is a powerful technique for finding a line that approximates a set of data. For the approximation to be a good one, the linear model must be appropriate for the data, which can sometimes be determined by reasoning about the processes that generate the data, and are sometimes justified based on statistical properties of the data. We will use linear models as a tool without elaboration of the methods or theoretical background; you should learn about those in a different statistical course.</p>
+<p>Linear regression is a powerful technique for finding a line that approximates a set of data. For the approximation to be a good one, the linear model must be appropriate for the data, which can sometimes be determined by reasoning about the processes that generate the data, and is sometimes justified based on statistical properties of the data. We will use linear models as a tool without elaboration of the methods or theoretical background; you should learn about those in a different statistics course.</p>
 <p>We will explore how to create a linear model, which can include a lot more than straight lines, and then discuss how to add those models to a visualization.</p>
 <div id="making-linear-models" class="section level2" number="20.1">
 <h2>
 <span class="header-section-number">20.1</span> Making linear models<a class="anchor" aria-label="anchor" href="#making-linear-models"><i class="fas fa-link"></i></a>
 </h2>
-<p>We will always make linear models with variables from a data frame. Designate one variable the response variable, which we will attempt to predict using one or more other variables (called predictors.) You are not restricted to just variables in your data frame; you can transform the varaibles first, for example by squaring, taking logarithms, or applying some other function. Additionally, you can use categorical (or factor) variables as predictors and are not restricted to only quantitative variables. Be aware that the more variables or transformations you add to your list of predictors, the more likely they will be correlated and your model will be very hard to interpret. These issues are discussed in statistics courses on regression.</p>
+<p>We will always make linear models with variables from a data frame. Designate one variable the response variable, which we will attempt to predict using one or more other variables, called predictors. You are not restricted to variables in your data frame; you can transform the variables first, for example by squaring, taking logarithms, or applying some other function. Additionally, you can use categorical (or factor) variables as predictors and are not restricted to only quantitative variables. Be aware that the more variables or transformations you add to your list of predictors, the more likely they will be correlated and your model will be very hard to interpret. These issues are discussed in statistics courses on regression.</p>
 <p>Once your data frame is created, write the linear model as a “formula” object, meaning as an equation but with a <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> instead of an <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> to indicate that you are modelling the left hand side and allowing for a specific model for the mismatch between predictors and response.</p>
 <p>We have seen that the price of a diamond increases a bit faster than linearly as the mass of the diamond increases, we will try both a linear model and a quadratic model for data in the <code>diamonds</code> dataframe.</p>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
@@ -97,12 +98,13 @@
 ## Multiple R-squared:  0.8493, Adjusted R-squared:  0.8493 
 ## F-statistic: 3.041e+05 on 1 and 53938 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">quadratic_model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">carat</span> <span class="op">+</span> <span class="va">carat2</span>, 
-                       data <span class="op">=</span> <span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>carat2 <span class="op">=</span> <span class="va">carat</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">quadratic_model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">carat</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">carat</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>, 
+                       data <span class="op">=</span> <span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>carat_sq <span class="op">=</span> <span class="va">carat</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">quadratic_model1</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = price ~ carat + carat2, data = diamonds %&gt;% mutate(carat2 = carat^2))
+## lm(formula = price ~ carat + I(carat^2), data = diamonds %&gt;% 
+##     mutate(carat_sq = carat^2))
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
@@ -112,71 +114,115 @@
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
 ## (Intercept) -1832.58      21.69   -84.5   &lt;2e-16 ***
 ## carat        6677.03      46.40   143.9   &lt;2e-16 ***
-## carat2        507.91      20.82    24.4   &lt;2e-16 ***
+## I(carat^2)    507.91      20.82    24.4   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 1540 on 53937 degrees of freedom
 ## Multiple R-squared:  0.851,  Adjusted R-squared:  0.851 
 ## F-statistic: 1.54e+05 on 2 and 53937 DF,  p-value: &lt; 2.2e-16</code></pre>
-<!--- This does not work for some reason.
-
-
-```r
-library(equatiomatic)
-```
-
-You can write the formulas for the regression lines using the `equatiomatic` package.
-
-* \operatorname{price} = \alpha + \beta_{1}(\operatorname{carat}) + \epsilon
-* \operatorname{price} = \alpha + \beta_{1}(\operatorname{carat}) + \beta_{2}(\operatorname{carat}_{\operatorname{2}} \times \operatorname{carat2}) + \epsilon
-
-and you can fill in the results showing the numeric coefficients in the equations:
-
-* \operatorname{price} = -2256.36 + 7756.43(\operatorname{carat}) + \epsilon
-* \operatorname{price} = -1832.58 + 6677.03(\operatorname{carat}) + 507.91(\operatorname{carat}_{\operatorname{2}} \times \operatorname{carat2}) + \epsilon
-
---->
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">linear_model2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">carat</span> <span class="op">+</span> <span class="va">cut</span> <span class="op">+</span> <span class="va">color</span> <span class="op">+</span> <span class="va">clarity</span>, data <span class="op">=</span> <span class="va">diamonds</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">linear_model2</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = price ~ carat + cut + color + clarity, data = diamonds)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16813.5   -680.4   -197.6    466.4  10394.9 
+## 
+## Coefficients:
+##              Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept) -3710.603     13.980 -265.414  &lt; 2e-16 ***
+## carat        8886.129     12.034  738.437  &lt; 2e-16 ***
+## cut.L         698.907     20.335   34.369  &lt; 2e-16 ***
+## cut.Q        -327.686     17.911  -18.295  &lt; 2e-16 ***
+## cut.C         180.565     15.557   11.607  &lt; 2e-16 ***
+## cut^4          -1.207     12.458   -0.097    0.923    
+## color.L     -1910.288     17.712 -107.853  &lt; 2e-16 ***
+## color.Q      -627.954     16.121  -38.952  &lt; 2e-16 ***
+## color.C      -171.960     15.070  -11.410  &lt; 2e-16 ***
+## color^4        21.678     13.840    1.566    0.117    
+## color^5       -85.943     13.076   -6.572 5.00e-11 ***
+## color^6       -49.986     11.889   -4.205 2.62e-05 ***
+## clarity.L    4217.535     30.831  136.794  &lt; 2e-16 ***
+## clarity.Q   -1832.406     28.827  -63.565  &lt; 2e-16 ***
+## clarity.C     923.273     24.679   37.411  &lt; 2e-16 ***
+## clarity^4    -361.995     19.739  -18.339  &lt; 2e-16 ***
+## clarity^5     216.616     16.109   13.447  &lt; 2e-16 ***
+## clarity^6       2.105     14.037    0.150    0.881    
+## clarity^7     110.340     12.383    8.910  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1157 on 53921 degrees of freedom
+## Multiple R-squared:  0.9159, Adjusted R-squared:  0.9159 
+## F-statistic: 3.264e+04 on 18 and 53921 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/datalorax/equatiomatic">equatiomatic</a></span><span class="op">)</span></code></pre></div>
+<p>You can write the formulas for the regression lines using the <code>equatiomatic</code> package. (To get the equations formatted properly, you need to add <code>results='asis'</code> to the <code>{r}</code> line in your R markdown document.) At present this does not work correctly for functions with mathematical transformations like <code>log</code>, <code>exp</code>, <code><a href="https://rdrr.io/r/stats/poly.html">poly(x, 2)</a></code>, so I’ll only show the linear models here.</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/equatiomatic/man/extract_eq.html">extract_eq</a></span><span class="op">(</span><span class="va">linear_model1</span><span class="op">)</span></code></pre></div>
+<p><span class="math display">\[
+\operatorname{price} = \alpha + \beta_{1}(\operatorname{carat}) + \epsilon
+\]</span></p>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/equatiomatic/man/extract_eq.html">extract_eq</a></span><span class="op">(</span><span class="va">linear_model2</span><span class="op">)</span></code></pre></div>
+<p><span class="math display">\[
+\operatorname{price} = \alpha + \beta_{1}(\operatorname{carat}) + \beta_{2}(\operatorname{cut}_{\operatorname{.L}}) + \beta_{3}(\operatorname{cut}_{\operatorname{.Q}}) + \beta_{4}(\operatorname{cut}_{\operatorname{.C}}) + \beta_{5}(\operatorname{cut}_{\operatorname{\char`\^4}}) + \beta_{6}(\operatorname{color}_{\operatorname{.L}}) + \beta_{7}(\operatorname{color}_{\operatorname{.Q}}) + \beta_{8}(\operatorname{color}_{\operatorname{.C}}) + \beta_{9}(\operatorname{color}_{\operatorname{\char`\^4}}) + \beta_{10}(\operatorname{color}_{\operatorname{\char`\^5}}) + \beta_{11}(\operatorname{color}_{\operatorname{\char`\^6}}) + \beta_{12}(\operatorname{clarity}_{\operatorname{.L}}) + \beta_{13}(\operatorname{clarity}_{\operatorname{.Q}}) + \beta_{14}(\operatorname{clarity}_{\operatorname{.C}}) + \beta_{15}(\operatorname{clarity}_{\operatorname{\char`\^4}}) + \beta_{16}(\operatorname{clarity}_{\operatorname{\char`\^5}}) + \beta_{17}(\operatorname{clarity}_{\operatorname{\char`\^6}}) + \beta_{18}(\operatorname{clarity}_{\operatorname{\char`\^7}}) + \epsilon
+\]</span></p>
+<p>and you can fill in the results showing the numeric coefficients in the equations:</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/equatiomatic/man/extract_eq.html">extract_eq</a></span><span class="op">(</span><span class="va">linear_model1</span>, use_coefs<span class="op">=</span><span class="cn">TRUE</span>, fix_signs<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p><span class="math display">\[
+\operatorname{price} = -2256.36 + 7756.43(\operatorname{carat}) + \epsilon
+\]</span></p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/equatiomatic/man/extract_eq.html">extract_eq</a></span><span class="op">(</span><span class="va">linear_model2</span>, use_coefs<span class="op">=</span><span class="cn">TRUE</span>, fix_signs<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p><span class="math display">\[
+\operatorname{price} = -3710.6 + 8886.13(\operatorname{carat}) + 698.91(\operatorname{cut}_{\operatorname{.L}}) - 327.69(\operatorname{cut}_{\operatorname{.Q}}) + 180.57(\operatorname{cut}_{\operatorname{.C}}) - 1.21(\operatorname{cut}_{\operatorname{\char`\^4}}) - 1910.29(\operatorname{color}_{\operatorname{.L}}) - 627.95(\operatorname{color}_{\operatorname{.Q}}) - 171.96(\operatorname{color}_{\operatorname{.C}}) + 21.68(\operatorname{color}_{\operatorname{\char`\^4}}) - 85.94(\operatorname{color}_{\operatorname{\char`\^5}}) - 49.99(\operatorname{color}_{\operatorname{\char`\^6}}) + 4217.53(\operatorname{clarity}_{\operatorname{.L}}) - 1832.41(\operatorname{clarity}_{\operatorname{.Q}}) + 923.27(\operatorname{clarity}_{\operatorname{.C}}) - 361.99(\operatorname{clarity}_{\operatorname{\char`\^4}}) + 216.62(\operatorname{clarity}_{\operatorname{\char`\^5}}) + 2.11(\operatorname{clarity}_{\operatorname{\char`\^6}}) + 110.34(\operatorname{clarity}_{\operatorname{\char`\^7}}) + \epsilon
+\]</span></p>
 <p>These results are the jumping off point for a lot more exploration.</p>
 </div>
 <div id="adding-linear-models-to-visualizations" class="section level2" number="20.2">
 <h2>
 <span class="header-section-number">20.2</span> Adding linear models to visualizations<a class="anchor" aria-label="anchor" href="#adding-linear-models-to-visualizations"><i class="fas fa-link"></i></a>
 </h2>
-<p>What we really want to do is to add a line to a graph. There are easy ways to do this with ggplot that don’t require you to make a separate model; instead we will just add a “smooth” geometry (<code>geom_smooth</code>) to a ggplot.</p>
+<p>In a visualization, what we really want to do is to add a line to a graph. There are easy ways to do this with ggplot that don’t require you to make a separate model; instead we will just add a “smooth” geometry (<code>geom_smooth</code>) to a ggplot.</p>
 <p>We start with a straight line.</p>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-102-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-105-1.png" width="672"></div>
 <p>Now try a quadratic.</p>
-<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/poly.html">poly</a></span><span class="op">(</span><span class="va">x</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-103-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-106-1.png" width="672"></div>
 <p>That’s better, but it’s still not great. If we just want to highlight the pattern in the data, we can use a smooth that doesn’t work from a simple formula, such as <code>loess</code> or <code>gam</code>.</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"loess"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-104-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-107-1.png" width="672"></div>
 <p>This smooth has an “S” shape – price increases slowly for the smallest diamonds, then quickly, then slowly again for the largest diamonds. We get a similar result from a <code>gam</code> smooth.</p>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span>, <span class="va">color</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">carat</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"gam"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ s(x, bs = "cs")'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-105-1.png" width="672"></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-108-1.png" width="672"></div>
 <p>The <code>geom_smooth</code> is especially powerful for facetted plots. The smooth is automatically computed and plotted for each facet separately.</p>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">color</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D"</span>, <span class="st">"F"</span>, <span class="st">"H"</span>, <span class="st">"J"</span><span class="op">)</span>, 
          <span class="va">clarity</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SI1"</span>, <span class="st">"VS1"</span>, <span class="st">"IF"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -186,8 +232,8 @@ and you can fill in the results showing the numeric coefficients in the equation
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>begin<span class="op">=</span><span class="fl">0</span>, end <span class="op">=</span><span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size<span class="op">=</span><span class="fl">0.75</span><span class="op">)</span>  <span class="co"># uses loess</span></code></pre></div>
 <pre><code>## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</code></pre>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-106-1.png" width="672"></div>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-109-1.png" width="672"></div>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="co"># geom_smooth(method = "lm", formula = y ~ poly(x,2), color = "black", size = 0.5) # alternate version</span></code></pre></div>
 <p>Notice that I’ve moved the <code>color=cut</code> from the ggplot function to the <code>geom_point</code> function as the aesthetic for only the points. If the colour was specified in the first ggplot function, the <code>geom_smooth</code> would “inherit” this aesthetic mapping and would make a separate smooth for each cut (5 lines per panel). There are not enough data in some panels for some cuts to do a good job, so I revised the plot to only draw one smooth per facet. You should move the <code>color=cut</code> back to the ggplot call to see how the result changes.</p>
 
