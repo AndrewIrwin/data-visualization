@@ -5,7 +5,17 @@ date: "10/12/2020"
 output: html_document
 ---
 
-# Notes
+# Notes and To Do
+
+- exercises for students to work through in "live coding" -- How would I do X? What could go wrong?
+
+- lesson on making slides .Rpres. out.width, fig.center
+
+More exploratory data analysis
+
+Getting to know other students in the course -- explicit signup for networking
+
+
 
 text without a home.
 

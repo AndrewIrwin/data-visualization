@@ -7,6 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+t_day <- readRDS("../static/selected_weather_day.rds")
 ```
 
 
@@ -18,6 +21,37 @@ knitr::opts_chunk$set(echo = TRUE)
 * compute distribution of changes between today and tomorrow in min, max temperature; presumably symmetric or nearly so, so also mean absolute difference
 * amount of snow on ground
 * sunrise, sunset, max sun angle, moon phase
+
+* plot Atlantic ocean temperature, heat delivered, air temperature
+
+## today and this week
+
+probability of rain, snow, amount of snow on ground.
+
+```{r}
+todayFilter <- function(date = now(), df = t_day, week=FALSE) {
+   m <- month(date)
+   d <- day(date)
+   w <- week(date)
+   doy <- yday(date)
+   if (week) {
+      df %>% filter(week(date) == w)
+   } else {
+     df %>% filter(yday(date) == doy)
+   }
+}
+todayFilter()
+median_gt_0 <- function(x) median(x[x>0], na.rm=TRUE)
+snow <- function(df = t_day) {
+  df %>% summarize(n = n(),
+                   snow_ground = median_gt_0(snow_grnd),
+                   snow_cm = median_gt_0(total_snow),
+                   snow_y = mean(total_snow > 0, na.rm=TRUE),
+                   rain_y = mean(total_rain > 0, na.rm=TRUE)
+  )
+}
+snow(todayFilter(week=TRUE) %>% group_by(TC_id))
+```
 
 ## Change over time (same day, differnet years)
 

@@ -1,5 +1,9 @@
 # Linear models {#linear-models}
 
+```{r include=FALSE}
+library(broom)
+```
+
 Linear regression is a powerful technique for finding a line that approximates a set of data. For the approximation to be a good one, the linear model must be appropriate for the data, which can sometimes be determined by reasoning about the processes that generate the data, and is sometimes justified based on statistical properties of the data. We will use linear models as a tool without elaboration of the methods or theoretical background; you should learn about those in a different statistics course.
 
 We will explore how to create a linear model, which can include a lot more than straight lines, and then discuss how to add those models to a visualization.
@@ -142,6 +146,58 @@ diamonds %>% filter(cut == "Ideal", color == "G") %>%
   geom_quantile(method = rqss, formula = y ~ x,
                 lambda = 1, quantiles = c(0.05, 0.5, 0.95))
 ```
+
+## Quantitative model output
+
+In the previous lesson I showed how to obtain residuals, predicted values, and uncertainty estimates from our models as data tables. The `broom` package has functions to simplify this process. Healy also shows how to use `broom` to fit many models (such as a model for each facet) in his [Section 6.6](https://socviz.co/modeling.html#grouped-analysis-and-list-columns), but I will skip those steps.
+
+Get the coefficients (and standard errors, t-statistic, p-value and confidence intervals) from your model using `tidy`.
+
+```{r}
+tidy(linear_model1, conf.int = TRUE)
+```
+
+The second model has the effect of each level of clarity on price (relative to the base case of I1). Here's how we can plot the regression coefficients as dot plots with uncertainties.
+
+```{r}
+tidy(linear_model2, conf.int = TRUE) %>%
+  filter(str_starts(term, "clarity")) %>%
+  ggplot(aes(y = term, x = estimate, xmin = conf.low, xmax = conf.high)) + 
+  geom_pointrange()
+```
+
+This can also be done easily using `coefplot`:
+
+```{r}
+library(coefplot)
+coefplot(linear_model2, sort = "magnitude", intercept = FALSE)
+```
+
+You can get statistics for the model using `glance`:
+
+```{r}
+glance(linear_model1)
+```
+
+The `augment` function makes it easy to plot residuals and predicted values for many models (see `?augment`) in a systematic way. We can use `augment` on the model object to get a data frame with the data used in the model plus fitted (predicted) values, residuals, and other quantities.  You can add the other data not provided in the model object by specifify `data = diamonds` in the augment function.
+ 
+```{r}
+augment(linear_model1, interval = "prediction") %>% head()
+# augment(linear_model1, interval = "prediction", data = diamonds) %>% head()
+```
+
+If you generate new data (along one predictor variable and using means or selected levels of other variables), you can make and plot predictions easily.
+
+```{r}
+new_data = tibble(carat = seq(0.20, 5.01, 0.01))
+augment(linear_model1, newdata = new_data, interval = "prediction") %>%
+  ggplot(aes(x = carat, y = .fitted, ymin = .lower, ymax = .upper)) + 
+  geom_ribbon(fill="darkblue", alpha = 0.5) + 
+  geom_line(color="blue")
+```
+
+Of course, this is overly complicated for plotting a straight line, but the method can be adopted to many other models.
+
 
 ## Further reading
 

@@ -1,0 +1,223 @@
+---
+title: "Data Visualization"
+subtitle: "Getting help"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-02-04 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(gapminder)
+```
+
+## What to do when you are stuck?
+
+* How do I ... ?
+
+* Why did R do X when I wanted it to do Y?
+
+* My code doesn't work!
+
+* Help!!
+
+---
+class: middle, inverse
+
+## Learning technical skills is challenging
+
+* There are many ways to approach a task
+
+* You need to figure out how to describe what you want to accomplish and how to do it
+
+* You need to evaluate your decisions -- is that hard-won figure effective?
+
+* You need a strategy for making notes and building your own knowledge
+
+* Even small errors can be hard to find and cause a lot of frustration
+
+---
+class: middle
+## Ways to get help
+
+* Finding and fixing mistakes
+
+* Learning from examples
+
+* Remembering what you learned before
+
+* Learning something new
+
+* Asking questions
+
+---
+## Finding and fixing mistakes
+
+```{r}
+gapminder %>%
+  filter(country == "Canada", country == "Iran")
+```
+
+--
+
+```{r}
+gapminder %>%
+  filter(country == "Canada" | country == "Iran")  # logical "or"
+```
+
+
+---
+## Finding and fixing mistakes
+
+```{r error=TRUE}
+gapminder %>%
+  filter(country == "Canada" | country == "Iran") %>%
+  ggplot(aes(x = Year, y = LifeExp, color = Country)) +
+  geom_point()
+```
+
+---
+
+```{r}
+gapminder %>%
+  filter(country == "Canada" | country == "Iran") %>%
+  ggplot(aes(x = year, y = lifeExp, color = country)) +
+  geom_point()
+```
+
+---
+class: middle
+# Learning from examples
+
+Look in the **Examples** section of `?geom_line`
+
+```{r fig.height=4}
+ggplot(economics, aes(unemploy, date)) + 
+  geom_line(orientation = "y")  #<<
+```
+
+---
+class: middle
+# Learning from examples
+
+.pull-left[
+```{r}
+ggplot(economics, aes(unemploy, date)) + 
+  geom_line(orientation = "y")  
+```
+]
+.pull-right[
+```{r}
+ggplot(economics, aes(unemploy, date)) + 
+  geom_line()  #<<
+```
+]
+
+
+---
+class: middle
+# Remembering what you learned before
+
+How do I change the x and y axis labels?
+
+* Google search. Add "R" to your search.
+
+* Know which sites you like to read
+
+* Learn to read documentation -- more condensed information
+  * https://ggplot2.tidyverse.org/ especially "cheatsheet" and "reference"
+  * Scales > Axis > Labs: https://ggplot2.tidyverse.org/reference/labs.html
+
+* Make notes for yourself
+
+---
+class: middle
+# Learn something new
+
+How do I set the limits, tick marks, and numbering on an axis?
+
+* ggplot2 tidyverse "Scales": `xlim`, `ylim`
+
+* Search. 
+  * Find `theme`
+  * Find `scale_x_discrete(name, breaks, labels, limits)`
+  * Also `scale_x_continuous(name, breaks, lables, limits, trans)`
+  
+* Try an example from the help page (or internet)
+
+---
+class: middle
+
+```{r warning=FALSE}
+p1 <- ggplot(mpg, aes(displ, hwy)) + geom_point()
+p1 + scale_x_continuous(name = "Displacement", 
+                        limits = c(2, 6),
+                        breaks = c(2, 4, 6),
+                        labels = c("Two", "Four", "Six"))
+```
+
+
+Read a bit of `?c` (combine values into a vector or list).
+
+
+---
+class: middle
+
+# Asking questions
+
+You are still stuck.
+
+How do you ask for help?
+
+* What are you trying to do?
+* What have you tried?
+* What was the result (output, graphic, error message)?
+* What do you think the problem might be?
+
+
+
+---
+class: middle
+
+# Summary
+
+* Learning computing skills is a never-ending task
+
+* Using reference material, blogs, and books is a learned skill that you can get better at
+
+* Try different sources until you learn what you like to learn from the most (and sometimes try other sources)
+
+* Asking questions is a valuable skill. Clearly expressing your question so that someone else can read it will often help you solve the problem by yourself.
+
+* It gets easier with practice: posing questions, understanding the answers, and remembering how it all fits together
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Two or more sources referenced in earlier lessons
+
+---
+class: middle, inverse
+
+## Task
+
+Assignment 2 asks you to learn some new skills and describe what you learned.
+
+
+

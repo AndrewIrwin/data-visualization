@@ -18,126 +18,187 @@ class: middle
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-library(socviz)
 library(tidyverse)
+library(kableExtra)
 ```
 
 # Wide and Long data
+
+* What is tidy data?
+
+* What is the difference between wide and long data?
+
+* Why would you want data in long format?
+
+* Why would you want data in wide format?
 
 * Pivoting data
 
 ---
 class: middle, inverse
-# What data do you have?
+# Tidy data
 
-* One (or two) categorical: `geom_bar`
+* One observation per row
 
-* One quantitative: `geom_histogram`
+* Each column is a different variable
 
-* One categorical and one quantitative: `geom_boxplot`
-
-* Two quantitative: `geom_point`
+* There are many ways to organize data. A key idea behind tidy data is to standardize the way data are organized, to make working with data simpler
 
 ---
 class: middle
-### One categorical variable
+## Example 1 (tidy)
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(y = region)) + geom_bar()
+```{r echo=FALSE}
+df1 <- tribble(
+  ~country,~year, ~cases, ~population,
+"Afghanistan",  1999,    745,  19987071,
+"Afghanistan",  2000,   2666,   20595360,
+"Brazil",       1999,  37737,  172006362,
+"Brazil",       2000,  80488,  174504898,
+"China",        1999, 212258, 1272915272,
+"China",        2000, 213766, 1280428583,
+)
+df1 %>% kable() %>% kable_styling(full_width = FALSE)
 ```
 
 ---
 class: middle
-### Two categorical variables
+## Example 2 (long)
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(y = region, fill = degree)) + geom_bar() 
+```{r echo=FALSE}
+df1 %>% pivot_longer(cases:population, names_to = "type", values_to = "count") %>%
+  kable() %>% kable_styling(full_width = FALSE)
 ```
 
 ---
 class: middle
-#### Two categorical variables, using area for counts
+## Example 3
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(y=income16, x = happy)) + geom_count()
+```{r echo=FALSE}
+df1 %>% unite("rate", cases:population, sep="/") %>%
+  kable() %>% kable_styling(full_width = FALSE)
 ```
 
 ---
 class: middle
-### Same data using bars
+## Example 4
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(y=income16, fill = happy)) + geom_bar() 
+```{r echo=FALSE}
+df1 %>% select(-population) %>%
+  pivot_wider(names_from = "year", values_from = "cases") %>%
+  kable(caption="Cases") %>% kable_styling(full_width = FALSE)
 ```
 
----
-class: middle
-#### Same data, too many colors
-
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(fill=income16, x = happy)) + geom_bar() 
-```
-
----
-class: middle
-### One quantitative variable
-
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(x = age)) + geom_histogram()
-```
-
----
-class: middle
-#### One categorical, one quantitative variable
-
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_sm %>% ggplot(aes(x = age, y=factor(childs))) + 
-  geom_boxplot() + #<<
-  labs(y="Number of children") #<<
+```{r echo=FALSE}
+df1 %>% select(-cases) %>%
+  pivot_wider(names_from = "year", values_from = "population") %>%
+  kable(caption="Population") %>% kable_styling(full_width = FALSE)
 ```
 
 
 ---
 class: middle
-#### Two quantitative variables
+## Where do data organization patterns come from?
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_cat %>% slice_sample(n=2000) %>% 
-  ggplot(aes(x = age, y= tvhours)) + 
-  geom_point(size=0.2) #<<
+* The way data are collected (population from one database, cases from another)
+
+* The way data are recorded (one year at a time)
+
+* Plans for how data will be interpreted or stored
+
+* Concerns about readability (any data missing?) or compactness (storage, display)
+
+* Habits
+
+
+---
+class: middle
+## What is good about tidy data?
+
+* Easy to use `dplyr`: filter, group_by, summarize
+
+* Easy to use `ggplot`: aesthetic mappings (x, y, color, shape) and facets
+
+---
+class: middle, inverse
+## Pivoting
+
+### Step by step examples of the transformations shown above
+
+---
+class: middle
+## Pivot longer
+
+.left-column[.tiny[
+```{r echo=FALSE}
+df1 %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+]]
+
+.right-column[.small[
+```{r}
+df1 %>% 
+  pivot_longer(cases:population, 
+               names_to = "type", 
+               values_to = "count") %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+]]
+
+---
+class: middle
+## Unite, mutate
+
+```{r}
+df1 %>% mutate(rate_fraction = cases/population) %>%
+  unite("rate", cases:population, sep="/") %>%
+  kable() %>% kable_styling(full_width = FALSE)
 ```
 
 ---
 class: middle
-#### Two quantitative variables
+## Separate
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_cat %>% slice_sample(n=2000) %>% 
-  ggplot(aes(x = age, y= tvhours)) + 
-  geom_jitter(size=0.2) + #<<
-  geom_smooth() #<<
+```{r}
+df1 %>% unite("rate", cases:population, sep="/") %>%
+  separate(rate, into = c("cases", "population"), sep="/") %>%
+  kable() %>% kable_styling(full_width = FALSE)
 ```
 
 ---
 class: middle
-#### Two quantitative variables, show variability in one
+## Make two tables
 
-```{r warning=FALSE, message=FALSE, fig.height=4.25, fig.align="center", dpi=150}
-gss_cat %>% ggplot(aes(x = age, y = tvhours )) + 
-  stat_summary(fun.data = "mean_se") #<<
+```{r}
+df1A <- df1 %>% select(-population) %>%
+  pivot_wider(names_from = "year", values_from = "cases") 
+df1A %>% kable(caption="Cases") %>% kable_styling(full_width = FALSE)
+```
+
+```{r echo=FALSE}
+df1B <- df1 %>% select(-cases) %>%
+  pivot_wider(names_from = "year", values_from = "population") 
+df1B %>% kable(caption="Population") %>% kable_styling(full_width = FALSE)
 ```
 
 ---
 class: middle
+## Combine two tables into one
 
+```{r}
+bind_rows(bind_cols(type = "cases", df1A),
+          bind_cols(type = "population", df1B)) %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+
+---
+class: middle
 # Summary
 
-* Showed variations on introductory example with 1 or 2 categorical and quantitative variables
+* What and why of tidy data, longer vs wider format
 
-* Demonstrated a few embelishments (colours, standard deviations, symbol area, smooths, jitter points)
-
-* Showed some visualizations that "don't work" -- too many categories
-
+* Common reshaping tasks
 
 
 ---
@@ -145,20 +206,12 @@ class: middle
 
 # Further reading
 
-* Lots more examples with different data in the course notes
-
-* "Extras" including axis labels, text on figures, other annotations
+* Tidy Data (Chapter 12) in R4DS
 
 ---
 class: middle, inverse
 
 ## Task
 
-Practice these graphs by
-
-* reproducing them, and
-
-* modifying them by changing variables used in aesthetic mappings.
-
-If you would like, use other data sources described in "Data Sources" chapter in course notes.
+Practice these reshaping skills in Task 7
 
