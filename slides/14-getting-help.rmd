@@ -159,7 +159,7 @@ How do I set the limits, tick marks, and numbering on an axis?
 ---
 class: middle
 
-```{r warning=FALSE}
+```{r warning=FALSE, fig.height = 5}
 p1 <- ggplot(mpg, aes(displ, hwy)) + geom_point()
 p1 + scale_x_continuous(name = "Displacement", 
                         limits = c(2, 6),

@@ -80,8 +80,10 @@ class: middle
 ## Changing column headings
 
 ```{r}
-mtcars %>% as_tibble(rownames = "make_model") %>% select(make_model, mpg, cyl, wt) %>%
-  kable(col.names = c("Make & Model", "Miles per gallon", "Cylinders", "Weight (1000 lbs)")) %>%
+mtcars %>% as_tibble(rownames = "make_model") %>%
+  select(make_model, mpg, cyl, wt) %>%
+  kable(col.names = c("Make & Model", "Miles per gallon", 
+                      "Cylinders", "Weight (1000 lbs)")) %>%
   kable_styling(full_width = FALSE, bootstrap_options = "striped")
 ```
 
@@ -111,7 +113,7 @@ class: middle
 ```{r}
 mtcars %>% select(mpg, cyl, hp, wt) %>% kable() %>%
   add_header_above(c(" " = 1, "Group A" = 2, "Group B" = 2)) %>%
-  kable_styling(full_width = FALSE, bootstrap_options = "responsive")
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
 ```
 
 
@@ -123,7 +125,7 @@ class: middle
 mtcars %>% select(mpg, cyl, hp, wt) %>% kable() %>%
   group_rows("Group 1", 1, 4) %>%
   group_rows("Group 2", 5, 9) %>%
-  kable_styling(full_width = FALSE, bootstrap_options = "responsive")
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
 ```
 
 

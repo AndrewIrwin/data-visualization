@@ -199,13 +199,13 @@
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.25 Fair      D     VS1      61.2    55   563  4.09  4.11  2.51
-## 2  0.34 Ideal     F     SI1      59.4    57   630  4.58  4.54  2.71
-## 3  0.77 Very Good J     VS2      62.9    58  2155  5.83  5.87  3.68
-## 4  0.52 Ideal     E     VS2      62.1    57  1617  5.22  5.19  3.23
-## 5  0.53 Very Good I     VS1      61      57  1393  5.22  5.25  3.19</code></pre>
+##   carat cut     color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  2    Premium I     VS2      62.5    57 17574  8.01  7.92  4.98
+## 2  0.71 Ideal   E     VS1      61.4    59  3198  5.71  5.75  3.52
+## 3  0.5  Ideal   F     SI1      59.9    56  1282  5.09  5.36  3.13
+## 4  1.15 Ideal   G     VVS2     62.5    53  8592  6.69  6.72  4.18
+## 5  1.05 Good    H     VS2      63.7    58  5492  6.4   6.45  4.09</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
@@ -405,7 +405,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-18.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
