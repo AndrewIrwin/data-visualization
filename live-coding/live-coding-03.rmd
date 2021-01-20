@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(gapminder)
 ```
 
 # Agenda
@@ -16,8 +17,112 @@ library(tidyverse)
 * Task 4 update: some have not accepted invitation to join "Dalhousie-AndrewIrwin-Teaching" organization on GitHub. Look for email, or a link on the github web page, or write me for help.
 * Use ggplot tools three different ways
 
+The plan for the live coding is for us to work together to make some plots. I'll start by recreating some plots from the book or lessons. Then we will review the tools we've learned to use to create new plots. Finally we'll try to create new plots from our imagination.
+
 ## Replicate some plots from memory
+
+Use the gapminder data to draw a scatterplot of life expectancy as a function of GDP per capita.
+
+```{r}
+
+
+```
+
+Revise the plot to colour the points by continent.
+
+Revise again to make all the points blue, regardless of country or continent.
 
 ## Combine the tools we've learned
 
+Start by reviewing the aesthetic mappings (plus I've added a few):
+
+* ggplot(aes( ... )) where we use one or more of
+  * x =
+  * y = 
+  * color =
+  * fill = 
+  * shape = 
+  * size = 
+  * label =
+  * group = 
+  * alpha = 
+  * linetype =
+  * stroke =
+  
+Aesthetics are listed on the help pages for each geom. Not all aesthetics make sense for all geometries!
+
+How many geoms can you remember and use?
+
+* geom_point, geom_line, geom_histogram, geom_boxplot, geom_bar, geom_text, geom_smooth
+
+Here are some functions we only used a bit:
+
+* stat_summary
+* scale_x_log10
+
+Changing the appearance of a plot
+
+* xlim, ylim
+* labs(x="", y="", title="", subtitle="", caption="", fill="", color="")
+* theme_bw
+* theme(text = element_text(size = 20))
+
+Modify the plot we created above to use lines instead of points. Plot GDP on a log scale.
+
+```{r}
+
+```
+
+Pick a few geoms and other features listed above to make a few new plots.
+
+```{r}
+
+```
+
+
+```{r}
+
+
+```
+
 ## Create new plots
+
+In this section we will try to draw a new plot. First, think of something you'd like to show. Then use the language of grammar of graphics to describe what you want. Then write the R code to do it.
+
+
+### Histogram
+
+Show how body mass of penguins varies within and across species.
+
+```{r}
+
+
+```
+
+
+### Boxplot
+
+Distribution of life expectancy for each continent, coloured by year.
+
+```{r}
+
+```
+
+
+### Averages and uncertainties
+
+Average life expectancy for each year with data, broken down by continent.
+
+```{r}
+
+```
+
+
+### Smooths
+
+Life expectancy over year, grouped by continent, and smoothed.
+
+```{r}
+
+```
+

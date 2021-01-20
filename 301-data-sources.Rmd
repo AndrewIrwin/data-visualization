@@ -51,3 +51,12 @@ web app for getting data from graphs datathief (Mohammad has one he likes)
 
 https://data.research.cornell.edu/content/readme
 
+## Statistics Canada
+
+### Canada population projection
+
+Here are some data projecting the population of Canada for the next 50 years.
+cansim::get_cansim("17100057")  # 2 million rows, 300 MB of data
+
+
+
