@@ -6,7 +6,7 @@ Go-to datasets useful for lots of simple visualizations:
 
 * mtcars and many other well-known data in datasets package
 * penguins in palmerpenguins package
-* gapminder in gapminder package  (but see website too [Gapminder](https://gapminder.org))
+* gapminder in gapminder package  (but see website too [Gapminder](https://www.gapminder.org/data/))
 * diamonds in ggplot2 package
 * nycflights13 in dbplyr package
 * gss_sm, gss_cat, gss_sib, gss_lon and gss_lon in socviz package

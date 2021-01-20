@@ -1,4 +1,4 @@
-# Syllabus
+# Syllabus {.unnumbered}
 
 ```{r  include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

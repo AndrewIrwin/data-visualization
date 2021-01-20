@@ -1,4 +1,4 @@
-# Data Sources, Abstracts and Dictionaries {#data}
+# Data Sources, Abstracts and Dictionaries {#data2}
 
 ```{r include=FALSE}
 library(naniar)
@@ -28,6 +28,19 @@ Citation: Allison Marie Horst and Alison Presmanes Hill and Kristen B Gorman (20
 
 ```{r fig.cap="Adelie penguin colonies on Torgerson Island (Andrew Irwin, January 2012)"}
 knitr::include_graphics("static/torgerson-landscape-adelie-colonies.jpg")
+```
+
+## World population
+
+From Gapminder [population](http://gapm.io/dpop).
+
+```{r}
+populationW <- read_csv("static/population_total.csv")
+populationL <- populationW %>% pivot_longer(-country, names_to = "year", values_to = "population") %>%
+  mutate(year = as.integer(year))
+populationL %>% filter(country == "Canada" | country == "China" | country == "France" | country == "Mexico") %>%
+  ggplot(aes(x = year, y = population, color=country)) + geom_line() +
+  scale_y_log10()
 ```
 
 ## Environment Canada Weather Data for Selected Cities

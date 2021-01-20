@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 Using the grammar of graphics | Data Visualization</title>
+<title>Chapter 8 Using the grammar of graphics | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -32,31 +32,31 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
-<li><a class="" href="syllabus.html"><span class="header-section-number">2</span> Syllabus</a></li>
-<li><a class="" href="outline.html"><span class="header-section-number">3</span> Detailed outline</a></li>
-<li><a class="" href="sync.html"><span class="header-section-number">4</span> Synchronous meeting agendas</a></li>
-<li><a class="" href="evaluation.html"><span class="header-section-number">5</span> Evaluation</a></li>
-<li><a class="" href="ch-invitation.html"><span class="header-section-number">6</span> Invitation to Data Visualization</a></li>
-<li><a class="" href="ch-tools.html"><span class="header-section-number">7</span> Computer tools</a></li>
-<li><a class="" href="setup.html"><span class="header-section-number">8</span> Setting up your computer</a></li>
-<li><a class="" href="look-data.html"><span class="header-section-number">9</span> Look at Data</a></li>
-<li><a class="" href="first-plot.html"><span class="header-section-number">10</span> Making your first plot</a></li>
-<li><a class="" href="vcs.html"><span class="header-section-number">11</span> What is version control software?</a></li>
-<li><a class="" href="grammar.html"><span class="header-section-number">12</span> Grammar of Graphics</a></li>
-<li><a class="active" href="ggplot.html"><span class="header-section-number">13</span> Using the grammar of graphics</a></li>
-<li><a class="" href="summarizing-data.html"><span class="header-section-number">14</span> Summarizing data</a></li>
-<li><a class="" href="facets.html"><span class="header-section-number">15</span> Facetted graphs</a></li>
-<li><a class="" href="reading-data.html"><span class="header-section-number">16</span> Reading data</a></li>
-<li><a class="" href="pivot.html"><span class="header-section-number">17</span> Reshaping data</a></li>
-<li><a class="" href="format-tables.html"><span class="header-section-number">18</span> Format tables</a></li>
-<li><a class="" href="help.html"><span class="header-section-number">19</span> Getting help and asking questions</a></li>
-<li><a class="" href="working-models.html"><span class="header-section-number">20</span> Working with models</a></li>
-<li><a class="" href="linear-models.html"><span class="header-section-number">21</span> Linear models</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">23</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></li>
-<li><a class="" href="metadata.html"><span class="header-section-number">25</span> Metadata</a></li>
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="syllabus.html">Syllabus</a></li>
+<li><a class="" href="outline.html">Detailed outline</a></li>
+<li><a class="" href="sync.html">Synchronous meeting agendas</a></li>
+<li><a class="" href="evaluation.html">Evaluation</a></li>
+<li><a class="" href="ch-invitation.html"><span class="header-section-number">1</span> Invitation to Data Visualization</a></li>
+<li><a class="" href="ch-tools.html"><span class="header-section-number">2</span> Computer tools</a></li>
+<li><a class="" href="setup.html"><span class="header-section-number">3</span> Setting up your computer</a></li>
+<li><a class="" href="look-data.html"><span class="header-section-number">4</span> Look at Data</a></li>
+<li><a class="" href="first-plot.html"><span class="header-section-number">5</span> Making your first plot</a></li>
+<li><a class="" href="vcs.html"><span class="header-section-number">6</span> What is version control software?</a></li>
+<li><a class="" href="grammar.html"><span class="header-section-number">7</span> Grammar of Graphics</a></li>
+<li><a class="active" href="ggplot.html"><span class="header-section-number">8</span> Using the grammar of graphics</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">9</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">10</span> Facetted graphs</a></li>
+<li><a class="" href="reading-data.html"><span class="header-section-number">11</span> Reading data</a></li>
+<li><a class="" href="pivot.html"><span class="header-section-number">12</span> Reshaping data</a></li>
+<li><a class="" href="format-tables.html"><span class="header-section-number">13</span> Format tables</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
+<li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
+<li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">18</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">19</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
         <div class="book-extra">
@@ -64,27 +64,27 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ggplot" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ggplot" class="section level1" number="8">
 <h1>
-<span class="header-section-number">13</span> Using the grammar of graphics<a class="anchor" aria-label="anchor" href="#ggplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Using the grammar of graphics<a class="anchor" aria-label="anchor" href="#ggplot"><i class="fas fa-link"></i></a>
 </h1>
-<div id="goals-8" class="section level2" number="13.1">
+<div id="goals-8" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">13.1</span> Goals<a class="anchor" aria-label="anchor" href="#goals-8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Goals<a class="anchor" aria-label="anchor" href="#goals-8"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this lesson I will demonstrate how to use R and ggplot2 to make visualizations using the ideas from the previous lesson. The emphasis is on the mechanics of making the visualizations. In time we will integrate the ideas about what features of visualizations work best to convey an idea that were introduced at the start of the course.</p>
 <p>Your <a href="evaluation.html#task-b4">task</a> for this lesson is to practice these skills by generating a series of graphs using different geometries and aesthetic mappings.</p>
 </div>
-<div id="introduction-6" class="section level2" number="13.2">
+<div id="introduction-6" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">13.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-6"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-6"><i class="fas fa-link"></i></a>
 </h2>
 <p>By the end of this lesson you should understand how to make many different plots using ggplot. The mental model developed in the previous lesson will connect directly to the R commands in this lesson.</p>
 <p>Incidentally, Hadley Wickham, who originally developed <code>ggplot2</code> is from New Zealand and one consequence is that he allows for “British” and “American” spellings of some words. So you can use <code>color</code> or <code>colour</code>. In a future lesson when we summarize data you’ll see we can write <code>summarize</code> or <code>summarise</code>. If I switch back and forth, don’t get confused. Both are OK.</p>
 </div>
-<div id="data-1" class="section level2" number="13.3">
+<div id="data-1" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">13.3</span> Data<a class="anchor" aria-label="anchor" href="#data-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Data<a class="anchor" aria-label="anchor" href="#data-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>We will use the <code>diamonds</code> dataset for examples in this lesson. As always, you should use <code>str</code> or <code>View</code> to take a look at the data to famiiarize yourself with the variables and the number of rows in the data before you begin to make a plot.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -102,15 +102,15 @@
 ##  $ z      : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
 <p>This is a large dataset, with over 50,000 rows. There are 7 quantiative variables and three categorical variables. Read the help page on the dataset to learn more.</p>
 </div>
-<div id="aesthetic-mappings-and-geometries" class="section level2" number="13.4">
+<div id="aesthetic-mappings-and-geometries" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">13.4</span> Aesthetic mappings and geometries<a class="anchor" aria-label="anchor" href="#aesthetic-mappings-and-geometries"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Aesthetic mappings and geometries<a class="anchor" aria-label="anchor" href="#aesthetic-mappings-and-geometries"><i class="fas fa-link"></i></a>
 </h2>
 <p>We usually pick the aesthetic mappings once we’ve thought about what geometry we want to use. The goal of this lesson will be to demonstrate some of the basics: histogram, box plot, and scatter plot. For a survey of other common geometries, consult [Wilke, chapter 5]](<a href="https://clauswilke.com/dataviz/directory-of-visualizations.html" class="uri">https://clauswilke.com/dataviz/directory-of-visualizations.html</a>). Even these three kinds give us lots of room to show of the power of the grammar of graphics.</p>
 </div>
-<div id="histogram" class="section level2" number="13.5">
+<div id="histogram" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">13.5</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s draw a histogram of the price of diamonds in the dataset. We map price to the x axis and request the histogram geometry.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -137,9 +137,9 @@ This is very skewed distribution – with lots more observations at the low end 
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
 <p>The peak for Ideal is definitely at a lower price than the peak for Premium or Very Good.</p>
 </div>
-<div id="box-plots" class="section level2" number="13.6">
+<div id="box-plots" class="section level2" number="8.6">
 <h2>
-<span class="header-section-number">13.6</span> Box plots<a class="anchor" aria-label="anchor" href="#box-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6</span> Box plots<a class="anchor" aria-label="anchor" href="#box-plots"><i class="fas fa-link"></i></a>
 </h2>
 <p>Box plots are useful for showing distributions too. You can draw a box plot with one quantitative variable, or with a quantitative variable and a categorical variable. You can use either x or y for the quantitative variable. A plot with too many colours is hard to read, but we can interpret lots of side-by-side boxplots. So I’ll switch to clarity for the categorical variable.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
@@ -167,9 +167,9 @@ If you are willing to read a complex plot, you can fill the boxes using cut. (Tr
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
 </div>
-<div id="two-dimensional-histogram" class="section level2" number="13.7">
+<div id="two-dimensional-histogram" class="section level2" number="8.7">
 <h2>
-<span class="header-section-number">13.7</span> Two dimensional histogram<a class="anchor" aria-label="anchor" href="#two-dimensional-histogram"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7</span> Two dimensional histogram<a class="anchor" aria-label="anchor" href="#two-dimensional-histogram"><i class="fas fa-link"></i></a>
 </h2>
 <p>What to do? Let’s create a histogram with two quantitative variables, and show the height of each bar using color.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
@@ -180,9 +180,9 @@ If you are willing to read a complex plot, you can fill the boxes using cut. (Tr
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">price</span>, y <span class="op">=</span> <span class="va">carat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-30-1.png" width="672"></div>
-<div id="statistics-1" class="section level3" number="13.7.1">
+<div id="statistics-1" class="section level3" number="8.7.1">
 <h3>
-<span class="header-section-number">13.7.1</span> Statistics<a class="anchor" aria-label="anchor" href="#statistics-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7.1</span> Statistics<a class="anchor" aria-label="anchor" href="#statistics-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>We said that in addition to connecting variables to aesthetic features, we could use statistical transformations to create new derived variables for our plots. So let’s try that!</p>
 <p>Instead of plotting a point for each diamond in the dataset, let’s compute averages and standard errors for all the diamonds group by clarity.</p>
@@ -196,9 +196,9 @@ If you are willing to read a complex plot, you can fill the boxes using cut. (Tr
 <p>Most of the <code>stat_</code> functions are directly linked to <code>geom_</code> functions, but a few like <code>stat_summary</code> or <code>stat_unique</code> are handy on their own.</p>
 </div>
 </div>
-<div id="scales" class="section level2" number="13.8">
+<div id="scales" class="section level2" number="8.8">
 <h2>
-<span class="header-section-number">13.8</span> Scales<a class="anchor" aria-label="anchor" href="#scales"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.8</span> Scales<a class="anchor" aria-label="anchor" href="#scales"><i class="fas fa-link"></i></a>
 </h2>
 <p>We’ve seen how scales can be used to transform the x axis, but there is a lot more we can do.</p>
 <p>First, we can set the limits of the axis anywhere we want, to highlight some values or expand the range. (Maybe we have a very specific price range in mind for our data analysis.)</p>
@@ -224,9 +224,9 @@ Colors are also controlled with a scale. We’ll have a whole lesson on colour, 
 <p><img src="course-notes_files/figure-html/unnamed-chunk-35-1.png" width="672">
 The viridis colour scale is supposed to be colour-blind friendly and to translate well when printed in gray scale on paper. It’s a range of colours selected between two extremes. Experiment with different values for <code>begin</code> and <code>end</code> between 0 and 1.</p>
 </div>
-<div id="annotations" class="section level2" number="13.9">
+<div id="annotations" class="section level2" number="8.9">
 <h2>
-<span class="header-section-number">13.9</span> Annotations<a class="anchor" aria-label="anchor" href="#annotations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.9</span> Annotations<a class="anchor" aria-label="anchor" href="#annotations"><i class="fas fa-link"></i></a>
 </h2>
 <p>The most important annotations are labels for the axes, guides for colours and shapes, and the title, subtitle, and caption. Here’s an example showing how to change each one using the <code>labs</code> (for labels) function.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
@@ -273,9 +273,9 @@ The viridis colour scale is supposed to be colour-blind friendly and to translat
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-40-1.png" width="672"></div>
 <p>There are too many labels on the plot so it’s not a good final visualization, but it demonstrates how to add labels and make a plot that might be very useful for you as you explore a dataset.</p>
 </div>
-<div id="theme" class="section level2" number="13.10">
+<div id="theme" class="section level2" number="8.10">
 <h2>
-<span class="header-section-number">13.10</span> Theme<a class="anchor" aria-label="anchor" href="#theme"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.10</span> Theme<a class="anchor" aria-label="anchor" href="#theme"><i class="fas fa-link"></i></a>
 </h2>
 <p>The theme allows you to set text font and size for labels and numbers on scale, line thicknesses for axes and ticks, position of the guides and many other features. You can also use predefined themes created by others. Here are a few examples that I find useful as an introduction to this topic.</p>
 <p>My favourite gets rid of the gray background.</p>
@@ -299,9 +299,9 @@ If you have room you can put the guide inside the plot. The coordinates range fr
         legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.15</span>,<span class="fl">0.75</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-43-1.png" width="672"></div>
 </div>
-<div id="further-reading-4" class="section level2" number="13.11">
+<div id="further-reading-4" class="section level2" number="8.11">
 <h2>
-<span class="header-section-number">13.11</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.11</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-4"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Healy Chapter 3 on <a href="https://socviz.co/makeplot.html#makeplot">making plots</a>
@@ -317,25 +317,25 @@ If you have room you can put the guide inside the plot. The coordinates range fr
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="grammar.html"><span class="header-section-number">12</span> Grammar of Graphics</a></div>
-<div class="next"><a href="summarizing-data.html"><span class="header-section-number">14</span> Summarizing data</a></div>
+<div class="prev"><a href="grammar.html"><span class="header-section-number">7</span> Grammar of Graphics</a></div>
+<div class="next"><a href="summarizing-data.html"><span class="header-section-number">9</span> Summarizing data</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ggplot"><span class="header-section-number">13</span> Using the grammar of graphics</a></li>
-<li><a class="nav-link" href="#goals-8"><span class="header-section-number">13.1</span> Goals</a></li>
-<li><a class="nav-link" href="#introduction-6"><span class="header-section-number">13.2</span> Introduction</a></li>
-<li><a class="nav-link" href="#data-1"><span class="header-section-number">13.3</span> Data</a></li>
-<li><a class="nav-link" href="#aesthetic-mappings-and-geometries"><span class="header-section-number">13.4</span> Aesthetic mappings and geometries</a></li>
-<li><a class="nav-link" href="#histogram"><span class="header-section-number">13.5</span> Histogram</a></li>
-<li><a class="nav-link" href="#box-plots"><span class="header-section-number">13.6</span> Box plots</a></li>
+<li><a class="nav-link" href="#ggplot"><span class="header-section-number">8</span> Using the grammar of graphics</a></li>
+<li><a class="nav-link" href="#goals-8"><span class="header-section-number">8.1</span> Goals</a></li>
+<li><a class="nav-link" href="#introduction-6"><span class="header-section-number">8.2</span> Introduction</a></li>
+<li><a class="nav-link" href="#data-1"><span class="header-section-number">8.3</span> Data</a></li>
+<li><a class="nav-link" href="#aesthetic-mappings-and-geometries"><span class="header-section-number">8.4</span> Aesthetic mappings and geometries</a></li>
+<li><a class="nav-link" href="#histogram"><span class="header-section-number">8.5</span> Histogram</a></li>
+<li><a class="nav-link" href="#box-plots"><span class="header-section-number">8.6</span> Box plots</a></li>
 <li>
-<a class="nav-link" href="#two-dimensional-histogram"><span class="header-section-number">13.7</span> Two dimensional histogram</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#statistics-1"><span class="header-section-number">13.7.1</span> Statistics</a></li></ul>
+<a class="nav-link" href="#two-dimensional-histogram"><span class="header-section-number">8.7</span> Two dimensional histogram</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#statistics-1"><span class="header-section-number">8.7.1</span> Statistics</a></li></ul>
 </li>
-<li><a class="nav-link" href="#scales"><span class="header-section-number">13.8</span> Scales</a></li>
-<li><a class="nav-link" href="#annotations"><span class="header-section-number">13.9</span> Annotations</a></li>
-<li><a class="nav-link" href="#theme"><span class="header-section-number">13.10</span> Theme</a></li>
-<li><a class="nav-link" href="#further-reading-4"><span class="header-section-number">13.11</span> Further reading</a></li>
+<li><a class="nav-link" href="#scales"><span class="header-section-number">8.8</span> Scales</a></li>
+<li><a class="nav-link" href="#annotations"><span class="header-section-number">8.9</span> Annotations</a></li>
+<li><a class="nav-link" href="#theme"><span class="header-section-number">8.10</span> Theme</a></li>
+<li><a class="nav-link" href="#further-reading-4"><span class="header-section-number">8.11</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -353,7 +353,7 @@ If you have room you can put the guide inside the plot. The coordinates range fr
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-19.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

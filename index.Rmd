@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Welcome
+# Welcome {.unnumbered}
 
 Data visualization is a critical skill for anyone interested in using data to think and persuade. 
 

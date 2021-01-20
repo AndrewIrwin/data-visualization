@@ -1,4 +1,4 @@
-# Detailed outline {#outline}
+# Detailed outline {#outline .unnumbered}
 
 ```{r include=FALSE}
 library(tidyverse)  # fussy, but might be useful later on
@@ -48,7 +48,7 @@ cal %>% select(-Day, -Week) %>%
 
 ## Bonus Material
 
-- [Data sources](#data)
+- [Data sources](#data-sources)
 - [Staying organized](#organization)
 - Getting help: solving problems and asking questions
 - [A bit more about R](#r-details). 

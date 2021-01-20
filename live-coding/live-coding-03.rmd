@@ -1,0 +1,23 @@
+---
+title: "Live coding 3"
+author: "Andrew Irwin"
+date: "2021-01-21 08:35 Atlantic"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Task 4 update: some have not accepted invitation to join "Dalhousie-AndrewIrwin-Teaching" organization on GitHub. Look for email, or a link on the github web page, or write me for help.
+* Use ggplot tools three different ways
+
+## Replicate some plots from memory
+
+## Combine the tools we've learned
+
+## Create new plots

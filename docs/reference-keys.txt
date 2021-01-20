@@ -11,11 +11,9 @@ fig:unnamed-chunk-10
 tab:unnamed-chunk-68
 tab:unnamed-chunk-88
 tab:unnamed-chunk-89
-welcome
 what-is-data-visualization
 what-is-the-purpose-of-data-visualization
 goals
-syllabus
 course-description
 course-prerequisites
 course-materials
@@ -27,10 +25,8 @@ important-dates
 letter-grades
 university-policies-and-statements
 student-resources-and-support
-outline
 course-calendar
 bonus-material
-sync
 sync-1
 tue-12-jan-835
 sync-2
@@ -278,7 +274,6 @@ accessibility-bias-and-ethics
 accessibility
 data-collection-and-analysis
 further-reading-11
-metadata
 about-the-author-and-course-instructor
 thanks-to-the-community
 license
