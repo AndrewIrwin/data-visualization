@@ -13,7 +13,7 @@ Synchronous sessions will be held on Thursday starting at 8:35 and ending at 9:5
 
 Each lesson has written notes, a recorded video, slides, and links to textbook readings in the notes. Some students will prefer to begin with the video, others will prefer to begin with the written notes and slides. I suggest you learn which you prefer by experimentation. The tasks are designed to help you be sure you know the most important parts of each lesson.
 
-## Course calendar
+## Course calendar {-}
 
 Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. Assignment and project component due dates are listed below. Dates for non-synchronous components are guides to help you  pace your work. 
 
@@ -46,7 +46,7 @@ cal %>% select(-Day, -Week) %>%
   
 ```
 
-## Bonus Material
+## Bonus Material {-}
 
 - [Data sources](#data-sources)
 - [Staying organized](#organization)

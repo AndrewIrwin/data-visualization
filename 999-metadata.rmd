@@ -1,8 +1,8 @@
 # Metadata {.unnumbered}
 
-## About the author and course instructor
+## About the author and course instructor {-}
 
-This course and the notes were designed and written by Andrew Irwin who is in the [Department of
+These course notes were written by Andrew Irwin who is in the [Department of
 Mathematics & Statistics](https://www.dal.ca/faculty/science/math-stats.html) 
 at Dalhousie University in Halifax, Nova Scotia, Canada. Andrew has been at Dalhousie since 2018. Before that he was in the [Department of Mathematics & Computer Science](https://www.mta.ca/mathcs/) at Mount Allison University and before that at the [Biology Department](https://www.csi.cuny.edu/academics-and-research/departments-programs/biology) at the College of Staten Island in the City University of New York.
 
@@ -11,7 +11,7 @@ particularly questions about phytoplankton biogeography, productivity, and their
 biogeochemical cycles. The prospect of large-scale systemic change over the next century plays a key motivating role in the desire to understand this important system more fully. Andrew co-directs
 the [Marine Microbial Macroecology Lab](https://www.mmab.ca) at Dalhousie and more information about his research can be found there.
 
-## Thanks to the community
+## Thanks to the community {-}
 
 This course builds on the knoweldge and generosity of many people. 
 
@@ -21,9 +21,9 @@ I have referenced three textbooks extensively in these notes. All are commerical
 
 Many people are actively engaged in making new resources for learning, supporting the creation of courses, and collecting data for interesting data visualization projects. Many of these are linked throughout these notes and used with much appreciation.
 
-## License
+## License {-}
 
-These course notes and supporting materials are all copyright by Andrew Irwin. Material linked or quoted from other sources are, naturally owned by the original creators.
+These course notes and supporting materials are all copyright by Andrew Irwin. Material linked or quoted from other sources are, naturally, owned by the original creators.
 
 Original materials are licensed under a creative commons license that encourages non-commerical reuse and adaptation. For other uses, please contact the author.
 

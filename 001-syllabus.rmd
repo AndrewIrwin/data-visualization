@@ -13,7 +13,7 @@ This is the syllabus for the Data Visualization (STAT 2430) course in Winter 202
 * Office hours: Tuesday 8:35 am Atlantic on Collaborate
 * Discussion forum: [piazza.com/dal.ca/winter2021/stat2430](https://piazza.com/dal.ca/winter2021/stat2430/home)
 
-## Course Description
+## Course Description {-}
 
 Data visualization is the art and science of turning data into readable graphics. We will explore
 how to design and create data visualizations.
@@ -21,11 +21,11 @@ This exploration will include both the principles and
 techniques of data visualization. Students will learn the value of visualization, specific techniques and understand
 how to select the best visualization method.
 
-## Course Prerequisites
+## Course Prerequisites {-}
 
 At least one MATH or STAT course at or above the 1000 level. No experience with R or computer programming is required, but a desire to learn about both is essential.  
 
-## Course materials
+## Course materials {-}
  
 Course notes:
 
@@ -44,7 +44,7 @@ The textbook and supplemental textbooks are available in printed form and online
 
 There are a lot of materials for this course. The course videos and notes highlight the most important information, with many references  to the textbooks and other online materials.
 
-## Course structure
+## Course structure {-}
 
 Each week will be structured around the following components:
 
@@ -62,7 +62,7 @@ We will use Collaborate Ultra accessed through [Brightspace](https://dal.brights
 
 **Plan to review the [agenda](#sync) for each meeting before it begins.**
 
-## Evaluation
+## Evaluation {-}
 
 _Tasks_ are opportunities to test your understanding of the key concepts from the lessons and demonstrate you have developed basic proficiency with essential computing skills. Most lessons will have a task for you to complete.
 
@@ -81,7 +81,7 @@ Tasks are due on Monday. Assignments are due on Wednesday. Late work will be acc
 
 Grades will be reported on [Brightspace](https://dal.brightspace.com/d2l/home/159870)
 
-## Software {#syllabus_software}
+## Software {#syllabus_software .unnumbered}
 
 We will use the statistical software R and RStudio and version control software git. No prior experience with
 R, RStudio or git is assumed. We'll take class time to learn the software.
@@ -98,7 +98,7 @@ R and Rstudio are available on Dalhousie computer labs, but the git version cont
 
 [Videos](https://dal.brightspace.com/d2l/le/content/159870/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-2083726) demonstrating how to install this software are on Brightspace.
 
-## Course Policies
+## Course Policies {-}
 
 Credit will not be given for assignments submitted after grading is complete or the solutions are posted. If you miss an assignment due to illness or other event outside your control, contact me for an accommodation. If an accomodation is granted, assignment weight will be shifted to the rest of the assignments. Your two lowest _Task_ grades will be dropped from the calculation of your final grade automatically and as a result I will be reluctant to offer accommodation for late or missed tasks.
 
@@ -108,7 +108,7 @@ _Tasks_ are primarily designed to help you learn and you are encouraged to seek 
 
 Copying work from any other sources is not allowed and will be considered an academic offense for this course. You are encouraged to learn from many different sources. If you make use of material outside of course materials on assignments or the project report, include references to the material and a description of what you used in a "Sources used" section at the end of your work.
  
-## Important dates
+## Important dates {-}
 
 * Wed 6 Jan: Term begins
 * Fri 5 Feb: Munro day, University closed
@@ -121,7 +121,7 @@ Copying work from any other sources is not allowed and will be considered an aca
 * 10-23 Apr: Exam period
 
 
-## Letter grades
+## Letter grades {-}
 
 Your numerical grade will be converted to a 
 [letter grade for the course](https://www.dal.ca/campus_life/academic-support/grades-and-student-records/grade-scale-and-definitions.html) using the Dalhousie Common Grade Scale.
@@ -139,7 +139,7 @@ grade_table %>% unite(`Grade range`, min_grade, max_grade, sep="-") %>%
 ```
 
 
-## University Policies and Statements
+## University Policies and Statements {-}
 
 This course is governed by the academic rules and regulations set forth in the University Calendar and by Senate
 
@@ -164,7 +164,7 @@ Dalhousie University would like to acknowledge that the University is on Traditi
 * [Important Dates in the Academic Year (including add/drop dates)](https://www.dal.ca/academics/important_dates.html)
 * [University Grading Practices](https://www.dal.ca/dept/university_secretariat/policies/academic/grading-practices-policy.html)
 
-## Student Resources and Support
+## Student Resources and Support {-}
 
 Please follow the following links for additional resources and support.
 

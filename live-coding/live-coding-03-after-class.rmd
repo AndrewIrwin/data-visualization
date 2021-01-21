@@ -24,13 +24,17 @@ The plan for the live coding is for us to work together to make some plots. I'll
 Use the gapminder data to draw a scatterplot of life expectancy as a function of GDP per capita.
 
 ```{r}
-
-
+gapminder %>% ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) + geom_point()
 ```
 
 Revise the plot to colour the points by continent.
 
 Revise again to make all the points blue, regardless of country or continent.
+
+```{r}
+gapminder %>% ggplot(aes(x = gdpPercap, y = lifeExp)) + geom_point(olour = "blue")
+```
+
 
 ## Combine the tools we've learned
 
@@ -53,7 +57,7 @@ Aesthetics are listed on the help pages for each geom. Not all aesthetics make s
 
 How many geoms can you remember and use?
 
-* geom_point, geom_line, geom_histogram, geom_boxplot, geom_bar, geom_text, geom_smooth
+* geom_point, geom_line, geom_histogram, geom_boxplot, geom_bar, geom_text, geom_smooth, geom_jitter
 
 Here are some functions we only used a bit:
 
@@ -70,19 +74,33 @@ Changing the appearance of a plot
 Modify the plot we created above to use lines instead of points. Plot GDP on a log scale.
 
 ```{r}
+gapminder %>% ggplot(aes(x = gdpPercap, y = lifeExp, group = country, colour = continent)) + geom_line() +
+  scale_x_log10()
 
 ```
 
 Pick a few geoms and other features listed above to make a few new plots.
 
 ```{r}
-
+gapminder %>% ggplot(aes(x = lifeExp, y = continent)) + geom_boxplot()
 ```
 
 
 ```{r}
+gapminder %>% ggplot(aes(x = lifeExp, y = continent)) + geom_jitter() + geom_boxplot()
+gapminder %>% ggplot(aes(x = lifeExp, y = continent)) + geom_boxplot() + geom_jitter(height = 0.2, color = "gray50", alpha = 0.5) 
 
+```
 
+```{r}
+gapminder %>% ggplot(aes(x = lifeExp, y = continent)) + stat_summary() + xlim(27, 85)
+
+```
+
+Example from `?geom_line`
+
+```{r}
+ggplot(economics, aes(date, unemploy)) + geom_line(size = 1.3, linetype = 5)
 ```
 
 ## Create new plots
@@ -94,9 +112,9 @@ In this section we will try to draw a new plot. First, think of something you'd 
 
 Show how body mass of penguins varies within and across species.
 
-```{r}
-
-
+```{r warning=FALSE}
+library(palmerpenguins)
+penguins %>% ggplot(aes(x = body_mass_g, fill = species)) + geom_histogram(binwidth = 225)
 ```
 
 
@@ -105,7 +123,7 @@ Show how body mass of penguins varies within and across species.
 Distribution of life expectancy for each continent, coloured by year.
 
 ```{r}
-
+gapminder %>% ggplot(aes(x = lifeExp, fill = factor(year))) + geom_histogram()
 ```
 
 
@@ -114,7 +132,7 @@ Distribution of life expectancy for each continent, coloured by year.
 Average life expectancy for each year with data, broken down by continent.
 
 ```{r}
-
+gapminder %>% ggplot(aes(y = lifeExp, x = year, color = continent)) + stat_summary()
 ```
 
 
@@ -123,6 +141,13 @@ Average life expectancy for each year with data, broken down by continent.
 Life expectancy over year, grouped by continent, and smoothed.
 
 ```{r}
-
+gapminder %>% ggplot(aes(x = year, y = lifeExp, color = continent)) + geom_smooth() + geom_jitter(width = 0.2)
 ```
 
+## Thinking about visualizations
+
+Compare this scatterplot with `geom_jitter` and `geom_point`. What is the difference? Which is better? Why? Is one misleading?
+
+```{r}
+mpg %>% ggplot(aes(x = cty, y = hwy)) + geom_jitter()
+```

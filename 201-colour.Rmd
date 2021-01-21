@@ -32,3 +32,11 @@ Simulate what yuor ggplot looks like to someone with colour vision deficiency ht
 * Healy
 * Wilke
 * [Color Brewer](https://colorbrewer2.org/#type=sequential&scheme=Reds&n=4) - interactive website to select and illustrate use of color scales on maps.
+
+
+## Tools
+
+* Paleteer R package https://github.com/EmilHvitfeldt/paletteer 
+* Catalog of palettes https://github.com/EmilHvitfeldt/r-color-palettes
+* Color Brewer 2 https://colorbrewer2.org/
+* HCL wizard http://hclwizard.org/hclcolorpicker/
