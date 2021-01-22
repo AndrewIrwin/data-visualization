@@ -98,11 +98,11 @@ There is nothing to submit for this task.
 
 Exercises to practice filter, group_by, summarize, and mutate.
 
-Click [here](https://classroom.github.com/a/lrSAY6Z8) to add the repository for tasks 5 and 6 to your github account. Then create a new R project on your computer using the link to your repository you get from github.
+I will add the repository for tasks 5 and 6 to your github account. Start by creating a new R project on your computer using the link to your repository you get from github. Edit the file task-5.rmd. When you are done, knit the file and commit the .rmd and .html files to your repository.
 
 ### Task 6 (Lesson 10) {#task-6 .unnumbered}
 
-Exercises to practice making facetted plots. The questions are in the repository for tasks 5 and 6.
+Exercises to practice making facetted plots. The questions are in the repository for tasks 5 and 6. Edit the file task-6.rmd. When you are done, knit the file and commit the .rmd and .html files to your repository. Push the changes to github to submit your work.
 
 ### Bonus task (Lesson 11) {#task-b5 .unnumbered}
 
