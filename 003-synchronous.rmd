@@ -73,9 +73,16 @@ Before the meeeting:
 
 Meeting agenda:
 
-* Live coding examples using `dplyr` tools
+* Live coding examples of `dplyr` tools (filter, group_by, mutate, summarise), plotting with facets, and reading data from worksheets
 
+Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. 
 
+  * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-04.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-04.rmd) 
+  * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-04-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-04-after-class.rmd) 
+
+## Thu 4 February 8:35 {#sync-5 .unnumbered}
+
+## Thu 11 February 8:35 {#sync-6 .unnumbered}
 
 
 

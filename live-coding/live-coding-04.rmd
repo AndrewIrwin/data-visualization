@@ -1,0 +1,177 @@
+---
+title: "Live coding 4"
+author: "Andrew Irwin"
+date: "2021-01-28 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(readxl)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Examples from lessons 9, 10, 11: summarizing data, making facetted plots, reading files
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lesson. As with last week, we'll start with some repeated examples from lessons to remind ourselves of the basics, then try to use the tools in new ways, and finally switch perspectives to try to solve a real problem with each tool.
+
+## Summarizing data
+
+These tools are in the `dplyr` package. There are lots of functions (look in the help for the package dplyr), but we have focussed on four: `filter`, `group_by`, `mutate`, and `summarise`. These tools allow you to manipulate a large dataset to extract information.
+
+Let's use the penguin data from palmerpenguins (see the setup code block starting at line 8.)
+
+Before we start, familiarize yourself with the data by typing `View(penguins)` or `glimpse(penguins)` into the console.
+
+### filter
+
+Let's get only the rows of Adelie penguins from Biscoe island.
+
+```{r}
+penguins %>% filter(species == "Adelie") %>% filter(island == "Biscoe")
+```
+
+Now get all the rows that are either Adelies OR are on Biscoe Island.
+
+```{r}
+
+```
+
+Get only the penguins with flipper length of 180 cm or more. Make a histogram.
+
+```{r}
+
+```
+
+### mutate
+
+Mutate adds a new variable to each row.
+
+Compute a "bill to flipper ratio" equal to the bill length divided by flipper length.
+
+```{r}
+
+```
+
+Create a new variable that is the maximum flipper length.
+
+```{r}
+
+```
+
+### summarise
+
+Summarize creates new variables, but instead of giving a value for each row, it computes functions that convert many values into a single one, like `mean` or `n`. Without grouping, you get just one summary value for the whole table. With grouping you get one row for each combination of levels of each grouped variable. We'll practice without grouping at first.
+
+Count the number of rows in the penguins dataset using the `n` function.
+
+```{r}
+
+```
+
+Compute the minimum, mean, and maximum body mass of all the penguins.
+
+```{r}
+
+```
+
+### group_by
+
+`group_by` divides a data frame (tibble, data table) according to the levels of a categorical variable. This will affect how summarize works and how functions like max and mean work by dividing the data into non-overlapping sets, computing the functions, and then combining the parts into a single table.
+
+Repeat the calculations using summarize we wrote above, but use group_by on species, island, or both.
+
+```{r}
+
+```
+
+You can also use group_by with filter and mutate. 
+
+Compute the maximum body mass for each penguin species, put that in a new variable, then compute the body mass divided by the maximum body mass.
+
+```{r}
+
+```
+
+There are lots of other useful functions here -- like lead, lag, dense_rank, etc. See `?mutate`.
+
+Select the observations with the largest body mass for each combination of species, island, and sex, then arrange them from heaviest to lightest.
+
+```{r}
+penguins %>% group_by(sex, species, island) %>%
+  filter(body_mass_g == max(body_mass_g, na.rm=TRUE)) %>%
+  dplyr::select(species, island, sex, body_mass_g) %>% 
+  arrange(-body_mass_g)
+```
+
+## Facetted plots
+
+Facetted plots allow you to show the influence of small number of categorical variables by dividing a single plot into a small number of other plots, all with the same layout. 
+
+Make a facetted plot showing flipper length and body mass with each species of penguin on a separate facet. Use `facet_wrap`.
+
+```{r}
+
+```
+
+Use `scales='free'` (or free_x or free_y) to change the axis scaling and the look of the plots.
+
+```{r}
+
+```
+
+
+Use `facet_grid` to show facets for island and species.  Colour the points by sex.
+
+```{r}
+
+```
+
+You can compute statistics separately for each facet. Try `geom_smooth` with a facetted plot.
+
+```{r}
+
+```
+
+Compute means and then plot them using `geom_point` (or to be fancy, `stat_unique` to plot each point only once).
+
+```{r}
+penguins %>%
+  group_by(species, island) %>%
+  mutate(mean_flipper = mean(flipper_length_mm, na.rm=TRUE),
+         mean_body = mean(body_mass_g, na.rm=TRUE)) %>%
+  ggplot(aes(flipper_length_mm, body_mass_g)) + 
+  geom_point() + 
+  stat_unique(aes(x=mean_flipper, y = mean_body), col="blue", size=3) +
+  facet_grid(species ~ island) 
+
+```
+
+Compare that plot with what you get when you add a point at the overall mean of x and y on each facet. This computes the mean of the whole dataset, so the same point is shown in blue on each panel.
+
+```{r}
+penguins %>% ggplot(aes(flipper_length_mm, body_mass_g)) + 
+  geom_point() + 
+  geom_point(aes(x = mean(flipper_length_mm, na.rm=TRUE), 
+                 y = mean(body_mass_g, na.rm=TRUE)),
+             color="blue", size = 3, alpha = 0.5) + 
+  facet_grid(species ~ island) 
+```
+
+
+## Reading data
+
+We can read data from comma separated values files (csv) or worksheet files (xls and xlsx) using `read_csv` and `read_excel` (in the `readxl` package.)
+
+Open a spreadsheet program. Create a new worksheet with some data (a few rows and a few columns at least.) Create at least one categorical variable and one quantitative variable. Leave at least one cell empty to create a missing value. Save the file. Read it in to R. Plot the data.
+
+```{r}
+# dt1 <- read_excel("file.xlsx")
+```
