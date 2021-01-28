@@ -35,19 +35,21 @@ Before we start, familiarize yourself with the data by typing `View(penguins)` o
 Let's get only the rows of Adelie penguins from Biscoe island.
 
 ```{r}
-penguins %>% filter(species == "Adelie") %>% filter(island == "Biscoe")
+penguins %>% filter(species == "Adelie" & island == "Biscoe")
 ```
 
 Now get all the rows that are either Adelies OR are on Biscoe Island.
 
 ```{r}
+penguins %>% filter(species == "Adelie" | island == "Biscoe")
 
 ```
 
 Get only the penguins with flipper length of 180 cm or more. Make a histogram.
 
 ```{r}
-
+penguins %>% filter(!(flipper_length_mm  > 180)) %>%
+  ggplot(aes(x=flipper_length_mm)) + geom_histogram()
 ```
 
 ### mutate
@@ -57,12 +59,20 @@ Mutate adds a new variable to each row.
 Compute a "bill to flipper ratio" equal to the bill length divided by flipper length.
 
 ```{r}
-
+penguins %>% mutate(bill_flipper_ratio = bill_length_mm / flipper_length_mm)
 ```
 
 Create a new variable that is the maximum flipper length.
 
 ```{r}
+penguins %>% mutate(bill_flipper_ratio_max = max(bill_length_mm / flipper_length_mm, na.rm=TRUE))
+
+```
+
+Compute a scaled bill to flipper ratio, so that the maximum ratio is 1.
+
+```{r}
+penguins %>% mutate(bill_flipper_ratio_scaled = (bill_length_mm / flipper_length_mm) / max(bill_length_mm / flipper_length_mm, na.rm=TRUE))
 
 ```
 
@@ -73,12 +83,16 @@ Summarize creates new variables, but instead of giving a value for each row, it 
 Count the number of rows in the penguins dataset using the `n` function.
 
 ```{r}
-
+penguins %>% summarize(count = n())
 ```
 
 Compute the minimum, mean, and maximum body mass of all the penguins.
 
 ```{r}
+penguins %>% summarize(min_bm = min(body_mass_g, na.rm=TRUE),
+                       max_bm = max(body_mass_g, na.rm=TRUE),
+                       mean_bm = mean(body_mass_g, na.rm=TRUE)
+                       )
 
 ```
 
@@ -89,7 +103,10 @@ Compute the minimum, mean, and maximum body mass of all the penguins.
 Repeat the calculations using summarize we wrote above, but use group_by on species, island, or both.
 
 ```{r}
-
+penguins %>% group_by(species, island) %>% summarize(count = n(),
+                                             min_bm = min(body_mass_g, na.rm=TRUE),
+                                             mean_bm = mean(body_mass_g, na.rm=TRUE)
+                                             )
 ```
 
 You can also use group_by with filter and mutate. 
@@ -97,7 +114,16 @@ You can also use group_by with filter and mutate.
 Compute the maximum body mass for each penguin species, put that in a new variable, then compute the body mass divided by the maximum body mass.
 
 ```{r}
+penguins %>% group_by(species) %>%
+  mutate(bm_max = max(body_mass_g, na.rm=TRUE),
+         bm_scaled = body_mass_g / max(body_mass_g, na.rm=TRUE))
+```
 
+What about group_by and filter?
+
+```{r}
+penguins %>% group_by(species) %>%  filter( body_mass_g > mean(body_mass_g, na.rm=TRUE)) %>%
+  ggplot(aes(x=body_mass_g, fill=species))  + geom_histogram()
 ```
 
 There are lots of other useful functions here -- like lead, lag, dense_rank, etc. See `?mutate`.
@@ -107,7 +133,7 @@ Select the observations with the largest body mass for each combination of speci
 ```{r}
 penguins %>% group_by(sex, species, island) %>%
   filter(body_mass_g == max(body_mass_g, na.rm=TRUE)) %>%
-  dplyr::select(species, island, sex, body_mass_g) %>% 
+  select(species, island, sex, body_mass_g, flipper_length_mm) %>% 
   arrange(-body_mass_g)
 ```
 
@@ -118,26 +144,38 @@ Facetted plots allow you to show the influence of small number of categorical va
 Make a facetted plot showing flipper length and body mass with each species of penguin on a separate facet. Use `facet_wrap`.
 
 ```{r}
-
+penguins %>% ggplot(aes(x= body_mass_g, y = flipper_length_mm)) + geom_point() +
+  facet_wrap( ~ species)
 ```
 
 Use `scales='free'` (or free_x or free_y) to change the axis scaling and the look of the plots.
 
 ```{r}
-
+penguins %>% ggplot(aes(x= body_mass_g, y = flipper_length_mm)) + geom_point() +
+  facet_wrap( ~ species, scales="free_y")
 ```
 
 
 Use `facet_grid` to show facets for island and species.  Colour the points by sex.
 
 ```{r}
+penguins %>% ggplot(aes(x= body_mass_g, y = flipper_length_mm)) + geom_point() +
+  facet_grid( island ~ species) # , scales="free_y")
 
 ```
+
+```{r}
+penguins %>% ggplot(aes(x= body_mass_g, y = flipper_length_mm)) + geom_point() +
+  facet_wrap( ~ island + species) # , scales="free_y")
+```
+
 
 You can compute statistics separately for each facet. Try `geom_smooth` with a facetted plot.
 
 ```{r}
-
+penguins %>% ggplot(aes(x= body_mass_g, y = flipper_length_mm)) + geom_point() +
+  facet_wrap( ~ island + species) + #  scales="free")  + 
+  geom_smooth(method = "lm")
 ```
 
 Compute means and then plot them using `geom_point` (or to be fancy, `stat_unique` to plot each point only once).
@@ -173,5 +211,7 @@ We can read data from comma separated values files (csv) or worksheet files (xls
 Open a spreadsheet program. Create a new worksheet with some data (a few rows and a few columns at least.) Create at least one categorical variable and one quantitative variable. Leave at least one cell empty to create a missing value. Save the file. Read it in to R. Plot the data.
 
 ```{r}
-# dt1 <- read_excel("file.xlsx")
+dt1 <- read_excel("file.xlsx")
+dt2 <- read_csv("file.csv")
+dt2
 ```

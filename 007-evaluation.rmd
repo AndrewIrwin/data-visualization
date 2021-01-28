@@ -175,20 +175,15 @@ git config --global user.name "Your Name"
 
 ### Assignment 2 {#assignment-2 .unnumbered}
 
-_Incomplete, being created._
-
 There are so many packages and functions to make visualizations, that its really important to be able to read documentation and learn new functions. Fortunately, the design of ggplot means that many functions work very similarly and so once you have learned the basics, it's quite easy to learn more on your own.
 
 The purpose of this assignment is for you to practice this sort of learning. I've picked out a few functions that work much like the examples we've looked at already. Your assignment is to pick out two of these and make a R markdown document describing how they work. This is the sort of practice I do all the time when I learn a new R skill.
 
-Look in the [repository](link to come soon) for a template for this assignment.
-
-learn, describe, and use a ggplot extension. 
-- ggridges, ggupset, ggrepel, cowplot, patchwork, viridislite
-- violin, uncertainty displays (half eye, etc)
-
+Look in the repository `assignment-2` for a template for this assignment.
 
 ### Assignment 3 {#assignment-3 .unnumbered}
+
+_Incomplete, being created._
 
 learn, describe, and use a table layout package (not kable/kableExtra)
 - DT, gt, flextable,
@@ -238,6 +233,12 @@ Work in groups of 2. You can produce team products, or one product per team memb
 
 Use a single github repository for the proposal, presentation, and final report. If you work in pairs, producing joint work, use the repository for one team member and add the other member to the repository. See the notes on [collaboration with github](#collaboration) for guidance.
 
+### Team creation {-}
+
+Teams will be created between February 1-21. On February 1 (or earlier) I will add everyone to a reposistory called `project-planning`. This repository will be used to create teams, schedule presentations, and organize peer-evaluation for Assignment 6.
+
+If you would like to form a team with someone else in the class, edit the rmd document to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. This process will also introduce you to some collaboration features of github. The deadline for selecting teammates will be Monday 22 February. I will review this list and finalize the assignments in time for Monday 1 March (or earlier). I will create the presentation schedule and peer-evaluation assignments at the same time.
+
 ### Proposal {-}
 
 Your main task for the proposal is to find a dataset to analyze for your project and describe at least one question you can address with data visualizations.
@@ -258,25 +259,24 @@ Here is list of data repositories containing many interesting datasets. Feel fre
 * Open government data: [Canada](https://open.canada.ca/en/open-data), [NS](https://data.novascotia.ca/), and many other sources
 * Other sources listed in the [Data sources]() section of these notes or that you find on your own.
 
-Describe a dataset and question you can address with the data for your report. How you plan to use 5 things (overview plot, dplyr/table summary, small multiples, knn/PCA, map)
-
+Describe a dataset and question you can address with the data for your report. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, knn/PCA, map).
 
 Your proposal should include an Rmd document called proposal.rmd with the following sections and the proposed dataset.
 
 * Introduction: The introduction should introduce your general research question and your data (where it came from, how it was collected, what are the cases, what are the variables, etc.).
-* Data: Place your data in the /data folder, and add dimensions and codebook to the README in that folder. Include the output of `dplyr::glimpse()` or `skimr::skim()` on your data frame.
+* Data: Place your data in the /data folder. Show that you can read the data and include the output of `dplyr::glimpse()` or `skimr::skim()` on your data in the proposal.
 * Visualization and analysis plan:
   * The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.
   * Ideas for at least two possible visualizations for exploratory data analysis, including some summary statistics and visualizations, along with some explanation on how they help you learn more about your data.
-  * An idea of how at least one statistical methods described in the course (smoothing, PCA, k-means) could be useful in analyzing your data
+  * An idea of how at least one statistical method described in the course (smoothing, PCA, k-means) could be useful in analyzing your data
 
 
 *Assessment*. Your proposal will be assessed for the following elements: a dataset is identifed and described (size of dataset, variables, source), a question to be investigated is clearly described, a visualization plan is presented. Scoring will be similar to exercises:
 
 * 4 points (1 each) for the following 4 elements: description of data, size of data, source of data, question, 
-* 2 points for a visualization plan
+* 2 points for a visualization plan,
 * 2 points for presentation quality, 
-* 2 points for creativity / thoughtfulness / imagination
+* 2 points for creativity, thoughtfulness, and imagination.
 
 Total 10.
 
@@ -294,50 +294,41 @@ You should have a small number of slides to accompany your presentation. I sugge
 
 A template for a presentation (presentation.rpres) is in the project repository.
 
-Don't show your R code; the focus should be on your results and visualzations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
+Don't show your R code; the focus should be on your results and visualizations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
 
 Your presentation should not just be an account of everything you tried ("then we did this, then we did this, etc."), instead it should convey what choices you made, and why, and what you found.
 
-Presentation schedule: Presentations will take place during the last workshop of the semester. You can choose to do your presentation live or pre-record it. During your workshop you will watch presentations from other teams in your workshop and provide feedback in the form of peer evaluations. The presentation line-up will be generated randomly.
+Presentation schedule: Presentations will take place during the last two synchronous sessions of the course. You can choose to do your presentation live or pre-record it. You will watch presentations from other teams and provide feedback on one each day in the form of peer evaluations. The presentation schedule will be generated randomly.
  
 ### Written report {-}
 
-Required elements:
+Required elements, following the template provided for each:
 
-* README.rmd
+* README.md
 * Data Dictionary
-* Written report (report.rmd) presenting your visualizations and insights about your data
+* Written report (report.rmd) presenting your visualizations and insights about your data.
 
-This write-up, which you can also think of as an summary of your project, should provide information on the dataset you’re using, your research question(s), your methodology, and your findings.
+This write-up, which you can also think of as an summary of your project, should provide information on the dataset you’re using, your research questions, your methodology, and your findings. Follow the template provided in the repository as you prepare your report.
 
-Repo organization
-The following folders and files in your project repository:
+Style and format does count for this assignment, so please take the time to make sure everything looks good and your data and code are properly formatted.
 
-presentation.Rmd + presentation.html: Your presentation slides
-README.md: Your write-up
-/data/*: Your dataset in csv or RDS format, in the /data folder.
-/proposal: Your proposal from earlier in the semester
-
-Style and format does count for this assignment, so please take the time to make sure everything looks good and your data and code are properly formated.
-
-If you work in the same repository as your teammate, so merge conflicts will happen, issues will arise, and that’s fine! Commit and push often, and ask questions when stuck.
+You and your teammate will be using the same repository as your teammate, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck.
 
 Review the marking guidelines below and ask questions if any of the expectations are unclear.
 
-Code: In your presentation your code should be hidden (echo = FALSE) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I should be able to obtain the results you presented. Exception: If you want to highlight something specific about a piece of code, you’re welcomed to show that portion.
+Code: In your presentation your code should be hidden (`echo = FALSE`) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you’re welcome to show that portion.
 
-Marking
-Write-up	15 pts
-Reproducibility and organization	10 pts
-Team peer evaluation	10 pts
-Classmates’ evaluation	5 pts
+Assessment:
 
-Criteria
-Content - What is the quality of research and/or policy question and relevancy of data to those questions?
-Correctness - Are statistical procedures carried out and explained correctly?
-Writing and Presentation - What is the quality of the statistical presentation, writing, and explanations?
-Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+* Write-up	15 pts
+* Reproducibility and organization	10 pts
+* Team peer evaluation	10 pts
+* Classmates’ evaluation	5 pts
 
+Criteria:
 
-
+* Content - What is the quality of research question and relevancy of data to those questions?
+* Correctness - Are visualization procedures carried out and explained correctly?
+* Writing and Presentation - What is the quality of the visualizations, writing, and explanations?
+* Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
 

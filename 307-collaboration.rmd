@@ -1,19 +1,40 @@
 # Collaborating with github {#collaboration}
 
-The basics
+In this lesson I'll describe the basics of collaborating on a project with github. This will be a very simple collaboration model; other more complex workflows are possible. (In particular, we won't be doing forks, branches, or pull requests. I encourage you to learn about those, but you don't need to for the simple collaboration we will be doing.) I'll assume you are able to work by yourself on a git repository hosted on GitHub using RStudio as we have for the assignments in the course.
 
-Push and pull
+## The basics
 
-working on different sections
+For the collaborative project, I will create a repository for each team and give each team member write access to the repository. You should start, as always by creating (cloning) the project onto your computer from GitHub.
 
-conflicts (in the repository)
+There are now at least three copies of the repository: the remote on GitHub, a copy on your computer, and a copy on your teammate's computer. These are all independent of each other. When you make changes to files on your computer (in the "working directory") you eventually stage and commit your changes to your local repository. You then need to sychronize your changes with GitHub and, eventually, your teammate needs to get your changes too.
 
-Authority model 
-Pull requests
+## Push and pull
+
+Getting changes from GitHub is called "pulling" (down arrow in the Rstudio git panel). Sending your committed changes to GitHub is called "pushing" (up arrow in the git panel.)
+
+I suggest when you sit down to work that you start by pulling changes from GitHub. Then do your work. Stage and commit your changes. Finally, before you stop work for the day, push your changes to GitHub.
+
+## Changes that don't conflict
+
+If person A edits file 1.rmd and person B edits file 2.rmd, then they both commit their edits and push them to GitHub, there will be no conflict with changes made by the other person. They both need to pull the changes made by their teammate to have a complete version.
+
+## Resolving conflicts (in the repository)
+
+If person A and person B both edit the same file "at the same time" (meaning, before the other person has had a chance to push the edits to GitHub so you can pull the edits to your computer before you begin to work) then the second person to push changes to that file will get a message that there is a conflict.
+
+To proceed you need pull the changes and merge the two changes together. Git will help you see the changes made by both of you, but it is up to you to resolve the conflicts. Once you've done that you can push the changes, now without conflict, back to GitHub.
+
+
+## Reviewing diffs
+
+
+## Pull requests
 
 
 ## Further reading
 
-* Software Carpentry [lessons on git and github](https://swcarpentry.github.io/git-novice/)
+The exercises in the first link are very helpful, although they are written using the git command line tutorial instead of the buttons in Rstudio.
+
 * [Collaboration tutorial](https://uoftcoders.github.io/studyGroup/lessons/git/collaboration/lesson/) from University of Toronto, including our case of two people working together without a team lead managing changes
+* Software Carpentry [lessons on git and github](https://swcarpentry.github.io/git-novice/)
 * Using [github for collaboration](https://mitgcm-example.readthedocs.io/en/latest/contributing/contributing.html#using-git-and-github) on a software package (the MIT general circulation model)

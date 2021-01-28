@@ -73,7 +73,7 @@ The _final project_ is an opportunity to combine many of the skills learned in t
 * Tasks for most lessons (30%, roughly 2 per week, due weekly, equally weighted)
 * Assignments (40%, roughly 1 every two weeks, equally weighted)
 * Term project, divided into three components
-  * Proposal, due Friday 5 March, 5%
+  * Proposal, due Friday 12 March, 5%
   * Oral presentation, due Thursday 1 April, 10%
   * Report, due Friday 9 April, 15%
 
