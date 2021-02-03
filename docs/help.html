@@ -53,9 +53,11 @@
 <li><a class="active" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
 <li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">18</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">19</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -131,10 +133,11 @@
 </h3>
 <p>I strongly suggest you keep your experiments and notes in a separate R markdown file, then call it something appropriate (“drawing-errorbars”) and put it in a folder called something like “examples”. Knit the document before moving on to be sure it works and is complete.</p>
 </div>
-<div id="example-learning-how-to-draw-error-bars" class="section level3" number="14.1.7">
-<h3>
-<span class="header-section-number">14.1.7</span> Example: learning how to draw error bars<a class="anchor" aria-label="anchor" href="#example-learning-how-to-draw-error-bars"><i class="fas fa-link"></i></a>
-</h3>
+</div>
+<div id="example-learning-how-to-draw-error-bars" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Example: learning how to draw error bars<a class="anchor" aria-label="anchor" href="#example-learning-how-to-draw-error-bars"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Skim the <a href="http://www.cookbook-r.com/Graphs/Plotting_means_and_error_bars_(ggplot2)/">R cookbook</a> page</li>
 <li>The data are fine – some quantitative data and categorical data for grouping</li>
@@ -186,52 +189,44 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position<span class="op">=</span><span class="va">pd</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-99-1.png" width="672"></div>
 </div>
-<div id="what-does-this-unknown-function-do" class="section level3" number="14.1.8">
-<h3>
-<span class="header-section-number">14.1.8</span> What does this unknown function do?<a class="anchor" aria-label="anchor" href="#what-does-this-unknown-function-do"><i class="fas fa-link"></i></a>
-</h3>
-<p>There is another important kind of question – what does <code>an-unfamiliar-R-function</code> do? This is a bit easier since you don’t need to translate a goal into a question about R, you just need to figure out what the function does.</p>
-<p>You might be wondering what <code>position_dodge</code> does. It’s fairly obvious from the step-by-step example, but try to figure out by reading the help page. It’s a bit hard to understand, but you should be able to get that it is a function that moves (dodges) the horizontal position of a point, error bar, or other geom.</p>
-</div>
-</div>
-<div id="asking-question-in-this-course" class="section level2" number="14.2">
+<div id="asking-question-in-this-course" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">14.2</span> Asking question in this course<a class="anchor" aria-label="anchor" href="#asking-question-in-this-course"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> Asking question in this course<a class="anchor" aria-label="anchor" href="#asking-question-in-this-course"><i class="fas fa-link"></i></a>
 </h2>
 <p>Asking good questions can be challenging, especially in asynchronous learning. In a classroom, it’s fairly easy: Can you give another example? Why did you do that calculation? What does the answer mean? Many questions you might ask in person don’t translate well to other contexts: email, office hours, or online forums, because the immediate context of group discussion is missing. So it’s up to you to add that context when you ask a question.</p>
-<p>Here I describe several different ways to get answers to your questions. Knowing which method to use is itself a skill, so I provide some guidance for that as well.</p>
-<div id="starting-out" class="section level3" number="14.2.1">
+<p>Here I describe several different ways to get answers to your questions. Knowing which method to use is itself a skill, so I provide some guidance for that as well. It’s important to ask questions – and <a href="https://jvns.ca/blog/2014/04/04/ask-if-you-have-questions-isnt-enough/">I want you to ask questions</a>, so much that you should consider it part of your assigned work to formulate questions.</p>
+<div id="starting-out" class="section level3" number="14.3.1">
 <h3>
-<span class="header-section-number">14.2.1</span> Starting out<a class="anchor" aria-label="anchor" href="#starting-out"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.1</span> Starting out<a class="anchor" aria-label="anchor" href="#starting-out"><i class="fas fa-link"></i></a>
 </h3>
 <p>At the start of the course you will have a bunch of computer tasks (installing R and Rstudio, installing R packagesm understanding the basics of Rstudio, working with git and github). These will range from easy to difficult depending on your previous experience. I have tried to provide written and video information to guide you, but if you get stuck on any of these, or the work associated with a “task” at any point in the course, ask for help right away.</p>
 </div>
-<div id="learning-r-basics" class="section level3" number="14.2.2">
+<div id="learning-r-basics" class="section level3" number="14.3.2">
 <h3>
-<span class="header-section-number">14.2.2</span> Learning R basics<a class="anchor" aria-label="anchor" href="#learning-r-basics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.2</span> Learning R basics<a class="anchor" aria-label="anchor" href="#learning-r-basics"><i class="fas fa-link"></i></a>
 </h3>
 <p>As you start to write R commands and make R markdown documents you will encounter problems arising from typos (forgetting, or not knowing where to place) commas, brackets, backticks, quotation marks, pipes (%&gt;%), and many other bits of <a href="https://en.wikipedia.org/wiki/Syntax_(programming_languages)">syntax</a> necessary for communcation with the computer. The error messages will frequently be hard to decipher. The best way to learn to solve these problems is the following: take a working R markdown document or example of R code and change it slightly. Make a prediction of what will happen and then get the computer to process the code. Compare what happens to what you predicted. Do this regularly until you can reliably predict outcomes of any changes you can think of. This is “playing computer” in your head – try to understand how it will react to your input. When something happens that you don’t understand: ask someone why. Describe what you did, what you thought would happen, and what really happened.</p>
 </div>
-<div id="problem-solving" class="section level3" number="14.2.3">
+<div id="problem-solving" class="section level3" number="14.3.3">
 <h3>
-<span class="header-section-number">14.2.3</span> Problem solving<a class="anchor" aria-label="anchor" href="#problem-solving"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.3</span> Problem solving<a class="anchor" aria-label="anchor" href="#problem-solving"><i class="fas fa-link"></i></a>
 </h3>
 <p>Once you have developed some fluency for working with R, you will start to learn to solve problems. This means that you are trying to accomplish a data visulization task, such as make a single plot, use colour in some way, change the kind of plot, add text to an axis, or thousands of other tasks. At the start you will be just doing tasks I’ve given you and later on you will be trying to achieve your own goals by solving problems. The method described above is useful here: when you have a working example, change it in some way and predict the result. Make changes that you think will lead to good outcomes, but also make playful or “silly” changes that will lead to poor quality graphs but still help you learn to use the tools. This kind of experimentation is essential for develop a robust and accurate mental model of how R (or any other) computer software works.</p>
 </div>
-<div id="learning-new-methods-r" class="section level3" number="14.2.4">
+<div id="learning-new-methods-r" class="section level3" number="14.3.4">
 <h3>
-<span class="header-section-number">14.2.4</span> Learning new methods R<a class="anchor" aria-label="anchor" href="#learning-new-methods-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.4</span> Learning new methods R<a class="anchor" aria-label="anchor" href="#learning-new-methods-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>The tools available within R are so extensive that you can never learn them all by being taught by a course or a textbook or a website. To really master R you need to learn how to learn new tools.</p>
 <p>R functions have <strong>help pages</strong> – accessed from the help tab in Rstudio or by prefacing the function with a ‘?’ in the R console. These help pages have a very specific style and require practice to <a href="https://socviz.co/appendix.html#a-little-more-about-r">learn how to read them</a>. One of the best features of the help page, especially when you are starting out, is the examples at the bottom of the page. Usually these can be simply cut and pasted into the console and you can observe the results to see how the function author intended them to be used.</p>
 <p>Many R packages have <strong>vignettes</strong>. These are extended documents intended to explain how to use a key feature of the package. You can find the vignettes on the web page where you found the software (CRAN or github) or using the vignette function. Read the help page – and especially the examples – to see how to use the <code>vignette</code> function.</p>
-<p>We are focussing on the tidyverse set of packages. The <a href="https://www.tidyverse.org/">tidyverse</a> website contains help, examples, and reference documentation for these packages. These web pages combine the features of <a href="https://www.tidyverse.org/learn/">books</a>. tutorials, vignettes, and help pages. All are worth your time! Keep an eye out for <a href="https://rstudio.com/resources/cheatsheets/">cheatsheets</a> that are especially helpful after you learn the basics of a package.</p>
-<p>One of the many reasons we are using git and github in this course is that it will make it easier for you to ask me a question. If you have a problem with an R markdown document or making a function work the way you think it should or you just don’t know how to interpret the results of a calculation, you can ask me. But how do you know how much information to give me? And how do you make that easy? Send an email with the question – what are you trying to do, what is the problem or error message, and why do you think might be going wrong. Put the computer code into an R document, commit the changes to your project, and push it to Github. Then tell me the name of the repository and file and I’ll have the full set of code that lead to your problem. That will make it much easier for me to help you.</p>
+<p>We are focussing on the tidyverse set of packages. The <a href="https://www.tidyverse.org/">tidyverse</a> website contains help, examples, and reference documentation for these packages. These web pages combine the features of <a href="https://www.tidyverse.org/learn/">books</a>, tutorials, vignettes, and help pages. All are worth your time! Keep an eye out for <a href="https://rstudio.com/resources/cheatsheets/">cheatsheets</a> that are especially helpful after you learn the basics of a package.</p>
+<p>One of the many reasons we are using git and GitHub in this course is that it will make it easier for you to ask me a question. If you have a problem with an R markdown document or making a function work the way you think it should or you just don’t know how to interpret the results of a calculation, you can ask me. But how do you know how much information to give me? And how do you make that easy? Send an email with the question – what are you trying to do, what is the problem or error message, and why do you think might be going wrong. Or, you can put the computer code into an R markdown document, commit the changes to your project, and push it to Github. Then tell me the name of the repository and file and I’ll have the full set of code that lead to your problem. That will make it much easier for me to help you. (Note that I can only see private repositories that we both have access to, for example course work repositories. So use those repositories to share files and ask questions.)</p>
 </div>
 </div>
-<div id="solving-computer-problems-debugging" class="section level2" number="14.3">
+<div id="solving-computer-problems-debugging" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">14.3</span> Solving computer problems (“Debugging”)<a class="anchor" aria-label="anchor" href="#solving-computer-problems-debugging"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Solving computer problems (“Debugging”)<a class="anchor" aria-label="anchor" href="#solving-computer-problems-debugging"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are two kinds of computer problems,</p>
 <ul>
@@ -241,18 +236,10 @@
 <p>Both problems can be frustrating, but the second kind is especially difficult when you are starting out.</p>
 <p>There are sophisticated tools for debugging in R, but we won’t discuss them in this course.</p>
 <p>My recommendation for both kinds of problem is the same: simplify what you are doing until something works and you understand what is going on. Then add one step at a time. If you are adapting code you found somewhere, make sure the original example works. Develop a “mental model” of what the computer is doing, and test it by modifying your code. Be creative and relaxed. Try hard not to get frustrated! Errors are a really important part of learning – they help you develop deeper and more powerful understanding of the tools you are trying to use.</p>
-</div>
-<div id="asking-questions" class="section level2" number="14.4">
-<h2>
-<span class="header-section-number">14.4</span> Asking questions<a class="anchor" aria-label="anchor" href="#asking-questions"><i class="fas fa-link"></i></a>
-</h2>
-<p>Eventually you need to ask someone a question, because every step you can think of has failed.</p>
-<p>In the suggestions below, I am imagining your are preparing a question to help you learn a concept or skill in a course. You could be asking your instructor, a classmate, or even yourself. It’s important to ask questions – and <a href="https://jvns.ca/blog/2014/04/04/ask-if-you-have-questions-isnt-enough/">I want you to ask questions</a>, so much that you should consider it part of your assigned work to formulate questions.</p>
-</div>
-<div id="suggestions-for-asking-questions" class="section level2" number="14.5">
-<h2>
-<span class="header-section-number">14.5</span> Suggestions for asking questions<a class="anchor" aria-label="anchor" href="#suggestions-for-asking-questions"><i class="fas fa-link"></i></a>
-</h2>
+<div id="suggestions-for-asking-questions" class="section level3" number="14.4.1">
+<h3>
+<span class="header-section-number">14.4.1</span> Suggestions for asking questions<a class="anchor" aria-label="anchor" href="#suggestions-for-asking-questions"><i class="fas fa-link"></i></a>
+</h3>
 <p>A few <a href="https://jvns.ca/blog/good-questions/">suggestions</a>:</p>
 <ul>
 <li><p>Explain the context (is this about material from a video, the course notes, an assignment – which one?, or just something that you are wondering about)</p></li>
@@ -261,22 +248,30 @@
 <li><p>Say what you think comes next or where you think you are stuck (I’m trying to figure out X, I don’t know why the plot looks like Y)</p></li>
 </ul>
 </div>
-<div id="asking-a-complete-question" class="section level2" number="14.6">
-<h2>
-<span class="header-section-number">14.6</span> Asking a complete question<a class="anchor" aria-label="anchor" href="#asking-a-complete-question"><i class="fas fa-link"></i></a>
-</h2>
+<div id="asking-a-complete-question" class="section level3" number="14.4.2">
+<h3>
+<span class="header-section-number">14.4.2</span> Asking a complete question<a class="anchor" aria-label="anchor" href="#asking-a-complete-question"><i class="fas fa-link"></i></a>
+</h3>
 <p>If you are trying to solve a problem with R, and the code is not working as you expect, make the smallest possible example of the problem that you can. This is called a “reproducible example” – meaning that the person you are asking for help can make the problem repeat on their computer. There is an R package to help you create these examples called <a href="https://www.tidyverse.org/help/#reprex">reprex</a>, but you don’t need to do this in our course.</p>
 <p>The reprex function tests your code to see if you’ve included all the necessary to enable someone else to understand your code. This includes which libraries you are using and any variables that must be defined. Select your code that demonstrates the problem, then copy it to the clipboard. Type <code>reprex()</code> in the R Console. If your example is complete, it will appear in the preview window on the lower right. This can be cut and pasted into an email.</p>
 </div>
-<div id="how-to-learn-material-in-this-course" class="section level2" number="14.7">
+<div id="what-does-this-unknown-function-do" class="section level3" number="14.4.3">
+<h3>
+<span class="header-section-number">14.4.3</span> What does this unknown function do?<a class="anchor" aria-label="anchor" href="#what-does-this-unknown-function-do"><i class="fas fa-link"></i></a>
+</h3>
+<p>There is another important kind of question – what does <code>an-unfamiliar-R-function</code> do? This is a bit easier since you don’t need to translate a goal into a question about R, you just need to figure out what the function does.</p>
+<p>You might be wondering what <code>position_dodge</code> does. It’s fairly obvious from the step-by-step example, but try to figure out by reading the help page. It’s a bit hard to understand, but you should be able to get that it is a function that moves (dodges) the horizontal position of a point, error bar, or other geom.</p>
+</div>
+</div>
+<div id="how-to-learn-material-in-this-course" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">14.7</span> How to learn material in this course<a class="anchor" aria-label="anchor" href="#how-to-learn-material-in-this-course"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> How to learn material in this course<a class="anchor" aria-label="anchor" href="#how-to-learn-material-in-this-course"><i class="fas fa-link"></i></a>
 </h2>
 <p>The course goals are summarized in the <a href="index.html#goals">welcome</a> to the course. One of the most important is learning how to learn to use new tools for data visualization. This sort of learning is <a href="https://jvns.ca/blog/2018/09/01/learning-skills-you-can-practice/">hard</a> but very worthwhile. It’s also a great transferrable skill. If you can master the material in this course and learn how to keep learning, you’ll be able to apply what you learned to a wide range of computing skills.</p>
 </div>
-<div id="getting-help" class="section level2" number="14.8">
+<div id="getting-help" class="section level2" number="14.6">
 <h2>
-<span class="header-section-number">14.8</span> Getting help<a class="anchor" aria-label="anchor" href="#getting-help"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> Getting help<a class="anchor" aria-label="anchor" href="#getting-help"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -285,9 +280,9 @@
 </li>
 </ul>
 </div>
-<div id="more-advanced-help" class="section level2" number="14.9">
+<div id="more-advanced-help" class="section level2" number="14.7">
 <h2>
-<span class="header-section-number">14.9</span> More advanced help<a class="anchor" aria-label="anchor" href="#more-advanced-help"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.7</span> More advanced help<a class="anchor" aria-label="anchor" href="#more-advanced-help"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -315,25 +310,27 @@
 <li><a class="nav-link" href="#reproduce-an-example"><span class="header-section-number">14.1.4</span> Reproduce an example</a></li>
 <li><a class="nav-link" href="#modify-the-example"><span class="header-section-number">14.1.5</span> Modify the example</a></li>
 <li><a class="nav-link" href="#make-notes-to-explain-the-solution"><span class="header-section-number">14.1.6</span> Make notes to explain the solution</a></li>
-<li><a class="nav-link" href="#example-learning-how-to-draw-error-bars"><span class="header-section-number">14.1.7</span> Example: learning how to draw error bars</a></li>
-<li><a class="nav-link" href="#what-does-this-unknown-function-do"><span class="header-section-number">14.1.8</span> What does this unknown function do?</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#example-learning-how-to-draw-error-bars"><span class="header-section-number">14.2</span> Example: learning how to draw error bars</a></li>
+<li>
+<a class="nav-link" href="#asking-question-in-this-course"><span class="header-section-number">14.3</span> Asking question in this course</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#starting-out"><span class="header-section-number">14.3.1</span> Starting out</a></li>
+<li><a class="nav-link" href="#learning-r-basics"><span class="header-section-number">14.3.2</span> Learning R basics</a></li>
+<li><a class="nav-link" href="#problem-solving"><span class="header-section-number">14.3.3</span> Problem solving</a></li>
+<li><a class="nav-link" href="#learning-new-methods-r"><span class="header-section-number">14.3.4</span> Learning new methods R</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#asking-question-in-this-course"><span class="header-section-number">14.2</span> Asking question in this course</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#starting-out"><span class="header-section-number">14.2.1</span> Starting out</a></li>
-<li><a class="nav-link" href="#learning-r-basics"><span class="header-section-number">14.2.2</span> Learning R basics</a></li>
-<li><a class="nav-link" href="#problem-solving"><span class="header-section-number">14.2.3</span> Problem solving</a></li>
-<li><a class="nav-link" href="#learning-new-methods-r"><span class="header-section-number">14.2.4</span> Learning new methods R</a></li>
+<a class="nav-link" href="#solving-computer-problems-debugging"><span class="header-section-number">14.4</span> Solving computer problems (“Debugging”)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#suggestions-for-asking-questions"><span class="header-section-number">14.4.1</span> Suggestions for asking questions</a></li>
+<li><a class="nav-link" href="#asking-a-complete-question"><span class="header-section-number">14.4.2</span> Asking a complete question</a></li>
+<li><a class="nav-link" href="#what-does-this-unknown-function-do"><span class="header-section-number">14.4.3</span> What does this unknown function do?</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#solving-computer-problems-debugging"><span class="header-section-number">14.3</span> Solving computer problems (“Debugging”)</a></li>
-<li><a class="nav-link" href="#asking-questions"><span class="header-section-number">14.4</span> Asking questions</a></li>
-<li><a class="nav-link" href="#suggestions-for-asking-questions"><span class="header-section-number">14.5</span> Suggestions for asking questions</a></li>
-<li><a class="nav-link" href="#asking-a-complete-question"><span class="header-section-number">14.6</span> Asking a complete question</a></li>
-<li><a class="nav-link" href="#how-to-learn-material-in-this-course"><span class="header-section-number">14.7</span> How to learn material in this course</a></li>
-<li><a class="nav-link" href="#getting-help"><span class="header-section-number">14.8</span> Getting help</a></li>
-<li><a class="nav-link" href="#more-advanced-help"><span class="header-section-number">14.9</span> More advanced help</a></li>
+<li><a class="nav-link" href="#how-to-learn-material-in-this-course"><span class="header-section-number">14.5</span> How to learn material in this course</a></li>
+<li><a class="nav-link" href="#getting-help"><span class="header-section-number">14.6</span> Getting help</a></li>
+<li><a class="nav-link" href="#more-advanced-help"><span class="header-section-number">14.7</span> More advanced help</a></li>
 </ul>
 
       <div class="book-extra">
@@ -351,7 +348,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-26.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

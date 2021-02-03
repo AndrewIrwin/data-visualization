@@ -53,9 +53,11 @@
 <li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
 <li><a class="active" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">18</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">19</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -70,21 +72,22 @@
 </h1>
 <p>So far we have focussed on a few aspects of data visualzation:</p>
 <ul>
-<li>making graphical displays of data</li>
-<li>transforming and summarizing data</li>
-<li>displaying those summaries as tables and figures</li>
+<li>making graphical displays of data,</li>
+<li>transforming and summarizing data,</li>
+<li>displaying data and summaries as tables and figures.</li>
 </ul>
 <p>Models are another way to condense data or highlight patterns. Models are sometimes used for statistical inference, but that’s not our focus in this course. We will use models as tools for adding features to a visualization.</p>
-<p>R can be used to make a huge number of models. We will look at two broad classes:</p>
+<p>R can be used to make a huge number of models. We will look at two broad classes over the next six lessons:</p>
 <ul>
 <li>regression and smoothing of one variable as a function of another, and</li>
 <li>transforming, simplification, and grouping of observations in data with many (more than 2) variables.</li>
 </ul>
-<div id="smoothing-examples" class="section level2" number="15.1">
+<div id="adding-smooths-to-a-visualization" class="section level2" number="15.1">
 <h2>
-<span class="header-section-number">15.1</span> Smoothing examples<a class="anchor" aria-label="anchor" href="#smoothing-examples"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.1</span> Adding smooths to a visualization<a class="anchor" aria-label="anchor" href="#adding-smooths-to-a-visualization"><i class="fas fa-link"></i></a>
 </h2>
-<p>In the next lesson we will take a closer look at these methods, but for now we will just use them to draw some smoothed lines on our visualizations.</p>
+<p>In this lesson we will focus on visualizing models that smooth data.
+In the next two lessons we will take a closer look at these models, in particular getting diagnostic information about model fits and making data frames with quantitative output from the models.</p>
 <p>First, we’ll take a subset of the gapminder data and make a simple scatterplot.</p>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span>
@@ -288,7 +291,7 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#working-models"><span class="header-section-number">15</span> Working with models</a></li>
-<li><a class="nav-link" href="#smoothing-examples"><span class="header-section-number">15.1</span> Smoothing examples</a></li>
+<li><a class="nav-link" href="#adding-smooths-to-a-visualization"><span class="header-section-number">15.1</span> Adding smooths to a visualization</a></li>
 <li><a class="nav-link" href="#putting-several-models-on-a-single-plot"><span class="header-section-number">15.2</span> Putting several models on a single plot</a></li>
 <li><a class="nav-link" href="#working-with-models-and-making-predictions"><span class="header-section-number">15.3</span> Working with models and making predictions</a></li>
 <li><a class="nav-link" href="#computing-and-plotting-residuals"><span class="header-section-number">15.4</span> Computing and plotting residuals</a></li>
@@ -310,7 +313,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-26.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

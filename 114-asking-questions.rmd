@@ -54,7 +54,7 @@ Gradually turn the example into what you want, changing one feature at a time. U
 
 I strongly suggest you keep your experiments and notes in a separate R markdown file, then call it something  appropriate ("drawing-errorbars") and put it in a folder called something like "examples". Knit the document before moving on to be sure it works and is complete.
 
-### Example: learning how to draw error bars
+## Example: learning how to draw error bars
 
 * Skim the [R cookbook](http://www.cookbook-r.com/Graphs/Plotting_means_and_error_bars_(ggplot2)/) page
 * The data are fine -- some quantitative data and categorical data for grouping
@@ -109,18 +109,12 @@ ggplot(my_summarySE, aes(x=species, y=mean_mass, colour=island)) +
     geom_point(position=pd)
 ```
 
-### What does this unknown function do?
-
-There is another important kind of question -- what does `an-unfamiliar-R-function` do? This is a bit easier since you don't need to translate a goal into a question about R, you just need to figure out what the function does.
-
-You might be wondering what `position_dodge` does. It's fairly obvious from the step-by-step example, but try to figure out by reading the help page. It's a bit hard to understand, but you should be able to get that it is a function that moves (dodges) the horizontal position of a point, error bar, or other geom.
-
-
 ## Asking question in this course
 
 Asking good questions can be challenging, especially in asynchronous learning. In a classroom, it's fairly easy: Can you give another example? Why did you do that calculation? What does the answer mean? Many questions you might ask in person don't translate well to other contexts: email, office hours, or online forums, because the immediate context of group discussion is missing. So it's up to you to add that context when you ask a question.
 
-Here I describe several different ways to get answers to your questions. Knowing which method to use is itself a skill, so I provide some guidance for that as well.
+Here I describe several different ways to get answers to your questions. Knowing which method to use is itself a skill, so I provide some guidance for that as well.  It's important to ask questions -- and [I want you to ask questions](https://jvns.ca/blog/2014/04/04/ask-if-you-have-questions-isnt-enough/), so much that you should consider it part of your assigned work to formulate questions.
+
 
 ### Starting out
 
@@ -142,9 +136,9 @@ R functions have **help pages** -- accessed from the help tab in Rstudio or by p
 
 Many R packages have **vignettes**. These are extended documents intended to explain how to use a key feature of the package. You can find the vignettes on the web page where you found the software (CRAN or github) or using the vignette function. Read the help page -- and especially the examples -- to see how to use the `vignette` function.
 
-We are focussing on the tidyverse set of packages. The [tidyverse](https://www.tidyverse.org/) website contains help, examples, and reference documentation for these packages. These web pages combine the features of [books](https://www.tidyverse.org/learn/). tutorials, vignettes, and help pages. All are worth your time! Keep an eye out for [cheatsheets](https://rstudio.com/resources/cheatsheets/) that are especially helpful after you learn the basics of a package.
+We are focussing on the tidyverse set of packages. The [tidyverse](https://www.tidyverse.org/) website contains help, examples, and reference documentation for these packages. These web pages combine the features of [books](https://www.tidyverse.org/learn/), tutorials, vignettes, and help pages. All are worth your time! Keep an eye out for [cheatsheets](https://rstudio.com/resources/cheatsheets/) that are especially helpful after you learn the basics of a package.
 
-One of the many reasons we are using git and github in this course is that it will make it easier for you to ask me a question. If you have a problem with an R markdown document or making a function work the way you think it should or you just don't know how to interpret the results of a calculation, you can ask me. But how do you know how much information to give me? And how do you make that easy? Send an email with the question -- what are you trying to do, what is the problem or error message, and why do you think might be going wrong. Put the computer code into an R document, commit the changes to your project, and push it to Github. Then tell me the name of the repository and file and I'll have the full set of code that lead to your problem. That will make it much easier for me to help you.
+One of the many reasons we are using git and GitHub in this course is that it will make it easier for you to ask me a question. If you have a problem with an R markdown document or making a function work the way you think it should or you just don't know how to interpret the results of a calculation, you can ask me. But how do you know how much information to give me? And how do you make that easy? Send an email with the question -- what are you trying to do, what is the problem or error message, and why do you think might be going wrong. Or, you can put the computer code into an R markdown document, commit the changes to your project, and push it to Github. Then tell me the name of the repository and file and I'll have the full set of code that lead to your problem. That will make it much easier for me to help you. (Note that I can only see private repositories that we both have access to, for example course work repositories. So use those repositories to share files and ask questions.)
 
 
 ## Solving computer problems ("Debugging")
@@ -160,13 +154,8 @@ There are sophisticated tools for debugging in R, but we won't discuss them in t
 
 My recommendation for both kinds of problem is the same: simplify what you are doing until something works and you understand what is going on. Then add one step at a time. If you are adapting code you found somewhere, make sure the original example works. Develop a "mental model" of what the computer is doing, and test it by modifying your code. Be creative and relaxed. Try hard not to get frustrated! Errors are a really important part of learning -- they help you develop deeper and more powerful understanding of the tools you are trying to use.
 
-## Asking questions
 
-Eventually you need to ask someone a question, because every step you can think of has failed.
-
-In the suggestions below, I am imagining your are preparing a question to help you learn a concept or skill in a course. You could be asking your instructor, a classmate, or even yourself. It's important to ask questions -- and [I want you to ask questions](https://jvns.ca/blog/2014/04/04/ask-if-you-have-questions-isnt-enough/), so much that you should consider it part of your assigned work to formulate questions.
-
-## Suggestions for asking questions
+### Suggestions for asking questions
 
 A few [suggestions](https://jvns.ca/blog/good-questions/):
 
@@ -178,11 +167,19 @@ A few [suggestions](https://jvns.ca/blog/good-questions/):
 
 -   Say what you think comes next or where you think you are stuck (I'm trying to figure out X, I don't know why the plot looks like Y)
 
-## Asking a complete question
+### Asking a complete question
 
 If you are trying to solve a problem with R, and the code is not working as you expect, make the smallest possible example of the problem that you can. This is called a "reproducible example" -- meaning that the person you are asking for help can make the problem repeat on their computer. There is an R package to help you create these examples called [reprex](https://www.tidyverse.org/help/#reprex), but you don't need to do this in our course.
 
 The reprex function tests your code to see if you've included all the necessary to enable someone else to understand your code. This includes which libraries you are using and any variables that must be defined. Select your code that demonstrates the problem, then copy it to the clipboard. Type `reprex()` in the R Console. If your example is complete, it will appear in the preview window on the lower right. This can be cut and pasted into an email.
+
+### What does this unknown function do?
+
+There is another important kind of question -- what does `an-unfamiliar-R-function` do? This is a bit easier since you don't need to translate a goal into a question about R, you just need to figure out what the function does.
+
+You might be wondering what `position_dodge` does. It's fairly obvious from the step-by-step example, but try to figure out by reading the help page. It's a bit hard to understand, but you should be able to get that it is a function that moves (dodges) the horizontal position of a point, error bar, or other geom.
+
+
 
 
 ## How to learn material in this course

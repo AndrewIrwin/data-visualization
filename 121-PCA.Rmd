@@ -24,7 +24,7 @@ cars %>% ggplot(aes(x=speed, y=dist)) + geom_point() + coord_fixed()
 
 Now let's perform the PCA. There are three results: the amount of variation accounted for by each principal component, the directions of the principal components along each of the original axes, and the coordinates of the observations along the principal component axes. 
 
-```{r}
+```
 pca1 <- cars %>% 
   select(where(is.numeric)) %>% # retain only numeric columns
   # scale() %>% # scale data
@@ -38,7 +38,7 @@ There is a helper functions to get
  * the directions of the original axes along the new principal component axes (rotation)
  * the original data transformed to the new principal component axes (scores)
 
-```{r}
+```
 pca1 %>% tidy(matrix = "eigenvalues")
 pca1 %>% tidy(matrix = "rotation")
 pca1 %>% tidy(matrix = "scores")
@@ -46,13 +46,13 @@ pca1 %>% tidy(matrix = "scores")
 
 An easy way to display the results of the PCA is to make a biplot using the `ggfortify` package. The biplot shows the observations as black dots and the original axes as red vectors. The option `scale=0` keeps the same scaling as in the original plot. In normal usage you would not have `coord_fixed()` in the original plot and you would not use `scale=0` in this plot.
 
-```{r}
+```
 autoplot(pca1, data= cars, loadings=TRUE, loadings.label=TRUE, scale=0) + coord_equal()
 ```
 
 This gives you vectors along the first and second principal components. It's work to visualize these in our heads, so let's plot the transformed data.
 
-```{r}
+```
 pca1 %>%
   augment(cars) %>%
   ggplot(aes(x=.fittedPC1, y= .fittedPC2)) +
@@ -61,7 +61,7 @@ pca1 %>%
 
 The direction of the original axes are
 
-```{r}
+```
 pca1 %>% 
   tidy(matrix="rotation") %>%
   pivot_wider(names_from = PC, names_prefix = "PC", values_from = value)
@@ -69,7 +69,7 @@ pca1 %>%
 
 Which we can plot
 
-```{r}
+```
 rotation1 <- pca1 %>% 
   tidy(matrix="rotation") %>%
   pivot_wider(names_from = PC, names_prefix = "PC", values_from = value) 
@@ -83,7 +83,7 @@ rotation1 %>%
 
 Plot the new axes on the origial plot.
 
-```{r}
+```
 # cars %>% ggplot(aes(x=speed, y=dist)) + geom_point() +
   pca1 %>%
   augment(cars) %>%
@@ -146,4 +146,6 @@ The scaling of this plot does not match `autoplot`. May even be slightly differe
 * [Example PCA on iris data](https://bookdown.org/Maxine/r4ds/examples.html)
 * https://juliasilge.com/blog/stack-overflow-pca/
 * PCA using [tidymodels](https://juliasilge.com/blog/cocktail-recipes-umap/)
+* [PCA](https://melinaluethje.com/2020/11/12/multivariate-ordinations-101/)
+
 

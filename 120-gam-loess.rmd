@@ -1,0 +1,21 @@
+# GAM and LOESS smoothing {#smoothing}
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+In this lesson I will show you how to create GAM and LOESS models and perform some basic tasks to interact with the R model objects that the functions create. In keeping with the goals of the course, we will primarily focus on using the models for visualization and not attempt a detailed statistical analysis of when and why you might use a particular model for inference.
+
+## Generalized Additive Models
+
+
+## Locally Estimated Scatterplot Smoothing (LOESS)
+
+
+
+## Further reading
+
+* [LOESS (Wikipedia)](https://en.wikipedia.org/wiki/Local_regression)
+* [Generalized additive models (Wikipedia)](https://en.wikipedia.org/wiki/Generalized_additive_model)

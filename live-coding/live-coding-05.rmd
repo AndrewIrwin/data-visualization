@@ -1,0 +1,156 @@
+---
+title: "Live coding 5"
+author: "Andrew Irwin"
+date: "2021-02-04 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Examples from lessons 12, 13, 14: reshaping data, displaying tables, and getting help
+* Live coding examples of pivoting tools (`pivot_longer`, `pivot_wider`, `unite` and `separate`), formatting tables (`kable`, `kableExtra`) -- material for tasks 7 and 8
+* Strategies for getting help and learning independently (for Assignment 2)
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. As with last week, we'll start with some repeated examples from lessons to remind ourselves of the basics, then try to use the tools in new ways, and finally switch perspectives to try to solve a real problem with each tool.
+
+## Reshaping data
+
+Let's use the `mpg` data from the tidyverse. It's always good to have a variety of data to work with to test your understanding of new functions, so I've collected the datasets we've been using (and a few more) in their own chapter called [Data sources](#data-sources).
+
+This brief way of summarizing the data is great for seeing as much of the data as possible in a small space.
+
+```{r}
+glimpse(mpg)
+```
+
+The lower-density table version is probably a better way to look a table if we are going to think about reshaping from long to wide format.
+
+```{r}
+mpg %>% head()
+```
+
+Let's make a table that lists manufacturer, model, and then in two columns the average city fuel consumption for each year in the data.
+
+First we compute average fuel consumption for each combination of manufacturer, model, and year. Then pivot the data to make a wider table (it will be 38 rows by 4 columns when we are done). Store the result in your environment by giving the new table a name, so that we can use formatting tools in the next section to display it nicely.
+
+```{r}
+
+
+```
+
+
+Clean up the "trans"mission column to put the parenthetical codes (av, l5, m6, etc) in their own column using separate.
+
+```{r}
+
+
+```
+
+To practice make wide data longer, we should start with a different dataset.
+
+The `co2` data has monthly observations of atmospheric CO2 from 1959 to 1997.
+
+```{r}
+co2
+```
+
+This is a time series object, which is displayed as a rectangle, but does not have variable names and doesn't work like a data frame (or tibble).
+
+Suppose instead, someone gave you this data formatted as a data frame with each month in its own column:
+
+```{r}
+co2M <- matrix(co2, 39, 12, byrow = TRUE)
+colnames(co2M) <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+co2DF <- as_tibble(co2M) %>% mutate(Year = 1959:1997) %>% select(Year, everything())
+co2DF
+```
+
+Now, use `pivot_longer` to reshape this into a "tidy" data frame with a column for year, a column for month, and a column for CO2 concentration.
+
+```{r}
+
+
+```
+
+
+## Formatting tables
+
+Compute the average annual pCO2 for each year, then show this as a table. Add a caption.
+
+```{r}
+
+
+```
+
+Compute the average by decade, discarding partial decades (1950s and 1990s).
+
+```{r}
+
+```
+
+Find the lowest and highest pCO2 for each year and show that in a table.
+
+```{r}
+
+```
+
+Return to the `mpg` dataset and make some nice looking tables.
+
+```{r}
+
+
+```
+
+Look at the examples [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) and experiment with some of the formatting options. Use `mpg` instead of `mtcars`.
+
+```{r}
+
+
+```
+
+
+
+
+## Getting help
+
+Pick a task related to something you know how to do and try to learn how to do this.
+
+Use the following methods:
+
+### Read a help page in Rstudio
+
+A good idea here is to think of a function you know a bit about and read its help page.
+
+```{r}
+
+
+```
+
+
+### Read the documentation for ggplot at the tidyverse
+
+```{r}
+
+```
+
+
+### Look at a figure in the R Graph Gallery
+
+And try to reconstruct it.
+
+```{r}
+
+
+```
+

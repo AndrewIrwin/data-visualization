@@ -126,28 +126,54 @@ Displaying tables practice. The tasks are in the repository for task 7 and 8.
 
 The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
 
-### Task 11 (Lesson X) {#task-11 .unnumbered}
+### Task 9 (Lesson 15) {#task-9 .unnumbered}
+
 Work with models
 
-### Task 12 (Lesson X) {#task-12 .unnumbered}
-Add smooths to plots
+### Task 10 (Lesson 16) {#task-10 .unnumbered}
 
-### Task 13 (Lesson X) {#task-13 .unnumbered}
+Linear models
+
+### Bonus task (Lesson 17) {#task-b7 .unnumbered}
+
+LOESS and GAM.
+
+### Task 11 (Lesson 18) {#task-11 .unnumbered}
+
 PCA
 
-### Task 14 (Lesson X) {#task-14 .unnumbered}
-MDS, Kmeans
+### Task 12 (Lesson 19) {#task-12 .unnumbered}
 
-### Task 15 (Lesson X) {#task-15 .unnumbered}
+MDS
+
+### Bonus task (Lesson 20) {#task-b8 .unnumbered}
+
+Kmeans
+
+
+### Task 13 (Lesson 21) {#task-13 .unnumbered}
+
+Collaboration and reproducible reports
+
+### Task 14 (Lesson 22) {#task-14 .unnumbered}
+
+Slide presentations
+
+### Task 15 (Lesson 21) {#task-15 .unnumbered}
+
+Collaboration
+
+
+
+### Task 16 (Lesson X) {#task-16 .unnumbered}
 
 Using scales effectively. Improving figures.
 Diverging continuous colour
 Colour blind tester
 Hiding guides. Unifying guides.
 
-
-### Task 16 (Lesson X) {#task-16 .unnumbered}
 ### Task 17 (Lesson X) {#task-17 .unnumbered}
+
 ### Task 18 (Lesson X) {#task-18 .unnumbered}
 
 

@@ -53,9 +53,11 @@
 <li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
 <li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">18</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">19</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -199,13 +201,13 @@
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##   carat cut   color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt; &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.47 Ideal G     IF       62.1  54    1814  4.99  5.02  3.11
-## 2  0.51 Ideal F     VVS2     62.2  57    2082  5.12  5.14  3.19
-## 3  0.7  Good  F     VS1      64    57    2381  5.62  5.54  3.57
-## 4  0.54 Good  H     VS1      63.2  60    1361  5.13  5.16  3.25
-## 5  0.56 Ideal F     VS1      61.7  55.1  1981  5.29  5.33  3.27</code></pre>
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1.08 Premium   H     SI1      62.6    58  5078  6.53  6.56  4.1 
+## 2  0.51 Ideal     D     SI1      62.9    57  1574  5.12  5.09  3.21
+## 3  1.03 Very Good G     VS2      62.9    56  6164  6.43  6.45  4.05
+## 4  0.54 Ideal     D     SI1      62.9    57  1786  5.22  5.17  3.27
+## 5  0.32 Ideal     F     VS2      62.3    56   828  4.4   4.37  2.73</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
@@ -405,7 +407,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-26.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

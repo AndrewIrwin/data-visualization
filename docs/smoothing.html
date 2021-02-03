@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Welcome | Data Visualization</title>
+<title>Chapter 17 GAM and LOESS smoothing | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">Welcome</a></li>
+<li><a class="" href="index.html">Welcome</a></li>
 <li><a class="" href="syllabus.html">Syllabus</a></li>
 <li><a class="" href="outline.html">Detailed outline</a></li>
 <li><a class="" href="sync.html">Synchronous meeting agendas</a></li>
@@ -53,7 +53,7 @@
 <li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
 <li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
-<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="active" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
@@ -66,86 +66,47 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="welcome" class="section level1 unnumbered">
-<h1>Welcome<a class="anchor" aria-label="anchor" href="#welcome"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="smoothing" class="section level1" number="17">
+<h1>
+<span class="header-section-number">17</span> GAM and LOESS smoothing<a class="anchor" aria-label="anchor" href="#smoothing"><i class="fas fa-link"></i></a>
 </h1>
-<p>Data visualization is a critical skill for anyone interested in using data to think and persuade.</p>
-<p>This course focusses on three aspects of data visualization:</p>
-<ul>
-<li>What makes a good data visualization?</li>
-<li>Designing, improving, and communicating with visualizations, and</li>
-<li>the technical computer skills needed to create visualizations.</li>
-</ul>
-<div id="what-is-data-visualization" class="section level2 unnumbered">
-<h2>What is Data Visualization?<a class="anchor" aria-label="anchor" href="#what-is-data-visualization"><i class="fas fa-link"></i></a>
+<p>In this lesson I will show you how to create GAM and LOESS models and perform some basic tasks to interact with the R model objects that the functions create. In keeping with the goals of the course, we will primarily focus on using the models for visualization and not attempt a detailed statistical analysis of when and why you might use a particular model for inference.</p>
+<div id="generalized-additive-models" class="section level2" number="17.1">
+<h2>
+<span class="header-section-number">17.1</span> Generalized Additive Models<a class="anchor" aria-label="anchor" href="#generalized-additive-models"><i class="fas fa-link"></i></a>
 </h2>
-<p>Data visualization is the practice of turning data into graphics. Good graphics are more easily interpreted than the raw data. A well-designed visualization is faithful to the original data and does not mislead the intended audience. Almost every data visualization is a simplification and approximation of a raw dataset, and thus involves a perspective–the goals and biases of the person producing the visualization.</p>
-<p>Data visualization approaches vary. For some purposes, highly customized graphic design and visual style are paramount. That’s not our focus. We emphasize standardized graphical presentations – which span a wide variety of visualizations – that minimize the use of graphical elements not directly linked to the data.</p>
 </div>
-<div id="what-is-the-purpose-of-data-visualization" class="section level2 unnumbered">
-<h2>What is the purpose of data visualization?<a class="anchor" aria-label="anchor" href="#what-is-the-purpose-of-data-visualization"><i class="fas fa-link"></i></a>
+<div id="locally-estimated-scatterplot-smoothing-loess" class="section level2" number="17.2">
+<h2>
+<span class="header-section-number">17.2</span> Locally Estimated Scatterplot Smoothing (LOESS)<a class="anchor" aria-label="anchor" href="#locally-estimated-scatterplot-smoothing-loess"><i class="fas fa-link"></i></a>
 </h2>
-<p>Data visualization is used to help tell <a href="https://clauswilke.com/dataviz/telling-a-story.html">stories</a> with data. The usual goal is to communicate an interpretation of a dataset to a particular audience, to make an argument you have worked out from an analysis of the data. The visualization is a device to help you do that. Visualizations are best when accompanied by written explanations; even if a <a href="https://en.wikipedia.org/wiki/A_picture_is_worth_a_thousand_words">picture is worth a thousand words</a>, visualizations do not usually stand on their own. Once the message is understood and internalized, a good visualization can sometimes tell the story “by itself”.</p>
 </div>
-<div id="goals" class="section level2 unnumbered">
-<h2>Course Goals<a class="anchor" aria-label="anchor" href="#goals"><i class="fas fa-link"></i></a>
+<div id="further-reading-11" class="section level2" number="17.3">
+<h2>
+<span class="header-section-number">17.3</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-11"><i class="fas fa-link"></i></a>
 </h2>
-<p>By the end of the course you will be familiar with several aspects of data visualzation.</p>
-<p><em>Visual impact and aesthetic aspects of graphics</em></p>
 <ul>
-<li>Understand the relationship between the structure of your data and the perceptual features of your graphics.</li>
-<li>Describe aesthetic features of good plots.</li>
-<li>Use length, shape, size, colour, annotations, and other features to effectively display data and enable comparitive visual interpretation.</li>
-</ul>
-<p><em>Visualization as communication</em></p>
-<ul>
-<li>Visualization is a visual language for communication, which should be accompanied by written interpretations</li>
-<li>Communication effectiveness should be evaluated by peer-review and critical, constructive feedback</li>
-<li>Visualizations should be developed through an iterative process akin to editing text, including the process of refining plots to highlight key features of the data, labeling items of interest, annotating plots, and changing overall appearance</li>
-<li>Visualizations can be presented in different formats for different audiences and different communications goals</li>
-</ul>
-<p><em>Computing skills</em></p>
-<ul>
-<li>Learn the basics of using R, Rstudio, several R add-on packages, and git</li>
-<li>Read data in several different formats into R</li>
-<li>Create graphs with ggplot2 for continuous and categorical variables with informative legends.</li>
-<li>Add error bars, linear models, smooths, labels, and other annotations to a graph</li>
-<li>Create small-multiple (facetted) plots.</li>
-<li>Use the principles of <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidy data</a> tables to facilitate transformation and analysis of data. Reshape data to make it tidy.</li>
-<li>Summarize and transform data using dplyr</li>
-<li>Reshape data using pivots</li>
-<li>Create maps and some alternatives for presenting spatial data.</li>
-<li>Write reproducible documents with R markdown to document your analysis process and present your results</li>
-<li>Distribute data, code, and results using git and github</li>
-<li>Access and interpret help resources (built-in help, vignettes, web pages, online discussion forums, blogs).</li>
-<li>Develop skills for independently learning new data visualization methods and software</li>
-</ul>
-<p><em>Statistical models</em></p>
-<ul>
-<li>Use a variety of modeling techniques such as LOESS, OLS, robust regression, polynomial regression, and quantile regression</li>
-<li>Learn how to extract model information to compare different statistical models</li>
-<li>Use principal component analysis (PCA) to reduce the dimensionality of complex datasets, increasing interpretability while minimizing information loss</li>
-<li>Use multidimensional scaling (MDS) to visualize and compare similarities and dissimilarities between variables</li>
-<li>Divide observations into homogeneous and distinct groups using K-means</li>
+<li><a href="https://en.wikipedia.org/wiki/Local_regression">LOESS (Wikipedia)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Generalized_additive_model">Generalized additive models (Wikipedia)</a></li>
 </ul>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="next"><a href="syllabus.html">Syllabus</a></div>
+<div class="prev"><a href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></div>
+<div class="next"><a href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#welcome">Welcome</a></li>
-<li><a class="nav-link" href="#what-is-data-visualization">What is Data Visualization?</a></li>
-<li><a class="nav-link" href="#what-is-the-purpose-of-data-visualization">What is the purpose of data visualization?</a></li>
-<li><a class="nav-link" href="#goals">Course Goals</a></li>
+<li><a class="nav-link" href="#smoothing"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="nav-link" href="#generalized-additive-models"><span class="header-section-number">17.1</span> Generalized Additive Models</a></li>
+<li><a class="nav-link" href="#locally-estimated-scatterplot-smoothing-loess"><span class="header-section-number">17.2</span> Locally Estimated Scatterplot Smoothing (LOESS)</a></li>
+<li><a class="nav-link" href="#further-reading-11"><span class="header-section-number">17.3</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/index.rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/index.rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/120-gam-loess.rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/120-gam-loess.rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

@@ -53,9 +53,11 @@
 <li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
 <li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="active" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">18</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">19</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -74,7 +76,7 @@
 <h2>
 <span class="header-section-number">16.1</span> Making linear models<a class="anchor" aria-label="anchor" href="#making-linear-models"><i class="fas fa-link"></i></a>
 </h2>
-<p>We will always make linear models with variables from a data frame. Designate one variable the response variable, which we will attempt to predict using one or more other variables, called predictors. You are not restricted to variables in your data frame; you can transform the variables first, for example by squaring, taking logarithms, or applying some other function. Additionally, you can use categorical (or factor) variables as predictors and are not restricted to only quantitative variables. Be aware that the more variables or transformations you add to your list of predictors, the more likely they will be correlated and your model will be very hard to interpret. These issues are discussed in statistics courses on regression.</p>
+<p>We will always make linear models with variables from a data frame. Designate one variable the response variable, which we will attempt to predict using one or more other variables, called predictors. You are not restricted to variables in your data frame; you can transform the variables first, for example by squaring, taking logarithms, or applying some other function. Additionally, you can use categorical (or factor) variables as predictors and in combination with quantitative variables. Be aware that the more variables or transformations you add to your list of predictors, the more likely they will be correlated and your model will be very hard to interpret. These issues are discussed in statistics courses on regression.</p>
 <p>Once your data frame is created, write the linear model as a “formula” object, meaning as an equation but with a <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code> instead of an <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> to indicate that you are modelling the left hand side and allowing for a specific model for the mismatch between predictors and response.</p>
 <p>We have seen that the price of a diamond increases a bit faster than linearly as the mass of the diamond increases, we will try both a linear model and a quadratic model for data in the <code>diamonds</code> dataframe.</p>
 <div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
@@ -360,7 +362,7 @@
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="working-models.html"><span class="header-section-number">15</span> Working with models</a></div>
-<div class="next"><a href="data-sources.html"><span class="header-section-number">17</span> Data sources</a></div>
+<div class="next"><a href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -389,7 +391,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-01-26.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
