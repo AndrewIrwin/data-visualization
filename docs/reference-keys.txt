@@ -180,6 +180,7 @@ working-models
 adding-smooths-to-a-visualization
 putting-several-models-on-a-single-plot
 smooths-on-facetted-plots
+summary-1
 further-reading-9
 linear-models
 making-linear-models

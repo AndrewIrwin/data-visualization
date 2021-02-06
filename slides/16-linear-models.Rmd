@@ -267,7 +267,7 @@ class: middle, inverse
 
 ## Task
 
-Task 9: fitting and using linear models.
+Task 9: Fitting and using linear models.
 
 
 

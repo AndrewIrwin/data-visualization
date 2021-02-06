@@ -77,7 +77,7 @@
 <li>displaying data and summaries as tables and figures.</li>
 </ul>
 <p>Models are another way to condense data or highlight patterns. Models are sometimes used for statistical inference, but that’s not our focus in this course. We will use models as tools for adding features to a visualization.</p>
-<p>R can be used to make a huge number of models. We will look at two broad classes over the next six lessons:</p>
+<p>R can be used to make a huge number of models. We will look at two broad classes over six lessons:</p>
 <ul>
 <li>regression and smoothing of one variable as a function of another, and</li>
 <li>transforming, simplification, and grouping of observations in data with many (more than 2) variables.</li>
@@ -105,17 +105,17 @@ In the next two lessons we will take a closer look at these models, in particula
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, 
                  formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">x</span>, df<span class="op">=</span><span class="fl">5</span>, degree<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-103-1.png" width="672"></div>
-<p>Another way to describe a cubic spline is with a generalized additive model (or GAM).</p>
+<p>Another way to describe a cubic spline is with a generalized additive model (or GAM). This model is quite a bit more sophisticated than the previous spline. Depending on the data, the model fitting process will add or remove oscillations (“wiggles”) from the curve.</p>
 <div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"gam"</span>, 
                  formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fu">s</span><span class="op">(</span><span class="va">x</span>, bs <span class="op">=</span> <span class="st">"cs"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-104-1.png" width="672"></div>
-<p>Another method is called <a href="https://en.wikipedia.org/wiki/Local_regression">LOESS</a> (locally estimated scatterplot smoothing) which does not require you to describe a model (line, cubic spline, etc.) for the data. Instead the model takes small subsets of the data along the independent variable and makes many models (usually first or second degree polynomials) and joins them together.</p>
+<p>Another data smoothing method is called <a href="https://en.wikipedia.org/wiki/Local_regression">LOESS</a> (locally estimated scatterplot smoothing) which does not require you to describe a model (line, cubic spline, etc.) for the data. Instead the model takes small subsets of the data along the independent variable and makes many models (usually first or second degree polynomials) and joins them together.</p>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"loess"</span>,
                  formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-105-1.png" width="672"></div>
-<p>As a final example we can try quantile regression. This will make lines to approximate a specific quantile (5%, 50%, 95% shown below) instead of a mean. This might be a good idea for these data in particular since for each year we have a range of countries spanning a large distribution of GDP per capita.</p>
+<p>As a final example we can try quantile regression. This will make lines to approximate a specific quantile (10%, 50%, 90% are shown below) instead of a mean. This might be a good idea for these data in particular since for each year we have a range of countries spanning a large distribution of GDP per capita, so the analysis allows us to see how the short, median, and long life expectancies have changed over time. The slope of the 10 and 90 percentiles seems to be very similar, but the median life expectancy has increased faster, as countries have shifted from low life expectancy to high life expectancy.</p>
 <div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_quantile.html">geom_quantile</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, 
                    method <span class="op">=</span> <span class="st">"rq"</span>, 
@@ -126,6 +126,7 @@ In the next two lessons we will take a closer look at these models, in particula
 <h2>
 <span class="header-section-number">15.2</span> Putting several models on a single plot<a class="anchor" aria-label="anchor" href="#putting-several-models-on-a-single-plot"><i class="fas fa-link"></i></a>
 </h2>
+<p>In this example I’ll show you how you can plot more than one smooth on the same plot (easily, but adding multiple smooths together with <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>) and how to add a legend and control the colours used for each line. You can learn more about colours on this <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">cheatsheet</a> and you can get a list of all colour names with the function <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code>.</p>
 <div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, 
                  formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, 
@@ -133,10 +134,10 @@ In the next two lessons we will take a closer look at these models, in particula
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"loess"</span>, 
               formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, 
               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"LOESS"</span>, fill <span class="op">=</span> <span class="st">"LOESS"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Linear"</span>, <span class="st">"LOESS"</span><span class="op">)</span>, 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Smooth"</span>,  
                      values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"salmon"</span>, <span class="st">"limegreen"</span> <span class="op">)</span> <span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Linear"</span>, <span class="st">"LOESS"</span><span class="op">)</span>, 
-                     values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"salmon"</span>, <span class="st">"limegreen"</span> <span class="op">)</span> <span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Smooth"</span>, 
+                    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"salmon"</span>, <span class="st">"limegreen"</span> <span class="op">)</span> <span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-107-1.png" width="672"></div>
 </div>
@@ -144,17 +145,24 @@ In the next two lessons we will take a closer look at these models, in particula
 <h2>
 <span class="header-section-number">15.3</span> Smooths on facetted plots<a class="anchor" aria-label="anchor" href="#smooths-on-facetted-plots"><i class="fas fa-link"></i></a>
 </h2>
-<p>Let’s make five factets, one for each country, and add a smooth to each panel.</p>
+<p>Smoothing works really easily on facetted plots. Simply adding a facet function to a plot will make a different smooth for each facet.</p>
+<p>We will make lots of facets, one for each country, and add a smooth to each panel.</p>
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">country</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>,
               formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">x</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-108-1.png" width="672"></div>
-<p>This is not an idea facetted plot – there are probably too many facets (countries) and the text labels don’t fit well in the space. You might draw a plot like this for yourself to explore the data and plan an analysis or other plot.</p>
+<p>This is not an ideal facetted plot – there are too many facets (countries) and the text labels don’t fit well in the space available. You might draw a plot like this for yourself to explore the data and plan an analysis or other plot.</p>
 </div>
-<div id="further-reading-9" class="section level2" number="15.4">
+<div id="summary-1" class="section level2" number="15.4">
 <h2>
-<span class="header-section-number">15.4</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">15.4</span> Summary<a class="anchor" aria-label="anchor" href="#summary-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>You’ve learned how to add linear regressions (<code>lm</code>), and smooths (<code>gam</code>, <code>loess</code>) to plots.</p>
+</div>
+<div id="further-reading-9" class="section level2" number="15.5">
+<h2>
+<span class="header-section-number">15.5</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-9"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>In the next lesson we look at linear models in a bit more detail, showing how to extract residuals, predictions, and confidence intervals.</li>
@@ -173,7 +181,8 @@ In the next two lessons we will take a closer look at these models, in particula
 <li><a class="nav-link" href="#adding-smooths-to-a-visualization"><span class="header-section-number">15.1</span> Adding smooths to a visualization</a></li>
 <li><a class="nav-link" href="#putting-several-models-on-a-single-plot"><span class="header-section-number">15.2</span> Putting several models on a single plot</a></li>
 <li><a class="nav-link" href="#smooths-on-facetted-plots"><span class="header-section-number">15.3</span> Smooths on facetted plots</a></li>
-<li><a class="nav-link" href="#further-reading-9"><span class="header-section-number">15.4</span> Further reading</a></li>
+<li><a class="nav-link" href="#summary-1"><span class="header-section-number">15.4</span> Summary</a></li>
+<li><a class="nav-link" href="#further-reading-9"><span class="header-section-number">15.5</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -191,7 +200,7 @@ In the next two lessons we will take a closer look at these models, in particula
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-05.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
