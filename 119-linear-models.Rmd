@@ -135,7 +135,7 @@ glance(linear_model1) %>% kable()
 The `augment` function makes it easy to plot residuals and predicted values for many models (see `?augment`). We can use `augment` on the model object to get a data frame with the data used in the model plus fitted (predicted) values, residuals, and other quantities.  You can add the other data not provided in the model object by including `data = diamonds` in the augment function (output not shown.)
  
 ```{r}
-augment(linear_model1, interval = "prediction") %>% head() %>% kable()
+augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
 # augment(linear_model1, interval = "prediction", data = diamonds) %>% head()
 ```
 

@@ -218,31 +218,32 @@ s(year_fraction)
 </table></div>
 <p>It is often useful to compute residuals and extract predicted values.</p>
 <div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">co2</span> <span class="op">%&gt;%</span> <span class="fu">add_residuals</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">add_fitted</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="va">co2</span> <span class="op">%&gt;%</span> <span class="fu">add_residuals</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">add_fitted</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="fu">scroll_box</span><span class="op">(</span>height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 year
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 month
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 decimal_date
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 co2_avg
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 year_fraction
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 co2_anomaly
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 .residual
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 .value
 </th>
 </tr></thead>
@@ -3343,6 +3344,7 @@ co2_anomaly
 </tr>
 </tbody>
 </table></div>
+</div>
 <p>If we generate new data (dates), we can plot predictions too. Since the model is a piecewise cubic function, extrapolations are often dramatically unreliable. The downward facing cubic in the last “bump” is simply continued, with comically bad results. Extrapolation of models, and especially smooths, is somewhere between risky and foolish!</p>
 <div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>decimal_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2017</span>, <span class="fl">2022</span>, by <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span>
@@ -3353,31 +3355,32 @@ co2_anomaly
 <div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-140-1.png" width="672"></div>
 <p>If you want confidence intervals on the fitted values, use the <code>confint</code> function together with the name of the smooth you are extracting. Be aware that this function does not include the intercept (or grand mean) from the model, so the values are all centred on zero.</p>
 <div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">g1</span>, <span class="st">"s(year_fraction)"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">g1</span>, <span class="st">"s(year_fraction)"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="fu">scroll_box</span><span class="op">(</span>height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 smooth
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 by_variable
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 year_fraction
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 est
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 se
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 crit
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 lower
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 upper
 </th>
 </tr></thead>
@@ -8384,6 +8387,7 @@ s(year_fraction)
 </tr>
 </tbody>
 </table></div>
+</div>
 <div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">g1</span>, <span class="st">"s(year_fraction)"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year_fraction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -8393,7 +8397,7 @@ s(year_fraction)
 <p>You can also use <code>lm</code> to fit splines; these are similar to GAMs but there are some important differences. The <code>mgcv</code> package has a lot of features not available with <code>lm</code>.</p>
 <div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">co2_avg</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">decimal_date</span>, df <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span>
-<span class="fu">tidy</span><span class="op">(</span><span class="va">s1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu">tidy</span><span class="op">(</span><span class="va">s1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:left;">
@@ -8418,16 +8422,16 @@ p.value
 (Intercept)
 </td>
 <td style="text-align:right;">
-391.7336781
+391.73
 </td>
 <td style="text-align:right;">
-1.127184
+1.13
 </td>
 <td style="text-align:right;">
-347.533024
+347.53
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00
 </td>
 </tr>
 <tr>
@@ -8435,16 +8439,16 @@ p.value
 splines::bs(decimal_date, df = 5)1
 </td>
 <td style="text-align:right;">
-0.6389194
+0.64
 </td>
 <td style="text-align:right;">
-2.157615
+2.16
 </td>
 <td style="text-align:right;">
-0.296123
+0.30
 </td>
 <td style="text-align:right;">
-0.7676797
+0.77
 </td>
 </tr>
 <tr>
@@ -8452,16 +8456,16 @@ splines::bs(decimal_date, df = 5)1
 splines::bs(decimal_date, df = 5)2
 </td>
 <td style="text-align:right;">
-6.8676072
+6.87
 </td>
 <td style="text-align:right;">
-1.465102
+1.47
 </td>
 <td style="text-align:right;">
-4.687459
+4.69
 </td>
 <td style="text-align:right;">
-0.0000078
+0.00
 </td>
 </tr>
 <tr>
@@ -8469,16 +8473,16 @@ splines::bs(decimal_date, df = 5)2
 splines::bs(decimal_date, df = 5)3
 </td>
 <td style="text-align:right;">
-14.4854140
+14.49
 </td>
 <td style="text-align:right;">
-1.982180
+1.98
 </td>
 <td style="text-align:right;">
-7.307821
+7.31
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00
 </td>
 </tr>
 <tr>
@@ -8486,16 +8490,16 @@ splines::bs(decimal_date, df = 5)3
 splines::bs(decimal_date, df = 5)4
 </td>
 <td style="text-align:right;">
-21.0084436
+21.01
 </td>
 <td style="text-align:right;">
-1.615398
+1.62
 </td>
 <td style="text-align:right;">
-13.005118
+13.01
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00
 </td>
 </tr>
 <tr>
@@ -8503,22 +8507,22 @@ splines::bs(decimal_date, df = 5)4
 splines::bs(decimal_date, df = 5)5
 </td>
 <td style="text-align:right;">
-22.1446312
+22.14
 </td>
 <td style="text-align:right;">
-1.639829
+1.64
 </td>
 <td style="text-align:right;">
-13.504231
+13.50
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00
 </td>
 </tr>
 </tbody>
 </table></div>
 <div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">s1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">s1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:right;">
@@ -8560,16 +8564,16 @@ nobs
 </tr></thead>
 <tbody><tr>
 <td style="text-align:right;">
-0.9065101
+0.91
 </td>
 <td style="text-align:right;">
-0.9023734
+0.9
 </td>
 <td style="text-align:right;">
-2.309876
+2.31
 </td>
 <td style="text-align:right;">
-219.1373
+219.14
 </td>
 <td style="text-align:right;">
 0
@@ -8578,16 +8582,16 @@ nobs
 5
 </td>
 <td style="text-align:right;">
--265.4015
+-265.4
 </td>
 <td style="text-align:right;">
-544.803
+544.8
 </td>
 <td style="text-align:right;">
-564.2569
+564.26
 </td>
 <td style="text-align:right;">
-602.9148
+602.91
 </td>
 <td style="text-align:right;">
 113
@@ -8636,22 +8640,23 @@ nobs
 ## drop.square:  FALSE</code></pre>
 <p>We can use <code>predict</code>, <code>residuals</code> and <code>augment</code> on these model objects as we did for <code>lm</code> fits in the previous lesson.</p>
 <div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">l1</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">l1</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>  <span class="fu">scroll_box</span><span class="op">(</span>height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 co2_anomaly
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 year_fraction
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 .fitted
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 .se.fit
 </th>
-<th style="text-align:right;">
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 .resid
 </th>
 </tr></thead>
@@ -10681,6 +10686,7 @@ year_fraction
 </tr>
 </tbody>
 </table></div>
+</div>
 <div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">l1</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year_fraction</span>, y <span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 

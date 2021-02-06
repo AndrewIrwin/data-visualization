@@ -126,17 +126,18 @@ Displaying tables practice. The tasks are in the repository for task 7 and 8.
 
 The material in this lesson should be helpful if you run into challenges while working on Assignment 2, which asks you to develop new skills with unfamiliar functions.
 
-### Task 9 (Lesson 15) {#task-9 .unnumbered}
+### Bonus task (Lesson 15) {#task-b7 .unnumbered}
 
-Work with models
+Practice adding linear models and smooths to visualizations. Reproduce some of the examples from the course notes, mini-lecture, or course textbook. Create new visualizations of your own design by changing the model, data, or underlying visualization. Esperiment with colors and facets. 
 
-### Task 10 (Lesson 16) {#task-10 .unnumbered}
+### Task 9 (Lesson 16) {#task-9 .unnumbered}
 
-Linear models
+Exercises on linear models. See the file `task-9.rmd` in the repository for task 9 and 10.
 
-### Bonus task (Lesson 17) {#task-b7 .unnumbered}
+### Task 10 (Lesson 17) {#task-10 .unnumbered}
 
-LOESS and GAM.
+Exercises on LOESS and GAM smooths. 
+See the file `task-10.rmd` in the repository for task 9 and 10.
 
 ### Task 11 (Lesson 18) {#task-11 .unnumbered}
 

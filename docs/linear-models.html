@@ -426,7 +426,7 @@ nobs
 </table></div>
 <p>The <code>augment</code> function makes it easy to plot residuals and predicted values for many models (see <code>?augment</code>). We can use <code>augment</code> on the model object to get a data frame with the data used in the model plus fitted (predicted) values, residuals, and other quantities. You can add the other data not provided in the model object by including <code>data = diamonds</code> in the augment function (output not shown.)</p>
 <div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">linear_model1</span>, interval <span class="op">=</span> <span class="st">"prediction"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">linear_model1</span>, interval <span class="op">=</span> <span class="st">"prediction"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:right;">
@@ -469,28 +469,28 @@ carat
 0.23
 </td>
 <td style="text-align:right;">
--472.382688
+-472.38
 </td>
 <td style="text-align:right;">
--3507.645
+-3507.64
 </td>
 <td style="text-align:right;">
-2562.880
+2562.88
 </td>
 <td style="text-align:right;">
-798.3827
+798.38
 </td>
 <td style="text-align:right;">
-0.5155756
+0.52
 </td>
 <td style="text-align:right;">
-4.52e-05
+0
 </td>
 <td style="text-align:right;">
-1548.572
+1548.57
 </td>
 <td style="text-align:right;">
-6.0e-06
+0
 </td>
 </tr>
 <tr>
@@ -501,28 +501,28 @@ carat
 0.21
 </td>
 <td style="text-align:right;">
--627.511200
+-627.51
 </td>
 <td style="text-align:right;">
--3662.776
+-3662.78
 </td>
 <td style="text-align:right;">
-2407.754
+2407.75
 </td>
 <td style="text-align:right;">
-953.5112
+953.51
 </td>
 <td style="text-align:right;">
-0.6157543
+0.62
 </td>
 <td style="text-align:right;">
-4.71e-05
+0
 </td>
 <td style="text-align:right;">
-1548.571
+1548.57
 </td>
 <td style="text-align:right;">
-8.9e-06
+0
 </td>
 </tr>
 <tr>
@@ -533,28 +533,28 @@ carat
 0.23
 </td>
 <td style="text-align:right;">
--472.382688
+-472.38
 </td>
 <td style="text-align:right;">
--3507.645
+-3507.64
 </td>
 <td style="text-align:right;">
-2562.880
+2562.88
 </td>
 <td style="text-align:right;">
-799.3827
+799.38
 </td>
 <td style="text-align:right;">
-0.5162214
+0.52
 </td>
 <td style="text-align:right;">
-4.52e-05
+0
 </td>
 <td style="text-align:right;">
-1548.572
+1548.57
 </td>
 <td style="text-align:right;">
-6.0e-06
+0
 </td>
 </tr>
 <tr>
@@ -565,28 +565,28 @@ carat
 0.29
 </td>
 <td style="text-align:right;">
--6.997151
+-7.00
 </td>
 <td style="text-align:right;">
--3042.251
+-3042.25
 </td>
 <td style="text-align:right;">
-3028.257
+3028.26
 </td>
 <td style="text-align:right;">
-340.9972
+341.00
 </td>
 <td style="text-align:right;">
-0.2202069
+0.22
 </td>
 <td style="text-align:right;">
-3.98e-05
+0
 </td>
 <td style="text-align:right;">
-1548.576
+1548.58
 </td>
 <td style="text-align:right;">
-1.0e-06
+0
 </td>
 </tr>
 <tr>
@@ -597,28 +597,28 @@ carat
 0.31
 </td>
 <td style="text-align:right;">
-148.131361
+148.13
 </td>
 <td style="text-align:right;">
--2887.120
+-2887.12
 </td>
 <td style="text-align:right;">
-3183.383
+3183.38
 </td>
 <td style="text-align:right;">
-186.8686
+186.87
 </td>
 <td style="text-align:right;">
-0.1206747
+0.12
 </td>
 <td style="text-align:right;">
-3.82e-05
+0
 </td>
 <td style="text-align:right;">
-1548.576
+1548.58
 </td>
 <td style="text-align:right;">
-3.0e-07
+0
 </td>
 </tr>
 <tr>
@@ -629,28 +629,28 @@ carat
 0.24
 </td>
 <td style="text-align:right;">
--394.818432
+-394.82
 </td>
 <td style="text-align:right;">
--3430.079
+-3430.08
 </td>
 <td style="text-align:right;">
-2640.442
+2640.44
 </td>
 <td style="text-align:right;">
-730.8184
+730.82
 </td>
 <td style="text-align:right;">
-0.4719441
+0.47
 </td>
 <td style="text-align:right;">
-4.42e-05
+0
 </td>
 <td style="text-align:right;">
-1548.573
+1548.57
 </td>
 <td style="text-align:right;">
-4.9e-06
+0
 </td>
 </tr>
 </tbody>

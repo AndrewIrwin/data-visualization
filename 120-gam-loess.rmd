@@ -74,7 +74,7 @@ tidy(g1) %>% kable()
 It is often useful to compute residuals and extract predicted values.
 
 ```{r}
-co2 %>% add_residuals(g1) %>% add_fitted(g1) %>% kable() 
+co2 %>% add_residuals(g1) %>% add_fitted(g1) %>% kable() %>%  scroll_box(height = "200px")
 ```
 
 If we generate new data (dates), we can plot predictions too. Since the model is a piecewise cubic function, extrapolations are often dramatically unreliable. The downward facing cubic in the last "bump" is simply continued, with comically bad results. Extrapolation of models, and especially smooths, is somewhere between risky and foolish!
@@ -90,7 +90,7 @@ new_data %>% add_fitted(g3) %>%
 If you want confidence intervals on the fitted values, use the `confint` function together with the name of the smooth you are extracting.  Be aware that this function does not include the intercept (or grand mean) from the model, so the values are all centred on zero.
 
 ```{r}
-confint(g1, "s(year_fraction)", level = 0.95) %>% kable()
+confint(g1, "s(year_fraction)", level = 0.95) %>% kable() %>%  scroll_box(height = "200px")
 confint(g1, "s(year_fraction)", level = 0.95) %>% 
   ggplot(aes(year_fraction)) + 
   geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.25) + 
@@ -101,8 +101,8 @@ You can also use `lm` to fit splines; these are similar to GAMs but there are so
 
 ```{r}
 s1 <- lm(co2_avg ~ splines::bs(decimal_date, df = 5), data = co2)
-tidy(s1) %>% kable()
-glance(s1) %>% kable()
+tidy(s1) %>% kable(digits = 2)
+glance(s1) %>% kable(digits = 2)
 ```
 We can use `augment` to generate data to plot and combine it with the original data.
 
@@ -135,7 +135,7 @@ summary(l1)
 We can use `predict`, `residuals` and `augment` on these model objects as we did for `lm` fits in the previous lesson.
 
 ```{r}
-augment(l1, se_fit = TRUE) %>% kable()
+augment(l1, se_fit = TRUE) %>% kable() %>%  scroll_box(height = "200px")
 augment(l1, se_fit = TRUE) %>%
   ggplot(aes(x = year_fraction, y = .fitted)) + 
   geom_line() + 
