@@ -1,0 +1,275 @@
+---
+title: "Data Visualization"
+subtitle: "Linear models"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-02-10 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(broom)
+library(equatiomatic)
+library(kableExtra)
+library(gapminder)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+##  Linear models
+
+* Describing, fitting, and using models
+
+* Linear regression
+
+  * Straight lines
+  * Polynomials
+  * log transforms
+  
+* Quantile regression
+
+* Accessing model coefficients 
+
+* Calculating residuals
+
+* Making predictions: point estimates and standard errors or confidence intervals
+
+
+
+---
+class: middle
+###  Start with a basic graph
+
+```{r, fig.height=4.5, fig.align="center", echo = FALSE}
+my_mpg <- mpg %>% mutate(city_l100km = 235.214583 / cty) 
+p <- my_mpg %>%
+   ggplot(aes(x =displ, y= city_l100km)) + geom_point() +
+   labs(x = "Engine displacement (L)",
+        y = "Fuel economy, city (L/100km)") + my_theme
+p
+```
+
+---
+class: middle
+### Fit a straight line
+
+```{r, fig.height=5, fig.align="center"}
+m1 <- lm( city_l100km ~ displ, data = my_mpg)
+summary(m1)
+```
+
+
+---
+class: middle
+### Fit a straight line
+
+```{r}
+library(broom)
+glance(m1)  %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+tidy(m1) %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+```
+
+---
+class: middle
+### Graph estimated terms
+
+```{r fig.height=5, fig.align="center"}
+tidy(m1, conf.int = TRUE) %>%
+  ggplot(aes(y = term, x = estimate, xmin = conf.low, xmax = conf.high)) + 
+  geom_pointrange() + my_theme
+```
+
+---
+class: middle
+### Polynomial regression
+
+```{r, fig.height=5, fig.align="center"}
+m2 <- lm( city_l100km ~ poly(displ,2), data = my_mpg)
+glance(m2) %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+tidy(m2) %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+```
+
+
+---
+class: middle
+###  Log transforms
+
+```{r, fig.height=5, fig.align="center"}
+gapminder %>% ggplot(aes(x = gdpPercap, y= lifeExp)) + geom_point() +
+  scale_x_log10() + 
+   geom_smooth(method = "lm", formula = y ~ x) + my_theme
+```
+
+
+---
+class: middle
+###  Log transforms
+
+```{r, fig.height=5, fig.align="center"}
+m3 <- gapminder %>% mutate(logGDPpercap = log10(gdpPercap)) %>%
+  lm( lifeExp ~ logGDPpercap, data = . ) 
+tidy(m3) %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+glance(m3) %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+```
+
+---
+class: middle
+### Quantile regression
+
+```{r  message=FALSE}
+library(quantreg)
+m4 <- my_mpg %>% rq(city_l100km ~ displ, data = .,
+                      tau = 0.50) # quantile, between 0 and 1
+tidy(m4) %>% kable(digits = 2) 
+glance(m4) %>% kable(digits = 2) 
+```
+
+---
+class: middle
+### Working with models: predictions
+
+```{r, fig.height=5, fig.align="center"}
+predict(m1, se.fit = TRUE) %>% as_tibble %>% kable(digits = 2)
+```
+
+---
+class: middle
+### Working with models: residuals
+
+```{r, fig.height=5, fig.align="center"}
+residuals(m1) %>% as_tibble %>% kable(digits = 2)
+```
+
+---
+class: middle
+### Combining with original data
+
+```{r, fig.height=5, fig.align="center"}
+bind_cols(my_mpg %>% select(displ, city_l100km),
+          predict(m1) %>% as_tibble %>% rename(predict = value),
+          residuals(m1) %>% as_tibble %>% rename(residual = value)) %>% kable(digits = 2)
+```
+
+
+---
+class: middle
+### Predictions from new data
+
+```{r, fig.height=5, fig.align="center"}
+new_data = tibble(displ = seq(1.6, 7.2, by = 0.5))
+new_data %>% mutate(prediction = predict(m1, new_data)) %>% kable(digits = 2)
+```
+
+---
+class: middle
+### Model uncertainties
+
+```{r, fig.height=5, fig.align="center"}
+bind_cols(my_mpg %>%  select(displ, city_l100km),
+          predict(m1, se.fit = TRUE) %>% as_tibble) %>%
+ distinct() %>% kable(digits = 2)
+```
+
+---
+class: middle
+### Model confidence intervals
+
+```{r, fig.height=5, fig.align="center"}
+bind_cols(my_mpg %>% select(displ, city_l100km),
+          predict(m1, interval = "confidence") %>% as_tibble) %>%
+  distinct() %>% kable(digits = 2)
+```
+
+
+---
+class: middle
+### Prediction uncertainties
+
+```{r, fig.height=5, fig.align="center"}
+bind_cols(new_data,
+          predict(m1, new_data, interval = "prediction") %>% as_tibble) %>%
+   kable(digits = 2)
+```
+
+---
+class: middle
+### Can also use augment
+
+```{r}
+augment(m1, my_mpg, interval = "confidence") %>%
+  select(displ, city_l100km, .fitted, .lower, .upper, .resid, everything() ) %>% kable(digits =2)
+```
+
+---
+class: middle
+### Same methods for other model types
+
+```{r}
+augment(m2, newdata = new_data, interval = "prediction") %>%
+  kable(digits = 2)
+```
+
+
+---
+class: middle
+### Same methods for other model types
+
+```{r}
+new_data2 = tibble(logGDPpercap = seq(2.3, 5.0, 0.25))
+augment(m3, newdata = new_data2, 
+        interval = "prediction", level = 0.90) %>%
+   kable(digits = 2)
+```
+
+---
+class: middle
+### Same methods for other model types
+
+```{r}
+augment(m4, newdata = new_data, interval = "confidence") %>% kable(digits = 2)
+```
+
+---
+class: middle
+
+# Summary
+
+* Fitting regression models (lines, polynomials, transformations) to means and quantiles
+
+* Extracting model coefficients, uncertainties, errors (with `tidy`) 
+
+* Computing predicted values (with two kinds of errors) and residuals (compared to data)
+
+* Most models can't make predictions from NA. NAs in data can cause problems.
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy Chapter 6. Work with models.
+
+---
+class: middle, inverse
+
+## Task
+
+Task 9: fitting and using linear models.
+
+
+
+
+

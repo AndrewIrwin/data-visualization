@@ -70,16 +70,238 @@
 <h1>
 <span class="header-section-number">17</span> GAM and LOESS smoothing<a class="anchor" aria-label="anchor" href="#smoothing"><i class="fas fa-link"></i></a>
 </h1>
-<p>In this lesson I will show you how to create GAM and LOESS models and perform some basic tasks to interact with the R model objects that the functions create. In keeping with the goals of the course, we will primarily focus on using the models for visualization and not attempt a detailed statistical analysis of when and why you might use a particular model for inference.</p>
+<p>In this lesson I will show you how to create GAM and LOESS models and perform some basic tasks to interact with the R model objects that the functions create. In keeping with the goals of the course, we will primarily focus on using the models for visualization and not attempt a detailed statistical analysis of when and why you might use a particular model for inference. This means we will restrict our attention to some basic uses of these models using one predictor (x) and one response (y) variable.</p>
 <div id="generalized-additive-models" class="section level2" number="17.1">
 <h2>
 <span class="header-section-number">17.1</span> Generalized Additive Models<a class="anchor" aria-label="anchor" href="#generalized-additive-models"><i class="fas fa-link"></i></a>
 </h2>
+<p>Generalized additive models are a kind of linear regression, but instead of finding coefficients of predictor variables (e.g., intercepts, slopes), the model finds a “smooth” response function for each predictor. Typically this means that a piecewise cubic function (spline) is used to approximate the relationship between two variables. We can compute predicted values, confindence and prediction intervals, and show the smooth response function that arised from the model. We don’t obtain a simple list of coefficients like we did with linear regression, because the spline curve is defined by many numbers which are not usually informative on their own.</p>
+<p>Generalized additive models are most commonly used when there is no theoretical motivation for a functional relationship between the variables being studied. We’ll look at the Mauna Loa atmospheric CO2 concentration. These data increase year over year and have well-established interannual oscillations, but there is no clear function for either of these patterns.</p>
+<p>We will start by using the last decade of data from Lesson 1.</p>
+<p>Here is a plot of CO2 over time.</p>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_theme</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span><span class="op">)</span>
+<span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">co2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">decimal_date</span>, <span class="va">co2_avg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="va">my_theme</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Year (decimal)"</span>, y <span class="op">=</span> <span class="st">"Atmospheric CO2 (ppm)"</span><span class="op">)</span>
+<span class="va">p1</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-135-1.png" width="672"></div>
+<p>This plot shows each observation, minus the annual mean, as a function of the time of year but not the actual year. Each year’s observations are overlapped.</p>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">co2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year_fraction</span>, <span class="va">co2_anomaly</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="va">my_theme</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Year fraction (decimal)"</span>, y <span class="op">=</span> <span class="st">"Atmospheric CO2 anomaly (ppm)"</span><span class="op">)</span>
+<span class="va">p2</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-136-1.png" width="672"></div>
+<p>Here are GAM fits to both of these using the <code>gam</code> function from the <code>mgcv</code> package.
+There is a <code>plot</code> function in the <code>mgcv</code> package, but I’m using a ggplot function called <code>draw</code> in the <code>gratia</code> package.</p>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu">gam</span><span class="op">(</span><span class="va">co2_anomaly</span> <span class="op">~</span> <span class="fu">s</span><span class="op">(</span><span class="va">year_fraction</span>, bs<span class="op">=</span><span class="st">"cs"</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span>
+<span class="fu">draw</span><span class="op">(</span><span class="va">g1</span>, residuals<span class="op">=</span><span class="cn">TRUE</span>, rug<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-137-1.png" width="672"></div>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu">gam</span><span class="op">(</span><span class="va">co2_avg</span> <span class="op">~</span> <span class="fu">s</span><span class="op">(</span><span class="va">decimal_date</span>, bs<span class="op">=</span><span class="st">"cs"</span><span class="op">)</span>,  data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span>
+<span class="fu">draw</span><span class="op">(</span><span class="va">g2</span>, residuals<span class="op">=</span><span class="cn">TRUE</span>, rug<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-137-2.png" width="672"></div>
+<p>Depending on your goal, you may find that the second plot is too smooth – the interannual osciallations are smoothed out completely. We can increase the number of “knots” in the spline to capture the osciallation, but this is not the way the smoothing is normally used:</p>
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">g3</span> <span class="op">&lt;-</span> <span class="fu">gam</span><span class="op">(</span><span class="va">co2_avg</span> <span class="op">~</span> <span class="fu">s</span><span class="op">(</span><span class="va">decimal_date</span>, bs<span class="op">=</span><span class="st">"cs"</span>, k <span class="op">=</span> <span class="fl">25</span><span class="op">)</span>,  data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span>
+<span class="fu">draw</span><span class="op">(</span><span class="va">g3</span>, residuals<span class="op">=</span><span class="cn">TRUE</span>, rug<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-138-1.png" width="672"></div>
+<p>There is a <code>summary</code> function for gam fits and the <code>broom</code> functions <code>glance</code> and <code>tidy</code> give access to these data, but the interpretation of this output is beyond the scope of the course:</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## co2_anomaly ~ s(year_fraction, bs = "cs")
+## 
+## Parametric coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 3.364e-15  2.673e-02       0        1
+## 
+## Approximate significance of smooth terms:
+##                    edf Ref.df     F p-value    
+## s(year_fraction) 8.296      9 530.7  &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## R-sq.(adj) =  0.976   Deviance explained = 97.8%
+## GCV = 0.092244  Scale est. = 0.085038  n = 119</code></pre>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 7
+##      df logLik   AIC   BIC deviance df.residual  nobs
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
+## 1  9.30  -17.4  55.3  83.9     9.33        110.   119</code></pre>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">tidy</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 5
+##   term               edf ref.df statistic p.value
+##   &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 s(year_fraction)  8.30      9      531.       0</code></pre>
+<p>It is often useful to compute residuals and extract predicted values.</p>
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">co2</span> <span class="op">%&gt;%</span> <span class="fu">add_residuals</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">add_fitted</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span>   </code></pre></div>
+<pre><code>## # A tibble: 119 x 8
+##     year month decimal_date co2_avg year_fraction co2_anomaly .residual  .value
+##    &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1  2011     1        2011.    391.        0.0417      -0.322    0.429  -0.750 
+##  2  2011     2        2011.    392.        0.125        0.208    0.303  -0.0945
+##  3  2011     3        2011.    393.        0.208        0.948    0.144   0.804 
+##  4  2011     4        2011.    393.        0.292        1.60    -0.601   2.20  
+##  5  2011     5        2011.    394.        0.375        2.54    -0.507   3.05  
+##  6  2011     6        2011.    394.        0.458        2.09    -0.176   2.26  
+##  7  2011     7        2012.    393.        0.542        0.858    0.388   0.471 
+##  8  2011     8        2012.    390.        0.625       -1.52     0.0541 -1.58  
+##  9  2011     9        2012.    389.        0.708       -2.57     0.392  -2.96  
+## 10  2011    10        2012.    389.        0.792       -2.66     0.0151 -2.68  
+## # … with 109 more rows</code></pre>
+<p>If we generate new data (dates), we can plot predictions too. Since the model is a piecewise cubic function, extrapolations are often dramatically unreliable. The downward facing cubic in the last “bump” is simply continued, with comically bad results. Extrapolation of models, and especially smooths, is somewhere between risky and foolish!</p>
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>decimal_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2017</span>, <span class="fl">2022</span>, by <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span>
+<span class="va">new_data</span> <span class="op">%&gt;%</span> <span class="fu">add_fitted</span><span class="op">(</span><span class="va">g3</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">decimal_date</span>, <span class="va">.value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span> <span class="va">co2_avg</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span> <span class="op">+</span> <span class="va">my_theme</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">2017</span>, <span class="fl">2022</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-141-1.png" width="672"></div>
+<p>If you want confidence intervals on the fitted values, use the <code>confint</code> function together with the name of the smooth you are extracting. Be aware that this function does not include the intercept (or grand mean) from the model, so the values are all centred on zero.</p>
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">g1</span>, <span class="st">"s(year_fraction)"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 200 x 8
+##    smooth           by_variable year_fraction    est     se  crit  lower  upper
+##    &lt;chr&gt;            &lt;fct&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 s(year_fraction) &lt;NA&gt;               0.0417 -0.750 0.0912  1.96 -0.929 -0.572
+##  2 s(year_fraction) &lt;NA&gt;               0.0463 -0.716 0.0858  1.96 -0.884 -0.548
+##  3 s(year_fraction) &lt;NA&gt;               0.0509 -0.682 0.0810  1.96 -0.841 -0.523
+##  4 s(year_fraction) &lt;NA&gt;               0.0555 -0.648 0.0769  1.96 -0.798 -0.497
+##  5 s(year_fraction) &lt;NA&gt;               0.0601 -0.613 0.0735  1.96 -0.757 -0.470
+##  6 s(year_fraction) &lt;NA&gt;               0.0647 -0.579 0.0709  1.96 -0.718 -0.440
+##  7 s(year_fraction) &lt;NA&gt;               0.0693 -0.544 0.0691  1.96 -0.680 -0.409
+##  8 s(year_fraction) &lt;NA&gt;               0.0739 -0.509 0.0682  1.96 -0.643 -0.376
+##  9 s(year_fraction) &lt;NA&gt;               0.0785 -0.474 0.0681  1.96 -0.608 -0.341
+## 10 s(year_fraction) &lt;NA&gt;               0.0832 -0.439 0.0687  1.96 -0.573 -0.304
+## # … with 190 more rows</code></pre>
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">g1</span>, <span class="st">"s(year_fraction)"</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">year_fraction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">lower</span>, ymax <span class="op">=</span> <span class="va">upper</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">est</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="va">my_theme</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-142-1.png" width="672"></div>
+<p>You can also use <code>lm</code> to fit splines; these are similar to GAMs but there are some important differences. The <code>mgcv</code> package has a lot of features not available with <code>lm</code>.</p>
+<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">co2_avg</span> <span class="op">~</span> <span class="fu">splines</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/splines/bs.html">bs</a></span><span class="op">(</span><span class="va">decimal_date</span>, df <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span>
+<span class="fu">tidy</span><span class="op">(</span><span class="va">s1</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   term                               estimate std.error statistic   p.value
+##   &lt;chr&gt;                                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 (Intercept)                         392.         1.13   348.    5.22e-173
+## 2 splines::bs(decimal_date, df = 5)1    0.639      2.16     0.296 7.68e-  1
+## 3 splines::bs(decimal_date, df = 5)2    6.87       1.47     4.69  7.78e-  6
+## 4 splines::bs(decimal_date, df = 5)3   14.5        1.98     7.31  4.14e- 11
+## 5 splines::bs(decimal_date, df = 5)4   21.0        1.62    13.0   3.40e- 24
+## 6 splines::bs(decimal_date, df = 5)5   22.1        1.64    13.5   2.52e- 25</code></pre>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">s1</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.907         0.902  2.31      219. 2.01e-56     5  -265.  545.  564.
+## # … with 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+<p>We can use <code>augment</code> to generate data to plot and combine it with the original data.</p>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">a1</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">s1</span>, data <span class="op">=</span> <span class="va">co2</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span>, interval<span class="op">=</span><span class="st">"prediction"</span><span class="op">)</span> 
+<span class="va">a1</span> <span class="op">%&gt;%</span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">decimal_date</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">.lower</span>, ymax <span class="op">=</span> <span class="va">.upper</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y<span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">co2_avg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="va">my_theme</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-144-1.png" width="672"></div>
+<p>For a spline that closely traces the data, increase <code>df</code> to 26 or more. This increases the numbers of knots or separate cubics used to approximate the data.</p>
 </div>
 <div id="locally-estimated-scatterplot-smoothing-loess" class="section level2" number="17.2">
 <h2>
 <span class="header-section-number">17.2</span> Locally Estimated Scatterplot Smoothing (LOESS)<a class="anchor" aria-label="anchor" href="#locally-estimated-scatterplot-smoothing-loess"><i class="fas fa-link"></i></a>
 </h2>
+<p>LOESS smooths are constructed by making a large number of quadratic (or possibly linear) regression lines as a window moves along the x-axis. The degree of the fits and the amount of the window (and other details) can be adjusted. The predictions from these many local regressions are then computed and plotted as a “smooth” of the data. We usually just imagine the line is drawn through the data in a way that allows it to track fluctuations without specifying a model.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">l1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span><span class="op">(</span><span class="va">co2_anomaly</span> <span class="op">~</span> <span class="va">year_fraction</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span></code></pre></div>
+<p>As with the GAMs, the <code>summary</code> function is not particularly easy to interpret and we will not explore the details, but you can see that this is a quadratic model with a “span” of 0.75, meaning that 75% of the data are used for each regression. (The weighting of each point in the regression varies as a function of x, resulting a continuous change in the predictions.)</p>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">l1</span><span class="op">)</span></code></pre></div>
+<pre><code>## Call:
+## loess(formula = co2_anomaly ~ year_fraction, data = co2)
+## 
+## Number of Observations: 119 
+## Equivalent Number of Parameters: 4.58 
+## Residual Standard Error: 0.4647 
+## Trace of smoother matrix: 5  (exact)
+## 
+## Control settings:
+##   span     :  0.75 
+##   degree   :  2 
+##   family   :  gaussian
+##   surface  :  interpolate      cell = 0.2
+##   normalize:  TRUE
+##  parametric:  FALSE
+## drop.square:  FALSE</code></pre>
+<p>We can use <code>predict</code>, <code>residuals</code> and <code>augment</code> on these model objects as we did for <code>lm</code> fits in the previous lesson.</p>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">l1</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 119 x 5
+##    co2_anomaly year_fraction .fitted .se.fit   .resid
+##          &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+##  1      -0.322        0.0417  -1.19   0.128   0.866  
+##  2       0.208        0.125    0.330  0.0784 -0.121  
+##  3       0.948        0.208    1.49   0.0756 -0.538  
+##  4       1.60         0.292    2.24   0.0811 -0.640  
+##  5       2.54         0.375    2.75   0.0876 -0.207  
+##  6       2.09         0.458    2.14   0.0876 -0.0534 
+##  7       0.858        0.542    0.430  0.0876  0.428  
+##  8      -1.52         0.625   -1.53   0.0876  0.00670
+##  9      -2.57         0.708   -2.46   0.0812 -0.116  
+## 10      -2.66         0.792   -2.39   0.0757 -0.274  
+## # … with 109 more rows</code></pre>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">l1</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year_fraction</span>, y <span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">.fitted</span> <span class="op">-</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span>, ymax <span class="op">=</span> <span class="va">.fitted</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.20</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="va">my_theme</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-147-1.png" width="672"></div>
+<p>This line is only drawn using 12 points, so we might want to generate a smoother prediction by creating a new set of dates. We also add the original data to the plot.</p>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_data</span> <span class="op">=</span> <span class="fu">tibble</span><span class="op">(</span>year_fraction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">co2</span><span class="op">$</span><span class="va">year_fraction</span><span class="op">)</span>, 
+                                      <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">co2</span><span class="op">$</span><span class="va">year_fraction</span><span class="op">)</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">augment</span><span class="op">(</span><span class="va">l1</span>, newdata <span class="op">=</span> <span class="va">new_data</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year_fraction</span>, y <span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">.fitted</span> <span class="op">-</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span>, ymax <span class="op">=</span> <span class="va">.fitted</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.20</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">co2_anomaly</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="va">my_theme</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-148-1.png" width="672"></div>
+<p>The LOESS function will not predict outside of the range of data provided, so I had to select the range of <code>new_data</code> above carefully to get the line to start and end near the first and last points.</p>
+<p>Now we will make a few plots that explore using smaller windows (<code>span</code>) and linear models.</p>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">l2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span><span class="op">(</span><span class="va">co2_avg</span> <span class="op">~</span> <span class="va">decimal_date</span>, data <span class="op">=</span> <span class="va">co2</span>, 
+            degree <span class="op">=</span> <span class="fl">1</span>, span <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span>
+<span class="va">l3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span><span class="op">(</span><span class="va">co2_avg</span> <span class="op">~</span> <span class="va">decimal_date</span>, data <span class="op">=</span> <span class="va">co2</span>, 
+            degree <span class="op">=</span> <span class="fl">1</span>, span <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>
+<span class="va">new_data</span> <span class="op">=</span> <span class="fu">tibble</span><span class="op">(</span>decimal_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">co2</span><span class="op">$</span><span class="va">decimal_date</span><span class="op">)</span>, 
+                                      <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">co2</span><span class="op">$</span><span class="va">decimal_date</span><span class="op">)</span>, length <span class="op">=</span> <span class="fl">300</span><span class="op">)</span><span class="op">)</span>
+<span class="va">a2</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">l2</span>, newdata <span class="op">=</span> <span class="va">new_data</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> 
+<span class="va">a3</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">l3</span>, newdata <span class="op">=</span> <span class="va">new_data</span>, se_fit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> 
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">a2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">decimal_date</span>, y <span class="op">=</span> <span class="va">.fitted</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>col<span class="op">=</span><span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">.fitted</span> <span class="op">-</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span>, ymax <span class="op">=</span> <span class="va">.fitted</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.20</span>, fill<span class="op">=</span><span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">co2_avg</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">co2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">a3</span>, 
+            col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">a3</span>, 
+              <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">.fitted</span> <span class="op">-</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span>, ymax <span class="op">=</span> <span class="va">.fitted</span> <span class="op">+</span> <span class="fl">2</span><span class="op">*</span><span class="va">.se.fit</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.20</span>, fill<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="va">my_theme</span></code></pre></div>
+<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-149-1.png" width="672"></div>
+<p>LOESS fits are slow and take a lot of memory compared to other methods (both factors increase like the square of the number of points), so they are usually only used for small data sets.</p>
 </div>
 <div id="further-reading-11" class="section level2" number="17.3">
 <h2>
@@ -118,7 +340,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-03.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

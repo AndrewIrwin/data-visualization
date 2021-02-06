@@ -1,0 +1,221 @@
+---
+title: "Data Visualization"
+subtitle: "GAM and LOESS models"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-02-12 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(mgcv)
+library(broom)
+library(gratia)
+library(kableExtra)
+library(lubridate)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+##  GAM and LOESS models
+
+* Describing, fitting, and using models
+
+* No model coefficients 
+
+* Calculating residuals
+
+* Making predictions: point estimates and standard errors or confidence intervals
+
+
+
+---
+class: middle
+###  Start with a basic graph
+
+```{r, fig.height=4.5, fig.align="center", echo = FALSE}
+hfx <- read_rds("../static/selected_weather_day.rds") %>% filter(station_id == 50620, TC_id == "YHZ") %>%
+  filter(year == 2019 | year == 2018) %>% filter(!is.na(mean_temp)) %>%
+  mutate(year_day = yday(date) + (as.numeric(year)-2018)*365)
+p <- hfx %>%
+   ggplot(aes(x = year_day, y= mean_temp)) + geom_point() +
+   labs(x = "Days since 2018-01-01",
+        y = "Mean temperature (°C)",
+        title = "Halifax weather from Environment Canada") + my_theme
+p
+```
+
+---
+class: middle
+### Fit a cubic spline
+
+```{r, fig.height=5, fig.align="center"}
+m1 <- gam( mean_temp ~ s(year_day, bs="cs"), data = hfx)
+summary(m1)
+```
+
+
+---
+class: middle
+### Fit a cubic spline
+
+```{r}
+library(broom)
+glance(m1)  %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+tidy(m1) %>% kable(digits = 2) %>% kable_styling(full_width = FALSE)
+```
+
+---
+class: middle
+### Find predicted values and residuals
+
+```{r fig.height=5, fig.align="center"}
+library(gratia)
+hfx %>% add_fitted(m1) %>% select(year_day, mean_temp, .value) %>%
+  add_residuals(m1)  %>% kable()
+```
+
+---
+class: middle
+### Graph "smooth" term
+
+```{r fig.height=5, fig.align="center"}
+hfx %>% add_fitted(m1) %>% select(year_day, mean_temp, .value) %>%
+  add_residuals(m1) %>%
+  ggplot(aes(year_day)) +
+  geom_line(aes(y=.value), color="blue", size=2) + 
+  geom_point(aes(y = mean_temp)) + my_theme
+```
+
+
+---
+class: middle
+### Graph "smooth" term
+
+```{r fig.height=5, fig.align="center"}
+confint(m1, "s(year_day)", level = 0.95) %>%
+  ggplot(aes(year_day)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.25, fill="red") +
+  geom_line(aes(y=est), size=2, color="red") + 
+  geom_point(aes(y = mean_temp - mean(mean_temp)), data = hfx) + 
+  my_theme
+```
+
+---
+class: middle
+### LOESS smooths
+
+```{r, fig.height=5, fig.align="center"}
+m2 <- loess( mean_temp ~ year_day, data = hfx)
+summary(m2)
+```
+
+
+---
+class: middle
+###  Predictions
+
+```{r, fig.height=5, fig.align="center"}
+hfx %>% select(year_day, mean_temp) %>%
+  mutate(prediction = predict(m2),
+         residuals = residuals(m2)) %>% kable(digits = 2)
+```
+
+
+---
+class: middle
+###  Predictions
+
+```{r, fig.height=5, fig.align="center"}
+augment(m2, se_fit = TRUE) %>% kable(digits = 2)
+```
+
+
+---
+class: middle
+###  Residuals
+
+```{r, fig.height=5, fig.align="center"}
+augment(m2, se_fit = TRUE) %>% 
+  ggplot(aes(x = .resid)) + 
+  geom_histogram(binwidth = 1) + my_theme
+```
+
+---
+class: middle
+###  Predictions
+
+```{r fig.height=5, fig.align="center"}
+new_data = tibble(year_day = seq(1:730))
+augment(m2, newdata = new_data, se_fit = TRUE) %>%
+  ggplot(aes(x = year_day, y = .fitted)) + 
+  geom_line(size = 2, color="blue") +
+  geom_ribbon(aes(ymin = .fitted - 2*.se.fit,
+                  ymax = .fitted + 2*.se.fit), alpha = 0.25, fill="blue") +
+  geom_point(aes(y = mean_temp), data = hfx) + my_theme
+```
+
+---
+class: middle
+### LOESS with straight lines
+
+```{r fig.height=5, fig.align="center"}
+m3 <- loess(mean_temp ~ year_day, data = hfx, 
+            degree = 1, span = 0.25)
+augment(m3, newdata = new_data, se_fit = TRUE) %>%
+  ggplot(aes(x = year_day, y = .fitted)) + 
+  geom_line(size = 2, color="blue") +
+  geom_ribbon(aes(ymin = .fitted - 2*.se.fit,
+                  ymax = .fitted + 2*.se.fit), alpha = 0.25, fill="blue") +
+  geom_point(aes(y = mean_temp), data = hfx) + my_theme
+```
+
+
+
+
+
+
+
+---
+class: middle
+
+# Summary
+
+* Fitting GAM and LOESS smooths
+
+* No model coefficients to extract 
+
+* Computing predicted values with errors and residuals (compared to data)
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy Chapter 6. Work with models. 
+
+---
+class: middle, inverse
+
+## Task
+
+Task 10: Fitting and using smoothing models.
+
+
+
+
+

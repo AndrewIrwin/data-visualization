@@ -3,17 +3,184 @@
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(broom)
+library(mgcv)
+library(gratia)
 ```
 
 
-In this lesson I will show you how to create GAM and LOESS models and perform some basic tasks to interact with the R model objects that the functions create. In keeping with the goals of the course, we will primarily focus on using the models for visualization and not attempt a detailed statistical analysis of when and why you might use a particular model for inference.
+In this lesson I will show you how to create GAM and LOESS models and perform some basic tasks to interact with the R model objects that the functions create. In keeping with the goals of the course, we will primarily focus on using the models for visualization and not attempt a detailed statistical analysis of when and why you might use a particular model for inference. This means we will restrict our attention to some basic uses of these models using one predictor (x) and one response (y) variable.
 
 ## Generalized Additive Models
 
+Generalized additive models are a kind of linear regression, but instead of finding coefficients of predictor variables (e.g., intercepts, slopes), the model finds a "smooth" response function for each predictor. Typically this means that a piecewise cubic function (spline) is used to approximate the relationship between two variables. We can compute predicted values, confindence and prediction intervals, and show the smooth response function that arised from the model. We don't obtain a simple list of coefficients like we did with linear regression, because the spline curve is defined by many numbers which are not usually informative on their own.
+
+Generalized additive models are most commonly used when there is no theoretical motivation for a functional relationship between the variables being studied. We'll look at the Mauna Loa atmospheric CO2 concentration. These data increase year over year and have well-established interannual oscillations, but there is no clear function for either of these patterns.
+
+We will start by using the last decade of data from Lesson 1.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+co2 <- read_delim("static/co2_mm_mlo.txt", skip = 53, delim=" ",
+                col_names = c("year", "month", "decimal_date", "co2_avg", NA, NA, NA, NA)) %>%
+  dplyr::select(year, month, decimal_date, co2_avg) %>%
+  mutate(across(everything(), as.numeric),
+         year_fraction = decimal_date - floor(decimal_date)) %>%
+  filter(year > 2010) %>%
+  group_by(year) %>% mutate(co2_anomaly = co2_avg - mean(co2_avg)) %>% ungroup()
+```
+
+Here is a plot of CO2 over time.
+
+```{r}
+my_theme = theme_linedraw() + theme(text = element_text(size = 14))
+p1 <- co2 %>% ggplot(aes(decimal_date, co2_avg)) + geom_point() + my_theme +
+  labs(x = "Year (decimal)", y = "Atmospheric CO2 (ppm)")
+p1
+```
+
+This plot shows each observation, minus the annual mean, as a function of the time of year but not the actual year. Each year's observations are overlapped.
+
+```{r}
+p2 <- co2 %>% ggplot(aes(year_fraction, co2_anomaly)) + geom_point() + my_theme +
+  labs(x = "Year fraction (decimal)", y = "Atmospheric CO2 anomaly (ppm)")
+p2
+```
+
+Here are GAM fits to both of these using the `gam` function from the `mgcv` package. 
+There is a `plot` function in the `mgcv` package, but I'm using a ggplot function called `draw` in the `gratia` package.
+
+```{r}
+g1 <- gam(co2_anomaly ~ s(year_fraction, bs="cs"), data = co2)
+draw(g1, residuals=TRUE, rug=FALSE)
+g2 <- gam(co2_avg ~ s(decimal_date, bs="cs"),  data = co2)
+draw(g2, residuals=TRUE, rug=FALSE) 
+```
+
+Depending on your goal, you may find that the second plot is too smooth -- the interannual osciallations are smoothed out completely. We can increase the number of "knots" in the spline to capture the osciallation, but this is not the way the smoothing is normally used:
+
+```{r}
+g3 <- gam(co2_avg ~ s(decimal_date, bs="cs", k = 25),  data = co2)
+draw(g3, residuals=TRUE, rug=FALSE) 
+```
+
+There is a `summary` function for gam fits and the `broom` functions `glance` and `tidy` give access to these data, but the interpretation of this output is beyond the scope of the course:
+
+```{r}
+summary(g1)
+glance(g1)
+tidy(g1)
+```
+
+It is often useful to compute residuals and extract predicted values.
+
+```{r}
+co2 %>% add_residuals(g1) %>% add_fitted(g1)   
+```
+
+If we generate new data (dates), we can plot predictions too. Since the model is a piecewise cubic function, extrapolations are often dramatically unreliable. The downward facing cubic in the last "bump" is simply continued, with comically bad results. Extrapolation of models, and especially smooths, is somewhere between risky and foolish!
+
+```{r warning=FALSE}
+new_data <- tibble(decimal_date = seq(2017, 2022, by = 0.05))
+new_data %>% add_fitted(g3) %>%
+  ggplot(aes(decimal_date, .value)) + 
+  geom_line(color = "blue", size = 2) +
+  geom_point(aes(y= co2_avg), data = co2) + my_theme + xlim(2017, 2022)
+```
+
+If you want confidence intervals on the fitted values, use the `confint` function together with the name of the smooth you are extracting.  Be aware that this function does not include the intercept (or grand mean) from the model, so the values are all centred on zero.
+
+```{r}
+confint(g1, "s(year_fraction)", level = 0.95)
+confint(g1, "s(year_fraction)", level = 0.95) %>% 
+  ggplot(aes(year_fraction)) + 
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.25) + 
+  geom_line(aes(y = est)) + my_theme
+```
+
+You can also use `lm` to fit splines; these are similar to GAMs but there are some important differences. The `mgcv` package has a lot of features not available with `lm`.
+
+```{r}
+s1 <- lm(co2_avg ~ splines::bs(decimal_date, df = 5), data = co2)
+tidy(s1)
+glance(s1)
+```
+We can use `augment` to generate data to plot and combine it with the original data.
+
+```{r}
+a1 <- augment(s1, data = co2, se_fit = TRUE, interval="prediction") 
+a1 %>%  ggplot(aes(decimal_date)) + 
+  geom_ribbon(aes(ymin = .lower, ymax = .upper), alpha = 0.2) + 
+  geom_line(aes(y= .fitted)) +
+  geom_point(aes(y = co2_avg)) + 
+  my_theme
+```
+
+For a spline that closely traces the data, increase `df` to 26 or more. This increases the numbers of knots or separate cubics used to approximate the data.
 
 ## Locally Estimated Scatterplot Smoothing (LOESS)
 
+LOESS smooths are constructed by making a large number of quadratic (or possibly linear) regression lines as a window moves along the x-axis. The degree of the fits and the amount of the window (and other details) can be adjusted. The predictions from these many local regressions are then computed and plotted as a "smooth" of the data. We usually just imagine the line is drawn through the data in a way that allows it to track fluctuations without specifying a model.
 
+```{r}
+l1 <- loess(co2_anomaly ~ year_fraction, data = co2)
+```
+
+As with the GAMs, the `summary` function is not particularly easy to interpret and we will not explore the details, but you can see that this is a quadratic model with a "span" of 0.75, meaning that 75% of the data are used for each regression. (The weighting of each point in the regression varies as a function of x, resulting a continuous change in the predictions.)
+
+```{r}
+summary(l1)
+```
+
+
+We can use `predict`, `residuals` and `augment` on these model objects as we did for `lm` fits in the previous lesson.
+
+```{r}
+augment(l1, se_fit = TRUE)
+augment(l1, se_fit = TRUE) %>%
+  ggplot(aes(x = year_fraction, y = .fitted)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = .fitted - 2*.se.fit, ymax = .fitted + 2*.se.fit), alpha = 0.20) + 
+  my_theme
+```
+
+This line is only drawn using 12 points, so we might want to generate a smoother prediction by creating a new set of dates. We also add the original data to the plot.
+
+```{r}
+new_data = tibble(year_fraction = seq(min(co2$year_fraction), 
+                                      max(co2$year_fraction), length = 100))
+augment(l1, newdata = new_data, se_fit = TRUE) %>%
+  ggplot(aes(x = year_fraction, y = .fitted)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = .fitted - 2*.se.fit, ymax = .fitted + 2*.se.fit), alpha = 0.20) + 
+  geom_point(aes(y = co2_anomaly), data = co2) +
+  my_theme
+```
+
+The LOESS function will not predict outside of the range of data provided, so I had to select the range of `new_data` above carefully to get the line to start and end near the first and last points.
+
+Now we will make a few plots that explore using smaller windows (`span`) and linear models.
+
+```{r warning=FALSE}
+l2 <- loess(co2_avg ~ decimal_date, data = co2, 
+            degree = 1, span = 0.05)
+l3 <- loess(co2_avg ~ decimal_date, data = co2, 
+            degree = 1, span = 0.25)
+new_data = tibble(decimal_date = seq(min(co2$decimal_date), 
+                                      max(co2$decimal_date), length = 300))
+a2 <- augment(l2, newdata = new_data, se_fit = TRUE) 
+a3 <- augment(l3, newdata = new_data, se_fit = TRUE) 
+ggplot(a2, aes(x = decimal_date, y = .fitted)) + 
+  geom_line(col="green") + 
+  geom_ribbon(aes(ymin = .fitted - 2*.se.fit, ymax = .fitted + 2*.se.fit), alpha = 0.20, fill="green") + 
+  geom_point(aes(y = co2_avg), data = co2) +
+  geom_line(data = a3, 
+            col="blue") + 
+  geom_ribbon(data = a3, 
+              aes(ymin = .fitted - 2*.se.fit, ymax = .fitted + 2*.se.fit), alpha = 0.20, fill="blue") + 
+  my_theme
+```
+
+LOESS fits are slow and take a lot of memory compared to other methods (both factors increase like the square of the number of points), so they are usually only used for small data sets.
 
 ## Further reading
 

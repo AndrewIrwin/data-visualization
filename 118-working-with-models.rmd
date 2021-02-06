@@ -29,7 +29,8 @@ First, we'll take a subset of the gapminder data and make a simple scatterplot.
 
 ```{r}
 gp <- gapminder %>% filter(continent == "Europe")
-p1 <- gp %>% ggplot(aes(x = year, y = log10(gdpPercap))) + geom_point(alpha = 0.5) + theme_bw()
+p1 <- gp %>% ggplot(aes(x = year, y = log10(gdpPercap))) +
+  geom_point(alpha = 0.5) + theme_bw()
 p1
 ```
 
@@ -44,32 +45,41 @@ p1 + geom_smooth(method = "lm", formula = y ~ x)
 We can change the formula to other curves. If you want a smoothed line that follows the data, use a [B-spline](https://en.wikipedia.org/wiki/B-spline) with degree 3 (cubic).
 
 ```{r}
-p1 + geom_smooth(method = "lm", formula = y ~ splines::bs(x, df=5, degree=3))
+p1 + geom_smooth(method = "lm", 
+                 formula = y ~ splines::bs(x, df=5, degree=3))
 ```
 
 Another way to describe a cubic spline is with a generalized additive model (or GAM).
 
 ```{r}
-p1 + geom_smooth(method = "gam", formula = y ~ s(x, bs = "cs"))
+p1 + geom_smooth(method = "gam", 
+                 formula = y ~ s(x, bs = "cs"))
 ```
 
 Another method is called [LOESS](https://en.wikipedia.org/wiki/Local_regression) (locally estimated scatterplot smoothing) which does not require you to describe a model (line, cubic spline, etc.) for the data. Instead the model takes small subsets of the data along the independent variable and makes many models (usually first or second degree polynomials) and joins them together.
 
 ```{r}
-p1 + geom_smooth(method = "loess")
+p1 + geom_smooth(method = "loess",
+                 formula = y ~ x)
 ```
 
 As a final example we can try quantile regression.  This will make lines to approximate a specific quantile (5%, 50%, 95% shown below) instead of a mean. This might be a good idea for these data in particular since for each year we have a range of countries spanning a large distribution of GDP per capita.
 
 ```{r}
-p1 + geom_quantile(formula = y ~ x, method = "rqss", lambda = 1, quantiles = c(0.1, 0.50, 0.90))
+p1 + geom_quantile(formula = y ~ x, 
+                   method = "rq", 
+                   lambda = 1, quantiles = c(0.1, 0.50, 0.90))
 ```
 
 ## Putting several models on a single plot
 
 ```{r}
-p1 + geom_smooth(method = "lm", formula = y ~ x, aes(color = "Linear", fill = "Linear")) +
-  geom_smooth(method = "loess", aes(color = "LOESS", fill = "LOESS")) + 
+p1 + geom_smooth(method = "lm", 
+                 formula = y ~ x, 
+                 aes(color = "Linear", fill = "Linear")) +
+  geom_smooth(method = "loess", 
+              formula = y ~ x, 
+              aes(color = "LOESS", fill = "LOESS")) + 
   scale_color_manual(name = c("Linear", "LOESS"), 
                      values = c("salmon", "limegreen" ) ) + 
   scale_fill_manual(name = c("Linear", "LOESS"), 
@@ -77,112 +87,20 @@ p1 + geom_smooth(method = "lm", formula = y ~ x, aes(color = "Linear", fill = "L
   theme(legend.position = "top")
 ```
 
-## Working with models and making predictions
+## Smooths on facetted plots
 
-Each of these models can be fitted independently of making a plot. If you do this, you get a complex object called a fitted models that can be used to give you a lot of information about your model. Healy [discusses](https://socviz.co/modeling.html#look-inside-model-objects) how to look at the model output, but we will skip over this with two exceptions. We will look at the difference between model and data (called residuals) and making predictions with models.
-
-Here we will fit each of the models generated above and look at the `summary` output from each model. I'll start by computing log(GDP) and the number of years since 1950 to use as variables in my models.
-
-A linear model fitting a straight line to the data (slope, intercept):
+Let's make five factets, one for each country, and add a smooth to each panel.
 
 ```{r}
-gp <- gp %>% mutate(year1950 = year - 1950,
-                    logGDP = log10(gdpPercap))
-m1 <- lm(logGDP ~ year1950, data = gp)
-summary(m1)
+p1 + facet_wrap(~country) +
+  geom_smooth(method = "lm",
+              formula = y ~ x)
 ```
 
-A robust version of this line that is less influenced by outliers:
-
-```{r}
-library(MASS)
-m2 <- rlm(logGDP ~ year1950, data = gp)
-summary(m2)
-```
-
-Splines two ways: using lm and using generalized additive models:
-
-```{r}
-m3 <- lm(logGDP ~ splines::bs(year1950, df = 5, degree=3), data = gp)
-m4 <- mgcv::gam(logGDP ~ s(year1950), data = gp)
-# summary(m3) # this is a bit hard to read, so I don't show it here.
-# summary(m4) # same comment here!
-```
-
-A LOESS smooth:
-
-```{r}
-m5 <- loess(logGDP ~ year1950, data = gp)
-# summary(m5)
-```
-
-Quantile regression:
-
-```{r}
-m6 <- quantreg::rqss(logGDP ~ year1950, data= gp, lambda = 1, tau = 0.1)
-summary(m6)
-```
-
-## Computing and plotting residuals
-
-An important visualization for any model is to compare observations with the predictions of the model. This difference is called the residual. (From the residual variation in the data not described by the model.) The function `residuals` applied to the model object gives you access to these values and makes them easy to plot.
-
-You can make histograms of residuals:
-
-```{r}
-tibble(residuals = residuals(m1)) %>%
-  ggplot(aes(x = residuals)) + geom_histogram()
-```
-
-Using `mutate` and `bind_rows` you can plot the residuals of several models:
-
-```{r}
-residuals <- bind_rows(
-  bind_cols(model = "linear", residual = residuals(m1)),
-  bind_cols(model = "spline", residual = residuals(m3)),
-  bind_cols(model = "loess", residual = residuals(m5))
-)
-residuals %>% ggplot(aes(x = residual, fill = model)) + geom_histogram()
-residuals %>% ggplot(aes(x = residual)) + geom_histogram() + facet_grid(model ~ .)
-```
-
-We can see that the distribution (histogram) of the residuals is fairly similar for all three models. There are defintely negative residuals larger in magnitude than any of the positive residuals. The modal residuals are bigger than zero. This suggests there are some points where the model "over predicts" (model prediction larger than observed data) and the most common result is an under prediction (model prediction is smaller than observed value.)
-
-
-More commonly you will want to compare the residuals to one of the independent variable, dependent variable, or predicted values. This is easy to do by adding predictions and residuals to the original data.
-
-```{r}
-gp1 <- gp %>% mutate(linear_residuals = residuals(m1),
-              linear_predictions = predict(m1))
-gp1 %>%  ggplot(aes(x = logGDP, y = linear_predictions)) + geom_point() +
-  geom_abline(aes(intercept = 0, slope=1))
-gp1 %>%  ggplot(aes(x = linear_predictions, y = linear_residuals)) + geom_point()
-```
-
-Note that models generally don't make predictions from missing data, so if year or GDP data were missing, for any country or year, there would be some problems with the code above. The easiest solution is to filter out all rows from your data table that have missing data.
-
-When making predictions, you can also generate [confidence](https://en.wikipedia.org/wiki/Confidence_interval) or [prediction](https://en.wikipedia.org/wiki/Prediction_interval) intervals to add a measure of uncertainty to your visualization. For plotting purposes you may want to generate a uniform grid along the x-axis and make predictions for these values. Here's how you can do that. I've used summarize to determine the range of the years since 1950 (not shown). You should always be very cautious interpreting predictions, but especially predictions for values outside the observed values in your original data.
-
-```{r}
-new_data <- tibble(year1950 = seq(from = 2, to = 57, by = 1))
-predictions1 <- predict(m3, new_data, interval = "prediction") %>% as_tibble()
-predictions2 <- predict(m5, new_data, se=TRUE) %>% as_tibble()
-bind_cols(new_data, predictions1) %>%
-  ggplot(aes(x = year1950, y = fit)) + 
-  geom_ribbon(aes(ymin = lwr, ymax = upr), fill = "blue", alpha = 0.4) + 
-  geom_line(color = "blue") +
-  geom_point(data = gp, aes(x = year1950, y = logGDP))
-bind_cols(new_data, predictions2) %>%
-  ggplot(aes(x = year1950, y = fit)) + 
-  geom_ribbon(aes(ymin = fit -se.fit, ymax = fit + se.fit), fill = "blue", alpha = 0.4) + 
-  geom_line(color = "blue") +
-  geom_point(data = gp, aes(x = year1950, y = logGDP))
-```
-
-A few technical observations. `predict` does not generate a data frame; it makes a matrix, so we use `as_tibble` to convert it to a tibble so that variable names work as expected. The `predict` functions for linear models, GAMs, LOESS, etc are all different functions and have some important differences. Here you can see that the spline can calculate prediction or confidence intervals and the output is the upper and lower limits of the interval. The LOESS predict function only calculates the standard error of the estimated value; this value must be scaled and added to the predicted value to generate an uncertainty estimate.
+This is not an idea facetted plot -- there are probably too many facets (countries) and the text labels don't fit well in the space. You might draw a plot like this for yourself to explore the data and plan an analysis or other plot.
 
 
 ## Further reading
 
-* In the next lesson we look at linear models in a bit more detail, with some more complicated examples.
+* In the next lesson we look at linear models in a bit more detail, showing how to extract residuals, predictions, and confidence intervals.
 * Healy [Chapter 6 Working with models](https://socviz.co/modeling.html#modeling)

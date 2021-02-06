@@ -44,15 +44,18 @@ Let's make a table that lists manufacturer, model, and then in two columns the a
 First we compute average fuel consumption for each combination of manufacturer, model, and year. Then pivot the data to make a wider table (it will be 38 rows by 4 columns when we are done). Store the result in your environment by giving the new table a name, so that we can use formatting tools in the next section to display it nicely.
 
 ```{r}
-
-
+table1 <- mpg  %>% group_by(model, manufacturer, year) %>%
+  summarise(avg_mpg_city = mean(cty))   %>%
+  pivot_wider(names_from = year, values_from = avg_mpg_city)
+table1
 ```
 
 
 Clean up the "trans"mission column to put the parenthetical codes (av, l5, m6, etc) in their own column using separate.
 
 ```{r}
-
+mpg %>% separate(trans, into = c("trans_type", "trans_code"), sep ="\\(", remove = FALSE) %>%
+  mutate(trans_code = str_remove(trans_code, "\\)"))
 
 ```
 
@@ -79,8 +82,10 @@ co2DF
 Now, use `pivot_longer` to reshape this into a "tidy" data frame with a column for year, a column for month, and a column for CO2 concentration.
 
 ```{r}
-
-
+co2DF %>% select(Jun:Aug, Oct:Dec, everything())
+co2Y <- co2DF %>% # select(Year, Jun:Aug, Oct:Dec) %>%
+  pivot_longer(cols = Jan:Dec, names_to= "month", values_to = "pCO2")
+co2Y
 ```
 
 
@@ -89,20 +94,33 @@ Now, use `pivot_longer` to reshape this into a "tidy" data frame with a column f
 Compute the average annual pCO2 for each year, then show this as a table. Add a caption.
 
 ```{r}
-
+co2Y %>% group_by(Year) %>% summarise(mean_pCO2 = mean(pCO2)) %>%
+  kable(digits = 1,
+        caption = "Annual average pCO2.") %>%
+  kable_styling(bootstrap = "striped", 
+                full_width = FALSE)
 
 ```
 
 Compute the average by decade, discarding partial decades (1950s and 1990s).
 
 ```{r}
-
+co2Y %>% filter(Year >= 1960, Year < 1990) %>%
+  mutate(decade = floor(Year/10)*10) %>%
+  group_by(decade) %>%
+  summarize(mean_pco2 = mean(pCO2)) %>%
+  kable(digits = 2,
+        caption = "Decadal average pCO2 at Mauna Loa") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
 ```
 
 Find the lowest and highest pCO2 for each year and show that in a table.
 
 ```{r}
-
+co2Y %>% group_by(Year) %>%
+  summarize(minimum = min(pCO2), 
+                maximum = max(pCO2)) %>%
+  kable() %>% kable_styling(bootstrap_options = "basic", full_width = FALSE)
 ```
 
 Return to the `mpg` dataset and make some nice looking tables.
@@ -133,15 +151,17 @@ Use the following methods:
 A good idea here is to think of a function you know a bit about and read its help page.
 
 ```{r}
-
-
+round(0.5)
+signif(pi, 4)
 ```
 
 
 ### Read the documentation for ggplot at the tidyverse
 
-```{r}
+Try geom_quantile - from the cheatsheet.
 
+```{r}
+mpg %>% ggplot(aes(cty, hwy)) + geom_point() + geom_quantile()
 ```
 
 
@@ -150,7 +170,19 @@ A good idea here is to think of a function you know a bit about and read its hel
 And try to reconstruct it.
 
 ```{r}
-
+data=head(mtcars, 20)
+ggplot(data, aes(x=wt, y=mpg)) +
+  geom_point() + # Show dots
+  geom_text(
+    label=rownames(data), 
+    nudge_x = 0.25, nudge_y = 0.25, 
+    check_overlap = FALSE
+  )
 
 ```
 
+```{r}
+library(gapminder)
+gapminder %>% filter(country %in% c("Canada", "Brazil", "China"))
+gapminder %>% filter(country == "Canada" | country == "Brazil" | country == "China") # same result
+```

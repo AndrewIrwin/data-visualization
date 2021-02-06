@@ -19,7 +19,7 @@ We have seen that the price of a diamond increases a bit faster than linearly as
 ```{r}
 linear_model1 <- lm(price ~ carat, data = diamonds)
 summary(linear_model1)
-quadratic_model1 <- lm(price ~ carat + I(carat^2), 
+quadratic_model1 <- lm(price ~ poly(carat, 2), # carat + I(carat^2), 
                        data = diamonds %>% mutate(carat_sq = carat^2))
 summary(quadratic_model1)
 linear_model2 <- lm(price ~ carat + clarity + color, 
@@ -51,72 +51,6 @@ extract_eq(linear_model2, use_coefs=TRUE, fix_signs=TRUE, wrap=TRUE)
 
 These results are the jumping off point for a lot more exploration.
 
-
-## Adding linear models to visualizations
-
-In a visualization, what we really want to do is to add a line to a graph. There are easy ways to do this with ggplot that don't require you to make a separate model; instead we will just add a "smooth" geometry (`geom_smooth`) to a ggplot.
-
-We start with a straight line.
-
-```{r}
-diamonds %>% filter(cut == "Ideal", color == "G") %>%
-  ggplot(aes(x=carat, y = price)) + 
-  geom_point() +
-  geom_smooth(method = "lm")
-```
-
-Now try a quadratic.
-
-```{r}
-diamonds %>% filter(cut == "Ideal", color == "G") %>%
-  ggplot(aes(x=carat, y = price)) + 
-  geom_point() +
-  geom_smooth(method = "lm", formula = y ~ poly(x,2))
-```
-
-That's better, but it's still not great. In particular the model overshoots the observations for large diamonds. We can continue by adding a cubic term, but this game gets risky for statistical reasons you will learn in other courses. In this next example I'll switch to "robust regression" from the `MASS` package. Robust regression is designed to be less influenced by outliers, but this dataset does not demonstrate the effect that clearly because the outliers are not very pronounced. (It might be interesting to try this method on Anscobe's quartet.)
-
-```{r}
-diamonds %>% filter(cut == "Ideal", color == "G") %>%
-  ggplot(aes(x=carat, y = price)) + 
-  geom_point() +
-  geom_smooth(method = MASS::rlm, formula = y ~ poly(x,3))
-```
-
-Robust regression is a big improvement for group 3, but has little effect on any of the other problems. (Try `model = y ~ poly(x,2)` to fix panel 2. There is no fix for the problem in panel 4.)
-
-```{r message=FALSE}
-p1 <- anscombe %>%
- pivot_longer(everything(),
-   names_to = c(".value", "set"),
-   names_pattern = "(.)(.)"
- ) %>% ggplot(aes(x=x, y=y)) +
-  geom_point() + 
-  facet_wrap(~ set) 
-# p1 + geom_smooth(method="lm")
-p1 + geom_smooth(method=MASS::rlm) # , formula  = y ~ poly(x,2))
-```
-
-## Non-parametric smooths
-
-If we just want to highlight the pattern in the data, we can use a smooth that doesn't work from a simple formula, such as `loess` or `gam`.
-
-```{r}
-diamonds %>% filter(cut == "Ideal", color == "G") %>%
-  ggplot(aes(x=carat, y = price)) + 
-  geom_point() +
-  geom_smooth(method = "loess")
-```
-
-This smooth has an "S" shape -- price increases slowly for the smallest diamonds, then quickly, then slowly again for the largest diamonds.  We get a similar result from a `gam` smooth.
-
-```{r}
-diamonds %>% filter(cut == "Ideal", color == "G") %>%
-  ggplot(aes(x=carat, y = price)) + 
-  geom_point() +
-  geom_smooth(method = "gam")
-```
-
 ## Smoothing on facets
 
 The `geom_smooth` is especially powerful for facetted plots. The smooth is automatically computed and plotted for each facet separately. 
@@ -129,15 +63,33 @@ diamonds %>%
   geom_point(aes(color=cut)) +
   facet_grid(color ~ clarity) + 
   scale_colour_viridis_d(begin=0, end =0.8) +
-  geom_smooth(color = "black", size=0.75)  # uses loess
-  # geom_smooth(method = "lm", formula = y ~ poly(x,2), color = "black", size = 0.5) # alternate version
+  geom_smooth(method = "lm", formula = y ~ poly(x,2), color = "black", size = 0.5) 
 ```
 
 Notice that I've moved the `color=cut` from the ggplot function to the `geom_point` function as the aesthetic for only the points. If the colour was specified in the first ggplot function, the `geom_smooth` would "inherit" this aesthetic mapping and would make a separate smooth for each cut (5 lines per panel). There are not enough data in some panels for some cuts to do a good job, so I revised the plot to only draw one smooth per facet. You should move the `color=cut` back to the ggplot call to see how the result changes.
 
+## Robust regression
+
+We demonstrated the importance of visualizing data at the start of the course by appealing to the example of Anscombe's quartet. This is a set of four data sets which all have the same means, standard deviations, and correlation. Here I'll show how to plot four lines on a single plot and how to avoid at least one of the problems with outliers by using robust regression from the `MASS` package. 
+
+Robust regression is designed to be less influenced by outliers.
+Robust regression is a big improvement for group 3, but has little effect on any of the other problems. (Try `model = y ~ poly(x,2)` to fix panel 2. There is no fix for the problem in panel 4.)
+
+```{r message=FALSE}
+p1 <- anscombe %>%
+ pivot_longer(everything(),
+   names_to = c(".value", "set"),
+   names_pattern = "(.)(.)"
+ ) %>% ggplot(aes(x=x, y=y)) +
+  geom_point() + 
+  facet_wrap(~ set) 
+# p1 + geom_smooth(method="lm") # Try this instead
+p1 + geom_smooth(method=MASS::rlm) # , formula  = y ~ poly(x,2))
+```
+
 ## Predicting quantiles
 
-As a final example, you can also try to predict quantiles of the data. Here we make a linear model for the 0.05, 0.50 (median), and 0.95 quantiles.
+You can also try to predict quantiles of the data. Here we make a linear model for the 0.05, 0.50 (median), and 0.95 quantiles.
 
 ```{r}
 diamonds %>% filter(cut == "Ideal", color == "G") %>%
@@ -149,7 +101,7 @@ diamonds %>% filter(cut == "Ideal", color == "G") %>%
 
 ## Quantitative model output
 
-In the previous lesson I showed how to obtain residuals, predicted values, and uncertainty estimates from our models as data tables. The `broom` package has functions to simplify this process. Healy also shows how to use `broom` to fit many models (such as a model for each facet) in his [Section 6.6](https://socviz.co/modeling.html#grouped-analysis-and-list-columns), but I will skip those steps.
+The `broom` package has functions to obtain model coefficients and compute residuals, predictions, and confindence intervals. Healy also shows how to use `broom` to fit many models (such as a model for each facet) in his [Section 6.6](https://socviz.co/modeling.html#grouped-analysis-and-list-columns), but I will skip those steps.
 
 Get the coefficients (and standard errors, t-statistic, p-value and confidence intervals) from your model using `tidy`.
 
@@ -179,7 +131,7 @@ You can get statistics for the model using `glance`:
 glance(linear_model1)
 ```
 
-The `augment` function makes it easy to plot residuals and predicted values for many models (see `?augment`) in a systematic way. We can use `augment` on the model object to get a data frame with the data used in the model plus fitted (predicted) values, residuals, and other quantities.  You can add the other data not provided in the model object by specifify `data = diamonds` in the augment function.
+The `augment` function makes it easy to plot residuals and predicted values for many models (see `?augment`). We can use `augment` on the model object to get a data frame with the data used in the model plus fitted (predicted) values, residuals, and other quantities.  You can add the other data not provided in the model object by specifify `data = diamonds` in the augment function.
  
 ```{r}
 augment(linear_model1, interval = "prediction") %>% head()
@@ -198,6 +150,111 @@ augment(linear_model1, newdata = new_data, interval = "prediction") %>%
 
 Of course, this is overly complicated for plotting a straight line, but the method can be adopted to many other models.
 
+## Revisiting models from the previous lesson
+
+Here I will show you how to make models and predictions for each of the model types from the previous lesson.
+
+Each of these models can be fitted independently of making a plot. If you do this, you get a complex object called a fitted models that can be used to give you a lot of information about your model. Healy [discusses](https://socviz.co/modeling.html#look-inside-model-objects) how to look at the model output, but we will skip over this with two exceptions. We will look at the difference between model and data (called residuals) and making predictions with models.
+
+Here we will fit each of the models generated above and look at the `summary` output from each model. I'll start by computing log(GDP) and the number of years since 1950 to use as variables in my models.
+
+A linear model fitting a straight line to the data (slope, intercept):
+
+```{r}
+gp <- gp %>% mutate(year1950 = year - 1950,
+                    logGDP = log10(gdpPercap))
+m1 <- lm(logGDP ~ year1950, data = gp)
+summary(m1)
+```
+
+A robust version of this line that is less influenced by outliers:
+
+```{r}
+library(MASS)
+m2 <- rlm(logGDP ~ year1950, data = gp)
+summary(m2)
+```
+
+Splines two ways: using lm and using generalized additive models:
+
+```{r}
+m3 <- lm(logGDP ~ splines::bs(year1950, df = 5, degree=3), data = gp)
+m4 <- mgcv::gam(logGDP ~ s(year1950), data = gp)
+# summary(m3) # this is a bit hard to read, so I don't show it here.
+# summary(m4) # same comment here!
+```
+
+A LOESS smooth:
+
+```{r}
+m5 <- loess(logGDP ~ year1950, data = gp)
+# summary(m5)
+```
+
+Quantile regression:
+
+```{r}
+m6 <- quantreg::rqss(logGDP ~ year1950, data= gp, lambda = 1, tau = 0.1)
+summary(m6)
+```
+
+## Computing and plotting residuals
+
+An important visualization for any model is to compare observations with the predictions of the model. This difference is called the residual. (From the residual variation in the data not described by the model.) The function `residuals` applied to the model object gives you access to these values and makes them easy to plot.
+
+You can make histograms of residuals:
+
+```{r}
+tibble(residuals = residuals(m1)) %>%
+  ggplot(aes(x = residuals)) + geom_histogram()
+```
+
+Using `mutate` and `bind_rows` you can plot the residuals of several models:
+
+```{r}
+residuals <- bind_rows(
+  bind_cols(model = "linear", residual = residuals(m1)),
+  bind_cols(model = "spline", residual = residuals(m3)),
+  bind_cols(model = "loess", residual = residuals(m5))
+)
+residuals %>% ggplot(aes(x = residual, fill = model)) + geom_histogram()
+residuals %>% ggplot(aes(x = residual)) + geom_histogram() + facet_grid(model ~ .)
+```
+
+We can see that the distribution (histogram) of the residuals is fairly similar for all three models. There are defintely negative residuals larger in magnitude than any of the positive residuals. The modal residuals are bigger than zero. This suggests there are some points where the model "over predicts" (model prediction larger than observed data) and the most common result is an under prediction (model prediction is smaller than observed value.)
+
+
+More commonly you will want to compare the residuals to one of the independent variable, dependent variable, or predicted values. This is easy to do by adding predictions and residuals to the original data.
+
+```{r}
+gp1 <- gp %>% mutate(linear_residuals = residuals(m1),
+              linear_predictions = predict(m1))
+gp1 %>%  ggplot(aes(x = logGDP, y = linear_predictions)) + geom_point() +
+  geom_abline(aes(intercept = 0, slope=1))
+gp1 %>%  ggplot(aes(x = linear_predictions, y = linear_residuals)) + geom_point()
+```
+
+Note that models generally don't make predictions from missing data, so if year or GDP data were missing, for any country or year, there would be some problems with the code above. The easiest solution is to filter out all rows from your data table that have missing data.
+
+When making predictions, you can also generate [confidence](https://en.wikipedia.org/wiki/Confidence_interval) or [prediction](https://en.wikipedia.org/wiki/Prediction_interval) intervals to add a measure of uncertainty to your visualization. For plotting purposes you may want to generate a uniform grid along the x-axis and make predictions for these values. Here's how you can do that. I've used summarize to determine the range of the years since 1950 (not shown). You should always be very cautious interpreting predictions, but especially predictions for values outside the observed values in your original data.
+
+```{r}
+new_data <- tibble(year1950 = seq(from = 2, to = 57, by = 1))
+predictions1 <- predict(m3, new_data, interval = "prediction") %>% as_tibble()
+predictions2 <- predict(m5, new_data, se=TRUE) %>% as_tibble()
+bind_cols(new_data, predictions1) %>%
+  ggplot(aes(x = year1950, y = fit)) + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr), fill = "blue", alpha = 0.4) + 
+  geom_line(color = "blue") +
+  geom_point(data = gp, aes(x = year1950, y = logGDP))
+bind_cols(new_data, predictions2) %>%
+  ggplot(aes(x = year1950, y = fit)) + 
+  geom_ribbon(aes(ymin = fit -se.fit, ymax = fit + se.fit), fill = "blue", alpha = 0.4) + 
+  geom_line(color = "blue") +
+  geom_point(data = gp, aes(x = year1950, y = logGDP))
+```
+
+A few technical observations. `predict` does not generate a data frame; it makes a matrix, so we use `as_tibble` to convert it to a tibble so that variable names work as expected. The `predict` functions for linear models, GAMs, LOESS, etc are all different functions and have some important differences. Here you can see that the spline can calculate prediction or confidence intervals and the output is the upper and lower limits of the interval. The LOESS predict function only calculates the standard error of the estimated value; this value must be scaled and added to the predicted value to generate an uncertainty estimate.
 
 ## Further reading
 
