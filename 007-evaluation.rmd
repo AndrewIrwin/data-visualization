@@ -210,14 +210,11 @@ Look in the repository `assignment-2` for a template for this assignment.
 
 ### Assignment 3 {#assignment-3 .unnumbered}
 
-_Incomplete, being created._
-
-learn, describe, and use a table layout package (not kable/kableExtra)
-- DT, gt, flextable,
+Practice using methods developed in the course so far (summarizing, ggplot visualizations, linear regression, smooths) to explore a data set and answer questions about the data.
 
 ### Assignment 4 {#assignment-4 .unnumbered}
 
-[Tidy Tuesday]() is a weekly activity to support people learning to use R for data analysis and visualization. Each week a new dataset is posted and interested participants post their visualizations. Some are complex pieces of work by people with lots of experience, but many are the work of beginners just learning to make good visualizations. I encourage you to explore the datasets and example visualizations others have made as a source of ideas and inspiration.
+[Tidy Tuesday](https://github.com/rfordatascience/tidytuesday) is a weekly activity to support people learning to use R for data analysis and visualization. Each week a new dataset is posted and interested participants post their visualizations. Some are complex pieces of work by people with lots of experience, but many are the work of beginners just learning to make good visualizations. I encourage you to explore the datasets and example visualizations others have made as a source of ideas and inspiration.
 
 For the next two assignments, I'll select a few datasets and ask you to work with one of those for your assignment.
 
