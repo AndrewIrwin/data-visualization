@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## Collaboration with GitHub
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-02-22 (updated: 2021-02-08)
+
+---
+
+class: middle
+
+
+
+# Plan
+
+* Collaborating with GitHub and Rstudio
+
+* How editing conflicts arise
+
+* Resolving editing conflicts
+
+* Other workflows
+
+---
+class: inverse, middle
+## Using the team-planning repository
+
+&lt;img src="../static/collaboration-01.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### Scenario
+
+* Two people have cloned the repository to their computer and are both editing the same file
+
+.pull-left[
+&lt;img src="../static/collaboration-02-rstudio-cloud-student.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="../static/collaboration-02-airwin.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+class: middle
+### One person pushes a change to GitHub
+
+* What happens when the second person tries to push a change?
+
+&lt;img src="../static/collaboration-03-conflict.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### One person pushes a change to GitHub
+
+* What happens when the second person tries to push a change?
+
+&lt;img src="../static/collaboration-03-resolution.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### Later, the other user pulls the changes
+
+&lt;img src="../static/collaboration-04-result.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle
+### Conflicting edits on the same line can't be resolved automatically
+
+.pull-left[
+&lt;img src="../static/collaboration-05-conflict-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="../static/collaboration-05-conflict-A.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: middle
+### Conflicting edits on the same line can't be resolved automatically
+
+&lt;img src="../static/collaboration-06-message.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### Pull, edit, stage, commit, push
+
+&lt;img src="../static/collaboration-07-resolution.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+
+# Summary
+
+* The pull - edit - commit - push editing workflow
+
+* Non-conflicting "simultaneous" edits
+
+* Conflicting simultaneous edits on the same line and how to resolve them
+  * Commit to local repository
+  * Pull remote changes
+  * Resolve conflicts
+  * Stage, commit, and push changes
+  
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* [Collaboration tutorial](https://uoftcoders.github.io/studyGroup/lessons/git/collaboration/lesson/) linked in course notes
+
+* [Resolving merge conflicts on GitHub](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line)
+
+---
+class: middle, inverse
+
+## Task
+
+Task 11: Add your name to the collaboration list, as part of a team, or by yourself. People not in teams will be assigned teams randomly. Resolve any conflicts that arise -- for example, two people using the same line of the table.
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

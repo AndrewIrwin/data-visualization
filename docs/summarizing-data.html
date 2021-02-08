@@ -54,7 +54,7 @@
 <li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
-<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
 <li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
@@ -203,11 +203,11 @@
 <pre><code>## # A tibble: 5 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  1.02 Very Good E     SI1      62.6    58  5814  6.4   6.45  4.02
-## 2  0.31 Very Good G     IF       61.6    55   924  4.38  4.42  2.71
-## 3  0.7  Very Good H     SI2      59.9    57  2034  5.74  5.77  3.45
-## 4  0.9  Good      F     SI1      62.8    64  3659  6.18  5.99  3.82
-## 5  1    Very Good E     SI2      62.4    57  4620  6.33  6.4   3.97</code></pre>
+## 1  1.03 Ideal     J     SI1      61.9    56  3921  6.45  6.5   4.01
+## 2  1.5  Good      I     VS1      57.9    60  9828  7.48  7.44  4.32
+## 3  2.05 Premium   I     VS2      60.8    58 16896  8.26  8.19  5   
+## 4  1.01 Very Good E     VVS1     63.6    55 10993  6.35  6.39  4.05
+## 5  0.3  Ideal     D     VS2      61.6    57   710  4.3   4.33  2.66</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
@@ -407,7 +407,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-06.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

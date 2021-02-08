@@ -141,13 +141,15 @@ See the file `task-10.rmd` in the repository for task 9 and 10.
 
 ### Task 11 (Lesson 18) {#task-11 .unnumbered}
 
-PCA
+Clone the GitHub project "team-planning" to your computer (or rstudio.cloud workspace). Edit the file "team-planning.Rmd" to add your name and GitHub user ID to the teams table. If you want to work with someone as a team, add both team mates to the same line. If you want to be assigned a random team mate, add your name on a line by yourself.
 
 ### Task 12 (Lesson 19) {#task-12 .unnumbered}
 
-MDS
+PCA
 
 ### Bonus task (Lesson 20) {#task-b8 .unnumbered}
+
+MDS
 
 Kmeans
 
@@ -259,9 +261,9 @@ Use a single github repository for the proposal, presentation, and final report.
 
 ### Team creation {-}
 
-Teams will be created between February 1-21. On February 1 (or earlier) I will add everyone to a reposistory called `project-planning`. This repository will be used to create teams, schedule presentations, and organize peer-evaluation for Assignment 6.
+Teams will be created during February. On February 1 (or earlier) I will add everyone to a reposistory called `team-planning`. This repository will be used to create teams, schedule presentations, and organize peer-evaluation for Assignment 6.
 
-If you would like to form a team with someone else in the class, edit the rmd document to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. This process will also introduce you to some collaboration features of github. The deadline for selecting teammates will be Monday 22 February. I will review this list and finalize the assignments in time for Monday 1 March (or earlier). I will create the presentation schedule and peer-evaluation assignments at the same time.
+If you would like to form a team with someone else in the class, edit the rmd document to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. This process will also introduce you to some collaboration features of github. The deadline for selecting teammates will be Monday 1 March. I will review this list and finalize the assignments on Tuesday 2 March. I will create the presentation schedule and peer-evaluation assignments later that week.
 
 ### Proposal {-}
 

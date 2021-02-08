@@ -201,7 +201,9 @@ push-and-pull
 changes-that-dont-conflict
 resolving-conflicts-in-the-repository
 reviewing-diffs
-pull-requests
+working-directly-through-the-github-website
+you-can-edit-files-directly-through-the-github-website
+you-can-upload-or-download-files-directly-to-your-repository-through-the-website.
 further-reading-12
 data-sources
 built-in-and-existing-packages

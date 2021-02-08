@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 18 Collaborating with github | Data Visualization</title>
+<title>Chapter 18 Collaborating with GitHub | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
 <li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
-<li><a class="active" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="active" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
 <li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
@@ -68,15 +68,15 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="collaboration" class="section level1" number="18">
 <h1>
-<span class="header-section-number">18</span> Collaborating with github<a class="anchor" aria-label="anchor" href="#collaboration"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18</span> Collaborating with GitHub<a class="anchor" aria-label="anchor" href="#collaboration"><i class="fas fa-link"></i></a>
 </h1>
-<p>In this lesson I’ll describe the basics of collaborating on a project with github. This will be a very simple collaboration model; other more complex workflows are possible. (In particular, we won’t be doing forks, branches, or pull requests. I encourage you to learn about those, but you don’t need to for the simple collaboration we will be doing.) I’ll assume you are able to work by yourself on a git repository hosted on GitHub using RStudio as we have for the assignments in the course.</p>
+<p>In this lesson I’ll describe the basics of collaborating on a project with GitHub. This will be a very simple collaboration model; other more complex workflows are possible. (In particular, we won’t be doing forks, branches, or pull requests. I encourage you to learn about those, but you don’t need to for the simple collaboration we will be doing.) I’ll assume you are able to work by yourself on a git repository hosted on GitHub using RStudio as we have for the assignments in the course.</p>
 <div id="the-basics" class="section level2" number="18.1">
 <h2>
 <span class="header-section-number">18.1</span> The basics<a class="anchor" aria-label="anchor" href="#the-basics"><i class="fas fa-link"></i></a>
 </h2>
 <p>For the collaborative project, I will create a repository for each team and give each team member write access to the repository. You should start, as always by creating (cloning) the project onto your computer from GitHub.</p>
-<p>There are now at least three copies of the repository: the remote on GitHub, a copy on your computer, and a copy on your teammate’s computer. These are all independent of each other. When you make changes to files on your computer (in the “working directory”) you eventually stage and commit your changes to your local repository. You then need to sychronize your changes with GitHub and, eventually, your teammate needs to get your changes too.</p>
+<p>There are now at least three copies of the repository: the remote on GitHub, a copy on your computer, and a copy on your teammate’s computer. These are all independent of each other. When you edit a file, you make changes to files on your computer in the “working directory”. Eventually you stage and commit your changes to your local repository. You then need to sychronize your changes with GitHub and, eventually, your teammate needs to get your changes too.</p>
 </div>
 <div id="push-and-pull" class="section level2" number="18.2">
 <h2>
@@ -89,24 +89,52 @@
 <h2>
 <span class="header-section-number">18.3</span> Changes that don’t conflict<a class="anchor" aria-label="anchor" href="#changes-that-dont-conflict"><i class="fas fa-link"></i></a>
 </h2>
-<p>If person A edits file 1.rmd and person B edits file 2.rmd, then they both commit their edits and push them to GitHub, there will be no conflict with changes made by the other person. They both need to pull the changes made by their teammate to have a complete version.</p>
+<p>If person A edits file 1.rmd and person B edits file 2.rmd, then they both commit their edits and push them to GitHub, there will be no conflict with changes made by the other person. They both need to pull the changes made by their teammate to have a complete version.]</p>
+<p>If your teammate has pushed changes to GitHub, then you try to push changes without first getting their version, you will get an error message from git, displayed in a pop-up window:</p>
+<div class="inline-figure"><img src="static/collaboration-03-conflict.png" width="75%" style="display: block; margin: auto;"></div>
+<p>The way to resolve this problem is to close the message box, then pull the remote version from GitHub. There are two likely outcomes here:</p>
+<ul>
+<li>You are told that there are no conflicts</li>
+<li>You are told there are unresolvable conflicts that you need to address</li>
+</ul>
+<p>In the situation I’ve described above, the changes are not conflicts, so git will merge the changes. You still need to push your changes to GitHub by clicking the up arrow.</p>
 </div>
 <div id="resolving-conflicts-in-the-repository" class="section level2" number="18.4">
 <h2>
 <span class="header-section-number">18.4</span> Resolving conflicts (in the repository)<a class="anchor" aria-label="anchor" href="#resolving-conflicts-in-the-repository"><i class="fas fa-link"></i></a>
 </h2>
-<p>If person A and person B both edit the same file “at the same time” (meaning, before the other person has had a chance to push the edits to GitHub so you can pull the edits to your computer before you begin to work) then the second person to push changes to that file will get a message that there is a conflict.</p>
-<p>To proceed you need pull the changes and merge the two changes together. Git will help you see the changes made by both of you, but it is up to you to resolve the conflicts. Once you’ve done that you can push the changes, now without conflict, back to GitHub.</p>
+<p>If person A and person B both edit the same file “at the same time” (meaning, before the other person has had a chance to push the edits to GitHub so you can pull the edits to your computer before you begin to work) then the second person to push changes to that file may get a message that there is a conflict.</p>
+<p>Git records changes line by line to a file (see the line numbers in the left margin of the Rstudio editing window.) If all the edits made by person A are on different lines from the edits made by person B, then git will automatically merge the two versions.</p>
+<p>If both people edit the same line, then git will not know how to resolve the conflicts. When you pull the remote version to your computer, the file will be edited to show the conflicting changes, like this:</p>
+<div class="inline-figure"><img src="static/collaboration-06-message.png" width="75%" style="display: block; margin: auto;"></div>
+<p>You need to edit the file to fix the problems. Git doesn’t supervise you here, so there are no outside rules. Just read both versions, decide what you want, and delete anything you don’t want. Then stage, commit, and push your changes.</p>
+<p>Note, the “conflict” resolution doesn’t help you and your partner if you actually disagree about something! That is not a problem that can be solved by software. Git simply helps you manage editing the same file and knowing if your proposed changed disagree.</p>
 </div>
 <div id="reviewing-diffs" class="section level2" number="18.5">
 <h2>
 <span class="header-section-number">18.5</span> Reviewing diffs<a class="anchor" aria-label="anchor" href="#reviewing-diffs"><i class="fas fa-link"></i></a>
 </h2>
+<p>When you sit down to work on your project, you should always start by pulling the remote version to your computer. This will make sure you have your partner’s latest work. If you see the message “Already up to date.” you know your partner didn’t make changes since you worked on the files. If you see some other message, git will tell you what files were changed. You can review these changes using the “diff” tool in Rstudio’s git pane.</p>
+<p>Open up the “diff” pane and click on History (button in the upper left). By clicking on a commit message in the top panel, you can see the changes made in files. The bottom panel will show the changes, highlighting new lines in green and deleted lines in red. Differences (“diffs”) are recorded one line at a time, so if the change was an edit, you will usually see pairs of red and green lines with the old version in red and the new version in green. If the text is new, with no old version, you will see just green. If lines were deleted and not replaced with anything, you will see just red lines.</p>
 </div>
-<div id="pull-requests" class="section level2" number="18.6">
+<div id="working-directly-through-the-github-website" class="section level2" number="18.6">
 <h2>
-<span class="header-section-number">18.6</span> Pull requests<a class="anchor" aria-label="anchor" href="#pull-requests"><i class="fas fa-link"></i></a>
+<span class="header-section-number">18.6</span> Working directly through the GitHub website<a class="anchor" aria-label="anchor" href="#working-directly-through-the-github-website"><i class="fas fa-link"></i></a>
 </h2>
+<p>I find the workflow described easy to use and I strongly suggest it because it lets you use all the features of Rstudio and the collaboration tools of GitHub. There are other ways to interact through GitHub and I’ll describe some of these describe briefly.</p>
+<div id="you-can-edit-files-directly-through-the-github-website" class="section level3" number="18.6.1">
+<h3>
+<span class="header-section-number">18.6.1</span> You can edit files directly through the GitHub website<a class="anchor" aria-label="anchor" href="#you-can-edit-files-directly-through-the-github-website"><i class="fas fa-link"></i></a>
+</h3>
+<p>Find the file you want to edit. Click on the link so you see the contents of the file. (This works with .Rmd files, but not some more complicated files.) Click the pencil (“edit”) icon in the upper right area of the window where your file is shown. Make your edits. Scroll to the bottom of the window and click “commit” to the main branch.</p>
+<p>These edits are particularly handy if you are trying to edit on a tablet or someone else’s computer.</p>
+</div>
+<div id="you-can-upload-or-download-files-directly-to-your-repository-through-the-website." class="section level3" number="18.6.2">
+<h3>
+<span class="header-section-number">18.6.2</span> You can upload or download files directly to your repository through the website.<a class="anchor" aria-label="anchor" href="#you-can-upload-or-download-files-directly-to-your-repository-through-the-website."><i class="fas fa-link"></i></a>
+</h3>
+<p>In the main window for the project, beside the bright green ‘Code’ button, click “Add file”. Here you can upload a new file to the repository.</p>
+</div>
 </div>
 <div id="further-reading-12" class="section level2" number="18.7">
 <h2>
@@ -119,6 +147,9 @@
 <li>Software Carpentry <a href="https://swcarpentry.github.io/git-novice/">lessons on git and github</a>
 </li>
 <li>Using <a href="https://mitgcm-example.readthedocs.io/en/latest/contributing/contributing.html#using-git-and-github">github for collaboration</a> on a software package (the MIT general circulation model)</li>
+<li>
+<a href="https://github.com/miraisolutions/compareWith/">compareThis</a> is an add-in for Rstudio to help you visualize and resolve merge conflicts.</li>
+<li><a href="https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html">Using git with Rstudio</a></li>
 </ul>
 </div>
 </div>
@@ -128,13 +159,18 @@
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#collaboration"><span class="header-section-number">18</span> Collaborating with github</a></li>
+<li><a class="nav-link" href="#collaboration"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="nav-link" href="#the-basics"><span class="header-section-number">18.1</span> The basics</a></li>
 <li><a class="nav-link" href="#push-and-pull"><span class="header-section-number">18.2</span> Push and pull</a></li>
 <li><a class="nav-link" href="#changes-that-dont-conflict"><span class="header-section-number">18.3</span> Changes that don’t conflict</a></li>
 <li><a class="nav-link" href="#resolving-conflicts-in-the-repository"><span class="header-section-number">18.4</span> Resolving conflicts (in the repository)</a></li>
 <li><a class="nav-link" href="#reviewing-diffs"><span class="header-section-number">18.5</span> Reviewing diffs</a></li>
-<li><a class="nav-link" href="#pull-requests"><span class="header-section-number">18.6</span> Pull requests</a></li>
+<li>
+<a class="nav-link" href="#working-directly-through-the-github-website"><span class="header-section-number">18.6</span> Working directly through the GitHub website</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#you-can-edit-files-directly-through-the-github-website"><span class="header-section-number">18.6.1</span> You can edit files directly through the GitHub website</a></li>
+<li><a class="nav-link" href="#you-can-upload-or-download-files-directly-to-your-repository-through-the-website."><span class="header-section-number">18.6.2</span> You can upload or download files directly to your repository through the website.</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#further-reading-12"><span class="header-section-number">18.7</span> Further reading</a></li>
 </ul>
 
@@ -153,7 +189,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-06.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
