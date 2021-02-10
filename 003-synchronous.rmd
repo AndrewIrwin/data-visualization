@@ -96,14 +96,46 @@ Meeting agenda:
 * Live coding examples of pivoting tools (`pivot_longer`, `pivot_wider`, `unite` and `separate`), formatting tables (`kable`, `kableExtra`) -- material for tasks 7 and 8
 * Strategies for getting help and learning independently (for Assignment 2)
 
-Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
+Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. 
 
   * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-05.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-05.rmd) 
   * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-05-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-05-after-class.rmd) 
   
 ## Thu 11 February 8:35 {#sync-6 .unnumbered}
 
+Before the meeeting:
 
+* Lesson 15-17
+
+Meeting agenda:
+
+* Live coding examples of linear models and smooths
+
+Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
+
+  * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-06.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-06.rmd) 
+  * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-06-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-06-after-class.rmd)
+  
+
+## Thu 25 February 8:35 {#sync-7 .unnumbered}
+
+Before the meeeting:
+
+* Lesson 18-20
+
+Meeting agenda:
+
+* Questions about the term project or other course material
+* Displaying information on teams and project planning
+* Project repositories created before class
+
+* Live coding examples of PCA and MDS
+
+Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
+
+  * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-07.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-07.rmd) 
+  * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-07-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-07-after-class.rmd)
+  
 
 ## Thu 1 April 8:35 {#sync-12 .unnumbered}
 

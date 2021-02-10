@@ -164,11 +164,13 @@
 </h3>
 <p>Download git from <a href="https://git-scm.com/">git-scm</a> using the <a href="https://git-scm.com/downloads">download</a> link. Run the installer, accepting all the default options in the many dialog boxes that appear.</p>
 <p>When you are done, type <code>git</code> in the Rstudio terminal. If you see some help text displayed instead of an error message you know git is installed.</p>
+<p><strong>Do not move on to the next steps until you have git working properly on your computer.</strong> If you can’t get it working on your own computer, use <a href="https://rstudio.cloud/project/1998812">rstudio.cloud</a> for now.</p>
 </div>
-<div id="set-up-a-github-account" class="section level3" number="6.8.4">
-<h3>
-<span class="header-section-number">6.8.4</span> Set up a github account<a class="anchor" aria-label="anchor" href="#set-up-a-github-account"><i class="fas fa-link"></i></a>
-</h3>
+</div>
+<div id="set-up-a-github-account" class="section level2" number="6.9">
+<h2>
+<span class="header-section-number">6.9</span> Set up a github account<a class="anchor" aria-label="anchor" href="#set-up-a-github-account"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Create a free account at <a href="https://github.com/join">github.com</a>
 </li>
@@ -176,17 +178,26 @@
 <li>In a day or less you will get an invitation by email to join the course on github. Accept the invitation.</li>
 <li>When you pull files from or push files to github you will need to enter your password. An authorization key can be place on your computer to let you skip this authentication step. (Instructions to come.)</li>
 </ul>
-<p><strong>Do not move on to the next steps until you have git working properly on your computer.</strong> If you can’t get it working, use <a href="https://rstudio.cloud/project/1998812">rstudio.cloud</a> for now.</p>
+<div id="give-git-your-name-and-email-address" class="section level3" number="6.9.1">
+<h3>
+<span class="header-section-number">6.9.1</span> Give git your name and email address<a class="anchor" aria-label="anchor" href="#give-git-your-name-and-email-address"><i class="fas fa-link"></i></a>
+</h3>
+<p>When you use git to communicate with GitHub, git needs to know your name and email address to help other people know who made the changes you are sending.</p>
+<p>In the Rstudio “terminal” window (not the “console” window), type the following, placing your name and email in the spaces indicated:</p>
+<ul>
+<li>git config –global user.email “<a href="mailto:you@example.com" class="email">you@example.com</a>”</li>
+<li>git config –global user.name “Your Name”</li>
+</ul>
 </div>
 </div>
-<div id="practice-tasks" class="section level2" number="6.9">
+<div id="practice-tasks" class="section level2" number="6.10">
 <h2>
-<span class="header-section-number">6.9</span> Practice tasks<a class="anchor" aria-label="anchor" href="#practice-tasks"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10</span> Practice tasks<a class="anchor" aria-label="anchor" href="#practice-tasks"><i class="fas fa-link"></i></a>
 </h2>
 <p>Here’s a step-by-step guide to creating a new Rstudio project in a new folder using git version control.</p>
-<div id="create-a-project" class="section level3" number="6.9.1">
+<div id="create-a-project" class="section level3" number="6.10.1">
 <h3>
-<span class="header-section-number">6.9.1</span> Create a project<a class="anchor" aria-label="anchor" href="#create-a-project"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.1</span> Create a project<a class="anchor" aria-label="anchor" href="#create-a-project"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Start Rstudio.</li>
@@ -195,9 +206,9 @@
 <li>Give the directory for your new project and place in a deliberate place on your computer (e.g., on the Desktop, in a folder called STAT2430, or whatever you prefer.). Make sure “Create a git repository” is checked. Then click “Create Project”.</li>
 </ul>
 </div>
-<div id="create-a-new-markdown-file" class="section level3" number="6.9.2">
+<div id="create-a-new-markdown-file" class="section level3" number="6.10.2">
 <h3>
-<span class="header-section-number">6.9.2</span> Create a new markdown file<a class="anchor" aria-label="anchor" href="#create-a-new-markdown-file"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.2</span> Create a new markdown file<a class="anchor" aria-label="anchor" href="#create-a-new-markdown-file"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Use Rstudio menu: File &gt; New file &gt; R Markdown …</li>
@@ -207,9 +218,9 @@
 <li>If you like, click “knit” to see the output of the R markdown document. We’ll learn more about this later.</li>
 </ul>
 </div>
-<div id="stage-and-commit-your-changes" class="section level3" number="6.9.3">
+<div id="stage-and-commit-your-changes" class="section level3" number="6.10.3">
 <h3>
-<span class="header-section-number">6.9.3</span> Stage and commit your changes<a class="anchor" aria-label="anchor" href="#stage-and-commit-your-changes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.3</span> Stage and commit your changes<a class="anchor" aria-label="anchor" href="#stage-and-commit-your-changes"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Click the “Git” tab in the upper right of the Rstudio window.</li>
@@ -221,9 +232,9 @@
 <li>Close the Commit popup by using the “X” button to close a window on your computer.</li>
 </ul>
 </div>
-<div id="make-some-more-changes-to-your-files" class="section level3" number="6.9.4">
+<div id="make-some-more-changes-to-your-files" class="section level3" number="6.10.4">
 <h3>
-<span class="header-section-number">6.9.4</span> Make some more changes to your files<a class="anchor" aria-label="anchor" href="#make-some-more-changes-to-your-files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.4</span> Make some more changes to your files<a class="anchor" aria-label="anchor" href="#make-some-more-changes-to-your-files"><i class="fas fa-link"></i></a>
 </h3>
 <p>You should notice that the “status” display in the Git tab is now blank. There are no differences between the files in your R project and your local git repository. Let’s see what happens when we change this.</p>
 <ul>
@@ -233,9 +244,9 @@
 <li>Commit the changes to your local repository.</li>
 </ul>
 </div>
-<div id="connect-to-github" class="section level3" number="6.9.5">
+<div id="connect-to-github" class="section level3" number="6.10.5">
 <h3>
-<span class="header-section-number">6.9.5</span> Connect to github<a class="anchor" aria-label="anchor" href="#connect-to-github"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.5</span> Connect to github<a class="anchor" aria-label="anchor" href="#connect-to-github"><i class="fas fa-link"></i></a>
 </h3>
 <p>To publish these files on github you have to do a few steps.</p>
 <ul>
@@ -259,9 +270,9 @@
 <li>Go back to github and refresh your window. You should see your three files from your R project there in the web browser now.</li>
 </ul>
 </div>
-<div id="make-and-push-another-change" class="section level3" number="6.9.6">
+<div id="make-and-push-another-change" class="section level3" number="6.10.6">
 <h3>
-<span class="header-section-number">6.9.6</span> Make and push another change<a class="anchor" aria-label="anchor" href="#make-and-push-another-change"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.10.6</span> Make and push another change<a class="anchor" aria-label="anchor" href="#make-and-push-another-change"><i class="fas fa-link"></i></a>
 </h3>
 <p>You’re all done the setup now. Now we will practice the normal day-to-day work on an R project.</p>
 <ul>
@@ -274,9 +285,9 @@
 <p>Congratulations! You are a git and github novice now.</p>
 </div>
 </div>
-<div id="clean-up" class="section level2" number="6.10">
+<div id="clean-up" class="section level2" number="6.11">
 <h2>
-<span class="header-section-number">6.10</span> Clean up<a class="anchor" aria-label="anchor" href="#clean-up"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.11</span> Clean up<a class="anchor" aria-label="anchor" href="#clean-up"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you don’t want to keep this repository, you can get rid of it in two steps.</p>
 <ul>
@@ -284,16 +295,16 @@
 <li>Delete it from github. On the repository page on github.com, go to: Settings, then scroll to the bottom. From the “danger zone” choose “Delete this repository”. Github really doesn’t want you to do this by mistake, so it requires two confirmation steps. You must type the repository name to confirm and then enter your github password to confirm.</li>
 </ul>
 </div>
-<div id="your-first-assignment-from-github" class="section level2" number="6.11">
+<div id="your-first-assignment-from-github" class="section level2" number="6.12">
 <h2>
-<span class="header-section-number">6.11</span> Your first assignment from github<a class="anchor" aria-label="anchor" href="#your-first-assignment-from-github"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.12</span> Your first assignment from github<a class="anchor" aria-label="anchor" href="#your-first-assignment-from-github"><i class="fas fa-link"></i></a>
 </h2>
 <p>In the <em>task</em> for this lesson you’ll clone an exiting repository I created for you on github to create a new project on your computer (or rstudio.cloud account). This will be the first step for assignment 1. This task is simpler than the steps shown above, since I have created the repository on github already; your task is to clone a copy onto your computer.</p>
 <p>Please watch the Task 4 <a href="https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7cb26d66-a26e-4b24-89b1-acaf01321690">video</a> for step-by-step instructions. (The <a href="slides/06-demo-assignment-github.html">slides</a> are also available.)</p>
 </div>
-<div id="resources-1" class="section level2" number="6.12">
+<div id="resources-1" class="section level2" number="6.13">
 <h2>
-<span class="header-section-number">6.12</span> Resources<a class="anchor" aria-label="anchor" href="#resources-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.13</span> Resources<a class="anchor" aria-label="anchor" href="#resources-1"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Rstudio <a href="https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.5001&amp;mode=desktop">help</a> for git</li>
@@ -328,22 +339,24 @@
 <li><a class="nav-link" href="#on-rstudio.cloud"><span class="header-section-number">6.8.1</span> On rstudio.cloud</a></li>
 <li><a class="nav-link" href="#on-a-macintosh-osx-computer"><span class="header-section-number">6.8.2</span> On a Macintosh (OSX) computer</a></li>
 <li><a class="nav-link" href="#on-a-windows-computer"><span class="header-section-number">6.8.3</span> On a Windows computer</a></li>
-<li><a class="nav-link" href="#set-up-a-github-account"><span class="header-section-number">6.8.4</span> Set up a github account</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#practice-tasks"><span class="header-section-number">6.9</span> Practice tasks</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#create-a-project"><span class="header-section-number">6.9.1</span> Create a project</a></li>
-<li><a class="nav-link" href="#create-a-new-markdown-file"><span class="header-section-number">6.9.2</span> Create a new markdown file</a></li>
-<li><a class="nav-link" href="#stage-and-commit-your-changes"><span class="header-section-number">6.9.3</span> Stage and commit your changes</a></li>
-<li><a class="nav-link" href="#make-some-more-changes-to-your-files"><span class="header-section-number">6.9.4</span> Make some more changes to your files</a></li>
-<li><a class="nav-link" href="#connect-to-github"><span class="header-section-number">6.9.5</span> Connect to github</a></li>
-<li><a class="nav-link" href="#make-and-push-another-change"><span class="header-section-number">6.9.6</span> Make and push another change</a></li>
+<a class="nav-link" href="#set-up-a-github-account"><span class="header-section-number">6.9</span> Set up a github account</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#give-git-your-name-and-email-address"><span class="header-section-number">6.9.1</span> Give git your name and email address</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#practice-tasks"><span class="header-section-number">6.10</span> Practice tasks</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#create-a-project"><span class="header-section-number">6.10.1</span> Create a project</a></li>
+<li><a class="nav-link" href="#create-a-new-markdown-file"><span class="header-section-number">6.10.2</span> Create a new markdown file</a></li>
+<li><a class="nav-link" href="#stage-and-commit-your-changes"><span class="header-section-number">6.10.3</span> Stage and commit your changes</a></li>
+<li><a class="nav-link" href="#make-some-more-changes-to-your-files"><span class="header-section-number">6.10.4</span> Make some more changes to your files</a></li>
+<li><a class="nav-link" href="#connect-to-github"><span class="header-section-number">6.10.5</span> Connect to github</a></li>
+<li><a class="nav-link" href="#make-and-push-another-change"><span class="header-section-number">6.10.6</span> Make and push another change</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#clean-up"><span class="header-section-number">6.10</span> Clean up</a></li>
-<li><a class="nav-link" href="#your-first-assignment-from-github"><span class="header-section-number">6.11</span> Your first assignment from github</a></li>
-<li><a class="nav-link" href="#resources-1"><span class="header-section-number">6.12</span> Resources</a></li>
+<li><a class="nav-link" href="#clean-up"><span class="header-section-number">6.11</span> Clean up</a></li>
+<li><a class="nav-link" href="#your-first-assignment-from-github"><span class="header-section-number">6.12</span> Your first assignment from github</a></li>
+<li><a class="nav-link" href="#resources-1"><span class="header-section-number">6.13</span> Resources</a></li>
 </ul>
 
       <div class="book-extra">
@@ -361,7 +374,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-08.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -76,6 +76,7 @@ on-rstudio.cloud
 on-a-macintosh-osx-computer
 on-a-windows-computer
 set-up-a-github-account
+give-git-your-name-and-email-address
 practice-tasks
 create-a-project
 create-a-new-markdown-file

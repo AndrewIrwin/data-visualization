@@ -143,28 +143,28 @@ See the file `task-10.rmd` in the repository for task 9 and 10.
 
 Clone the GitHub project "team-planning" to your computer (or rstudio.cloud workspace). Edit the file "team-planning.Rmd" to add your name and GitHub user ID to the teams table. If you want to work with someone as a team, add both team mates to the same line. If you want to be assigned a random team mate, add your name on a line by yourself.
 
-### Task 12 (Lesson 19) {#task-12 .unnumbered}
+### Bonus task (Lesson 19) {#task-b8 .unnumbered}
 
-PCA
+Practice the PCA skills from the course notes and mini-lecture. First repeat a selected compuation and plot. Then try to modify the example to work on a dataset of your choice.
 
-### Bonus task (Lesson 20) {#task-b8 .unnumbered}
+### Task 12 (Lesson 20) {#task-12 .unnumbered}
 
-MDS
-
-Kmeans
-
+Create a PCA and MDS plot as described in the task-12.rmd file. This task is in the repository for task 12, 13, and 14.
 
 ### Task 13 (Lesson 21) {#task-13 .unnumbered}
 
-Collaboration and reproducible reports
+Create a K-means analysis and accompanying visualization as described in the task-13.rmd file. This task is in the repository for task 12, 13, and 14.
 
-### Task 14 (Lesson 22) {#task-14 .unnumbered}
+### Bonus task (Lesson 22) {#task-b9 .unnumbered}
 
-Slide presentations
+Practice formatting and other techniques in the collaboration and reproducible reports lesson.
 
-### Task 15 (Lesson 21) {#task-15 .unnumbered}
+### Task 14 (Lesson 21) {#task-14 .unnumbered}
 
-Collaboration
+Modify the slide presentation as directed in the file task-14.rpres. This task is in the repository for task 12, 13, and 14.
+
+### Task 15 (Lesson XX) {#task-15 .unnumbered}
+
 
 
 

@@ -55,7 +55,7 @@ Open up the "diff" pane and click on History (button in the upper left). By clic
 
 ## Working directly through the GitHub website
 
-I find the workflow described easy to use and I strongly suggest it because it lets you use all the features of Rstudio and the collaboration tools of GitHub. There are other ways to interact through GitHub and I'll describe some of these describe briefly.
+I find the workflow described easy to use and I strongly suggest it because it lets you use all the features of Rstudio and the collaboration tools of GitHub. There are other ways to interact through GitHub and I'll describe some of these briefly.
 
 ### You can edit files directly through the GitHub website
 

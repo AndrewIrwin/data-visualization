@@ -1,4 +1,4 @@
-# Principal component analysis
+# Principal component analysis {#PCA}
 
 ```{r}
 library(tidyverse)
@@ -9,10 +9,22 @@ library(palmerpenguins)
 library(GGally)  # for ggpairs
 ```
 
-Datasets are said to be high-dimensional when several quantiative (or categorical) variables are observed for each observation. Visualizing these datasets can be challenging, because visualizations worth best with two dimensions and it is impossible to visualize  4 or more dimensions simulaneously. Many plots of pairs of variables can be displayed, but these projections require the viewer to try to reconstruct complex interactions among variables. [Ordination](https://en.wikipedia.org/wiki/Ordination_(statistics)) is a suite of techniques for creating 2 (or 3) dimensional projections of high-dimensional data. The name refers to the goal of _ordering_ observations in a two dimensional plane so that observations which are close in the high-dimensional space are still close in the projected 2-dimensional space. Not all features of the original dataset can be maintained -- information is lost -- so some care must be taken when interpreting ordination plots. In this course we will examine Principal Component Analysis (in this lesson) and metric and non-metric dimensional analysis (in the next). There are many other techniques for [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction).
+Datasets are said to be high-dimensional when several quantitative (or categorical) variables are recorded for each observation. Visualizing these datasets can be challenging, because visualizations work best with two dimensions and it is difficult to visualize 4 or more dimensions simultaneously. Many plots of pairs of variables can be displayed, but these projections require the viewer to try to reconstruct complex interactions among variables. [Ordination](https://en.wikipedia.org/wiki/Ordination_(statistics)) is a suite of techniques for creating projections of high-dimensional data, usually in 2 or 3 dimensions. The name refers to the goal of *ordering* observations in a two dimensional plane so that observations which are close in the high-dimensional space are still close in the projected 2-dimensional space. Not all features of the original dataset can be maintained -- information is lost -- so some care must be taken when interpreting ordination plots. In this course we will examine Principal Component Analysis (in this lesson) and metric and non-metric dimensional analysis (in the next). There are many other techniques for [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction).
 
+Principal component analysis (from now on, PCA) defines new variables which are weighted sums (a.k.a. linear combinations) of variables in your data. These sums are called principal components. The principal components can be used as new axes for your data, defining new coordinates for each point. The underlying transformation is a rotation (and usually a scaling) which is used to form a new coordinate system. The coordinate along each axis known as the first, second, etc., principal component. The rotation is chosen to maximize the variance in the first principal component. The second principal component is perpendicular to the first, but chosen so that as much of the remaining variation as possible is along that axis. And so on. In this way you can select as many of the first few principal components as you like to have a smaller set of variables that represent as much of the variation in the original data as possible.
 
-Principal component analysis (from now on, PCA) defines new variables which are weighted sums (a.k.a. linear combinations) of variables in your data. These sums are called principal components. The principal components can be used as new axes for your data, defining new coordinates for each point. The original axes are rotated to form a new coordinate system. The rotation is chosen to maximize the variance in the first component. Then the second principal component is perpendicular to the first, but chosen so that as much of the remaining variation as possible is along that axis. And so on. In this way you can choose as many of the first few principal components as you like to  have a smaller set of variables that represent as much of the variation in the original data as possible.
+If you have studied linear algebra, you will want to know that the principal component analysis is performed with the following steps:
+
+* center the data at the origin by subtracting the mean of each variable (optionally scale each variable to have the same standard deviation),
+* compute the covariance matrix (or optionally the correlation matrix),
+* compute the eigenvalues of the covariance matrix. 
+
+The eigenvalues and their corresponding eigenvectors are sorted from largest to smallest. 
+The proportion of the variance explained by each principal component is proportional to the eigenvalues.
+The rotation matrix is the orthogonal matrix composed of these eigenvalues. 
+This is explained in our applied linear algebra course (Math 2040) in section 11.12 of [Peter Selinger's book](https://www.mathstat.dal.ca/~selinger/linear-algebra/) textbook. 
+
+## Example 
 
 A simple example in two dimensions is really helpful. No one does PCA on two variables, because you can just plot the data in a normal scatterplot, but as a demonstration it shows how the principal components are chosen.
 
@@ -22,75 +34,90 @@ First, let's look at a regular scatterplot of two variables that have a reasonab
 cars %>% ggplot(aes(x=speed, y=dist)) + geom_point() + coord_fixed()
 ```
 
-Now let's perform the PCA. There are three results: the amount of variation accounted for by each principal component, the directions of the principal components along each of the original axes, and the coordinates of the observations along the principal component axes. 
+Now let's perform the PCA. There are three results: the amount of variation accounted for by each principal component, the directions of the principal components along each of the original axes, and the coordinates of the observations along the principal component axes.
 
-```
-pca1 <- cars %>% 
-  select(where(is.numeric)) %>% # retain only numeric columns
-  # scale() %>% # scale data
-  prcomp() 
-pca1
+```{r}
+pca1 <- cars %>% prcomp()
 ```
 
-There is a helper functions to get
+The `tidy` functions let you obtain
 
- * the percent explained by each principal component (determined by the eigenvalues)
- * the directions of the original axes along the new principal component axes (rotation)
- * the original data transformed to the new principal component axes (scores)
+-   the percent of the total variance projected along ("explained by") each principal component (determined by the eigenvalues)
+-   the directions of the original axes along the new principal component axes (rotation)
+-   the original data transformed to the new principal component axes (scores)
 
+```{r}
+pca1 %>% tidy(matrix = "eigenvalues") %>% kable()
+pca1 %>% tidy(matrix = "rotation") %>% kable()
+pca1 %>% tidy(matrix = "scores") %>% 
+  pivot_wider(names_from = "PC", names_prefix = "PC_", values_from = "value") %>% 
+  kable() %>% scroll_box(height = 50)
 ```
-pca1 %>% tidy(matrix = "eigenvalues")
-pca1 %>% tidy(matrix = "rotation")
-pca1 %>% tidy(matrix = "scores")
+
+We can perform these calculations "by hand" following the linear algebra instructions:
+
+```{r}
+carsM <- scale(as.matrix(cars), center = TRUE, scale = FALSE)  # If scale = TRUE, then use correlation matrix below
+B1 <- cov(carsM)  
+B2 <- (t(carsM) %*% carsM ) / (nrow(carsM) - 1)  # divide (M^T * M) by N-1 to get covariance matrix
+sqrt(eigen(B1)$values)
+eigen(B1)$vectors
+```
+
+The the "scores" output is equal to the original data multiplied by the rotation matrix.
+
+```{r}
+rotation <- pca1 %>% tidy(matrix = "rotation") %>% pull(value) %>% matrix(2, 2)  # also available as  pca1$rotation
+center <- cars %>% summarize(speed = mean(speed), dist = mean(dist)) # also available as pca1$center
+scores1 <- pca1 %>% tidy(matrix = "scores") %>% pull(value) %>% matrix(ncol = 2, byrow = TRUE)
+# scores2 <- t((t(cars) - pca1$center)) %*% pca1$rotation
+scores2 <- scale(cars, center = TRUE, scale = FALSE) %*% rotation
+```
+
+Now I'll plot the data projected onto the principal components. Notice that it is wide and thin (especially compared to the previous plot) because the data have been rotated to arrange as much of the variation as possible in the horizontal direction.
+
+```{r}
+pca1 %>% tidy(matrix = "scores") %>% 
+  pivot_wider(names_from="PC", names_prefix = "PC_", values_from = "value") %>%
+  ggplot(aes(x=PC_1, y=PC_2)) + geom_point() + coord_fixed()
 ```
 
 An easy way to display the results of the PCA is to make a biplot using the `ggfortify` package. The biplot shows the observations as black dots and the original axes as red vectors. The option `scale=0` keeps the same scaling as in the original plot. In normal usage you would not have `coord_fixed()` in the original plot and you would not use `scale=0` in this plot.
 
-```
+```{r}
 autoplot(pca1, data= cars, loadings=TRUE, loadings.label=TRUE, scale=0) + coord_equal()
 ```
 
-This gives you vectors along the first and second principal components. It's work to visualize these in our heads, so let's plot the transformed data.
+Normal use of `autoplot` would be to allow changing the scale of the two principal components (`scale = 1`) and to allow the axes to be scaled independently of each other (no `coord_fixed()`):
 
+```{r}
+autoplot(pca1, data= cars, loadings=TRUE, loadings.label=TRUE, scale=1, variance_percentage = TRUE)
 ```
+
+The `autoplot` function is convenient and you can customize many features using the options in `ggbiplot`.  I like to know exactly how a plot is drawn to check my understanding, so I'll show you how to reproduce this plot using `augment` and `ggplot`.
+
+We can make this plot (called a biplot) from the raw data by using a few scaling factors (lam, scaling) commonly used in these plots:
+
+```{r}
+lam <- pca1$sdev[1:2] * sqrt(nrow(pca1$x))
+scaling <- min(apply(abs(scores2), 2, max) / apply(abs(rotation), 2, max) / lam) * 0.8
+ve <- pca1$sdev^2 / sum(pca1$sdev^2)
+scores2 %>% as_tibble() %>% ggplot(aes(V1/lam[1], V2/lam[2])) + geom_point()  + 
+  geom_segment(aes(x = 0, y = 0, xend = V1*scaling, yend = V2*scaling), 
+               arrow = arrow(length = unit(0.25,"cm")),
+               color = "red",
+               data = as_tibble(rotation)) +
+  labs(x = paste0("PC1: ", round(ve[1]*100, 2), "%"),
+       y = paste0("PC2: ", round(ve[2]*100, 2), "%"))
+```
+
+If all you want is the scores and you don't care about the scaling, you can just use `augment` and `ggplot`:
+
+```{r}
 pca1 %>%
   augment(cars) %>%
-  ggplot(aes(x=.fittedPC1, y= .fittedPC2)) +
+  ggplot(aes(x=.fittedPC1, y= .fittedPC2)) +   # divide by lam[1] and lam[2] to get the scaled version
   geom_point()
-```
-
-The direction of the original axes are
-
-```
-pca1 %>% 
-  tidy(matrix="rotation") %>%
-  pivot_wider(names_from = PC, names_prefix = "PC", values_from = value)
-```
-
-Which we can plot
-
-```
-rotation1 <- pca1 %>% 
-  tidy(matrix="rotation") %>%
-  pivot_wider(names_from = PC, names_prefix = "PC", values_from = value) 
-rotation1 %>%
-  ggplot(aes(PC1, PC2)) + 
-  geom_segment(xend=0, yend=0, arrow=arrow(angle=20, type="closed", ends="first")) +
-  geom_text_repel(aes(label=column), arrow=arrow(angle=20, type="closed", ends="first")) + 
-  coord_fixed() + 
-  xlim(-1,1) + ylim(-1,1)
-```
-
-Plot the new axes on the origial plot.
-
-```
-# cars %>% ggplot(aes(x=speed, y=dist)) + geom_point() +
-  pca1 %>%
-  augment(cars) %>%
-  ggplot(aes(x=.fittedPC1, y= .fittedPC2)) +
-  geom_point() + 
-  geom_segment(data = rotation1, mapping = aes(10*PC1, 10*PC2), xend=0, yend=0, arrow=arrow(angle=20, type="closed", ends="first")) 
-
 ```
 
 ### Second example: penguins.
@@ -101,51 +128,55 @@ The palmer penguin data have 4 quantitative variables. We will scale them all to
 
 ```{r}
 penguins_no_na = na.omit(penguins)
-pca2 <- prcomp(penguins_no_na %>% select(flipper_length_mm, body_mass_g, bill_length_mm, bill_depth_mm), scale=TRUE )
+pca2 <- prcomp(penguins_no_na %>% dplyr::select(flipper_length_mm, body_mass_g, bill_length_mm, bill_depth_mm), scale=TRUE )
 autoplot(pca2, data = penguins_no_na, loadings=TRUE, loadings.label=TRUE,
          colour='species', shape='island')
 ```
 
-Gentoo penguins are mostly distinguished by having the highest body mass. Adelie and Chinstrap penguins have similar masses, but are distinguished by dimensions of their bills and flippers. 
+Gentoo penguins are mostly distinguished by having the highest body mass. Adélie and Chinstrap penguins have similar masses, but are distinguished by dimensions of their bills and flippers. You can use `frame.type` to shade the areas containing 
+data from each species to highlight where the points are concentrated (by color).
 
-Compare this result to a set of scatterplots of each pair of variables.
-
-```{r message=FALSE}
-penguins_no_na %>% select(flipper_length_mm, body_mass_g, bill_length_mm, bill_depth_mm, species) %>% ggpairs(aes(color=species))
+```{r}
+autoplot(pca2, data = penguins_no_na, loadings = TRUE, loadings.label = TRUE,
+         colour = 'species', shape = 'island', 
+         frame.type = "norm", frame.level = 0.90)   # frame.type convex, norm, euclid, t; see ?ggbiplot
 ```
 
-You should practice seeing how many of the pairwise differences in this complex pairs plot can be revealed in the single PCA.
+Without a PCA, you could attempt to see these patterns by making a complex array of scatterplots for each pair of variables.
 
-Here is a customized ggplot of the PCA results.
+```{r message=FALSE}
+penguins_no_na %>% 
+  dplyr::select(flipper_length_mm, body_mass_g, bill_length_mm, bill_depth_mm, species) %>% 
+  ggpairs(aes(color=species))
+```
+
+You should practice seeing how many of the pairwise differences in this pairs plot can be revealed in the single PCA.
+
+Here is a customized ggplot of the PCA results. I simplifed the work in the first example by not using the conventional scaling; instead I just picked scales for the arrows that looked good. **Need to fix this.**
 
 ```{r}
 rotation2 <- pca2 %>% 
-  tidy(matrix="rotation") %>%
+  tidy(matrix = "rotation") %>%
   pivot_wider(names_from = PC, names_prefix = "PC", values_from = value) 
 pca2 %>%
   augment(penguins_no_na) %>%
   ggplot() +
-  geom_point(aes(x=.fittedPC1, y= .fittedPC2, color=species, shape=island)) +
-  geom_segment(data=rotation2, mapping = aes(x = 0, xend= 3*PC1, y = 0, yend = 3*PC2), color="blue",
-               arrow=arrow(angle=20, type="closed"))  +
-  geom_label_repel(data=rotation2,
-                  aes(x = 3*PC1, y = 3*PC2, label=column), 
-                  color = "darkblue", fill="#FFFFFF80",
-                  arrow=arrow(angle=20, type="closed")) +
+  geom_point(aes(x = .fittedPC1, y = .fittedPC2, color = species, shape = island)) +
+  geom_segment(data = rotation2, mapping = aes(x = 0, xend = 3*PC1, y = 0, yend = 3*PC2), color = "blue",
+               arrow = arrow(angle = 20, type = "closed"))  +
+  geom_label_repel(data = rotation2,
+                  aes(x = 3*PC1, y = 3*PC2, label = column), 
+                  color = "darkblue", fill = "#FFFFFF80",
+                  arrow = arrow(angle = 20, type = "closed")) +
   labs(x = "PC 1", y = "PC 2")
-  
-
 ```
 
-The scaling of this plot does not match `autoplot`. May even be slightly different. Check placement of points around bill_depth arrow.
 
 
 ## Further reading
 
-* Claus Wilke's [PCA tutorial](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/)
-* [Example PCA on iris data](https://bookdown.org/Maxine/r4ds/examples.html)
-* https://juliasilge.com/blog/stack-overflow-pca/
-* PCA using [tidymodels](https://juliasilge.com/blog/cocktail-recipes-umap/)
-* [PCA](https://melinaluethje.com/2020/11/12/multivariate-ordinations-101/)
-
-
+-   Claus Wilke's [PCA tutorial](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/)
+-   [Example PCA on iris data](https://bookdown.org/Maxine/r4ds/examples.html)
+-   <https://juliasilge.com/blog/stack-overflow-pca/>
+-   PCA using [tidymodels](https://juliasilge.com/blog/cocktail-recipes-umap/)
+-   [PCA](https://melinaluethje.com/2020/11/12/multivariate-ordinations-101/)

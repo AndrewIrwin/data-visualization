@@ -80,14 +80,24 @@ Download git from [git-scm](https://git-scm.com/) using the [download](https://g
 
 When you are done, type `git` in the Rstudio terminal. If you see some help text displayed instead of an error message you know git is installed.
 
-### Set up a github account
+**Do not move on to the next steps until you have git working properly on your computer.** If you can't get it working on your own computer, use [rstudio.cloud](https://rstudio.cloud/project/1998812) for now.
+
+## Set up a github account
 
 * Create a free account at [github.com](https://github.com/join)
 * Tell me your github account name by filling in the brightspace survey for Task 1.
 * In a day or less you will get an invitation by email to join the course on github. Accept the invitation.
 * When you pull files from or push files to github you will need to enter your password. An authorization key can be place on your computer to let you skip this authentication step. (Instructions to come.)
 
-**Do not move on to the next steps until you have git working properly on your computer.** If you can't get it working, use [rstudio.cloud](https://rstudio.cloud/project/1998812) for now.
+### Give git your name and email address
+
+When you use git to communicate with GitHub, git needs to know your name and email address to help other people know who made the changes you are sending.
+
+In the Rstudio "terminal" window (not the "console" window), type the following, placing your name and email in the spaces indicated:
+
+  * git config --global user.email "you@example.com"
+  * git config --global user.name "Your Name"
+  
 
 ## Practice tasks
 
