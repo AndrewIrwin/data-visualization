@@ -1,9 +1,9 @@
 ---
 title: "Data Visualization"
-subtitle: "PCA: Principal Component Analysis"
+subtitle: "MDS: Multidimensional scaling"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
-date: "2021-02-24 (updated: `r Sys.Date()`)"
+date: "2021-02-26 (updated: `r Sys.Date()`)"
 ratio: "16:9"
 output:
   xaringan::moon_reader:
@@ -19,137 +19,43 @@ class: middle
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
-library(gapminder)
-library(plotly)
 library(GGally)
 library(ggfortify)
-library(palmerpenguins)
 library(kableExtra)
 library(broom)
+library(vegan)
 my_theme = theme_classic() + 
   theme(text = element_text(size=18))
 ```
 
 # Plan
 
-* What is PCA and why do we use it?
+* What is MDS and why do we use it?
 
-* Demonstration with gapminder data in 3 dimensions
+* Demonstration 
 
 * More demonstrations
 
 ---
 class: middle
-### What is PCA?
+### What is MDS?
 
-* A tool for simplifying data sets with many variables down to a small number
+* A tool to convert a distance, similarity, or dissimilarity matrix into a set of points in a plane
 
-* Works best with quantitative variables that are partially correlated
+* Can be based on distances (using one of many metrics) or ranks of similarities, when it is called non-metric MDS (NMDS)
 
-* Usually used in combination with one or more categorical variables to identify subgroups
-
-* Main results are
-  * Spatial pattern of points
-  * Directions of principal components along original axes (loadings)
-  * Amount of variation along each PC axis
-
-* Be careful with scaling and units 
-
----
-class: middle
-### Example data
-
-[Interactive version](plotly-1.html)
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-my_gapminder <- gapminder %>%
-  mutate(logPop = log10(pop),
-         logGDPpercap = log10(gdpPercap)) %>%
-  select(year, continent, lifeExp, logGDPpercap, logPop) 
-
-pi <- my_gapminder %>% plot_ly(x = ~ logPop, y = ~ lifeExp, z = ~ logGDPpercap, color = ~ continent, size = 1)
-# pi <- plot_ly(z = volcano, type = "heatmap")
-f <- paste0("plotly-",1,".html")
-htmlwidgets::saveWidget(pi, f)
-# orca(pi, "plotly-1.svg")
-```
-```{r echo=FALSE, out.width = '60%', fig.align="center"}
-#htmltools::tags$iframe(src=f, width="100%", height="400", scrolling="no", seamless="seamless", frameBorder="0")
-knitr::include_graphics("../static/plotly-1.png")
-```
+* NMDS suitable if you can rank objects as being closer or farther away, by the scale of the quantification is skewed or not important
 
 
 
 
----
-class: middle
-### Pairs plot
 
-```{r echo=TRUE, message=FALSE, out.width = '60%', fig.align="center"}
-my_gapminder %>% select(-year) %>% ggpairs(aes(color = continent))
-```
-
-
-
----
-class: middle
-### PCA: 2007 data only
-```{r include=FALSE, warning=FALSE, message=FALSE}
-my_gapminder2 <- my_gapminder %>% filter(year == 2007) %>% select(-year)
-```
-
-```{r warning=FALSE, out.width="55%", fig.align="center", message=FALSE}
-pca1 <- prcomp(my_gapminder2 %>% select(-continent), scale=TRUE)
-autoplot(pca1, data = my_gapminder2, loadings=TRUE, loadings.label = TRUE,
-         colour = 'continent')
-```
-
-
----
-class: middle
-### PCA: All years
-
-```{r out.width="55%", fig.align="center"}
-pca1 <- prcomp(my_gapminder %>% select(-continent, -year), 
-               scale=TRUE)
-autoplot(pca1, data = my_gapminder, loadings=TRUE, 
-         loadings.label = TRUE, colour = 'continent')
-```
-
----
-class: middle
-### Penguins
-
-```{r echo=FALSE, out.width="80%", fig.align="center"}
-my_penguins_raw = penguins_raw %>% select(-`Sample Number`) %>% select(Species, where(is.numeric) ) %>% na.omit() %>%
-  mutate(Species = str_remove(Species, "\\(.*\\)"))
-pca2 <- my_penguins_raw %>% select(-Species) %>% prcomp(scale = TRUE)
-autoplot(pca2, data = my_penguins_raw, loadings = TRUE, loadings.label = TRUE,
-         loadings.label.colour = "black", loadings.colour = "black",
-         colour = 'Species') + xlim(-0.15, 0.15) + ylim(-0.15, 0.15) + coord_fixed()
-```
-
----
-class: middle
-
-```{r}
-pca2 %>% tidy(matrix="loadings") %>%
-  filter(PC < 3) %>%
-  pivot_wider(values_from="value", 
-              names_from="PC", names_prefix="PC_") %>% kable()
-```
 
 ---
 class: middle
 
 # Summary
 
-* PCA to reduce the number of dimensions (variables) in your data
-
-* Interpreting loadings (arrows and numeric vectors)
-
-* Interpreting proportion of variance along each principal component
-
-* Consequences of scaling variables (or not scaling them)
 
 ---
 class: middle
@@ -157,25 +63,74 @@ class: middle
 # Further reading
 
 * Course notes
+* World Bank [economic development indicators](https://datacatalog.worldbank.org/dataset/world-development-indicators)
 
 ---
 class: middle, inverse
 
 ## Task
 
-* Bonus task: Practice the PCA skills in this lesson 
+* Task XX: Practice PCA and MDS methods
 
 ---
-class: middle
-### Penguin PCA code
 
-```{r eval=FALSE}
-my_penguins_raw = penguins_raw %>% select(-`Sample Number`) %>% 
-  select(Species, where(is.numeric) ) %>% na.omit() %>%
-  mutate(Species = str_remove(Species, "\\(.*\\)"))
-pca2 <- my_penguins_raw %>% select(-Species) %>% prcomp(scale=TRUE)
-autoplot(pca2, data = my_penguins_raw, 
-         loadings=TRUE, loadings.label = TRUE,
-         loadings.label.colour = "black", loadings.colour = "black",
-         colour = 'Species') + xlim(-0.15, 0.15) + ylim(-0.15, 0.15)
+Read and subset data for use in this lesson.
+
+```{r}
+WDI <- read_csv("~/Downloads/WDI_csv/WDIData.csv")
+WDIss <- WDI %>% janitor::clean_names() %>% select(country_name, country_code, indicator_name, indicator_code, x2018, x2019)
+```
+
+What countries have data
+
+```{r}
+WDIss %>% group_by(country_name) %>% summarize(n = sum(!is.na(x2019))) %>% arrange(-n)
+```
+
+Make a list of countries to work with
+
+```{r}
+selected_countries <- WDIss %>% group_by(country_name) %>% summarize(n = sum(!is.na(x2019))) %>% filter(n > 500) %>%
+  pull(country_name)
+```
+
+Make a list of indicators - there are 1440 of them!
+
+```{r}
+WDIss %>% group_by(indicator_name) %>% summarize(n = sum(!is.na(x2019))) %>% arrange(-n)
+```
+
+Get the population of selected countries
+
+```{r}
+WDIss %>% filter(country_name %in% selected_countries) %>%
+  filter(indicator_name == "Population, total") %>%
+  arrange(-x2019)
+```
+
+Aggregated countries to remove
+
+```{r}
+remove_country_codes <- c("LMY", "MIC", "LMC", "SAS", "LAC", "TEC", "ECA")
+```
+
+Make a subset and make wide table
+
+```{r}
+M <- WDIss %>% filter(country_name %in% selected_countries) %>%
+  filter(!(country_code %in% remove_country_codes)) %>%
+  select(country_name, indicator_name, x2019) %>%
+  pivot_wider(names_from = country_name, values_from = x2019) %>% 
+  na.omit()
+```
+
+Make an NMDS
+
+```{r}
+distM <- dist(t(M[,-1]))
+m <- metaMDS(distM, trymax = 100)
+pca1 <- prcomp(scale(M[,-1]))
+autoplot(pca1)
+m <- metaMDS(scale(M[,2:50]), dist = "mahalanobis")
+ordiplot(m)
 ```
