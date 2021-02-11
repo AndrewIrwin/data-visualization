@@ -1,0 +1,91 @@
+---
+title: "Live coding 6"
+author: "Andrew Irwin"
+date: "2021-02-11 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+library(broom)
+library(mgcv)
+library(gapminder)
+library(palmerpenguins)
+library(quantreg)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Examples from lessons 15-17: linear models and smooths
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. As with last week, we'll start with some repeated examples from lessons to remind ourselves of the basics, then try to use the tools in new ways, and finally switch perspectives to try to solve a real problem with each tool.
+
+In this live coding session I will focus mostly on adding lines and smooths to a scatterplot. We can look at `lm`, `gam`, `loess`, `augment`, `tidy` and `glance` functions for working with models outside of a visualization too.
+
+## Linear models: linear regression
+
+Let's try to work step-by-step through an old example from Healy's book: life expectancy as a function of year, grouped by continents.
+
+```{r}
+gapminder %>% ggplot(aes(x = year, y = lifeExp, group = country)) + geom_point()
+```
+
+Put each continent on its own facet. Add a smooth for each continent. Show the country data as lines. Make the country lines fade into the background.
+
+```{r}
+
+
+```
+
+## Linear models: other regression lines
+
+Polynomials. Log transforms. Other transformations?
+
+What is the relationship between penguin body mass and flipper length? Is this the same for each species? For male and female penguins?
+
+```{r}
+
+
+```
+
+
+
+## Linear models: quantile regression
+
+Find the quantile regression lines for life expectancy within Europe over time.
+
+```{r}
+quantreg::rq(lifeExp ~ year, 
+             data = gapminder %>% filter(continent == "Europe"),
+             tau = c(0.25, 0.50, 0.75))
+```
+
+## GAM smooths
+
+Is a GAM or linear model better (judged by the visualization) for the relationship between life expectancy and year? life expectancy and GDP per capita?
+
+```{r}
+
+```
+
+
+## LOESS smooths
+
+```{r}
+
+
+```
+
+## Getting model parameters
+
+Use `lm`, `loess` together with `tidy`, `glance`, and `augment` to get model parameters, residuals, and fitted values.
+
+```{r}
+
+```
