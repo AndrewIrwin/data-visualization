@@ -1,0 +1,30 @@
+# Metadata {.unnumbered}
+
+## About the author and course instructor {-}
+
+These course notes were written by Andrew Irwin who is in the [Department of
+Mathematics & Statistics](https://www.dal.ca/faculty/science/math-stats.html) 
+at Dalhousie University in Halifax, Nova Scotia, Canada. Andrew has been at Dalhousie since 2018. Before that he was in the [Department of Mathematics & Computer Science](https://www.mta.ca/mathcs/) at Mount Allison University and before that at the [Biology Department](https://www.csi.cuny.edu/academics-and-research/departments-programs/biology) at the College of Staten Island in the City University of New York.
+
+Andrew's research applies mathematical and statistical models to problems in biological oceanography,
+particularly questions about phytoplankton biogeography, productivity, and their role in 
+biogeochemical cycles. The prospect of large-scale systemic change over the next century plays a key motivating role in the desire to understand this important system more fully. Andrew co-directs
+the [Marine Microbial Macroecology Lab](https://www.mmab.ca) at Dalhousie and more information about his research can be found there.
+
+## Thanks to the community {-}
+
+This course builds on the knoweldge and generosity of many people. 
+
+The software described in this course is all open source; free to use, modify, and extend by all. I started to learn to use these tools as a graduate student with the commercial Splus product. Participants in the open software development model have created an incredible set of resources for students to learn and use.
+
+I have referenced three textbooks extensively in these notes. All are commerically available books, but the the authors and publishers have made these resources available online in a free to use format, which is wonderful for students and makes it easy for me to refer to specific sections, ideas, and skills demonstrated in these books.
+
+Many people are actively engaged in making new resources for learning, supporting the creation of courses, and collecting data for interesting data visualization projects. Many of these are linked throughout these notes and used with much appreciation.
+
+## License {-}
+
+These course notes and supporting materials are all copyright by Andrew Irwin. Material linked or quoted from other sources are, naturally, owned by the original creators.
+
+Original materials are licensed under a creative commons license that encourages non-commerical reuse and adaptation. For other uses, please contact the author.
+
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://andrewirwin.github.io/data-visualization">Data Visualization course notes</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.mmab.ca">Andrew Irwin</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-NonCommercial 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"></a></p>

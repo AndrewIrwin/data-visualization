@@ -1,0 +1,35 @@
+
+# Accessibility, Bias, and Ethics
+
+Data visualization is about representing, including selecting, simplifying and organizing, data. It's an activity done by humans, for questions generated and presented to humans, even if the underlying topic is about the natural world. As as a result, it is always important to think carefully about the human element. What steps can be taken to make our work accessible to as many people as possible? How may bias or discrimination enter into data collection, selection, analysis and interpretation? What are the ethical considerations to be considered in our work with [data](https://en.wikipedia.org/wiki/Information_ethics) and the process of [research](https://en.wikipedia.org/wiki/Research#Research_ethics)?
+
+This course only touches on these topics long enough to alert you to their importance.
+
+## Accessibility
+
+Data visualization is, as the name implies, the act of producing a product to be seen. This is a useful goal because our brains are very good at processing some kinds of visual information. Training to read visualizations can greatly increase the ability to extract information from a visualization, so it is important to know your audience -- students, the general public, people with well developed quantiative skills, or domain experts for the data you are presenting. All of these factors are central to knowing if a visualization is suitable and effective. Our target audience is university students.
+
+Not everyone has the same visual abilities. Some people have vision that differs from the most common experience in some way -- perceiving [colours differently](https://en.wikipedia.org/wiki/Color_blindness), reduced [acuity](https://en.wikipedia.org/wiki/Visual_acuity), and other differences all the way to complete blindness. We should always keep these differences in mind when producing visualizations. To take the hardest challenge head on, what is the value in producing a visualization for someone who cannot see it? Data visualization is a process that uses the creator's visual and technical skills to present features of a dataset. Any data visualization should be [accompanied by a written description of the message to be conveyed](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Accessibility/Alternative_text_for_images). Ideally the visual and written aspects will complement each other. A visualization does not "say" anything by itself; a written interpretation is an essential part of the process.
+
+## Data collection and analysis
+
+[Data](https://en.wikipedia.org/wiki/Data) collection and analysis are critical tools for understanding and interacting with the world. Data are used by academic researchers, goverments, corportations, non-profit organizations, and citizens in complex and contrasting ways. All of these processes create opportunities for bias and discrimination. The links below give a few examples and stories elaborating these challenges. 
+
+* [Data encodes systematic racism](https://www.technologyreview.com/2020/12/10/1013617/racism-data-science-artificial-intelligence-ai-opinion/) from the MIT technology review, December 2020.
+* [Case studies in data ethics](https://www.oreilly.com/content/case-studies-in-data-ethics/) from O'Reilly publishers.
+* [Data and the COVID pandemic](https://www.sciencedirect.com/science/article/pii/S2666389920300866), opinion published in _Patterns_, July 2020.
+* A business and marketing take on the [ethics of data science](https://towardsdatascience.com/the-ethics-of-data-science-e3b1828affa2)
+* A student's perspective on [ethics in data science](https://www.loyola.edu/academics/data-science/blog/2018/why-ethics-are-important-in-data-science) from 2018.
+* A professional statement on ethical data science from the [Royal statistical society  and the Institute and Faculty of Actuaries](https://www.actuaries.org.uk/system/files/field/document/An%20Ethical%20Charter%20for%20Date%20Science%20WEB%20FINAL.PDF)
+
+The following resources are in the form of checklists or questions to think about when collecting, analyzing, and presenting data.
+
+* [Data science ethics checklist](https://deon.drivendata.org/#data-science-ethics-checklist)
+* [10 data science ethics questions](https://www.datascience-pm.com/10-data-science-ethics-questions/)
+
+
+If you find discussions of these topics you find particularly thought provoking or informative, please share them with me.
+
+## Further reading
+
+* Data Science in a Box notes on [ethics](https://datasciencebox.org/ethics.html)

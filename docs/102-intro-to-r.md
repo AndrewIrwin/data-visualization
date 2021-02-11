@@ -1,0 +1,65 @@
+
+# Computer tools {#ch-tools}
+
+## Goals
+
+In this lesson I will explain what computer tools we will use, how they were selected, and why they are useful.
+
+In the [task](#task-b1) for this lesson, I will ask you to read [Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted), which contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks.
+
+## Introduction
+
+We will use R and Rstudio in this course. R is widely used to analyze data and comes with many add-on packages for statistical analysis, data visualization, and specialized tools for many disciplines and applications. We will just scratch the surface of what R can do, but by the end of the course you should feel comfortable learning to use R for data visulization and you will have the skills to learn how to use R for many other tasks. Rstudio is a graphical user interface for R with many convenient features including tools to support report writing, getting help, and project management. For data visualization we will use '[ggplot2](https://en.wikipedia.org/wiki/Ggplot2)', for data analysis we will use the '[tidyverse](https://www.tidyverse.org/)' style of programming, for report writing we will use '[R markdown](https://rmarkdown.rstudio.com/)', and for project management we will use R projects and '[git](https://git-scm.com/)' version control. All of these computer terms will mean much more to you later on in the course!
+
+In this lesson I will explain why we use each of these tools and the main features that make each useful. Your task for this lesson is to get your computer set up with the necessary software so that you are ready for the rest of the course.
+
+## R
+
+[R](https://en.wikipedia.org/wiki/R_(programming_language)) is open-source software developed by a core team of programmers, which is made available for free to all users along with the full 'source code' for the software so that any one can find out exactly how any part of the software works. R was first developed in the mid-1990s and is now a quite mature language, although development continues. For example a brand new notation was just introduced in December 2020. R was developed after a couple decades of experience with its predecessor [S](https://en.wikipedia.org/wiki/S_(programming_language)) and a commercial product known as S+.
+
+R has many strengths that account for its popularity and longevity. It is a very flexible and expressive language, which allows for many styles of programming and the use of both powerful tools to perform sophisticated analyses easily and also the flexibility to develop your own computational tools from basic computations. There is a huge, global community of users who continually develop new tools for R and make them available and easy to install on your computer. This means that anyone can develop a new data analysis method and readily distribute it on a widely-used platform to anyone comparatively easily. This is tremendously powerful! A third key ingredient is a very helpful community of users who develop tutorials and books to help newcomers to R learn to use it. Our course will use three such books, which can be purchased, but are also available for free on the internet.
+
+On the other hand, R is a challenging tool to learn. To accomplish any task you must type instructions into the computer. This can be daunting as you must first learn what instructions are available, what they do, and how to use them. If you have had experience with programming before (for example using Python or Java) you will know that there are many ways to go wrong and the computer's output is not always easy to understand, especially when things go wrong! Nevertheless, the R style of computing with data, once you have been initiated, allows for endless possibilities in terms of data analysis.
+
+Our approach in this course will be to demonstrate a few sample calculations and computing tasks in each lesson and encourage you to become proficient in these tasks through repetition and minor modifications. Over time, you will come to understand both how to use the tools to analyze and visualize data and how to interact with R to accomplish new tasks.
+
+## Rstudio
+
+Rstudio is a graphical 'front end' (or [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment)) to the R software. It provides an editor for documents, a convenient way to see plots, get help, explore data objects created with R, manage report writing, and sets of files used collectively as part of projects. As with R, you will find that Rstudio has many features that will take you a while to discover. In this course we will focus on a few features and leave you to find others on your own. 
+
+## Grammar of graphics (ggplot2)
+
+Since this is a course in data visualization, creating plots from data is a core skill. To get a computer to make a graph, you need to bring data together with instructions for producing the graph. Traditional ways to make graphs have been idiosyncratic, with each kind of graph having its own specialized instructions, even for features common to many plots such as the use of size adjustments, symbols, or colors to represent numerical or categorical scales.  The 'ggplot' style arose out of a recognition that having a language (or 'grammar') to describe graphical displays of data was superior to other styles of graphics creation. (The gg in ggplot is an abbreviation for the grammar of graphics.) A common language is used to connect variables in your dataset to aesthetic features in your plot, such as position along an axis, symbol size, shape, or colour. This association is separate from selecting how the data are to be represented (e.g., as points, a line, a histogram). Another key element is how ranges of values are associated to sizes, shapes, and colours; these are called scales and they too have their own functions, which work regardless of the type of plot being made. Finally, annotations such as axis labels, and formatting of other elements (e.g., fonts, sizes, positions of non-data elements) may be adjusted to customize a plot. Essentially ggplot provides a tool for making graphs which is modular, and thus allows you to quickly and efficiently learn to make new kinds of plots and modify them. The proof that this works is that since ggplot2 was first developed, many users of the software have contributed their own styles of plotting which can be incorporated into the design of the original software. All this makes plotting data sound complicated, but in fact making a simple plot with few customizations is actually very easy once you get the idea behind the grammar of graphics.
+
+
+## tidyverse
+
+The starting point for each visualization we will produce and each analysis we will do is data. The developers of the tidyverse set of tools in R noticed that we all do many of the same kinds of operations to our data. A few style suggestions about how to organize your data and how to analyze data can provide both great flexibility and simplify common tasks. There is nothing that can be done in the tidyverse style that I couldn't figure out how to do before these tools were developed, but the R code I write now is much easier for me and others to read. The problem solving process I use is much more streamlined than it used to be since I tend to use the same kinds of solutions for each new dataset I examine.
+
+There are two central ideas in the tidyverse approach to data analysis. (1) Data should be arranged in rectangles (or two dimensional arrays) with variables in columns and observations in rows. (2) A data analysis calculation should be broken down into a series of simple, modular functions that are composed together, such as filtering rows, grouping rows together, and computing summaries. Essentially this forms a grammar of data analysis, analogous to what ggplot did for plotting graphics.
+
+## R Markdown
+
+Once you know how to produce a data visualization or statistical analysis, new challenges quickly arrive. You must communicate these results to someone else. You must be prepared to revise your analysis and repeat it on revised or new data. A common approach is write lots of little bits of computer code, cut and paste the results into a word processor, and try to remember how it all fits together. R markdown documents are key step in a better solution. An R markdown document contains both natural-langauge (e.g., English) text for humans to read and R code for the computer to use. The R markdown document can be compiled (we will say 'knitted') together with the results of R computations to provide a finished report. This enables the computer code and data analysis results to be kept together with the exposition about the data and results.
+
+## Git and Github
+
+Git is distributed version control software. This means that it is a tool to help you keep track of versions of computer code, including R markdown documents, both in your own files and however you choose to share them with others. It has tools for managing versions of software in databases called _repositories_. Version history and management is useful if you revise a report you have prepared but want to keep access to the old style of report for archival purposes. Having access to old versions of data visualizations is essential for auditing and quality control as well. Git also enables two or more people working in different locations to collaborate on the same project, managing  changes that are logically independent but made between file exchanges and helping collaborators resolve conflicts in edits. Git is widely used in the data science world and among software developers. 
+
+We will be learning the most basic uses of git in our course.
+
+Github is a web service that allows you to easily publish your git repositories. Rstudio has easy to use tools for managing your work using git and github. These course notes are written and published using Rstudio, git, and github. You will use the same tools for your assignments and term project.
+
+## Further reading
+
+[Healy Sections 2.1-2.4](https://socviz.co/gettingstarted.html#gettingstarted) contains excellent advice on the reasons for using R markdown, R/Rstudio, projects, the basics of R, and being patient as you learn computing tasks. We will return to the basics of R at various points in the course.
+[Wilke](https://clauswilke.com/dataviz/preface.html) has a thoughtful perspecitive on the ever changing landscape of software for data analysis. The tools we use will change, but we need to learn to make visualizations today, so we consider both the why and the how of data visualizations. Wilke emphasizes the why, but he has been strongly influenced by the tools we are using. I've been drawing computer graphics for over 30 years and used countless tools and ideas. The methods in this course are the best I've ever used; ggplot and the tidyverse constrain my work in just the right way to make it better. 
+
+[R4DS Chapters 26 and 27](https://r4ds.had.co.nz/communicate-intro.html) contain a valuable introduction to R markdown and its use for commuication.
+
+## Resources
+
+* If you want to know a lot more about using Rstudio, here is an [hour-long video overview of Rstudio features](https://www.youtube.com/watch?v=PXiY8muVUec)
+* If you want to know more than we will cover about git and github, see the notes called [Happy git with R](https://happygitwithr.com/). All the essentials of using these tools will be explained in future lessons.
+* [R Markdown for scientists](https://rmd4sci.njtierney.com/)
+* Some [R Markdown](https://towardsdatascience.com/ten-awesome-r-markdown-tricks-56ef6d41098) tips
