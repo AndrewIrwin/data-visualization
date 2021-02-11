@@ -1,12 +1,12 @@
+new_session: yes
 book_filename: "course-notes"
-delete_merged_file: true
+# delete_merged_file: true
 language:
   ui:
     chapter_name: "Chapter "
 view: https://github.com/AndrewIrwin/data-visualization/blob/master/%s
 edit: https://github.com/AndrewIrwin/data-visualization/edit/master/%s
 output_dir: "docs"
-new-session: yes
 
 rmd_files: [ "index.rmd", 
              "001-syllabus.rmd",
@@ -30,10 +30,10 @@ rmd_files: [ "index.rmd",
              "118-working-with-models.rmd",
              "119-linear-models.rmd",
              "120-gam-loess.rmd",
-             # "121-PCA.Rmd",
-             # "122-mds.Rmd",
-             # "123-kmean.rmd",
              "124-collaboration.rmd",
+             "121-PCA.Rmd",
+             "122-mds.Rmd",
+             "123-kmean.rmd",
              "301-data-sources.rmd",
              # "305-data.rmd",
              "302-staying-organized.rmd",

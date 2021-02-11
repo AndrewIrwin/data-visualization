@@ -5,6 +5,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(gapminder)
 library(hablar)
+library(kableExtra)
 ```
 
 There are many ways to organize data in an array. The key principles we're following are

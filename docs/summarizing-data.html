@@ -55,9 +55,12 @@
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">19</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">20</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">21</span> K-means clustering</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">23</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -203,11 +206,11 @@
 <pre><code>## # A tibble: 5 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.33 Premium   E     SI1      60.9    58   743  4.5   4.46  2.73
-## 2  0.91 Fair      H     VVS1     56.5    67  4115  6.38  6.4   3.61
-## 3  0.7  Very Good G     IF       63      59  3725  5.58  5.62  3.53
-## 4  0.7  Good      I     VS2      63.6    58  2010  5.57  5.59  3.55
-## 5  1.3  Premium   H     VS2      62.4    58  7536  6.92  6.95  4.33</code></pre>
+## 1  0.43 Ideal     G     IF       61.6    57  1280  4.81  4.84  2.97
+## 2  0.59 Very Good I     SI1      62.8    59  1109  5.34  5.36  3.36
+## 3  0.32 Ideal     F     IF       61.2    56  1204  4.41  4.45  2.71
+## 4  1.02 Very Good F     SI1      63.7    56  5701  6.34  6.41  4.06
+## 5  0.35 Ideal     E     VVS2     61.3    56   881  4.54  4.6   2.8</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>

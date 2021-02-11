@@ -7,6 +7,8 @@ library(broom)
 library(ggfortify) # for autoplot
 library(palmerpenguins)
 library(GGally)  # for ggpairs
+library(kableExtra)
+library(ggrepel)
 ```
 
 Datasets are said to be high-dimensional when several quantitative (or categorical) variables are recorded for each observation. Visualizing these datasets can be challenging, because visualizations work best with two dimensions and it is difficult to visualize 4 or more dimensions simultaneously. Many plots of pairs of variables can be displayed, but these projections require the viewer to try to reconstruct complex interactions among variables. [Ordination](https://en.wikipedia.org/wiki/Ordination_(statistics)) is a suite of techniques for creating projections of high-dimensional data, usually in 2 or 3 dimensions. The name refers to the goal of *ordering* observations in a two dimensional plane so that observations which are close in the high-dimensional space are still close in the projected 2-dimensional space. Not all features of the original dataset can be maintained -- information is lost -- so some care must be taken when interpreting ordination plots. In this course we will examine Principal Component Analysis (in this lesson) and metric and non-metric dimensional analysis (in the next). There are many other techniques for [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction).

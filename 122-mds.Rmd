@@ -7,6 +7,7 @@ library(ggmap)
 library(vegan)
 library(ggrepel)
 library(broom)
+library(kableExtra)
 # library(ggvegan) # remotes::install_github("gavinsimpson/ggvegan") 
 ```
 
@@ -43,7 +44,7 @@ ggmap(mymap) +
 Now we calculate the distance between all pairs of cities. I've shown two ways to do this -- using great circle distance along the surface of the Earth, and using a distance that projects the surface of the Earth onto a plane first. If the goal is to reconstruct the map shown above, use this projected distance. If you would like instead to show great-circle distances between cities in the plane, use the geodesic distance.
 
 ```{r}
-city_distance <- dist(cities %>% select(lng, lat) %>% as.matrix()) #  distance in equirectangular projection
+city_distance <- dist(cities %>% dplyr::select(lng, lat) %>% as.matrix()) #  distance in equirectangular projection
   # https://en.wikipedia.org/wiki/Equirectangular_projection
 ```
   
@@ -62,7 +63,7 @@ bind_cols(cities, as_tibble(mds1)) %>%
        x = "", y = "")
 ```
 ```{r}
-city_distance <- rdist.earth(cities %>% select(lng, lat) %>% as.matrix(), 
+city_distance <- rdist.earth(cities %>% dplyr::select(lng, lat) %>% as.matrix(), 
                              miles = FALSE) # geodesic distance
 mds1 <- cmdscale(city_distance)
 colnames(mds1) <- c("V1", "V2")

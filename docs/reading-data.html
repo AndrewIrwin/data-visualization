@@ -55,9 +55,12 @@
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">19</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">20</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">21</span> K-means clustering</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">23</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -132,344 +135,156 @@
 <p>Our example is so small we can just look at the whole table, but we’ll practice using functions you should use on any data you read.</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">skim</span><span class="op">(</span><span class="va">example1a</span><span class="op">)</span></code></pre></div>
-<div class="inline-table"><table style="width: auto;" class="table table-condensed">
+<div class="inline-table"><table class="table table-sm">
 <caption>
-<span id="tab:unnamed-chunk-68">Table 11.1: </span>Data summary
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-</th>
-</tr></thead>
+<span id="tab:unnamed-chunk-4">Table 11.1: </span>Data summary</caption>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Name
-</td>
-<td style="text-align:left;">
-example1a
-</td>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="left">example1a</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Number of rows
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="even">
+<td align="left">Number of rows</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Number of columns
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="odd">
+<td align="left">Number of columns</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-_______________________
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td align="left">_______________________</td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Column type frequency:
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="odd">
+<td align="left">Column type frequency:</td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-2
-</td>
+<tr class="even">
+<td align="left">character</td>
+<td align="left">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Date
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="odd">
+<td align="left">Date</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-logical
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">logical</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-________________________
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td align="left">________________________</td>
+<td align="left"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Group variables
-</td>
-<td style="text-align:left;">
-None
-</td>
+<tr class="odd">
+<td align="left">Group variables</td>
+<td align="left">None</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Variable type: character</strong></p>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-min
-</th>
-<th style="text-align:right;">
-max
-</th>
-<th style="text-align:right;">
-empty
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
-<th style="text-align:right;">
-whitespace
-</th>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">empty</th>
+<th align="right">n_unique</th>
+<th align="right">whitespace</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Name
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">Name</td>
+<td align="right">0</td>
+<td align="right">1.00</td>
+<td align="right">5</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Species
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.67
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">Species</td>
+<td align="right">1</td>
+<td align="right">0.67</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
 </tbody>
 </table></div>
 <p><strong>Variable type: Date</strong></p>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:left;">
-min
-</th>
-<th style="text-align:left;">
-max
-</th>
-<th style="text-align:left;">
-median
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="left">min</th>
+<th align="left">max</th>
+<th align="left">median</th>
+<th align="right">n_unique</th>
 </tr></thead>
-<tbody><tr>
-<td style="text-align:left;">
-Birthdate
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-1982-07-11
-</td>
-<td style="text-align:left;">
-2008-09-01
-</td>
-<td style="text-align:left;">
-2001-01-01
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tbody><tr class="odd">
+<td align="left">Birthdate</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="left">1982-07-11</td>
+<td align="left">2008-09-01</td>
+<td align="left">2001-01-01</td>
+<td align="right">3</td>
 </tr></tbody>
 </table></div>
 <p><strong>Variable type: logical</strong></p>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-mean
-</th>
-<th style="text-align:left;">
-count
-</th>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="left">count</th>
 </tr></thead>
-<tbody><tr>
-<td style="text-align:left;">
-Friendly
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.67
-</td>
-<td style="text-align:left;">
-TRU: 2, FAL: 1
-</td>
+<tbody><tr class="odd">
+<td align="left">Friendly</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0.67</td>
+<td align="left">TRU: 2, FAL: 1</td>
 </tr></tbody>
 </table></div>
 <p><strong>Variable type: numeric</strong></p>
 <div class="inline-table"><table class="table table-sm">
-<thead><tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-mean
-</th>
-<th style="text-align:right;">
-sd
-</th>
-<th style="text-align:right;">
-p0
-</th>
-<th style="text-align:right;">
-p25
-</th>
-<th style="text-align:right;">
-p50
-</th>
-<th style="text-align:right;">
-p75
-</th>
-<th style="text-align:right;">
-p100
-</th>
-<th style="text-align:left;">
-hist
-</th>
+<thead><tr class="header">
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">p0</th>
+<th align="right">p25</th>
+<th align="right">p50</th>
+<th align="right">p75</th>
+<th align="right">p100</th>
+<th align="left">hist</th>
 </tr></thead>
-<tbody><tr>
-<td style="text-align:left;">
-Mass_kg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-8.6
-</td>
-<td style="text-align:right;">
-5.34
-</td>
-<td style="text-align:right;">
-4.1
-</td>
-<td style="text-align:right;">
-5.65
-</td>
-<td style="text-align:right;">
-7.2
-</td>
-<td style="text-align:right;">
-10.85
-</td>
-<td style="text-align:right;">
-14.5
-</td>
-<td style="text-align:left;">
-▇▇▁▁▇
-</td>
+<tbody><tr class="odd">
+<td align="left">Mass_kg</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">8.6</td>
+<td align="right">5.34</td>
+<td align="right">4.1</td>
+<td align="right">5.65</td>
+<td align="right">7.2</td>
+<td align="right">10.85</td>
+<td align="right">14.5</td>
+<td align="left">▇▇▁▁▇</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -531,7 +346,7 @@ Mass_kg
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">gg_miss_var</span><span class="op">(</span><span class="va">example1a</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-69-1.png" width="672"></div>
+<div class="inline-figure"><img src="111-reading-data_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>In some very old files (or data from old scientists) you may find missing data encoded as “impossible” data, for example a negative value for mass. Traditionally the value -999 or similar are used to help them stand out when looking at data by eye. Keep an eye out for these sorts of problems when validating your data. You can use <code>na_if</code> to get rid of values like this.</p>
 </div>
 </div>

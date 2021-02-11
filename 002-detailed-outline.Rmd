@@ -20,7 +20,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
 **This is a tentative schedule which will be revised throughout the term.**
 
 ```{r echo=FALSE}
-my_paste= function(a,b) {
+my_paste = function(a,b) {
   case_when( is.na(a) | is.na(b) ~ as.character(NA),
              TRUE ~ paste0("[", a, "](", b, ")")
   )
@@ -30,7 +30,8 @@ attr(row_packing, "names") <- paste0("Week ", attr(row_packing, "names"))
 options(knitr.kable.NA = '')
 cal %>% select(-Day, -Week) %>%
   arrange(Date) %>%
-  mutate(Date = strftime(Date+12*3600, format = "%a %e %b", tz = "America/Halifax"), # timezone error? Excel bug?
+  mutate(Date = strftime(Date + 12*3600, format = "%a %e %b", 
+                         tz = "America/Halifax"), # timezone error? Excel bug?
          Notes = my_paste(notes, notes_link),
          Video = my_paste(video, video_link),
          Slides = my_paste(slides, slides_link),
@@ -39,7 +40,7 @@ cal %>% select(-Day, -Week) %>%
   select(-notes, -notes_link, -tasks, -tasks_link,
          -video, -video_link, -slides, -slides_link) %>%
   select(Date, Lesson, everything()) %>%
-  unite("Links", Notes:Tasks, sep = ", ", na.rm=TRUE) %>%
+  unite("Links", Notes:Tasks, sep = ", ", na.rm = TRUE) %>%
   kable() %>%
   pack_rows(index = row_packing) %>%
   kable_styling() 

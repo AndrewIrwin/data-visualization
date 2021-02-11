@@ -4,6 +4,7 @@
 library(palmerpenguins)
 library(tidyverse)
 library(broom)
+library(kableExtra)
 ```
 
 
@@ -38,8 +39,22 @@ Categorical variables (species) can be added to the resuls using `augment` as we
 
 ```{r}
 kc1 <- augment(kclust1, penguin_q)
-ggplot(kc1, aes(x=bill_length_mm, y = bill_depth_mm, color=.cluster, shape=species)) + geom_point()
+ggplot(kc1, aes(x=bill_length_mm, y = bill_depth_mm, color=.cluster, shape=species)) + 
+  geom_point() + theme_bw()
 ```
+
+You can add the center of each cluster to the plot, but since the clustering was done on data scaled to have mean 0 and standard deviation 1, you must be careful to scale the data here as well.
+
+```{r}
+kc1 <- augment(kclust1, penguin_q)
+ggplot(kc1, aes(x = scale(bill_length_mm), 
+                y = scale(bill_depth_mm))) + 
+  geom_point(aes(color = .cluster, shape = species)) +
+  geom_point(data = tidy(kclust1), aes(color = cluster), 
+             size = 10, shape = "o", show.legend = FALSE) + theme_bw()
+```
+
+
 
 We can make a table of the number of each species in each cluster using `summarize`. Adélie penguins make up most of cluster 1, with 8 observations appearing in cluster 3. Chinstrap penguins make up most of cluster 3, with 5 observations in cluster 1. All the Gentoo penguins are in cluster 2 and there are no other species of penguin in this cluster. This result should seem reasonable given all the previous exploration we have done on this data.
 
@@ -97,7 +112,7 @@ We can score each cluster according to the sums of squares as follows:
 ```{r}
 clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
   ggplot(aes(x = k, y = proportion_within)) + 
-  geom_line() + geom_point()
+  geom_line() + geom_point() + theme_bw()
 ```
 
 Seven clusters is slightly worse than 6, so that's probably too many. Most of the decrease happens with 4 or 5 clusters, so that may be enough.
@@ -107,7 +122,7 @@ Let's plot the clusters. I'll show the number of cylinders using a symbol; there
 ```{r}
 p1 <- ggplot(assignments2, aes(x = cty, y = displ)) +
         geom_point(aes(color = .cluster, shape=factor(cyl)), alpha = 0.8) + 
-        facet_wrap(~ k)
+        facet_wrap(~ k) + theme_bw()
 p1
 ```
 
@@ -117,7 +132,7 @@ We can try to make a facetted plot, showing car classification and clusters. The
 p2 <- assignments2 %>% filter(k >= 4, k <= 6) %>%
   ggplot(aes(x = cty, y = displ)) +
         geom_point(aes(color = .cluster, shape = factor(cyl)), alpha = 0.8) + 
-        facet_grid(k ~ class, scales = "free")
+        facet_grid(k ~ class, scales = "free") + theme_bw()
 p2
 ```
 

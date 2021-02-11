@@ -1,5 +1,9 @@
 # Using the grammar of graphics {#ggplot}
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
 ## Goals
 
 In this lesson I will demonstrate how to use R and ggplot2 to make visualizations using the ideas from the previous lesson. The emphasis is on the mechanics of making the visualizations. In time we will integrate the ideas about what features of visualizations work best to convey an idea that were introduced at the start of the course.

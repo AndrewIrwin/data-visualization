@@ -55,9 +55,12 @@
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">19</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">20</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">21</span> K-means clustering</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">23</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -164,13 +167,13 @@
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin<span class="op">=</span><span class="va">mean_len</span><span class="op">-</span><span class="va">se</span>, ymax<span class="op">=</span><span class="va">mean_len</span><span class="op">+</span><span class="va">se</span><span class="op">)</span>, width<span class="op">=</span><span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-97-1.png" width="672"></div>
+<div class="inline-figure"><img src="114-asking-questions_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 <p>Get rid of the lines, becasuse I don’t want them.</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_summarySE</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">dose</span>, y<span class="op">=</span><span class="va">mean_len</span>, colour<span class="op">=</span><span class="va">supp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin<span class="op">=</span><span class="va">mean_len</span><span class="op">-</span><span class="va">se</span>, ymax<span class="op">=</span><span class="va">mean_len</span><span class="op">+</span><span class="va">se</span><span class="op">)</span>, width<span class="op">=</span><span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-98-1.png" width="672"></div>
+<div class="inline-figure"><img src="114-asking-questions_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 <p>Now, drop in my favourite data, the palmer penguins, making only the changes that are absolutely necessary. I had the overlapping points problem mentioned on the help page, so I borrowed it’s <code>position_dodge</code> idea. I also noticed that the web page used <code>se</code> instead of the larger <code>ci</code> to draw the error bars, so I changed that too.</p>
 <div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
@@ -187,7 +190,7 @@
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">my_summarySE</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">species</span>, y<span class="op">=</span><span class="va">mean_mass</span>, colour<span class="op">=</span><span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin<span class="op">=</span><span class="va">mean_mass</span><span class="op">-</span><span class="va">ci</span>, ymax<span class="op">=</span><span class="va">mean_mass</span><span class="op">+</span><span class="va">ci</span><span class="op">)</span>, width<span class="op">=</span><span class="fl">.1</span>, position <span class="op">=</span> <span class="va">pd</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>position<span class="op">=</span><span class="va">pd</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="course-notes_files/figure-html/unnamed-chunk-99-1.png" width="672"></div>
+<div class="inline-figure"><img src="114-asking-questions_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 </div>
 <div id="asking-question-in-this-course" class="section level2" number="14.3">
 <h2>

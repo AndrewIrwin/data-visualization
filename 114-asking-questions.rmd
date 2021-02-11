@@ -1,5 +1,9 @@
 # Getting help and asking questions {#help}
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
 When you are learning a new subject or skill, you will have a lot of questions. Detailed questions about a particular skill. General questions about a topic. Big-picture questions about how to apply the material. Not knowing where to begin, how to make progress, or what questions to ask!
 
 Regardless of the question, asking questions well is a [superpower](https://jvns.ca/blog/2014/06/13/asking-questions-is-a-superpower/). Why? A question is a way of crystallizing the uncertainty in your mind about a specific topic. The more specific your question, the easier it is to answer, and the more likely it is that the response will be helpful to you. Often carefully posing a question will lead you to the answer yourself. Broad general questions are valuable too, primarily because they help you develop and organize more questions. Asking questions of yourself and struggling to answer them is an important part of learning and thinking.

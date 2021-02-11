@@ -1,5 +1,9 @@
 # Summarizing data {#summarizing-data}
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
 The tidyverse packages provide powerful tools for transforming and summarizing data. In this lesson we will explore the methods I use most frequently, including
 
 * `mutate` for defining new variables based on existing variables,

@@ -2,6 +2,10 @@
 
 ```{r include=FALSE}
 library(broom)
+library(tidyverse)
+library(quantreg)
+library(kableExtra)
+library(gapminder)
 ```
 
 Linear regression is a powerful technique for finding a line that approximates a set of data. For the approximation to be a good one, the linear model must be appropriate for the data, which can sometimes be determined by reasoning about the processes that generate the data, and is sometimes justified based on statistical properties of the data. We will use linear models as a tool without elaboration of the methods or theoretical background; you should learn about those in a different statistics course.
@@ -81,7 +85,7 @@ p1 <- anscombe %>%
  pivot_longer(everything(),
    names_to = c(".value", "set"),
    names_pattern = "(.)(.)"
- ) %>% ggplot(aes(x=x, y=y)) +
+ ) %>% ggplot(aes(x = x, y = y)) +
   geom_point() + 
   facet_wrap(~ set) 
 # p1 + geom_smooth(method="lm") # Try this instead
@@ -162,8 +166,9 @@ Here we will fit each of the models generated above and look at the `summary` ou
 A linear model fitting a straight line to the data (slope, intercept):
 
 ```{r}
-gp <- gp %>% mutate(year1950 = year - 1950,
-                    logGDP = log10(gdpPercap))
+gp <- gapminder %>% filter(continent == "Europe") %>%
+  mutate(year1950 = year - 1950,
+         logGDP = log10(gdpPercap))
 m1 <- lm(logGDP ~ year1950, data = gp)
 summary(m1)
 ```

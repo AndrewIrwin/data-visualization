@@ -6,6 +6,7 @@ library(tidyverse)
 library(broom)
 library(mgcv)
 library(gratia)
+library(kableExtra)
 ```
 
 

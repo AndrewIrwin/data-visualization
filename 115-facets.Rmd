@@ -1,5 +1,10 @@
 # Facetted graphs {#facets}
 
+```{r include=FALSE}
+library(tidyverse)
+library(gapminder)
+```
+
 When a plot has too much data, or you want to emphasize a particular comparison across categories or numerical values, it is often a good idea to split the graph into several subplots. Like any method, this can be overdone, for example by producing a complex array of too many plots that distract and confuse the reader. Done well, the multiple plots let patterns jump off the page.
 
 Making a sequence or array of similar plots goes by a variety of names: small multiples, a lattice, or facets. We'll call them facets because that's the name ggplot uses.

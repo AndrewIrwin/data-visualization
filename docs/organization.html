@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 20 Staying organized | Data Visualization</title>
+<title>Chapter 23 Staying organized | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -55,9 +55,12 @@
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
-<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></li>
-<li><a class="active" href="organization.html"><span class="header-section-number">20</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">19</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">20</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">21</span> K-means clustering</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></li>
+<li><a class="active" href="organization.html"><span class="header-section-number">23</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -66,43 +69,43 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="organization" class="section level1" number="20">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="organization" class="section level1" number="23">
 <h1>
-<span class="header-section-number">20</span> Staying organized<a class="anchor" aria-label="anchor" href="#organization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23</span> Staying organized<a class="anchor" aria-label="anchor" href="#organization"><i class="fas fa-link"></i></a>
 </h1>
 <p>When you first start learning a computing tool like R, most people just put their files in “Downloads” or “Documents” or even on the “Desktop” with no particular thought to names or organization. This is fine when you are first experimenting, but it quickly gets out of control, especially when you want to keep one project separate from another, add data files, or want to share files with a collaborator.</p>
 <p>Here are some suggestions to help you get and stay organized.</p>
-<div id="put-everything-in-a-folder" class="section level2" number="20.1">
+<div id="put-everything-in-a-folder" class="section level2" number="23.1">
 <h2>
-<span class="header-section-number">20.1</span> Put everything in a folder<a class="anchor" aria-label="anchor" href="#put-everything-in-a-folder"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.1</span> Put everything in a folder<a class="anchor" aria-label="anchor" href="#put-everything-in-a-folder"><i class="fas fa-link"></i></a>
 </h2>
 <p>Many people just dump files at random on their Desktop, Documents, or Downloads directory. That’s a recipe for chaos, as you eventually use the same file name as you did a few weeks ago (like example.Rmd) and you overwrite something or just mix up different projects.</p>
 <p>Whenever you start a new project, such as a course, create a folder with an easy to understand name like “STAT2430” or “Data-Visualization”. Spaces in file names in general are fine, but if you plan to share files with others its usually best to use a dash (<code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>) or underscore (<code>_</code>) instead of spaces, since spaces in file names cause problems with some computing tools. (I put project folders in ‘Dropbox’ or ‘One Drive’ so I don’t have to worry about backups.)</p>
 </div>
-<div id="sub-projects" class="section level2" number="20.2">
+<div id="sub-projects" class="section level2" number="23.2">
 <h2>
-<span class="header-section-number">20.2</span> Sub-projects<a class="anchor" aria-label="anchor" href="#sub-projects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.2</span> Sub-projects<a class="anchor" aria-label="anchor" href="#sub-projects"><i class="fas fa-link"></i></a>
 </h2>
 <p>For each component of a project, create a new folder (directory) called something meaningful like “assignment-1”.<br>
 When I open R, instead of creating a new R markdown file right away, I first start a new project (File &gt; New Project…). This new project can be in this new folder or you can create a new folder.</p>
 <p>You can choose to start using version control with the project. I suggest you do! Version control on your local machine takes very little extra effort and can be really handy if (when!) you delete something you didn’t mean to, or decide to undo a whole bunch of changes that didn’t work out the way you hoped. This works on your own computer – no need to use github.</p>
 <p>A project encourages you keep all your files together in the same place. Rstudio will remember which files were open when you quit and re-open them for you. It makes the process of switching from one project to another much easier. You can have two different Rstudio sessions open in different windows at the same time. Each R session has its own window and workspace and operates completely independently of any other R session you have open. I suggest you don’t mix files from multiple projects in an R session; that works against your effort to stay organized.</p>
 </div>
-<div id="files-and-folders" class="section level2" number="20.3">
+<div id="files-and-folders" class="section level2" number="23.3">
 <h2>
-<span class="header-section-number">20.3</span> Files and Folders<a class="anchor" aria-label="anchor" href="#files-and-folders"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.3</span> Files and Folders<a class="anchor" aria-label="anchor" href="#files-and-folders"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can put all your files in this project in this one folder, but if you have different kinds of files – R markdown documents, data files, figures, and presentations, it can help you stay organized to create a sub-folder for each type of file. I find it particularly useful to do this for two kinds of files. Any file I get from somewhere else, typically a data file from a collaborator or the internet, goes in its own folder (“sources”) and I never modify these files. That way I can clean up copies of a file and always know what the original file looked like. This is not really necessary if you use version control, but the original data file is the most likely file I’ll want to use again and I think the duplication is worth the effort. Second, any files that are created by my R code: figures, data tables, or the results of time-consuming calculations, for example, because I know they can always be deleted and recreated later on. Putting them in their own folder reminds me I don’t need to use version control on them; my code created them and there is no need to keep the results.</p>
 </div>
-<div id="naming-conventions" class="section level2" number="20.4">
+<div id="naming-conventions" class="section level2" number="23.4">
 <h2>
-<span class="header-section-number">20.4</span> Naming conventions<a class="anchor" aria-label="anchor" href="#naming-conventions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.4</span> Naming conventions<a class="anchor" aria-label="anchor" href="#naming-conventions"><i class="fas fa-link"></i></a>
 </h2>
 <p>It’s helpful to create informative names for files. If two files are related, use similar names with a different suffix (world-map.R and world-map.png, for example). If some steps need to be performed in a particular order, a simple way is to use a number (01, 02, etc) as a prefix. I used this convention when writing these notes to help me keep the sections in order. For advanced projects, there are specialty tools (e.g., drake) for performing calculations in a particular order, but a simple numbering scheme works for many projects that ourgrow simple sequencing of calculations in a single file.</p>
 </div>
-<div id="resources-2" class="section level2" number="20.5">
+<div id="resources-2" class="section level2" number="23.5">
 <h2>
-<span class="header-section-number">20.5</span> Resources<a class="anchor" aria-label="anchor" href="#resources-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.5</span> Resources<a class="anchor" aria-label="anchor" href="#resources-2"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Healy. Appendix. <a href="https://socviz.co/appendix.html#managing-projects-and-files">Managing projects and files</a>
@@ -118,17 +121,17 @@ When I open R, instead of creating a new R markdown file right away, I first sta
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="data-sources.html"><span class="header-section-number">19</span> Data sources</a></div>
-<div class="next"><a href="accessibility-bias-and-ethics.html"><span class="header-section-number">21</span> Accessibility, Bias, and Ethics</a></div>
+<div class="prev"><a href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></div>
+<div class="next"><a href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#organization"><span class="header-section-number">20</span> Staying organized</a></li>
-<li><a class="nav-link" href="#put-everything-in-a-folder"><span class="header-section-number">20.1</span> Put everything in a folder</a></li>
-<li><a class="nav-link" href="#sub-projects"><span class="header-section-number">20.2</span> Sub-projects</a></li>
-<li><a class="nav-link" href="#files-and-folders"><span class="header-section-number">20.3</span> Files and Folders</a></li>
-<li><a class="nav-link" href="#naming-conventions"><span class="header-section-number">20.4</span> Naming conventions</a></li>
-<li><a class="nav-link" href="#resources-2"><span class="header-section-number">20.5</span> Resources</a></li>
+<li><a class="nav-link" href="#organization"><span class="header-section-number">23</span> Staying organized</a></li>
+<li><a class="nav-link" href="#put-everything-in-a-folder"><span class="header-section-number">23.1</span> Put everything in a folder</a></li>
+<li><a class="nav-link" href="#sub-projects"><span class="header-section-number">23.2</span> Sub-projects</a></li>
+<li><a class="nav-link" href="#files-and-folders"><span class="header-section-number">23.3</span> Files and Folders</a></li>
+<li><a class="nav-link" href="#naming-conventions"><span class="header-section-number">23.4</span> Naming conventions</a></li>
+<li><a class="nav-link" href="#resources-2"><span class="header-section-number">23.5</span> Resources</a></li>
 </ul>
 
       <div class="book-extra">
