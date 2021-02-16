@@ -1,8 +1,19 @@
-# Data sources {#data-sources}
+# Finding and accessing data {#data-sources}
 
-## Built-in and existing packages
+```{r echo=FALSE}
+library(tidyverse)
+library(scales)
+```
 
-Go-to datasets useful for lots of simple visualizations:
+Data are available from a huge number of sites on the internet run by governments, NGOs, companies, industry associations, research projects, and individuals. These data come in a variety of formats and while many will be easy to read with R, some will be quite challenging. In this lesson I will introduce you to some sources of data. Partly this is to help you start to learn how to navigate a variety of data sources, but of course part of the reason is to get you thinking about data you might use in your project. For more information on the project see the [description](#project-description) on the evaluation page.
+
+## Finding data
+
+### Data in R packages
+
+Many datasets are available as part of R packages. These are the easiest to use, but they are often small and designed for demonstration purposes. For example, the gapminder package only contains a small portion of the data available on the gapminder website.
+
+These are the go-to datasets that we have used for demonstrating many simple visualizations:
 
 * mtcars and many other well-known data in datasets package
 * penguins in palmerpenguins package
@@ -11,52 +22,115 @@ Go-to datasets useful for lots of simple visualizations:
 * nycflights13 in dbplyr package
 * gss_sm, gss_cat, gss_sib, gss_lon and gss_lon in socviz package
 
-## Tidy Tuesday
+The function `datasets` in the package `datasets.load` will display a list of all datasets in R packages you have installed on your computer. There is not much information about each dataset, but you once you know their names, you can read the help page for each dataset.
 
-Tidy Tuesday is a project to encourage people to develop skills at data visualization and analysis using the tidyverse packages in R. Each week a new data set is posted and participants experiment to create new visualzations. Some people share their work on github and social media.
+### Tidy Tuesday
 
-* Tidy Tuesday [website](https://github.com/rfordatascience/tidytuesday) describes the project and has a catalog of available datasets from previous weeks.
+Tidy Tuesday is a project to encourage people to develop skills at data visualization and analysis using the tidyverse packages in R. 
+Each week a new data set is posted and participants experiment to create new visualzations. Some people share their work on GitHub and social media.
+
+* The Tidy Tuesday [website](https://github.com/rfordatascience/tidytuesday) describes the project and has a catalog of available datasets from previous weeks.
 * The R package to access the data is called `tidytuesdayR`. Examples of using the package are [here](https://github.com/thebioengineer/tidytuesdayR)
 
-## R packages for accessing data
+### R packages for accessing data
 
-* OECD for data from the OECD
-* cansim for data from Statistics Canada
-* cancensus for data from the Canadian census and National household survey
+There are several packages designed primarily to provide access to large collections of data.
 
-## Websites with data collections
+* [OECD](https://cran.r-project.org/web/packages/OECD/vignettes/oecd_vignette_main.html) for data from the [OECD](https://stats.oecd.org/)
+* [cansim](https://cran.r-project.org/web/packages/cansim/vignettes/cansim.html) for data from [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data)
+* [cancensus](https://cran.r-project.org/web/packages/cancensus/vignettes/cancensus.html) for data from the Canadian census and National household survey. You need to create an account and get an API key to use this package. The package documentation shows you how.
+
+### Websites with data collections
+
+Naturally there are websites that curate lists of data available from other sites. Here are a few I've found useful.
 
 * [Our World In Data](https://ourworldindata.org/) a curated set of over 3000 charts with documentation and open source data.
 * [Awesome data](https://github.com/awesomedata/awesome-public-datasets) project
 * One person's collection of [data](https://github.com/tacookson/data) of various sources
+* [r-dir](https://r-dir.com/reference/datasets.html) has a list of freely available datasets
 
+### Canadian COVID data
 
-## Distribution of data
-
-* [FAIR](https://en.wikipedia.org/wiki/FAIR_data)
-
-## Canadian COVID data
+Many countries and other organizations have developed collections of COVID-related data. Here are some sources for Canada.
 
 * [Federal](https://health-infobase.canada.ca/covid-19/visual-data-gallery/), [BC](https://experience.arcgis.com/experience/a6f23959a8b14bfa989e3cda29297ded), [AB](https://www.alberta.ca/stats/covid-19-alberta-statistics.htm), [SK](https://dashboard.saskatchewan.ca/health-wellness/covid-19/cases), [MB](https://www.arcgis.com/apps/opsdashboard/index.html#/29e86894292e449aa75763b077281b5b?rha=Winnipeg), [ON](https://covid-19.ontario.ca/data), [QC](https://www.inspq.qc.ca/covid-19/donnees/par-region), [NB](https://experience.arcgis.com/experience/8eeb9a2052d641c996dba5de8f25a8aa), [PE](https://www.princeedwardisland.ca/en/information/health-and-wellness/pei-covid-19-case-data), [NS](https://novascotia.ca/coronavirus/data/), 
 
+## Examples of accessing data
+
+### Gapminder
+
+Gapminder distributes many datasets, some of their own, and some collected by other organizations that they are redistributing. They have a [webpage](https://www.gapminder.org/data/) to help you search, browse and access the data. Using this webpage I have found [data](http://gapm.io/dpop) on population of countries by years from 1800-2100 (with many missing data, some interpolated data, and of course many years of projections). Here is some R code to read and work with this data. There are data on 195 countries over 302 years. I have selected five countries to make a simple plot.
+
+```{r}
+pop <- read_csv("static/population_total.csv")
+pop %>% filter(country %in% c("Canada", "China", "Chile", "Germany", "United States")) %>%
+  pivot_longer(`1800`:`2100`, names_to = "years", values_to = "population") %>%
+  mutate(years = as.numeric(years)) %>%
+  ggplot(aes(x = years, y = population, color=country)) +
+  geom_line() +
+  scale_y_log10(labels = trans_format("log10", math_format(10^.x)))
+```
+
+### Consumer price index in Canada
+
+One measure of inflation is its effect on prices. Here is a table from Statistics Canada that reports over 1 million rows of data on this measure. Statistics Canada tables are an extreme version of "long" data, which usually require a lot of filtering to get just the rows you want. You will want to make use of `dpylr` functions `summarize` and `count` to study the structure of the data.
+
+```{r cansim, cache=TRUE}
+# Population and projection in a huge table with 2 million rows, 300 MB of data
+# cansim::get_cansim("17100057")  
+cpi <- cansim::get_cansim("18-10-0004-01")
+cpi %>% filter(`Products and product groups` == "All-items") %>%
+  count(GEO)
+```
+
+Let's look at these data for Canada as a whole.
+
+```{r}
+cpi %>% filter(`Products and product groups` == "All-items",
+               GEO == "Canada") %>%
+  select(REF_DATE, VALUE) %>%
+  mutate(date = lubridate::ym(REF_DATE)) %>%
+  ggplot(aes(x = date, y = VALUE)) +
+  geom_line() + 
+  labs(x = "Date", y = "All items CPI",
+       title = "Consumer price index in Canada",
+       caption = "Scaled so that 2002 = 100") + 
+  scale_y_log10()
+```
+### Causes of death worldwide
+
+[Our world in data](https://ourworldindata.org/) has many compliations of data across many countries. [Here](https://ourworldindata.org/causes-of-death) is a table listing causes of death over time and countries. There is a link to a csv file on that page that can be easily read with R. As is often the case, this is a large table (nearly 7000 observations of 37 variables). You will need to explore the data a bit to understand it. Here is one simple plot that can be made.
+
+```{r}
+death <- read_csv("static/annual-number-of-deaths-by-cause.csv", guess_max = 10000)
+death %>% filter(Entity %in% c("Canada", "China", "Germany", "United States"),
+                 Year == 2015) %>%
+  select(Entity, `Deaths - Road injuries - Sex: Both - Age: All Ages (Number)`:`Terrorism (deaths)`) %>%
+  pivot_longer(`Deaths - Road injuries - Sex: Both - Age: All Ages (Number)`:`Terrorism (deaths)`,
+               names_to = "Cause", values_to = "Deaths") %>%
+  mutate(Cause = str_remove(Cause, "Deaths - ") %>% 
+           str_remove(" - Sex: Both - Age: All Ages \\(Number\\)")) %>%
+  ggplot(aes(x = Deaths, y = fct_reorder(Cause, Deaths), 
+             color = Entity)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+Of course, it would probably be more interesting to plot these as per capita deaths; or at least, that would enable a different sort of comparison.
 
 
-## Useful packages
+## Other R packages related to data collection
 
-datapasta
+Sometimes the only way you will find data is as a table on a website or in a document. The [datapasta](https://github.com/MilesMcBain/datapasta) package is useful for some common reformatting tasks that are required after copy-and-paste.
 
-web app for getting data from graphs datathief (Mohammad has one he likes)
+Sometimes data you want are only available on a graph -- just points or lines and no numeric data at all. There are a variety of "data thief" tools for extracting quantitative data from these images, for example, the web app [WebPlotDigitizer](https://automeris.io/WebPlotDigitizer/).
+
 
 ## Describing data
 
-https://data.research.cornell.edu/content/readme
+Once you have done work to find data, you will also want to do some research to learn the "5 Ws" of data. In addition to what the variables are and what each observation represents, you will want to know who collected it, when, why, and how. It's a good idea to write a "readme" to summarize what you learn. For your term project you will be asked to provide some information on the datasets you analyze, but you should also be aware that there are [online guides](https://data.research.cornell.edu/content/readme) that provide advice on documenting data. 
 
-## Statistics Canada
+## Distribution of data
 
-### Canada population projection
-
-Here are some data projecting the population of Canada for the next 50 years.
-cansim::get_cansim("17100057")  # 2 million rows, 300 MB of data
-
-
+If you want to distribute an analysis of data or redistribute the original data, please be sure to respect the terms of use of the data. Many people encourage the use of [FAIR](https://en.wikipedia.org/wiki/FAIR_data) data usage principles.
 

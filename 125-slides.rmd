@@ -1,0 +1,66 @@
+# Making slides for presentations {#slides}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+Since data visualization is ultimately about communication, you will often need to talk to people about what you've learned. In this lesson I'll provide some suggestions on how to make a good presentation about a data visualization or analysis. I'll show you how to use R markdown and Rstudio to make visual aids for your presentation.
+
+## What makes a good presentation?
+
+I good presentation tells a story that engages your audience, has a clear purpose advanced through a predictable arc from introduction through evidence to a conclusion. There are many ways to design a good presentation, but most people find that practice and reflection on what works for your own personal goals and audience are a key part of the trajectory. 
+
+## Why we make slides
+
+Visual aides, commonly called [slides](https://en.wikipedia.org/wiki/Presentation_slide), can help you communicate with your audience. Computer software makes it easy to generate lots of slides full of text that the presenter reads. This is generally a bad approach as the audience's attention is focussed more on reading than listening and as a result they tend to be less engaged with your presentation. There are, of course, many different opinions on this topic!
+
+In data visualization, we make slides to display the visualization! That's the primary reason for the slide, so your slides should focus on the visualization. The visualization should be large enough to be seen by everyone watching. This is much easier when eveyone watches a presenation by teleconferencing. In a classroom, when the slide is far away, you must be careful not to put too much on a slide and not to make any element of the slide too small.
+
+## How to make slides using Rstudio
+
+There are several packages to help you make slides with R markdown. The method we will use is well integrated into Rstudio. To create a presentation, select the menu File > New File > R Presentation. As with an R markdown document, this will give you a sample file to edit which tells you about the basics of the formatting. The R markdown tools you already know for text formatting, list making, and titles all work here. Of course, you can insert R code blocks and have the output included as well. All of this is described in the help available from the menu Help > Markdown quick reference.
+
+The most important new idea is how to start a new slide. It's simple. Just write a title for your slide on a line by itself, then put a line of equals signs (at least 3) on the next line.
+
+
+
+## Formatting tricks
+
+### Hiding code
+
+Usually in a presenation you don't want to show your computer code -- its too complex to be easily digested by the audience. (This course, is naturally, a bit of an exception!) You can hide output by writing the start of your code block like this:
+
+`{r echo=FALSE}`
+
+The main options for showing code, the results of code, warning messages, and errors are summarized [here](https://rmarkdown.rstudio.com/lesson-3.html). The option `fig.cap="Message"` is particularly useful for adding text. (The options are: echo, eval, include, warning, message, which can all be TRUE or FALSE.)
+
+## Changing the size and position of a plot
+
+The following code chunk options let you control the size and position of a plot:
+
+* `out.width = "70%"` (or other value, in quotation marks)
+* `fig.align = "center"` (or left, right)
+
+For more figure formatting options look [here]()
+
+## Hiding a title
+
+Adding `title: false` below your row of equals signs will hide the title, making more room for a graphic.
+
+## Two column formatting
+
+If you want to divide your slide into a left and right column, put a row with three stars (`***`) between the material for the left and right sides. You can adjust the amount of space used by each side by adding `left: 70%` (for example) below your row of equals signs that starts the slide.
+
+## Summary
+
+This was an introduction to making slides with R. I've picked a method which is relatively easy to use and is well integrated with Rstudio. There are a lot of other options, as with most tasks in R.
+
+## Further reading
+
+* Introduction to [making slide presentations](https://support.rstudio.com/hc/en-us/articles/200486468) with Rstudio
+* Rstudio's notes on making [slide presentations](https://rmarkdown.rstudio.com/lesson-11.html)
+* Patrick Winston's video on [how to speak effectively](https://www.youtube.com/watch?v=Unzc731iCUY)
+* Lots more information on using [markdown and R markdown](https://slides.djnavarro.net/starting-rmarkdown/#1), presented in slide format
+
+* How to make R markdown [presentation slides](https://codingclubuc3m.rbind.io/post/2019-09-24/)

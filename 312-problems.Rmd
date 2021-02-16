@@ -1,5 +1,9 @@
 # Solving common problems with R and Rstudio {#common-problems}
 
+```{r include=FALSE}
+library(tidyverse)
+```
+
 It's really common, and frustrating, for beginners to encounter a problem with any software and have no idea how to fix the problem. Computer software, especially programming languages, require precision and attention to detail that you need to learn how to be attentive to.
 
 A really good strategy to get good at finding errors is to take code that works and deliberately introduce an error. Then notice what goes wrong and see how one small change can fix it.
@@ -113,10 +117,18 @@ Look for the "code chunk" where the problem occurs and use the pop-up menu at th
 
 ## Knit that file anyway
 
-Plow through errors to help me find the problem..
+Plow through errors to help me find the problem...
 
 https://bookdown.org/yihui/rmarkdown-cookbook/opts-error.html
 
+## Problems using git with GitHub
+
+If you get a message that you need to tell git "who you are" when you try to push your repository to GitHub, you need to type the following two commands into the Terminal window (lower left in Rstudio, not the Console):
+
+  * `git config --global user.email "you@example.com"`
+  * `git config --global user.name "Your Name"`
+
+Keep the quotation marks in each line, but replace `Your Name` with your actual name and `you@example.com` with your email address.
 
 ## Resources
 

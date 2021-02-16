@@ -137,6 +137,36 @@ Here are links to materials for the synchronous session. Download the Rmd file b
   * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-07-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-07-after-class.rmd)
   
 
+
+## Thu 4 March 8:35 {#sync-8 .unnumbered}
+
+Before the meeeting:
+
+* Lesson 21-23
+
+Meeting agenda:
+
+
+Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
+
+  * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-08.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-08.rmd) 
+  * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-08-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-08-after-class.rmd)
+  
+  
+## Thu 11 March 8:35 {#sync-9 .unnumbered}
+
+Before the meeeting:
+
+* Lesson 24-27
+
+Meeting agenda:
+
+
+Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
+
+  * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-09.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-09.rmd) 
+  * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-09-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-09-after-class.rmd)
+  
 ## Thu 1 April 8:35 {#sync-12 .unnumbered}
 
 Oral presentations day 1. Each presentation will be a maximum of 5 minutes, so there will be time for about 12 presentations.

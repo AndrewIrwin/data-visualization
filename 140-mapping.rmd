@@ -5,6 +5,7 @@ library(tidyverse)
 library(ggmap)
 library(mapproj)
 library(patchwork)
+# library(leaflet)
 ```
 
 
@@ -215,7 +216,7 @@ ggmap(mymap_halifax)
 
 * [Wilke](https://clauswilke.com/dataviz/geospatial-data.html)
 * [Healy](https://socviz.co/maps.html#maps)
-* Mapping example in [NMDS](#nmds) lesson.
+* Mapping example in [MDS](#mds) lesson.
 * A collection of maps from a [30 day challenge](https://github.com/AlexandraKapp/30daymapchallenge)
 * Maps using [ggmap + openstreetmaps](https://www.earthdatascience.org/courses/earth-analytics/lidar-raster-data-r/ggmap-basemap/)
 * The [PROJ](http://www.euref.eu/documentation/Tutorial2019/t-01-Evers.pdf) tool for projecting map coordiates

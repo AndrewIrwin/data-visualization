@@ -352,10 +352,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <th style="text-align:right;"> .lower </th>
    <th style="text-align:right;"> .upper </th>
    <th style="text-align:right;"> .resid </th>
-   <th style="text-align:right;"> .std.resid </th>
    <th style="text-align:right;"> .hat </th>
    <th style="text-align:right;"> .sigma </th>
    <th style="text-align:right;"> .cooksd </th>
+   <th style="text-align:right;"> .std.resid </th>
   </tr>
  </thead>
 <tbody>
@@ -366,10 +366,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <td style="text-align:right;"> -3507.64 </td>
    <td style="text-align:right;"> 2562.88 </td>
    <td style="text-align:right;"> 798.38 </td>
-   <td style="text-align:right;"> 0.52 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1548.57 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.52 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 326 </td>
@@ -378,10 +378,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <td style="text-align:right;"> -3662.78 </td>
    <td style="text-align:right;"> 2407.75 </td>
    <td style="text-align:right;"> 953.51 </td>
-   <td style="text-align:right;"> 0.62 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1548.57 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.62 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 327 </td>
@@ -390,10 +390,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <td style="text-align:right;"> -3507.64 </td>
    <td style="text-align:right;"> 2562.88 </td>
    <td style="text-align:right;"> 799.38 </td>
-   <td style="text-align:right;"> 0.52 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1548.57 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.52 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 334 </td>
@@ -402,10 +402,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <td style="text-align:right;"> -3042.25 </td>
    <td style="text-align:right;"> 3028.26 </td>
    <td style="text-align:right;"> 341.00 </td>
-   <td style="text-align:right;"> 0.22 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1548.58 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.22 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 335 </td>
@@ -414,10 +414,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <td style="text-align:right;"> -2887.12 </td>
    <td style="text-align:right;"> 3183.38 </td>
    <td style="text-align:right;"> 186.87 </td>
-   <td style="text-align:right;"> 0.12 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1548.58 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.12 </td>
   </tr>
   <tr>
    <td style="text-align:right;"> 336 </td>
@@ -426,10 +426,10 @@ augment(linear_model1, interval = "prediction") %>% head() %>% kable(digits = 2)
    <td style="text-align:right;"> -3430.08 </td>
    <td style="text-align:right;"> 2640.44 </td>
    <td style="text-align:right;"> 730.82 </td>
-   <td style="text-align:right;"> 0.47 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1548.57 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.47 </td>
   </tr>
 </tbody>
 </table>

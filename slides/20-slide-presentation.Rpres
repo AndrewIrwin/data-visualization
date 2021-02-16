@@ -1,0 +1,62 @@
+Making slide presentations
+========================================================
+author: Andrew Irwin
+date: 2021-02-26
+autosize: true
+
+```{r include=FALSE}
+library(tidyverse)
+library(kableExtra)
+```
+
+Goals
+========================================================
+
+- Why we make slides for data visualization
+- How to make slides using "R presentation" format
+
+
+Showing a visualization
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+
+Showing computer code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Formatting text and other tricks
+=======
+
+All markdown formatting for *italics*, **bold**, [hyperlinks](https://www.r-project.org/) are available.
+
+You can include images from the internet or your own computer.
+
+![A kitten](https://placekitten.com/200/300)
+
+Two column format
+=========
+left: 45%
+
+```{r eval=FALSE}
+mpg %>% count(class)
+```
+
+```{r echo=FALSE}
+mpg %>% count(class) %>% kable() %>% kable_styling()
+```
+
+***
+
+```{r echo=FALSE}
+mpg %>% count(class) %>% ggplot(aes(x = class, y = n)) + geom_col() + 
+  theme_bw() + theme(text=element_text(size=30)) +
+  theme(axis.text.x = element_text(angle=90))
+```
+

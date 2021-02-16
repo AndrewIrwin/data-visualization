@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 26 Graphics formatting (#output-files) | Data Visualization</title>
+<meta name="author" content="Andrew Irwin">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Visualization</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="syllabus.html">Syllabus</a></li>
+<li><a class="" href="outline.html">Detailed outline</a></li>
+<li><a class="" href="sync.html">Synchronous meeting agendas</a></li>
+<li><a class="" href="evaluation.html">Evaluation</a></li>
+<li><a class="" href="ch-invitation.html"><span class="header-section-number">1</span> Invitation to Data Visualization</a></li>
+<li><a class="" href="ch-tools.html"><span class="header-section-number">2</span> Computer tools</a></li>
+<li><a class="" href="setup.html"><span class="header-section-number">3</span> Setting up your computer</a></li>
+<li><a class="" href="look-data.html"><span class="header-section-number">4</span> Look at Data</a></li>
+<li><a class="" href="first-plot.html"><span class="header-section-number">5</span> Making your first plot</a></li>
+<li><a class="" href="vcs.html"><span class="header-section-number">6</span> What is version control software?</a></li>
+<li><a class="" href="grammar.html"><span class="header-section-number">7</span> Grammar of Graphics</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">8</span> Using the grammar of graphics</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">9</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">10</span> Facetted graphs</a></li>
+<li><a class="" href="reading-data.html"><span class="header-section-number">11</span> Reading data</a></li>
+<li><a class="" href="pivot.html"><span class="header-section-number">12</span> Reshaping data</a></li>
+<li><a class="" href="format-tables.html"><span class="header-section-number">13</span> Format tables</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
+<li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
+<li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
+<li><a class="" href="making-slides-for-presentations-slides.html"><span class="header-section-number">20</span> Making slides for presentations (#slides)</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">24</span> Using colour well</a></li>
+<li><a class="" href="themes-theme.html"><span class="header-section-number">25</span> Themes (#theme)</a></li>
+<li><a class="active" href="graphics-formatting-output-files.html"><span class="header-section-number">26</span> Graphics formatting (#output-files)</a></li>
+<li><a class="" href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="metadata.html">Metadata</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="graphics-formatting-output-files" class="section level1" number="26">
+<h1>
+<span class="header-section-number">26</span> Graphics formatting (#output-files)<a class="anchor" aria-label="anchor" href="#graphics-formatting-output-files"><i class="fas fa-link"></i></a>
+</h1>
+<p>This lesson is about a grab-bag of concepts related to presenting, storing, and repurposing visualizations. First, and most directly linked to the rest of the course, we will consider how a visualization might be changed according to its particular application, whether it is on a poster, in an oral presentation, in a written document, or as part of a technical report. Second we will explore the various notions of the size of a visualization and what that tends to do to parts that are easily scaled and parts that need to be scaled differently. Third we will review formats for storing images, both the general differences between vector and raster formats, and the particulars of various often used file formats and why they matter. Finally I’ll lead you to some resources on dealing with text in non-Latin scripts.</p>
+<div id="formatting-visualizations-for-a-purpose" class="section level2" number="26.1">
+<h2>
+<span class="header-section-number">26.1</span> Formatting visualizations for a purpose<a class="anchor" aria-label="anchor" href="#formatting-visualizations-for-a-purpose"><i class="fas fa-link"></i></a>
+</h2>
+<p>A final design check for your visualization can be done by asking two questions:</p>
+<ul>
+<li>How big will this graphic be and how far away will the viewer be from it?</li>
+<li>How long will the viewer have to look at the graphic?</li>
+</ul>
+<p>These two questions focus your attention on whether elements of your visualization are too small and whether your visualization is too complex to be understood in the time available. Many visualizations are both too complex and contain detail that is too small. To exercise your thinking about these questions, design a visualization and then ask yourself how it could be made simpler or more complex, and how it should change if its apparent size changed.</p>
+<p>Let’s start with a frequently used visualization of penguin data.</p>
+<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">body_mass_g</span>, <span class="va">flipper_length_mm</span>, 
+                        color <span class="op">=</span> <span class="va">species</span>, shape <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">island</span><span class="op">)</span> <span class="op">+</span> 
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_shape.html">scale_shape</a></span><span class="op">(</span>na.translate <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Body mass (g)"</span>, y <span class="op">=</span> <span class="st">"Flipper length (mm)"</span><span class="op">)</span>
+<span class="va">p1</span></code></pre></div>
+<div class="inline-figure"><img src="130-graphics-output_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<p>This is a fairly complex figure, but it’s fine if you will have a minute to look at it on a monitor or printed page within a metre. For quick or distant viewing, the text should be made bigger, the symbols for sex should be dropped (or made more prominent if they are critical information), and the facets should be combined (unless they are critical.) Essentially what I’ve done with the figure above is to make a “multi-purpose” figure that shows a lot of data, but I’ve avoided the “should I show feature X?” question. This is one reason editing figures for other uses is so valuable: it focusses your attention on what is essential for your story.</p>
+<p>Let’s simplify the visualization to emphasize the species differences, discard the sex and island differences, and make it suitable for display in an oral presentation or poster.</p>
+<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">body_mass_g</span>, <span class="va">flipper_length_mm</span>, 
+                        color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> 
+        <span class="fu">theme_clean</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>,
+              axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,
+              legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span>
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,
+                  size <span class="op">=</span> <span class="fl">8</span>,
+               data <span class="op">=</span> <span class="fu">tibble</span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span><span class="op">)</span>,
+                             body_mass_g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4000</span>, <span class="fl">3200</span>, <span class="fl">4500</span><span class="op">)</span>,
+                             flipper_length_mm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">173</span>, <span class="fl">207</span>, <span class="fl">227</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Body mass (g)"</span>, y <span class="op">=</span> <span class="st">"Flipper length (mm)"</span><span class="op">)</span>
+<span class="va">p2</span></code></pre></div>
+<div class="inline-figure"><img src="130-graphics-output_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+</div>
+<div id="graphics-formats" class="section level2" number="26.2">
+<h2>
+<span class="header-section-number">26.2</span> Graphics formats<a class="anchor" aria-label="anchor" href="#graphics-formats"><i class="fas fa-link"></i></a>
+</h2>
+<p>Computer graphics can be divided into two types: raster images and vector drawings. A photograph is a raster image; there is a separate color value for each of millions of pixels. A scatter plot is often best represented as a vector drawing which is just a list of instructions: make circles of a certain colour at these locations, draw lines for axes of a particular thickness, etc. For “simple” visualizations, the vector graphics format is smaller to store, faster to transmit, and easy to display at high fidelity on devices with different numbers of dots per unit length.</p>
+<p>R can produce graphics files in many formats, of which the most common vector formats are <a href="https://en.wikipedia.org/wiki/PDF">PDF</a> (which can include raster images as well) and <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> and the most common raster formats are <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> and <a href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>. There are a huge number of other formats, some of which R can produce directly and others can be achieved by conversion.</p>
+<p>When you create a PDF or SVG file, you specify the size in units such as mm, cm, or inches. The function <code>ggsave</code> will write out a graphic to a file name you specify.</p>
+<div class="sourceCode" id="cb376"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"static/penguin-plot.pdf"</span>, <span class="va">p2</span>, width <span class="op">=</span> <span class="fl">15</span>, height <span class="op">=</span> <span class="fl">10</span> , units <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb378"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"static/penguin-plot.svg"</span>, <span class="va">p2</span>, width <span class="op">=</span> <span class="fl">15</span>, height <span class="op">=</span> <span class="fl">10</span> , units <span class="op">=</span> <span class="st">"cm"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p>Figures are often produced with an aspect ratio (height / width) in the range of 0.6-0.7. Square images almost always look “too tall”. For multi-panel figures such as the first facetted plot above, this ratio is usually applied to each panel. Deviations from this ratio arise from aesthetich preference, constraints imposed by external factors, and the size of axis labels, titles, and legends.</p>
+<p>If you examine the versions of this plot in the PDF file just created, in the HTML version of this book, and the interactive version produced by Rstudio, you will see that they are all slightly different. This includes minor features like the placement of the dots in the horizontal gridlines relative to other features and major features like the size of the on-graph “legend”. In particular, text near a border can easily fall partially outside the boarder and get clipped. (In the first version of my PDF of the “C” in Chinstrap was clipped by the y-axis even though it looked fine in the Rstudio preview.) The only way I know to resolve these problems is by testing and iterative refinement of the graph.</p>
+<p>The actual sizes of these plots are of course completely fictional. The instructions stored on a computer have no physical size! What purpose to the size measurements have? They allow for the relative sizing of different elements: lines, symbols, and text. If you change the size of the images created above, all that will change is the relative sizes of these elements. This is why the “size” of text elements is not closely tied to a “point size” for a font; ggplot does not know how the figure will be rendered not when stored in a file a certainly not when ultimately placed on a computer monitor, phone, projected on a wall, printed on a page or a poster. The size of a figure in these functions serves as a convenient reminder of how you are planning to use the image and will help you think about your design. Sometimes the simplest way to refine a plot is to change the “size” it is created at slightly to make a bit more or less white space between the graphical elements.</p>
+<p>Here is how to make the raster format images; it’s fairly easy to guess the functions now!</p>
+<div class="sourceCode" id="cb380"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"static/penguin-plot.png"</span>, <span class="va">p2</span>, width <span class="op">=</span> <span class="fl">15</span>, height <span class="op">=</span> <span class="fl">10</span>, units <span class="op">=</span> <span class="st">"cm"</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"static/penguin-plot.jpeg"</span>, <span class="va">p2</span>, width <span class="op">=</span> <span class="fl">15</span>, height <span class="op">=</span> <span class="fl">10</span>, units <span class="op">=</span> <span class="st">"cm"</span>, dpi <span class="op">=</span> <span class="fl">144</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p>For raster images, the the “dots per inch” (dpi) provides some information on how the figure is intended to be displayed. Montiors, phones, and other devices generally range from 100-250 dpi and physical printing usually ranges from 300-600 dpi. There are, of course, exceptions.</p>
+<p>The JPEG file format was designed to store photographic images compactly. Image compression algorithms are used to reduce the size of the file from the literal content (x resolution x y resolution x colour bits per pixel, commonly a total of 30-40 million bytes even for a camera phone) to a size of 5-10% of that total. Photographs rarely include precisely straight lines, crisp text, and lots of small symbols. The JPEG compression tends to create lots of “artifacts” or “jaggies” on an image since the data compression algorithms smooth out sharp, high contrast boundaries that are common in data visualizations and rare in photographs. Don’t use JPEG for ggplot figures.</p>
+<p>The PNG format, by contrast, is excellent at high contrast lines and shapes and has none of these problems. It is also good at photographic images. This is the format you should use for <code>ggplot</code> visualizations if, for some reason, you need to produce a raster image. One reason to produce a raster image is that you will know exactly what it will look like when it is displayed or printed. You don’t know what size it will be, but you can know the relative placement of all elements on the figure.</p>
+<p>A third application for rendering visualiztions is the one we have been using in this course since the very first lesson: in an interactive or rendered R markdown document. There are several options you can provide on the <code>{r}</code> line that opens a code block: fig.height and fig.width which control the size in inches, fig.align (left, right, or center) to control placement left-to-right, and out.height and out.width for scaling to a percentage. For more, see <a href="https://rmd4sci.njtierney.com/customising-your-figures.html">these notes</a> by Nicholas Tierney. You can also get a figure written to a file in any of the formats discussed above using the option dev. Here I’ll demonstrate a few of these options. Some of these options only have an effect when your document is knitted.</p>
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p1</span></code></pre></div>
+<div class="inline-figure"><img src="130-graphics-output_files/figure-html/unnamed-chunk-6-1.png" width="50%" style="display: block; margin: auto;"></div>
+</div>
+<div id="size-and-resolution" class="section level2" number="26.3">
+<h2>
+<span class="header-section-number">26.3</span> Size and resolution<a class="anchor" aria-label="anchor" href="#size-and-resolution"><i class="fas fa-link"></i></a>
+</h2>
+<p>The differences between raster and vector formats give rise to different ideas of a graphics size. Raster images are defined by the number of pixels in each dimension. Vector graphics are not made of pixels, so they are defined by a target size for presentation in inches or centimeters. When they are actually displayed, raster images may be simplified to lower resolution or dots may be interpolated to match the device you are using. Similarly, a vector image on a monitor, printed page, or projected on a screen will have very different sizes, even if the computer doesn’t know it. These resizing operations happen all the time, sometimes even interactively (as you zoom on a phone for example) and the person creating the image has no control over how it will be displayed!</p>
+</div>
+<div id="a-solution-for-scaling-graphics" class="section level2" number="26.4">
+<h2>
+<span class="header-section-number">26.4</span> A solution for scaling graphics<a class="anchor" aria-label="anchor" href="#a-solution-for-scaling-graphics"><i class="fas fa-link"></i></a>
+</h2>
+<p>There is a relatively new solution to many of these sizing problems. (So new it seems to not work sometimes.) The <code>ragg</code> library and graphics output device provides reliable rendering text in many (perhaps most) languages and a way to scale the size of images across different output formats.</p>
+<p>Once you have made a graphic look just the way you want, you can adjust the scale of the elements of the figure without changing the “physical” size of the image. Here I make the graphic have a much larger “physical” size, but I also scale up all the elements of the graphic by a factor of three (using <code>scaling = 3</code>). This allows you to make a high resolution object you can include in a printed poster without redesigning a figure too much – just set the scaling factor and adjust the width and height by the same factor.</p>
+<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pngfile</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/path.html">path</a></span><span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/fig_path.html">fig_path</a></span><span class="op">(</span><span class="op">)</span>,  <span class="st">"penguins-ragg.png"</span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">pngfile</span>, <span class="va">p2</span>, device <span class="op">=</span> <span class="va">agg_png</span>, 
+        width <span class="op">=</span> <span class="fl">45</span>, height <span class="op">=</span> <span class="fl">30</span>, units <span class="op">=</span> <span class="st">"cm"</span>, res <span class="op">=</span> <span class="fl">300</span>, scaling <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="va">pngfile</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="130-graphics-output_files/figure-html/unnamed-chunk-7-1/penguins-ragg.png" width="8"></div>
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># agg_png("static/penguins-ragg.png", width = 45, height = 30, units = "cm", res = 300, scaling = 3)</span>
+<span class="co"># p2</span>
+<span class="co"># invisble(dev.off())</span></code></pre></div>
+<p>For a demonstration of text in other languages, please see <a href="https://www.tidyverse.org/blog/2021/02/modern-text-features/">here</a>. For a discussion of scaling plots see <a href="https://www.tidyverse.org/blog/2020/08/taking-control-of-plot-scaling/">here</a>.</p>
+</div>
+<div id="further-reading-18" class="section level2" number="26.5">
+<h2>
+<span class="header-section-number">26.5</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-18"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Notes on <a href="https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing">figure scaling in R Markdown</a> from R for Data Science.</li>
+</ul>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="themes-theme.html"><span class="header-section-number">25</span> Themes (#theme)</a></div>
+<div class="next"><a href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#graphics-formatting-output-files"><span class="header-section-number">26</span> Graphics formatting (#output-files)</a></li>
+<li><a class="nav-link" href="#formatting-visualizations-for-a-purpose"><span class="header-section-number">26.1</span> Formatting visualizations for a purpose</a></li>
+<li><a class="nav-link" href="#graphics-formats"><span class="header-section-number">26.2</span> Graphics formats</a></li>
+<li><a class="nav-link" href="#size-and-resolution"><span class="header-section-number">26.3</span> Size and resolution</a></li>
+<li><a class="nav-link" href="#a-solution-for-scaling-graphics"><span class="header-section-number">26.4</span> A solution for scaling graphics</a></li>
+<li><a class="nav-link" href="#further-reading-18"><span class="header-section-number">26.5</span> Further reading</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/130-graphics-output.rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/130-graphics-output.rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-16.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

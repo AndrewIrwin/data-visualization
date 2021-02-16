@@ -1,0 +1,573 @@
+Cover plot: Step-by-step
+========================================================
+author: Andrew Irwin
+date: 2021-03-01
+width: 1440
+height: 900
+
+I'm going to demonstrate how to draw the plot on the cover of [DeVeaux et al, Stats: Data and Models](https://www.amazon.ca/Stats-Data-Models-Third-Canadian/dp/0134301056).
+
+I'll develop the plot step-by-step, changing just a bit of code each time, to highlight the effects of each change.
+
+
+The goal
+========================================================
+
+
+```{r, include=FALSE}
+library(ggrepel)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rgeos)
+library(tidyverse)
+opts_chunk$set(cache=TRUE)
+```
+
+![cover image](../static/cover-stats-data-models.JPG)
+
+Get the data
+========================================================
+
+
+```{r, eval=FALSE}
+library(gapminder)
+gapminder %>% knitr::kable()
+```
+
+We will make a scatterplot of life expectancy as a function of GDP per capita, for one year only.
+***
+```{r, echo=FALSE}
+library(gapminder)
+gapminder %>% knitr::kable()
+```
+
+First Plot
+========================================================
+
+The last year with data is 2007, so let's take those data and make a scatterplot.
+```{r, eval=FALSE}
+gapminder %>% 
+  filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp,
+             x=gdpPercap)) + 
+  geom_point() 
+```
+***
+```{r, echo=FALSE}
+gapminder %>% 
+  filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp,
+             x=gdpPercap)) + 
+  geom_point() 
+```
+
+Change the x-axis to a log scale
+========================================================
+
+The figure uses $\log_2$ with fancy labels (and has an error), but we will be content with $\log_{10}$.
+
+```{r, eval=FALSE}
+gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp,
+             x=gdpPercap)) + 
+  geom_point() +
+  scale_x_log10()
+```
+***
+```{r, echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap)) + 
+  geom_point() +
+  scale_x_log10()
+```
+
+
+Add axis labels and a title
+========================================================
+Clean up the axis labels. I'll hide some of the code to make room on the screen.
+
+```{r, eval=FALSE}
+gapminder %>% 
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap)) + 
+  ... + 
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") 
+```
+***
+```{r, echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap)) + 
+  geom_point() +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") 
+```
+
+
+Add colour
+========================================================
+We will use the continent name to pick colours.
+```{r, eval=FALSE}
+gapminder %>% 
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent)) + 
+  ... +
+  scale_x_log10()
+```
+***
+```{r, echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent)) + 
+  geom_point() +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") 
+```
+
+Make points transparent to highlight overlap
+========================================================
+
+```{r, eval=FALSE}
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent)) + 
+  geom_point(alpha=0.5) +
+  ...
+```
+***
+```{r,echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent)) + 
+  geom_point(alpha=0.5) +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") 
+```
+
+Add a black outline to each dot
+========================================================
+
+```{r, eval=FALSE}
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  ...
+```
+***
+```{r, echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") 
+```
+
+Match the colour scale to the example
+========================================================
+
+```{r,eval=FALSE}
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent)) + 
+  ... +
+  scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) 
+```
+***
+```{r,echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) 
+```
+
+Make the points bigger
+========================================================
+Scale the size of points using the population of each country.
+
+```{r,eval=FALSE}
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent, 
+             size=pop)) + 
+  ...
+```
+***
+```{r,echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent, size=pop)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) 
+```
+
+Make the points bigger: Part 2
+========================================================
+Make the points bigger by setting the maximum size of the points.
+
+```{r,eval=FALSE}
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent, 
+             size=pop)) + 
+  ... +
+  scale_size_area(max_size = 20)
+```
+***
+```{r,echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent, size=pop)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) +
+  scale_size_area(max_size = 20)
+```
+
+Hide the legend
+========================================================
+
+```{r,eval=FALSE}
+  ggplot(aes(...)) + 
+  ... +
+  theme(legend.position =
+          "none")
+```
+***
+```{r,echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent, size=pop)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  scale_x_log10() +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) +
+  scale_size_area(max_size = 20) + 
+  theme(legend.position = "none")
+```
+
+Draw a map for the inset
+========================================================
+Get the map data and draw a map. Google a first example.
+
+```{r,eval=FALSE}
+world <- ne_countries(scale='medium',
+      returnclass = 'sf')
+
+world %>%
+  ggplot() + 
+  geom_sf(aes(fill=continent))
+```
+***
+```{r,echo=FALSE,fig.height=4, fig.width=8}
+world <- ne_countries(scale='medium',
+                      returnclass = 'sf')
+world %>%
+  ggplot() + 
+  geom_sf(aes(fill=continent))
+```
+
+Remove Antarctica
+========================================================
+
+```{r, eval=FALSE}
+world %>% 
+  filter(continent != 
+           "Antarctica") %>%
+  ggplot() + 
+  geom_sf(aes(fill=continent)) 
+```
+***
+```{r,echo=FALSE,fig.height=4, fig.width=8}
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent)) 
+```
+
+
+Match the colours to the plot
+========================================================
+
+```{r,eval=FALSE}
+world %>% 
+  ggplot() + 
+    scale_fill_manual(values = 
+          c("blue", "pink", "yellow",
+            "green", "red", "black", 
+            "green" )) 
+```
+***
+```{r,echo=FALSE,fig.height=5, fig.width=8}
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent)) +
+    scale_fill_manual(values = c("blue", "pink", "yellow","green", "red", "black", "green" )) 
+```
+
+
+Remove outlines on countries and make colors transparent
+========================================================
+
+```{r,eval=FALSE}
+world %>% 
+  ggplot() + 
+  geom_sf(aes(fill=continent), 
+          color=NA, 
+          alpha=0.5) +
+  ...
+```
+***
+```{r,echo=FALSE,fig.height=5, fig.width=8}
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent), color=NA, alpha=0.5) +
+    scale_fill_manual(values = c("blue", "pink", "yellow","green", "red", "black", "green" )) 
+```
+
+
+Remove the legend
+========================================================
+
+```{r,eval=FALSE}
+world %>% 
+  ggplot() + 
+  ... +
+  theme(legend.position = "none")
+```
+***
+```{r,echo=FALSE,fig.height=5, fig.width=8}
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent), color=NA, alpha=0.5) +
+  scale_fill_manual(values = c("blue", "pink", "yellow","green", "red", "black", "green" )) +
+  theme(legend.position = "none")
+```
+
+
+Clean up the grid lines, white background
+========================================================
+Lots of help from Google to figure this out!
+
+```{r,eval=FALSE}
+world %>% 
+  ggplot() + ... +
+    theme_bw() + 
+    theme(legend.position= "none",
+      panel.border= element_rect(linetype=0),
+      panel.grid= element_line(color=NA),
+      panel.background= element_rect(fill=NA),
+      plot.background= element_rect(fill=NA),
+      axis.text.x= element_text(color=NA),
+      axis.ticks.length= unit(0, "cm")) 
+```
+
+```{r,echo=FALSE,fig.height=5, fig.width=8, fig.align='center'  }
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent), color=NA, alpha=0.5) +
+    scale_fill_manual(values = c("blue", "pink", "yellow","green", "red", "black", "green" )) +
+    theme_bw() + theme(legend.position = "none", panel.border=element_rect(linetype=0),
+                     panel.grid = element_line(color=NA),
+                     panel.background = element_rect(fill=NA),
+                     plot.background = element_rect(fill=NA),
+                     axis.text.x = element_text(color=NA),
+                     axis.ticks.length =  unit(0, "cm")) 
+```
+
+Store the map in an object for later use
+========================================================
+
+```{r, eval=FALSE}
+world %>% 
+  ggplot() + 
+  ... -> world_map
+print(world_map)
+```
+***
+```{r,echo=FALSE,fig.height=5, fig.width=8}
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent), color=NA, alpha=0.5) +
+    scale_fill_manual(values = c("blue", "pink", "yellow","green", "red", "black", "green" )) +
+    theme_bw() + theme(legend.position = "none", panel.border=element_rect(linetype=0),
+                     panel.grid = element_line(color=NA),
+                     panel.background = element_rect(fill=NA),
+                     plot.background = element_rect(fill=NA),
+                     axis.text.x = element_text(color=NA),
+                     axis.ticks.length =  unit(0, "cm")) -> world_map
+print(world_map)
+```
+
+Combine the plot and the map
+========================================================
+And add a floating label for Canada.
+
+```{r, eval=FALSE}
+ggplot(aes(y=lifeExp, 
+           x=gdpPercap)) + 
+  annotation_custom(grob=
+    ggplotGrob(world_map), 
+    xmin=3.7, 
+    ymin=35, ymax=50 ) +
+  
+  geom_label_repel(aes(
+          label=country), 
+      data = gapminder %>% 
+       filter(year ==2007, 
+        country=="Canada"), 
+    color="black", 
+    fill="green", 
+    segment.size=1, 
+    segment.color="green", 
+    box.padding=3) +
+  ...
+```
+***
+```{r, echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent, size=pop)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  geom_label_repel(aes(label=country), data = gapminder %>% filter(year ==2007, country=="Canada"), color="black", fill="green", 
+                   segment.size=1, segment.color="green", box.padding=3) +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", "yellow", "red")) +
+  scale_size_area(max_size = 20) + 
+  annotation_custom(grob=ggplotGrob(world_map), xmin=3.7, ymin=35, ymax=50 ) +
+  scale_x_log10() +
+  theme(legend.position = "none")  -> final_plot
+print(final_plot)
+```
+
+Adjust the aspect ratio
+========================================================
+Use the ratio of width (log units, log10(30000/300)) to height (80-40), scaled to be 1:2 for a wide plot.
+```{r, eval=FALSE}
+gapminder %>%
+  ggplot(aes(y=lifeExp, 
+             x=gdpPercap, 
+             color=continent, 
+             size=pop)) + 
+  ... +
+  coord_fixed(ratio=(1/2)*
+                log10(30000/300)/(80-40)) 
+```
+***
+```{r, echo=FALSE}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent, size=pop)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  geom_label_repel(aes(label=country), data = 
+                     gapminder %>% filter(year ==2007, 
+                                          country=="Canada"), 
+                                   color="black", fill="green", 
+                   segment.size=1, segment.color="green", 
+                   box.padding=3) +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", 
+                                "yellow", "red")) +
+  scale_size_area(max_size = 20) + 
+  annotation_custom(grob=ggplotGrob(world_map), 
+                  xmin=3.7, ymin=40, ymax=55 ) +
+  scale_x_log10() +
+  theme(legend.position = "none",
+        text=element_text(size=20))  +
+  coord_fixed(ratio=0.5*log10(30000/300)/(80-40)) -> final_plot
+print(final_plot)
+```
+
+
+How did we do?
+========================================================
+
+![cover image](../static/cover-stats-data-models.JPG)
+***
+```{r, echo=FALSE}
+print(final_plot)
+```
+
+Final code and plot
+========================================================
+```{r}
+gapminder %>% filter(year == 2007) %>%
+  ggplot(aes(y=lifeExp, x=gdpPercap, color=continent, size=pop)) + 
+  geom_point(alpha=0.5) +
+  geom_point(shape=1, color="black") +
+  geom_label_repel(aes(label=country), data = 
+                     gapminder %>% filter(year ==2007, 
+                                          country=="Canada"), 
+                                   color="black", fill="green", 
+                   segment.size=1, segment.color="green", 
+                   box.padding=3) +
+  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  ylab("") + 
+  ggtitle("Life Expectancy (2007)") +
+  scale_color_manual(values = c("blue", "green", "pink", 
+                                "yellow", "red")) +
+  scale_size_area(max_size = 20) + 
+  annotation_custom(grob=ggplotGrob(world_map), 
+                  xmin=3.7, ymin=40, ymax=55 ) +
+  scale_x_log10() +
+  theme(legend.position = "none",
+        text=element_text(size=20))  +
+  coord_fixed(ratio=0.5*log10(30000/300)/(80-40)) -> final_plot
+```
+
+Final plot
+========================================================
+```{r, fig.width=12, fig.height=9, echo=FALSE}
+print(final_plot)
+```
+
+
+Final map code
+========================================================
+```{r,eval=FALSE}
+world %>% filter(continent != "Antarctica") %>%
+  ggplot() + geom_sf(aes(fill=continent), color=NA, alpha=0.5) +
+    scale_fill_manual(values = c("blue", "pink", "yellow","green", 
+                                 "red", "black", "green" )) +
+    theme_bw() + theme(legend.position = "none", 
+                     panel.border=element_rect(linetype=0),
+                     panel.grid = element_line(color=NA),
+                     panel.background = element_rect(fill=NA),
+                     plot.background = element_rect(fill=NA),
+                     axis.text.x = element_text(color=NA),
+                     axis.ticks.length =  unit(0, "cm")) -> world_map
+```
+
+Libraries used
+========================================================
+```{r, eval=FALSE}
+library(tidyverse)
+library(gapminder)
+library(ggrepel)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rgeos)
+```
+

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 22 Data sources | Data Visualization</title>
+<title>Chapter 19 Finding and accessing data | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -55,12 +55,17 @@
 <li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">19</span> Principal component analysis</a></li>
-<li><a class="" href="mds.html"><span class="header-section-number">20</span> Multidimensional scaling</a></li>
-<li><a class="" href="k-means.html"><span class="header-section-number">21</span> K-means clustering</a></li>
-<li><a class="active" href="data-sources.html"><span class="header-section-number">22</span> Data sources</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">23</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">24</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="active" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">24</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">25</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">26</span> Graphics formatting</a></li>
+<li><a class="" href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -69,15 +74,37 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-sources" class="section level1" number="22">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-sources" class="section level1" number="19">
 <h1>
-<span class="header-section-number">22</span> Data sources<a class="anchor" aria-label="anchor" href="#data-sources"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19</span> Finding and accessing data<a class="anchor" aria-label="anchor" href="#data-sources"><i class="fas fa-link"></i></a>
 </h1>
-<div id="built-in-and-existing-packages" class="section level2" number="22.1">
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre><code>## 
+## Attaching package: 'scales'</code></pre>
+<pre><code>## The following object is masked from 'package:purrr':
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from 'package:readr':
+## 
+##     col_factor</code></pre>
+<p>Data are available from a huge number of sites on the internet run by governments, NGOs, companies, industry associations, research projects, and individuals. These data come in a variety of formats and while many will be easy to read with R, some will be quite challenging. In this lesson I will introduce you to some sources of data. Partly this is to help you start to learn how to navigate a variety of data sources, but of course part of the reason is to get you thinking about data you might use in your project. For more information on the project see the <a href="evaluation.html#project-description">description</a> on the evaluation page.</p>
+<div id="finding-data" class="section level2" number="19.1">
 <h2>
-<span class="header-section-number">22.1</span> Built-in and existing packages<a class="anchor" aria-label="anchor" href="#built-in-and-existing-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.1</span> Finding data<a class="anchor" aria-label="anchor" href="#finding-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>Go-to datasets useful for lots of simple visualizations:</p>
+<div id="data-in-r-packages" class="section level3" number="19.1.1">
+<h3>
+<span class="header-section-number">19.1.1</span> Data in R packages<a class="anchor" aria-label="anchor" href="#data-in-r-packages"><i class="fas fa-link"></i></a>
+</h3>
+<p>Many datasets are available as part of R packages. These are the easiest to use, but they are often small and designed for demonstration purposes. For example, the gapminder package only contains a small portion of the data available on the gapminder website.</p>
+<p>These are the go-to datasets that we have used for demonstrating many simple visualizations:</p>
 <ul>
 <li>mtcars and many other well-known data in datasets package</li>
 <li>penguins in palmerpenguins package</li>
@@ -86,102 +113,208 @@
 <li>nycflights13 in dbplyr package</li>
 <li>gss_sm, gss_cat, gss_sib, gss_lon and gss_lon in socviz package</li>
 </ul>
+<p>The function <code>datasets</code> in the package <code>datasets.load</code> will display a list of all datasets in R packages you have installed on your computer. There is not much information about each dataset, but you once you know their names, you can read the help page for each dataset.</p>
 </div>
-<div id="tidy-tuesday" class="section level2" number="22.2">
-<h2>
-<span class="header-section-number">22.2</span> Tidy Tuesday<a class="anchor" aria-label="anchor" href="#tidy-tuesday"><i class="fas fa-link"></i></a>
-</h2>
-<p>Tidy Tuesday is a project to encourage people to develop skills at data visualization and analysis using the tidyverse packages in R. Each week a new data set is posted and participants experiment to create new visualzations. Some people share their work on github and social media.</p>
+<div id="tidy-tuesday" class="section level3" number="19.1.2">
+<h3>
+<span class="header-section-number">19.1.2</span> Tidy Tuesday<a class="anchor" aria-label="anchor" href="#tidy-tuesday"><i class="fas fa-link"></i></a>
+</h3>
+<p>Tidy Tuesday is a project to encourage people to develop skills at data visualization and analysis using the tidyverse packages in R.
+Each week a new data set is posted and participants experiment to create new visualzations. Some people share their work on GitHub and social media.</p>
 <ul>
-<li>Tidy Tuesday <a href="https://github.com/rfordatascience/tidytuesday">website</a> describes the project and has a catalog of available datasets from previous weeks.</li>
+<li>The Tidy Tuesday <a href="https://github.com/rfordatascience/tidytuesday">website</a> describes the project and has a catalog of available datasets from previous weeks.</li>
 <li>The R package to access the data is called <code>tidytuesdayR</code>. Examples of using the package are <a href="https://github.com/thebioengineer/tidytuesdayR">here</a>
 </li>
 </ul>
 </div>
-<div id="r-packages-for-accessing-data" class="section level2" number="22.3">
-<h2>
-<span class="header-section-number">22.3</span> R packages for accessing data<a class="anchor" aria-label="anchor" href="#r-packages-for-accessing-data"><i class="fas fa-link"></i></a>
-</h2>
+<div id="r-packages-for-accessing-data" class="section level3" number="19.1.3">
+<h3>
+<span class="header-section-number">19.1.3</span> R packages for accessing data<a class="anchor" aria-label="anchor" href="#r-packages-for-accessing-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are several packages designed primarily to provide access to large collections of data.</p>
 <ul>
-<li>OECD for data from the OECD</li>
-<li>cansim for data from Statistics Canada</li>
-<li>cancensus for data from the Canadian census and National household survey</li>
+<li>
+<a href="https://cran.r-project.org/web/packages/OECD/vignettes/oecd_vignette_main.html">OECD</a> for data from the <a href="https://stats.oecd.org/">OECD</a>
+</li>
+<li>
+<a href="https://cran.r-project.org/web/packages/cansim/vignettes/cansim.html">cansim</a> for data from <a href="https://www150.statcan.gc.ca/n1/en/type/data">Statistics Canada</a>
+</li>
+<li>
+<a href="https://cran.r-project.org/web/packages/cancensus/vignettes/cancensus.html">cancensus</a> for data from the Canadian census and National household survey. You need to create an account and get an API key to use this package. The package documentation shows you how.</li>
 </ul>
 </div>
-<div id="websites-with-data-collections" class="section level2" number="22.4">
-<h2>
-<span class="header-section-number">22.4</span> Websites with data collections<a class="anchor" aria-label="anchor" href="#websites-with-data-collections"><i class="fas fa-link"></i></a>
-</h2>
+<div id="websites-with-data-collections" class="section level3" number="19.1.4">
+<h3>
+<span class="header-section-number">19.1.4</span> Websites with data collections<a class="anchor" aria-label="anchor" href="#websites-with-data-collections"><i class="fas fa-link"></i></a>
+</h3>
+<p>Naturally there are websites that curate lists of data available from other sites. Here are a few I’ve found useful.</p>
 <ul>
 <li>
 <a href="https://ourworldindata.org/">Our World In Data</a> a curated set of over 3000 charts with documentation and open source data.</li>
 <li>
 <a href="https://github.com/awesomedata/awesome-public-datasets">Awesome data</a> project</li>
 <li>One person’s collection of <a href="https://github.com/tacookson/data">data</a> of various sources</li>
+<li>
+<a href="https://r-dir.com/reference/datasets.html">r-dir</a> has a list of freely available datasets</li>
 </ul>
 </div>
-<div id="distribution-of-data" class="section level2" number="22.5">
-<h2>
-<span class="header-section-number">22.5</span> Distribution of data<a class="anchor" aria-label="anchor" href="#distribution-of-data"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/FAIR_data">FAIR</a></li>
-</ul>
-</div>
-<div id="canadian-covid-data" class="section level2" number="22.6">
-<h2>
-<span class="header-section-number">22.6</span> Canadian COVID data<a class="anchor" aria-label="anchor" href="#canadian-covid-data"><i class="fas fa-link"></i></a>
-</h2>
+<div id="canadian-covid-data" class="section level3" number="19.1.5">
+<h3>
+<span class="header-section-number">19.1.5</span> Canadian COVID data<a class="anchor" aria-label="anchor" href="#canadian-covid-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>Many countries and other organizations have developed collections of COVID-related data. Here are some sources for Canada.</p>
 <ul>
 <li>
 <a href="https://health-infobase.canada.ca/covid-19/visual-data-gallery/">Federal</a>, <a href="https://experience.arcgis.com/experience/a6f23959a8b14bfa989e3cda29297ded">BC</a>, <a href="https://www.alberta.ca/stats/covid-19-alberta-statistics.htm">AB</a>, <a href="https://dashboard.saskatchewan.ca/health-wellness/covid-19/cases">SK</a>, <a href="https://www.arcgis.com/apps/opsdashboard/index.html#/29e86894292e449aa75763b077281b5b?rha=Winnipeg">MB</a>, <a href="https://covid-19.ontario.ca/data">ON</a>, <a href="https://www.inspq.qc.ca/covid-19/donnees/par-region">QC</a>, <a href="https://experience.arcgis.com/experience/8eeb9a2052d641c996dba5de8f25a8aa">NB</a>, <a href="https://www.princeedwardisland.ca/en/information/health-and-wellness/pei-covid-19-case-data">PE</a>, <a href="https://novascotia.ca/coronavirus/data/">NS</a>,</li>
 </ul>
 </div>
-<div id="useful-packages" class="section level2" number="22.7">
-<h2>
-<span class="header-section-number">22.7</span> Useful packages<a class="anchor" aria-label="anchor" href="#useful-packages"><i class="fas fa-link"></i></a>
-</h2>
-<p>datapasta</p>
-<p>web app for getting data from graphs datathief (Mohammad has one he likes)</p>
 </div>
-<div id="describing-data" class="section level2" number="22.8">
+<div id="examples-of-accessing-data" class="section level2" number="19.2">
 <h2>
-<span class="header-section-number">22.8</span> Describing data<a class="anchor" aria-label="anchor" href="#describing-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.2</span> Examples of accessing data<a class="anchor" aria-label="anchor" href="#examples-of-accessing-data"><i class="fas fa-link"></i></a>
 </h2>
-<p><a href="https://data.research.cornell.edu/content/readme" class="uri">https://data.research.cornell.edu/content/readme</a></p>
-</div>
-<div id="statistics-canada" class="section level2" number="22.9">
-<h2>
-<span class="header-section-number">22.9</span> Statistics Canada<a class="anchor" aria-label="anchor" href="#statistics-canada"><i class="fas fa-link"></i></a>
-</h2>
-<div id="canada-population-projection" class="section level3" number="22.9.1">
+<div id="gapminder" class="section level3" number="19.2.1">
 <h3>
-<span class="header-section-number">22.9.1</span> Canada population projection<a class="anchor" aria-label="anchor" href="#canada-population-projection"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.2.1</span> Gapminder<a class="anchor" aria-label="anchor" href="#gapminder"><i class="fas fa-link"></i></a>
 </h3>
-<p>Here are some data projecting the population of Canada for the next 50 years.
-cansim::get_cansim(“17100057”) # 2 million rows, 300 MB of data</p>
+<p>Gapminder distributes many datasets, some of their own, and some collected by other organizations that they are redistributing. They have a <a href="https://www.gapminder.org/data/">webpage</a> to help you search, browse and access the data. Using this webpage I have found <a href="http://gapm.io/dpop">data</a> on population of countries by years from 1800-2100 (with many missing data, some interpolated data, and of course many years of projections). Here is some R code to read and work with this data. There are data on 195 countries over 302 years. I have selected five countries to make a simple plot.</p>
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"static/population_total.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   .default = col_double(),
+##   country = col_character()
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pop</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Chile"</span>, <span class="st">"Germany"</span>, <span class="st">"United States"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">`1800`</span><span class="op">:</span><span class="va">`2100`</span>, names_to <span class="op">=</span> <span class="st">"years"</span>, values_to <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">years</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">years</span>, y <span class="op">=</span> <span class="va">population</span>, color<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/trans_format.html">trans_format</a></span><span class="op">(</span><span class="st">"log10"</span>, <span class="fu"><a href="https://scales.r-lib.org//reference/label_parse.html">math_format</a></span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="301-data-sources_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+</div>
+<div id="consumer-price-index-in-canada" class="section level3" number="19.2.2">
+<h3>
+<span class="header-section-number">19.2.2</span> Consumer price index in Canada<a class="anchor" aria-label="anchor" href="#consumer-price-index-in-canada"><i class="fas fa-link"></i></a>
+</h3>
+<p>One measure of inflation is its effect on prices. Here is a table from Statistics Canada that reports over 1 million rows of data on this measure. Statistics Canada tables are an extreme version of “long” data, which usually require a lot of filtering to get just the rows you want. You will want to make use of <code>dpylr</code> functions <code>summarize</code> and <code>count</code> to study the structure of the data.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Population and projection in a huge table with 2 million rows, 300 MB of data</span>
+<span class="co"># cansim::get_cansim("17100057")  </span>
+<span class="va">cpi</span> <span class="op">&lt;-</span> <span class="fu">cansim</span><span class="fu">::</span><span class="fu"><a href="https://mountainmath.github.io/cansim/index.html/reference/get_cansim.html">get_cansim</a></span><span class="op">(</span><span class="st">"18-10-0004-01"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Accessing CANSIM NDM product 18-10-0004 from Statistics Canada</code></pre>
+<pre><code>## Parsing data</code></pre>
+<pre><code>## Folding in metadata</code></pre>
+<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cpi</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">`Products and product groups`</span> <span class="op">==</span> <span class="st">"All-items"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">count</span><span class="op">(</span><span class="va">GEO</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 30 x 2
+##    GEO                                                    n
+##    &lt;chr&gt;                                              &lt;int&gt;
+##  1 Alberta                                              508
+##  2 British Columbia                                     508
+##  3 Calgary, Alberta                                     600
+##  4 Canada                                              1284
+##  5 Charlottetown and Summerside, Prince Edward Island   564
+##  6 Edmonton, Alberta                                    600
+##  7 Halifax, Nova Scotia                                 600
+##  8 Iqaluit, Nunavut                                     217
+##  9 Manitoba                                             508
+## 10 Montréal, Quebec                                     600
+## # … with 20 more rows</code></pre>
+<p>Let’s look at these data for Canada as a whole.</p>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cpi</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">`Products and product groups`</span> <span class="op">==</span> <span class="st">"All-items"</span>,
+               <span class="va">GEO</span> <span class="op">==</span> <span class="st">"Canada"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">REF_DATE</span>, <span class="va">VALUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">ym</a></span><span class="op">(</span><span class="va">REF_DATE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">VALUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Date"</span>, y <span class="op">=</span> <span class="st">"All items CPI"</span>,
+       title <span class="op">=</span> <span class="st">"Consumer price index in Canada"</span>,
+       caption <span class="op">=</span> <span class="st">"Scaled so that 2002 = 100"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure">
+<img src="301-data-sources_files/figure-html/unnamed-chunk-3-1.png" width="672">
+### Causes of death worldwide</div>
+<p><a href="https://ourworldindata.org/">Our world in data</a> has many compliations of data across many countries. <a href="https://ourworldindata.org/causes-of-death">Here</a> is a table listing causes of death over time and countries. There is a link to a csv file on that page that can be easily read with R. As is often the case, this is a large table (nearly 7000 observations of 37 variables). You will need to explore the data a bit to understand it. Here is one simple plot that can be made.</p>
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">death</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"static/annual-number-of-deaths-by-cause.csv"</span>, guess_max <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   .default = col_double(),
+##   Entity = col_character(),
+##   Code = col_character(),
+##   `Number of executions (Amnesty International)` = col_character()
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">death</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Entity</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Germany"</span>, <span class="st">"United States"</span><span class="op">)</span>,
+                 <span class="va">Year</span> <span class="op">==</span> <span class="fl">2015</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">Entity</span>, <span class="va">`Deaths - Road injuries - Sex: Both - Age: All Ages (Number)`</span><span class="op">:</span><span class="va">`Terrorism (deaths)`</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">`Deaths - Road injuries - Sex: Both - Age: All Ages (Number)`</span><span class="op">:</span><span class="va">`Terrorism (deaths)`</span>,
+               names_to <span class="op">=</span> <span class="st">"Cause"</span>, values_to <span class="op">=</span> <span class="st">"Deaths"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>Cause <span class="op">=</span> <span class="fu">str_remove</span><span class="op">(</span><span class="va">Cause</span>, <span class="st">"Deaths - "</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+           <span class="fu">str_remove</span><span class="op">(</span><span class="st">" - Sex: Both - Age: All Ages \\(Number\\)"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Deaths</span>, y <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">Cause</span>, <span class="va">Deaths</span><span class="op">)</span>, 
+             color <span class="op">=</span> <span class="va">Entity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: Transformation introduced infinite values in continuous x-axis</code></pre>
+<div class="inline-figure"><img src="301-data-sources_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<p>Of course, it would probably be more interesting to plot these as per capita deaths; or at least, that would enable a different sort of comparison.</p>
+</div>
+</div>
+<div id="other-r-packages-related-to-data-collection" class="section level2" number="19.3">
+<h2>
+<span class="header-section-number">19.3</span> Other R packages related to data collection<a class="anchor" aria-label="anchor" href="#other-r-packages-related-to-data-collection"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sometimes the only way you will find data is as a table on a website or in a document. The <a href="https://github.com/MilesMcBain/datapasta">datapasta</a> package is useful for some common reformatting tasks that are required after copy-and-paste.</p>
+<p>Sometimes data you want are only available on a graph – just points or lines and no numeric data at all. There are a variety of “data thief” tools for extracting quantitative data from these images, for example, the web app <a href="https://automeris.io/WebPlotDigitizer/">WebPlotDigitizer</a>.</p>
+</div>
+<div id="describing-data" class="section level2" number="19.4">
+<h2>
+<span class="header-section-number">19.4</span> Describing data<a class="anchor" aria-label="anchor" href="#describing-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once you have done work to find data, you will also want to do some research to learn the “5 Ws” of data. In addition to what the variables are and what each observation represents, you will want to know who collected it, when, why, and how. It’s a good idea to write a “readme” to summarize what you learn. For your term project you will be asked to provide some information on the datasets you analyze, but you should also be aware that there are <a href="https://data.research.cornell.edu/content/readme">online guides</a> that provide advice on documenting data.</p>
+</div>
+<div id="distribution-of-data" class="section level2" number="19.5">
+<h2>
+<span class="header-section-number">19.5</span> Distribution of data<a class="anchor" aria-label="anchor" href="#distribution-of-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you want to distribute an analysis of data or redistribute the original data, please be sure to respect the terms of use of the data. Many people encourage the use of <a href="https://en.wikipedia.org/wiki/FAIR_data">FAIR</a> data usage principles.</p>
 
 </div>
 </div>
-</div>
   <div class="chapter-nav">
-<div class="prev"><a href="k-means.html"><span class="header-section-number">21</span> K-means clustering</a></div>
-<div class="next"><a href="organization.html"><span class="header-section-number">23</span> Staying organized</a></div>
+<div class="prev"><a href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></div>
+<div class="next"><a href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-sources"><span class="header-section-number">22</span> Data sources</a></li>
-<li><a class="nav-link" href="#built-in-and-existing-packages"><span class="header-section-number">22.1</span> Built-in and existing packages</a></li>
-<li><a class="nav-link" href="#tidy-tuesday"><span class="header-section-number">22.2</span> Tidy Tuesday</a></li>
-<li><a class="nav-link" href="#r-packages-for-accessing-data"><span class="header-section-number">22.3</span> R packages for accessing data</a></li>
-<li><a class="nav-link" href="#websites-with-data-collections"><span class="header-section-number">22.4</span> Websites with data collections</a></li>
-<li><a class="nav-link" href="#distribution-of-data"><span class="header-section-number">22.5</span> Distribution of data</a></li>
-<li><a class="nav-link" href="#canadian-covid-data"><span class="header-section-number">22.6</span> Canadian COVID data</a></li>
-<li><a class="nav-link" href="#useful-packages"><span class="header-section-number">22.7</span> Useful packages</a></li>
-<li><a class="nav-link" href="#describing-data"><span class="header-section-number">22.8</span> Describing data</a></li>
+<li><a class="nav-link" href="#data-sources"><span class="header-section-number">19</span> Finding and accessing data</a></li>
 <li>
-<a class="nav-link" href="#statistics-canada"><span class="header-section-number">22.9</span> Statistics Canada</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#canada-population-projection"><span class="header-section-number">22.9.1</span> Canada population projection</a></li></ul>
+<a class="nav-link" href="#finding-data"><span class="header-section-number">19.1</span> Finding data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-in-r-packages"><span class="header-section-number">19.1.1</span> Data in R packages</a></li>
+<li><a class="nav-link" href="#tidy-tuesday"><span class="header-section-number">19.1.2</span> Tidy Tuesday</a></li>
+<li><a class="nav-link" href="#r-packages-for-accessing-data"><span class="header-section-number">19.1.3</span> R packages for accessing data</a></li>
+<li><a class="nav-link" href="#websites-with-data-collections"><span class="header-section-number">19.1.4</span> Websites with data collections</a></li>
+<li><a class="nav-link" href="#canadian-covid-data"><span class="header-section-number">19.1.5</span> Canadian COVID data</a></li>
+</ul>
 </li>
+<li>
+<a class="nav-link" href="#examples-of-accessing-data"><span class="header-section-number">19.2</span> Examples of accessing data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#gapminder"><span class="header-section-number">19.2.1</span> Gapminder</a></li>
+<li><a class="nav-link" href="#consumer-price-index-in-canada"><span class="header-section-number">19.2.2</span> Consumer price index in Canada</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#other-r-packages-related-to-data-collection"><span class="header-section-number">19.3</span> Other R packages related to data collection</a></li>
+<li><a class="nav-link" href="#describing-data"><span class="header-section-number">19.4</span> Describing data</a></li>
+<li><a class="nav-link" href="#distribution-of-data"><span class="header-section-number">19.5</span> Distribution of data</a></li>
 </ul>
 
       <div class="book-extra">
@@ -199,7 +332,7 @@ cansim::get_cansim(“17100057”) # 2 million rows, 300 MB of data</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-10.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

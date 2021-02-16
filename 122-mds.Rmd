@@ -34,7 +34,7 @@ ggplot(cities, aes(x=lng, y=lat)) +
   geom_text_repel(aes(label=city), size=2) 
 ```
 
-```{r}
+```{r mds-map-cache, message=FALSE, cache=TRUE, warning=FALSE}
 mymap <- get_stamenmap(bbox = c(left = -150, bottom = -60, right = 175, top = 75), zoom=3, maptype = "terrain-background")
 ggmap(mymap) + 
   geom_point(data = cities, aes(x=lng, y=lat)) +
@@ -95,7 +95,7 @@ Use the function `metaMDS` from the package `vegan` to perform the NMDS ordinati
 
 
 ```{r message=FALSE}
-NMDS <- metaMDS(morse.dist)
+NMDS <- metaMDS(morse.dist, trace=0)
 NMDS
 ordiplot(NMDS, cex = 1.5, type = 't')
 # stressplot(NMDS)

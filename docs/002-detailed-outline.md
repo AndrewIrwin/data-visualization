@@ -247,12 +247,6 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 8</strong></td></tr>
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 22 Feb </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;"> Tasks 9 and 10 due at 9 am </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 22 Feb </td>
    <td style="text-align:right;"> 18 </td>
    <td style="text-align:left;"> Collaboration with GitHub </td>
    <td style="text-align:left;"> [Notes](#collaboration), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cd65821d-465b-45b1-a052-acc90145c93d), [Slides](slides/18-collaboration.html), [Task 11](#task-11) </td>
@@ -261,6 +255,12 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 22 Feb </td>
    <td style="text-align:right;">  </td>
    <td style="text-align:left;"> Project information finalized </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:left;"> Tasks 9 and 10 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
@@ -291,7 +291,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>
    <td style="text-align:right;">  </td>
-   <td style="text-align:left;"> Tasks 11 and 12 due at 9 am </td>
+   <td style="text-align:left;"> Task 11 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
@@ -334,7 +334,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  8 Mar </td>
    <td style="text-align:right;">  </td>
-   <td style="text-align:left;"> Tasks 13 and 14 due at 9 am </td>
+   <td style="text-align:left;"> Tasks 12, 13 and 14 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
@@ -498,15 +498,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
 
 - [Data sources](#data-sources)
 - [Staying organized](#organization)
-- Getting help: solving problems and asking questions
+- [Getting help: common problems](#common-problems) with R, Rstudio, and git
 - [A bit more about R](#r-details). 
 - Using R markdown for reproducibility and report writing
-- Collaborating with git
-- A tour of plot types
-- Learning computing tools on your own (project overview)
-- What is the tidyverse? Contrast with other conventions
-- How do I know I've done it right?
-- Text data and regular expressions introduction
 - Examples of building up figures step by step
-- Working with dates and times
 

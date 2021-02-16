@@ -243,7 +243,7 @@ Your assignment for the peer evaluation is in the project planning repository we
 
 A rubric and guide for your evaluations is in the repository for this assignment.
 
-## Term project {-}
+## Term project {- #project-description}
 
 Your final project is an analysis on a dataset of your own choosing. You can choose the data based on your interests, based on work in other courses, or independent research projects. You should demonstrate many of the techniques from the course, applying them as appropriate to develop and communicate insight into the data.
 
