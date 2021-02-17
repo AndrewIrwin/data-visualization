@@ -56,16 +56,17 @@
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
-<li><a class="" href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
-<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
-<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">24</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">25</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">26</span> Graphics formatting</a></li>
-<li><a class="" href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -211,11 +212,11 @@
 <pre><code>## # A tibble: 5 x 10
 ##   carat cut       color clarity depth table price     x     y     z
 ##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.5  Very Good G     SI1      64.1    57  1187  5.04  5.07  3.24
-## 2  1.01 Premium   G     SI1      58.8    58  4395  6.59  6.51  3.85
-## 3  1.67 Premium   I     VS1      61.1    58 11400  7.69  7.6   4.67
-## 4  0.9  Fair      J     SI2      66.6    54  2536  6.05  5.99  4.01
-## 5  0.3  Very Good G     VS2      63.5    55   675  4.25  4.22  2.69</code></pre>
+## 1  0.35 Ideal     G     VVS1     61.7    56   887  4.54  4.57  2.81
+## 2  0.7  Premium   D     SI2      61.9    58  2536  5.71  5.67  3.52
+## 3  0.7  Very Good E     VS2      62.5    57  2593  5.64  5.68  3.54
+## 4  1.62 Good      I     VS1      59.6    65  9526  7.69  7.59  4.55
+## 5  0.52 Premium   H     SI1      62.6    55  1219  5.16  5.12  3.22</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>
@@ -415,7 +416,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-16.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

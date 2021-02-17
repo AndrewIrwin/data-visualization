@@ -1,39 +1,6 @@
 # Finding and accessing data {#data-sources}
 
 
-```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-```
-
-```
-## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.0
-```
-
-```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
 
 Data are available from a huge number of sites on the internet run by governments, NGOs, companies, industry associations, research projects, and individuals. These data come in a variety of formats and while many will be easy to read with R, some will be quite challenging. In this lesson I will introduce you to some sources of data. Partly this is to help you start to learn how to navigate a variety of data sources, but of course part of the reason is to get you thinking about data you might use in your project. For more information on the project see the [description](#project-description) on the evaluation page.
 
@@ -64,7 +31,7 @@ Each week a new data set is posted and participants experiment to create new vis
 
 ### R packages for accessing data
 
-There are several packages designed primarily to provide access to large collections of data.
+There are many packages designed primarily to provide access to large collections of data. Here are a few examples.
 
 * [OECD](https://cran.r-project.org/web/packages/OECD/vignettes/oecd_vignette_main.html) for data from the [OECD](https://stats.oecd.org/)
 * [cansim](https://cran.r-project.org/web/packages/cansim/vignettes/cansim.html) for data from [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data)
@@ -74,9 +41,9 @@ There are several packages designed primarily to provide access to large collect
 
 Naturally there are websites that curate lists of data available from other sites. Here are a few I've found useful.
 
-* [Our World In Data](https://ourworldindata.org/) a curated set of over 3000 charts with documentation and open source data.
-* [Awesome data](https://github.com/awesomedata/awesome-public-datasets) project
-* One person's collection of [data](https://github.com/tacookson/data) of various sources
+* [Our World In Data](https://ourworldindata.org/) is a curated set of over 3000 charts with documentation and open source data.
+* The [awesome public datasets](https://github.com/awesomedata/awesome-public-datasets) project collects high quality public data, organized thematically. 
+* This is one person's collection of [data](https://github.com/tacookson/data) of various sources
 * [r-dir](https://r-dir.com/reference/datasets.html) has a list of freely available datasets
 
 ### Canadian COVID data
@@ -110,9 +77,12 @@ pop <- read_csv("static/population_total.csv")
 pop %>% filter(country %in% c("Canada", "China", "Chile", "Germany", "United States")) %>%
   pivot_longer(`1800`:`2100`, names_to = "years", values_to = "population") %>%
   mutate(years = as.numeric(years)) %>%
-  ggplot(aes(x = years, y = population, color=country)) +
-  geom_line() +
-  scale_y_log10(labels = trans_format("log10", math_format(10^.x)))
+  ggplot(aes(x = years, 
+             y = population, 
+             color = fct_reorder(country, population, max, .desc=TRUE))) +
+  geom_line(size=2) +
+  scale_y_log10(labels = trans_format("log10", math_format(10^.x))) +
+  labs(color = "Country")
 ```
 
 <img src="301-data-sources_files/figure-html/unnamed-chunk-2-1.png" width="672" />

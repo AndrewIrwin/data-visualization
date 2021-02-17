@@ -1,4 +1,4 @@
-# Making maps
+# Making maps {#mapping-1}
 
 ```{r include=FALSE}
 library(tidyverse)

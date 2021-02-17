@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 24 Working with factors and dates | Data Visualization</title>
+<meta name="author" content="Andrew Irwin">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Visualization</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="syllabus.html">Syllabus</a></li>
+<li><a class="" href="outline.html">Detailed outline</a></li>
+<li><a class="" href="sync.html">Synchronous meeting agendas</a></li>
+<li><a class="" href="evaluation.html">Evaluation</a></li>
+<li><a class="" href="ch-invitation.html"><span class="header-section-number">1</span> Invitation to Data Visualization</a></li>
+<li><a class="" href="ch-tools.html"><span class="header-section-number">2</span> Computer tools</a></li>
+<li><a class="" href="setup.html"><span class="header-section-number">3</span> Setting up your computer</a></li>
+<li><a class="" href="look-data.html"><span class="header-section-number">4</span> Look at Data</a></li>
+<li><a class="" href="first-plot.html"><span class="header-section-number">5</span> Making your first plot</a></li>
+<li><a class="" href="vcs.html"><span class="header-section-number">6</span> What is version control software?</a></li>
+<li><a class="" href="grammar.html"><span class="header-section-number">7</span> Grammar of Graphics</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">8</span> Using the grammar of graphics</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">9</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">10</span> Facetted graphs</a></li>
+<li><a class="" href="reading-data.html"><span class="header-section-number">11</span> Reading data</a></li>
+<li><a class="" href="pivot.html"><span class="header-section-number">12</span> Reshaping data</a></li>
+<li><a class="" href="format-tables.html"><span class="header-section-number">13</span> Format tables</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
+<li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
+<li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
+<li><a class="active" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="metadata.html">Metadata</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="factors-dates" class="section level1" number="24">
+<h1>
+<span class="header-section-number">24</span> Working with factors and dates<a class="anchor" aria-label="anchor" href="#factors-dates"><i class="fas fa-link"></i></a>
+</h1>
+<p>And some other bonus topics.</p>
+<div id="working-with-strings" class="section level2" number="24.1">
+<h2>
+<span class="header-section-number">24.1</span> Working with strings<a class="anchor" aria-label="anchor" href="#working-with-strings"><i class="fas fa-link"></i></a>
+</h2>
+<p>When making visualizations it is frequently useful to manipulate text (“strings”) directly. Sometimes this is to simplify text that is being displayed on a graph. Or perhaps there is a typographical error or formatting problem with text. The <a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html">stringr</a> package contains many useful functions for manipulating text strings. I will explain a few simple examples that I use frequently.</p>
+<ul>
+<li>A very common task is to remove leading, trailing, and duplicated spaces in a string. The <code>str_squish</code> function removes whitespace (including tabs, new lines, and spaces) in these positions.</li>
+</ul>
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_string</span> <span class="op">&lt;-</span> <span class="st">"   A cat  is a small, living
+                    and furry animal.  "</span>
+<span class="va">my_string2</span> <span class="op">&lt;-</span> <span class="fu">str_squish</span><span class="op">(</span><span class="va">my_string</span><span class="op">)</span>
+<span class="va">my_string2</span></code></pre></div>
+<pre><code>## [1] "A cat is a small, living and furry animal."</code></pre>
+<ul>
+<li>If there are particular letters or symbols you want to remove, the <code>str_remove</code> function can accomplish this. This can be used on literal strings or on patterns. Patterns allow for the use of character classes, selecting specific sequences, and more complex symbolic descriptions of strings. I will give a couple of simple examples of patterns. <code>str_remove</code> matches only once; <code>str_remove_all</code> matches the pattern as many times as possible.</li>
+</ul>
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">str_remove</span><span class="op">(</span><span class="va">my_string2</span>, <span class="st">"cat"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "A  is a small, living and furry animal."</code></pre>
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">str_remove_all</span><span class="op">(</span><span class="va">my_string2</span>, <span class="st">"[aeiou]"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "A ct s  smll, lvng nd frry nml."</code></pre>
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">str_remove_all</span><span class="op">(</span><span class="va">my_string2</span>, <span class="st">"[ ,\\.!]"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Acatisasmalllivingandfurryanimal"</code></pre>
+<ul>
+<li>If a pattern appears in a string, you might want to extract that information. <code>str_extract</code> allows you to write a pattern that matches part of the string and extract that from the source material.</li>
+</ul>
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A1"</span>, <span class="st">"A2"</span>, <span class="st">"B1"</span>, <span class="st">"B4"</span>, <span class="st">"C5"</span><span class="op">)</span>
+<span class="fu">str_extract</span><span class="op">(</span><span class="va">sets</span>, <span class="st">"[0-9]"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "1" "2" "1" "4" "5"</code></pre>
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">str_extract</span><span class="op">(</span><span class="va">sets</span>, <span class="st">"[A-Z]"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "A" "A" "B" "B" "C"</code></pre>
+<p>Thinking about patterns is a lot of work and prone to error, so the pair of functions <code>glue</code> and <code>unglue</code> were created to perform common tasks of combining text and data and then to separate them again.</p>
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">unglue</span><span class="op">)</span>
+<span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">6</span>
+<span class="va">c</span> <span class="op">&lt;-</span> <span class="fl">15.63</span>
+<span class="va">my_string3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"The numbers a, b, and c are {a}, {b}, and {c}, respectively. Their sum is {a+b+c}."</span><span class="op">)</span>
+<span class="va">my_string3</span></code></pre></div>
+<pre><code>## The numbers a, b, and c are 1, 6, and 15.63, respectively. Their sum is 22.63.</code></pre>
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue</a></span><span class="op">(</span><span class="va">my_string3</span>, <span class="st">"The numbers a, b, and c are {a}, {b}, and {c}, respectively. Their sum is {d}."</span><span class="op">)</span></code></pre></div>
+<pre><code>## $`1`
+##   a b     c     d
+## 1 1 6 15.63 22.63</code></pre>
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_strings1</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>greeting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"My name is Andrew."</span>, <span class="st">"My name is Li."</span>, <span class="st">"My name is Emily."</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue_unnest</a></span><span class="op">(</span><span class="va">my_strings1</span>, <span class="va">greeting</span>, <span class="st">"My name is {name}."</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   greeting           name  
+## * &lt;chr&gt;              &lt;chr&gt; 
+## 1 My name is Andrew. Andrew
+## 2 My name is Li.     Li    
+## 3 My name is Emily.  Emily</code></pre>
+</div>
+<div id="working-with-factors" class="section level2" number="24.2">
+<h2>
+<span class="header-section-number">24.2</span> Working with factors<a class="anchor" aria-label="anchor" href="#working-with-factors"><i class="fas fa-link"></i></a>
+</h2>
+<p>Factors are categorical variables in which a set of labels (“strings”) are the possible values of a variable. These are sometimes interpreted as integers and sometimes interpreted as text. In data visualization, our primary concern is mapping factors on to sequence of colours, shapes, or locations on an axis. In R, if a factor is not given an explicit order by the analyst, but must have an order (on a scale), this is usually alphabetical. This ordering is rarely the best one for visualizations!</p>
+<p>The <a href="https://forcats.tidyverse.org/">forcats</a> package has a series of functions for reordering factors. These can be used to explicitly reorder a factor by value (level) or a quantitative value can be used to reorder a factor.</p>
+<p>Here are a few examples using the <code>mpg</code> data set. First a visualization without any explicit reordering of factors.</p>
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
+                   y <span class="op">=</span> <span class="va">trans</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<p>Here the transmission factor is reordered according to the minimum value of highway fuel economy.</p>
+<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
+                   y <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">trans</span>, <span class="va">hwy</span>, <span class="va">median</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<p>Here we extract the number of gears from the transmission and reorder transmission on this basis.</p>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue_unnest</a></span><span class="op">(</span><span class="va">trans</span>, <span class="st">"{trans_desc}({trans_code})"</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>gears <span class="op">=</span> <span class="fu">str_extract</span><span class="op">(</span><span class="va">trans_code</span>, <span class="st">"[0-9]"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
+             y <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">trans</span>, <span class="va">gears</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<p>When there are too many cateogories to display on a graph, it can be helpful to pick out the ones with the most observations and to group the remaining observations together in an “other” category. Here’s how you can accomplish that.</p>
+<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
+             y <span class="op">=</span> <span class="fu">fct_lump</span><span class="op">(</span><span class="va">trans</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
+<div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+</div>
+<div id="working-with-dates-and-times" class="section level2" number="24.3">
+<h2>
+<span class="header-section-number">24.3</span> Working with dates and times<a class="anchor" aria-label="anchor" href="#working-with-dates-and-times"><i class="fas fa-link"></i></a>
+</h2>
+<p>Dates and times are complex data to work with. Dates are represented in many formats. Times are reported in time zones. which change depending on the time of year and the location of the measurement. Dates are futher complicated by leap years and local rules operating in specific countries. Placing dates and times on plots, or comparing observations made at different times arithmetic with dates</p>
+<p>The package <code>lubridate</code> contains many functions to help you work with dates and times. For data visualization purposes I mostly use functions to parse dates and times (converting text to a date-time object), some basic arithmetic, extract components of a date, and format axis labels.</p>
+<div id="reading-dates" class="section level3" number="24.3.1">
+<h3>
+<span class="header-section-number">24.3.1</span> Reading dates<a class="anchor" aria-label="anchor" href="#reading-dates"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are a family of functions <code>ymd</code>, <code>dmy</code>, <code>mdy</code>, and <code>ymd_hms</code> among others that are used to turn text (such as in a table you read from a file) into a date. I strongly endorse the use of ISO 8601 date formatting. Illegal dates are converted to NA_Date.</p>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt1</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>text_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999-01-31"</span>, <span class="st">"2000-02-28"</span>, <span class="st">"2010-06-28"</span>, <span class="st">"2024-03-14"</span>, <span class="st">"2021-02-29"</span><span class="op">)</span>,
+             date <span class="op">=</span> <span class="fu">ymd</span><span class="op">(</span><span class="va">text_date</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: 1 failed to parse.</code></pre>
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt1</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   text_date  date      
+##   &lt;chr&gt;      &lt;date&gt;    
+## 1 1999-01-31 1999-01-31
+## 2 2000-02-28 2000-02-28
+## 3 2010-06-28 2010-06-28
+## 4 2024-03-14 2024-03-14
+## 5 2021-02-29 NA</code></pre>
+<p>Here is an example with times. You can specify a time zone if you want, but sometimes you can get away with ignoring the problem.</p>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt2</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>text_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999-01-31 09:14"</span>, <span class="st">"2000-02-28 12:15"</span>, <span class="st">"2010-06-28 23:45"</span>, 
+                            <span class="st">"2024-03-14 07:00 AM"</span>, <span class="st">"2021-03-01 6:16 PM"</span><span class="op">)</span>,
+             date_time <span class="op">=</span> <span class="fu">ymd_hm</span><span class="op">(</span><span class="va">text_date</span>, tz<span class="op">=</span><span class="st">"America/Halifax"</span><span class="op">)</span><span class="op">)</span>  <span class="co"># UTC is assumed if not specified</span>
+<span class="va">dt2</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   text_date           date_time          
+##   &lt;chr&gt;               &lt;dttm&gt;             
+## 1 1999-01-31 09:14    1999-01-31 09:14:00
+## 2 2000-02-28 12:15    2000-02-28 12:15:00
+## 3 2010-06-28 23:45    2010-06-28 23:45:00
+## 4 2024-03-14 07:00 AM 2024-03-14 07:00:00
+## 5 2021-03-01 6:16 PM  2021-03-01 18:16:00</code></pre>
+<p>These functions are remarkably powerful, for example they work on formats like this:</p>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">mdy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan 5, 1999"</span>, <span class="st">"Saturday May 16, 70"</span>, <span class="st">"8-8-88"</span>, <span class="st">"December 31/99"</span>, <span class="st">"Jan 1, 01"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "1999-01-05" "1970-05-16" "1988-08-08" "1999-12-31" "2001-01-01"</code></pre>
+<p>As with people working in the <a href="https://en.wikipedia.org/wiki/Year_2000_problem">late 20th century</a>,
+you should be very careful with two digit years. Best not to use them.</p>
+<p>If you want to know how much time has passed since the first observation, you can do arithmetic. Note the data types of each column (character, date, time, double = numeric).</p>
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt1</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>elapsed <span class="op">=</span> <span class="va">date</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">date</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,
+         t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">elapsed</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+##   text_date  date       elapsed       t
+##   &lt;chr&gt;      &lt;date&gt;     &lt;drtn&gt;    &lt;dbl&gt;
+## 1 1999-01-31 1999-01-31    0 days     0
+## 2 2000-02-28 2000-02-28  393 days   393
+## 3 2010-06-28 2010-06-28 4166 days  4166
+## 4 2024-03-14 2024-03-14 9174 days  9174
+## 5 2021-02-29 NA           NA days    NA</code></pre>
+<p>Let’s add some random data to the second table and make a scatter graph.</p>
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt2</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span>, <span class="fl">20</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date_time</span>, y <span class="op">=</span> <span class="va">r</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_datetime</a></span><span class="op">(</span>date_labels <span class="op">=</span> <span class="st">"%Y\n%b-%d"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<p>There are lots more options for formatting date and time axes. See the help pages for more (in particular the examples, as always).</p>
+</div>
+</div>
+<div id="working-with-missing-data" class="section level2" number="24.4">
+<h2>
+<span class="header-section-number">24.4</span> Working with missing data<a class="anchor" aria-label="anchor" href="#working-with-missing-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data are often missing. Missing data are encoded as <code>NA</code> in R, but occasionally you need to know a bit more than this. There are a few ways you can get tripped up with missing data.</p>
+<div id="reading-from-a-file" class="section level3" number="24.4.1">
+<h3>
+<span class="header-section-number">24.4.1</span> Reading from a file<a class="anchor" aria-label="anchor" href="#reading-from-a-file"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you read data from a csv or spreadsheet, an empty cell (and sometimes “NA”) will be interpreted as missing data. If some other value is used to represent NA, then you can use the option <code>na =</code> in <code>read_csv</code> or <code>read_excel</code>. (<code>read_excel</code> only makes missing values into NA unless you specify that NA is missing.)</p>
+</div>
+<div id="computations-with-na" class="section level3" number="24.4.2">
+<h3>
+<span class="header-section-number">24.4.2</span> Computations with NA<a class="anchor" aria-label="anchor" href="#computations-with-na"><i class="fas fa-link"></i></a>
+</h3>
+<p>Any arithmetic computation with an NA will result in an NA result.</p>
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="cn">NA</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">Inf</span> <span class="op">+</span> <span class="cn">NA</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="cn">NA</span><span class="op">/</span><span class="fl">0</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>When we use functions that turn a vector into a single number (mean, min, median, etc.), sometimes we want to ignore missing values. The option <code>na.rm=</code> is useful here.</p>
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt3</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">14.5</span>, <span class="cn">NA</span>, <span class="fl">21</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span>
+<span class="va">dt3</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>mean_with_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
+                  mean_no_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 2
+##   mean_with_NA mean_no_NA
+##          &lt;dbl&gt;      &lt;dbl&gt;
+## 1           NA       10.1</code></pre>
+<p>If you want to know the number of observations, non-missing or missing data, use <code>n</code> or the idiom <code><a href="https://rdrr.io/r/base/sum.html">sum(!is.na(...))</a></code> and <code><a href="https://rdrr.io/r/base/sum.html">sum(is.na(...))</a></code> The exclamation mark (!, sometimes called <a href="https://en.wikipedia.org/wiki/Exclamation_mark">bang</a>) means logical not so <code>!is.na</code> means not missing.</p>
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dt3</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>n_with_NA <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
+                  n_no_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
+                  n_is_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_with_NA n_no_NA n_is_NA
+##       &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
+## 1         7       5       2</code></pre>
+<p>If you have missing data in one or more columns and want to remove all observations from a table that have missing data, you can use <code>na.omit</code>.</p>
+<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">dt3</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 1
+##       x
+##   &lt;dbl&gt;
+## 1   1  
+## 2   5  
+## 3   9  
+## 4  14.5
+## 5  21</code></pre>
+</div>
+</div>
+<div id="multi-panel-figures" class="section level2" number="24.5">
+<h2>
+<span class="header-section-number">24.5</span> Multi-panel figures<a class="anchor" aria-label="anchor" href="#multi-panel-figures"><i class="fas fa-link"></i></a>
+</h2>
+<p>patchwork
+cowplot
+hiding and combining guides
+Adding tags
+Creating space for a legend</p>
+<p>marginal plots (histograms, densities)</p>
+</div>
+<div id="further-reading-17" class="section level2" number="24.6">
+<h2>
+<span class="header-section-number">24.6</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-17"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>A blog post about <a href="https://www.njtierney.com/post/2020/09/17/missing-flavour/">missing values</a> and data types</li>
+</ul>
+</div>
+<div id="move-elsewhere" class="section level2" number="24.7">
+<h2>
+<span class="header-section-number">24.7</span> Move elsewhere<a class="anchor" aria-label="anchor" href="#move-elsewhere"><i class="fas fa-link"></i></a>
+</h2>
+<div id="testing-data-and-calculations" class="section level3" number="24.7.1">
+<h3>
+<span class="header-section-number">24.7.1</span> Testing data and calculations<a class="anchor" aria-label="anchor" href="#testing-data-and-calculations"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="what-is-reproducibility-and-why-should-i-care" class="section level3" number="24.7.2">
+<h3>
+<span class="header-section-number">24.7.2</span> What is reproducibility and why should I care?<a class="anchor" aria-label="anchor" href="#what-is-reproducibility-and-why-should-i-care"><i class="fas fa-link"></i></a>
+</h3>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></div>
+<div class="next"><a href="colour.html"><span class="header-section-number">25</span> Using colour well</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#factors-dates"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="nav-link" href="#working-with-strings"><span class="header-section-number">24.1</span> Working with strings</a></li>
+<li><a class="nav-link" href="#working-with-factors"><span class="header-section-number">24.2</span> Working with factors</a></li>
+<li>
+<a class="nav-link" href="#working-with-dates-and-times"><span class="header-section-number">24.3</span> Working with dates and times</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#reading-dates"><span class="header-section-number">24.3.1</span> Reading dates</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#working-with-missing-data"><span class="header-section-number">24.4</span> Working with missing data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reading-from-a-file"><span class="header-section-number">24.4.1</span> Reading from a file</a></li>
+<li><a class="nav-link" href="#computations-with-na"><span class="header-section-number">24.4.2</span> Computations with NA</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#multi-panel-figures"><span class="header-section-number">24.5</span> Multi-panel figures</a></li>
+<li><a class="nav-link" href="#further-reading-17"><span class="header-section-number">24.6</span> Further reading</a></li>
+<li>
+<a class="nav-link" href="#move-elsewhere"><span class="header-section-number">24.7</span> Move elsewhere</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#testing-data-and-calculations"><span class="header-section-number">24.7.1</span> Testing data and calculations</a></li>
+<li><a class="nav-link" href="#what-is-reproducibility-and-why-should-i-care"><span class="header-section-number">24.7.2</span> What is reproducibility and why should I care?</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/130-bonus-topics.rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/130-bonus-topics.rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

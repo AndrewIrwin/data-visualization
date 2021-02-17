@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 29 More details about R | Data Visualization</title>
+<meta name="author" content="Andrew Irwin">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Data Visualization</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="syllabus.html">Syllabus</a></li>
+<li><a class="" href="outline.html">Detailed outline</a></li>
+<li><a class="" href="sync.html">Synchronous meeting agendas</a></li>
+<li><a class="" href="evaluation.html">Evaluation</a></li>
+<li><a class="" href="ch-invitation.html"><span class="header-section-number">1</span> Invitation to Data Visualization</a></li>
+<li><a class="" href="ch-tools.html"><span class="header-section-number">2</span> Computer tools</a></li>
+<li><a class="" href="setup.html"><span class="header-section-number">3</span> Setting up your computer</a></li>
+<li><a class="" href="look-data.html"><span class="header-section-number">4</span> Look at Data</a></li>
+<li><a class="" href="first-plot.html"><span class="header-section-number">5</span> Making your first plot</a></li>
+<li><a class="" href="vcs.html"><span class="header-section-number">6</span> What is version control software?</a></li>
+<li><a class="" href="grammar.html"><span class="header-section-number">7</span> Grammar of Graphics</a></li>
+<li><a class="" href="ggplot.html"><span class="header-section-number">8</span> Using the grammar of graphics</a></li>
+<li><a class="" href="summarizing-data.html"><span class="header-section-number">9</span> Summarizing data</a></li>
+<li><a class="" href="facets.html"><span class="header-section-number">10</span> Facetted graphs</a></li>
+<li><a class="" href="reading-data.html"><span class="header-section-number">11</span> Reading data</a></li>
+<li><a class="" href="pivot.html"><span class="header-section-number">12</span> Reshaping data</a></li>
+<li><a class="" href="format-tables.html"><span class="header-section-number">13</span> Format tables</a></li>
+<li><a class="" href="help.html"><span class="header-section-number">14</span> Getting help and asking questions</a></li>
+<li><a class="" href="working-models.html"><span class="header-section-number">15</span> Working with models</a></li>
+<li><a class="" href="linear-models.html"><span class="header-section-number">16</span> Linear models</a></li>
+<li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
+<li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
+<li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
+<li><a class="active" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="metadata.html">Metadata</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/AndrewIrwin/data-visualization">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r-details" class="section level1" number="29">
+<h1>
+<span class="header-section-number">29</span> More details about R<a class="anchor" aria-label="anchor" href="#r-details"><i class="fas fa-link"></i></a>
+</h1>
+<p>R is a big software package. It’s developed over decades of use. It has millions of regular users across many disciplines in teaching, academic research and professional applications. It’s a computer programming language, and a tool for accessing thousands of data analysis tools, and a great interactive environment for exploring, analyzing, and visualizing data. You won’t learn it all.</p>
+<p>The approach in this course is to teach you how to use R in a particular style, with an emphasis on the ggplot and tidyverse packages. The R markdown documents we write balance interactive use with a documentation of the sequence of steps used in any analysis. I have omitted a lot of details that might be called “fundamentals” and instead focussed on getting work done quickly. In this lesson I fill in some of the gaps. My reasoning is that most important to want to learn a tool before you spend too much time on details, so this course empahsizes what you can do with R. On the other hand, I hope you will use R for a long time on many projects, and once you reach the point you know you will do that, you should start developing a solid mental model of how R works so that you can build robust understandings of how to accomplish tasks with R and get beyond copy, paste, search, and experiment. Without these fundamentals, its easy to make up incorrect ideas about why and how R works and then get really confused and frustrated.</p>
+<p>A simple introduction to the basics of R appears in <a href="https://socviz.co/appendix.html#appendix">Healy Appendix</a>. A different approach is taken in the R for Data Science book, which introduces the basics of many topics, such as <a href="https://r4ds.had.co.nz/tibbles.html">tibbles</a>,
+<a href="https://r4ds.had.co.nz/strings.html">strings</a>, <a href="https://r4ds.had.co.nz/factors.html">factors</a> and
+<a href="https://r4ds.had.co.nz/dates-and-times.html">dates</a>, <a href="https://r4ds.had.co.nz/functions.html">functions</a> and <a href="https://r4ds.had.co.nz/vectors.html">vectors</a>
+together with their applications one chapter at a time.</p>
+<div id="what-kinds-of-data-structures-does-r-use" class="section level2" number="29.1">
+<h2>
+<span class="header-section-number">29.1</span> What kinds of data structures does R use?<a class="anchor" aria-label="anchor" href="#what-kinds-of-data-structures-does-r-use"><i class="fas fa-link"></i></a>
+</h2>
+<p>R has many basic types: logical, numeric (double), character, factor. Any combination of these types can be combined into lists. Elements of lists can be named so that they work like dictionaries. Vectors, matrices, and higher dimensional arrays are all composed of the same type of data, usually numeric, factor, or logical.</p>
+<p>Lists are a very powerful type because they can be given attributes that identify them as special structures with particular intepretations. The most common special list is a data frame, data table or tibble. (The tibble is a refined kind of data frame.) You probably think of a tibble as a matrix where each column can be of a different type. How is this accomplished? It’s a list of vectors. Each vector corresponds to a column or variable in the data frame with its own name and data type.</p>
+<p>Here are some R commands you can use to decode the structure of any object you have in your workspace. I’ll demonstrate on the <code>diamonds</code> tibble. As always, experiment with these commands by trying them on other objects such as <code>cars</code> (a data frame).</p>
+<div class="sourceCode" id="cb382"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span>  <span class="co"># it's a list</span></code></pre></div>
+<pre><code>## [1] "list"</code></pre>
+<div class="sourceCode" id="cb384"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span> <span class="co"># which works as a data.frame and also as a tbl (tibble)</span></code></pre></div>
+<pre><code>## [1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+<div class="sourceCode" id="cb386"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span></code></pre></div>
+<pre><code>## tibble [53,940 × 10] (S3: tbl_df/tbl/data.frame)
+##  $ carat  : num [1:53940] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels "Fair"&lt;"Good"&lt;..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels "D"&lt;"E"&lt;"F"&lt;"G"&lt;..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels "I1"&lt;"SI2"&lt;"SI1"&lt;..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num [1:53940] 61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num [1:53940] 55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int [1:53940] 326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num [1:53940] 3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num [1:53940] 3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
+<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "numeric"</code></pre>
+<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span><span class="op">)</span>  <span class="co"># its a factor, and the factor is ordered (factors can be unordered)</span></code></pre></div>
+<pre><code>## [1] "ordered" "factor"</code></pre>
+<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">table</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># if you pick columns of the same type, you can convert them to a matrix</span></code></pre></div>
+<pre><code>## [1] "matrix" "array"</code></pre>
+<div class="sourceCode" id="cb394"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">cut</span>, <span class="va">color</span>, <span class="va">clarity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  </code></pre></div>
+<pre><code>## [1] "matrix" "array"</code></pre>
+</div>
+<div id="data-frame-tibbles-and-data-tables" class="section level2" number="29.2">
+<h2>
+<span class="header-section-number">29.2</span> data frame, tibbles, and data tables<a class="anchor" aria-label="anchor" href="#data-frame-tibbles-and-data-tables"><i class="fas fa-link"></i></a>
+</h2>
+<p>When R was young, there was one way to organize data into the tables we are using throughout this course: the data frame. This data structure is made from a list of vectors; each column is an entry in the list and all the data in each list (column) must be of the same time. Over time, people wanted to add new features to data tables, but existing code written and deployed made this difficult. So two new kinds of data frames were created.</p>
+<p>A <a href="https://r4ds.had.co.nz/tibbles.html">tibble</a> is a data frame, but it has some extra features. Most notably the way it is displayed in R has been improved. Only a few rows and colums are shown (unless you ask for more) with the rest of the information provided as a summary. Tibbles are widely used by the tidyverse pacakges.</p>
+<p>A <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">data table</a> is a kind of data frame where all the code has been written with the goal of increasing calculation speed. Some of the methods for manipulating data tables are quite different from what we have learned in this course; some of the examples from R4DS chapter on data transformations are demonstrated <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">here</a>.</p>
+</div>
+<div id="what-is-the-difference-between-strings-and-factors" class="section level2" number="29.3">
+<h2>
+<span class="header-section-number">29.3</span> What is the difference between strings and factors?<a class="anchor" aria-label="anchor" href="#what-is-the-difference-between-strings-and-factors"><i class="fas fa-link"></i></a>
+</h2>
+<p>A string is just a sequence of text, enclosed by single or double quotation marks. You can display strings, and search for text, and do other text-type things with them, but you can’t (of course) do calculations with them.</p>
+<p>You can convert a vector of strings into a vector of factors. This assigns an integer to each different element in the vector. Why would you do this? The numbers can be assigned to give a particular order to the factors (strings) that is different from alphabetical. The factors can be used in statistical models as though they are numbers, as though they were the indexes you use on a variable in math class (e.g., <span class="math inline">\(x_1, x_2, \dots\)</span>).</p>
+<p>Here are some simple examples.</p>
+<div class="sourceCode" id="cb396"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Apple"</span>, <span class="st">"Bananna"</span>, <span class="st">"Cat"</span>, <span class="st">"Apple"</span>, <span class="st">"Orange"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "character"</code></pre>
+<div class="sourceCode" id="cb398"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "integer"</code></pre>
+<div class="sourceCode" id="cb400"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1 2 3 1 4</code></pre>
+<div class="sourceCode" id="cb402"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">f</span></code></pre></div>
+<pre><code>## [1] Apple   Bananna Cat     Apple   Orange 
+## Levels: Apple Bananna Cat Orange</code></pre>
+<p>The <code>forcats</code> package has lots of great functions for working with factors which can help you control how your plots are drawn. That’s the main use we will have for them in this course.</p>
+</div>
+<div id="whats-the-pipe" class="section level2" number="29.4">
+<h2>
+<span class="header-section-number">29.4</span> What’s the pipe?<a class="anchor" aria-label="anchor" href="#whats-the-pipe"><i class="fas fa-link"></i></a>
+</h2>
+<p>The pipe <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> is a way to write function composition. In our data analysis we build up calculations from lots of different functions such as <code>select</code>, <code>group_by</code>, <code>arrange</code>, <code>filter</code>, <code>summarize</code>, <code>distinct</code> and many more described in R for Data Science. Each function starts with a tibble, does something to it, and produces a revised tibble. It’s very natural to develop a complex series of calculations like a recipe in a cookbook. (Sometimes these recipes are called pipelines!) Before pipes were invented there were basically two options; write the functions down in reverse order, or create lots of temporary variables to store the intermediate results and then discard them. Pipelines are easier to write and easier to read. Here’s an example of the three styles, based on a simple analysis of the <code>diamonds</code> data.</p>
+<p>Pipeline:</p>
+<div class="sourceCode" id="cb404"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span><span class="op">==</span><span class="st">"Ideal"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   color mean_price
+##   &lt;ord&gt;      &lt;dbl&gt;
+## 1 D          2629.
+## 2 E          2598.
+## 3 F          3375.
+## 4 G          3721.
+## 5 H          3889.
+## 6 I          4452.
+## 7 J          4918.</code></pre>
+<p>Temporary variables:</p>
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">==</span><span class="st">"Ideal"</span><span class="op">)</span>
+<span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">d1</span>, <span class="va">color</span><span class="op">)</span> 
+<span class="fu">summarize</span><span class="op">(</span><span class="va">d2</span>, mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   color mean_price
+##   &lt;ord&gt;      &lt;dbl&gt;
+## 1 D          2629.
+## 2 E          2598.
+## 3 F          3375.
+## 4 G          3721.
+## 5 H          3889.
+## 6 I          4452.
+## 7 J          4918.</code></pre>
+<p>Composition:</p>
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">summarize</span><span class="op">(</span>
+  <span class="fu">group_by</span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span><span class="op">)</span>, <span class="va">color</span>
+  <span class="op">)</span>, mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   color mean_price
+##   &lt;ord&gt;      &lt;dbl&gt;
+## 1 D          2629.
+## 2 E          2598.
+## 3 F          3375.
+## 4 G          3721.
+## 5 H          3889.
+## 6 I          4452.
+## 7 J          4918.</code></pre>
+<p>Which do you think is easier to understand? What if the pipline was longer? Or shorter?</p>
+<p>Note: as of late 2020, a new kind of pipe is becoming part of R. It looks like this <code>|&gt;</code> and works a bit like the existing pipe we use but has some differences. It’s not in this course at all yet since the official release of R doesn’t have it. This is another example of how R (and all computer systems) change over time. These sorts of big changes are very rare with R because so many people use it for so many purposes.</p>
+</div>
+<div id="why-does-ggplot-use" class="section level2" number="29.5">
+<h2>
+<span class="header-section-number">29.5</span> Why does ggplot use +?<a class="anchor" aria-label="anchor" href="#why-does-ggplot-use"><i class="fas fa-link"></i></a>
+</h2>
+<p>When we make plots with ggplot we do something very similar – we start with a tibble or data frame, but then we make a plot, and then modify it step by step, setting geometries, adding more data, creating facets, setting scales, altering the theme. This seems a lot like a pipeline. Why do we use <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> to connect different <code>ggplot2</code> commands?</p>
+<p>Simple. The developer <a href="https://www.reddit.com/r/dataisbeautiful/comments/3mp9r7/im_hadley_wickham_chief_scientist_at_rstudio_and/cvi19ly/">didn’t know about</a> the pipe operator in R when ggplot was developed. Adding a feature to a plot seemed like a “plus” operation, so that was chosen. The developer says if he was starting over today, ggplot would use pipes, but its not practical to change at this point. Too many people use it with the <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>. Some <a href="https://community.rstudio.com/t/why-cant-ggplot2-use/4372/5">people think</a> of functions as verbs and ggplot commands as nouns, and justify the difference that way. Software development is a complicated human activity that takes place over time and develops quirks and lore.</p>
+</div>
+<div id="what-are-packages-whats-the-difference-between-installing-one-and-using-one-why-is-r-organized-this-way" class="section level2" number="29.6">
+<h2>
+<span class="header-section-number">29.6</span> What are packages? What’s the difference between installing one and using one? Why is r organized this way?<a class="anchor" aria-label="anchor" href="#what-are-packages-whats-the-difference-between-installing-one-and-using-one-why-is-r-organized-this-way"><i class="fas fa-link"></i></a>
+</h2>
+<p>There are thousands of R packages. So many that it seems you are always needing to install a new one. Worse, sometimes you want a function, but you can’t remember which package it’s installed in – so then you can’t use it. (There is a solution to this: use the double ?? followed by the fuction name in the console to search for a function across all packages available on your computer.) Why this complication?</p>
+<p>There are several reasons.</p>
+<ul>
+<li>New packages are developed frequently, by different people. And some packages get abandoned too. Packages create modularity that makes it easier to test and fix problems with packages across different groups of developers.</li>
+<li>The <code>library</code> command tells R you want to use a particular package in your current session. Not loading all packages can save time, computer resources, and avoid name collisions (see below).</li>
+<li>Most people only use a small fraction of all the packages available – you simply don’t need to install them all.</li>
+<li>Two packages can use the same name for a different function or different dataset. If there were no packages, everyone using R would have to coordinate the naming of everything across all the packages. An impossible task. Sometimes when you load a package with <code>library</code> you’ll get a message that an existing function has been redefined (or masked) by this new package. You can always add the package name and two colons, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter</a></code> for example, to refer to a function in a particular package.</li>
+</ul>
+</div>
+<div id="why-are-there-so-many-kinds-of-equals-signs" class="section level2" number="29.7">
+<h2>
+<span class="header-section-number">29.7</span> Why are there so many kinds of “equals signs”?<a class="anchor" aria-label="anchor" href="#why-are-there-so-many-kinds-of-equals-signs"><i class="fas fa-link"></i></a>
+</h2>
+<p>There are many different concepts behind the humble equals sign used in mathematics. In R we use different symbols: <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code>, <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>, <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> and even some special functions like <code>all.equal</code> and <code>near</code>. Even with all these differences <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> can mean different things in different contexts, and there is a special version of <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> written in the other way: <code><a href="https://rdrr.io/r/base/assignOps.html">-&gt;</a></code>. The pipe adds its own twist, you can write <code>%&lt;&gt;%</code> as a combined assignment operator and pipe.</p>
+<p>So what does each mean?</p>
+<ul>
+<li>
+<code>a &lt;- b</code> means assign the name <code>a</code> to the object <code>b</code>. (You can use <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> for this, but I encourage you not to.)</li>
+<li>
+<code>a == b</code> is a comparison between <code>a</code> and <code>b</code> with the result <code>TRUE</code> if they are the same and otherwise <code>FALSE</code>. (The notion of “same” in computing is surprisingly complicated, but for basic types, in particular strings, this is fairly straightforward.)</li>
+<li>
+<code>a = b</code> is used when naming elements of a list or arguments to a function, for example <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot(mapping = aes(...))</a></code> or <code><a href="https://rdrr.io/r/base/list.html">list(a= "apple", b="bananna")</a></code>.</li>
+<li>
+<code>near(1.25, 1.253, tol = 0.01)</code> in the <code>dplyr</code> package is used to compare numbers to see if they are close together.</li>
+</ul>
+<p>The <code>waldo</code> package has functions for testing equality of data frames and showing differences.</p>
+</div>
+<div id="numbers" class="section level2" number="29.8">
+<h2>
+<span class="header-section-number">29.8</span> Numbers<a class="anchor" aria-label="anchor" href="#numbers"><i class="fas fa-link"></i></a>
+</h2>
+<p>R is</p>
+<p>NA nan inf -inf
+Testing for Na. Replacing. If then functions.</p>
+</div>
+<div id="whats-a-function" class="section level2" number="29.9">
+<h2>
+<span class="header-section-number">29.9</span> What’s a function?<a class="anchor" aria-label="anchor" href="#whats-a-function"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="whats-a-formula" class="section level2" number="29.10">
+<h2>
+<span class="header-section-number">29.10</span> What’s a formula?<a class="anchor" aria-label="anchor" href="#whats-a-formula"><i class="fas fa-link"></i></a>
+</h2>
+<p>Lm facet also t.test gam</p>
+</div>
+<div id="programming-styles" class="section level2" number="29.11">
+<h2>
+<span class="header-section-number">29.11</span> Programming styles<a class="anchor" aria-label="anchor" href="#programming-styles"><i class="fas fa-link"></i></a>
+</h2>
+<p>Grammar? Gg gt
+Descriptive vs imperative
+SQL as another example</p>
+</div>
+<div id="comparing-sql-to-dplyr" class="section level2" number="29.12">
+<h2>
+<span class="header-section-number">29.12</span> Comparing SQL to dplyr<a class="anchor" aria-label="anchor" href="#comparing-sql-to-dplyr"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="using-databases-with-r" class="section level2" number="29.13">
+<h2>
+<span class="header-section-number">29.13</span> Using databases with R<a class="anchor" aria-label="anchor" href="#using-databases-with-r"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="computing-notes" class="section level2" number="29.14">
+<h2>
+<span class="header-section-number">29.14</span> Computing notes<a class="anchor" aria-label="anchor" href="#computing-notes"><i class="fas fa-link"></i></a>
+</h2>
+<p>There are thousands of different programming languages. Why? Partly different ideas have arisen over time. Sometimes, languages have been created for particular problems. But most often, languages are created to enable a new kind of interaction between programmer and computer. Over time, as computing power increases and the kinds of problems solved by computer change, new opportunities and new needs arise and new languages are developed.</p>
+<p>What are some of the constraints and trade-offs when using a computer? The three most important are
+* the amount of storage required to solve a problem,
+* the number of computations to solve a problem, and
+* the amount of human time required to design and implement a solution.</p>
+<p>Many programming languages prioritize the first two. The trade-off between the first two is a <a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff">classic idea</a> in computer science. You can see how it arises from a simple example. Suppose you know you need the approximate result of some complex mathematical computation. You can either perform the calcuation when you need it (which takes time), or you can compute a table of possible computations in advance (which takes storage) and lookup the result when you need it. This is the idea behind statistical tables in the back of statistics textbooks – the calculations are hard, but a good enough table fits on a page or two.</p>
+<p>The designers of the R language and packages often prioritize minimizing the amount of time required for a human to design and code the solution to a problem. To do this well, the designers needed to give you flexible and powerful tools (functions). The flexibility of the functions means that they are not always optimized to use the least storage or time.</p>
+<p>Powerful tools require significant study to learn how to use them effectively. The examples in this course are selected to convince you that that investment is worth your time. There are also many specialized packages of functions, each created to make a certain type of problem easier or faster to solve. This is now a feature of all programming domains, which have specialized tools for different operating systems, the web, or particular problem domains like databases, machine learningm or statistical data analysis. Each of these requires effort to learn, but a helpful insight comes from the early design of graphical user interfaces – if tools made by different programmers have enough in common and adhere to conventions, then the burden on the programmer and user is greatly reduced.</p>
+<p>There are many other optimizations and trade-offs in computing. For example, numerical computations sometimes are done in a different order compared to the way you would do them in math class as a result of numerical approximations made by computers.</p>
+<p>Even within the R system there are many different styles of programming and problem solving. In this course I emphasize one particular style, now known popularly as the tidyverse. This approach organizes data and results in tables (called tibbles) as much as possible and encourages you to build larger solutions from composing powerful functions together (like th dplyr package). As a result in this course a hidden message throughout most lessons is how to organize your data and results and how to use a small set of powerful functions to solve a large set of general problems.</p>
+<p>Many other computing systems would work well for this course. Among programmers, a very popular choice is
+<a href="https://www.python.org/">python</a>, which shares a lot in common with R with many add-on packages providing similar functions. As a simplification, python use tends to be favoured by people developing software to solve a particular problem, while R tends to be favoured by people who want to interactively explore their data analysis options and need to develop custom analyses for each problem they encounter. Python and R have both existed since before the year 2000, but the styles of data analysis and problem solving possible with each has grown and converged together considerably in recent years.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="organization.html"><span class="header-section-number">28</span> Staying organized</a></div>
+<div class="next"><a href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-details"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="nav-link" href="#what-kinds-of-data-structures-does-r-use"><span class="header-section-number">29.1</span> What kinds of data structures does R use?</a></li>
+<li><a class="nav-link" href="#data-frame-tibbles-and-data-tables"><span class="header-section-number">29.2</span> data frame, tibbles, and data tables</a></li>
+<li><a class="nav-link" href="#what-is-the-difference-between-strings-and-factors"><span class="header-section-number">29.3</span> What is the difference between strings and factors?</a></li>
+<li><a class="nav-link" href="#whats-the-pipe"><span class="header-section-number">29.4</span> What’s the pipe?</a></li>
+<li><a class="nav-link" href="#why-does-ggplot-use"><span class="header-section-number">29.5</span> Why does ggplot use +?</a></li>
+<li><a class="nav-link" href="#what-are-packages-whats-the-difference-between-installing-one-and-using-one-why-is-r-organized-this-way"><span class="header-section-number">29.6</span> What are packages? What’s the difference between installing one and using one? Why is r organized this way?</a></li>
+<li><a class="nav-link" href="#why-are-there-so-many-kinds-of-equals-signs"><span class="header-section-number">29.7</span> Why are there so many kinds of “equals signs”?</a></li>
+<li><a class="nav-link" href="#numbers"><span class="header-section-number">29.8</span> Numbers</a></li>
+<li><a class="nav-link" href="#whats-a-function"><span class="header-section-number">29.9</span> What’s a function?</a></li>
+<li><a class="nav-link" href="#whats-a-formula"><span class="header-section-number">29.10</span> What’s a formula?</a></li>
+<li><a class="nav-link" href="#programming-styles"><span class="header-section-number">29.11</span> Programming styles</a></li>
+<li><a class="nav-link" href="#comparing-sql-to-dplyr"><span class="header-section-number">29.12</span> Comparing SQL to dplyr</a></li>
+<li><a class="nav-link" href="#using-databases-with-r"><span class="header-section-number">29.13</span> Using databases with R</a></li>
+<li><a class="nav-link" href="#computing-notes"><span class="header-section-number">29.14</span> Computing notes</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/AndrewIrwin/data-visualization/blob/master/901-TMI-R.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/AndrewIrwin/data-visualization/edit/master/901-TMI-R.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>

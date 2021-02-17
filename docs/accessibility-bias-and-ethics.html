@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 29 Accessibility, Bias, and Ethics | Data Visualization</title>
+<title>Chapter 30 Accessibility, Bias, and Ethics | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -56,16 +56,17 @@
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
-<li><a class="" href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
-<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
-<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">24</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">25</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">26</span> Graphics formatting</a></li>
-<li><a class="" href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
-<li><a class="active" href="accessibility-bias-and-ethics.html"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="active" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -74,22 +75,22 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="accessibility-bias-and-ethics" class="section level1" number="29">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="accessibility-bias-and-ethics" class="section level1" number="30">
 <h1>
-<span class="header-section-number">29</span> Accessibility, Bias, and Ethics<a class="anchor" aria-label="anchor" href="#accessibility-bias-and-ethics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">30</span> Accessibility, Bias, and Ethics<a class="anchor" aria-label="anchor" href="#accessibility-bias-and-ethics"><i class="fas fa-link"></i></a>
 </h1>
 <p>Data visualization is about representing, including selecting, simplifying and organizing, data. It’s an activity done by humans, for questions generated and presented to humans, even if the underlying topic is about the natural world. As as a result, it is always important to think carefully about the human element. What steps can be taken to make our work accessible to as many people as possible? How may bias or discrimination enter into data collection, selection, analysis and interpretation? What are the ethical considerations to be considered in our work with <a href="https://en.wikipedia.org/wiki/Information_ethics">data</a> and the process of <a href="https://en.wikipedia.org/wiki/Research#Research_ethics">research</a>?</p>
 <p>This course only touches on these topics long enough to alert you to their importance.</p>
-<div id="accessibility" class="section level2" number="29.1">
+<div id="accessibility" class="section level2" number="30.1">
 <h2>
-<span class="header-section-number">29.1</span> Accessibility<a class="anchor" aria-label="anchor" href="#accessibility"><i class="fas fa-link"></i></a>
+<span class="header-section-number">30.1</span> Accessibility<a class="anchor" aria-label="anchor" href="#accessibility"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data visualization is, as the name implies, the act of producing a product to be seen. This is a useful goal because our brains are very good at processing some kinds of visual information. Training to read visualizations can greatly increase the ability to extract information from a visualization, so it is important to know your audience – students, the general public, people with well developed quantiative skills, or domain experts for the data you are presenting. All of these factors are central to knowing if a visualization is suitable and effective. Our target audience is university students.</p>
 <p>Not everyone has the same visual abilities. Some people have vision that differs from the most common experience in some way – perceiving <a href="https://en.wikipedia.org/wiki/Color_blindness">colours differently</a>, reduced <a href="https://en.wikipedia.org/wiki/Visual_acuity">acuity</a>, and other differences all the way to complete blindness. We should always keep these differences in mind when producing visualizations. To take the hardest challenge head on, what is the value in producing a visualization for someone who cannot see it? Data visualization is a process that uses the creator’s visual and technical skills to present features of a dataset. Any data visualization should be <a href="https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Accessibility/Alternative_text_for_images">accompanied by a written description of the message to be conveyed</a>. Ideally the visual and written aspects will complement each other. A visualization does not “say” anything by itself; a written interpretation is an essential part of the process.</p>
 </div>
-<div id="data-collection-and-analysis" class="section level2" number="29.2">
+<div id="data-collection-and-analysis" class="section level2" number="30.2">
 <h2>
-<span class="header-section-number">29.2</span> Data collection and analysis<a class="anchor" aria-label="anchor" href="#data-collection-and-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">30.2</span> Data collection and analysis<a class="anchor" aria-label="anchor" href="#data-collection-and-analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://en.wikipedia.org/wiki/Data">Data</a> collection and analysis are critical tools for understanding and interacting with the world. Data are used by academic researchers, goverments, corportations, non-profit organizations, and citizens in complex and contrasting ways. All of these processes create opportunities for bias and discrimination. The links below give a few examples and stories elaborating these challenges.</p>
 <ul>
@@ -112,9 +113,9 @@
 </ul>
 <p>If you find discussions of these topics you find particularly thought provoking or informative, please share them with me.</p>
 </div>
-<div id="further-reading-20" class="section level2" number="29.3">
+<div id="further-reading-20" class="section level2" number="30.3">
 <h2>
-<span class="header-section-number">29.3</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-20"><i class="fas fa-link"></i></a>
+<span class="header-section-number">30.3</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-20"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Data Science in a Box notes on <a href="https://datasciencebox.org/ethics.html">ethics</a>
@@ -123,15 +124,15 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="organization.html"><span class="header-section-number">28</span> Staying organized</a></div>
+<div class="prev"><a href="r-details.html"><span class="header-section-number">29</span> More details about R</a></div>
 <div class="next"><a href="metadata.html">Metadata</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#accessibility-bias-and-ethics"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
-<li><a class="nav-link" href="#accessibility"><span class="header-section-number">29.1</span> Accessibility</a></li>
-<li><a class="nav-link" href="#data-collection-and-analysis"><span class="header-section-number">29.2</span> Data collection and analysis</a></li>
-<li><a class="nav-link" href="#further-reading-20"><span class="header-section-number">29.3</span> Further reading</a></li>
+<li><a class="nav-link" href="#accessibility-bias-and-ethics"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="nav-link" href="#accessibility"><span class="header-section-number">30.1</span> Accessibility</a></li>
+<li><a class="nav-link" href="#data-collection-and-analysis"><span class="header-section-number">30.2</span> Data collection and analysis</a></li>
+<li><a class="nav-link" href="#further-reading-20"><span class="header-section-number">30.3</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -149,7 +150,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-16.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

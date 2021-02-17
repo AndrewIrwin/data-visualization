@@ -145,40 +145,63 @@ Clone the GitHub project "team-planning" to your computer (or rstudio.cloud work
 
 ### Bonus task (Lesson 19) {#task-b8 .unnumbered}
 
-Practice the PCA skills from the course notes and mini-lecture. First repeat a selected compuation and plot. Then try to modify the example to work on a dataset of your choice.
+Look for some data on the internet. Download the data to your computer. Read the data into R. Make a summary table describing some part of the data. Make a visualization using some of the data. Can you find any formatting errors in the data? Did you have any trouble reading the data into R?
+
+You can use any data you like for this task. If you want a specific suggestion, get some data from gapminder.org or another source in the lesson.
 
 ### Task 12 (Lesson 20) {#task-12 .unnumbered}
 
-Create a PCA and MDS plot as described in the task-12.rmd file. This task is in the repository for task 12, 13, and 14.
+We've been using R markdown to make reproducible reports throughout the course. In this task, practice using `here` and chunk options.
+
+This task is in the repository for task 12, 13, and 14.
 
 ### Task 13 (Lesson 21) {#task-13 .unnumbered}
 
-Create a K-means analysis and accompanying visualization as described in the task-13.rmd file. This task is in the repository for task 12, 13, and 14.
+Create a PCA and MDS plot as described in the task-13.rmd file. This task is in the repository for task 12, 13, and 14.
 
-### Bonus task (Lesson 22) {#task-b9 .unnumbered}
+### Task 14 (Lesson 23) {#task-14 .unnumbered}
 
-Practice formatting and other techniques in the collaboration and reproducible reports lesson.
+Create a K-means analysis and accompanying visualization as described in the task-14.rmd file. This task is in the repository for task 12, 13, and 14.
 
-### Task 14 (Lesson 21) {#task-14 .unnumbered}
+### Bonus task (Lesson 24) {#task-b9 .unnumbered}
 
-Modify the slide presentation as directed in the file task-14.rpres. This task is in the repository for task 12, 13, and 14.
+Create and modify an "R presentation" slide presentation as described in the lesson. Ensure you know how to 
 
-### Task 15 (Lesson XX) {#task-15 .unnumbered}
+* show graphics output, but not the code that generated it,
+* make the graphic the right size to fit on the slide,
+* open the HTML version in your web browser.
 
+### Task 15 (Lesson 25) {#task-15 .unnumbered}
 
+Cleaning and validating data.
 
+### Task 16 (Lesson 26) {#task-16 .unnumbered}
 
-### Task 16 (Lesson X) {#task-16 .unnumbered}
+Make an animated plot following the instructions in the repository.
 
-Using scales effectively. Improving figures.
-Diverging continuous colour
-Colour blind tester
-Hiding guides. Unifying guides.
+### Bonus task (Lesson 27) {#task-b10 .unnumbered}
 
-### Task 17 (Lesson X) {#task-17 .unnumbered}
+Practice making a map from the lesson
 
-### Task 18 (Lesson X) {#task-18 .unnumbered}
+### Task 17 (Lesson 28) {#task-17 .unnumbered}
 
+Make maps described in the task markdown file in the repository.
+
+### Task 18 (Lesson 29) {#task-18 .unnumbered}
+
+Create a heatmap with a dendrogram.
+
+### Task 19 (Lesson 30) {#task-19 .unnumbered}
+
+Work with factors and dates. Practice tasks in repository file.
+
+### Bonus task (Lesson 31) {#task-b11 .unnumbered}
+
+Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
+
+### Task 20 (Lesson 32) {#task-20 .unnumbered}
+
+Create a theme by building on an existing theme. Show a visualization with and without your theme. 
 
 ## Assignments {-}
 
@@ -255,13 +278,13 @@ You should create compelling visualizations of your data. Pay attention to your 
 * Presentation - due Thursday 1 April or Tuesday 6 April during synchronous meeting.
 * Report - due Friday 9 April at 6:00 pm
 
-Work in groups of 2. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
+Work in groups of 2 according to the assignments made in the team planning repository. You can produce team products, or one product per team member, whichever you prefer. You have two roles in the project. First you will contribute your original creative work for the project. Second, you will act as a collaborator, providing your teammate with feedback, suggestions, debugging help, proofreading and other assistance as requested.
 
-Use a single github repository for the proposal, presentation, and final report. If you work in pairs, producing joint work, use the repository for one team member and add the other member to the repository. See the notes on [collaboration with github](#collaboration) for guidance.
+Use a single GitHub repository for the proposal, presentation, and final report. Use the repository I created for your team. See the notes on [collaboration with GitHub](#collaboration) for guidance. Contact me if you have trouble.
 
 ### Team creation {-}
 
-Teams will be created during February. On February 1 (or earlier) I will add everyone to a reposistory called `team-planning`. This repository will be used to create teams, schedule presentations, and organize peer-evaluation for Assignment 6.
+Teams will be created in late February. I will add everyone to a repository called `team-planning`. This repository will be used to create teams, schedule presentations, and organize peer-evaluation for Assignment 6.
 
 If you would like to form a team with someone else in the class, edit the rmd document to add your request. If you would like to be assigned a randomly selected team mate, there will be a way to indicate that too. This process will also introduce you to some collaboration features of github. The deadline for selecting teammates will be Monday 1 March. I will review this list and finalize the assignments on Tuesday 2 March. I will create the presentation schedule and peer-evaluation assignments later that week.
 
@@ -269,92 +292,75 @@ If you would like to form a team with someone else in the class, edit the rmd do
 
 Your main task for the proposal is to find a dataset to analyze for your project and describe at least one question you can address with data visualizations.
 
-It is important that you choose a readily accessible dataset that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your dataset should have at least 50 observations and about 10 variables. The variables should include categorical variables, discrete numerical variables, and continuous numerical variables. If you plan to use a dataset that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
+It is important that you choose a readily accessible dataset that is large enough so multiple relationships can be explored, but no so complex that you get lost. I suggest your dataset should have at least 50 observations and about 10 variables. If you find a bigger dataset, you can make a subset to work with for your project. The dataset should include categorical and quantiative variables. If you plan to use a dataset that comes in a format that we haven’t encountered in class, make sure that you are able to load it into R as this can be tricky depending on the source. If you are having trouble ask for help before it is too late.
 
 Do not reuse datasets from any part of the course.
 
 Here is list of data repositories containing many interesting datasets. Feel free to use data from other sources if you prefer.
 
 * [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
-* [Kaggle](https://www.kaggle.com/datasets) datasets
-* [OpenIntro](https://www.openintro.org/book/statdata/index.php) datasets
+* [Kaggle](https://www.kaggle.com/datasets) 
+* [OpenIntro](https://www.openintro.org/book/statdata/index.php) 
 * [Awesome public](https://github.com/awesomedata/awesome-public-datasets) datasets
 * [Bikeshare](https://www.bikeshare.com/data/) data portal
 * [Harvard Dataverse](https://dataverse.harvard.edu/)
 * [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data)
 * Open government data: [Canada](https://open.canada.ca/en/open-data), [NS](https://data.novascotia.ca/), and many other sources
-* Other sources listed in the [Data sources]() section of these notes or that you find on your own.
+* Other sources listed in the [Data sources](#data-sources) section of these notes
+* Data you find on your own may be suitable too.
 
-Describe a dataset and question you can address with the data for your report. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, knn/PCA, map).
+Describe a dataset and question you can address with the data for your proposal. Outline a plan to use five visualizations (e.g., data overview plot, dplyr/table summary, small multiples, smoothing/regression, k-means/PCA, map).
 
-Your proposal should include an Rmd document called proposal.rmd with the following sections and the proposed dataset.
+The repository contains a template for your proposal called proposal.rmd. Write your proposal by revising this file and using this template.
 
-* Introduction: The introduction should introduce your general research question and your data (where it came from, how it was collected, what are the cases, what are the variables, etc.).
-* Data: Place your data in the /data folder. Show that you can read the data and include the output of `dplyr::glimpse()` or `skimr::skim()` on your data in the proposal.
-* Visualization and analysis plan:
+* Questions: The introduction should introduce your research questions
+* Data: Describe the data (where it came from, how it was collected, what are the cases, what are the variables, etc.).  Place your data in the /data folder. Show that you can read the data and include the output of `dplyr::glimpse()` or `skimr::skim()` on your data in the proposal.
+* Visualization plan:
   * The outcome (response, Y) and predictor (explanatory, X) variables you will use to answer your question.
   * Ideas for at least two possible visualizations for exploratory data analysis, including some summary statistics and visualizations, along with some explanation on how they help you learn more about your data.
   * An idea of how at least one statistical method described in the course (smoothing, PCA, k-means) could be useful in analyzing your data
+* Team planning: briefly decribe how members of your team will divide the tasks to be performed.
 
-
-*Assessment*. Your proposal will be assessed for the following elements: a dataset is identifed and described (size of dataset, variables, source), a question to be investigated is clearly described, a visualization plan is presented. Scoring will be similar to exercises:
-
-* 4 points (1 each) for the following 4 elements: description of data, size of data, source of data, question, 
-* 2 points for a visualization plan,
-* 2 points for presentation quality, 
-* 2 points for creativity, thoughtfulness, and imagination.
-
-Total 10.
+*Assessment*. See the file grade-proposal.rmd for the assessment guidelines and rubric.
 
 ### Oral presentation {-}
 
 The oral presentation should be about 5 minutes long. The goal is to present the highlights of your project and allow for feedback which can be incorporated as you revise your written report.
 
-You should have a small number of slides to accompany your presentation. I suggest a format such as the following:
+You should have a small number of slides to accompany your presentation. I have provided a template for you to use as `presentation.rpres`. I suggest a format such as the following:
 
-* A title with your name
+* A title with team members' names
 * A description of the data you are analyzing
 * At least one question you can investigate with your data visualization
 * At least two data visualizations
 * A conclusion
 
-A template for a presentation (presentation.rpres) is in the project repository.
+For suggestions on making slide presentations see the lesson on [slides](#slides) and recorded video.
 
 Don't show your R code; the focus should be on your results and visualizations not your computing. Set `echo = FALSE` to hide R code (this is already done in the template).
 
 Your presentation should not just be an account of everything you tried ("then we did this, then we did this, etc."), instead it should convey what choices you made, and why, and what you found.
 
 Presentation schedule: Presentations will take place during the last two synchronous sessions of the course. You can choose to do your presentation live or pre-record it. You will watch presentations from other teams and provide feedback on one each day in the form of peer evaluations. The presentation schedule will be generated randomly.
+
+*Assessment*. See the file grade-presentation.rmd for the assessment guidelines.
+
+**Pratice your presentation, as a team, using the course collaborate room or other videoconferencing tool!**
  
 ### Written report {-}
 
-Required elements, following the template provided for each:
+Follow the template provided for your written report (report.rmd) to present your visualizations and insights about your data. Review the marking guidelines in grade-report.rmd and ask questions if any of the expectations are unclear.
 
-* README.md
-* Data Dictionary
-* Written report (report.rmd) presenting your visualizations and insights about your data.
+Style and format does count for this assignment, so please take the time to make sure everything looks good and your tables and visualizations are properly formatted.
 
-This write-up, which you can also think of as an summary of your project, should provide information on the dataset you’re using, your research questions, your methodology, and your findings. Follow the template provided in the repository as you prepare your report.
+You and your teammate will be using the same repository, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck. Look at the lesson on [collaboration](#collaboration) for help.
 
-Style and format does count for this assignment, so please take the time to make sure everything looks good and your data and code are properly formatted.
+In your knitted report your R code should be hidden (`echo = FALSE`) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you're welcome to show that portion.
 
-You and your teammate will be using the same repository as your teammate, so merge conflicts will happen, issues will arise, and that’s fine! Pull work from github before you start, commit your changes, and push often. Ask questions when stuck.
-
-Review the marking guidelines below and ask questions if any of the expectations are unclear.
-
-Code: In your presentation your code should be hidden (`echo = FALSE`) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your R Markdown file I will obtain the results you presented. If you want to highlight something specific about a piece of code, you’re welcome to show that portion.
-
-Assessment:
-
-* Write-up	15 pts
-* Reproducibility and organization	10 pts
-* Team peer evaluation	10 pts
-* Classmates’ evaluation	5 pts
-
-Criteria:
+General criteria for evaluation:
 
 * Content - What is the quality of research question and relevancy of data to those questions?
 * Correctness - Are visualization procedures carried out and explained correctly?
 * Writing and Presentation - What is the quality of the visualizations, writing, and explanations?
-* Creativity and Critical Thought - Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+* Creativity and Critical Thought - Is the project carefully thought out?  Does it appear that time and effort went into the planning and implementation of the project?
 

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 24 Using colour well | Data Visualization</title>
+<title>Chapter 25 Using colour well | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -56,16 +56,17 @@
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
-<li><a class="" href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
-<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
-<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
-<li><a class="active" href="colour.html"><span class="header-section-number">24</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">25</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">26</span> Graphics formatting</a></li>
-<li><a class="" href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="active" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -74,30 +75,30 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="colour" class="section level1" number="24">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="colour" class="section level1" number="25">
 <h1>
-<span class="header-section-number">24</span> Using colour well<a class="anchor" aria-label="anchor" href="#colour"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25</span> Using colour well<a class="anchor" aria-label="anchor" href="#colour"><i class="fas fa-link"></i></a>
 </h1>
 <p>A visualization that uses colour effectively can be easier to understand and remember than a gray-scale or black and white one. Careless use of colour can create confusing and ineffective visualizations. There are a few main ways colour is used: to indicate levels of a categorical variable, to indicate values of a quantiative variable, to highlight some element of the data, and to advance a graphic design goal.</p>
 <p>Most documents and presentations will contain more than one visualization. As you edit and finalize your visualizations, you should be careful to ensure the use of colour is consistent or appropriately contrasting when your visualizations are considered as a set.</p>
 <p>In this lesson we will examine the effective use of colour on visualizations and show how to customize colour scales and legends with ggplot. Your ultimate goal is communication, so once your visualziation is nearly complete you must consider whether your use of colour is effective and helps you with your primary or secondary communication goals.</p>
-<div id="disciplinary-cultural-and-human-elements" class="section level2" number="24.1">
+<div id="disciplinary-cultural-and-human-elements" class="section level2" number="25.1">
 <h2>
-<span class="header-section-number">24.1</span> Disciplinary, cultural, and human elements<a class="anchor" aria-label="anchor" href="#disciplinary-cultural-and-human-elements"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.1</span> Disciplinary, cultural, and human elements<a class="anchor" aria-label="anchor" href="#disciplinary-cultural-and-human-elements"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are existing conventions for the use of colour in many disciplines. For example, topographic maps have a consistent use of green-brown scales to show altitude. Temperature is often indicated on a blue-red scale for warm to cold. In more abstract or less commonly encountered settings, there may be no obvious scheme to use to indicate larger/smaller or positive/negative and then cultural patterns take over. In particular some people will want to use red for increases/larger values while others may want to use red to mean decreases. A good legend should always be included to make your meaning explicit. People have different preferences for colour, from liking bold, saturated colours to preferring muted, pastel colours. Usually extreme choices should be avoided to make your colour choices appealing to as wide an audience as possible. This is the motivation for using established colour scales that are already popular. Finally, you should be aware that a fraction of the population has some degree of colour vision deficiency. There are tools to screen for these design concerns, but an easy to remember guideline is to not use red and green on the same visualization.</p>
 </div>
-<div id="how-will-the-colour-be-displayed" class="section level2" number="24.2">
+<div id="how-will-the-colour-be-displayed" class="section level2" number="25.2">
 <h2>
-<span class="header-section-number">24.2</span> How will the colour be displayed?<a class="anchor" aria-label="anchor" href="#how-will-the-colour-be-displayed"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.2</span> How will the colour be displayed?<a class="anchor" aria-label="anchor" href="#how-will-the-colour-be-displayed"><i class="fas fa-link"></i></a>
 </h2>
 <p>Your visualizations will most likely be displayed in one of three ways: on a computer monitor about one meter from one person’s eyes, on a projector many metres away from the eyes of a group of people, on paper. Within each of these media, there is considerable variation – computer montors differ in how they display colour, projectors may be located in a bright or dark room, and paper can be matte or glossy – but the differences across these media are huge.</p>
 <p>When you look at a visualation on your own computer monitor, you are able to perceive fine colour differences and small features such as relatively minor differences in line thickness and symbol size. Many of these differences are “washed out” when images are displayed on a projector, either because of the projector itself or because of the environment in the room such as other light sources or the distance between the image and the observer. Light colours will look nearly white and various dark colours will be difficult to distinguish when projected. The differences that arise when colour is printed are even more dramatic. This is partly due to the fact that the mechanism of showing the colour is so different: on a computer display, light shines through a filter or is emitted in a particular colour combination, but on paper, dyes absorb incident light and must be layered and blended together. Yellow-white combinations that look great on a computer display may not work on a sign in front of a buisnesss (see figure).</p>
 <p>Include photo of Inglis St sign with yellow-white.</p>
 </div>
-<div id="naming-colours" class="section level2" number="24.3">
+<div id="naming-colours" class="section level2" number="25.3">
 <h2>
-<span class="header-section-number">24.3</span> Naming colours<a class="anchor" aria-label="anchor" href="#naming-colours"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3</span> Naming colours<a class="anchor" aria-label="anchor" href="#naming-colours"><i class="fas fa-link"></i></a>
 </h2>
 <p>In order to use a colour, you must identify it in some way. There are many ways to name colours: by appeal to the <a href="https://en.wikipedia.org/wiki/ROYGBIV">rainbow</a> spectrum, widely-used corporate names for <a href="https://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors">crayons</a> and printing <a href="https://en.wikipedia.org/wiki/Pantone">Pantone</a>, software systems such as <a href="https://en.wikipedia.org/wiki/X11_color_names">unix X11</a>, and of course a huge variety in <a href="https://en.wikipedia.org/wiki/Lists_of_colors">common usage</a>. The rainbow contains colours in an order arranged by <a href="https://en.wikipedia.org/wiki/Spectral_color">wavelength</a>, but this numbering misses a huge number of colours.</p>
 <p>On computers, colours are often identified using a particular colour model:</p>
@@ -120,52 +121,52 @@
 <a href="https://coolors.co/">Coolors</a> emphsizes perceptual and artistic elements you might use to select colours for a palette</li>
 </ul>
 </div>
-<div id="categorical-variables" class="section level2" number="24.4">
+<div id="categorical-variables" class="section level2" number="25.4">
 <h2>
-<span class="header-section-number">24.4</span> Categorical variables<a class="anchor" aria-label="anchor" href="#categorical-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.4</span> Categorical variables<a class="anchor" aria-label="anchor" href="#categorical-variables"><i class="fas fa-link"></i></a>
 </h2>
 <p>Categorical variables with 5 or fewer levels you want to highlight are an excellent use of colour. With more than 5 categories, it becomes very difficult to quickly or reliably distinguish colours and map them from the data to the colour legend.</p>
 <p>Let’s use the palmer penguins data to show how three colours can be selected: by palette or as custom choices.</p>
 <p>The <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">viridis</a> palette is designed to have approximately uniform brightness (making it suitable for printing in gray scale) and colour-blind friendly. There are four different colour scales you can select (option: magma = A, inferno = B, plasma = C, viridis = D, cividis = E), plus you select the beginning and ending location (begin, end: numbers between 0 and 1). I find the start of viridis to be too yellow, so I usually adjust <code>begin</code> at a minimum.</p>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb344"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_color_viridis_d</a></span><span class="op">(</span>begin <span class="op">=</span> <span class="fl">0.1</span>, end <span class="op">=</span> <span class="fl">0.9</span>, option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
 <p>The use other scales you can find from paletteer. Here we use the <code>ggthemes</code> package and its palette <code>hc_default</code>.</p>
-<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># paletteer_d("ggthemes::hc_default", n = 3)  # to see the colours</span>
 <span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_paletteer_d</span><span class="op">(</span><span class="st">"ggthemes::hc_default"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 <p>To make a custom scale use <code>scale_color_manual</code>. You need to give the right number of colours (or some extras which will be ignored), or a function which takes and integer and returns that many colours.</p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb346"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"orange"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 </div>
-<div id="quantitative-variables" class="section level2" number="24.5">
+<div id="quantitative-variables" class="section level2" number="25.5">
 <h2>
-<span class="header-section-number">24.5</span> Quantitative variables<a class="anchor" aria-label="anchor" href="#quantitative-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.5</span> Quantitative variables<a class="anchor" aria-label="anchor" href="#quantitative-variables"><i class="fas fa-link"></i></a>
 </h2>
 <p>Quantitative data can be effectively displayed using colour on a monochromatic scale to show larger-smaller values, but be aware that your ability to convey quantiative values is very limited. Even the apparently simple task of conveying the ordering quantitative values is difficult because you perceive colour and shading in a local context, as demonstrated by the <a href="https://en.wikipedia.org/wiki/Checker_shadow_illusion">checker shadow</a> illusion.</p>
 <p>Quantitative data that are separated into positive and negative, or above or below a mean or reference value, are effectively displayed by diverging colour scales (red-blue, green-brown, etc.), sometimes with a neutral colour (white or black) in the middle. One reason this works so well is that it converts a quantitative scale into a categorical two-valued scale, with some residual variation shown with brightness, so be sure that there is a strong reason to divide the scale into two classes.</p>
 <p>Quantitative data are almost always best shown as position on an axis, so when would you want to use colour brightness to show a quantitative variable? The most common reason is that you are putting points on a map and the location in the visualization is being used to describe the location on the map. A related reason is that you are trying to display a third quantitative varaible. Here we will use the penguin data and show body mass as colour.</p>
 <p>Quantitative values can be mapped onto colour in a “continuous” way or in a “binned” way. Of course there are only a finite number of colours so this is a matter of degree. Do you want colours to change smoothly (continuously) or do you want a small number of discrete colours (binned). Examples of both are shown below.</p>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_color_viridis_c</a></span><span class="op">(</span>begin <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb348"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_color_paletteer_binned</span><span class="op">(</span><span class="st">"ggthemes::Blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-5-2.png" width="672"></div>
 <p>If it is important to draw a difference between two classes, for example positive and negative values, or numbers larger and smaller than a mean, you can use a diverging colour scale. For variety I will use functions from the <code>RColorBrewer</code> package that has a great set of palettes. With a diverging colour scale you generally want to make a symmetric scale so that 0 is placed at the centre of your color scale.</p>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>body_mass_centered <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">body_mass_centered</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -173,12 +174,12 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_fermenter</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"div"</span>, palette<span class="op">=</span><span class="st">"RdBu"</span>, limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2000</span>,<span class="fl">2000</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 </div>
-<div id="highlighting" class="section level2" number="24.6">
+<div id="highlighting" class="section level2" number="25.6">
 <h2>
-<span class="header-section-number">24.6</span> Highlighting<a class="anchor" aria-label="anchor" href="#highlighting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.6</span> Highlighting<a class="anchor" aria-label="anchor" href="#highlighting"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sometimes you will just want to highlight a small number of points. Perhaps they are outliers or interesting for a particular reason. One of the most flexible ways to do this is to create a new variable that identifies an observation as being highlighted or not, then use this to control plotting.</p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb350"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>highlight <span class="op">=</span> <span class="va">body_mass_g</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">body_mass_g</span>, <span class="fl">0.9</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">highlight</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>, show.legend<span class="op">=</span><span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span>
@@ -186,9 +187,9 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
 </div>
-<div id="consistent-use-of-colour-across-multiple-figures" class="section level2" number="24.7">
+<div id="consistent-use-of-colour-across-multiple-figures" class="section level2" number="25.7">
 <h2>
-<span class="header-section-number">24.7</span> Consistent use of colour across multiple figures<a class="anchor" aria-label="anchor" href="#consistent-use-of-colour-across-multiple-figures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.7</span> Consistent use of colour across multiple figures<a class="anchor" aria-label="anchor" href="#consistent-use-of-colour-across-multiple-figures"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wilke has some excellent ideas about using colour effectively and consistently across figures. Key points are</p>
 <ul>
@@ -196,12 +197,12 @@
 <li>if you have figures that show the data in contrasting ways, for example with species in one figure and no species in a different figure, use <strong>different</strong> colour pallettes in the two figures to avoid confusion.</li>
 </ul>
 </div>
-<div id="annotation-to-avoid-legends" class="section level2" number="24.8">
+<div id="annotation-to-avoid-legends" class="section level2" number="25.8">
 <h2>
-<span class="header-section-number">24.8</span> Annotation to avoid legends<a class="anchor" aria-label="anchor" href="#annotation-to-avoid-legends"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.8</span> Annotation to avoid legends<a class="anchor" aria-label="anchor" href="#annotation-to-avoid-legends"><i class="fas fa-link"></i></a>
 </h2>
 <p>Particularly in a oral presentation you want your figure to be decoded rapidly. A legend off to one side slows down your reader and requires focus to move back and forth between the data and the legend. You can use coloured text labels on the plot to reduce the need for legends.</p>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, color <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"orange"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -210,9 +211,9 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">220</span>, y <span class="op">=</span> <span class="fl">40</span>, label <span class="op">=</span> <span class="st">"Gentoo"</span>, color <span class="op">=</span> <span class="st">"orange"</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="201-colour_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
 </div>
-<div id="colour-vision-deficiency" class="section level2" number="24.9">
+<div id="colour-vision-deficiency" class="section level2" number="25.9">
 <h2>
-<span class="header-section-number">24.9</span> Colour vision deficiency<a class="anchor" aria-label="anchor" href="#colour-vision-deficiency"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.9</span> Colour vision deficiency<a class="anchor" aria-label="anchor" href="#colour-vision-deficiency"><i class="fas fa-link"></i></a>
 </h2>
 <p>You should be aware that not everyone peceives colour in the same way. In particular, avoid combining red and green on the same plot. Here are a few links to help you learn more:</p>
 <ul>
@@ -222,9 +223,9 @@
 <li>A tool to <a href="https://github.com/clauswilke/colorblindr">simulate</a> colour vision deficiency.</li>
 </ul>
 </div>
-<div id="summary-3" class="section level2" number="24.10">
+<div id="summary-3" class="section level2" number="25.10">
 <h2>
-<span class="header-section-number">24.10</span> Summary<a class="anchor" aria-label="anchor" href="#summary-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.10</span> Summary<a class="anchor" aria-label="anchor" href="#summary-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Color is most useful</p>
 <ul>
@@ -234,9 +235,9 @@
 </ul>
 <p>Avoid using more than 5 colours. It is hard to make quantitative comparisons between two colours. There are lots of tools to help you select colour palettes that work together well. The <code>viridis</code> and <code>RColorBrewer</code> palettes are often good choices.</p>
 </div>
-<div id="suggested-reading-1" class="section level2" number="24.11">
+<div id="suggested-reading-1" class="section level2" number="25.11">
 <h2>
-<span class="header-section-number">24.11</span> Suggested reading<a class="anchor" aria-label="anchor" href="#suggested-reading-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.11</span> Suggested reading<a class="anchor" aria-label="anchor" href="#suggested-reading-1"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Colour in Healy <a href="https://socviz.co/refineplots.html#use-color-to-your-advantage">Chapter 8</a>
@@ -252,23 +253,23 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></div>
-<div class="next"><a href="theme.html"><span class="header-section-number">25</span> Themes</a></div>
+<div class="prev"><a href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></div>
+<div class="next"><a href="theme.html"><span class="header-section-number">26</span> Themes</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#colour"><span class="header-section-number">24</span> Using colour well</a></li>
-<li><a class="nav-link" href="#disciplinary-cultural-and-human-elements"><span class="header-section-number">24.1</span> Disciplinary, cultural, and human elements</a></li>
-<li><a class="nav-link" href="#how-will-the-colour-be-displayed"><span class="header-section-number">24.2</span> How will the colour be displayed?</a></li>
-<li><a class="nav-link" href="#naming-colours"><span class="header-section-number">24.3</span> Naming colours</a></li>
-<li><a class="nav-link" href="#categorical-variables"><span class="header-section-number">24.4</span> Categorical variables</a></li>
-<li><a class="nav-link" href="#quantitative-variables"><span class="header-section-number">24.5</span> Quantitative variables</a></li>
-<li><a class="nav-link" href="#highlighting"><span class="header-section-number">24.6</span> Highlighting</a></li>
-<li><a class="nav-link" href="#consistent-use-of-colour-across-multiple-figures"><span class="header-section-number">24.7</span> Consistent use of colour across multiple figures</a></li>
-<li><a class="nav-link" href="#annotation-to-avoid-legends"><span class="header-section-number">24.8</span> Annotation to avoid legends</a></li>
-<li><a class="nav-link" href="#colour-vision-deficiency"><span class="header-section-number">24.9</span> Colour vision deficiency</a></li>
-<li><a class="nav-link" href="#summary-3"><span class="header-section-number">24.10</span> Summary</a></li>
-<li><a class="nav-link" href="#suggested-reading-1"><span class="header-section-number">24.11</span> Suggested reading</a></li>
+<li><a class="nav-link" href="#colour"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="nav-link" href="#disciplinary-cultural-and-human-elements"><span class="header-section-number">25.1</span> Disciplinary, cultural, and human elements</a></li>
+<li><a class="nav-link" href="#how-will-the-colour-be-displayed"><span class="header-section-number">25.2</span> How will the colour be displayed?</a></li>
+<li><a class="nav-link" href="#naming-colours"><span class="header-section-number">25.3</span> Naming colours</a></li>
+<li><a class="nav-link" href="#categorical-variables"><span class="header-section-number">25.4</span> Categorical variables</a></li>
+<li><a class="nav-link" href="#quantitative-variables"><span class="header-section-number">25.5</span> Quantitative variables</a></li>
+<li><a class="nav-link" href="#highlighting"><span class="header-section-number">25.6</span> Highlighting</a></li>
+<li><a class="nav-link" href="#consistent-use-of-colour-across-multiple-figures"><span class="header-section-number">25.7</span> Consistent use of colour across multiple figures</a></li>
+<li><a class="nav-link" href="#annotation-to-avoid-legends"><span class="header-section-number">25.8</span> Annotation to avoid legends</a></li>
+<li><a class="nav-link" href="#colour-vision-deficiency"><span class="header-section-number">25.9</span> Colour vision deficiency</a></li>
+<li><a class="nav-link" href="#summary-3"><span class="header-section-number">25.10</span> Summary</a></li>
+<li><a class="nav-link" href="#suggested-reading-1"><span class="header-section-number">25.11</span> Suggested reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -286,7 +287,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-16.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

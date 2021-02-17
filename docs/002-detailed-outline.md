@@ -266,8 +266,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
    <td style="text-align:right;"> 19 </td>
-   <td style="text-align:left;"> PCA </td>
-   <td style="text-align:left;"> [Notes](#PCA), [Slides](slides/19-PCA.html), [Bonus task](#task-b8) </td>
+   <td style="text-align:left;"> Finding data </td>
+   <td style="text-align:left;"> [Bonus task](#task-b8) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
@@ -284,20 +284,20 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 26 Feb </td>
    <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> MDS </td>
-   <td style="text-align:left;"> [Notes](#mds), [Task 12](#task-12) </td>
+   <td style="text-align:left;"> Reproducible reports </td>
+   <td style="text-align:left;"> [Task 12](#task-12) </td>
   </tr>
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 9</strong></td></tr>
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;"> Task 11 due at 9 am </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:left;"> PCA </td>
+   <td style="text-align:left;"> [Notes](#PCA), [Slides](slides/19-PCA.html), [Task 13](#task-13) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>
-   <td style="text-align:right;"> 21 </td>
-   <td style="text-align:left;"> K-means </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:left;"> Task 11 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
@@ -315,8 +315,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed  3 Mar </td>
    <td style="text-align:right;"> 22 </td>
-   <td style="text-align:left;"> Reproducible reports </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> MDS </td>
+   <td style="text-align:left;"> [Notes](#mds) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Thu  4 Mar </td>
@@ -327,27 +327,27 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri  5 Mar </td>
    <td style="text-align:right;"> 23 </td>
-   <td style="text-align:left;"> Slide presentations </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> K-means </td>
+   <td style="text-align:left;"> [Notes](#k-means), [Task 14](#task-14) </td>
   </tr>
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 10</strong></td></tr>
 <tr>
+   <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  8 Mar </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:left;"> Slide presentations </td>
+   <td style="text-align:left;"> [Notes](#slides), [Bonus task](#task-b9) </td>
+  </tr>
+  <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  8 Mar </td>
    <td style="text-align:right;">  </td>
    <td style="text-align:left;"> Tasks 12, 13 and 14 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  8 Mar </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:left;"> Tidy data </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 10 Mar </td>
    <td style="text-align:right;"> 25 </td>
-   <td style="text-align:left;"> Validating data </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Cleaning and validating data </td>
+   <td style="text-align:left;"> [Task 15](#task-15) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 10 Mar </td>
@@ -364,8 +364,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 12 Mar </td>
    <td style="text-align:right;"> 26 </td>
-   <td style="text-align:left;"> Finding and describing data </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Dynamic graphics </td>
+   <td style="text-align:left;"> [Task 16](#task-16) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 12 Mar </td>
@@ -376,14 +376,14 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr grouplength="6"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 11</strong></td></tr>
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 15 Mar </td>
-   <td style="text-align:right;">  </td>
-   <td style="text-align:left;"> Tasks 15 and 16 due at 9 am </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:left;"> Making maps </td>
+   <td style="text-align:left;"> [Notes](#mapping-1), [Bonus task](#task-b10) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 15 Mar </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:left;"> Making maps </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:left;"> Tasks 15 and 16 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
@@ -395,8 +395,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 17 Mar </td>
    <td style="text-align:right;"> 28 </td>
-   <td style="text-align:left;"> Chloropleths and non-maps </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> More about maps </td>
+   <td style="text-align:left;"> [Task 17](#task-17) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Thu 18 Mar </td>
@@ -407,27 +407,27 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 19 Mar </td>
    <td style="text-align:right;"> 29 </td>
-   <td style="text-align:left;"> Working with factors </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Alternatives to maps </td>
+   <td style="text-align:left;"> [Task 18](#task-18) </td>
   </tr>
   <tr grouplength="6"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 12</strong></td></tr>
 <tr>
+   <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 22 Mar </td>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:left;"> Factors and Dates </td>
+   <td style="text-align:left;"> [Notes](#factors-dates), [Task 19](#task-19) </td>
+  </tr>
+  <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 22 Mar </td>
    <td style="text-align:right;">  </td>
    <td style="text-align:left;"> Tasks 17 and 18 due at 9 am </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 22 Mar </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:left;"> Themes </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Mar </td>
    <td style="text-align:right;"> 31 </td>
-   <td style="text-align:left;"> Annotations </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Using colour </td>
+   <td style="text-align:left;"> [Notes](#colour), [Bonus task](#task-b11) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Mar </td>
@@ -444,15 +444,15 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 26 Mar </td>
    <td style="text-align:right;"> 32 </td>
-   <td style="text-align:left;"> Graphics output </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Themes </td>
+   <td style="text-align:left;"> [Notes](#theme), [Task 20](#task-20) </td>
   </tr>
   <tr grouplength="4"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 13</strong></td></tr>
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon 29 Mar </td>
    <td style="text-align:right;"> 33 </td>
-   <td style="text-align:left;"> Working with dates </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Graphics output </td>
+   <td style="text-align:left;"> [Notes](#output-files) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Tue 30 Mar </td>
@@ -463,8 +463,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 31 Mar </td>
    <td style="text-align:right;"> 34 </td>
-   <td style="text-align:left;"> Topic TBA </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Reconstructing a visualization </td>
+   <td style="text-align:left;"> [Slides](slides/35-step-by-step.html) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Thu  1 Apr </td>

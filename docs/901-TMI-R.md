@@ -1,8 +1,6 @@
 # More details about R {#r-details}
 
-```{r include=FALSE}
-library(tidyverse)
-```
+
 
 R is a big software package. It's developed over decades of use. It has millions of regular users across many disciplines in teaching,  academic research and professional applications.  It's a computer programming language, and a tool for accessing thousands of data analysis tools, and a great interactive environment for exploring, analyzing, and visualizing data. You won't learn it all.
 
@@ -21,14 +19,71 @@ Lists are a very powerful type because they can be given attributes that identif
 
 Here are some R commands you can use to decode the structure of any object you have in your workspace. I'll demonstrate on the `diamonds` tibble. As always, experiment with these commands by trying them on other objects such as `cars` (a data frame).
 
-```{r}
+
+```r
 typeof(diamonds)  # it's a list
+```
+
+```
+## [1] "list"
+```
+
+```r
 class(diamonds) # which works as a data.frame and also as a tbl (tibble)
+```
+
+```
+## [1] "tbl_df"     "tbl"        "data.frame"
+```
+
+```r
 str(diamonds)
+```
+
+```
+## tibble [53,940 × 10] (S3: tbl_df/tbl/data.frame)
+##  $ carat  : num [1:53940] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
+##  $ cut    : Ord.factor w/ 5 levels "Fair"<"Good"<..: 5 4 2 4 2 3 3 3 1 3 ...
+##  $ color  : Ord.factor w/ 7 levels "D"<"E"<"F"<"G"<..: 2 2 2 6 7 7 6 5 2 5 ...
+##  $ clarity: Ord.factor w/ 8 levels "I1"<"SI2"<"SI1"<..: 2 3 5 4 2 6 7 3 4 5 ...
+##  $ depth  : num [1:53940] 61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...
+##  $ table  : num [1:53940] 55 61 65 58 58 57 57 55 61 61 ...
+##  $ price  : int [1:53940] 326 326 327 334 335 336 336 337 337 338 ...
+##  $ x      : num [1:53940] 3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
+##  $ y      : num [1:53940] 3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
+##  $ z      : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...
+```
+
+```r
 class(diamonds$carat)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
 class(diamonds$cut)  # its a factor, and the factor is ordered (factors can be unordered)
+```
+
+```
+## [1] "ordered" "factor"
+```
+
+```r
 class(as.matrix(diamonds %>% select(depth, table, price)))  # if you pick columns of the same type, you can convert them to a matrix
+```
+
+```
+## [1] "matrix" "array"
+```
+
+```r
 class(as.matrix(diamonds %>% select(cut, color, clarity)))  
+```
+
+```
+## [1] "matrix" "array"
 ```
 
 ## data frame, tibbles, and data tables
@@ -48,13 +103,40 @@ You can convert a vector of strings into a vector of factors. This assigns an in
 
 Here are some simple examples.
 
-```{r}
+
+```r
 v <- c("Apple", "Bananna", "Cat", "Apple", "Orange")
 typeof(v)
+```
+
+```
+## [1] "character"
+```
+
+```r
 f <- factor(v)
 typeof(f)
+```
+
+```
+## [1] "integer"
+```
+
+```r
 as.numeric(f)
+```
+
+```
+## [1] 1 2 3 1 4
+```
+
+```r
 f
+```
+
+```
+## [1] Apple   Bananna Cat     Apple   Orange 
+## Levels: Apple Bananna Cat Orange
 ```
 
 The `forcats` package has lots of great functions for working with factors which can help you control how your plots are drawn. That's the main use we will have for them in this course.
@@ -65,25 +147,79 @@ The pipe `%>%` is a way to write function composition. In our data analysis we b
 
 Pipeline:
 
-```{r}
+
+```r
 diamonds %>% filter(cut=="Ideal") %>% group_by(color) %>% summarize(mean_price = mean(price))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## # A tibble: 7 x 2
+##   color mean_price
+##   <ord>      <dbl>
+## 1 D          2629.
+## 2 E          2598.
+## 3 F          3375.
+## 4 G          3721.
+## 5 H          3889.
+## 6 I          4452.
+## 7 J          4918.
 ```
 
 Temporary variables:
 
-```{r}
+
+```r
 d1 <- filter(diamonds, cut=="Ideal")
 d2 <- group_by(d1, color) 
 summarize(d2, mean_price = mean(price))
 ```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## # A tibble: 7 x 2
+##   color mean_price
+##   <ord>      <dbl>
+## 1 D          2629.
+## 2 E          2598.
+## 3 F          3375.
+## 4 G          3721.
+## 5 H          3889.
+## 6 I          4452.
+## 7 J          4918.
+```
 Composition:
 
-```{r}
+
+```r
 summarize(
   group_by(
     filter(diamonds, cut == "Ideal"), color
   ), mean_price = mean(price)
 )
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## # A tibble: 7 x 2
+##   color mean_price
+##   <ord>      <dbl>
+## 1 D          2629.
+## 2 E          2598.
+## 3 F          3375.
+## 4 G          3721.
+## 5 H          3889.
+## 6 I          4452.
+## 7 J          4918.
 ```
 
 Which do you think is easier to understand?  What if the pipline was longer? Or shorter?

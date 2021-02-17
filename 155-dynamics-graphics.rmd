@@ -1,8 +1,10 @@
-# Dynamic graphics
+# Dynamic graphics {#dynamic}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 library(plotly)
+library(gganimate)
 ```
 
 Visualizations that are designed to respond to interactions (clicks, mouse movement) from the reader can show additional detail and provide opportunities for new ways of communication that are not possible with a static visualization. If you, as a creator of a visualization, require the reader to interact with your work to get the full meaning, you may find that your message is not communicated as effectively.

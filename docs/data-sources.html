@@ -56,16 +56,17 @@
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="active" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
-<li><a class="" href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
-<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
-<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">24</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">25</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">26</span> Graphics formatting</a></li>
-<li><a class="" href="incomplete-sections.html"><span class="header-section-number">27</span> Incomplete sections</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
+<li><a class="" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
 <li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">29</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -78,22 +79,6 @@
 <h1>
 <span class="header-section-number">19</span> Finding and accessing data<a class="anchor" aria-label="anchor" href="#data-sources"><i class="fas fa-link"></i></a>
 </h1>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre><code>## 
-## Attaching package: 'scales'</code></pre>
-<pre><code>## The following object is masked from 'package:purrr':
-## 
-##     discard</code></pre>
-<pre><code>## The following object is masked from 'package:readr':
-## 
-##     col_factor</code></pre>
 <p>Data are available from a huge number of sites on the internet run by governments, NGOs, companies, industry associations, research projects, and individuals. These data come in a variety of formats and while many will be easy to read with R, some will be quite challenging. In this lesson I will introduce you to some sources of data. Partly this is to help you start to learn how to navigate a variety of data sources, but of course part of the reason is to get you thinking about data you might use in your project. For more information on the project see the <a href="evaluation.html#project-description">description</a> on the evaluation page.</p>
 <div id="finding-data" class="section level2" number="19.1">
 <h2>
@@ -131,7 +116,7 @@ Each week a new data set is posted and participants experiment to create new vis
 <h3>
 <span class="header-section-number">19.1.3</span> R packages for accessing data<a class="anchor" aria-label="anchor" href="#r-packages-for-accessing-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>There are several packages designed primarily to provide access to large collections of data.</p>
+<p>There are many packages designed primarily to provide access to large collections of data. Here are a few examples.</p>
 <ul>
 <li>
 <a href="https://cran.r-project.org/web/packages/OECD/vignettes/oecd_vignette_main.html">OECD</a> for data from the <a href="https://stats.oecd.org/">OECD</a>
@@ -150,10 +135,9 @@ Each week a new data set is posted and participants experiment to create new vis
 <p>Naturally there are websites that curate lists of data available from other sites. Here are a few I’ve found useful.</p>
 <ul>
 <li>
-<a href="https://ourworldindata.org/">Our World In Data</a> a curated set of over 3000 charts with documentation and open source data.</li>
-<li>
-<a href="https://github.com/awesomedata/awesome-public-datasets">Awesome data</a> project</li>
-<li>One person’s collection of <a href="https://github.com/tacookson/data">data</a> of various sources</li>
+<a href="https://ourworldindata.org/">Our World In Data</a> is a curated set of over 3000 charts with documentation and open source data.</li>
+<li>The <a href="https://github.com/awesomedata/awesome-public-datasets">awesome public datasets</a> project collects high quality public data, organized thematically.</li>
+<li>This is one person’s collection of <a href="https://github.com/tacookson/data">data</a> of various sources</li>
 <li>
 <a href="https://r-dir.com/reference/datasets.html">r-dir</a> has a list of freely available datasets</li>
 </ul>
@@ -178,7 +162,7 @@ Each week a new data set is posted and participants experiment to create new vis
 <span class="header-section-number">19.2.1</span> Gapminder<a class="anchor" aria-label="anchor" href="#gapminder"><i class="fas fa-link"></i></a>
 </h3>
 <p>Gapminder distributes many datasets, some of their own, and some collected by other organizations that they are redistributing. They have a <a href="https://www.gapminder.org/data/">webpage</a> to help you search, browse and access the data. Using this webpage I have found <a href="http://gapm.io/dpop">data</a> on population of countries by years from 1800-2100 (with many missing data, some interpolated data, and of course many years of projections). Here is some R code to read and work with this data. There are data on 195 countries over 302 years. I have selected five countries to make a simple plot.</p>
-<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pop</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"static/population_total.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -187,13 +171,16 @@ Each week a new data set is posted and participants experiment to create new vis
 ##   country = col_character()
 ## )
 ## ℹ Use `spec()` for the full column specifications.</code></pre>
-<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pop</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Chile"</span>, <span class="st">"Germany"</span>, <span class="st">"United States"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">`1800`</span><span class="op">:</span><span class="va">`2100`</span>, names_to <span class="op">=</span> <span class="st">"years"</span>, values_to <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">years</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">years</span>, y <span class="op">=</span> <span class="va">population</span>, color<span class="op">=</span><span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/trans_format.html">trans_format</a></span><span class="op">(</span><span class="st">"log10"</span>, <span class="fu"><a href="https://scales.r-lib.org//reference/label_parse.html">math_format</a></span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">years</span>, 
+             y <span class="op">=</span> <span class="va">population</span>, 
+             color <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">country</span>, <span class="va">population</span>, <span class="va">max</span>, .desc<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/trans_format.html">trans_format</a></span><span class="op">(</span><span class="st">"log10"</span>, <span class="fu"><a href="https://scales.r-lib.org//reference/label_parse.html">math_format</a></span><span class="op">(</span><span class="fl">10</span><span class="op">^</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"Country"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="301-data-sources_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
 </div>
 <div id="consumer-price-index-in-canada" class="section level3" number="19.2.2">
@@ -201,14 +188,14 @@ Each week a new data set is posted and participants experiment to create new vis
 <span class="header-section-number">19.2.2</span> Consumer price index in Canada<a class="anchor" aria-label="anchor" href="#consumer-price-index-in-canada"><i class="fas fa-link"></i></a>
 </h3>
 <p>One measure of inflation is its effect on prices. Here is a table from Statistics Canada that reports over 1 million rows of data on this measure. Statistics Canada tables are an extreme version of “long” data, which usually require a lot of filtering to get just the rows you want. You will want to make use of <code>dpylr</code> functions <code>summarize</code> and <code>count</code> to study the structure of the data.</p>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Population and projection in a huge table with 2 million rows, 300 MB of data</span>
 <span class="co"># cansim::get_cansim("17100057")  </span>
 <span class="va">cpi</span> <span class="op">&lt;-</span> <span class="fu">cansim</span><span class="fu">::</span><span class="fu"><a href="https://mountainmath.github.io/cansim/index.html/reference/get_cansim.html">get_cansim</a></span><span class="op">(</span><span class="st">"18-10-0004-01"</span><span class="op">)</span></code></pre></div>
 <pre><code>## Accessing CANSIM NDM product 18-10-0004 from Statistics Canada</code></pre>
 <pre><code>## Parsing data</code></pre>
 <pre><code>## Folding in metadata</code></pre>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cpi</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">`Products and product groups`</span> <span class="op">==</span> <span class="st">"All-items"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">count</span><span class="op">(</span><span class="va">GEO</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 30 x 2
@@ -226,7 +213,7 @@ Each week a new data set is posted and participants experiment to create new vis
 ## 10 Montréal, Quebec                                     600
 ## # … with 20 more rows</code></pre>
 <p>Let’s look at these data for Canada as a whole.</p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cpi</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">`Products and product groups`</span> <span class="op">==</span> <span class="st">"All-items"</span>,
                <span class="va">GEO</span> <span class="op">==</span> <span class="st">"Canada"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">REF_DATE</span>, <span class="va">VALUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -241,7 +228,7 @@ Each week a new data set is posted and participants experiment to create new vis
 <img src="301-data-sources_files/figure-html/unnamed-chunk-3-1.png" width="672">
 ### Causes of death worldwide</div>
 <p><a href="https://ourworldindata.org/">Our world in data</a> has many compliations of data across many countries. <a href="https://ourworldindata.org/causes-of-death">Here</a> is a table listing causes of death over time and countries. There is a link to a csv file on that page that can be easily read with R. As is often the case, this is a large table (nearly 7000 observations of 37 variables). You will need to explore the data a bit to understand it. Here is one simple plot that can be made.</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">death</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"static/annual-number-of-deaths-by-cause.csv"</span>, guess_max <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -252,7 +239,7 @@ Each week a new data set is posted and participants experiment to create new vis
 ##   `Number of executions (Amnesty International)` = col_character()
 ## )
 ## ℹ Use `spec()` for the full column specifications.</code></pre>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">death</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Entity</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Canada"</span>, <span class="st">"China"</span>, <span class="st">"Germany"</span>, <span class="st">"United States"</span><span class="op">)</span>,
                  <span class="va">Year</span> <span class="op">==</span> <span class="fl">2015</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">Entity</span>, <span class="va">`Deaths - Road injuries - Sex: Both - Age: All Ages (Number)`</span><span class="op">:</span><span class="va">`Terrorism (deaths)`</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -292,7 +279,7 @@ Each week a new data set is posted and participants experiment to create new vis
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></div>
-<div class="next"><a href="slides.html"><span class="header-section-number">20</span> Making slides for presentations</a></div>
+<div class="next"><a href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -332,7 +319,7 @@ Each week a new data set is posted and participants experiment to create new vis
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-16.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

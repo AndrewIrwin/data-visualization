@@ -1,6 +1,8 @@
-# Incomplete sections
+# Working with factors and dates {#factors-dates}
 
 
+
+And some other bonus topics.
 
 
 ## Working with strings
@@ -365,6 +367,17 @@ na.omit(dt3)
 ```
 
 
+## Multi-panel figures 
+
+patchwork 
+cowplot
+hiding and combining guides
+Adding tags
+Creating space for a legend
+
+marginal plots (histograms, densities)
+
+
 ## Further reading
 
 * A blog post about [missing values](https://www.njtierney.com/post/2020/09/17/missing-flavour/) and data types
@@ -372,11 +385,6 @@ na.omit(dt3)
 
 ## Move elsewhere
 
-### Making slide presentations
-
-### Building up figures step by step
-
-- cover of 1060 book
 
 ### Testing data and calculations
 
