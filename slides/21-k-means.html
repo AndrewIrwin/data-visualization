@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## k-means clustering
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-03-05 (updated: 2021-02-19)
+
+---
+
+class: middle
+
+
+
+# Plan
+
+* What is k-means clustering and why do we use it?
+
+* Demonstration 
+
+
+---
+class: middle
+### What is k-means?
+
+* A tool to place observations in discrete groups
+
+* Based on a distance calculated on several variables
+
+* You decide how many groups to use (but there is guidance)
+
+* There are variations on the algorithm and other methods (not discussed in this course)
+
+---
+## Sample data
+
+
+```r
+gapminder_ss &lt;- gapminder %&gt;%
+  filter(year == 2007) %&gt;% select(-year)
+gapminder_ss %&gt;% select(-country, -continent) %&gt;% arrange(-lifeExp) %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE)
+```
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; lifeExp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; pop &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; gdpPercap &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 82.603 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 127467972 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31656.0681 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 82.208 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6980412 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39724.9787 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 81.757 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 301931 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36180.7892 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 81.701 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7554661 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 37506.4191 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 81.235 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20434176 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 34435.3674 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.941 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40448191 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28821.0637 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.884 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9031088 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33859.7484 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.745 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6426679 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25523.2771 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.657 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 61083916 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30470.0167 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.653 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33390141 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36319.2350 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.546 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58147733 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28569.7197 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.204 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4115771 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25185.0091 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 80.196 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4627926 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49357.1902 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.972 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4553009 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47143.1796 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.829 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8199783 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36126.4927 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.762 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16570613 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36797.9333 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.483 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10706290 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27538.4119 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.441 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10392226 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33692.6051 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.425 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 60776238 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33203.2613 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.406 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82400996 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 32170.3744 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 79.313 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5238460 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33207.0844 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.885 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4109086 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40675.9964 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.782 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4133884 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9645.0614 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.746 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3942491 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19328.7090 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.623 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49044790 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23348.1397 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.553 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16284741 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13171.6388 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.400 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23174294 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28718.2768 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.332 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5468120 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35278.4187 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.273 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11416987 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8948.1029 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.242 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 301139947 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42951.6531 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 78.098 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10642836 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20509.6478 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 77.926 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2009245 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25768.2576 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 77.588 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2505559 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47306.9898 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76.486 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10228744 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22833.3085 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76.442 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 798094 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7670.1226 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76.423 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3600523 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5937.0295 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76.384 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3447496 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10611.4630 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 76.195 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 108700891 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11977.5750 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75.748 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4493312 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14619.2227 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75.640 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3204897 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22316.1929 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75.635 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 708573 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29796.0483 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75.563 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38518241 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15389.9247 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75.537 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3242173 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9809.1856 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 75.320 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40301927 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12779.3796 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.994 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13755680 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6873.2623 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.852 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4552198 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7446.2988 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.663 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5447502 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18678.3144 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.543 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 684736 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9253.8961 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.249 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 85262356 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2441.5764 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.241 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24821286 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12451.6558 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.143 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19314747 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4184.5481 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 74.002 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10150265 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9786.5347 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73.952 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6036914 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12057.4993 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73.923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10276158 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7092.9230 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73.747 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26084662 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11415.8057 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73.422 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4018332 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3025.3498 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73.338 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9956108 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18008.9444 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 73.005 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7322858 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10680.7928 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.961 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1318683096 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4959.1149 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.899 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5675356 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2749.3210 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.889 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 44227550 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7006.5804 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.801 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1250882 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10956.9911 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.777 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27601038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21654.8319 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.567 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2780132 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7320.8803 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.535 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6053193 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4519.4612 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22276056 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10808.4756 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.396 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20378239 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3970.0954 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.390 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190010647 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9065.8008 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.301 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33333216 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6223.3675 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 72.235 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9319622 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6025.3748 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.993 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3921278 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10461.0587 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.878 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6939688 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5728.3535 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.777 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71158647 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8458.2764 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.752 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6667147 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4172.8385 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.688 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 91077287 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3190.4810 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.421 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28674757 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7408.9056 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.338 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80264543 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5581.1810 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 71.164 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33757175 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3820.1752 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 70.964 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 69453570 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11605.7145 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 70.650 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 223547000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3540.6516 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 70.616 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 65068149 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7458.3963 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 70.259 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12572928 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5186.0500 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 70.198 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7483763 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3548.3308 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 69.819 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1056608 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18008.5092 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 67.297 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23301725 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1593.0655 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 66.803 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2874127 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3095.7723 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 65.554 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9119152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3822.1371 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 65.528 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 199579 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1598.4351 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 65.483 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 169270617 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2605.9476 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 65.152 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 710960 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 986.1479 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 64.698 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1110396331 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2452.2104 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 64.164 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3270065 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1803.1515 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 64.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 150448339 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1391.2538 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 63.785 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28901790 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1091.3598 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 63.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12267493 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1712.4721 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 62.698 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22211743 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2280.7699 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 62.069 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47761980 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 944.0000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 60.916 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8502814 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1201.6372 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 60.022 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22873338 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1327.6089 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 59.723 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14131858 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1713.7787 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 59.545 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27499638 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4471.0619 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 59.448 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1688359 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 752.7497 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 59.443 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19167654 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1044.7701 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 58.556 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42292929 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2602.3950 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 58.420 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5701579 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 882.9699 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 58.040 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4906585 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 641.3695 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 56.867 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12894865 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 619.6769 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 56.735 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1454867 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13206.4845 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 56.728 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8078314 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1441.2849 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 56.007 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9947814 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 942.6542 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 55.322 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3800610 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3632.5578 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 54.791 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 496374 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2082.4816 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 54.467 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12031795 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1042.5816 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 54.110 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 35610177 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1463.2493 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 52.947 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76511887 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 690.8056 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 52.906 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2055080 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4811.0604 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 52.517 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38139640 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1107.4822 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 52.295 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14326203 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1217.0330 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 51.579 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 551201 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12154.0897 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 51.542 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29170398 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1056.3801 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 50.728 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1639131 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12569.8518 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 50.651 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10238807 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1704.0637 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 50.430 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17696293 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2042.0952 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 49.580 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8390505 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 430.0707 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 49.339 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43997828 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9269.6578 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 48.328 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18013409 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1544.7501 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 48.303 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13327079 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 759.3499 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 48.159 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9118773 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 926.1411 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 46.859 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 135031164 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2013.9773 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 46.462 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64606759 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 277.5519 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 46.388 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1472041 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 579.2317 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 46.242 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8860588 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 863.0885 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 45.678 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3193942 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 414.5073 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 44.741 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4369038 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 706.0165 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 43.828 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31889923 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 974.5803 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 43.487 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12311143 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 469.7093 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 42.731 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12420476 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4797.2313 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 42.592 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2012649 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1569.3314 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 42.568 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6144562 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 862.5408 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 42.384 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11746035 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1271.2116 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 42.082 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19951656 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 823.6856 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 39.613 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1133066 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4513.4806 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: middle
+## Data preprocessing
+
+* Approximately normally distributed, same variance
+
+
+```r
+gapminder_scaled &lt;- gapminder_ss %&gt;% 
+  mutate(s_logPop = scale(log10(pop)), 
+         s_logGDP = scale(log10(gdpPercap)),
+         s_lifeExp = scale(lifeExp))
+```
+&lt;img src="21-k-means_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+## Perform k-means
+
+
+```r
+kclust1 &lt;- kmeans(gapminder_scaled %&gt;%
+                    select(s_lifeExp, s_logGDP, s_logPop),
+                  centers = 6)
+tidy(kclust1) %&gt;% kable()
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; s_lifeExp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; s_logGDP &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; s_logPop &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; size &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; withinss &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cluster &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0.8071429 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.8637524 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.7117190 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25.45758 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0.7392166 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6496379 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.5756151 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.65497 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; -0.5553538 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.3687870 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1.2065990 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21.71864 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; -0.7254081 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.8996504 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6648119 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.35126 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 0.3879030 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0361519 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.7828359 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.20109 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; -1.5165304 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1.3211358 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1372148 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16.19225 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+## Display clustering
+
+
+```r
+kclust1 %&gt;% augment(gapminder_scaled) %&gt;%
+  ggplot(aes(y = lifeExp, x = log10(pop), color = .cluster, shape = continent)) + 
+  geom_point() + theme(aspect.ratio = .8)
+```
+
+&lt;img src="21-k-means_files/figure-html/unnamed-chunk-5-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+## How good is the clustering?
+
+&lt;img src="21-k-means_files/figure-html/unnamed-chunk-6-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+# When to use k-means?
+
+* When the goal is to make categories from continuous variables
+
+* Each observation is placed in a cluster
+
+* Based on distance between observations, calculated across all variables
+
+  * Usually best to scale (and maybe transform in other ways) each variable
+
+* Select the number of clusters based on partitioning of "sums of squares"
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+---
+class: middle, inverse
+
+## Task
+
+* Practice k-means
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

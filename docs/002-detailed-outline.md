@@ -267,7 +267,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
    <td style="text-align:right;"> 19 </td>
    <td style="text-align:left;"> Finding data </td>
-   <td style="text-align:left;"> [Bonus task](#task-b8) </td>
+   <td style="text-align:left;"> [Notes](#data-sources), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=78996e65-ca31-466c-bbf6-acd40181af1f), [Bonus task](#task-b8) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
@@ -285,14 +285,14 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 26 Feb </td>
    <td style="text-align:right;"> 20 </td>
    <td style="text-align:left;"> Reproducible reports </td>
-   <td style="text-align:left;"> [Task 12](#task-12) </td>
+   <td style="text-align:left;"> [Notes](#reproduce), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9c2e26ca-968f-4ecd-89e0-acd40185864f), [Task 12](#task-12) </td>
   </tr>
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 9</strong></td></tr>
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>
    <td style="text-align:right;"> 21 </td>
    <td style="text-align:left;"> PCA </td>
-   <td style="text-align:left;"> [Notes](#PCA), [Slides](slides/19-PCA.html), [Task 13](#task-13) </td>
+   <td style="text-align:left;"> [Notes](#PCA), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=beabb68d-78e2-49e4-9136-acd40189ef0c), [Slides](slides/19-PCA.html), [Task 13](#task-13) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>
@@ -316,7 +316,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed  3 Mar </td>
    <td style="text-align:right;"> 22 </td>
    <td style="text-align:left;"> MDS </td>
-   <td style="text-align:left;"> [Notes](#mds) </td>
+   <td style="text-align:left;"> [Notes](#mds), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ed2c66f6-9a8d-46ef-96f2-acd50003c117) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Thu  4 Mar </td>
@@ -328,7 +328,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri  5 Mar </td>
    <td style="text-align:right;"> 23 </td>
    <td style="text-align:left;"> K-means </td>
-   <td style="text-align:left;"> [Notes](#k-means), [Task 14](#task-14) </td>
+   <td style="text-align:left;"> [Notes](#k-means), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=15200ac3-1dbc-486d-b3b4-acd50008bc14), [Task 14](#task-14) </td>
   </tr>
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 10</strong></td></tr>
 <tr>

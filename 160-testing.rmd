@@ -1,11 +1,21 @@
 # How do I know it's right? {#testing}
 
-An introduction to testing.
+```{r include=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(janitor)
+library(naniar)
+library(pointblank)
+library(dlookr)
+```
+
+## An introduction to testing.
 
 You've made a plot. All the calculations necessary are in a single Rmd file -- data collecting, cleaning, and creating the figure. You can revise the data and reproduce the plot any time you want.
 
-But then a thought occurrs to you -- how do I know I did the calculations correctly? The computer saves us time by doing calculations for us, but the price is that you can't keep track of everything it does.
+But then a thought occurs to you -- how do I know I did the calculations correctly? The computer saves us time by doing calculations for us, but the price is that you can't keep track of everything it does.
 
+Maybe the data you analyzed has a lot of observations -- too many to check by hand. What if there is a problem with the data? Or maybe the data are fine, but something went wrong when you read them into R. 
 There are lots of ways for errors to creep in. Missing values when you thought there were none. Unexpected levels of factors (too many or too few). Detectable errors in the data such as impossible values.
 
 The best idea to counteract all these problems is testing. The secret is to get the computer to perform the tests for you.
@@ -14,38 +24,168 @@ A lot of testing is done for you before you even start R: most (we hope all) the
 
 The most important reason to test is that you will catch mistakes. Possibly the second most important reason for doing testing -- and being explicit about it -- is that it can help the people who use your analysis have more confidence in it. This includes you in the future!
 
+## Checking analysis and visualizations
+
+Once you have a preliminary analysis, develop a testing plan. Methods that can help:
+
+* Perform your analysis on a small subset of your data that you can understand without computer help. This is the "sample calculation" method of testing
+* Perform your analysis on simulated or fake "data" designed to test certain cases (independent variables, strong dependence, etc.) that will allow you to check your methods and interpretation
+* Perform your calculations or visualizations two different ways, to check your understanding. This is especially useful if you have a fast and a slow way of doing a calculation. Use the slow way as a check on the fast method.
+
+## Data errors
+
+What kinds of errors can appear in data?
+
+* Misspellings, upper/lower case inconsistency, extra spaces
+* Duplicated observations
+* Miss-coded missing data (-999, 0)
+* Inconsistently formatted dates and times
+* Impossible values arising from typographical errors
+* Data in wrong columns
+* All the data can look correct, but the methods may have changed, creating "silent" errors
+
+Why do data sometimes have errors? 
+
+* To answer this, you need to know about the process used to create the data. Were some data output by a particular machine or software package that has errors? Were the data typed in by a single person? Were many different people, who may have had different understandings of the data collection goals, involved? Were the data collected over a long period of time, when machines, people, and goals may have changed?
+
+How can you find errors in data?
+
+* Make summary tables
+* Plot histograms and densities
+* Write tests to test data belong to a legitimate set of values
+
+What do you do with errors?
+
+* Keep original data, so you can revert the change in case of a misunderstanding
+* Log changes and describe error
+* Write tests to check for future errros
+* Communicate with the people who collected the data and the people who will receive the analysis
+
+## Sample data
+
+The following data were collected by a class of students testing their ability to identify a jelly bean flavour by blindfolded testing. Much of our sense of taste comes from smell, so there were two treatments: a control with the participant was blindfolded and a treatment where the participant was blindfolded and blocked their nose to reduce the sense of smell. Groups of students entered their data into a single Google docs spreadsheet which was exported to the csv file below.
+
+This dataset has a lot of problems, but they are very typical for data entered by a group of people who are not directly involved in the systematic analysis of the data with a software package like R. (They are not attuned to the problems of data errors.)  Take a look at the file and see how many problems you can find before continuing.
+
+```{r}
+jelly <- read_csv("static/jelly-bean-data.csv") %>% clean_names()
+# jelly %>% kable() %>% scroll_box()
+```
+
+You should always look at data. For a first look, `View`, `skim` (in the skimr), and `glimpse` functions are useful and will identify some problems.
+
+```{r}
+glimpse(jelly)
+# skimr::skim(jelly)
+```
+
+There are many columns that have no heading and are purely missing data. Before getting rid of those columns, let's be sure they are **all** missing using the `miss_var_summary` function from the `naniar` package.
+
+```{r}
+jelly %>% miss_var_summary()
+```
+
+Now we will get rid of those data.
+
+```{r}
+jelly <- jelly %>% select(-(x7:x27))
+```
+
+The `dlookr` package provides a similar table, plus it adds a count of the number of distinct values for each variable.
+
+```{r}
+diagnose(jelly)
+```
+
+There are at least 12% missing values in each variable, so there may be some rows that are completely missing. If you take another look at the data you will see that a lot of rows are all NA. Let's get rid of them.
+First find the rows that are all NA.
+
+```{r}
+jelly %>% rowwise() %>%
+  mutate(n_na = sum(is.na(across()))) %>% 
+  filter(n_na == ncol(jelly)) %>%
+  head()
+```
+
+Now remove them:
+
+```{r}
+jelly <- jelly %>% rowwise() %>%
+  mutate(n_na = sum(is.na(across()))) %>% 
+  ungroup() %>%
+  filter(n_na < ncol(jelly)) %>%
+  select(-n_na)
+```
+
+
+We still don't know what most of thse variables mean, but already one thing should stand out. The variable `accuracy_0_incorrect_1_correct` presumably should only be 0 or 1, but has three different values. We may not care about the initials of the investigator, but we might be concerned about the fact that there are 88 missing values (about 50 more than the all blank rows we removed.) 
+
 ## Data quality assurance
 
-dlookr
-https://cran.r-project.org/web/packages/dlookr/vignettes/diagonosis.html
+You can get an interactive report on your data using agents from the `pointblank` package. (See the documentation linked in further reading for examples.) Let's test a few things
 
-pointblank
+* are any rows missing for all values?
+* are any values of the accuracy variable not 0 or 1?
+* is reaction time and trial_number numeric? (We know the answer already, but I'll show how to test this condition.)
+* are all the rows distinct? (It's unlikely, but not impossible to get the same result twice.)
 
-dataMaid https://github.com/ekstroem/dataMaid
-(does codebooks too)
+First we will write the tests.
 
-## Software testing
+```{r}
+my_test <- jelly %>% 
+  create_agent(actions = action_levels(warn_at = 1)) %>%
+   # conjointly(~ col_vals_null(., everything())) %>%  # tests for any null, not all null. Want test to fail if any one value is not null
+  col_vals_in_set(accuracy_0_incorrect_1_correct, c(0,1)) %>%
+  col_is_numeric(vars(trial_number, reaction_time_in_sec)) %>%
+  col_vals_gt(reaction_time_in_sec, 0) %>%
+  rows_distinct() 
+```
 
-develop code
-wrap in a function
-testthat
-tinytest
+Now use the tests to get a report.
 
+```{r}
+my_test %>% interrogate() 
+```
 
+This package also has a helpful function to produce a structured report on your whole dataset.
 
-## Example data with known results
+```{r}
+jelly %>% scan_data()
+```
 
-things change -- data formats, packages you depend on.
-Might even have someone fix a mistake in a package you use, which could fix an error you didn't know was there... but you'd like to know that.
+## Data cleaning
 
-tiny data sets
-pathological datasets with problematic data
-demonstration data with sample output
+Data cleaning tasks are very individual and can take considerable creativity. Here we'll just try a few.
+
+Let's look at the values of `flavour`. It seems like there are a lot of them.
+
+```{r}
+jelly %>% count(flavour) %>% arrange(-n)
+```
+
+We definitely have some duplication. I'll do one correction -- changing all letters to lower case so different capitalizations don't duplicate flavours. (This simple change eliminates 13 different values of flavour.) I'll leave the other corrections as an exercise. You will find spelling errors, different codings (and, +, or neither), and one missing flavour.
+
+```{r}
+jelly %>% mutate(flavour = tolower(flavour)) %>%
+  count(flavour) %>% arrange(-n)
+```
+
+## At the end of your analysis
+
+* Provide a relatively simple dataset together with analysis results that can be used to verify your code is working the same way in the future, or that someone who develops a new way of analysing the data can use for comparison
+* Document any testing processes you used for your data and for your computer code so that later users will know what problems you looked for
+* Document any problems you found in the data and what steps you took to fix the problems
+* Describe any weaknesses in your method which anticipate might cause problems for future users
 
 ## Lessons for this course
 
-We are not integrating testing into our work in this course. This one little lesson is here to alert you to this problem, ensure you know many people think carefully about this, and to show you the first steps to developing a good quality assurance plan. Be aware that testing takes time -- possibly as much time as "the rest" of the work you do for data analysis.
+We are not integrating testing into our work in this course. This lesson is here to alert you to this problem, ensure you know many people think carefully about this, and to show you the first steps to developing a good quality assurance plan. Be aware that testing takes time -- possibly as much time as "the rest" of the work you do for data analysis.
 
+## Further reading
 
-
+* [Data cleaning](https://towardsdatascience.com/the-ultimate-guide-to-data-cleaning-3969843991d4) overview
+* [pointblank](https://github.com/rich-iannone/pointblank) documentation and examples
+* [dlookr](https://cran.r-project.org/web/packages/dlookr/vignettes/diagonosis.html) documentation and examples
+* [dataMaid](https://github.com/ekstroem/dataMaid) documentation for data cleaning
+* For testing R code, look at [tinytest](https://cran.r-project.org/web/packages/tinytest/vignettes/using_tinytest.pdf) and [testthat](https://testthat.r-lib.org/)
 

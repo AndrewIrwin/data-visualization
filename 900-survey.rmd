@@ -1,0 +1,37 @@
+---
+title: "Course outcomes survey"
+author: "Andrew Irwin"
+date: "19/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Comfort level before the course with
+R
+Rstudio
+Visualizing data
+ggplot in particular
+Computing tools (git, R markdown)
+Independent learning about computing
+
+Comfort level after the course with
+R
+Rstudio
+Visualizing data
+ggplot in particular
+Computing tools (git, R markdown)
+Independent learning about computing
+
+
+Topics that were most interesting or might be most valuable 
+
+Topics that need more time in the course
+
+Topics that I missed that should be included (basic or advanced)
+
+Other suggestions for improvement
+

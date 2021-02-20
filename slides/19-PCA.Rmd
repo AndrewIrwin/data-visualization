@@ -3,7 +3,7 @@ title: "Data Visualization"
 subtitle: "PCA: Principal Component Analysis"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
-date: "2021-02-24 (updated: `r Sys.Date()`)"
+date: "2021-03-01 (updated: `r Sys.Date()`)"
 ratio: "16:9"
 output:
   xaringan::moon_reader:

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 23 Making slides for presentations | Data Visualization</title>
+<title>Chapter 24 Making slides for presentations | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -56,17 +56,18 @@
 <li><a class="" href="smoothing.html"><span class="header-section-number">17</span> GAM and LOESS smoothing</a></li>
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">20</span> Principal component analysis</a></li>
-<li><a class="" href="mds.html"><span class="header-section-number">21</span> Multidimensional scaling</a></li>
-<li><a class="" href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></li>
-<li><a class="active" href="slides.html"><span class="header-section-number">23</span> Making slides for presentations</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">25</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">26</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">27</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">28</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">29</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">30</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="reproduce.html"><span class="header-section-number">20</span> Reproducible reports</a></li>
+<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
+<li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
+<li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
+<li><a class="active" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">26</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">27</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">28</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">29</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">30</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">31</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -75,47 +76,47 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="slides" class="section level1" number="23">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="slides" class="section level1" number="24">
 <h1>
-<span class="header-section-number">23</span> Making slides for presentations<a class="anchor" aria-label="anchor" href="#slides"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24</span> Making slides for presentations<a class="anchor" aria-label="anchor" href="#slides"><i class="fas fa-link"></i></a>
 </h1>
 <p>Since data visualization is ultimately about communication, you will often need to talk to people about what you’ve learned. In this lesson I’ll provide some suggestions on how to make a good presentation about a data visualization or analysis. I’ll show you how to use R markdown and Rstudio to make visual aids for your presentation.</p>
-<div id="what-makes-a-good-presentation" class="section level2" number="23.1">
+<div id="what-makes-a-good-presentation" class="section level2" number="24.1">
 <h2>
-<span class="header-section-number">23.1</span> What makes a good presentation?<a class="anchor" aria-label="anchor" href="#what-makes-a-good-presentation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.1</span> What makes a good presentation?<a class="anchor" aria-label="anchor" href="#what-makes-a-good-presentation"><i class="fas fa-link"></i></a>
 </h2>
 <p>I good presentation tells a story that engages your audience, has a clear purpose advanced through a predictable arc from introduction through evidence to a conclusion. There are many ways to design a good presentation, but most people find that practice and reflection on what works for your own personal goals and audience are a key part of the trajectory.</p>
 </div>
-<div id="why-we-make-slides" class="section level2" number="23.2">
+<div id="why-we-make-slides" class="section level2" number="24.2">
 <h2>
-<span class="header-section-number">23.2</span> Why we make slides<a class="anchor" aria-label="anchor" href="#why-we-make-slides"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.2</span> Why we make slides<a class="anchor" aria-label="anchor" href="#why-we-make-slides"><i class="fas fa-link"></i></a>
 </h2>
 <p>Visual aides, commonly called <a href="https://en.wikipedia.org/wiki/Presentation_slide">slides</a>, can help you communicate with your audience. Computer software makes it easy to generate lots of slides full of text that the presenter reads. This is generally a bad approach as the audience’s attention is focussed more on reading than listening and as a result they tend to be less engaged with your presentation. There are, of course, many different opinions on this topic!</p>
 <p>In data visualization, we make slides to display the visualization! That’s the primary reason for the slide, so your slides should focus on the visualization. The visualization should be large enough to be seen by everyone watching. This is much easier when eveyone watches a presenation by teleconferencing. In a classroom, when the slide is far away, you must be careful not to put too much on a slide and not to make any element of the slide too small.</p>
 </div>
-<div id="how-to-make-slides-using-rstudio" class="section level2" number="23.3">
+<div id="how-to-make-slides-using-rstudio" class="section level2" number="24.3">
 <h2>
-<span class="header-section-number">23.3</span> How to make slides using Rstudio<a class="anchor" aria-label="anchor" href="#how-to-make-slides-using-rstudio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.3</span> How to make slides using Rstudio<a class="anchor" aria-label="anchor" href="#how-to-make-slides-using-rstudio"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are several packages to help you make slides with R markdown. The method we will use is well integrated into Rstudio. To create a presentation, select the menu File &gt; New File &gt; R Presentation. As with an R markdown document, this will give you a sample file to edit which tells you about the basics of the formatting. The R markdown tools you already know for text formatting, list making, and titles all work here. Of course, you can insert R code blocks and have the output included as well. All of this is described in the help available from the menu Help &gt; Markdown quick reference.</p>
 <p>The most important new idea is how to start a new slide. It’s simple. Just write a title for your slide on a line by itself, then put a line of equals signs (at least 3) on the next line.</p>
 </div>
-<div id="formatting-tricks" class="section level2" number="23.4">
+<div id="formatting-tricks" class="section level2" number="24.4">
 <h2>
-<span class="header-section-number">23.4</span> Formatting tricks<a class="anchor" aria-label="anchor" href="#formatting-tricks"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.4</span> Formatting tricks<a class="anchor" aria-label="anchor" href="#formatting-tricks"><i class="fas fa-link"></i></a>
 </h2>
-<div id="hiding-code" class="section level3" number="23.4.1">
+<div id="hiding-code" class="section level3" number="24.4.1">
 <h3>
-<span class="header-section-number">23.4.1</span> Hiding code<a class="anchor" aria-label="anchor" href="#hiding-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.4.1</span> Hiding code<a class="anchor" aria-label="anchor" href="#hiding-code"><i class="fas fa-link"></i></a>
 </h3>
 <p>Usually in a presenation you don’t want to show your computer code – its too complex to be easily digested by the audience. (This course, is naturally, a bit of an exception!) You can hide output by writing the start of your code block like this:</p>
 <p><code>{r echo=FALSE}</code></p>
 <p>The main options for showing code, the results of code, warning messages, and errors are summarized <a href="https://rmarkdown.rstudio.com/lesson-3.html">here</a>. The option <code>fig.cap="Message"</code> is particularly useful for adding text. (The options are: echo, eval, include, warning, message, which can all be TRUE or FALSE.)</p>
 </div>
 </div>
-<div id="changing-the-size-and-position-of-a-plot" class="section level2" number="23.5">
+<div id="changing-the-size-and-position-of-a-plot" class="section level2" number="24.5">
 <h2>
-<span class="header-section-number">23.5</span> Changing the size and position of a plot<a class="anchor" aria-label="anchor" href="#changing-the-size-and-position-of-a-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.5</span> Changing the size and position of a plot<a class="anchor" aria-label="anchor" href="#changing-the-size-and-position-of-a-plot"><i class="fas fa-link"></i></a>
 </h2>
 <p>The following code chunk options let you control the size and position of a plot:</p>
 <ul>
@@ -126,27 +127,27 @@
 </ul>
 <p>For more figure formatting options look <a href="">here</a></p>
 </div>
-<div id="hiding-a-title" class="section level2" number="23.6">
+<div id="hiding-a-title" class="section level2" number="24.6">
 <h2>
-<span class="header-section-number">23.6</span> Hiding a title<a class="anchor" aria-label="anchor" href="#hiding-a-title"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.6</span> Hiding a title<a class="anchor" aria-label="anchor" href="#hiding-a-title"><i class="fas fa-link"></i></a>
 </h2>
 <p>Adding <code>title: false</code> below your row of equals signs will hide the title, making more room for a graphic.</p>
 </div>
-<div id="two-column-formatting" class="section level2" number="23.7">
+<div id="two-column-formatting" class="section level2" number="24.7">
 <h2>
-<span class="header-section-number">23.7</span> Two column formatting<a class="anchor" aria-label="anchor" href="#two-column-formatting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.7</span> Two column formatting<a class="anchor" aria-label="anchor" href="#two-column-formatting"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you want to divide your slide into a left and right column, put a row with three stars (<code>***</code>) between the material for the left and right sides. You can adjust the amount of space used by each side by adding <code>left: 70%</code> (for example) below your row of equals signs that starts the slide.</p>
 </div>
-<div id="summary-2" class="section level2" number="23.8">
+<div id="summary-2" class="section level2" number="24.8">
 <h2>
-<span class="header-section-number">23.8</span> Summary<a class="anchor" aria-label="anchor" href="#summary-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.8</span> Summary<a class="anchor" aria-label="anchor" href="#summary-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>This was an introduction to making slides with R. I’ve picked a method which is relatively easy to use and is well integrated with Rstudio. There are a lot of other options, as with most tasks in R.</p>
 </div>
-<div id="further-reading-16" class="section level2" number="23.9">
+<div id="further-reading-18" class="section level2" number="24.9">
 <h2>
-<span class="header-section-number">23.9</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-16"><i class="fas fa-link"></i></a>
+<span class="header-section-number">24.9</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-18"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>Introduction to <a href="https://support.rstudio.com/hc/en-us/articles/200486468">making slide presentations</a> with Rstudio</p></li>
@@ -156,25 +157,33 @@
 <li><p>How to make R markdown <a href="https://codingclubuc3m.rbind.io/post/2019-09-24/">presentation slides</a></p></li>
 </ul>
 </div>
+<div id="na" class="section level2" number="24.10">
+<h2>
+<span class="header-section-number">24.10</span> NA<a class="anchor" aria-label="anchor" href="#na"><i class="fas fa-link"></i></a>
+</h2>
+<p>NA</p>
+
+</div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="k-means.html"><span class="header-section-number">22</span> K-means clustering</a></div>
-<div class="next"><a href="factors-dates.html"><span class="header-section-number">24</span> Working with factors and dates</a></div>
+<div class="prev"><a href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></div>
+<div class="next"><a href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#slides"><span class="header-section-number">23</span> Making slides for presentations</a></li>
-<li><a class="nav-link" href="#what-makes-a-good-presentation"><span class="header-section-number">23.1</span> What makes a good presentation?</a></li>
-<li><a class="nav-link" href="#why-we-make-slides"><span class="header-section-number">23.2</span> Why we make slides</a></li>
-<li><a class="nav-link" href="#how-to-make-slides-using-rstudio"><span class="header-section-number">23.3</span> How to make slides using Rstudio</a></li>
+<li><a class="nav-link" href="#slides"><span class="header-section-number">24</span> Making slides for presentations</a></li>
+<li><a class="nav-link" href="#what-makes-a-good-presentation"><span class="header-section-number">24.1</span> What makes a good presentation?</a></li>
+<li><a class="nav-link" href="#why-we-make-slides"><span class="header-section-number">24.2</span> Why we make slides</a></li>
+<li><a class="nav-link" href="#how-to-make-slides-using-rstudio"><span class="header-section-number">24.3</span> How to make slides using Rstudio</a></li>
 <li>
-<a class="nav-link" href="#formatting-tricks"><span class="header-section-number">23.4</span> Formatting tricks</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#hiding-code"><span class="header-section-number">23.4.1</span> Hiding code</a></li></ul>
+<a class="nav-link" href="#formatting-tricks"><span class="header-section-number">24.4</span> Formatting tricks</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#hiding-code"><span class="header-section-number">24.4.1</span> Hiding code</a></li></ul>
 </li>
-<li><a class="nav-link" href="#changing-the-size-and-position-of-a-plot"><span class="header-section-number">23.5</span> Changing the size and position of a plot</a></li>
-<li><a class="nav-link" href="#hiding-a-title"><span class="header-section-number">23.6</span> Hiding a title</a></li>
-<li><a class="nav-link" href="#two-column-formatting"><span class="header-section-number">23.7</span> Two column formatting</a></li>
-<li><a class="nav-link" href="#summary-2"><span class="header-section-number">23.8</span> Summary</a></li>
-<li><a class="nav-link" href="#further-reading-16"><span class="header-section-number">23.9</span> Further reading</a></li>
+<li><a class="nav-link" href="#changing-the-size-and-position-of-a-plot"><span class="header-section-number">24.5</span> Changing the size and position of a plot</a></li>
+<li><a class="nav-link" href="#hiding-a-title"><span class="header-section-number">24.6</span> Hiding a title</a></li>
+<li><a class="nav-link" href="#two-column-formatting"><span class="header-section-number">24.7</span> Two column formatting</a></li>
+<li><a class="nav-link" href="#summary-2"><span class="header-section-number">24.8</span> Summary</a></li>
+<li><a class="nav-link" href="#further-reading-18"><span class="header-section-number">24.9</span> Further reading</a></li>
+<li><a class="nav-link" href="#na"><span class="header-section-number">24.10</span> NA</a></li>
 </ul>
 
       <div class="book-extra">
@@ -192,7 +201,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-17.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

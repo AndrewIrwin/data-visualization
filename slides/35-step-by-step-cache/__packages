@@ -1,0 +1,17 @@
+base
+knitr
+ggplot2
+ggrepel
+rnaturalearth
+rnaturalearthdata
+sp
+rgeos
+tidyverse
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+gapminder

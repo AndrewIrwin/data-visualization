@@ -1,0 +1,144 @@
+---
+title: "Data Visualization"
+subtitle: "Reproducible reports"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-02-26 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+my_theme = theme_bw() + 
+  theme(text = element_text(size=18))
+```
+
+# Plan
+
+* What is reproducibility?
+
+* Why do I care?
+
+* Specific role of 
+
+  * R markdown
+  * git and GitHub
+
+* Skills to learn today
+
+* Communication, trust, and error detection
+
+---
+class: middle
+# What makes work reproducible?
+
+* Clear documentation of all steps and tools used
+
+* Ease of reproducing the work
+
+* Consider the consequences of small changes to 
+
+  * data
+  * visualization formatting
+  
+* Considet the consequences of a change in team membership
+
+---
+class: middle
+# Why do I care if my work is reproducible?
+
+* Helps "future you"
+
+* Lets you make changes, update data, fix errors easily
+
+* Improves communication
+
+* Increases value of your work
+
+---
+class: middle
+# What is the role of R markdown?
+
+Combines
+
+* explanation
+
+* R code
+
+* results
+
+* a final report
+
+Easy to detect if a report is complete (Does it knit?)
+
+---
+class: middle
+# What is the role of git and GitHub?
+
+* Allows you to make versions, track changes in code, data, and report
+
+* Makes it easy to share with others 
+
+* Facilitates team work
+
+---
+class: middle
+# Detailed observations for this course
+
+* Always check that your document knits
+
+* Don't use absolute paths to files on your computer (`/Users/airwin/Documents/xxx`)
+
+  * Use Rprojects and `here` instead
+  
+* Carefully format text in R markdown reports
+
+  * Headings with `#`
+  * Bold, italics, and other formatting with `*`, `**` and `_`
+
+* Control output from R with "chunk options"
+
+---
+class: middle
+# Ten simple rules
+
+1. Track how results were produced
+1. Avoid manual manipulation of data
+1. Archive exact versions of software
+1. Version control
+1. Record intermediate results in standard formats
+1. Record random number seeds
+1. Store the raw data used to make plots
+1. Hierarchical analysis output, revealing layers of detail
+1. Connect explanatory text to underlying results
+1. Provide public access to scripts and results
+
+Adapted from Sandve et al. 10.1371/journal.pcbi.1003285
+
+
+---
+class: middle, inverse
+
+## Further reading
+
+The course notes are quite different from this mini-lecture. They emphasize practical skills and tips. 
+
+The notes contain specific suggestions for using R markdown which will be explored in the task for this lesson.
+
+---
+class: middle, inverse
+
+## Task
+
+* Practice specific tasks for formatting R markdown documents from course notes
+

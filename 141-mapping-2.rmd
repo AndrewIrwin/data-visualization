@@ -1,0 +1,59 @@
+# Mapping part two
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(leaflet)
+```
+
+In the previous lesson we made maps to show geographical data using map outlines from R packages. 
+In this lesson we will look at making maps that build on detailed basemaps from online mapping systems. [Google maps](https://www.google.com/maps) is a well known service; [OpenStreetMap](https://www.openstreetmap.org/) is a community-built free alternative. We will use the `leaflet` package which can xxxx
+
+Let's make a map and place a marker at the location of the Mathematics and Statistics Department. You can pan and zoom this map from within Rstudio and in the knitted output.
+
+```{r}
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-63.5932, lat=44.63697, popup="Math & Stats, Dalhousie U")
+m  # Print the map
+```
+
+
+Let's use the city database we used in the MDS lesson to label the 61 cities we selected in that lesson.
+
+```{r}
+cities <- read_csv("static/selected_cities.csv")
+m2 <- leaflet(data = cities) %>%
+  addTiles() %>%
+  addCircleMarkers(~ lng, ~lat, label = ~city)
+m2
+```
+
+There are several different [basemaps](https://rstudio.github.io/leaflet/basemaps.html), or tiles, that you can use. A fun one to look at -- because it changes frequently is a radar map for the USA from Iowa State.
+
+```{r}
+m3 <- leaflet(data = cities) %>%
+  addTiles() %>%
+  addCircleMarkers(~ lng, ~lat, label = ~city) %>%
+  addWMSTiles("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
+    layers = "nexrad-n0r-900913",
+    options = WMSTileOptions(format = "image/png", transparent = TRUE),
+    attribution = "Weather data © 2012 IEM Nexrad") %>%
+  setView(-93.65, 42.0285, zoom = 4)
+m3
+```
+
+It's common to see "chloropleth" maps of the USA in which geographic regions are coloured to show a quantitative or categorical variable, such as population density or election results. These maps are less common in Canada due to two main factors: the geographic concentration of the population in cities means that area maps are even less informative than for the USA and the latitude range of Canada makes for some severe challenges when plotting whole-country territory and province chloropleth maps on commonly used projections. Nevertheless, it is possible. Here's a demonstration with some random numbers for "data".
+
+```{r}
+library(geojsonio)
+pal <- colorNumeric("viridis", NULL)  # make a viridis palette
+canada <- geojson_read("https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson", what="sp")
+my_values = runif(13, 0, 10) 
+canada %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addPolygons(fillColor = ~pal(my_values)) %>%
+  addLegend(pal = pal, values = my_values, opacity = 1.0)
+
+```

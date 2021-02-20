@@ -48,6 +48,7 @@ Naturally there are websites that curate lists of data available from other site
 * The [awesome public datasets](https://github.com/awesomedata/awesome-public-datasets) project collects high quality public data, organized thematically. 
 * This is one person's collection of [data](https://github.com/tacookson/data) of various sources
 * [r-dir](https://r-dir.com/reference/datasets.html) has a list of freely available datasets
+* World Bank [economic development indicators](https://datacatalog.worldbank.org/dataset/world-development-indicators)
 
 ### Canadian COVID data
 
@@ -136,4 +137,10 @@ Once you have done work to find data, you will also want to do some research to 
 ## Distribution of data
 
 If you want to distribute an analysis of data or redistribute the original data, please be sure to respect the terms of use of the data. Many people encourage the use of [FAIR](https://en.wikipedia.org/wiki/FAIR_data) data usage principles.
+
+## Further reading
+
+* [Importing data](https://r4ds.had.co.nz/data-import.html) from R4DS
+* Roger Peng's notes on [importing data](https://bookdown.org/rdpeng/rprogdatascience/getting-data-in-and-out-of-r.html)
+* An older but comprehensive guide to [importing data](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
 

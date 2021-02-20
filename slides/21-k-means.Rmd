@@ -1,0 +1,156 @@
+---
+title: "Data Visualization"
+subtitle: "k-means clustering"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-05 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(here)
+#library(GGally)
+#library(ggfortify)
+library(kableExtra)
+library(gapminder)
+library(broom)
+library(plotly)
+# library(vegan)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+# Plan
+
+* What is k-means clustering and why do we use it?
+
+* Demonstration 
+
+
+---
+class: middle
+### What is k-means?
+
+* A tool to place observations in discrete groups
+
+* Based on a distance calculated on several variables
+
+* You decide how many groups to use (but there is guidance)
+
+* There are variations on the algorithm and other methods (not discussed in this course)
+
+---
+## Sample data
+
+```{r}
+gapminder_ss <- gapminder %>%
+  filter(year == 2007) %>% select(-year)
+gapminder_ss %>% select(-country, -continent) %>% arrange(-lifeExp) %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+
+
+---
+class: middle
+## Data preprocessing
+
+* Approximately normally distributed, same variance
+
+```{r}
+gapminder_scaled <- gapminder_ss %>% 
+  mutate(s_logPop = scale(log10(pop)), 
+         s_logGDP = scale(log10(gdpPercap)),
+         s_lifeExp = scale(lifeExp))
+```
+```{r echo = FALSE, fig.align='center', out.width="70%", fig.asp = .6}
+gapminder_scaled %>% ggplot() +
+  geom_density(aes(s_logPop, color = "Population")) + 
+  geom_density(aes(s_logGDP, color = "GDP")) + 
+  geom_density(aes(s_lifeExp, color = "Life Expectancy")) + theme(aspect.ratio = .6)
+```
+
+---
+## Perform k-means
+
+```{r}
+kclust1 <- kmeans(gapminder_scaled %>%
+                    select(s_lifeExp, s_logGDP, s_logPop),
+                  centers = 6)
+tidy(kclust1) %>% kable()
+```
+
+
+---
+## Display clustering
+
+```{r fig.align="center", out.width="60%", fig.asp=0.8}
+kclust1 %>% augment(gapminder_scaled) %>%
+  ggplot(aes(y = lifeExp, x = log10(pop), color = .cluster, shape = continent)) + 
+  geom_point() + theme(aspect.ratio = .8)
+```
+
+---
+class: middle
+## How good is the clustering?
+
+```{r echo = FALSE, out.width="60%", fig.align="center"}
+kclusts2 <- 
+  tibble(k = 1:9) %>%
+  mutate(
+    kclust = map(k, ~kmeans(gapminder_scaled %>% select(s_lifeExp, s_logGDP, s_logPop),
+                            centers = .x)),
+    tidied = map(kclust, tidy),
+    glanced = map(kclust, glance),
+    augmented = map(kclust, augment, gapminder_scaled)
+  )
+clusters2    <- kclusts2 %>% unnest(cols = c(tidied))
+assignments2 <- kclusts2 %>% unnest(cols = c(augmented))
+clusterings2 <- kclusts2 %>% unnest(cols = c(glanced))
+clusterings2 %>% mutate(proportion_within = tot.withinss / totss) %>%
+  ggplot(aes(x = k, y = proportion_within)) + 
+  geom_line() + geom_point() + theme_bw() +
+  scale_x_continuous(breaks = 1:9) + ylim(0,1)
+```
+
+---
+class: middle
+# When to use k-means?
+
+* When the goal is to make categories from continuous variables
+
+* Each observation is placed in a cluster
+
+* Based on distance between observations, calculated across all variables
+
+  * Usually best to scale (and maybe transform in other ways) each variable
+
+* Select the number of clusters based on partitioning of "sums of squares"
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+---
+class: middle, inverse
+
+## Task
+
+* Practice k-means
+
+
+

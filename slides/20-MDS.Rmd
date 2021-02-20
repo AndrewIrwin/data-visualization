@@ -3,7 +3,7 @@ title: "Data Visualization"
 subtitle: "MDS: Multidimensional scaling"
 author: "Andrew Irwin, a.irwin@dal.ca"
 institute: "Math & Stats, Dalhousie University"
-date: "2021-02-26 (updated: `r Sys.Date()`)"
+date: "2021-03-03 (updated: `r Sys.Date()`)"
 ratio: "16:9"
 output:
   xaringan::moon_reader:
@@ -19,11 +19,12 @@ class: middle
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(tidyverse)
-library(GGally)
-library(ggfortify)
+library(here)
+#library(GGally)
+#library(ggfortify)
 library(kableExtra)
-library(broom)
-library(vegan)
+# library(broom)
+# library(vegan)
 my_theme = theme_classic() + 
   theme(text = element_text(size=18))
 ```
@@ -34,28 +35,89 @@ my_theme = theme_classic() +
 
 * Demonstration 
 
-* More demonstrations
+* Comparison with PCA
 
 ---
 class: middle
 ### What is MDS?
 
-* A tool to convert a distance, similarity, or dissimilarity matrix into a set of points in a plane
+* A tool to convert a distance or dissimilarity matrix into a set of points in a plane
 
-* Can be based on distances (using one of many metrics) or ranks of similarities, when it is called non-metric MDS (NMDS)
+* Can be based on distances (using one of many metrics) or ranks of dissimilarities, when it is called non-metric MDS (NMDS)
 
 * NMDS suitable if you can rank objects as being closer or farther away, by the scale of the quantification is skewed or not important
 
 
+---
+## Cites on a map
 
+```{r echo=FALSE, out.width = '90%', fig.align="center"}
+knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "mds-map-cache-1.png"))
+```
 
+---
+class: middle
+## MDS analysis
+
+* Use latitude and longitude of cities to compute distance between each pair
+
+* Use MDS on distance matrix to reconstruct relative positions
+
+---
+## Cites on a map
+
+```{r echo=FALSE, out.width = '90%', fig.align="center"}
+knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-5-1.png"))
+```
 
 
 ---
 class: middle
+## MDS analysis
 
-# Summary
+* Use latitude and longitude of cities to compute distance between each pair
 
+  * **How do we compute that distance? Euclidean? Great circle?**
+  
+* Use MDS on distance matrix to reconstruct relative positions
+
+---
+## Cites on a map
+
+```{r echo=FALSE, out.width = '90%', fig.align="center"}
+knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-6-1.png"))
+```
+
+---
+class: middle
+# How and when to use MDS?
+
+* When you can similar pairs of objects are
+
+  * How similar are the species in two communities?
+  
+  * How similar are two countries based on economic development?
+  
+* Columns are objects (sample locations, countries)
+
+* Be sure the observations (rows) are all measured in the same units
+
+  * Abundance
+  * Proportions
+  * Scaling or transformation may be required
+  
+---
+class: middle
+
+## How is MDS different from PCA?
+
+* PCA is a rotation and projection of data to select linear combinations of original variables that highlight variation
+
+* MDS converts pairwise distance or dissimilarity matrix into relative positions
+
+* Both make plots of points on abstract axes
+
+  * Possibly with arrows showing direction of change of other variables
 
 ---
 class: middle
@@ -63,74 +125,12 @@ class: middle
 # Further reading
 
 * Course notes
-* World Bank [economic development indicators](https://datacatalog.worldbank.org/dataset/world-development-indicators)
 
 ---
 class: middle, inverse
 
 ## Task
 
-* Task XX: Practice PCA and MDS methods
+* Practice PCA and MDS methods
 
----
 
-Read and subset data for use in this lesson.
-
-```{r}
-WDI <- read_csv("~/Downloads/WDI_csv/WDIData.csv")
-WDIss <- WDI %>% janitor::clean_names() %>% select(country_name, country_code, indicator_name, indicator_code, x2018, x2019)
-```
-
-What countries have data
-
-```{r}
-WDIss %>% group_by(country_name) %>% summarize(n = sum(!is.na(x2019))) %>% arrange(-n)
-```
-
-Make a list of countries to work with
-
-```{r}
-selected_countries <- WDIss %>% group_by(country_name) %>% summarize(n = sum(!is.na(x2019))) %>% filter(n > 500) %>%
-  pull(country_name)
-```
-
-Make a list of indicators - there are 1440 of them!
-
-```{r}
-WDIss %>% group_by(indicator_name) %>% summarize(n = sum(!is.na(x2019))) %>% arrange(-n)
-```
-
-Get the population of selected countries
-
-```{r}
-WDIss %>% filter(country_name %in% selected_countries) %>%
-  filter(indicator_name == "Population, total") %>%
-  arrange(-x2019)
-```
-
-Aggregated countries to remove
-
-```{r}
-remove_country_codes <- c("LMY", "MIC", "LMC", "SAS", "LAC", "TEC", "ECA")
-```
-
-Make a subset and make wide table
-
-```{r}
-M <- WDIss %>% filter(country_name %in% selected_countries) %>%
-  filter(!(country_code %in% remove_country_codes)) %>%
-  select(country_name, indicator_name, x2019) %>%
-  pivot_wider(names_from = country_name, values_from = x2019) %>% 
-  na.omit()
-```
-
-Make an NMDS
-
-```{r}
-distM <- dist(t(M[,-1]))
-m <- metaMDS(distM, trymax = 100)
-pca1 <- prcomp(scale(M[,-1]))
-autoplot(pca1)
-m <- metaMDS(scale(M[,2:50]), dist = "mahalanobis")
-ordiplot(m)
-```
