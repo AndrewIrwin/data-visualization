@@ -292,7 +292,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>
    <td style="text-align:right;"> 21 </td>
    <td style="text-align:left;"> PCA </td>
-   <td style="text-align:left;"> [Notes](#PCA), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=beabb68d-78e2-49e4-9136-acd40189ef0c), [Slides](slides/19-PCA.html), [Task 13](#task-13) </td>
+   <td style="text-align:left;"> [Notes](#pca), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=beabb68d-78e2-49e4-9136-acd40189ef0c), [Slides](slides/19-PCA.html), [Task 13](#task-13) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  1 Mar </td>

@@ -57,7 +57,7 @@
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
 <li><a class="" href="reproduce.html"><span class="header-section-number">20</span> Reproducible reports</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
+<li><a class="" href="pca.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
@@ -211,13 +211,13 @@
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##   carat cut     color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.32 Ideal   D     VS2      61.7    57   758  4.36  4.39  2.7 
-## 2  1.01 Premium G     VS2      62.1    60  5839  6.35  6.37  3.95
-## 3  0.52 Ideal   G     VS1      61.2    56  1803  5.19  5.23  3.19
-## 4  0.82 Premium I     IF       61.2    60  3224  6.03  5.99  3.68
-## 5  0.42 Premium F     VS1      61.2    58  1103  4.86  4.82  2.96</code></pre>
+##   carat cut       color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1.35  Ideal     G     VS1      62.2    57 10244  7.09  7.05  4.4 
+## 2 0.32  Very Good G     VVS1     61.2    59   876  4.41  4.45  2.71
+## 3 0.580 Good      G     VS1      59      62  1777  5.44  5.48  3.22
+## 4 0.31  Very Good G     SI1      61.7    55   462  4.37  4.38  2.7 
+## 5 0.31  Ideal     H     VVS1     61.5    56   707  4.34  4.38  2.68</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>

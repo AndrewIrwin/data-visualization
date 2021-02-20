@@ -57,7 +57,7 @@
 <li><a class="" href="collaboration.html"><span class="header-section-number">18</span> Collaborating with GitHub</a></li>
 <li><a class="" href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></li>
 <li><a class="active" href="reproduce.html"><span class="header-section-number">20</span> Reproducible reports</a></li>
-<li><a class="" href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
+<li><a class="" href="pca.html"><span class="header-section-number">21</span> Principal component analysis</a></li>
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
@@ -276,7 +276,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 <p>In data science, many people work with the <a href="https://www.python.org/">python</a> programming language. Python works with R markdown much the same way as R. Instead of starting a code chunk with <code>{r}</code>, begin with <code>{python}</code>. Here’s an example</p>
 <div class="sourceCode" id="cb241"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb241-1"><a href="reproduce.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb241-2"><a href="reproduce.html#cb241-2" aria-hidden="true" tabindex="-1"></a>[ random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) ]</span></code></pre></div>
-<pre><code>## [0.5197213114445584, 0.3010299981351474, 0.7567836778859689, 0.13342574256050088, 0.24360312148067553, 0.6415795468831639, 0.717725652557643, 0.6525812503212357, 0.3873939711089157, 0.5473209003058392]</code></pre>
+<pre><code>## [0.015094272619626259, 0.46773991868822884, 0.6216514998803183, 0.15727500109640813, 0.22347816810292087, 0.6362176204272811, 0.7568207398080973, 0.3971201803329304, 0.20311081816872134, 0.04761445064635084]</code></pre>
 <p>This example requires the R package <code>reticulate</code> and a working python interpreter that R can find.</p>
 <p>You can use the language <a href="https://julialang.org/">julia</a> in R markdown as well if you have the R package <code>JuliaCall</code> and julia installed on your computer.</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb243-1"><a href="reproduce.html#cb243-1" aria-hidden="true" tabindex="-1"></a>f(x) <span class="op">=</span> x <span class="op">^</span> <span class="fl">2</span></span></code></pre></div>
@@ -360,7 +360,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="data-sources.html"><span class="header-section-number">19</span> Finding and accessing data</a></div>
-<div class="next"><a href="PCA.html"><span class="header-section-number">21</span> Principal component analysis</a></div>
+<div class="next"><a href="pca.html"><span class="header-section-number">21</span> Principal component analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

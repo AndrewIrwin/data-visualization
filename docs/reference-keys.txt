@@ -232,7 +232,7 @@ customization-of-result-reporting-in-r-markdown
 documenting-which-packages-you-use
 using-other-languages-with-r-markdown
 further-reading-14
-PCA
+pca
 example-1
 second-example-penguins.
 further-reading-15
