@@ -65,7 +65,7 @@ If you are going to use this feature, you should read more about [caching in Rma
 
 R packages can be obtained from several sources. The most common sources are [CRAN](https://cran.r-project.org/), [Bioconductor](http://www.bioconductor.org/), and GitHub. The most widely used packages are on CRAN and they are checked regularly to be sure they still work. Anyone can distribute a package on GitHub and make it available, but these packages are missing a level of quality control. We have not used Bioconductor in this course; it is a CRAN-like repository forcussed on bioinformatics computations. 
 
-Installing a new package from CRAN is easy. If you put the appropriate `library` function call in your R markdown document, but you are missing the package, Rstudio will offer to download it for you. If the package is on GitHub, Rstudio won't be able to help. The usual process is to search for the package on Google, then install it. You will help yourself and your colleagues if you write the installation command next to your `library` function call, but preface it with a comment character `#` to stop the code from being executed.
+Installing a new package from CRAN is easy. If you put the appropriate `library` function call in your R markdown document, but you are missing the package, Rstudio will offer to download it for you. If the package is on GitHub, Rstudio won't be able to help. The usual process is to search for the package on Google, then install it. You will help yourself and your colleagues if you write the installation command next to your `library` function call, but preface it with a comment character `#` to stop the code from being executed. (There is an example at the top of the source for this file: click on "view source" in the lower right of this window.)
 
 ## Make your report look good
 
@@ -78,6 +78,8 @@ Specific recommendations:
 * Format your code nicely. Use a [style guide](https://style.tidyverse.org/). Or use an automatic code formatter such as styler (see below). Leave a blank line before and after your code chunk blocks.
 * Format your output nicely. This includes tables and figures. (See below.) 
 * knit your report, read the formatted version, revise the markdown source, and repeat.
+
+For examples of these formatting tips, see the source for this file: click on "view source" in the lower right of this window.
 
 Headings make your markdown document easier to navigate too. Look for the "show outline" button in the upper right of Rstudio's editing pane.
 
@@ -94,7 +96,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 
 Here is the same code (and its output) formatted using `styler`:
 
-```{r tidy='styler'}
+```{r tidy='styler', message=FALSE}
 gapminder %>% filter(continent =="Europe") %>% group_by(country) %>% summarize(mean_life_exp = mean(lifeExp), mean_GDP = mean(gdpPercap)) %>% ggplot(
 aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life_exp))) + geom_point()
 ```
@@ -162,6 +164,7 @@ In data science, many people work with the [python](https://www.python.org/) pro
 
 ```{python}
 import random
+random.seed(8678309)  # Set a random seed to make the work reproducible
 [ random.random() for i in range(10) ]
 ```
 
@@ -178,7 +181,7 @@ Both of these langauges have excellent tools for using them directly and can the
 
 [SQL](https://en.wikipedia.org/wiki/SQL) is a language for describing queries to a widely used style of database. R contains tools for interacting with SQL databases, but it can aslo generate SQL code from `dplyr` functions. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(dbplyr)
 library(RSQLite)
 con <- DBI::dbConnect(RSQLite::SQLite(), dbname = ":memory:")

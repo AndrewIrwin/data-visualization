@@ -10,7 +10,10 @@
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,13 +64,16 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">26</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">27</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">28</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">29</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">30</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">31</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">25</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">26</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">27</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">28</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">29</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">30</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">32</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">33</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">34</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -80,34 +86,6 @@
 <h1>
 <span class="header-section-number">21</span> Principal component analysis<a class="anchor" aria-label="anchor" href="#pca"><i class="fas fa-link"></i></a>
 </h1>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
-<span class="co"># library(gapminder)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sinhrks/ggfortify">ggfortify</a></span><span class="op">)</span> <span class="co"># for autoplot</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggobi.github.io/ggally">GGally</a></span><span class="op">)</span>  <span class="co"># for ggpairs</span></code></pre></div>
-<pre><code>## Registered S3 method overwritten by 'GGally':
-##   method from   
-##   +.gg   ggplot2</code></pre>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: 'kableExtra'</code></pre>
-<pre><code>## The following object is masked from 'package:dplyr':
-## 
-##     group_rows</code></pre>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/slowkow/ggrepel">ggrepel</a></span><span class="op">)</span></code></pre></div>
 <p>Datasets are said to be high-dimensional when several quantitative (or categorical) variables are recorded for each observation. Visualizing these datasets can be challenging, because visualizations work best with two dimensions and it is difficult to visualize 4 or more dimensions simultaneously. Many plots of pairs of variables can be displayed, but these projections require the viewer to try to reconstruct complex interactions among variables. <a href="https://en.wikipedia.org/wiki/Ordination_(statistics)">Ordination</a> is a suite of techniques for creating projections of high-dimensional data, usually in 2 or 3 dimensions. The name refers to the goal of <em>ordering</em> observations in a two dimensional plane so that observations which are close in the high-dimensional space are still close in the projected 2-dimensional space. Not all features of the original dataset can be maintained – information is lost – so some care must be taken when interpreting ordination plots. In this course we will examine Principal Component Analysis (in this lesson) and metric and non-metric dimensional analysis (in the next). There are many other techniques for <a href="https://en.wikipedia.org/wiki/Dimensionality_reduction">dimensionality reduction</a>.</p>
 <p>Principal component analysis (from now on, PCA) defines new variables which are weighted sums (a.k.a. linear combinations) of variables in your data. These sums are called principal components. The principal components can be used as new axes for your data, defining new coordinates for each point. The underlying transformation is a rotation (and usually a scaling) which is used to form a new coordinate system. The coordinate along each axis known as the first, second, etc., principal component. The rotation is chosen to maximize the variance in the first principal component. The second principal component is perpendicular to the first, but chosen so that as much of the remaining variation as possible is along that axis. And so on. In this way you can select as many of the first few principal components as you like to have a smaller set of variables that represent as much of the variation in the original data as possible.</p>
 <p>If you have studied linear algebra, you will want to know that the principal component analysis is performed with the following steps:</p>
@@ -126,11 +104,11 @@ This is explained in our applied linear algebra course (Math 2040) in section 11
 </h2>
 <p>A simple example in two dimensions is really helpful. No one does PCA on two variables, because you can just plot the data in a normal scatterplot, but as a demonstration it shows how the principal components are chosen.</p>
 <p>First, let’s look at a regular scatterplot of two variables that have a reasonably strong linear relationship. I’ve used <code>coord_fixed</code> to force the same scale on the vertical and horizontal axes, to make this plot easier to compare with the next plot we will draw.</p>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">speed</span>, y<span class="op">=</span><span class="va">dist</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
 <p>Now let’s perform the PCA. There are three results: the amount of variation accounted for by each principal component, the directions of the principal components along each of the original axes, and the coordinates of the observations along the principal component axes.</p>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pca1</span> <span class="op">&lt;-</span> <span class="va">cars</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>The <code>tidy</code> functions let you obtain</p>
 <ul>
@@ -138,8 +116,8 @@ This is explained in our applied linear algebra course (Math 2040) in section 11
 <li>the directions of the original axes along the new principal component axes (rotation)</li>
 <li>the original data transformed to the new principal component axes (scores)</li>
 </ul>
-<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"eigenvalues"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"eigenvalues"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:right;">
@@ -186,8 +164,8 @@ cumulative
 </tr>
 </tbody>
 </table></div>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"rotation"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"rotation"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:left;">
@@ -247,10 +225,10 @@ dist
 </tr>
 </tbody>
 </table></div>
-<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"PC"</span>, names_prefix <span class="op">=</span> <span class="st">"PC_"</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html">scroll_box</a></span><span class="op">(</span>height <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">scroll_box</span><span class="op">(</span>height <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:50; ">
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -819,32 +797,32 @@ PC_2
 </table></div>
 </div>
 <p>We can perform these calculations “by hand” following the linear algebra instructions:</p>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">carsM</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>  <span class="co"># If scale = TRUE, then use correlation matrix below</span>
 <span class="va">B1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">carsM</span><span class="op">)</span>  
 <span class="va">B2</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">carsM</span><span class="op">)</span> <span class="op">%*%</span> <span class="va">carsM</span> <span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">carsM</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>  <span class="co"># divide (M^T * M) by N-1 to get covariance matrix</span>
 <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">B1</span><span class="op">)</span><span class="op">$</span><span class="va">values</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 26.12524  3.08084</code></pre>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">B1</span><span class="op">)</span><span class="op">$</span><span class="va">vectors</span></code></pre></div>
 <pre><code>##           [,1]       [,2]
 ## [1,] 0.1656479 -0.9861850
 ## [2,] 0.9861850  0.1656479</code></pre>
 <p>The the “scores” output is equal to the original data multiplied by the rotation matrix.</p>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rotation</span> <span class="op">&lt;-</span> <span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"rotation"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>  <span class="co"># also available as  pca1$rotation</span>
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rotation</span> <span class="op">&lt;-</span> <span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"rotation"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>  <span class="co"># also available as  pca1$rotation</span>
 <span class="va">center</span> <span class="op">&lt;-</span> <span class="va">cars</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>speed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">speed</span><span class="op">)</span>, dist <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">dist</span><span class="op">)</span><span class="op">)</span> <span class="co"># also available as pca1$center</span>
-<span class="va">scores1</span> <span class="op">&lt;-</span> <span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">scores1</span> <span class="op">&lt;-</span> <span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co"># scores2 &lt;- t((t(cars) - pca1$center)) %*% pca1$rotation</span>
 <span class="va">scores2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">cars</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%*%</span> <span class="va">rotation</span></code></pre></div>
 <p>Now I’ll plot the data projected onto the principal components. Notice that it is wide and thin (especially compared to the previous plot) because the data have been rotated to arrange as much of the variation as possible in the horizontal direction.</p>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span> <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from<span class="op">=</span><span class="st">"PC"</span>, names_prefix <span class="op">=</span> <span class="st">"PC_"</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">PC_1</span>, y<span class="op">=</span><span class="va">PC_2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
 <p>An easy way to display the results of the PCA is to make a biplot using the <code>ggfortify</code> package. The biplot shows the observations as black dots and the original axes as red vectors. The option <code>scale=0</code> keeps the same scaling as in the original plot. In normal usage you would not have <code><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed()</a></code> in the original plot and you would not use <code>scale=0</code> in this plot.</p>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">pca1</span>, data<span class="op">=</span> <span class="va">cars</span>, loadings<span class="op">=</span><span class="cn">TRUE</span>, loadings.label<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="fl">0</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: `select_()` is deprecated as of dplyr 0.7.0.
 ## Please use `select()` instead.
@@ -852,12 +830,12 @@ PC_2
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
 <p>Normal use of <code>autoplot</code> would be to allow changing the scale of the two principal components (<code>scale = 1</code>) and to allow the axes to be scaled independently of each other (no <code><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed()</a></code>):</p>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">pca1</span>, data<span class="op">=</span> <span class="va">cars</span>, loadings<span class="op">=</span><span class="cn">TRUE</span>, loadings.label<span class="op">=</span><span class="cn">TRUE</span>, scale<span class="op">=</span><span class="fl">1</span>, variance_percentage <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
 <p>The <code>autoplot</code> function is convenient and you can customize many features using the options in <code>ggbiplot</code>. I like to know exactly how a plot is drawn to check my understanding, so I’ll show you how to reproduce this plot using <code>augment</code> and <code>ggplot</code>.</p>
 <p>We can make this plot (called a biplot) from the raw data by using a few scaling factors (lam, scaling) commonly used in these plots:</p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lam</span> <span class="op">&lt;-</span> <span class="va">pca1</span><span class="op">$</span><span class="va">sdev</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">pca1</span><span class="op">$</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
 <span class="va">scaling</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">scores2</span><span class="op">)</span>, <span class="fl">2</span>, <span class="va">max</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">rotation</span><span class="op">)</span>, <span class="fl">2</span>, <span class="va">max</span><span class="op">)</span> <span class="op">/</span> <span class="va">lam</span><span class="op">)</span> <span class="op">*</span> <span class="fl">0.8</span>
 <span class="va">ve</span> <span class="op">&lt;-</span> <span class="va">pca1</span><span class="op">$</span><span class="va">sdev</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">pca1</span><span class="op">$</span><span class="va">sdev</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>
@@ -874,9 +852,9 @@ PC_2
 ## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
 <p>If all you want is the scores and you don’t care about the scaling, you can just use <code>augment</code> and <code>ggplot</code>:</p>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pca1</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">augment</span><span class="op">(</span><span class="va">cars</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">.fittedPC1</span>, y<span class="op">=</span> <span class="va">.fittedPC2</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   <span class="co"># divide by lam[1] and lam[2] to get the scaled version</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
@@ -886,7 +864,7 @@ PC_2
 </h3>
 <p>The palmer penguin data have 4 quantitative variables. We will scale them all to have mean 0 and standard deviation 1, since the units and magnitude of the numbers are not comparable. We will colour points by speices to make the patterns easier to see.</p>
 <p><code>autoplot</code> has some quirks: the variable names must be quoted and colour must be spelled with a ‘u’. (Most <code>ggplot</code> functions allow for alternate spellings - color with and without a ‘u’, summarize with an ‘s’ instead of a ‘z’.) I don’t know of an easy way to use the <code>ggrepel</code> package with autoplot to avoid overprinting the text on the arrows or dots.</p>
-<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins_no_na</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span>
 <span class="va">pca2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span><span class="va">penguins_no_na</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">body_mass_g</span>, <span class="va">bill_length_mm</span>, <span class="va">bill_depth_mm</span><span class="op">)</span>, scale<span class="op">=</span><span class="cn">TRUE</span> <span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">pca2</span>, data <span class="op">=</span> <span class="va">penguins_no_na</span>, loadings<span class="op">=</span><span class="cn">TRUE</span>, loadings.label<span class="op">=</span><span class="cn">TRUE</span>,
@@ -894,25 +872,25 @@ PC_2
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Gentoo penguins are mostly distinguished by having the highest body mass. Adélie and Chinstrap penguins have similar masses, but are distinguished by dimensions of their bills and flippers. You can use <code>frame.type</code> to shade the areas containing
 data from each species to highlight where the points are concentrated (by color).</p>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">pca2</span>, data <span class="op">=</span> <span class="va">penguins_no_na</span>, loadings <span class="op">=</span> <span class="cn">TRUE</span>, loadings.label <span class="op">=</span> <span class="cn">TRUE</span>,
          colour <span class="op">=</span> <span class="st">'species'</span>, shape <span class="op">=</span> <span class="st">'island'</span>, 
          frame.type <span class="op">=</span> <span class="st">"norm"</span>, frame.level <span class="op">=</span> <span class="fl">0.90</span><span class="op">)</span>   <span class="co"># frame.type convex, norm, euclid, t; see ?ggbiplot</span></code></pre></div>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Without a PCA, you could attempt to see these patterns by making a complex array of scatterplots for each pair of variables.</p>
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguins_no_na</span> <span class="op">%&gt;%</span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">flipper_length_mm</span>, <span class="va">body_mass_g</span>, <span class="va">bill_length_mm</span>, <span class="va">bill_depth_mm</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://ggobi.github.io/ggally/reference/ggpairs.html">ggpairs</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu">ggpairs</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="121-PCA_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p>You should practice seeing how many of the pairwise differences in this pairs plot can be revealed in the single PCA.</p>
 <p>Here is a customized ggplot of the PCA results. I simplifed the work in the first example by not using the conventional scaling; instead I just picked scales for the arrows that looked good. <strong>Need to fix this.</strong></p>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rotation2</span> <span class="op">&lt;-</span> <span class="va">pca2</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"rotation"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">tidy</span><span class="op">(</span>matrix <span class="op">=</span> <span class="st">"rotation"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">PC</span>, names_prefix <span class="op">=</span> <span class="st">"PC"</span>, values_from <span class="op">=</span> <span class="va">value</span><span class="op">)</span> 
 <span class="va">pca2</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">penguins_no_na</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">augment</span><span class="op">(</span><span class="va">penguins_no_na</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">.fittedPC1</span>, y <span class="op">=</span> <span class="va">.fittedPC2</span>, color <span class="op">=</span> <span class="va">species</span>, shape <span class="op">=</span> <span class="va">island</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">rotation2</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, xend <span class="op">=</span> <span class="fl">3</span><span class="op">*</span><span class="va">PC1</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">3</span><span class="op">*</span><span class="va">PC2</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"blue"</span>,
@@ -968,7 +946,7 @@ data from each species to highlight where the points are concentrated (by color)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-19.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

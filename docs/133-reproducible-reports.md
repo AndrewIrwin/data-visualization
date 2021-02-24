@@ -67,7 +67,7 @@ If you are going to use this feature, you should read more about [caching in Rma
 
 R packages can be obtained from several sources. The most common sources are [CRAN](https://cran.r-project.org/), [Bioconductor](http://www.bioconductor.org/), and GitHub. The most widely used packages are on CRAN and they are checked regularly to be sure they still work. Anyone can distribute a package on GitHub and make it available, but these packages are missing a level of quality control. We have not used Bioconductor in this course; it is a CRAN-like repository forcussed on bioinformatics computations. 
 
-Installing a new package from CRAN is easy. If you put the appropriate `library` function call in your R markdown document, but you are missing the package, Rstudio will offer to download it for you. If the package is on GitHub, Rstudio won't be able to help. The usual process is to search for the package on Google, then install it. You will help yourself and your colleagues if you write the installation command next to your `library` function call, but preface it with a comment character `#` to stop the code from being executed.
+Installing a new package from CRAN is easy. If you put the appropriate `library` function call in your R markdown document, but you are missing the package, Rstudio will offer to download it for you. If the package is on GitHub, Rstudio won't be able to help. The usual process is to search for the package on Google, then install it. You will help yourself and your colleagues if you write the installation command next to your `library` function call, but preface it with a comment character `#` to stop the code from being executed. (There is an example at the top of the source for this file: click on "view source" in the lower right of this window.)
 
 ## Make your report look good
 
@@ -80,6 +80,8 @@ Specific recommendations:
 * Format your code nicely. Use a [style guide](https://style.tidyverse.org/). Or use an automatic code formatter such as styler (see below). Leave a blank line before and after your code chunk blocks.
 * Format your output nicely. This includes tables and figures. (See below.) 
 * knit your report, read the formatted version, revise the markdown source, and repeat.
+
+For examples of these formatting tips, see the source for this file: click on "view source" in the lower right of this window.
 
 Headings make your markdown document easier to navigate too. Look for the "show outline" button in the upper right of Rstudio's editing pane.
 
@@ -106,10 +108,6 @@ gapminder %>%
     aes(color = mean_life_exp, x = log10(mean_GDP), y = fct_reorder(country, mean_life_exp))
   ) +
   geom_point()
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 <img src="133-reproducible-reports_files/figure-html/unnamed-chunk-1-1.png" width="672" />
@@ -253,11 +251,12 @@ In data science, many people work with the [python](https://www.python.org/) pro
 
 ```python
 import random
+random.seed(8678309)  # Set a random seed to make the work reproducible
 [ random.random() for i in range(10) ]
 ```
 
 ```
-## [0.015094272619626259, 0.46773991868822884, 0.6216514998803183, 0.15727500109640813, 0.22347816810292087, 0.6362176204272811, 0.7568207398080973, 0.3971201803329304, 0.20311081816872134, 0.04761445064635084]
+## [0.3384735123832189, 0.9944778375442942, 0.27482639950589893, 0.8162715855993294, 0.1201299523948246, 0.6565046831819024, 0.36766801924268533, 0.02960201494828596, 0.1228032738500725, 0.7724028393148923]
 ```
 
 This example requires the R package `reticulate` and a working python interpreter that R can find.
@@ -293,20 +292,6 @@ Both of these langauges have excellent tools for using them directly and can the
 
 ```r
 library(dbplyr)
-```
-
-```
-## 
-## Attaching package: 'dbplyr'
-```
-
-```
-## The following objects are masked from 'package:dplyr':
-## 
-##     ident, sql
-```
-
-```r
 library(RSQLite)
 con <- DBI::dbConnect(RSQLite::SQLite(), dbname = ":memory:")
 copy_to(con, palmerpenguins::penguins, "penguins")
@@ -321,24 +306,6 @@ penguins_aggr <-
     across(ends_with("mm"), mean, .names = "AVG_{.col}"),
   )
 penguins_aggr
-```
-
-```
-## Warning: Missing values are always removed in SQL.
-## Use `SUM(x, na.rm = TRUE)` to silence this warning
-## This warning is displayed only once per session.
-```
-
-```
-## Warning: Missing values are always removed in SQL.
-## Use `var(x, na.rm = TRUE)` to silence this warning
-## This warning is displayed only once per session.
-```
-
-```
-## Warning: Missing values are always removed in SQL.
-## Use `mean(x, na.rm = TRUE)` to silence this warning
-## This warning is displayed only once per session.
 ```
 
 ```

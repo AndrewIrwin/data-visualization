@@ -396,7 +396,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 17 Mar </td>
    <td style="text-align:right;"> 28 </td>
    <td style="text-align:left;"> More about maps </td>
-   <td style="text-align:left;"> [Task 17](#task-17) </td>
+   <td style="text-align:left;"> [Notes](#mapping-2), [Task 17](#task-17) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Thu 18 Mar </td>
@@ -408,7 +408,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 19 Mar </td>
    <td style="text-align:right;"> 29 </td>
    <td style="text-align:left;"> Alternatives to maps </td>
-   <td style="text-align:left;"> [Task 18](#task-18) </td>
+   <td style="text-align:left;"> [Notes](#mapping-3), [Task 18](#task-18) </td>
   </tr>
   <tr grouplength="6"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 12</strong></td></tr>
 <tr>

@@ -10,7 +10,10 @@
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,13 +64,16 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="active" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">26</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">27</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">28</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">29</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">30</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">31</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">25</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">26</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">27</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">28</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">29</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">30</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">32</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">33</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">34</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -86,46 +92,46 @@
 <span class="header-section-number">23.1</span> Make clusters from points<a class="anchor" aria-label="anchor" href="#make-clusters-from-points"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s start by making 3 clusters from the quantitative variables in the Palmer penguins data. We omit missing data and scale each variable to have mean 0 and standard deviation 1. We don’t want the different scales each variable is measured on to give more weight to one variable compared to the other. (We might choose to give one variable more weight, but we don’t want that to be simply a consequence of the units used to report the variables.)</p>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">penguin_q</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">species</span>, 
                                  <span class="va">flipper_length_mm</span>, <span class="va">bill_length_mm</span>, <span class="va">bill_depth_mm</span>, <span class="va">body_mass_g</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="op">)</span> 
 <span class="va">kclust1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="va">penguin_q</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="op">)</span>,
                  centers <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p>The kclust object reports the means (centroid) of each cluster and the membership of each observation (1-3). We also get sum of squared deviations between the cluster mean and each observation. This is then compared to the total sums of squares, which is the sum of squared deviations from the mean if there was only one cluster. In our example, 72% of the total sums of squares is within clusters and the remainder (28%) is between clusters. This tells us that the three main clusters account for almost 75% of the squared deviations. This measure is the same one used in linear regression, which minimizes the total sum of squared deviations between the regression line and each observation.</p>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kclust1</span></code></pre></div>
-<pre><code>## K-means clustering with 3 clusters of sizes 123, 71, 148
+<pre><code>## K-means clustering with 3 clusters of sizes 87, 132, 123
 ## 
 ## Cluster means:
 ##   flipper_length_mm bill_length_mm bill_depth_mm body_mass_g
-## 1         1.1571696      0.6562677    -1.0983711   1.0901639
-## 2        -0.3004658      0.8898759     0.7564847  -0.4487199
-## 3        -0.8175594     -0.9723116     0.5499273  -0.6907503
+## 1        -0.2857869      0.6600059     0.8157307  -0.3737654
+## 2        -0.8899121     -1.0465260     0.4858415  -0.7694891
+## 3         1.1571696      0.6562677    -1.0983711   1.0901639
 ## 
 ## Clustering vector:
-##   [1] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-##  [38] 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3
-##  [75] 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 2
-## [112] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-## [149] 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-## [186] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-## [223] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-## [260] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2
-## [297] 3 2 2 2 2 2 2 2 3 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2
-## [334] 2 2 2 2 2 2 2 2 2
+##   [1] 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+##  [38] 2 2 2 2 2 1 2 2 2 2 2 1 2 2 2 1 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 1 2 2 2 1 2
+##  [75] 1 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 1 2 2 2 1 2 2 2 1 2 1 2 2 2 2 2 2 2 1 2 1
+## [112] 2 1 2 1 2 2 2 2 2 2 2 1 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+## [149] 2 2 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+## [186] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+## [223] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+## [260] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1
+## [297] 2 1 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1
+## [334] 1 1 1 1 1 1 1 1 1
 ## 
 ## Within cluster sum of squares by cluster:
-## [1] 143.15025  81.56839 155.25908
-##  (between_SS / total_SS =  72.1 %)
+## [1] 112.9852 122.1477 143.1502
+##  (between_SS / total_SS =  72.3 %)
 ## 
 ## Available components:
 ## 
 ## [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
 ## [6] "betweenss"    "size"         "iter"         "ifault"</code></pre>
 <p>These data can be presented in an easy to use table with <code>tidy</code>:</p>
-<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">kclust1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">tidy</span><span class="op">(</span><span class="va">kclust1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
 <th style="text-align:right;">
@@ -153,6 +159,52 @@ cluster
 <tbody>
 <tr>
 <td style="text-align:right;">
+-0.29
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+-0.37
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+112.99
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+-0.89
+</td>
+<td style="text-align:right;">
+-1.05
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+<td style="text-align:right;">
+-0.77
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:right;">
+122.15
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
 1.16
 </td>
 <td style="text-align:right;">
@@ -171,133 +223,89 @@ cluster
 143.15
 </td>
 <td style="text-align:left;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
--0.30
-</td>
-<td style="text-align:right;">
-0.89
-</td>
-<td style="text-align:right;">
-0.76
-</td>
-<td style="text-align:right;">
--0.45
-</td>
-<td style="text-align:right;">
-71
-</td>
-<td style="text-align:right;">
-81.57
-</td>
-<td style="text-align:left;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
--0.82
-</td>
-<td style="text-align:right;">
--0.97
-</td>
-<td style="text-align:right;">
-0.55
-</td>
-<td style="text-align:right;">
--0.69
-</td>
-<td style="text-align:right;">
-148
-</td>
-<td style="text-align:right;">
-155.26
-</td>
-<td style="text-align:left;">
 3
 </td>
 </tr>
 </tbody>
 </table></div>
 <p>Categorical variables (species) can be added to the resuls using <code>augment</code> as we have done with other models. We can then pick two variables and plot them along with the cluster identity and species. Here the colours show the cluster number and the shapes show the species. We can see that the clusters do not perfectly separate out observations by species, but there is a strong similarity. This means that the variables we selected are mostly, but not completely, sufficient to distingush the three species. Remember that we used 4 variables for the classification, not just the two shown here.</p>
-<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kc1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">kclust1</span>, <span class="va">penguin_q</span><span class="op">)</span>
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">kc1</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">kclust1</span>, <span class="va">penguin_q</span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">kc1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">bill_length_mm</span>, y <span class="op">=</span> <span class="va">bill_depth_mm</span>, color<span class="op">=</span><span class="va">.cluster</span>, shape<span class="op">=</span><span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="123-kmean_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>You can add the center of each cluster to the plot, but since the clustering was done on data scaled to have mean 0 and standard deviation 1, you must be careful to scale the data here as well.</p>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kc1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">kclust1</span>, <span class="va">penguin_q</span><span class="op">)</span>
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">kc1</span> <span class="op">&lt;-</span> <span class="fu">augment</span><span class="op">(</span><span class="va">kclust1</span>, <span class="va">penguin_q</span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">kc1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">bill_length_mm</span><span class="op">)</span>, 
                 y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">bill_depth_mm</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">.cluster</span>, shape <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">kclust1</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cluster</span><span class="op">)</span>, 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu">tidy</span><span class="op">(</span><span class="va">kclust1</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">cluster</span><span class="op">)</span>, 
              size <span class="op">=</span> <span class="fl">10</span>, shape <span class="op">=</span> <span class="st">"o"</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="123-kmean_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <p>We can make a table of the number of each species in each cluster using <code>summarize</code>. Adélie penguins make up most of cluster 1, with 8 observations appearing in cluster 3. Chinstrap penguins make up most of cluster 3, with 5 observations in cluster 1. All the Gentoo penguins are in cluster 2 and there are no other species of penguin in this cluster. This result should seem reasonable given all the previous exploration we have done on this data.</p>
-<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">kclust1</span>, data <span class="op">=</span> <span class="va">penguin_q</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">kclust1</span>, data <span class="op">=</span> <span class="va">penguin_q</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">count</span><span class="op">(</span><span class="va">.cluster</span>, <span class="va">species</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 3
 ##   .cluster species       n
 ##   &lt;fct&gt;    &lt;fct&gt;     &lt;int&gt;
-## 1 1        Gentoo      123
-## 2 2        Adelie        8
-## 3 2        Chinstrap    63
-## 4 3        Adelie      143
-## 5 3        Chinstrap     5</code></pre>
+## 1 1        Adelie       24
+## 2 1        Chinstrap    63
+## 3 2        Adelie      127
+## 4 2        Chinstrap     5
+## 5 3        Gentoo      123</code></pre>
 </div>
 <div id="example-2" class="section level2" number="23.2">
 <h2>
 <span class="header-section-number">23.2</span> Example 2<a class="anchor" aria-label="anchor" href="#example-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s take a look at a dataset with a lot more groups. The <code>mpg</code> dataset has several quantitative variables that might be useful for classifying cars (displ, cyl, cty, hwy). We can make a series of clusterings of these data and see how well they correspond to the class of the car (compact, subcompact, etc).</p>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kclust2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html">kmeans</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">cyl</span>, <span class="va">cty</span>, <span class="va">hwy</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">scale</span>, 
                   centers <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span></code></pre></div>
+<span class="fu">tidy</span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 7
 ##     displ      cyl    cty    hwy  size withinss cluster
 ##     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  
-## 1 -0.0814 -0.00492 -0.157 -0.128    84    63.5  1      
-## 2  1.24    1.31    -1.16  -1.20     55    20.2  2      
-## 3  1.44    1.31    -0.437 -0.141    15     7.31 3      
-## 4 -1.04   -1.14     1.05   0.988    80    87.1  4</code></pre>
+## 1 -1.32   -1.17     2.37   2.11     14     14.9 1      
+## 2  1.29    1.31    -1.01  -0.976    70     47.5 2      
+## 3 -0.974  -1.14     0.756  0.736    67     21.5 3      
+## 4 -0.0752  0.00914 -0.159 -0.127    83     61.8 4</code></pre>
 <p>Compare these clusters to the class of the cars. There are many classes of each car in some clusters.</p>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">kclust2</span>, <span class="va">mpg</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">.cluster</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 17 x 3
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">kclust2</span>, <span class="va">mpg</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">.cluster</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 19 x 3
 ##    .cluster class          n
 ##    &lt;fct&gt;    &lt;chr&gt;      &lt;int&gt;
-##  1 1        compact       13
-##  2 1        midsize       23
-##  3 1        minivan       10
-##  4 1        pickup        13
-##  5 1        subcompact     7
-##  6 1        suv           18
-##  7 2        pickup        20
-##  8 2        suv           35
-##  9 3        2seater        5
-## 10 3        midsize        2
-## 11 3        subcompact     5
-## 12 3        suv            3
-## 13 4        compact       34
-## 14 4        midsize       16
-## 15 4        minivan        1
-## 16 4        subcompact    23
-## 17 4        suv            6</code></pre>
+##  1 1        compact        5
+##  2 1        subcompact     9
+##  3 2        2seater        5
+##  4 2        midsize        2
+##  5 2        pickup        20
+##  6 2        subcompact     5
+##  7 2        suv           38
+##  8 3        compact       29
+##  9 3        midsize       16
+## 10 3        minivan        1
+## 11 3        pickup         1
+## 12 3        subcompact    14
+## 13 3        suv            6
+## 14 4        compact       13
+## 15 4        midsize       23
+## 16 4        minivan       10
+## 17 4        pickup        12
+## 18 4        subcompact     7
+## 19 4        suv           18</code></pre>
 <p>If we use <code>glance</code> we get to see how the sums of squares are partitioned. I’ll add a fifth variable that measures the proportion of sums of squares within compared to the total.</p>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://generics.r-lib.org/reference/glance.html">glance</a></span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>proportion_within <span class="op">=</span> <span class="va">tot.withinss</span> <span class="op">/</span> <span class="va">totss</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>proportion_within <span class="op">=</span> <span class="va">tot.withinss</span> <span class="op">/</span> <span class="va">totss</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 5
 ##   totss tot.withinss betweenss  iter proportion_within
 ##   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;             &lt;dbl&gt;
-## 1   932         178.      754.     3             0.191</code></pre>
+## 1   932         146.      786.     2             0.156</code></pre>
 <p>How can we decide how many clusters to make? Let’s compute the proportion of sums of squares accounted for by the clustering for 2, 3, 4, etc., clusters. We will use functions in <code>broom</code> to accomplish this including <code>nest</code> and <code>map</code>.</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kclusts2</span> <span class="op">&lt;-</span> 
   <span class="fu">tibble</span><span class="op">(</span>k <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>
@@ -308,26 +316,26 @@ cluster
     augmented <span class="op">=</span> <span class="fu">map</span><span class="op">(</span><span class="va">kclust</span>, <span class="va">augment</span>, <span class="va">mpg</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
 <p>That one object has a lot of information – the tidy and glance results on 9 clusterings plus the augmented data for each. Let’s extract them into 3 different tables to make the results easier to work with.</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clusters2</span>    <span class="op">&lt;-</span> <span class="va">kclusts2</span> <span class="op">%&gt;%</span> <span class="fu">unnest</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">tidied</span><span class="op">)</span><span class="op">)</span>
 <span class="va">assignments2</span> <span class="op">&lt;-</span> <span class="va">kclusts2</span> <span class="op">%&gt;%</span> <span class="fu">unnest</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">augmented</span><span class="op">)</span><span class="op">)</span>
 <span class="va">clusterings2</span> <span class="op">&lt;-</span> <span class="va">kclusts2</span> <span class="op">%&gt;%</span> <span class="fu">unnest</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">glanced</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>We can score each cluster according to the sums of squares as follows:</p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clusterings2</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>proportion_within <span class="op">=</span> <span class="va">tot.withinss</span> <span class="op">/</span> <span class="va">totss</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">k</span>, y <span class="op">=</span> <span class="va">proportion_within</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="123-kmean_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Seven clusters is slightly worse than 6, so that’s probably too many. Most of the decrease happens with 4 or 5 clusters, so that may be enough.</p>
 <p>Let’s plot the clusters. I’ll show the number of cylinders using a symbol; there are only 4 to show, so that won’t be too many to look at.</p>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">assignments2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>, y <span class="op">=</span> <span class="va">displ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
         <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">.cluster</span>, shape<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span> 
         <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">k</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">p1</span></code></pre></div>
 <div class="inline-figure"><img src="123-kmean_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p>We can try to make a facetted plot, showing car classification and clusters. There are 7 classes and 9 clusters, so that would make 63 facets, which is a lot to look at. I’ll select just the classifications with 4, 5, and 6 clusters.</p>
-<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">assignments2</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">k</span> <span class="op">&gt;=</span> <span class="fl">4</span>, <span class="va">k</span> <span class="op">&lt;=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>, y <span class="op">=</span> <span class="va">displ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
         <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">.cluster</span>, shape <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span> 
@@ -374,7 +382,7 @@ cluster
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-19.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

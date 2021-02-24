@@ -1,0 +1,24 @@
+# Instructor and TA notes {-}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ghclass)
+library(tidyverse)
+```
+
+Outline
+
+## Course goals
+
+## Course design notes
+
+## Using GitHub for student work
+
+### Creating assignments
+
+### Marking assignments
+
+### Working with the LMS
+
+## TA notes
+

@@ -1,6 +1,6 @@
 # Principal component analysis {#pca}
 
-```{r}
+```{r include=FALSE}
 library(tidyverse)
 library(broom)
 # library(gapminder)

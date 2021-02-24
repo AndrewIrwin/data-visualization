@@ -10,7 +10,10 @@
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,13 +64,16 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">26</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">27</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">28</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">29</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">30</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">31</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">25</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">26</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">27</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">28</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">29</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">30</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">32</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">33</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">34</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -130,7 +136,7 @@
 <span class="header-section-number">20.2.3</span> Finding and installing R packages<a class="anchor" aria-label="anchor" href="#finding-and-installing-r-packages"><i class="fas fa-link"></i></a>
 </h3>
 <p>R packages can be obtained from several sources. The most common sources are <a href="https://cran.r-project.org/">CRAN</a>, <a href="http://www.bioconductor.org/">Bioconductor</a>, and GitHub. The most widely used packages are on CRAN and they are checked regularly to be sure they still work. Anyone can distribute a package on GitHub and make it available, but these packages are missing a level of quality control. We have not used Bioconductor in this course; it is a CRAN-like repository forcussed on bioinformatics computations.</p>
-<p>Installing a new package from CRAN is easy. If you put the appropriate <code>library</code> function call in your R markdown document, but you are missing the package, Rstudio will offer to download it for you. If the package is on GitHub, Rstudio won’t be able to help. The usual process is to search for the package on Google, then install it. You will help yourself and your colleagues if you write the installation command next to your <code>library</code> function call, but preface it with a comment character <code>#</code> to stop the code from being executed.</p>
+<p>Installing a new package from CRAN is easy. If you put the appropriate <code>library</code> function call in your R markdown document, but you are missing the package, Rstudio will offer to download it for you. If the package is on GitHub, Rstudio won’t be able to help. The usual process is to search for the package on Google, then install it. You will help yourself and your colleagues if you write the installation command next to your <code>library</code> function call, but preface it with a comment character <code>#</code> to stop the code from being executed. (There is an example at the top of the source for this file: click on “view source” in the lower right of this window.)</p>
 </div>
 </div>
 <div id="make-your-report-look-good" class="section level2" number="20.3">
@@ -146,6 +152,7 @@
 <li>Format your output nicely. This includes tables and figures. (See below.)</li>
 <li>knit your report, read the formatted version, revise the markdown source, and repeat.</li>
 </ul>
+<p>For examples of these formatting tips, see the source for this file: click on “view source” in the lower right of this window.</p>
 <p>Headings make your markdown document easier to navigate too. Look for the “show outline” button in the upper right of Rstudio’s editing pane.</p>
 </div>
 <div id="code-formatting" class="section level2" number="20.4">
@@ -166,7 +173,6 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">mean_life_exp</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean_GDP</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">country</span>, <span class="va">mean_life_exp</span><span class="op">)</span><span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <div class="inline-figure"><img src="133-reproducible-reports_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
 <p>I suggest you write neat and easy to read code in your markdown documents. Don’t use automatic tidying as an excuse to make messy code.</p>
 </div>
@@ -176,11 +182,11 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 </h2>
 <p>The first line of a code chunk can be as simple as <code>{r}</code> but you can also include many options between the braces. The <a href="https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html">markdown book</a> describes the options available. Here I will demonstrate a few chunk options related to figures and formatting output.</p>
 <p>Knitting a document usually stops when an error is encountered. This is a safety measure to alert you to a document which is not reproducible becuase of errors. On rare occasions you may want to use the option <code>error=TRUE</code> to allow error messages to appear in knitted output and not stop the knitting process.</p>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="st">"A"</span></code></pre></div>
 <pre><code>## Error in 1 + "A": non-numeric argument to binary operator</code></pre>
 <p>You can output graphics in multiple file formats by adding <code>dev = c("png", "pdf")</code> (and other formats) to the chunk options. These files will be deleted unless you <a href="https://bookdown.org/yihui/rmarkdown-cookbook/keep-files.html#keep-files">reqest they be kept</a>, which is easily done by caching the results of at least one code chunk.</p>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-reproducible-reports_files/figure-html/cache_test_2-1.png" width="672"></div>
 <p>You can use chunk options to control whether the knitted document includes:</p>
@@ -203,7 +209,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 <span class="header-section-number">20.6</span> Documenting which packages you use<a class="anchor" aria-label="anchor" href="#documenting-which-packages-you-use"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you use R for long enough and with enough other people, you will discover that R packages get revised and don’t always work the same way as they used to. This can be a major impediment to reproducibility. The simplest solution to this problem is to document the R packages you use in your analysis by adding a line of code to the end of your report that lists the packages and their version numbers in use. By looking at your knitted output, a user having trouble (possibly you in the future!) can look to see which packages have changed.</p>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## R version 4.0.3 (2020-10-10)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
@@ -249,7 +255,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 ## [64] rvest_0.3.6          knitr_1.30           haven_2.3.1         
 ## [67] sass_0.2.0.9005</code></pre>
 <p>If you want to produce bibliographic citations for your packages you can use the <code>report</code> package:</p>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">report</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/report/reference/report.sessionInfo.html">cite_packages</a></span><span class="op">(</span><span class="op">)</span>  </code></pre></div>
 <pre><code>##   - H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 ##   - Hadley Wickham (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0. https://CRAN.R-project.org/package=stringr
@@ -264,7 +270,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 ##   - Makowski, D., Lüdecke, D., &amp; Ben-Shachar, M.S. (2020). Automated reporting as a practical tool to improve reproducibility and methodological best practices adoption. CRAN. Available from https://github.com/easystats/report. doi: .
 ##   - R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 ##   - Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686</code></pre>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># See also report::report(sessionInfo())</span></code></pre></div>
 <p>To absolutely guarantee you can use R code in the future, some applications will benefit from you keeping copies of all the required packages on your own computer system. The <a href="https://rstudio.github.io/packrat/">packrat</a> and <a href="https://github.com/RevolutionAnalytics/checkpoint">checkpoint</a> packages can help you manage packages. I have never felt the need to have this level of reproducibility, but I find it reassuring to know these tools exist.</p>
 </div>
@@ -274,14 +280,15 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 </h2>
 <p>R markdown is primarily designed to work with R, but there are many other software tools that are commonly combined with R. These specific tools are outside the goals of this course, but it is valuable to learn about connections between R, R markdown and other computer tools.</p>
 <p>In data science, many people work with the <a href="https://www.python.org/">python</a> programming language. Python works with R markdown much the same way as R. Instead of starting a code chunk with <code>{r}</code>, begin with <code>{python}</code>. Here’s an example</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb241-1"><a href="reproduce.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb241-2"><a href="reproduce.html#cb241-2" aria-hidden="true" tabindex="-1"></a>[ random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) ]</span></code></pre></div>
-<pre><code>## [0.015094272619626259, 0.46773991868822884, 0.6216514998803183, 0.15727500109640813, 0.22347816810292087, 0.6362176204272811, 0.7568207398080973, 0.3971201803329304, 0.20311081816872134, 0.04761445064635084]</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb240-1"><a href="reproduce.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb240-2"><a href="reproduce.html#cb240-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">8678309</span>)  <span class="co"># Set a random seed to make the work reproducible</span></span>
+<span id="cb240-3"><a href="reproduce.html#cb240-3" aria-hidden="true" tabindex="-1"></a>[ random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) ]</span></code></pre></div>
+<pre><code>## [0.3384735123832189, 0.9944778375442942, 0.27482639950589893, 0.8162715855993294, 0.1201299523948246, 0.6565046831819024, 0.36766801924268533, 0.02960201494828596, 0.1228032738500725, 0.7724028393148923]</code></pre>
 <p>This example requires the R package <code>reticulate</code> and a working python interpreter that R can find.</p>
 <p>You can use the language <a href="https://julialang.org/">julia</a> in R markdown as well if you have the R package <code>JuliaCall</code> and julia installed on your computer.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb243-1"><a href="reproduce.html#cb243-1" aria-hidden="true" tabindex="-1"></a>f(x) <span class="op">=</span> x <span class="op">^</span> <span class="fl">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb242-1"><a href="reproduce.html#cb242-1" aria-hidden="true" tabindex="-1"></a>f(x) <span class="op">=</span> x <span class="op">^</span> <span class="fl">2</span></span></code></pre></div>
 <pre><code>## f (generic function with 1 method)</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb245-1"><a href="reproduce.html#cb245-1" aria-hidden="true" tabindex="-1"></a>f.(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb244-1"><a href="reproduce.html#cb244-1" aria-hidden="true" tabindex="-1"></a>f.(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span></code></pre></div>
 <pre><code>## 5-element Array{Int64,1}:
 ##   1
 ##   4
@@ -290,15 +297,9 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 ##  25</code></pre>
 <p>Both of these langauges have excellent tools for using them directly and can they can be directly connected to R functions, but this method is available in R markdown. Related to the topic of interoperation of computing langauges, but departing from the topic of R markdown, you can also write C++ code in an R session and execute the compiled code directly from R.</p>
 <p><a href="https://en.wikipedia.org/wiki/SQL">SQL</a> is a language for describing queries to a widely used style of database. R contains tools for interacting with SQL databases, but it can aslo generate SQL code from <code>dplyr</code> functions.</p>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbplyr.tidyverse.org/">dbplyr</a></span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: 'dbplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:dplyr':
-## 
-##     ident, sql</code></pre>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbplyr.tidyverse.org/">dbplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span>
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span>
 <span class="fu">copy_to</span><span class="op">(</span><span class="va">con</span>, <span class="fu">palmerpenguins</span><span class="fu">::</span><span class="va"><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a></span>, <span class="st">"penguins"</span><span class="op">)</span>
 <span class="va">penguins</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">con</span>, <span class="st">"penguins"</span><span class="op">)</span>
@@ -312,15 +313,6 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
     <span class="fu">across</span><span class="op">(</span><span class="fu">ends_with</span><span class="op">(</span><span class="st">"mm"</span><span class="op">)</span>, <span class="va">mean</span>, .names <span class="op">=</span> <span class="st">"AVG_{.col}"</span><span class="op">)</span>,
   <span class="op">)</span>
 <span class="va">penguins_aggr</span></code></pre></div>
-<pre><code>## Warning: Missing values are always removed in SQL.
-## Use `SUM(x, na.rm = TRUE)` to silence this warning
-## This warning is displayed only once per session.</code></pre>
-<pre><code>## Warning: Missing values are always removed in SQL.
-## Use `var(x, na.rm = TRUE)` to silence this warning
-## This warning is displayed only once per session.</code></pre>
-<pre><code>## Warning: Missing values are always removed in SQL.
-## Use `mean(x, na.rm = TRUE)` to silence this warning
-## This warning is displayed only once per session.</code></pre>
 <pre><code>## # Source:   lazy query [?? x 11]
 ## # Database: sqlite 3.34.1 [:memory:]
 ##   species     N TOT_bill_length… TOT_bill_depth_… TOT_flipper_len…
@@ -331,13 +323,13 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 ## # … with 6 more variables: VAR_bill_length_mm &lt;dbl&gt;, VAR_bill_depth_mm &lt;dbl&gt;,
 ## #   VAR_flipper_length_mm &lt;dbl&gt;, AVG_bill_length_mm &lt;dbl&gt;,
 ## #   AVG_bill_depth_mm &lt;dbl&gt;, AVG_flipper_length_mm &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="fu">show_query</span><span class="op">(</span><span class="va">penguins_aggr</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "&lt;SQL&gt;"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 ## [2] "SELECT `species`, COUNT(*) AS `N`, SUM(`bill_length_mm`) AS `TOT_bill_length_mm`, SUM(`bill_depth_mm`) AS `TOT_bill_depth_mm`, SUM(`flipper_length_mm`) AS `TOT_flipper_length_mm`, VARIANCE(`bill_length_mm`) AS `VAR_bill_length_mm`, VARIANCE(`bill_depth_mm`) AS `VAR_bill_depth_mm`, VARIANCE(`flipper_length_mm`) AS `VAR_flipper_length_mm`, AVG(`bill_length_mm`) AS `AVG_bill_length_mm`, AVG(`bill_depth_mm`) AS `AVG_bill_depth_mm`, AVG(`flipper_length_mm`) AS `AVG_flipper_length_mm`"
 ## [3] "FROM `penguins`"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 ## [4] "GROUP BY `species`"</code></pre>
-<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 <p>What does using other tools have to do with making your work reproducible? R markdown is a flexible tool that lets you use more than just R, so if your workflow contains steps external to R, they can sometimes still be included in your report.</p>
 </div>
@@ -396,7 +388,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-19.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -10,7 +10,10 @@
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,13 +64,16 @@
 <li><a class="active" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">26</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">27</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">28</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">29</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">30</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">31</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">25</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">26</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">27</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">28</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">29</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">30</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">32</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">33</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">34</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -87,7 +93,7 @@
 </h3>
 <p>An easy to understand example of MDS starts with a matrix giving the distance between each pair of cities in a set. The MDS visualization then scatters these points across the plane, reconstructing the geographic separation of the points.</p>
 <p>The dataset below is built from a database of world cities, selected to have only cities of more than 5 million plus some cities in Canada. I included a maximum of 4 cities per country so that one one region of the globe was too strongly concentrated in points. You can get the data from <a href="https://simplemaps.com/resources/free-country-cities">simplemaps</a> and make your own subset.</p>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"static/selected_cities.csv"</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -104,24 +110,24 @@
 ##   population = col_double(),
 ##   id = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">cities</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">lng</span>, y<span class="op">=</span><span class="va">lat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="va">city</span><span class="op">)</span>, size<span class="op">=</span><span class="fl">2</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mymap</span> <span class="op">&lt;-</span> <span class="fu">get_stamenmap</span><span class="op">(</span>bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>left <span class="op">=</span> <span class="op">-</span><span class="fl">150</span>, bottom <span class="op">=</span> <span class="op">-</span><span class="fl">60</span>, right <span class="op">=</span> <span class="fl">175</span>, top <span class="op">=</span> <span class="fl">75</span><span class="op">)</span>, zoom<span class="op">=</span><span class="fl">3</span>, maptype <span class="op">=</span> <span class="st">"terrain-background"</span><span class="op">)</span>
 <span class="fu">ggmap</span><span class="op">(</span><span class="va">mymap</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cities</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">lng</span>, y<span class="op">=</span><span class="va">lat</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cities</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span><span class="va">lng</span>, label<span class="op">=</span><span class="va">city</span><span class="op">)</span>, size<span class="op">=</span><span class="fl">2</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/mds-map-cache-1.png" width="672"></div>
 <p>Now we calculate the distance between all pairs of cities. I’ve shown two ways to do this – using great circle distance along the surface of the Earth, and using a distance that projects the surface of the Earth onto a plane first. If the goal is to reconstruct the map shown above, use this projected distance. If you would like instead to show great-circle distances between cities in the plane, use the geodesic distance.</p>
-<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">city_distance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="va">cities</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">lng</span>, <span class="va">lat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co">#  distance in equirectangular projection</span>
   <span class="co"># https://en.wikipedia.org/wiki/Equirectangular_projection</span></code></pre></div>
 <p>Perform <a href="https://en.wikipedia.org/wiki/Multidimensional_scaling">MDS</a> (principal coordinates analysis). The direction of the
 two main axes could be reversed relative to the original map; I’ve reversed the x and y axes to match our customary view of the world.</p>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mds1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale</a></span><span class="op">(</span><span class="va">city_distance</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mds1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"V1"</span>, <span class="st">"V2"</span><span class="op">)</span>
 <span class="fu">bind_cols</span><span class="op">(</span><span class="va">cities</span>, <span class="fu">as_tibble</span><span class="op">(</span><span class="va">mds1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -132,7 +138,7 @@ two main axes could be reversed relative to the original map; I’ve reversed th
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Map reconstructed from equirectangular distance matrix"</span>,
        x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">city_distance</span> <span class="op">&lt;-</span> <span class="fu">rdist.earth</span><span class="op">(</span><span class="va">cities</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">lng</span>, <span class="va">lat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span>, 
                              miles <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># geodesic distance</span>
 <span class="va">mds1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale</a></span><span class="op">(</span><span class="va">city_distance</span><span class="op">)</span>
@@ -152,13 +158,13 @@ two main axes could be reversed relative to the original map; I’ve reversed th
 </h2>
 <p><a href="https://en.wikipedia.org/wiki/Morse_code">Morse code</a> is a way of sending text messages using just two symbols: dot and dash, which was designed to be transmitted by a person clicking a key to make sounds and the receiver listening to the sounds and translating the message as it arrives.</p>
 <p>The dataset below was created as part of an experiment to measure the rate at which patterns of sounds for one symbol were confused with sounds for a different symbol. The matrix is symmetric dissimilarity measure. Rows and columns vary across the 36 symbols tested (26 letters and 10 numeric digits). All diagonals are 0s. The off diagonal values are large if the sounds are not likely to be confuesed. Smaller dissimilarities correspond to symbols that are more likely to be confused. A small excerpt of the table is shown.</p>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">morse.dist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/morsecodes-dist.txt'</span>,
                           row.names <span class="op">=</span> <span class="fl">1</span>, head <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">morse.dist</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">morse.dist</span><span class="op">)</span>
-<span class="va">morse.dist</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec</a></span><span class="op">(</span><span class="fl">0</span>, monospace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/column_spec.html">column_spec</a></span><span class="op">(</span><span class="fl">1</span>, monospace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<span class="va">morse.dist</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">row_spec</span><span class="op">(</span><span class="fl">0</span>, monospace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">column_spec</span><span class="op">(</span><span class="fl">1</span>, monospace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;font-family: monospace;">
@@ -283,7 +289,7 @@ two main axes could be reversed relative to the original map; I’ve reversed th
 </tbody>
 </table></div>
 <p>Use the function <code>metaMDS</code> from the package <code>vegan</code> to perform the NMDS ordination. The <code>ordiplot</code> function shows the objects from the dissimilarity matrix on a two-dimensional “ordination plot”. Points that are closer together are more likely to be confused (they are less dissimilar).</p>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">NMDS</span> <span class="op">&lt;-</span> <span class="fu">metaMDS</span><span class="op">(</span><span class="va">morse.dist</span>, trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span>
 <span class="va">NMDS</span></code></pre></div>
 <pre><code>## 
@@ -301,13 +307,13 @@ two main axes could be reversed relative to the original map; I’ve reversed th
 ## Two convergent solutions found after 20 tries
 ## Scaling: centring, PC rotation 
 ## Species: scores missing</code></pre>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ordiplot</span><span class="op">(</span><span class="va">NMDS</span>, cex <span class="op">=</span> <span class="fl">1.5</span>, type <span class="op">=</span> <span class="st">'t'</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># stressplot(NMDS)</span></code></pre></div>
 <p>This next plot compares the distances in the original data to the distances as represented by the ordination. If the ordination represents the original data well, this will be close to a straight line. There is a point for every pairwise comparison. In this case there are 36 * 35 / 2 = 630 distances to compare. I have labeled some of the points with the largest distortion imposed by the ordination.</p>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">symbols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">NMDS</span><span class="op">$</span><span class="va">points</span><span class="op">)</span>
 <span class="va">NMDS</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dist"</span>, <span class="st">"dhat"</span>, <span class="st">"iidx"</span>, <span class="st">"jidx"</span><span class="op">)</span><span class="op">]</span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>comparison <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">symbols</span><span class="op">[</span><span class="va">iidx</span><span class="op">]</span>, <span class="st">"/"</span>, <span class="va">symbols</span><span class="op">[</span><span class="va">jidx</span><span class="op">]</span><span class="op">)</span>,
@@ -318,17 +324,17 @@ two main axes could be reversed relative to the original map; I’ve reversed th
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
 <p>You can also access the points from the ordination and make the “ordiplot” using ggplot. The relative position of points on the plat is the only thing that matters – any rotation or translation of the plot contains the same information.</p>
-<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">NMDS</span><span class="op">$</span><span class="va">points</span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span>rownames <span class="op">=</span> <span class="st">"Symbol"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">MDS1</span>, y <span class="op">=</span> <span class="va">MDS2</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="va">Symbol</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
 <code class="sourceCode R">  <span class="co"># geom_point(size = 0.5) + </span>
   <span class="co"># geom_text_repel(aes(label = Symbol))</span></code></pre></div>
 <p>You might want to understand the NMDS analysis in terms of some properties of the Morse Code signals. This table has the length (1-5) and the ratio of short to long (dots and dashes) signals in each symbol. The <code>envfit</code> function then finds the direction each of these variables increases most rapidly across the ordination plane. The <code>summary</code> reports the direction and the correlation between these variables and the position on the ordination plot. The arrow for “length” follows the pattern in the ordination very well, while the arrow for the ratio of short to long only accounts for about half of the variation in the ordination plot.</p>
-<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">morse.attr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/zdealveindy/anadat-r/master/data/morsecodes-attr.txt'</span>,
                          row.names <span class="op">=</span> <span class="fl">1</span>, head <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
 <span class="va">ef</span> <span class="op">&lt;-</span> <span class="fu">envfit</span><span class="op">(</span><span class="va">NMDS</span>, <span class="va">morse.attr</span><span class="op">)</span>
@@ -344,14 +350,14 @@ two main axes could be reversed relative to the original map; I’ve reversed th
 ## Permutation: free
 ## Number of permutations: 999</code></pre>
 <p>The arrows show the direction of most rapid average increase of each variable.</p>
-<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ordiplot</span><span class="op">(</span><span class="va">NMDS</span>, cex <span class="op">=</span> <span class="fl">1.5</span>, type <span class="op">=</span> <span class="st">'t'</span><span class="op">)</span></code></pre></div>
 <pre><code>## species scores not available</code></pre>
-<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ef</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="122-mds_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Here is a method to reproduce this plot using <code>ggplot</code>. First use <code><a href="https://rdrr.io/r/utils/str.html">str(ef)</a></code> to examine the structure of the result from <code>envfit</code>. Then plot the points and arrows using ggplot.</p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">arrows1</span> <span class="op">&lt;-</span> <span class="va">ef</span><span class="op">$</span><span class="va">vectors</span><span class="op">$</span><span class="va">arrows</span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span>rownames <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span>
 <span class="fu">as_tibble</span><span class="op">(</span><span class="va">NMDS</span><span class="op">$</span><span class="va">points</span>, rownames <span class="op">=</span> <span class="st">"code"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">MDS1</span>, y <span class="op">=</span> <span class="va">MDS2</span>, label <span class="op">=</span> <span class="va">code</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -404,7 +410,7 @@ two main axes could be reversed relative to the original map; I’ve reversed th
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-19.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -10,7 +10,10 @@
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -61,13 +64,16 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">25</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">26</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">27</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">28</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">29</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">30</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">31</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">25</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">26</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">27</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">28</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">29</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">30</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">32</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">33</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">34</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -213,7 +219,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xdpwfiwuub .gt_table {
+#adfjqrnram .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -238,7 +244,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-left-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_heading {
+#adfjqrnram .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -250,7 +256,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-right-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_title {
+#adfjqrnram .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -260,7 +266,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-bottom-width: 0;
 }
 
-#xdpwfiwuub .gt_subtitle {
+#adfjqrnram .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -270,13 +276,13 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-top-width: 0;
 }
 
-#xdpwfiwuub .gt_bottom_border {
+#adfjqrnram .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_col_headings {
+#adfjqrnram .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -291,7 +297,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-right-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_col_heading {
+#adfjqrnram .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -311,7 +317,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   overflow-x: hidden;
 }
 
-#xdpwfiwuub .gt_column_spanner_outer {
+#adfjqrnram .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -323,15 +329,15 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   padding-right: 4px;
 }
 
-#xdpwfiwuub .gt_column_spanner_outer:first-child {
+#adfjqrnram .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xdpwfiwuub .gt_column_spanner_outer:last-child {
+#adfjqrnram .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xdpwfiwuub .gt_column_spanner {
+#adfjqrnram .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -343,7 +349,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   width: 100%;
 }
 
-#xdpwfiwuub .gt_group_heading {
+#adfjqrnram .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -365,7 +371,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   vertical-align: middle;
 }
 
-#xdpwfiwuub .gt_empty_group_heading {
+#adfjqrnram .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -380,15 +386,15 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   vertical-align: middle;
 }
 
-#xdpwfiwuub .gt_from_md > :first-child {
+#adfjqrnram .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xdpwfiwuub .gt_from_md > :last-child {
+#adfjqrnram .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xdpwfiwuub .gt_row {
+#adfjqrnram .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -407,7 +413,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   overflow-x: hidden;
 }
 
-#xdpwfiwuub .gt_stub {
+#adfjqrnram .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -419,7 +425,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   padding-left: 12px;
 }
 
-#xdpwfiwuub .gt_summary_row {
+#adfjqrnram .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -429,7 +435,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   padding-right: 5px;
 }
 
-#xdpwfiwuub .gt_first_summary_row {
+#adfjqrnram .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -439,7 +445,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-top-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_grand_summary_row {
+#adfjqrnram .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -449,7 +455,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   padding-right: 5px;
 }
 
-#xdpwfiwuub .gt_first_grand_summary_row {
+#adfjqrnram .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -459,11 +465,11 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-top-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_striped {
+#adfjqrnram .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xdpwfiwuub .gt_table_body {
+#adfjqrnram .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -472,7 +478,7 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_footnotes {
+#adfjqrnram .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -486,13 +492,13 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-right-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_footnote {
+#adfjqrnram .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#xdpwfiwuub .gt_sourcenotes {
+#adfjqrnram .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -506,46 +512,46 @@ R, RStudio or git is assumed. We’ll take class time to learn the software.</p>
   border-right-color: #D3D3D3;
 }
 
-#xdpwfiwuub .gt_sourcenote {
+#adfjqrnram .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#xdpwfiwuub .gt_left {
+#adfjqrnram .gt_left {
   text-align: left;
 }
 
-#xdpwfiwuub .gt_center {
+#adfjqrnram .gt_center {
   text-align: center;
 }
 
-#xdpwfiwuub .gt_right {
+#adfjqrnram .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xdpwfiwuub .gt_font_normal {
+#adfjqrnram .gt_font_normal {
   font-weight: normal;
 }
 
-#xdpwfiwuub .gt_font_bold {
+#adfjqrnram .gt_font_bold {
   font-weight: bold;
 }
 
-#xdpwfiwuub .gt_font_italic {
+#adfjqrnram .gt_font_italic {
   font-style: italic;
 }
 
-#xdpwfiwuub .gt_super {
+#adfjqrnram .gt_super {
   font-size: 65%;
 }
 
-#xdpwfiwuub .gt_footnote_marks {
+#adfjqrnram .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="xdpwfiwuub" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><div class="inline-table"><table class="gt_table">
+<div id="adfjqrnram" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><div class="inline-table"><table class="gt_table">
 <thead class="gt_col_headings"><tr>
 <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Letter grade</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Grade range</th>
@@ -682,7 +688,7 @@ Dalhousie University would like to acknowledge that the University is on Traditi
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-19.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

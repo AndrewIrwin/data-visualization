@@ -1,13 +1,18 @@
-# Mapping part two
+# Mapping part two {#mapping-2}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(leaflet)
+library(ggmap)
 ```
 
+Many online services generate tile maps. Generally a small number of maps are available for free and then further maps require a subscription. For causal use the free service tier is almost always sufficient. To keep track of your usage you sometimes need to sign up for an API key. The first example below is unusual because you can use these maps without any account. Tools and services for this sort of mapping change frequently, so this lesson shows how to use two different services.
+
+## Tiled maps with leaflet
+
 In the previous lesson we made maps to show geographical data using map outlines from R packages. 
-In this lesson we will look at making maps that build on detailed basemaps from online mapping systems. [Google maps](https://www.google.com/maps) is a well known service; [OpenStreetMap](https://www.openstreetmap.org/) is a community-built free alternative. We will use the `leaflet` package which can xxxx
+In this lesson we will look at making maps that build on detailed basemaps from online mapping systems. [Google maps](https://www.google.com/maps) is a well known service; [OpenStreetMap](https://www.openstreetmap.org/) is a community-built free alternative. We will use the `leaflet` package.
 
 Let's make a map and place a marker at the location of the Mathematics and Statistics Department. You can pan and zoom this map from within Rstudio and in the knitted output.
 
@@ -49,11 +54,59 @@ It's common to see "chloropleth" maps of the USA in which geographic regions are
 library(geojsonio)
 pal <- colorNumeric("viridis", NULL)  # make a viridis palette
 canada <- geojson_read("https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson", what="sp")
-my_values = runif(13, 0, 10) 
+my_values = runif(13, 0, 10) # random numbers between 0 and 10
 canada %>% 
   leaflet() %>%
   addTiles() %>%
-  addPolygons(fillColor = ~pal(my_values)) %>%
+  addPolygons(fillColor = ~ pal(my_values)) %>%
   addLegend(pal = pal, values = my_values, opacity = 1.0)
+```
+
+
+## Tiled map with ggmap
+
+In this section we will use tile maps from the [openstreetmap](https://www.openstreetmap.org/) database rendered by [Stamen Maps](http://maps.stamen.com/). We will use the `ggmap` package to download and draw the map.
+
+There are two steps. First download the tiles needed for your map by specifying
+
+* the bounding box in degrees latitude and longitude,
+* the [zoom level](https://wiki.openstreetmap.org/wiki/Zoom_levels) of the map, and
+* the type of the tiles (terrain, terrain-background, etc. See the help for `get_stamenmap` for more.)
+
+Always start with a small zoom level -- if you make it too big you will download a lot of unnecessary data, which takes time and imposes a burden on the service.
+
+```{r}
+mymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, right = -50, top = 60), zoom=4, maptype = "terrain")
+ggmap(mymap_terrain)  
+```
+
+This is a regular ggplot, so you can add lines and points to a map easily, using latitude and longitude as coordinates. Placing text on a map in a readable and attractive way can be quite a challenge.
+
+```{r}
+my_points <- tibble(lat = c(43+57/60, 49+53/60),
+                    lon = c(-59-55/60, -97-9/60),
+                    label = c("Sable Is.", "Winnipeg")
+)
+ggmap(mymap_terrain)  +
+  geom_point(data =my_points, color="brown") + 
+  geom_text(data = my_points, aes(label=label))
 
 ```
+
+You can also zoom in on urban areas.
+
+```{r}
+mymap_halifax <- get_stamenmap(bbox = c(left = -63.6-0.1, bottom = 44.60, right = -63.6+0.1, top = 44.75), 
+                               zoom=12, maptype = "toner-lite")
+ggmap(mymap_halifax)  
+```
+
+## Further reading 
+
+* Healy's chapter 7 on [mapping](https://socviz.co/maps.html#maps)
+* Wilke's chapter 15 on [geospatial data](https://clauswilke.com/dataviz/geospatial-data.html)
+* An article describing how [ggmap](https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf) works
+* A [ggmap](https://github.com/dkahle/ggmap) tutorial, showing how to use Google map services including geocoding (turning an address into a location and the reverse) and routing.
+* Another well-developed approach to mapping: [mapview](https://r-spatial.github.io/mapview/index.html)
+
+
