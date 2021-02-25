@@ -185,13 +185,13 @@ diamonds %>% slice_sample(n = 5)
 
 ```
 ## # A tibble: 5 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-## 1  0.64 Ideal     I     SI2      61.2    55  1257  5.54  5.6   3.41
-## 2  1.21 Good      E     I1       64      57  4201  6.73  6.67  4.29
-## 3  0.59 Very Good D     VVS2     60.6    59  2933  5.44  5.49  3.31
-## 4  0.51 Ideal     G     SI1      61.5    54  1175  5.17  5.21  3.19
-## 5  0.43 Ideal     G     SI1      61.1    57   951  4.88  4.9   2.99
+##   carat cut     color clarity depth table price     x     y     z
+##   <dbl> <ord>   <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+## 1  1.53 Ideal   I     VS1      62.9    57  7968  7.36  7.3   4.61
+## 2  1.52 Premium D     SI1      59.2    61 12823  7.59  7.55  4.48
+## 3  1.01 Premium D     SI1      61.6    62  5701  6.44  6.38  3.95
+## 4  1.1  Ideal   G     VS1      61.3    56  8775  6.65  6.69  4.09
+## 5  1.51 Good    F     VS2      64      59  8794  7.16  7.08  4.56
 ```
 
 You can use `arrange` to sort the data by any number of columns before slicing or displaying the data.

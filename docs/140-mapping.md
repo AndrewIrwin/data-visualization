@@ -291,10 +291,10 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Lennox and Addington"   "Region 6"               "Le Granit"             
-##  [4] "Ottawa"                 "Renfrew"                "Les Laurentides"       
-##  [7] "Westmorland"            "Le Haut-Saint-François" "Bonaventure"           
-## [10] "La Vallée-du-Richelieu"
+##  [1] "Algoma"               "Pictou"               "Abitibi-Ouest"       
+##  [4] "Frontenac"            "Cape Breton"          "Annapolis"           
+##  [7] "Memphrémagog"         "Fraser-Fort George"   "Prescott and Russell"
+## [10] "Pontiac"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.

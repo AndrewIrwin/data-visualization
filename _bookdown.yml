@@ -8,6 +8,12 @@ view: https://github.com/AndrewIrwin/data-visualization/blob/master/%s
 edit: https://github.com/AndrewIrwin/data-visualization/edit/master/%s
 output_dir: "docs"
 
+# For testing, swap names on small_rmd_files and rmd_files
+small_rmd_files: [ "index.rmd", 
+                   "001-syllabus.rmd",
+                      "127-test-data.rmd",
+]
+
 rmd_files: [ "index.rmd", 
              "001-syllabus.rmd",
              "002-detailed-outline.rmd",
@@ -37,7 +43,7 @@ rmd_files: [ "index.rmd",
              "122-mds.Rmd",
              "123-kmean.rmd",
              "125-slides.rmd",
-             "160-testing.rmd",
+             "127-test-data.rmd",
              "155-dynamics-graphics.rmd",
              "140-mapping.rmd",
              "141-mapping-2.rmd",

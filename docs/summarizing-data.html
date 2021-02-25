@@ -66,17 +66,18 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="dynamic.html"><span class="header-section-number">25</span> Dynamic graphics</a></li>
-<li><a class="" href="mapping-1.html"><span class="header-section-number">26</span> Making maps</a></li>
-<li><a class="" href="mapping-2.html"><span class="header-section-number">27</span> Mapping part two</a></li>
-<li><a class="" href="mapping-3.html"><span class="header-section-number">28</span> Alternatives to maps</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">29</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">30</span> Using colour well</a></li>
-<li><a class="" href="theme.html"><span class="header-section-number">31</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">32</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">33</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">34</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">35</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="testing.html"><span class="header-section-number">25</span> Is my work right?</a></li>
+<li><a class="" href="dynamic.html"><span class="header-section-number">26</span> Dynamic graphics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">27</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">28</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">29</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">30</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">31</span> Using colour well</a></li>
+<li><a class="" href="theme.html"><span class="header-section-number">32</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">33</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">34</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">35</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">36</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -220,13 +221,13 @@
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">slice_sample</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  0.64 Ideal     I     SI2      61.2    55  1257  5.54  5.6   3.41
-## 2  1.21 Good      E     I1       64      57  4201  6.73  6.67  4.29
-## 3  0.59 Very Good D     VVS2     60.6    59  2933  5.44  5.49  3.31
-## 4  0.51 Ideal     G     SI1      61.5    54  1175  5.17  5.21  3.19
-## 5  0.43 Ideal     G     SI1      61.1    57   951  4.88  4.9   2.99</code></pre>
+##   carat cut     color clarity depth table price     x     y     z
+##   &lt;dbl&gt; &lt;ord&gt;   &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1.53 Ideal   I     VS1      62.9    57  7968  7.36  7.3   4.61
+## 2  1.52 Premium D     SI1      59.2    61 12823  7.59  7.55  4.48
+## 3  1.01 Premium D     SI1      61.6    62  5701  6.44  6.38  3.95
+## 4  1.1  Ideal   G     VS1      61.3    56  8775  6.65  6.69  4.09
+## 5  1.51 Good    F     VS2      64      59  8794  7.16  7.08  4.56</code></pre>
 <p>You can use <code>arrange</code> to sort the data by any number of columns before slicing or displaying the data.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">cut</span>, <span class="op">-</span><span class="va">color</span>, <span class="op">-</span><span class="va">carat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">slice_head</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">carat</span>, <span class="va">cut</span>, <span class="va">color</span>, <span class="va">price</span><span class="op">)</span></code></pre></div>

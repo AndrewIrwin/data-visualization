@@ -1,11 +1,11 @@
-# Is my work right? {#correct}
+# Is my work right? {#testing}
 
 ```{r include=FALSE}
 library(tidyverse)
 library(kableExtra)
 library(janitor)
 library(naniar)
-library(pointblank)
+# library(pointblank) # causes problems with knitting: scan_data, interrogate, create_agent
 library(dlookr)
 ```
 
@@ -83,7 +83,7 @@ glimpse(jelly)
 There are many columns that have no heading and are purely missing data. Before getting rid of those columns, let's be sure they are **all** missing using the `miss_var_summary` function from the `naniar` package.
 
 ```{r}
-jelly %>% miss_var_summary()
+jelly %>% miss_var_summary() %>% kable()
 ```
 
 Now we will get rid of those data.
@@ -105,7 +105,7 @@ First find the rows that are all NA. First we count the number of missing data i
 jelly %>% rowwise() %>%
   mutate(n_na = sum(is.na(across()))) %>% 
   filter(n_na == ncol(jelly)) %>%
-  head()
+  head() %>% kable()
 ```
 
 Now remove them:
@@ -132,7 +132,7 @@ You can get an interactive report on your data using agents from the `pointblank
 
 First we will write the tests.
 
-```{r}
+```{r eval=FALSE}
 my_test <- jelly %>% 
   create_agent(actions = action_levels(warn_at = 1)) %>%
    # conjointly(~ col_vals_null(., everything())) %>%  # tests for any null, not all null. Want test to fail if any one value is not null
@@ -164,7 +164,7 @@ jelly <- jelly %>%
 
 This package also has a helpful function to produce a structured report on your whole dataset.
 
-```{r}
+```{r eval=FALSE}
 jelly %>% scan_data()
 ```
 
