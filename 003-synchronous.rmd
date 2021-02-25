@@ -127,16 +127,13 @@ Meeting agenda:
 
 * Questions about the term project or other course material
 * Displaying information on teams and project planning
-* Project repositories created before class
-
-* Live coding examples of PCA and MDS
+* Finding data
+* R Markdown
 
 Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
 
   * Materials for use during class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-07.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-07.rmd) 
   * Work done in class: [HTML](https://htmlpreview.github.io/?https://github.com/AndrewIrwin/data-visualization/blob/master/live-coding/live-coding-07-after-class.html) and [Rmd](https://raw.githubusercontent.com/AndrewIrwin/data-visualization/master/live-coding/live-coding-07-after-class.rmd)
-  
-
 
 ## Thu 4 March 8:35 {#sync-8 .unnumbered}
 
@@ -146,6 +143,8 @@ Before the meeeting:
 
 Meeting agenda:
 
+* Project teams, repositories
+* PCA, MDS, K-means examples
 
 Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. (not ready yet)
 

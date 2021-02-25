@@ -4,13 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 30 Themes | Data Visualization</title>
+<title>Chapter 31 Themes | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
@@ -64,16 +66,17 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="mapping-1.html"><span class="header-section-number">25</span> Making maps</a></li>
-<li><a class="" href="mapping-2.html"><span class="header-section-number">26</span> Mapping part two</a></li>
-<li><a class="" href="mapping-3.html"><span class="header-section-number">27</span> Alternatives to maps</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">28</span> Working with factors and dates</a></li>
-<li><a class="" href="colour.html"><span class="header-section-number">29</span> Using colour well</a></li>
-<li><a class="active" href="theme.html"><span class="header-section-number">30</span> Themes</a></li>
-<li><a class="" href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></li>
-<li><a class="" href="organization.html"><span class="header-section-number">32</span> Staying organized</a></li>
-<li><a class="" href="r-details.html"><span class="header-section-number">33</span> More details about R</a></li>
-<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">34</span> Accessibility, Bias, and Ethics</a></li>
+<li><a class="" href="dynamic.html"><span class="header-section-number">25</span> Dynamic graphics</a></li>
+<li><a class="" href="mapping-1.html"><span class="header-section-number">26</span> Making maps</a></li>
+<li><a class="" href="mapping-2.html"><span class="header-section-number">27</span> Mapping part two</a></li>
+<li><a class="" href="mapping-3.html"><span class="header-section-number">28</span> Alternatives to maps</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">29</span> Working with factors and dates</a></li>
+<li><a class="" href="colour.html"><span class="header-section-number">30</span> Using colour well</a></li>
+<li><a class="active" href="theme.html"><span class="header-section-number">31</span> Themes</a></li>
+<li><a class="" href="output-files.html"><span class="header-section-number">32</span> Graphics formatting</a></li>
+<li><a class="" href="organization.html"><span class="header-section-number">33</span> Staying organized</a></li>
+<li><a class="" href="r-details.html"><span class="header-section-number">34</span> More details about R</a></li>
+<li><a class="" href="accessibility-bias-and-ethics.html"><span class="header-section-number">35</span> Accessibility, Bias, and Ethics</a></li>
 <li><a class="" href="metadata.html">Metadata</a></li>
 </ul>
 
@@ -82,27 +85,27 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="theme" class="section level1" number="30">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="theme" class="section level1" number="31">
 <h1>
-<span class="header-section-number">30</span> Themes<a class="anchor" aria-label="anchor" href="#theme"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31</span> Themes<a class="anchor" aria-label="anchor" href="#theme"><i class="fas fa-link"></i></a>
 </h1>
 <p>The theme of a plot refers to all the parts that are not linked to data. This includes titles, axis lables, as well as the labelling of the axis labels or legends (also known as guides). It also includes text characteristics (font, size, colour, bold, italics) and the colour and placement of axes, tick marks, boxes around the plot and legend.</p>
 <p>There is a single function, <code>theme</code> that controls most of these features, with many options. I’ll give examples showing how to control many aspects of the theme.</p>
 <p>Within a presentation or report, we often want to use a consistent theme for all figures. You can define many features of a theme and store them in an object in your R environment. You can then use this theme for all your figures. Changing the theme for many figures is then possible with only a single change in one location.</p>
 <p>There are many add on packages for working with themes. I’ll give examples from <a href="">ggtext</a>, <a href="">ggthemes</a>, and <a href="">patchwork</a>.</p>
-<div id="example-plots-for-customization" class="section level2" number="30.1">
+<div id="example-plots-for-customization" class="section level2" number="31.1">
 <h2>
-<span class="header-section-number">30.1</span> Example plots for customization<a class="anchor" aria-label="anchor" href="#example-plots-for-customization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31.1</span> Example plots for customization<a class="anchor" aria-label="anchor" href="#example-plots-for-customization"><i class="fas fa-link"></i></a>
 </h2>
 <p>We’ll use a couple of plots repeatedly: one with facets, and one with many other elements, but no facets.</p>
-<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, 
                               color <span class="op">=</span> <span class="va">species</span>, shape <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">p1</span></code></pre></div>
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
-<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue_unnest</a></span><span class="op">(</span><span class="va">trans</span>, <span class="st">"{trans_type}({trans_code})"</span><span class="op">)</span> <span class="op">%&gt;%</span>
            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span>, color <span class="op">=</span> <span class="va">trans_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -111,32 +114,32 @@
 <span class="va">p2</span></code></pre></div>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-1-2.png" width="672"></div>
 </div>
-<div id="built-in-themes" class="section level2" number="30.2">
+<div id="built-in-themes" class="section level2" number="31.2">
 <h2>
-<span class="header-section-number">30.2</span> Built-in themes<a class="anchor" aria-label="anchor" href="#built-in-themes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31.2</span> Built-in themes<a class="anchor" aria-label="anchor" href="#built-in-themes"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">many themes available</a> that change the whole look of your plot. I’ve used <code>theme_bw</code> many times already, so here are a couple of other examples. For each you can use the <code>base_size</code> option (default value 11) to scale text elements and <code>base_line_size</code> to scale line elements of the figure.</p>
-<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span>, base_line_size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
-<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-2-2.png" width="672"></div>
 <p>There are also add-in packages with more themes: <code>ggthemes</code> has <code>theme_tufte</code> and <code>theme_economist</code></p>
-<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu">theme_economist</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_fill_economist</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 <p>Another collection of themes is available in <a href="https://github.com/Mikata-Project/ggthemr">ggthemer</a>. The main goal of this lesson is to give you the vocabulary and skills to customize the theme of your plot, so I won’t spend any more time on theme packages. On to the details!</p>
 </div>
-<div id="customizing-text-on-a-figure" class="section level2" number="30.3">
+<div id="customizing-text-on-a-figure" class="section level2" number="31.3">
 <h2>
-<span class="header-section-number">30.3</span> Customizing text on a figure<a class="anchor" aria-label="anchor" href="#customizing-text-on-a-figure"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31.3</span> Customizing text on a figure<a class="anchor" aria-label="anchor" href="#customizing-text-on-a-figure"><i class="fas fa-link"></i></a>
 </h2>
 <p>The most common change I want to make to a plot’s theme (after axis and guide labels) is to increase the size of the text. This can be done using <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(text= ...)</a></code> or for specific elements, <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.title=...)</a></code> (see the help page for more elements of the theme that can be set with a text element.) On the right side of the equals sign, you need the function <code>element_text</code> which allows you to control 10 different characteristics of your text. Here is an example of a few of the features.</p>
 <p>Themes are controlled hierarchically, so adjusting <code>text</code> affects all text on the plot. Adjusting <code>axis.title</code> affects both <code>axis.title.x</code> and <code>axis.title.y</code>.</p>
-<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span>  <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
             axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span><span class="op">)</span>,
             axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span>,
@@ -147,12 +150,12 @@
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 <p>Compare this with the original version of the plot and play “spot the differences”.</p>
 </div>
-<div id="customizing-borders-ticks-axis-labels" class="section level2" number="30.4">
+<div id="customizing-borders-ticks-axis-labels" class="section level2" number="31.4">
 <h2>
-<span class="header-section-number">30.4</span> Customizing borders, ticks, axis labels<a class="anchor" aria-label="anchor" href="#customizing-borders-ticks-axis-labels"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31.4</span> Customizing borders, ticks, axis labels<a class="anchor" aria-label="anchor" href="#customizing-borders-ticks-axis-labels"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are many elements on a plot drawn with lines. These too can be customized all at once using <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(line = ...)</a></code> or element by element using, for example <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.line.x=...)</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.ticks.y=...)</a></code>. The grid lines can be adjusted using <code>panel.grid.major</code> and <code>panel.grid.minor</code>. These elements are named and controlled hierarchically as well. The right hand size of the expressions above must have an <code>element_line</code> function which allows you to control color, size, linetype and other features like arrows.</p>
-<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
            axis.ticks.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"pink"</span><span class="op">)</span>,
            axis.line.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">3</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>,
@@ -160,13 +163,13 @@
            panel.grid.major <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">3</span>, color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 </div>
-<div id="enhanced-text" class="section level2" number="30.5">
+<div id="enhanced-text" class="section level2" number="31.5">
 <h2>
-<span class="header-section-number">30.5</span> Enhanced text<a class="anchor" aria-label="anchor" href="#enhanced-text"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31.5</span> Enhanced text<a class="anchor" aria-label="anchor" href="#enhanced-text"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>ggtext</code> package allows you to use markdown and HTML code in any text element on your plot. You need to use <code>element_markdown</code> (or <code>element_textbox_simple</code>) instead of <code>element_text</code> for each element you want to use this enhanced formatting method with.</p>
 <p>Unlike other theme elements, you can’t easily use <code>ggtext</code> formatting hierarchically: you can’t simply set all text to use <code>elemment_markdown</code> or even both axis labels. You must control each element individually.</p>
-<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"_Penguin data from **Palmer station**, Antarctica_&lt;sup&gt;1&lt;/sup&gt;"</span>,
           x <span class="op">=</span> <span class="st">"&lt;span style = 'color:red;'&gt;body mass (g)&lt;/span&gt;"</span>,
           y <span class="op">=</span> <span class="st">"flipper length (mm)"</span>,
@@ -179,7 +182,7 @@
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <p>You can also add formatted boxes for the titles of facets and at any location on a plot.</p>
-<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
     strip.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     strip.text <span class="op">=</span> <span class="fu">element_textbox</span><span class="op">(</span>
@@ -190,7 +193,7 @@
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
-<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">text_annotations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tibble.html">tibble</a></span><span class="op">(</span>
   label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
     <span class="st">"Some text **in bold.**"</span>,
@@ -214,9 +217,9 @@
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-7-2.png" width="672"></div>
 </div>
-<div id="further-reading-23" class="section level2" number="30.6">
+<div id="further-reading-24" class="section level2" number="31.6">
 <h2>
-<span class="header-section-number">30.6</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-23"><i class="fas fa-link"></i></a>
+<span class="header-section-number">31.6</span> Further reading<a class="anchor" aria-label="anchor" href="#further-reading-24"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>
@@ -227,18 +230,18 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="colour.html"><span class="header-section-number">29</span> Using colour well</a></div>
-<div class="next"><a href="output-files.html"><span class="header-section-number">31</span> Graphics formatting</a></div>
+<div class="prev"><a href="colour.html"><span class="header-section-number">30</span> Using colour well</a></div>
+<div class="next"><a href="output-files.html"><span class="header-section-number">32</span> Graphics formatting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#theme"><span class="header-section-number">30</span> Themes</a></li>
-<li><a class="nav-link" href="#example-plots-for-customization"><span class="header-section-number">30.1</span> Example plots for customization</a></li>
-<li><a class="nav-link" href="#built-in-themes"><span class="header-section-number">30.2</span> Built-in themes</a></li>
-<li><a class="nav-link" href="#customizing-text-on-a-figure"><span class="header-section-number">30.3</span> Customizing text on a figure</a></li>
-<li><a class="nav-link" href="#customizing-borders-ticks-axis-labels"><span class="header-section-number">30.4</span> Customizing borders, ticks, axis labels</a></li>
-<li><a class="nav-link" href="#enhanced-text"><span class="header-section-number">30.5</span> Enhanced text</a></li>
-<li><a class="nav-link" href="#further-reading-23"><span class="header-section-number">30.6</span> Further reading</a></li>
+<li><a class="nav-link" href="#theme"><span class="header-section-number">31</span> Themes</a></li>
+<li><a class="nav-link" href="#example-plots-for-customization"><span class="header-section-number">31.1</span> Example plots for customization</a></li>
+<li><a class="nav-link" href="#built-in-themes"><span class="header-section-number">31.2</span> Built-in themes</a></li>
+<li><a class="nav-link" href="#customizing-text-on-a-figure"><span class="header-section-number">31.3</span> Customizing text on a figure</a></li>
+<li><a class="nav-link" href="#customizing-borders-ticks-axis-labels"><span class="header-section-number">31.4</span> Customizing borders, ticks, axis labels</a></li>
+<li><a class="nav-link" href="#enhanced-text"><span class="header-section-number">31.5</span> Enhanced text</a></li>
+<li><a class="nav-link" href="#further-reading-24"><span class="header-section-number">31.6</span> Further reading</a></li>
 </ul>
 
       <div class="book-extra">
@@ -256,7 +259,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-24.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -62,5 +62,4 @@ This was an introduction to making slides with R. I've picked a method which is 
 * Rstudio's notes on making [slide presentations](https://rmarkdown.rstudio.com/lesson-11.html)
 * Patrick Winston's video on [how to speak effectively](https://www.youtube.com/watch?v=Unzc731iCUY)
 * Lots more information on using [markdown and R markdown](https://slides.djnavarro.net/starting-rmarkdown/#1), presented in slide format
-
 * How to make R markdown [presentation slides](https://codingclubuc3m.rbind.io/post/2019-09-24/)

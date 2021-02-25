@@ -291,9 +291,10 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Argenteuil"       "Bulkley-Nechako"  "Les Maskoutains"  "Bruce"           
-##  [5] "Columbia-Shuswap" "Rivière-du-Loup"  "Peace River"      "Queens"          
-##  [9] "Inverness"        "Québec"
+##  [1] "Lennox and Addington"   "Region 6"               "Le Granit"             
+##  [4] "Ottawa"                 "Renfrew"                "Les Laurentides"       
+##  [7] "Westmorland"            "Le Haut-Saint-François" "Bonaventure"           
+## [10] "La Vallée-du-Richelieu"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.

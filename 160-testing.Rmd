@@ -1,4 +1,4 @@
-# How do I know it's right? {#testing}
+# Is my work right? {#correct}
 
 ```{r include=FALSE}
 library(tidyverse)
@@ -9,18 +9,18 @@ library(pointblank)
 library(dlookr)
 ```
 
-## An introduction to testing.
+## An introduction to testing
 
 You've made a plot. All the calculations necessary are in a single Rmd file -- data collecting, cleaning, and creating the figure. You can revise the data and reproduce the plot any time you want.
 
 But then a thought occurs to you -- how do I know I did the calculations correctly? The computer saves us time by doing calculations for us, but the price is that you can't keep track of everything it does.
 
 Maybe the data you analyzed has a lot of observations -- too many to check by hand. What if there is a problem with the data? Or maybe the data are fine, but something went wrong when you read them into R. 
-There are lots of ways for errors to creep in. Missing values when you thought there were none. Unexpected levels of factors (too many or too few). Detectable errors in the data such as impossible values.
+There are lots of ways for errors to creep in. Missing values when you thought there were none. Unexpected levels of factors (too many or too few). Detectable errors in the data such as impossible values. 
 
 The best idea to counteract all these problems is testing. The secret is to get the computer to perform the tests for you.
 
-A lot of testing is done for you before you even start R: most (we hope all) the packages you use are carefully tested to be sure they work as intended. Still -- you might misunderstand what the packages are supposed to do! Or you might make a typo and use the wrong variable name somewhere. Or you might get the logic of your calculation wrong. So you should test your work in as many ways as you can.
+A lot of testing is done for you before you even start R: most (we hope all) the packages you use are carefully tested to be sure they work as intended. Still -- you might misunderstand what the packages are supposed to do. Or you might make a typo and use the wrong variable name somewhere. Or you might get the logic of your calculation wrong. So you should test your work in as many ways as you can.
 
 The most important reason to test is that you will catch mistakes. Possibly the second most important reason for doing testing -- and being explicit about it -- is that it can help the people who use your analysis have more confidence in it. This includes you in the future!
 
@@ -28,6 +28,7 @@ The most important reason to test is that you will catch mistakes. Possibly the 
 
 Once you have a preliminary analysis, develop a testing plan. Methods that can help:
 
+* Check for errors in your data
 * Perform your analysis on a small subset of your data that you can understand without computer help. This is the "sample calculation" method of testing
 * Perform your analysis on simulated or fake "data" designed to test certain cases (independent variables, strong dependence, etc.) that will allow you to check your methods and interpretation
 * Perform your calculations or visualizations two different ways, to check your understanding. This is especially useful if you have a fast and a slow way of doing a calculation. Use the slow way as a check on the fast method.
@@ -61,18 +62,18 @@ What do you do with errors?
 * Write tests to check for future errros
 * Communicate with the people who collected the data and the people who will receive the analysis
 
-## Sample data
+### Data to test
 
-The following data were collected by a class of students testing their ability to identify a jelly bean flavour by blindfolded testing. Much of our sense of taste comes from smell, so there were two treatments: a control with the participant was blindfolded and a treatment where the participant was blindfolded and blocked their nose to reduce the sense of smell. Groups of students entered their data into a single Google docs spreadsheet which was exported to the csv file below.
+The following data were collected by a class of students evaluating their ability to identify a jelly bean flavour by blindfolded testing. Much of our sense of taste comes from smell, so there were two treatments: a control with the participant was blindfolded and a treatment where the participant was blindfolded and blocked their nose to reduce the sense of smell. Groups of students entered their data into a single Google docs spreadsheet which was exported to the csv file below.
 
-This dataset has a lot of problems, but they are very typical for data entered by a group of people who are not directly involved in the systematic analysis of the data with a software package like R. (They are not attuned to the problems of data errors.)  Take a look at the file and see how many problems you can find before continuing.
+This dataset has a lot of problems, but they are very typical for data entered by a group of people who are not directly involved in the systematic analysis of the data with a software package like R. (They are not attuned to the problems of data errors.)  Take a look at the [file](static/jelly-bean-data.csv) and see how many problems you can find before continuing.
 
 ```{r}
 jelly <- read_csv("static/jelly-bean-data.csv") %>% clean_names()
 # jelly %>% kable() %>% scroll_box()
 ```
 
-You should always look at data. For a first look, `View`, `skim` (in the skimr), and `glimpse` functions are useful and will identify some problems.
+You should always look at data. For a first look, `View`, `skim` (in the `skimr` package), and `glimpse` functions are useful and will identify some problems.
 
 ```{r}
 glimpse(jelly)
@@ -98,7 +99,7 @@ diagnose(jelly)
 ```
 
 There are at least 12% missing values in each variable, so there may be some rows that are completely missing. If you take another look at the data you will see that a lot of rows are all NA. Let's get rid of them.
-First find the rows that are all NA.
+First find the rows that are all NA. First we count the number of missing data in each row (mutate) then we remove the rows where every variable is missing (filter). Whenever I clean data, I like to preview what will happen before modifying the dataset.
 
 ```{r}
 jelly %>% rowwise() %>%
@@ -141,10 +142,24 @@ my_test <- jelly %>%
   rows_distinct() 
 ```
 
-Now use the tests to get a report.
+Now use the tests to get a report. (Report not shown. Try on your own.)
+
+```{r eval=FALSE}
+my_test %>% interrogate() 
+```
+
+Reaction time (in seconds) is text not a number. Let's fix that. Probably there will be some non-numeric values in there, because otherwise the data would have been read as numeric. So let's look for those rows first. If you try to convert text to a number and the text doesn't look like a number, you'll get an NA instead. So filter out the NAs that get created when you convert from text to number. R will give us a message to alert us to the fact that there are some NAs created.
 
 ```{r}
-my_test %>% interrogate() 
+jelly %>% filter(is.na(as.numeric(reaction_time_in_sec)))
+```
+
+One of those is obviously an error. (Lemon is not a number!) In a real analysis, you would contact the person who recorded the data (that's what the initials are for) and find out what went wrong. Same thing with the NA, where the time didn't get recorded. For now, we'll just throw away these numbers.
+
+```{r warning=FALSE, message=FALSE}
+jelly <- jelly %>% 
+  mutate(reaction_time_in_sec = as.numeric(reaction_time_in_sec)) %>%
+  filter(!is.na(reaction_time_in_sec))
 ```
 
 This package also has a helpful function to produce a structured report on your whole dataset.
@@ -169,6 +184,77 @@ We definitely have some duplication. I'll do one correction -- changing all lett
 jelly %>% mutate(flavour = tolower(flavour)) %>%
   count(flavour) %>% arrange(-n)
 ```
+
+Use what you learned to tidy the data.
+
+```{r}
+jelly <- jelly %>% 
+  mutate(flavour = tolower(flavour),
+         flavour = case_when(flavour == "cocnut" ~ "coconut", 
+                             TRUE ~ flavour), 
+         flavour = str_replace(flavour, " and ", " "),
+         flavour = str_replace(flavour, "[/+]", " "),
+         flavour = str_squish(flavour))
+```
+
+## Analyze a subset of your data
+
+Let's compute the average reaction time for correct and incorrect answers for each flavour and each treatment. We will count the number of observations for each grouping too.
+
+```{r}
+jelly %>% group_by(flavour, group_choose_from_drop_down, accuracy_0_incorrect_1_correct) %>%
+  summarize(count = n(),
+            mean_reaction_time = mean(reaction_time_in_sec))
+```
+
+This is a fairly simple calculation, but it serves to demonstrate the "manual check" method. Filter out just the incorrect, experimental results for apple flavours. Check that the number of rows and average match.
+
+```{r}
+jelly %>% filter(flavour == "apple",
+                 accuracy_0_incorrect_1_correct == 0,
+                 group_choose_from_drop_down == "experimental")
+```
+
+Looks good!
+
+## Use fake data, where you already know the answer
+
+This example will be a bit contrived, but its a good example of the idea. I'll create some simple data and then compute the averages using exactly the same code I wrote above. I'll put in a NA in one row just to see what happens.
+
+```{r}
+my_jelly <- tribble(
+  ~group_choose_from_drop_down, ~ flavour, ~ reaction_time_in_sec, ~ accuracy_0_incorrect_1_correct,
+  "experimental", "lime", 1, 1,
+  "experimental", "lime", 2, 1,
+  "experimental", "lemon", 3, 1,
+  "control", "lemon", 4, 1,
+)
+my_jelly %>% kable() %>% kable_styling(full_width = FALSE)
+```
+
+I know exactly what I'm expecting. Stop and decide for yourself before reading on.
+
+```{r message=FALSE}
+my_jelly %>% group_by(flavour, group_choose_from_drop_down, accuracy_0_incorrect_1_correct) %>%
+  summarize(count = n(),
+            mean_reaction_time = mean(reaction_time_in_sec))
+```
+
+
+## Do you calculations two different ways
+
+Suppose we weren't really confident that we knew what `mean` does? Even simple functions like `sd` (for standard deviation) and `median` might not do what you think they should. How can we check it? Let's write our own function based on sum, length, and division.
+
+```{r}
+my_mean = function(x) sum(x) / length(x)
+my_jelly %>% group_by(flavour, group_choose_from_drop_down, accuracy_0_incorrect_1_correct) %>%
+  summarize(count = length(flavour),
+            mean_reaction_time = my_mean(reaction_time_in_sec))
+```
+
+Excellent! We got the same answers.
+
+That's an introduction to testing calculations. These are good checks to make as you calculate and test your analysis. The next step is to write computer code that checks your answers as well, by giving sample data to your calculation code along with the known answers. There is a package (of course!) for helping with that: `testthat` and `tinytest` (links below). We won't be using these in the course, but you should take time to learn about them after the course.
 
 ## At the end of your analysis
 
