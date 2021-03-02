@@ -130,7 +130,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#akfyadutjp .gt_table {
+#ztmfpvkoqe .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -155,7 +155,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-left-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_heading {
+#ztmfpvkoqe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -167,7 +167,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-right-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_title {
+#ztmfpvkoqe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -177,7 +177,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-bottom-width: 0;
 }
 
-#akfyadutjp .gt_subtitle {
+#ztmfpvkoqe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -187,13 +187,13 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-top-width: 0;
 }
 
-#akfyadutjp .gt_bottom_border {
+#ztmfpvkoqe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_col_headings {
+#ztmfpvkoqe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -208,7 +208,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-right-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_col_heading {
+#ztmfpvkoqe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -228,7 +228,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   overflow-x: hidden;
 }
 
-#akfyadutjp .gt_column_spanner_outer {
+#ztmfpvkoqe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -240,15 +240,15 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   padding-right: 4px;
 }
 
-#akfyadutjp .gt_column_spanner_outer:first-child {
+#ztmfpvkoqe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#akfyadutjp .gt_column_spanner_outer:last-child {
+#ztmfpvkoqe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#akfyadutjp .gt_column_spanner {
+#ztmfpvkoqe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -260,7 +260,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   width: 100%;
 }
 
-#akfyadutjp .gt_group_heading {
+#ztmfpvkoqe .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -282,7 +282,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   vertical-align: middle;
 }
 
-#akfyadutjp .gt_empty_group_heading {
+#ztmfpvkoqe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -297,15 +297,15 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   vertical-align: middle;
 }
 
-#akfyadutjp .gt_from_md > :first-child {
+#ztmfpvkoqe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#akfyadutjp .gt_from_md > :last-child {
+#ztmfpvkoqe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#akfyadutjp .gt_row {
+#ztmfpvkoqe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -324,7 +324,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   overflow-x: hidden;
 }
 
-#akfyadutjp .gt_stub {
+#ztmfpvkoqe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -336,7 +336,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   padding-left: 12px;
 }
 
-#akfyadutjp .gt_summary_row {
+#ztmfpvkoqe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -346,7 +346,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   padding-right: 5px;
 }
 
-#akfyadutjp .gt_first_summary_row {
+#ztmfpvkoqe .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -356,7 +356,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-top-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_grand_summary_row {
+#ztmfpvkoqe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -366,7 +366,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   padding-right: 5px;
 }
 
-#akfyadutjp .gt_first_grand_summary_row {
+#ztmfpvkoqe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -376,11 +376,11 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-top-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_striped {
+#ztmfpvkoqe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#akfyadutjp .gt_table_body {
+#ztmfpvkoqe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -389,7 +389,7 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-bottom-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_footnotes {
+#ztmfpvkoqe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -403,13 +403,13 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-right-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_footnote {
+#ztmfpvkoqe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#akfyadutjp .gt_sourcenotes {
+#ztmfpvkoqe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -423,46 +423,46 @@ First your numerical grade will be rounded up to the nearest integer, then it wi
   border-right-color: #D3D3D3;
 }
 
-#akfyadutjp .gt_sourcenote {
+#ztmfpvkoqe .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#akfyadutjp .gt_left {
+#ztmfpvkoqe .gt_left {
   text-align: left;
 }
 
-#akfyadutjp .gt_center {
+#ztmfpvkoqe .gt_center {
   text-align: center;
 }
 
-#akfyadutjp .gt_right {
+#ztmfpvkoqe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#akfyadutjp .gt_font_normal {
+#ztmfpvkoqe .gt_font_normal {
   font-weight: normal;
 }
 
-#akfyadutjp .gt_font_bold {
+#ztmfpvkoqe .gt_font_bold {
   font-weight: bold;
 }
 
-#akfyadutjp .gt_font_italic {
+#ztmfpvkoqe .gt_font_italic {
   font-style: italic;
 }
 
-#akfyadutjp .gt_super {
+#ztmfpvkoqe .gt_super {
   font-size: 65%;
 }
 
-#akfyadutjp .gt_footnote_marks {
+#ztmfpvkoqe .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="akfyadutjp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="ztmfpvkoqe" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>

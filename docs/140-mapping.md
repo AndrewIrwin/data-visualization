@@ -291,10 +291,11 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Algoma"               "Pictou"               "Abitibi-Ouest"       
-##  [4] "Frontenac"            "Cape Breton"          "Annapolis"           
-##  [7] "Memphrémagog"         "Fraser-Fort George"   "Prescott and Russell"
-## [10] "Pontiac"
+##  [1] "Simcoe"                          "Region 3"                       
+##  [3] "Lambton"                         "Northern Rockies"               
+##  [5] "La Jacques-Cartier"              "Prince Edward"                  
+##  [7] "Greater Sudbury / Grand Sudbury" "Cariboo"                        
+##  [9] "Division No.  7"                 "Lajemmerais"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.

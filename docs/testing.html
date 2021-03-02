@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 25 Is my work right? | Data Visualization</title>
+<title>Chapter 25 Checking your work | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="active" href="testing.html"><span class="header-section-number">25</span> Is my work right?</a></li>
+<li><a class="active" href="testing.html"><span class="header-section-number">25</span> Checking your work</a></li>
 <li><a class="" href="dynamic.html"><span class="header-section-number">26</span> Dynamic graphics</a></li>
 <li><a class="" href="mapping-1.html"><span class="header-section-number">27</span> Making maps</a></li>
 <li><a class="" href="mapping-2.html"><span class="header-section-number">28</span> Mapping part two</a></li>
@@ -88,17 +88,17 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="testing" class="section level1" number="25">
 <h1>
-<span class="header-section-number">25</span> Is my work right?<a class="anchor" aria-label="anchor" href="#testing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25</span> Checking your work<a class="anchor" aria-label="anchor" href="#testing"><i class="fas fa-link"></i></a>
 </h1>
 <div id="an-introduction-to-testing" class="section level2" number="25.1">
 <h2>
 <span class="header-section-number">25.1</span> An introduction to testing<a class="anchor" aria-label="anchor" href="#an-introduction-to-testing"><i class="fas fa-link"></i></a>
 </h2>
-<p>You’ve made a plot. All the calculations necessary are in a single Rmd file – data collecting, cleaning, and creating the figure. You can revise the data and reproduce the plot any time you want.</p>
-<p>But then a thought occurs to you – how do I know I did the calculations correctly? The computer saves us time by doing calculations for us, but the price is that you can’t keep track of everything it does.</p>
-<p>Maybe the data you analyzed has a lot of observations – too many to check by hand. What if there is a problem with the data? Or maybe the data are fine, but something went wrong when you read them into R.
+<p>You’ve made a data visualization. It looks great. All the calculations necessary are in a single Rmd file – reading the data, organizing the data, and creating the figure. You can revise the data and reproduce the plot any time you want.</p>
+<p>But then a thought occurs to you – how do I know the visualization is correct? The computer saves us time by doing calculations for us, but the price is that you can’t keep track of everything it does.</p>
+<p>What if there is a problem with the data? Maybe the data you analyzed has a lot of observations – too many to check by hand. Or maybe the data are fine, but something went wrong when you read them into R.
 There are lots of ways for errors to creep in. Missing values when you thought there were none. Unexpected levels of factors (too many or too few). Detectable errors in the data such as impossible values.</p>
-<p>The best idea to counteract all these problems is testing. The secret is to get the computer to perform the tests for you.</p>
+<p>The best idea to counteract all these problems is testing. The secret is to get the computer to perform the tests for you. In this lesson we will discuss two kinds of testing: checking your data and checking your calculations.</p>
 <p>A lot of testing is done for you before you even start R: most (we hope all) the packages you use are carefully tested to be sure they work as intended. Still – you might misunderstand what the packages are supposed to do. Or you might make a typo and use the wrong variable name somewhere. Or you might get the logic of your calculation wrong. So you should test your work in as many ways as you can.</p>
 <p>The most important reason to test is that you will catch mistakes. Possibly the second most important reason for doing testing – and being explicit about it – is that it can help the people who use your analysis have more confidence in it. This includes you in the future!</p>
 </div>
@@ -134,7 +134,9 @@ There are lots of ways for errors to creep in. Missing values when you thought t
 </ul>
 <p>How can you find errors in data?</p>
 <ul>
-<li>Make summary tables</li>
+<li>Make summary tables and cross-check the summaries</li>
+<li>Look for missing data</li>
+<li>Check to be sure the correct number of variables (columns) and rows (observations) are present</li>
 <li>Plot histograms and densities</li>
 <li>Write tests to test data belong to a legitimate set of values</li>
 </ul>
@@ -145,14 +147,14 @@ There are lots of ways for errors to creep in. Missing values when you thought t
 <li>Write tests to check for future errros</li>
 <li>Communicate with the people who collected the data and the people who will receive the analysis</li>
 </ul>
-<div id="data-to-test" class="section level3" number="25.3.1">
+<div id="sample-data-to-test" class="section level3" number="25.3.1">
 <h3>
-<span class="header-section-number">25.3.1</span> Data to test<a class="anchor" aria-label="anchor" href="#data-to-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">25.3.1</span> Sample data to test<a class="anchor" aria-label="anchor" href="#sample-data-to-test"><i class="fas fa-link"></i></a>
 </h3>
 <p>The following data were collected by a class of students evaluating their ability to identify a jelly bean flavour by blindfolded testing. Much of our sense of taste comes from smell, so there were two treatments: a control with the participant was blindfolded and a treatment where the participant was blindfolded and blocked their nose to reduce the sense of smell. Groups of students entered their data into a single Google docs spreadsheet which was exported to the csv file below.</p>
 <p>This dataset has a lot of problems, but they are very typical for data entered by a group of people who are not directly involved in the systematic analysis of the data with a software package like R. (They are not attuned to the problems of data errors.) Take a look at the <a href="static/jelly-bean-data.csv">file</a> and see how many problems you can find before continuing.</p>
 <div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jelly</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"static/jelly-bean-data.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">clean_names</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">jelly</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu">here</span><span class="op">(</span><span class="st">"static/jelly-bean-data.csv"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">clean_names</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Missing column names filled in: 'X7' [7], 'X8' [8], 'X9' [9],
 ## 'X10' [10], 'X11' [11], 'X12' [12], 'X13' [13], 'X14' [14], 'X15' [15],
 ## 'X16' [16], 'X17' [17], 'X18' [18], 'X19' [19], 'X20' [20], 'X21' [21],
@@ -207,8 +209,8 @@ There are lots of ways for errors to creep in. Missing values when you thought t
 <code class="sourceCode R"><span class="co"># skimr::skim(jelly)</span></code></pre></div>
 <p>There are many columns that have no heading and are purely missing data. Before getting rid of those columns, let’s be sure they are <strong>all</strong> missing using the <code>miss_var_summary</code> function from the <code>naniar</code> package.</p>
 <div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">miss_var_summary</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-table"><table class="table table-sm">
+<code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">miss_var_summary</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;">
 variable
@@ -525,19 +527,154 @@ flavour
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">&lt;-</span> <span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="va">x7</span><span class="op">:</span><span class="va">x27</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The <code>dlookr</code> package provides a similar table, plus it adds a count of the number of distinct values for each variable.</p>
 <div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">diagnose</span><span class="op">(</span><span class="va">jelly</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 6
-##   variables        types  missing_count missing_percent unique_count unique_rate
-##   &lt;chr&gt;            &lt;chr&gt;          &lt;int&gt;           &lt;dbl&gt;        &lt;int&gt;       &lt;dbl&gt;
-## 1 initials         chara…            88            33.7           75      0.287 
-## 2 group_choose_fr… chara…            34            13.0            4      0.0153
-## 3 trial_number     numer…            33            12.6            4      0.0153
-## 4 flavour          chara…            33            12.6           44      0.169 
-## 5 reaction_time_i… chara…            34            13.0          201      0.770 
-## 6 accuracy_0_inco… numer…            34            13.0            3      0.0115</code></pre>
+<code class="sourceCode R"><span class="fu">diagnose</span><span class="op">(</span><span class="va">jelly</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+variables
+</th>
+<th style="text-align:left;">
+types
+</th>
+<th style="text-align:right;">
+missing_count
+</th>
+<th style="text-align:right;">
+missing_percent
+</th>
+<th style="text-align:right;">
+unique_count
+</th>
+<th style="text-align:right;">
+unique_rate
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+initials
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+33.71648
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+0.2873563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+group_choose_from_drop_down
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+13.02682
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.0153257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+trial_number
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+12.64368
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.0153257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+flavour
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+12.64368
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+0.1685824
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reaction_time_in_sec
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+13.02682
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:right;">
+0.7701149
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+accuracy_0_incorrect_1_correct
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+13.02682
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.0114943
+</td>
+</tr>
+</tbody>
+</table></div>
 <p>There are at least 12% missing values in each variable, so there may be some rows that are completely missing. If you take another look at the data you will see that a lot of rows are all NA. Let’s get rid of them.
 First find the rows that are all NA. First we count the number of missing data in each row (mutate) then we remove the rows where every variable is missing (filter). Whenever I clean data, I like to preview what will happen before modifying the dataset.</p>
-<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">n_na</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">jelly</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -708,7 +845,7 @@ NA
 </tbody>
 </table></div>
 <p>Now remove them:</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">&lt;-</span> <span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>n_na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -721,87 +858,748 @@ NA
 <h2>
 <span class="header-section-number">25.4</span> Data quality assurance<a class="anchor" aria-label="anchor" href="#data-quality-assurance"><i class="fas fa-link"></i></a>
 </h2>
-<p>You can get an interactive report on your data using agents from the <code>pointblank</code> package. (See the documentation linked in further reading for examples.) Let’s test a few things</p>
+<p>You can get report on your data using the <code>pointblank</code> package. (See the documentation linked in further reading for examples.) Let’s test a few things:</p>
 <ul>
-<li>are any rows missing for all values?</li>
 <li>are any values of the accuracy variable not 0 or 1?</li>
 <li>is reaction time and trial_number numeric? (We know the answer already, but I’ll show how to test this condition.)</li>
+<li>are there any negative reaction times?</li>
 <li>are all the rows distinct? (It’s unlikely, but not impossible to get the same result twice.)</li>
 </ul>
 <p>First we will write the tests.</p>
-<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_test</span> <span class="op">&lt;-</span> <span class="va">jelly</span> <span class="op">%&gt;%</span> 
   <span class="fu">create_agent</span><span class="op">(</span>actions <span class="op">=</span> <span class="fu">action_levels</span><span class="op">(</span>warn_at <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-   <span class="co"># conjointly(~ col_vals_null(., everything())) %&gt;%  # tests for any null, not all null. Want test to fail if any one value is not null</span>
   <span class="fu">col_vals_in_set</span><span class="op">(</span><span class="va">accuracy_0_incorrect_1_correct</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">col_is_numeric</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">trial_number</span>, <span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">col_vals_gt</span><span class="op">(</span><span class="va">reaction_time_in_sec</span>, <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">rows_distinct</span><span class="op">(</span><span class="op">)</span> </code></pre></div>
-<p>Now use the tests to get a report. (Report not shown. Try on your own.)</p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<p>Now you can use the tests to get a report. (The report is not shown. Experiment with these functions on your own.)</p>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_test</span> <span class="op">%&gt;%</span> <span class="fu">interrogate</span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <p>Reaction time (in seconds) is text not a number. Let’s fix that. Probably there will be some non-numeric values in there, because otherwise the data would have been read as numeric. So let’s look for those rows first. If you try to convert text to a number and the text doesn’t look like a number, you’ll get an NA instead. So filter out the NAs that get created when you convert from text to number. R will give us a message to alert us to the fact that there are some NAs created.</p>
-<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning in mask$eval_all_filter(dots, env_filter): NAs introduced by coercion</code></pre>
-<pre><code>## # A tibble: 3 x 6
-##   initials group_choose_fr… trial_number flavour reaction_time_i…
-##   &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;           
-## 1 KS       experimental                3 Orange  Lemon           
-## 2 BP       &lt;NA&gt;                       NA &lt;NA&gt;    &lt;NA&gt;            
-## 3 &lt;NA&gt;     control                     3 yellow… &lt;NA&gt;            
-## # … with 1 more variable: accuracy_0_incorrect_1_correct &lt;dbl&gt;</code></pre>
-<p>One of those is obviously an error. (Lemon is not a number!) In a real analysis, you would contact the person who recorded the data (that’s what the initials are for) and find out what went wrong. Same thing with the NA, where the time didn’t get recorded. For now, we’ll just throw away these numbers.</p>
-<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+initials
+</th>
+<th style="text-align:left;">
+group_choose_from_drop_down
+</th>
+<th style="text-align:right;">
+trial_number
+</th>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:left;">
+reaction_time_in_sec
+</th>
+<th style="text-align:right;">
+accuracy_0_incorrect_1_correct
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+KS
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:left;">
+Lemon
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+yellow and brown
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>One of those is obviously an error. (Lemon is not a number!) In a careful analysis, you would contact the person who recorded the data (that’s what the initials are for) and find out what went wrong. Same thing with the NA, where the time didn’t get recorded. For now, we’ll just throw away these numbers.</p>
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">&lt;-</span> <span class="va">jelly</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>reaction_time_in_sec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This package also has a helpful function to produce a structured report on your whole dataset.</p>
-<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
+<p>The pointblank package also has a helpful function to produce a structured report on your whole dataset. (Again the results are not shown here.)</p>
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">scan_data</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="data-cleaning" class="section level2" number="25.5">
 <h2>
 <span class="header-section-number">25.5</span> Data cleaning<a class="anchor" aria-label="anchor" href="#data-cleaning"><i class="fas fa-link"></i></a>
 </h2>
+<p>Freshly collected and tabulated data are often “dirty”: there are errors in the data such as typographical errors, impossible values, or simply more detail than is appropriate for your analysis. Preparing a dataset for analysis is called <a href="https://en.wikipedia.org/wiki/Data_cleansing">data cleaning</a> and it can be a complex and lengthy task that is at least as complext as analyzing data. Although there are common tasks performed in data cleaning, every dataset presents its own set of challenges. That’s the reason we usually use “clean” data in courses.</p>
 <p>Data cleaning tasks are very individual and can take considerable creativity. Here we’ll just try a few.</p>
 <p>Let’s look at the values of <code>flavour</code>. It seems like there are a lot of them.</p>
-<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 43 x 2
-##    flavour     n
-##    &lt;chr&gt;   &lt;int&gt;
-##  1 orange     32
-##  2 lemon      23
-##  3 cherry     19
-##  4 Orange     19
-##  5 grape      18
-##  6 coconut    14
-##  7 Cherry     10
-##  8 Banana      9
-##  9 Grape       9
-## 10 Lemon       9
-## # … with 33 more rows</code></pre>
-<p>We definitely have some duplication. I’ll do one correction – changing all letters to lower case so different capitalizations don’t duplicate flavours. (This simple change eliminates 13 different values of flavour.) I’ll leave the other corrections as an exercise. You will find spelling errors, different codings (and, +, or neither), and one missing flavour.</p>
-<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coconut
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cherry
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Banana
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Grape
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lemon
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+banana
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Coconut
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lime
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purple
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+strawberry
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yellow White
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+blueberry
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bubblegum
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Purple
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+red
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow and white
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Yellow Brown
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Apple
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bubblegum
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cinnamon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cocnut
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Coffee
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon/lime
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+licorice
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lime
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+marshmallow
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pinapple
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plum
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+raspberry
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Red
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+watermelon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Watermelon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow + white
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow and brown
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>We definitely have some duplication. I’ll do one correction – changing all letters to lower case so differences in capitalization don’t duplicate flavours. (This simple change eliminates 13 different values of flavour.)
+If you look closely at the data, you will find spelling errors, different codings (and, +, or neither), and one missing flavour.</p>
+<div class="sourceCode" id="cb331"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>flavour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">count</span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 30 x 2
-##    flavour     n
-##    &lt;chr&gt;   &lt;int&gt;
-##  1 orange     51
-##  2 lemon      32
-##  3 cherry     29
-##  4 grape      27
-##  5 coconut    19
-##  6 banana     16
-##  7 purple      6
-##  8 lime        5
-##  9 apple       4
-## 10 white       4
-## # … with 20 more rows</code></pre>
-<p>Use what you learned to tidy the data.</p>
-<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+  <span class="fu">count</span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coconut
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+banana
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purple
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lime
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bubblegum
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+red
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+strawberry
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow white
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+blueberry
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+watermelon
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow and white
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow brown
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cinnamon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cocnut
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coffee
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon/lime
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+licorice
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+marshmallow
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pinapple
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plum
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+raspberry
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow + white
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow and brown
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use what you learned to tidy the data. Here are some changes I’ll make before continuing the analysis.</p>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">&lt;-</span> <span class="va">jelly</span> <span class="op">%&gt;%</span> 
   <span class="fu">mutate</span><span class="op">(</span>flavour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span>,
          flavour <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span><span class="va">flavour</span> <span class="op">==</span> <span class="st">"cocnut"</span> <span class="op">~</span> <span class="st">"coconut"</span>, 
@@ -815,39 +1613,1129 @@ NA
 <span class="header-section-number">25.6</span> Analyze a subset of your data<a class="anchor" aria-label="anchor" href="#analyze-a-subset-of-your-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s compute the average reaction time for correct and incorrect answers for each flavour and each treatment. We will count the number of observations for each grouping too.</p>
-<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb333"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">flavour</span>, <span class="va">group_choose_from_drop_down</span>, <span class="va">accuracy_0_incorrect_1_correct</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarize</span><span class="op">(</span>count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
-            mean_reaction_time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by 'flavour', 'group_choose_from_drop_down' (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 58 x 5
-## # Groups:   flavour, group_choose_from_drop_down [42]
-##    flavour  group_choose_from_dr… accuracy_0_incorrect_1… count mean_reaction_t…
-##    &lt;chr&gt;    &lt;chr&gt;                                   &lt;dbl&gt; &lt;int&gt;            &lt;dbl&gt;
-##  1 apple    experimental                                0     4            14.7 
-##  2 banana   control                                     1     9            12.6 
-##  3 banana   experimental                                0     4            24.2 
-##  4 banana   experimental                                1     3            17.2 
-##  5 blueber… control                                     0     1             5.98
-##  6 blueber… experimental                                0     1            20.7 
-##  7 bubbleg… control                                     0     1             7.3 
-##  8 bubbleg… experimental                                0     2            17.6 
-##  9 cherry   control                                     0     4            17.5 
-## 10 cherry   control                                     1    12             6.78
-## # … with 48 more rows</code></pre>
+            mean_reaction_time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span>,
+            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:left;">
+group_choose_from_drop_down
+</th>
+<th style="text-align:right;">
+accuracy_0_incorrect_1_correct
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+mean_reaction_time
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+14.660000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+banana
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+12.616667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+banana
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+24.222500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+banana
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+17.166667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+blueberry
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5.980000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+blueberry
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+20.730000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bubblegum
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.300000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bubblegum
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+17.620000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+17.487500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+6.785000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+15.835455
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12.320000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cherry
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11.000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cinnamon
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5.920000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coconut
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+22.596667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coconut
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6.821667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coconut
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+18.861111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coconut
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15.040000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+coffee
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.650000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+23.903333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5.926000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+13.250000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+17.655833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grape
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+16.473333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+10.756000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+7.138750
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+17.110000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+15.613333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5.460000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon lime
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10.800000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+licorice
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8.460000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lime
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+10.640000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lime
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+12.760000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+marshmallow
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12.050000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+14.307778
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+6.546250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+18.295000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+10.086000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pinapple
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11.770000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plum
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15.200000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purple
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+14.445000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purple
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14.756667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+purple
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+36.000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+raspberry
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16.150000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+red
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12.120000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+red
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+24.000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+strawberry
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+23.716667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+watermelon
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+23.800000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3.300000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+21.500000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7.480000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+9.265000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow brown
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15.800000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow brown
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9.340000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow white
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+13.060000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow white
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+15.500000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow white
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+20.200000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow white
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11.000000
+</td>
+</tr>
+</tbody>
+</table></div>
 <p>This is a fairly simple calculation, but it serves to demonstrate the “manual check” method. Filter out just the incorrect, experimental results for apple flavours. Check that the number of rows and average match.</p>
-<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jelly</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">flavour</span> <span class="op">==</span> <span class="st">"apple"</span>,
                  <span class="va">accuracy_0_incorrect_1_correct</span> <span class="op">==</span> <span class="fl">0</span>,
-                 <span class="va">group_choose_from_drop_down</span> <span class="op">==</span> <span class="st">"experimental"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 6
-##   initials group_choose_fr… trial_number flavour reaction_time_i…
-##   &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
-## 1 FACP     experimental                1 apple              14.3 
-## 2 VP       experimental                1 apple              21.4 
-## 3 &lt;NA&gt;     experimental                2 apple               9.99
-## 4 Tw       experimental                1 apple              13   
-## # … with 1 more variable: accuracy_0_incorrect_1_correct &lt;dbl&gt;</code></pre>
+                 <span class="va">group_choose_from_drop_down</span> <span class="op">==</span> <span class="st">"experimental"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+initials
+</th>
+<th style="text-align:left;">
+group_choose_from_drop_down
+</th>
+<th style="text-align:right;">
+trial_number
+</th>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:right;">
+reaction_time_in_sec
+</th>
+<th style="text-align:right;">
+accuracy_0_incorrect_1_correct
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+FACP
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:right;">
+14.30
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VP
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:right;">
+21.35
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:right;">
+9.99
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tw
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+apple
+</td>
+<td style="text-align:right;">
+13.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table></div>
 <p>Looks good!</p>
 </div>
 <div id="use-fake-data-where-you-already-know-the-answer" class="section level2" number="25.7">
@@ -855,7 +2743,7 @@ NA
 <span class="header-section-number">25.7</span> Use fake data, where you already know the answer<a class="anchor" aria-label="anchor" href="#use-fake-data-where-you-already-know-the-answer"><i class="fas fa-link"></i></a>
 </h2>
 <p>This example will be a bit contrived, but its a good example of the idea. I’ll create some simple data and then compute the averages using exactly the same code I wrote above. I’ll put in a NA in one row just to see what happens.</p>
-<div class="sourceCode" id="cb342"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb335"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_jelly</span> <span class="op">&lt;-</span> <span class="fu">tribble</span><span class="op">(</span>
   <span class="op">~</span><span class="va">group_choose_from_drop_down</span>, <span class="op">~</span> <span class="va">flavour</span>, <span class="op">~</span> <span class="va">reaction_time_in_sec</span>, <span class="op">~</span> <span class="va">accuracy_0_incorrect_1_correct</span>,
   <span class="st">"experimental"</span>, <span class="st">"lime"</span>, <span class="fl">1</span>, <span class="fl">1</span>,
@@ -939,36 +2827,171 @@ lemon
 </tbody>
 </table></div>
 <p>I know exactly what I’m expecting. Stop and decide for yourself before reading on.</p>
-<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_jelly</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">flavour</span>, <span class="va">group_choose_from_drop_down</span>, <span class="va">accuracy_0_incorrect_1_correct</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarize</span><span class="op">(</span>count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
-            mean_reaction_time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 5
-## # Groups:   flavour, group_choose_from_drop_down [3]
-##   flavour group_choose_from_dro… accuracy_0_incorrect_1… count mean_reaction_ti…
-##   &lt;chr&gt;   &lt;chr&gt;                                    &lt;dbl&gt; &lt;int&gt;             &lt;dbl&gt;
-## 1 lemon   control                                      1     1               4  
-## 2 lemon   experimental                                 1     1               3  
-## 3 lime    experimental                                 1     2               1.5</code></pre>
+            mean_reaction_time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span>,
+            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:left;">
+group_choose_from_drop_down
+</th>
+<th style="text-align:right;">
+accuracy_0_incorrect_1_correct
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+mean_reaction_time
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lime
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 <div id="do-you-calculations-two-different-ways" class="section level2" number="25.8">
 <h2>
 <span class="header-section-number">25.8</span> Do you calculations two different ways<a class="anchor" aria-label="anchor" href="#do-you-calculations-two-different-ways"><i class="fas fa-link"></i></a>
 </h2>
 <p>Suppose we weren’t really confident that we knew what <code>mean</code> does? Even simple functions like <code>sd</code> (for standard deviation) and <code>median</code> might not do what you think they should. How can we check it? Let’s write our own function based on sum, length, and division.</p>
-<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb337"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_mean</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="va">my_jelly</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">flavour</span>, <span class="va">group_choose_from_drop_down</span>, <span class="va">accuracy_0_incorrect_1_correct</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">my_jelly</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">flavour</span>, 
+                      <span class="va">group_choose_from_drop_down</span>, 
+                      <span class="va">accuracy_0_incorrect_1_correct</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">summarize</span><span class="op">(</span>count <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">flavour</span><span class="op">)</span>,
-            mean_reaction_time <span class="op">=</span> <span class="fu">my_mean</span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by 'flavour', 'group_choose_from_drop_down' (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 3 x 5
-## # Groups:   flavour, group_choose_from_drop_down [3]
-##   flavour group_choose_from_dro… accuracy_0_incorrect_1… count mean_reaction_ti…
-##   &lt;chr&gt;   &lt;chr&gt;                                    &lt;dbl&gt; &lt;int&gt;             &lt;dbl&gt;
-## 1 lemon   control                                      1     1               4  
-## 2 lemon   experimental                                 1     1               3  
-## 3 lime    experimental                                 1     2               1.5</code></pre>
+            mean_reaction_time <span class="op">=</span> <span class="fu">my_mean</span><span class="op">(</span><span class="va">reaction_time_in_sec</span><span class="op">)</span>,
+            .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+flavour
+</th>
+<th style="text-align:left;">
+group_choose_from_drop_down
+</th>
+<th style="text-align:right;">
+accuracy_0_incorrect_1_correct
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+mean_reaction_time
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lemon
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lime
+</td>
+<td style="text-align:left;">
+experimental
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+</tr>
+</tbody>
+</table></div>
 <p>Excellent! We got the same answers.</p>
 <p>That’s an introduction to testing calculations. These are good checks to make as you calculate and test your analysis. The next step is to write computer code that checks your answers as well, by giving sample data to your calculation code along with the known answers. There is a package (of course!) for helping with that: <code>testthat</code> and <code>tinytest</code> (links below). We won’t be using these in the course, but you should take time to learn about them after the course.</p>
 </div>
@@ -1013,11 +3036,11 @@ lemon
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#testing"><span class="header-section-number">25</span> Is my work right?</a></li>
+<li><a class="nav-link" href="#testing"><span class="header-section-number">25</span> Checking your work</a></li>
 <li><a class="nav-link" href="#an-introduction-to-testing"><span class="header-section-number">25.1</span> An introduction to testing</a></li>
 <li><a class="nav-link" href="#checking-analysis-and-visualizations"><span class="header-section-number">25.2</span> Checking analysis and visualizations</a></li>
 <li>
-<a class="nav-link" href="#data-errors"><span class="header-section-number">25.3</span> Data errors</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#data-to-test"><span class="header-section-number">25.3.1</span> Data to test</a></li></ul>
+<a class="nav-link" href="#data-errors"><span class="header-section-number">25.3</span> Data errors</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#sample-data-to-test"><span class="header-section-number">25.3.1</span> Sample data to test</a></li></ul>
 </li>
 <li><a class="nav-link" href="#data-quality-assurance"><span class="header-section-number">25.4</span> Data quality assurance</a></li>
 <li><a class="nav-link" href="#data-cleaning"><span class="header-section-number">25.5</span> Data cleaning</a></li>
@@ -1044,7 +3067,7 @@ lemon
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-25.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

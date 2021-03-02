@@ -1,7 +1,7 @@
 Making slide presentations
 ========================================================
 author: Andrew Irwin
-date: 2021-02-26
+date: 2021-03-08
 autosize: true
 
 ```{r include=FALSE}
@@ -15,23 +15,33 @@ Goals
 - Why we make slides for data visualization
 - How to make slides using "R presentation" format
 
+Create a template
+======================
 
-Showing a visualization
+Rstudio menu: 
+
+* File
+  * New File...
+    * R presentation
+    
+    
+Stopping distance increases with car speed
 ========================================================
 
-```{r, echo=FALSE}
-plot(cars)
+```{r, echo=FALSE, fig.align="center", out.width="40%"}
+cars %>% ggplot(aes(speed, dist)) + geom_point(size=4) +
+    theme_bw() + theme(text=element_text(size=30)) 
 ```
 
 
-Showing computer code
+Show computer code
 ========================================================
 
-```{r}
-summary(cars)
+```{r eval=FALSE}
+cars %>% ggplot(aes(speed, dist)) + geom_point()
 ```
 
-Formatting text and other tricks
+Formatting text and adding images
 =======
 
 All markdown formatting for *italics*, **bold**, [hyperlinks](https://www.r-project.org/) are available.
@@ -59,4 +69,16 @@ mpg %>% count(class) %>% ggplot(aes(x = class, y = n)) + geom_col() +
   theme_bw() + theme(text=element_text(size=30)) +
   theme(axis.text.x = element_text(angle=90))
 ```
+
+
+Summary
+=========
+
+* I've shown a simple set of slides you can easily make using Rstudio and R markdown
+
+* Remember, you generally want to make your slides quite simple and use large text and images
+
+* You can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed
+
+* A link to the full code for these slides is provided in the detailed outline
 

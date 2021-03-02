@@ -66,7 +66,7 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="testing.html"><span class="header-section-number">25</span> Is my work right?</a></li>
+<li><a class="" href="testing.html"><span class="header-section-number">25</span> Checking your work</a></li>
 <li><a class="" href="dynamic.html"><span class="header-section-number">26</span> Dynamic graphics</a></li>
 <li><a class="" href="mapping-1.html"><span class="header-section-number">27</span> Making maps</a></li>
 <li><a class="" href="mapping-2.html"><span class="header-section-number">28</span> Mapping part two</a></li>
@@ -97,12 +97,12 @@
 <span class="header-section-number">29.1</span> Heatmaps<a class="anchor" aria-label="anchor" href="#heatmaps"><i class="fas fa-link"></i></a>
 </h2>
 <p>Suppose we want to show a combination of spatial and temporal data. The geographic data is important, but the location on a map is not the most important feature. As an example, consider this data on weekly cases of COVID-19 in 5 regions of Canada reported on 2021-01-21. In the code below I select the number of cases identified broken down into age classes and geographic regions. The number of cases is presented as a shade of blue using <code>geom_tile</code>.</p>
-<div class="sourceCode" id="cb411"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb401"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid</span> <span class="op">&lt;-</span> <span class="fu">cansim</span><span class="fu">::</span><span class="fu"><a href="https://mountainmath.github.io/cansim/index.html/reference/get_cansim.html">get_cansim</a></span><span class="op">(</span><span class="st">"13-10-0775-01"</span><span class="op">)</span></code></pre></div>
 <pre><code>## Accessing CANSIM NDM product 13-10-0775 from Statistics Canada</code></pre>
 <pre><code>## Parsing data</code></pre>
 <pre><code>## Folding in metadata</code></pre>
-<div class="sourceCode" id="cb415"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb405"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># covid2 &lt;- get_cansim("13-10-0774-01")  # related data with extra information</span>
 <span class="va">covid_ss</span> <span class="op">&lt;-</span> <span class="va">covid</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">GEO</span> <span class="op">!=</span> <span class="st">"Canada"</span>, <span class="va">Gender</span> <span class="op">==</span> <span class="st">"Total, all genders"</span>, <span class="va">`Age group`</span> <span class="op">!=</span> <span class="st">"Total, all age groups"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">Statistics</span> <span class="op">==</span> <span class="st">"Community exposures"</span><span class="op">)</span> 
@@ -112,7 +112,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="142-mapping-3_files/figure-html/covid-data-1.png" width="672"></div>
 <p>There are two common ways to improve a figure like this. First is to ensure the ordering of categorical variables is easily interpreted. Here we would remove hte “Not stated” age group and order the geographic regions from west to east to follow Canadian convention. We might swap the x and y axes to align left-right flow with the west-east geography of Canada.</p>
-<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb406"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid_ss2</span> <span class="op">&lt;-</span> <span class="va">covid_ss</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">`Age group`</span> <span class="op">!=</span> <span class="st">"Not stated, age group"</span><span class="op">)</span>
 <span class="va">regions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"BC + Yukon"</span>, <span class="st">"Prairies + NWT"</span>,
              <span class="st">"ON + NU"</span>, <span class="st">"QC"</span>, <span class="st">"Atlantic"</span><span class="op">)</span>
@@ -129,7 +129,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="142-mapping-3_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
 <p>A second approach is to group the rows and columns so that similar patterns are side by side. The <code>ggheatmap</code> function in the <a href="https://github.com/tleonardi/ggheatmap/">ggheatmap</a> package makes this easy.</p>
-<div class="sourceCode" id="cb417"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb407"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid_ss4</span> <span class="op">&lt;-</span> <span class="va">covid_ss3</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">GEO</span>, <span class="va">`Age group`</span>, <span class="va">VALUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">GEO</span>, values_from <span class="op">=</span> <span class="va">VALUE</span><span class="op">)</span> 
 <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">covid_ss4</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">`Age group`</span><span class="op">)</span>, 
@@ -137,7 +137,7 @@
   <span class="fu">ggheatmap</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="142-mapping-3_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
 <p>From this analysis you can tell that the number of cases is structured by age (see the tree on left side of the plot) and geographically. The number of people in each region is very different, so you might want to account for that in some way. One approach would be to compute the cases per capita in each region, but I don’t have those data handy. An alternative is to allocate the number of cases to age classes as proportions, by dividing the number of cases in each region and age group by the total in each region. We can use scale to accomplish that scaling. Now the color represents the proportion of COVID-19 cases in each age class, scaled within a region.</p>
-<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb408"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">covid_ss4</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">`Age group`</span><span class="op">)</span>, 
               row.names <span class="op">=</span> <span class="va">covid_ss4</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">`Age group`</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span>center <span class="op">=</span> <span class="cn">FALSE</span>, scale <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -152,7 +152,7 @@
 </h2>
 <p>Customization of any visualization is always possible, but takes time to develop. Maps of the USA are very common, so a huge number of variations have been developed. Here is a <a href="https://www.washingtonpost.com/wp-srv/special/business/states-most-threatened-by-trade/">kind of heatmap</a>:
 each state is the same size and the states are arranged in an approximate geographic representation of the USA. (Example adapted from Healy Section 7.3.)</p>
-<div class="sourceCode" id="cb419"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb409"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gitlab.com/hrbrmstr/statebins">statebins</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"static/election.rda"</span><span class="op">)</span>
 <span class="va">election</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">state</span>, fill <span class="op">=</span> <span class="va">pct_trump</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -206,7 +206,7 @@ each state is the same size and the states are arranged in an approximate geogra
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-25.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

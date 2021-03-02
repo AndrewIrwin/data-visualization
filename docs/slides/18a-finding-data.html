@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## Finding data
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-02-24 (updated: 2021-02-19)
+
+---
+
+class: middle
+
+
+
+# Plan
+
+* Finding data
+
+* Reading data
+
+* Checking data
+
+* Subsetting data (filtering observations, selecting variables)
+
+* Importance of metadata (source, units, how/why/when)
+
+---
+class: middle
+# Where to get data?
+
+* R packages
+
+* Websites: gapminder, Our World in Data, Tidy Tuesday
+
+* Large repositories: Statistics Canada, OECD
+
+* Specialized repositories: Many COVID data repositories
+
+* Small collections made by individuals
+
+* Government "Open data"
+
+* Many, many, many more sources: google
+
+---
+class: middle
+# What to look for?
+
+* Downloadable spreadsheets, comma separated variables files, text files
+
+* R packages to download data
+
+* GitHub repositories (and others: pangaea.de, osf.io, and many, many more)
+
+* A license or terms and conditions of reuse and redistribution
+
+---
+class: middle
+## Example: gapminder
+
+&lt;img src="../static/gapminder-web-01.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### Example: gapminder
+
+
+```r
+electricity &lt;- read_csv("../static/electricity_use_per_person.csv")
+electricity %&gt;% 
+  filter(str_starts(country, "[AM]")) %&gt;%
+  ggplot(aes(`2010`, fct_reorder(country, `2010`))) +
+  geom_point() +
+  labs(x = "Electricity use in 2010\n(annual kWh per capita)", y = "") + my_theme
+```
+
+![](18a-finding-data_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+class: middle
+## Example: UN
+
+&lt;img src="../static/un-data-01.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle
+## Example: UN
+
+&lt;img src="../static/un-data-02.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### Example: UN
+
+
+```r
+forest_UN &lt;- read_csv("../static/UNdata_Export_20210219_185253716.csv")
+forest_UN %&gt;%
+  filter(Year == 2017, Unit == "1000 ha",
+         str_starts(`Country or Area`, "[BU]")) %&gt;%
+  ggplot(aes(x = Value, y = fct_reorder(`Country or Area`, Value))) +
+  geom_point() + labs(x = "Forest area (1000 ha)", y = "") + my_theme +
+  scale_x_log10() + theme(axis.title.y = element_text(size=10))
+```
+
+![](18a-finding-data_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+---
+class: middle
+## Datapasta
+
+&lt;img src="../static/datapasta-01.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+### Datapasta
+
+Addins &gt; Paste as data.frame
+
+
+```r
+data.frame(
+  stringsAsFactors = FALSE,
+             Prov. = c("Total","BC","ON","QC","AB",
+                       "MB","NB","SK","PEI","NL","NS","YT","NT","NU",
+                       "\U0001f6a2"),
+   Total.Confirmed = c("839,451 (arrow_upward1,950)",
+                       "75,327","290,771 (arrow_upward1,150)",
+                       "280,687 (arrow_upward800)","130,030","31,145","1,411","27,099",
+                       "114","803","1,602","72","47","330","13"),
+      Total.Deaths = c("21,559 (arrow_upward61)",
+                       "1,321","6,820 ( arrow_upward 47)",
+                       "10,278 ( arrow_upward 14)","1,805","878","24","362","0","4","65","1",
+                       "0","1","0"),
+   Total.Recovered = c("785,855 (arrow_upward2,439)",
+                       "69,602","273,401 ( arrow_upward 1,255)",
+                       "261,429 ( arrow_upward 1,184)","123,338","29,114","1,275","25,221",
+                       "112","416","1,524","69","39","302","13"),
+      Total.Active = c("32,037 (-550)","4,404",
+                       "10,550 (-152)","8,980 (-398)","4,887","1,153","112",
+                       "1,516","2","383","13","2","8","27","0")
+)
+```
+
+```
+##         Prov.             Total.Confirmed              Total.Deaths
+## 1       Total 839,451 (arrow_upward1,950)   21,559 (arrow_upward61)
+## 2          BC                      75,327                     1,321
+## 3          ON 290,771 (arrow_upward1,150)  6,820 ( arrow_upward 47)
+## 4          QC   280,687 (arrow_upward800) 10,278 ( arrow_upward 14)
+## 5          AB                     130,030                     1,805
+## 6          MB                      31,145                       878
+## 7          NB                       1,411                        24
+## 8          SK                      27,099                       362
+## 9         PEI                         114                         0
+## 10         NL                         803                         4
+## 11         NS                       1,602                        65
+## 12         YT                          72                         1
+## 13         NT                          47                         0
+## 14         NU                         330                         1
+## 15 \U0001f6a2                          13                         0
+##                  Total.Recovered  Total.Active
+## 1    785,855 (arrow_upward2,439) 32,037 (-550)
+## 2                         69,602         4,404
+## 3  273,401 ( arrow_upward 1,255) 10,550 (-152)
+## 4  261,429 ( arrow_upward 1,184)  8,980 (-398)
+## 5                        123,338         4,887
+## 6                         29,114         1,153
+## 7                          1,275           112
+## 8                         25,221         1,516
+## 9                            112             2
+## 10                           416           383
+## 11                         1,524            13
+## 12                            69             2
+## 13                            39             8
+## 14                           302            27
+## 15                            13             0
+```
+
+
+---
+class: middle
+
+# Summary
+
+* Highlighted a few sources of data
+
+* Easiest case is a `csv` format file
+
+* Many R packages have data or have functions to retrieve data
+
+* Always examine your data to be sure it was read and interpreted correctly
+
+* Always look for metadata: units, how was data collected, who collected data, ...
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* [Importing data](https://r4ds.had.co.nz/data-import.html) from R4DS
+
+* Roger Peng's notes on [importing data](https://bookdown.org/rdpeng/rprogdatascience/getting-data-in-and-out-of-r.html)
+
+* An older but comprehensive guide to [importing data](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
+
+---
+class: middle, inverse
+
+## Task
+
+* Bonus task: 
+
+  * Find data online that you have not used before from a source in this lesson or anywhere else.
+  * Download the data to your computer. 
+  * Read the data into R. 
+  * Make a simple plot of the data.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

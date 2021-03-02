@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## MDS: Multidimensional scaling
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-03-03 (updated: 2021-02-19)
+
+---
+
+class: middle
+
+
+
+# Plan
+
+* What is MDS and why do we use it?
+
+* Demonstration 
+
+* Comparison with PCA
+
+---
+class: middle
+### What is MDS?
+
+* A tool to convert a distance or dissimilarity matrix into a set of points in a plane
+
+* Can be based on distances (using one of many metrics) or ranks of dissimilarities, when it is called non-metric MDS (NMDS)
+
+* NMDS suitable if you can rank objects as being closer or farther away, by the scale of the quantification is skewed or not important
+
+
+---
+## Cites on a map
+
+&lt;img src="/Users/airwin/Dropbox/Stats-data-visualization/01-course-notes/docs/122-mds_files/figure-html/mds-map-cache-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+## MDS analysis
+
+* Use latitude and longitude of cities to compute distance between each pair
+
+* Use MDS on distance matrix to reconstruct relative positions
+
+---
+## Cites on a map
+
+&lt;img src="/Users/airwin/Dropbox/Stats-data-visualization/01-course-notes/docs/122-mds_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle
+## MDS analysis
+
+* Use latitude and longitude of cities to compute distance between each pair
+
+  * **How do we compute that distance? Euclidean? Great circle?**
+  
+* Use MDS on distance matrix to reconstruct relative positions
+
+---
+## Cites on a map
+
+&lt;img src="/Users/airwin/Dropbox/Stats-data-visualization/01-course-notes/docs/122-mds_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+# How and when to use MDS?
+
+* When you can similar pairs of objects are
+
+  * How similar are the species in two communities?
+  
+  * How similar are two countries based on economic development?
+  
+* Columns are objects (sample locations, countries)
+
+* Be sure the observations (rows) are all measured in the same units
+
+  * Abundance
+  * Proportions
+  * Scaling or transformation may be required
+  
+---
+class: middle
+
+## How is MDS different from PCA?
+
+* PCA is a rotation and projection of data to select linear combinations of original variables that highlight variation
+
+* MDS converts pairwise distance or dissimilarity matrix into relative positions
+
+* Both make plots of points on abstract axes
+
+  * Possibly with arrows showing direction of change of other variables
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+---
+class: middle, inverse
+
+## Task
+
+* Practice PCA and MDS methods
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

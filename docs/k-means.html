@@ -66,7 +66,7 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="active" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="testing.html"><span class="header-section-number">25</span> Is my work right?</a></li>
+<li><a class="" href="testing.html"><span class="header-section-number">25</span> Checking your work</a></li>
 <li><a class="" href="dynamic.html"><span class="header-section-number">26</span> Dynamic graphics</a></li>
 <li><a class="" href="mapping-1.html"><span class="header-section-number">27</span> Making maps</a></li>
 <li><a class="" href="mapping-2.html"><span class="header-section-number">28</span> Mapping part two</a></li>
@@ -105,20 +105,20 @@
 <p>The kclust object reports the means (centroid) of each cluster and the membership of each observation (1-3). We also get sum of squared deviations between the cluster mean and each observation. This is then compared to the total sums of squares, which is the sum of squared deviations from the mean if there was only one cluster. In our example, 72% of the total sums of squares is within clusters and the remainder (28%) is between clusters. This tells us that the three main clusters account for almost 75% of the squared deviations. This measure is the same one used in linear regression, which minimizes the total sum of squared deviations between the regression line and each observation.</p>
 <div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kclust1</span></code></pre></div>
-<pre><code>## K-means clustering with 3 clusters of sizes 148, 123, 71
+<pre><code>## K-means clustering with 3 clusters of sizes 132, 123, 87
 ## 
 ## Cluster means:
 ##   flipper_length_mm bill_length_mm bill_depth_mm body_mass_g
-## 1        -0.8175594     -0.9723116     0.5499273  -0.6907503
+## 1        -0.8899121     -1.0465260     0.4858415  -0.7694891
 ## 2         1.1571696      0.6562677    -1.0983711   1.0901639
-## 3        -0.3004658      0.8898759     0.7564847  -0.4487199
+## 3        -0.2857869      0.6600059     0.8157307  -0.3737654
 ## 
 ## Clustering vector:
-##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-##  [38] 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1
-##  [75] 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 3
-## [112] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-## [149] 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+##   [1] 1 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 3 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+##  [38] 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 3 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 3 1 1 1 3 1
+##  [75] 3 1 1 1 3 1 3 1 1 1 1 1 1 1 1 1 3 1 1 1 3 1 1 1 3 1 3 1 1 1 1 1 1 1 3 1 3
+## [112] 1 3 1 3 1 1 1 1 1 1 1 3 1 1 1 1 1 3 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [149] 1 1 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 ## [186] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 ## [223] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
 ## [260] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 3
@@ -126,8 +126,8 @@
 ## [334] 3 3 3 3 3 3 3 3 3
 ## 
 ## Within cluster sum of squares by cluster:
-## [1] 155.25908 143.15025  81.56839
-##  (between_SS / total_SS =  72.1 %)
+## [1] 122.1477 143.1502 112.9852
+##  (between_SS / total_SS =  72.3 %)
 ## 
 ## Available components:
 ## 
@@ -163,22 +163,22 @@ cluster
 <tbody>
 <tr>
 <td style="text-align:right;">
--0.82
+-0.89
 </td>
 <td style="text-align:right;">
--0.97
+-1.05
 </td>
 <td style="text-align:right;">
-0.55
+0.49
 </td>
 <td style="text-align:right;">
--0.69
+-0.77
 </td>
 <td style="text-align:right;">
-148
+132
 </td>
 <td style="text-align:right;">
-155.26
+122.15
 </td>
 <td style="text-align:left;">
 1
@@ -209,22 +209,22 @@ cluster
 </tr>
 <tr>
 <td style="text-align:right;">
--0.30
+-0.29
 </td>
 <td style="text-align:right;">
-0.89
+0.66
 </td>
 <td style="text-align:right;">
-0.76
+0.82
 </td>
 <td style="text-align:right;">
--0.45
+-0.37
 </td>
 <td style="text-align:right;">
-71
+87
 </td>
 <td style="text-align:right;">
-81.57
+112.99
 </td>
 <td style="text-align:left;">
 3
@@ -254,10 +254,10 @@ cluster
 <pre><code>## # A tibble: 5 x 3
 ##   .cluster species       n
 ##   &lt;fct&gt;    &lt;fct&gt;     &lt;int&gt;
-## 1 1        Adelie      143
+## 1 1        Adelie      127
 ## 2 1        Chinstrap     5
 ## 3 2        Gentoo      123
-## 4 3        Adelie        8
+## 4 3        Adelie       24
 ## 5 3        Chinstrap    63</code></pre>
 </div>
 <div id="example-2" class="section level2" number="23.2">
@@ -270,44 +270,43 @@ cluster
                   centers <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
 <span class="fu">tidy</span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 7
-##     displ      cyl    cty    hwy  size withinss cluster
-##     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  
-## 1 -1.32   -1.17     2.37   2.11     14     14.9 1      
-## 2  1.29    1.31    -1.01  -0.976    70     47.5 2      
-## 3 -0.974  -1.14     0.756  0.736    67     21.5 3      
-## 4 -0.0752  0.00914 -0.159 -0.127    83     61.8 4</code></pre>
+##    displ     cyl     cty    hwy  size withinss cluster
+##    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  
+## 1 -1.05  -1.14    1.10    1.05     75    78.4  1      
+## 2 -0.299 -0.135   0.0717  0.229    61    31.7  2      
+## 3  1.29   1.31   -1.01   -0.976    70    47.5  3      
+## 4  0.251  0.0689 -0.596  -0.860    28     4.62 4</code></pre>
 <p>Compare these clusters to the class of the cars. There are many classes of each car in some clusters.</p>
 <div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">kclust2</span>, <span class="va">mpg</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">.cluster</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 19 x 3
+<pre><code>## # A tibble: 18 x 3
 ##    .cluster class          n
 ##    &lt;fct&gt;    &lt;chr&gt;      &lt;int&gt;
-##  1 1        compact        5
-##  2 1        subcompact     9
-##  3 2        2seater        5
-##  4 2        midsize        2
-##  5 2        pickup        20
-##  6 2        subcompact     5
-##  7 2        suv           38
-##  8 3        compact       29
-##  9 3        midsize       16
-## 10 3        minivan        1
-## 11 3        pickup         1
-## 12 3        subcompact    14
-## 13 3        suv            6
-## 14 4        compact       13
-## 15 4        midsize       23
-## 16 4        minivan       10
-## 17 4        pickup        12
-## 18 4        subcompact     7
-## 19 4        suv           18</code></pre>
+##  1 1        compact       33
+##  2 1        midsize       16
+##  3 1        subcompact    23
+##  4 1        suv            3
+##  5 2        compact       14
+##  6 2        midsize       23
+##  7 2        minivan        8
+##  8 2        pickup         3
+##  9 2        subcompact     7
+## 10 2        suv            6
+## 11 3        2seater        5
+## 12 3        midsize        2
+## 13 3        pickup        20
+## 14 3        subcompact     5
+## 15 3        suv           38
+## 16 4        minivan        3
+## 17 4        pickup        10
+## 18 4        suv           15</code></pre>
 <p>If we use <code>glance</code> we get to see how the sums of squares are partitioned. I’ll add a fifth variable that measures the proportion of sums of squares within compared to the total.</p>
 <div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>proportion_within <span class="op">=</span> <span class="va">tot.withinss</span> <span class="op">/</span> <span class="va">totss</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 5
 ##   totss tot.withinss betweenss  iter proportion_within
 ##   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;             &lt;dbl&gt;
-## 1   932         146.      786.     2             0.156</code></pre>
+## 1   932         162.      770.     2             0.174</code></pre>
 <p>How can we decide how many clusters to make? Let’s compute the proportion of sums of squares accounted for by the clustering for 2, 3, 4, etc., clusters. We will use functions in <code>broom</code> to accomplish this including <code>nest</code> and <code>map</code>.</p>
 <div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kclusts2</span> <span class="op">&lt;-</span> 
@@ -386,7 +385,7 @@ cluster
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-25.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

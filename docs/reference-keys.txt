@@ -259,7 +259,7 @@ testing
 an-introduction-to-testing
 checking-analysis-and-visualizations
 data-errors
-data-to-test
+sample-data-to-test
 data-quality-assurance
 data-cleaning
 analyze-a-subset-of-your-data

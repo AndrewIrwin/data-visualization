@@ -66,7 +66,7 @@
 <li><a class="" href="mds.html"><span class="header-section-number">22</span> Multidimensional scaling</a></li>
 <li><a class="" href="k-means.html"><span class="header-section-number">23</span> K-means clustering</a></li>
 <li><a class="" href="slides.html"><span class="header-section-number">24</span> Making slides for presentations</a></li>
-<li><a class="" href="testing.html"><span class="header-section-number">25</span> Is my work right?</a></li>
+<li><a class="" href="testing.html"><span class="header-section-number">25</span> Checking your work</a></li>
 <li><a class="" href="dynamic.html"><span class="header-section-number">26</span> Dynamic graphics</a></li>
 <li><a class="" href="mapping-1.html"><span class="header-section-number">27</span> Making maps</a></li>
 <li><a class="" href="mapping-2.html"><span class="header-section-number">28</span> Mapping part two</a></li>
@@ -99,7 +99,7 @@
 <ul>
 <li>A very common task is to remove leading, trailing, and duplicated spaces in a string. The <code>str_squish</code> function removes whitespace (including tabs, new lines, and spaces) in these positions.</li>
 </ul>
-<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb410"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_string</span> <span class="op">&lt;-</span> <span class="st">"   A cat  is a small, living
                     and furry animal.  "</span>
 <span class="va">my_string2</span> <span class="op">&lt;-</span> <span class="fu">str_squish</span><span class="op">(</span><span class="va">my_string</span><span class="op">)</span>
@@ -108,27 +108,27 @@
 <ul>
 <li>If there are particular letters or symbols you want to remove, the <code>str_remove</code> function can accomplish this. This can be used on literal strings or on patterns. Patterns allow for the use of character classes, selecting specific sequences, and more complex symbolic descriptions of strings. I will give a couple of simple examples of patterns. <code>str_remove</code> matches only once; <code>str_remove_all</code> matches the pattern as many times as possible.</li>
 </ul>
-<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb412"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">str_remove</span><span class="op">(</span><span class="va">my_string2</span>, <span class="st">"cat"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "A  is a small, living and furry animal."</code></pre>
-<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb414"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">str_remove_all</span><span class="op">(</span><span class="va">my_string2</span>, <span class="st">"[aeiou]"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "A ct s  smll, lvng nd frry nml."</code></pre>
-<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb416"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">str_remove_all</span><span class="op">(</span><span class="va">my_string2</span>, <span class="st">"[ ,\\.!]"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Acatisasmalllivingandfurryanimal"</code></pre>
 <ul>
 <li>If a pattern appears in a string, you might want to extract that information. <code>str_extract</code> allows you to write a pattern that matches part of the string and extract that from the source material.</li>
 </ul>
-<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb418"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A1"</span>, <span class="st">"A2"</span>, <span class="st">"B1"</span>, <span class="st">"B4"</span>, <span class="st">"C5"</span><span class="op">)</span>
 <span class="fu">str_extract</span><span class="op">(</span><span class="va">sets</span>, <span class="st">"[0-9]"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "1" "2" "1" "4" "5"</code></pre>
-<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb420"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">str_extract</span><span class="op">(</span><span class="va">sets</span>, <span class="st">"[A-Z]"</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "A" "A" "B" "B" "C"</code></pre>
 <p>Thinking about patterns is a lot of work and prone to error, so the pair of functions <code>glue</code> and <code>unglue</code> were created to perform common tasks of combining text and data and then to separate them again.</p>
-<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb422"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidyverse/glue">glue</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">unglue</span><span class="op">)</span>
 <span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span>
@@ -137,12 +137,12 @@
 <span class="va">my_string3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"The numbers a, b, and c are {a}, {b}, and {c}, respectively. Their sum is {a+b+c}."</span><span class="op">)</span>
 <span class="va">my_string3</span></code></pre></div>
 <pre><code>## The numbers a, b, and c are 1, 6, and 15.63, respectively. Their sum is 22.63.</code></pre>
-<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb424"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue</a></span><span class="op">(</span><span class="va">my_string3</span>, <span class="st">"The numbers a, b, and c are {a}, {b}, and {c}, respectively. Their sum is {d}."</span><span class="op">)</span></code></pre></div>
 <pre><code>## $`1`
 ##   a b     c     d
 ## 1 1 6 15.63 22.63</code></pre>
-<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb426"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_strings1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tibble.html">tibble</a></span><span class="op">(</span>greeting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"My name is Andrew."</span>, <span class="st">"My name is Li."</span>, <span class="st">"My name is Emily."</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue_unnest</a></span><span class="op">(</span><span class="va">my_strings1</span>, <span class="va">greeting</span>, <span class="st">"My name is {name}."</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
@@ -159,19 +159,19 @@
 <p>Factors are categorical variables in which a set of labels (“strings”) are the possible values of a variable. These are sometimes interpreted as integers and sometimes interpreted as text. In data visualization, our primary concern is mapping factors on to sequence of colours, shapes, or locations on an axis. In R, if a factor is not given an explicit order by the analyst, but must have an order (on a scale), this is usually alphabetical. This ordering is rarely the best one for visualizations!</p>
 <p>The <a href="https://forcats.tidyverse.org/">forcats</a> package has a series of functions for reordering factors. These can be used to explicitly reorder a factor by value (level) or a quantitative value can be used to reorder a factor.</p>
 <p>Here are a few examples using the <code>mpg</code> data set. First a visualization without any explicit reordering of factors.</p>
-<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb428"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
                    y <span class="op">=</span> <span class="va">trans</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>Here the transmission factor is reordered according to the minimum value of highway fuel economy.</p>
-<div class="sourceCode" id="cb439"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb429"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
                    y <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">trans</span>, <span class="va">hwy</span>, <span class="va">median</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <p>Here we extract the number of gears from the transmission and reorder transmission on this basis.</p>
-<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb430"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue_unnest</a></span><span class="op">(</span><span class="va">trans</span>, <span class="st">"{trans_desc}({trans_code})"</span>, remove<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>gears <span class="op">=</span> <span class="fu">str_extract</span><span class="op">(</span><span class="va">trans_code</span>, <span class="st">"[0-9]"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
@@ -179,7 +179,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="130-bonus-topics_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
 <p>When there are too many cateogories to display on a graph, it can be helpful to pick out the ones with the most observations and to group the remaining observations together in an “other” category. Here’s how you can accomplish that.</p>
-<div class="sourceCode" id="cb441"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb431"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>,
              y <span class="op">=</span> <span class="fu">fct_lump</span><span class="op">(</span><span class="va">trans</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -197,11 +197,11 @@
 <span class="header-section-number">30.3.1</span> Reading dates<a class="anchor" aria-label="anchor" href="#reading-dates"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are a family of functions <code>ymd</code>, <code>dmy</code>, <code>mdy</code>, and <code>ymd_hms</code> among others that are used to turn text (such as in a table you read from a file) into a date. I strongly endorse the use of ISO 8601 date formatting. Illegal dates are converted to NA_Date.</p>
-<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb432"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tibble.html">tibble</a></span><span class="op">(</span>text_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999-01-31"</span>, <span class="st">"2000-02-28"</span>, <span class="st">"2010-06-28"</span>, <span class="st">"2024-03-14"</span>, <span class="st">"2021-02-29"</span><span class="op">)</span>,
              date <span class="op">=</span> <span class="fu">ymd</span><span class="op">(</span><span class="va">text_date</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: 1 failed to parse.</code></pre>
-<div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb434"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt1</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   text_date  date      
@@ -212,7 +212,7 @@
 ## 4 2024-03-14 2024-03-14
 ## 5 2021-02-29 NA</code></pre>
 <p>Here is an example with times. You can specify a time zone if you want, but sometimes you can get away with ignoring the problem.</p>
-<div class="sourceCode" id="cb446"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb436"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tibble.html">tibble</a></span><span class="op">(</span>text_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1999-01-31 09:14"</span>, <span class="st">"2000-02-28 12:15"</span>, <span class="st">"2010-06-28 23:45"</span>, 
                             <span class="st">"2024-03-14 07:00 AM"</span>, <span class="st">"2021-03-01 6:16 PM"</span><span class="op">)</span>,
              date_time <span class="op">=</span> <span class="fu">ymd_hm</span><span class="op">(</span><span class="va">text_date</span>, tz<span class="op">=</span><span class="st">"America/Halifax"</span><span class="op">)</span><span class="op">)</span>  <span class="co"># UTC is assumed if not specified</span>
@@ -226,13 +226,13 @@
 ## 4 2024-03-14 07:00 AM 2024-03-14 07:00:00
 ## 5 2021-03-01 6:16 PM  2021-03-01 18:16:00</code></pre>
 <p>These functions are remarkably powerful, for example they work on formats like this:</p>
-<div class="sourceCode" id="cb448"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb438"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">mdy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Jan 5, 1999"</span>, <span class="st">"Saturday May 16, 70"</span>, <span class="st">"8-8-88"</span>, <span class="st">"December 31/99"</span>, <span class="st">"Jan 1, 01"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "1999-01-05" "1970-05-16" "1988-08-08" "1999-12-31" "2001-01-01"</code></pre>
 <p>As with people working in the <a href="https://en.wikipedia.org/wiki/Year_2000_problem">late 20th century</a>,
 you should be very careful with two digit years. Best not to use them.</p>
 <p>If you want to know how much time has passed since the first observation, you can do arithmetic. Note the data types of each column (character, date, time, double = numeric).</p>
-<div class="sourceCode" id="cb450"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt1</span> <span class="op">%&gt;%</span> <span class="fu">arrange</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>elapsed <span class="op">=</span> <span class="va">date</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">date</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>,
          t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">elapsed</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -245,7 +245,7 @@ you should be very careful with two digit years. Best not to use them.</p>
 ## 4 2024-03-14 2024-03-14 9174 days  9174
 ## 5 2021-02-29 NA           NA days    NA</code></pre>
 <p>Let’s add some random data to the second table and make a scatter graph.</p>
-<div class="sourceCode" id="cb452"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt2</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>r <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span>, <span class="fl">20</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date_time</span>, y <span class="op">=</span> <span class="va">r</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -270,20 +270,20 @@ you should be very careful with two digit years. Best not to use them.</p>
 <span class="header-section-number">30.4.2</span> Computations with NA<a class="anchor" aria-label="anchor" href="#computations-with-na"><i class="fas fa-link"></i></a>
 </h3>
 <p>Any arithmetic computation with an NA will result in an NA result.</p>
-<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb443"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="cn">NA</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb445"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="cn">Inf</span> <span class="op">+</span> <span class="cn">NA</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb457"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb447"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="cn">NA</span><span class="op">/</span><span class="fl">0</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb459"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb449"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>When we use functions that turn a vector into a single number (mean, min, median, etc.), sometimes we want to ignore missing values. The option <code>na.rm=</code> is useful here.</p>
-<div class="sourceCode" id="cb461"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb451"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tibble.html">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span>, <span class="fl">9</span>, <span class="fl">14.5</span>, <span class="cn">NA</span>, <span class="fl">21</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span>
 <span class="va">dt3</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>mean_with_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
                   mean_no_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -292,7 +292,7 @@ you should be very careful with two digit years. Best not to use them.</p>
 ##          &lt;dbl&gt;      &lt;dbl&gt;
 ## 1           NA       10.1</code></pre>
 <p>If you want to know the number of observations, non-missing or missing data, use <code>n</code> or the idiom <code><a href="https://rdrr.io/r/base/sum.html">sum(!is.na(...))</a></code> and <code><a href="https://rdrr.io/r/base/sum.html">sum(is.na(...))</a></code> The exclamation mark (!, sometimes called <a href="https://en.wikipedia.org/wiki/Exclamation_mark">bang</a>) means logical not so <code>!is.na</code> means not missing.</p>
-<div class="sourceCode" id="cb463"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb453"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dt3</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>n_with_NA <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span>,
                   n_no_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
                   n_is_NA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -301,7 +301,7 @@ you should be very careful with two digit years. Best not to use them.</p>
 ##       &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
 ## 1         7       5       2</code></pre>
 <p>If you have missing data in one or more columns and want to remove all observations from a table that have missing data, you can use <code>na.omit</code>.</p>
-<div class="sourceCode" id="cb465"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb455"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">dt3</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 1
 ##       x
@@ -392,7 +392,7 @@ Creating space for a legend</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-02-25.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

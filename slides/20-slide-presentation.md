@@ -1,7 +1,7 @@
 Making slide presentations
 ========================================================
 author: Andrew Irwin
-date: 2021-02-26
+date: 2021-03-08
 autosize: true
 
 
@@ -12,32 +12,31 @@ Goals
 - Why we make slides for data visualization
 - How to make slides using "R presentation" format
 
+Create a template
+======================
 
-Showing a visualization
+Rstudio menu: 
+
+* File
+  * New File...
+    * R presentation
+    
+    
+Stopping distance increases with car speed
 ========================================================
 
-![plot of chunk unnamed-chunk-2](20-slide-presentation-figure/unnamed-chunk-2-1.png)
+<img src="20-slide-presentation-figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="40%" style="display: block; margin: auto;" />
 
 
-Showing computer code
+Show computer code
 ========================================================
 
 
 ```r
-summary(cars)
+cars %>% ggplot(aes(speed, dist)) + geom_point()
 ```
 
-```
-     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  
-```
-
-Formatting text and other tricks
+Formatting text and adding images
 =======
 
 All markdown formatting for *italics*, **bold**, [hyperlinks](https://www.r-project.org/) are available.
@@ -97,4 +96,16 @@ mpg %>% count(class)
 ***
 
 ![plot of chunk unnamed-chunk-6](20-slide-presentation-figure/unnamed-chunk-6-1.png)
+
+
+Summary
+=========
+
+* I've shown a simple set of slides you can easily make using Rstudio and R markdown
+
+* Remember, you generally want to make your slides quite simple and use large text and images
+
+* You can use the formatting described in the lesson on reproducible reports to control how code and visualization are displayed
+
+* A link to the full code for these slides is provided in the detailed outline
 

@@ -267,7 +267,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
    <td style="text-align:right;"> 19 </td>
    <td style="text-align:left;"> Finding data </td>
-   <td style="text-align:left;"> [Notes](#data-sources), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=78996e65-ca31-466c-bbf6-acd40181af1f), [Bonus task](#task-b8) </td>
+   <td style="text-align:left;"> [Notes](#data-sources), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=78996e65-ca31-466c-bbf6-acd40181af1f), [Slides](slides/18a-finding-data.html), [Bonus task](#task-b8) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 24 Feb </td>
@@ -285,7 +285,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri 26 Feb </td>
    <td style="text-align:right;"> 20 </td>
    <td style="text-align:left;"> Reproducible reports </td>
-   <td style="text-align:left;"> [Notes](#reproduce), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9c2e26ca-968f-4ecd-89e0-acd40185864f), [Task 12](#task-12) </td>
+   <td style="text-align:left;"> [Notes](#reproduce), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9c2e26ca-968f-4ecd-89e0-acd40185864f), [Slides](slides/18b-reproducible-reports.html), [Task 12](#task-12) </td>
   </tr>
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 9</strong></td></tr>
 <tr>
@@ -316,7 +316,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed  3 Mar </td>
    <td style="text-align:right;"> 22 </td>
    <td style="text-align:left;"> MDS </td>
-   <td style="text-align:left;"> [Notes](#mds), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ed2c66f6-9a8d-46ef-96f2-acd50003c117) </td>
+   <td style="text-align:left;"> [Notes](#mds), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ed2c66f6-9a8d-46ef-96f2-acd50003c117), [Slides](slides/20-MDS.html) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Thu  4 Mar </td>
@@ -328,14 +328,14 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Fri  5 Mar </td>
    <td style="text-align:right;"> 23 </td>
    <td style="text-align:left;"> K-means </td>
-   <td style="text-align:left;"> [Notes](#k-means), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=15200ac3-1dbc-486d-b3b4-acd50008bc14), [Task 14](#task-14) </td>
+   <td style="text-align:left;"> [Notes](#k-means), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=15200ac3-1dbc-486d-b3b4-acd50008bc14), [Slides](slides/21-k-means.html), [Task 14](#task-14) </td>
   </tr>
   <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 10</strong></td></tr>
 <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  8 Mar </td>
    <td style="text-align:right;"> 24 </td>
    <td style="text-align:left;"> Slide presentations </td>
-   <td style="text-align:left;"> [Notes](#slides), [Bonus task](#task-b9) </td>
+   <td style="text-align:left;"> [Notes](#slides), [Rpres](slides/20-slide-presentation.Rpres), [Slides](slides/20-slide-presentation.html), [Bonus task](#task-b9) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Mon  8 Mar </td>
@@ -346,8 +346,8 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 10 Mar </td>
    <td style="text-align:right;"> 25 </td>
-   <td style="text-align:left;"> Cleaning and validating data </td>
-   <td style="text-align:left;"> [Task 15](#task-15) </td>
+   <td style="text-align:left;"> Checking your work </td>
+   <td style="text-align:left;"> [Notes](#testing), [Slides](slides/25-testing.html), [Task 15](#task-15) </td>
   </tr>
   <tr>
    <td style="text-align:left; padding-left:  2em;" indentlevel="1"> Wed 10 Mar </td>
