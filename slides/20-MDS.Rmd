@@ -52,7 +52,8 @@ class: middle
 ## Cites on a map
 
 ```{r echo=FALSE, out.width = '90%', fig.align="center"}
-knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "mds-map-cache-1.png"))
+# knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "mds-map-cache-1.png"))
+knitr::include_graphics("../docs/122-mds_files/figure-html/mds-map-cache-1.png")
 ```
 
 ---
@@ -67,7 +68,8 @@ class: middle
 ## Cites on a map
 
 ```{r echo=FALSE, out.width = '90%', fig.align="center"}
-knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-5-1.png"))
+# knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-5-1.png"))
+knitr::include_graphics("../docs/122-mds_files/figure-html/unnamed-chunk-5-1.png")
 ```
 
 
@@ -85,7 +87,8 @@ class: middle
 ## Cites on a map
 
 ```{r echo=FALSE, out.width = '90%', fig.align="center"}
-knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-6-1.png"))
+# knitr::include_graphics(here("docs", "122-mds_files", "figure-html", "unnamed-chunk-6-1.png"))
+knitr::include_graphics("../docs/122-mds_files/figure-html/unnamed-chunk-6-1.png")
 ```
 
 ---
