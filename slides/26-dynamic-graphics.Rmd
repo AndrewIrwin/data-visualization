@@ -1,0 +1,135 @@
+---
+title: "Data Visualization"
+subtitle: "Dynamic graphics"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-12 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
+library(plotly)
+library(gganimate)
+library(palmerpenguins)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+# Plan
+
+* Advantages and disadvantages of dynamic graphics?
+
+* When should you use dynamic graphics?
+
+* Examples
+
+* Application in this course
+
+---
+class: middle
+### When and Why should you use dynamic graphics?
+
+* Interactivity
+
+* Show changes over time (in the data) over time (as perceived by the viewer)
+
+* Easy to make too complicated
+
+* Requires interaction and may not immediately make the point you want to make
+
+* Distracting
+
+---
+class: middle
+### Highlights and interaction
+
+[Link to interactive graphic](dynamic-graphics-1.html)
+
+```{r warning=FALSE}
+p1 <- penguins %>% plot_ly(x = ~ body_mass_g, y = ~ bill_length_mm) %>%
+  add_markers(color = ~ species)
+htmlwidgets::saveWidget(as_widget(p1), "dynamic-graphics-1.html")
+```
+
+---
+class: middle
+### Animations
+
+Easy to create with `gganimate`. Make a regular ggplot, then use a variable to show how it changes over time.
+
+```{r warning=FALSE, fig.align="center", out.height="50%", out.width="50%"}
+penguins %>% ggplot(aes(bill_length_mm, bill_depth_mm,
+                        color = species)) + geom_point() + my_theme
+```
+
+---
+class: middle
+### Animations
+
+Easy to create with `gganimate`. Make a regular ggplot, then use a variable to show how it changes over time.
+
+Shown on next slide.
+
+```{r warning=FALSE}
+b = seq(2500, 6500, by = 500)
+anim1 <- penguins %>% mutate(size_class = cut(body_mass_g, 
+                                              breaks=b, dig.lab=4),
+                    group=1:n()) %>%
+  ggplot(aes(bill_length_mm, bill_depth_mm,
+             color = species, group=group)) + 
+  geom_point() + 
+  labs(title = "Body mass in the interval {closest_state}") +
+  transition_states(size_class) +
+  enter_fade() + exit_fade() + my_theme
+```
+
+---
+class: middle
+### Animations
+
+```{r echo=FALSE, warning=FALSE, fig.align="center", fig.asp=1}
+animate(anim1)
+```
+
+---
+class: middle
+### Summary
+
+* Dynamic and interactive graphics can be fun to create
+
+* Making good use of these features requires practice
+
+* Use sparingly! Think of your audience and goals
+
+* Best example: animation of gapminder data over years
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+---
+class: middle, inverse
+
+## Task
+
+* No task for this lesson
+
+
+
+

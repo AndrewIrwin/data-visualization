@@ -1,0 +1,133 @@
+---
+title: "Live coding 8"
+author: "Andrew Irwin"
+date: "2021-03-04 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytuesdayR)
+library(skimr)
+library(dlookr) 
+library(broom)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Team work and term project update
+* PCA, MDS, k-means
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. The skills from this week are about collaborating, finding data, and writing reports. These skills will all be essential for your term project.
+
+Today I will work through examples
+
+* dimension reduction using PCA to rotate and project data
+* converting distances into locations on a plane (MDS)
+* clustering observations based on distance in many dimensions (k-means)
+
+
+
+```{r tt, cache=TRUE}
+tuesdata <- tidytuesdayR::tt_load('2020-10-27')
+wind_turbines <- tuesdata$`wind-turbine`
+```
+
+Let's look at the data available.
+
+```{r}
+skimr::skim(wind_turbines)
+```
+
+
+Make a nice report about the data.
+
+```{r}
+glimpse(wind_turbines)
+```
+
+And another
+
+```{r}
+dlookr::diagnose(wind_turbines)
+```
+
+## Exploratory plots
+
+Make a scatterplot of the quantitative variables.
+
+
+## PCA
+
+Make a PCA of the quantitative variables. Use `prcomp`. Experiment with scale=FALSE and scale=TRUE. 
+
+```{r}
+
+```
+
+Use `autoplot` to make a biplot. Fix the code cut and pasted from the course notes.
+
+```{r eval=FALSE}
+autoplot(pca1, data= cars, loadings=TRUE, loadings.label=TRUE, scale=0) + coord_equal()
+```
+
+Get the "principal components" using `augment`. Fix the code cut and pasted from the notes.
+
+```{r eval=FALSE}
+pca1 %>%
+  augment(cars) %>%
+  ggplot(aes(x=.fittedPC1, y= .fittedPC2)) +
+  geom_point()
+```
+
+
+## MDS
+
+Make a distance matrix using `dist` (or `fields::rdist.earth`) on latitude and longitude.
+
+```{r}
+
+
+```
+
+Use `cmdscale` to perform MDS on the distance matrix.
+
+```{r}
+
+```
+
+Turn the result into a tibble and plot.
+
+```{r}
+
+
+```
+
+
+## k-means
+
+Cluster the turbines based on quantitative variables. Scaled and not-scaled. Use `kmeans`.
+
+```{r}
+
+```
+
+Use `tidy` to show the clusters.
+
+```{r}
+
+
+```
+
+Use `augment` on the result and combine with the original data frame. Make a plot of clusters and show some other categorical data.
+
+```{r}
+
+
+```
+

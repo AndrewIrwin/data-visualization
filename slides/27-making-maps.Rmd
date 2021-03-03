@@ -1,0 +1,77 @@
+---
+title: "Data Visualization"
+subtitle: "Making outline maps"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-15 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
+library(plotly)
+library(gganimate)
+library(palmerpenguins)
+my_theme = theme_classic() + 
+  theme(text = element_text(size=18))
+```
+
+# Plan
+
+* Kinds of maps
+
+* Basic maps
+
+* Adding points
+
+* Shading areas
+
+* Projections
+
+---
+class: middle
+### Map libraries
+
+* `ggmap` (part of tidyverse)
+
+* Many other libraries (`maps`, `XXXX`)
+
+
+
+
+
+---
+class: middle
+### Summary
+
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+---
+class: middle, inverse
+
+## Task
+
+* XXXXX
+
+
+
+

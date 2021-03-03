@@ -291,11 +291,9 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Simcoe"                          "Region 3"                       
-##  [3] "Lambton"                         "Northern Rockies"               
-##  [5] "La Jacques-Cartier"              "Prince Edward"                  
-##  [7] "Greater Sudbury / Grand Sudbury" "Cariboo"                        
-##  [9] "Division No.  7"                 "Lajemmerais"
+##  [1] "Northern Rockies" "Grey"             "Cochrane"         "Mount Waddington"
+##  [5] "Prince Edward"    "Wellington"       "Division No.  5"  "Les Etchemins"   
+##  [9] "Division No.  4"  "Sherbrooke"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.
