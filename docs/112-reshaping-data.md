@@ -26,7 +26,7 @@ t1
 ```
 ## # A tibble: 15 x 3
 ##    continent  year median_life_expectancy
-##    <fct>     <int>                  <dbl>
+##  * <fct>     <int>                  <dbl>
 ##  1 Africa     1987                   51.6
 ##  2 Africa     1997                   52.8
 ##  3 Africa     2007                   52.9

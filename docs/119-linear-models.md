@@ -145,7 +145,7 @@ extract_eq(linear_model1, use_coefs=TRUE, fix_signs=TRUE)
 ```
 
 $$
-\operatorname{price} = -2256.36 + 7756.43(\operatorname{carat}) + \epsilon
+\operatorname{\widehat{price}} = -2256.36 + 7756.43(\operatorname{carat})
 $$
 
 
@@ -156,12 +156,11 @@ extract_eq(linear_model2, use_coefs=TRUE, terms_per_line = 3,
 
 $$
 \begin{aligned}
-\operatorname{price} &= -6699.95 + 8856.23(\operatorname{carat}) + 2832.65(\operatorname{clarity}_{\operatorname{SI2}})\ + \\
+\operatorname{\widehat{price}} &= -6699.95 + 8856.23(\operatorname{carat}) + 2832.65(\operatorname{clarity}_{\operatorname{SI2}})\ + \\
 &\quad 3795.47(\operatorname{clarity}_{\operatorname{SI1}}) + 4466.1(\operatorname{clarity}_{\operatorname{VS2}}) + 4785.79(\operatorname{clarity}_{\operatorname{VS1}})\ + \\
 &\quad 5234.16(\operatorname{clarity}_{\operatorname{VVS2}}) + 5351.85(\operatorname{clarity}_{\operatorname{VVS1}}) + 5718.23(\operatorname{clarity}_{\operatorname{IF}})\ - \\
 &\quad 216.45(\operatorname{color}_{\operatorname{E}}) - 314.92(\operatorname{color}_{\operatorname{F}}) - 509.09(\operatorname{color}_{\operatorname{G}})\ - \\
-&\quad 985.01(\operatorname{color}_{\operatorname{H}}) - 1441.77(\operatorname{color}_{\operatorname{I}}) - 2340.83(\operatorname{color}_{\operatorname{J}})\ + \\
-&\quad \epsilon
+&\quad 985.01(\operatorname{color}_{\operatorname{H}}) - 1441.77(\operatorname{color}_{\operatorname{I}}) - 2340.83(\operatorname{color}_{\operatorname{J}})
 \end{aligned}
 $$
 

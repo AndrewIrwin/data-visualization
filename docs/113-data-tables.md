@@ -10,7 +10,7 @@ Let's use a simple table to demonstrate the main features. I want some text, som
 ```
 ## # A tibble: 5 x 4
 ##   species   island    count body_mass_g
-##   <fct>     <fct>     <int>       <dbl>
+## * <fct>     <fct>     <int>       <dbl>
 ## 1 Adelie    Biscoe       44       3710.
 ## 2 Adelie    Dream        56       3688.
 ## 3 Adelie    Torgersen    51       3706.
@@ -455,7 +455,7 @@ t1 <- gapminder %>% filter(lifeExp > 75) %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'year' (override with `.groups` argument)
+## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
 ```
 
 ```r
@@ -658,7 +658,7 @@ t1 %>% adorn_totals(where = "col") %>%
 <tbody>
   <tr grouplength="5"><td colspan="7" style="border-bottom: 1px solid;"><strong>20th century</strong></td></tr>
 <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 1977 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 1977 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 5 </td>
    <td style="text-align:right;"> 0 </td>
@@ -667,7 +667,7 @@ t1 %>% adorn_totals(where = "col") %>%
    <td style="text-align:right;"> 6 </td>
   </tr>
   <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 1982 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 1982 </td>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 7 </td>
    <td style="text-align:right;"> 1 </td>
@@ -676,7 +676,7 @@ t1 %>% adorn_totals(where = "col") %>%
    <td style="text-align:right;"> 10 </td>
   </tr>
   <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 1987 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 1987 </td>
    <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 11 </td>
    <td style="text-align:right;"> 2 </td>
@@ -685,7 +685,7 @@ t1 %>% adorn_totals(where = "col") %>%
    <td style="text-align:right;"> 17 </td>
   </tr>
   <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 1992 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 1992 </td>
    <td style="text-align:right;"> 5 </td>
    <td style="text-align:right;"> 17 </td>
    <td style="text-align:right;"> 3 </td>
@@ -694,7 +694,7 @@ t1 %>% adorn_totals(where = "col") %>%
    <td style="text-align:right;"> 27 </td>
   </tr>
   <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 1997 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 1997 </td>
    <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 19 </td>
    <td style="text-align:right;"> 5 </td>
@@ -704,7 +704,7 @@ t1 %>% adorn_totals(where = "col") %>%
   </tr>
   <tr grouplength="2"><td colspan="7" style="border-bottom: 1px solid;"><strong>21st century</strong></td></tr>
 <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 2002 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 2002 </td>
    <td style="text-align:right;"> 7 </td>
    <td style="text-align:right;"> 20 </td>
    <td style="text-align:right;"> 7 </td>
@@ -713,7 +713,7 @@ t1 %>% adorn_totals(where = "col") %>%
    <td style="text-align:right;"> 37 </td>
   </tr>
   <tr>
-   <td style="text-align:right; padding-left:  2em;" indentlevel="1"> 2007 </td>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 2007 </td>
    <td style="text-align:right;"> 9 </td>
    <td style="text-align:right;"> 22 </td>
    <td style="text-align:right;"> 10 </td>

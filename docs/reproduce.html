@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 20 Reproducible reports | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
@@ -126,7 +126,7 @@
 </h3>
 <p>R markdown is a great way to manage a analysis notebook, but every time you want to update your analysis, you need to recalculate everything in your document. It is possible to store (cache) the results of a code chunk by giving it a name and setting <code>cache=TRUE</code>. This will store the results of that computation so that when the markdown file is recomputed, the stored results are used. This can save time, but also lead to unpredictable results depending on how the results of one code chunk and external data influence the cached code chunk.</p>
 <p>Here is an example using the code chunk header <code>{r test_caching, cache=TRUE}</code>:</p>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu">summarize</span><span class="op">(</span><span class="va">mpg</span>, count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> 
 <span class="va">s1</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
@@ -168,7 +168,7 @@
 <pre><code>gapminder %&gt;% filter(continent =="Europe") %&gt;% group_by(country) %&gt;% summarize(mean_life_exp = mean(lifeExp), mean_GDP = mean(gdpPercap)) %&gt;% ggplot(
 aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life_exp))) + geom_point()</code></pre>
 <p>Here is the same code (and its output) formatted using <code>styler</code>:</p>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -186,11 +186,11 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 </h2>
 <p>The first line of a code chunk can be as simple as <code>{r}</code> but you can also include many options between the braces. The <a href="https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html">markdown book</a> describes the options available. Here I will demonstrate a few chunk options related to figures and formatting output.</p>
 <p>Knitting a document usually stops when an error is encountered. This is a safety measure to alert you to a document which is not reproducible becuase of errors. On rare occasions you may want to use the option <code>error=TRUE</code> to allow error messages to appear in knitted output and not stop the knitting process.</p>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span> <span class="op">+</span> <span class="st">"A"</span></code></pre></div>
 <pre><code>## Error in 1 + "A": non-numeric argument to binary operator</code></pre>
 <p>You can output graphics in multiple file formats by adding <code>dev = c("png", "pdf")</code> (and other formats) to the chunk options. These files will be deleted unless you <a href="https://bookdown.org/yihui/rmarkdown-cookbook/keep-files.html#keep-files">reqest they be kept</a>, which is easily done by caching the results of at least one code chunk.</p>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-reproducible-reports_files/figure-html/cache_test_2-1.png" width="672"></div>
 <p>You can use chunk options to control whether the knitted document includes:</p>
@@ -213,7 +213,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 <span class="header-section-number">20.6</span> Documenting which packages you use<a class="anchor" aria-label="anchor" href="#documenting-which-packages-you-use"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you use R for long enough and with enough other people, you will discover that R packages get revised and don’t always work the same way as they used to. This can be a major impediment to reproducibility. The simplest solution to this problem is to document the R packages you use in your analysis by adding a line of code to the end of your report that lists the packages and their version numbers in use. By looking at your knitted output, a user having trouble (possibly you in the future!) can look to see which packages have changed.</p>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## R version 4.0.3 (2020-10-10)
 ## Platform: x86_64-apple-darwin17.0 (64-bit)
@@ -230,51 +230,45 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] gapminder_0.3.0 here_1.0.1      report_0.2.0    forcats_0.5.0  
-##  [5] stringr_1.4.0   dplyr_1.0.2     purrr_0.3.4     readr_1.4.0    
-##  [9] tidyr_1.1.2     tibble_3.0.4    ggplot2_3.3.2   tidyverse_1.3.0
+##  [1] gapminder_0.3.0 here_1.0.1      report_0.2.0    forcats_0.5.1  
+##  [5] stringr_1.4.0   dplyr_1.0.4     purrr_0.3.4     readr_1.4.0    
+##  [9] tidyr_1.1.2     tibble_3.1.0    ggplot2_3.3.3   tidyverse_1.3.0
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.6           lubridate_1.7.9.2    assertthat_0.2.1    
-##  [4] rprojroot_2.0.2      digest_0.6.27        R6_2.5.0            
-##  [7] cellranger_1.1.0     backports_1.2.1      reprex_0.3.0        
-## [10] evaluate_0.14        httr_1.4.2           pillar_1.4.7        
-## [13] rlang_0.4.9          readxl_1.3.1         rstudioapi_0.13     
-## [16] jquerylib_0.1.3      R.utils_2.10.1       R.oo_1.24.0         
-## [19] effectsize_0.4.3-1   rmarkdown_2.6.4      styler_1.3.2        
-## [22] labeling_0.4.2       munsell_0.5.0        broom_0.7.4         
-## [25] compiler_4.0.3       modelr_0.1.8         xfun_0.19           
-## [28] pkgconfig_2.0.3      parameters_0.11.0.1  htmltools_0.5.0.9003
-## [31] downlit_0.2.1        insight_0.13.0.1     tidyselect_1.1.0    
-## [34] bookdown_0.21.6      fansi_0.4.1          crayon_1.3.4        
-## [37] dbplyr_2.0.0         withr_2.3.0          R.methodsS3_1.8.1   
-## [40] rappdirs_0.3.1       grid_4.0.3           jsonlite_1.7.2      
-## [43] gtable_0.3.0         lifecycle_0.2.0      DBI_1.1.0           
-## [46] magrittr_2.0.1       bayestestR_0.8.2.1   scales_1.1.1        
-## [49] cli_2.2.0            stringi_1.5.3        farver_2.0.3        
-## [52] fs_1.5.0             xml2_1.3.2           bslib_0.2.3.9000    
-## [55] ellipsis_0.3.1       generics_0.1.0       vctrs_0.3.6         
-## [58] tools_4.0.3          R.cache_0.14.0       glue_1.4.2          
-## [61] hms_0.5.3            yaml_2.2.1           colorspace_2.0-0    
-## [64] rvest_0.3.6          knitr_1.30           haven_2.3.1         
-## [67] sass_0.2.0.9005</code></pre>
+##  [1] Rcpp_1.0.6         lubridate_1.7.10   assertthat_0.2.1   rprojroot_2.0.2   
+##  [5] digest_0.6.27      utf8_1.1.4         R6_2.5.0           cellranger_1.1.0  
+##  [9] backports_1.2.1    reprex_1.0.0       evaluate_0.14      highr_0.8         
+## [13] httr_1.4.2         pillar_1.5.0       rlang_0.4.10       readxl_1.3.1      
+## [17] rstudioapi_0.13    jquerylib_0.1.3    R.utils_2.10.1     R.oo_1.24.0       
+## [21] effectsize_0.4.3-1 styler_1.3.2       rmarkdown_2.7      labeling_0.4.2    
+## [25] munsell_0.5.0      broom_0.7.5        compiler_4.0.3     modelr_0.1.8      
+## [29] xfun_0.21          pkgconfig_2.0.3    parameters_0.12.0  htmltools_0.5.1.1 
+## [33] downlit_0.2.1      insight_0.13.1     tidyselect_1.1.0   bookdown_0.21.6   
+## [37] fansi_0.4.2        crayon_1.4.1       dbplyr_2.1.0       withr_2.4.1       
+## [41] R.methodsS3_1.8.1  grid_4.0.3         jsonlite_1.7.2     gtable_0.3.0      
+## [45] lifecycle_1.0.0    DBI_1.1.1          magrittr_2.0.1     bayestestR_0.8.2.1
+## [49] scales_1.1.1       cli_2.3.1          stringi_1.5.3      farver_2.0.3      
+## [53] fs_1.5.0           xml2_1.3.2         bslib_0.2.4        ellipsis_0.3.1    
+## [57] generics_0.1.0     vctrs_0.3.6        tools_4.0.3        R.cache_0.14.0    
+## [61] glue_1.4.2         hms_1.0.0          yaml_2.2.1         colorspace_2.0-0  
+## [65] rvest_0.3.6        knitr_1.31         haven_2.3.1        sass_0.3.1</code></pre>
 <p>If you want to produce bibliographic citations for your packages you can use the <code>report</code> package:</p>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">report</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/report/reference/report.sessionInfo.html">cite_packages</a></span><span class="op">(</span><span class="op">)</span>  </code></pre></div>
 <pre><code>##   - H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 ##   - Hadley Wickham (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0. https://CRAN.R-project.org/package=stringr
-##   - Hadley Wickham (2020). forcats: Tools for Working with Categorical Variables (Factors). R package version 0.5.0. https://CRAN.R-project.org/package=forcats
 ##   - Hadley Wickham (2020). tidyr: Tidy Messy Data. R package version 1.1.2. https://CRAN.R-project.org/package=tidyr
+##   - Hadley Wickham (2021). forcats: Tools for Working with Categorical Variables (Factors). R package version 0.5.1. https://CRAN.R-project.org/package=forcats
 ##   - Hadley Wickham and Jim Hester (2020). readr: Read Rectangular Text Data. R package version 1.4.0. https://CRAN.R-project.org/package=readr
-##   - Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2020). dplyr: A Grammar of Data Manipulation. R package version 1.0.2. https://CRAN.R-project.org/package=dplyr
+##   - Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.4. https://CRAN.R-project.org/package=dplyr
 ##   - Jennifer Bryan (2017). gapminder: Data from Gapminder. R package version 0.3.0. https://CRAN.R-project.org/package=gapminder
 ##   - Kirill Müller (2020). here: A Simpler Way to Find Your Files. R package version 1.0.1. https://CRAN.R-project.org/package=here
-##   - Kirill Müller and Hadley Wickham (2020). tibble: Simple Data Frames. R package version 3.0.4. https://CRAN.R-project.org/package=tibble
+##   - Kirill Müller and Hadley Wickham (2021). tibble: Simple Data Frames. R package version 3.1.0. https://CRAN.R-project.org/package=tibble
 ##   - Lionel Henry and Hadley Wickham (2020). purrr: Functional Programming Tools. R package version 0.3.4. https://CRAN.R-project.org/package=purrr
 ##   - Makowski, D., Lüdecke, D., &amp; Ben-Shachar, M.S. (2020). Automated reporting as a practical tool to improve reproducibility and methodological best practices adoption. CRAN. Available from https://github.com/easystats/report. doi: .
 ##   - R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 ##   - Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686</code></pre>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># See also report::report(sessionInfo())</span></code></pre></div>
 <p>To absolutely guarantee you can use R code in the future, some applications will benefit from you keeping copies of all the required packages on your own computer system. The <a href="https://rstudio.github.io/packrat/">packrat</a> and <a href="https://github.com/RevolutionAnalytics/checkpoint">checkpoint</a> packages can help you manage packages. I have never felt the need to have this level of reproducibility, but I find it reassuring to know these tools exist.</p>
 </div>
@@ -284,15 +278,15 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 </h2>
 <p>R markdown is primarily designed to work with R, but there are many other software tools that are commonly combined with R. These specific tools are outside the goals of this course, but it is valuable to learn about connections between R, R markdown and other computer tools.</p>
 <p>In data science, many people work with the <a href="https://www.python.org/">python</a> programming language. Python works with R markdown much the same way as R. Instead of starting a code chunk with <code>{r}</code>, begin with <code>{python}</code>. Here’s an example</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb240-1"><a href="reproduce.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb240-2"><a href="reproduce.html#cb240-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">8678309</span>)  <span class="co"># Set a random seed to make the work reproducible</span></span>
-<span id="cb240-3"><a href="reproduce.html#cb240-3" aria-hidden="true" tabindex="-1"></a>[ random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) ]</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb239-1"><a href="reproduce.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb239-2"><a href="reproduce.html#cb239-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">8678309</span>)  <span class="co"># Set a random seed to make the work reproducible</span></span>
+<span id="cb239-3"><a href="reproduce.html#cb239-3" aria-hidden="true" tabindex="-1"></a>[ random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) ]</span></code></pre></div>
 <pre><code>## [0.3384735123832189, 0.9944778375442942, 0.27482639950589893, 0.8162715855993294, 0.1201299523948246, 0.6565046831819024, 0.36766801924268533, 0.02960201494828596, 0.1228032738500725, 0.7724028393148923]</code></pre>
 <p>This example requires the R package <code>reticulate</code> and a working python interpreter that R can find.</p>
 <p>You can use the language <a href="https://julialang.org/">julia</a> in R markdown as well if you have the R package <code>JuliaCall</code> and julia installed on your computer.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb242-1"><a href="reproduce.html#cb242-1" aria-hidden="true" tabindex="-1"></a>f(x) <span class="op">=</span> x <span class="op">^</span> <span class="fl">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb241-1"><a href="reproduce.html#cb241-1" aria-hidden="true" tabindex="-1"></a>f(x) <span class="op">=</span> x <span class="op">^</span> <span class="fl">2</span></span></code></pre></div>
 <pre><code>## f (generic function with 1 method)</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb244-1"><a href="reproduce.html#cb244-1" aria-hidden="true" tabindex="-1"></a>f.(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode julia"><code class="sourceCode julia"><span id="cb243-1"><a href="reproduce.html#cb243-1" aria-hidden="true" tabindex="-1"></a>f.(<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>)</span></code></pre></div>
 <pre><code>## 5-element Array{Int64,1}:
 ##   1
 ##   4
@@ -301,7 +295,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 ##  25</code></pre>
 <p>Both of these langauges have excellent tools for using them directly and can they can be directly connected to R functions, but this method is available in R markdown. Related to the topic of interoperation of computing langauges, but departing from the topic of R markdown, you can also write C++ code in an R session and execute the compiled code directly from R.</p>
 <p><a href="https://en.wikipedia.org/wiki/SQL">SQL</a> is a language for describing queries to a widely used style of database. R contains tools for interacting with SQL databases, but it can aslo generate SQL code from <code>dplyr</code> functions.</p>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbplyr.tidyverse.org/">dbplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span>
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span>
@@ -319,21 +313,21 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 <span class="va">penguins_aggr</span></code></pre></div>
 <pre><code>## # Source:   lazy query [?? x 11]
 ## # Database: sqlite 3.34.1 [:memory:]
-##   species     N TOT_bill_length… TOT_bill_depth_… TOT_flipper_len…
-##   &lt;chr&gt;   &lt;int&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;int&gt;
-## 1 Adelie    152            5858.            2770.            28683
-## 2 Chinst…    68            3321.            1253.            13316
-## 3 Gentoo    124            5843.            1843.            26714
+##   species       N TOT_bill_length_mm TOT_bill_depth_mm TOT_flipper_length_mm
+##   &lt;chr&gt;     &lt;int&gt;              &lt;dbl&gt;             &lt;dbl&gt;                 &lt;int&gt;
+## 1 Adelie      152              5858.             2770.                 28683
+## 2 Chinstrap    68              3321.             1253.                 13316
+## 3 Gentoo      124              5843.             1843.                 26714
 ## # … with 6 more variables: VAR_bill_length_mm &lt;dbl&gt;, VAR_bill_depth_mm &lt;dbl&gt;,
 ## #   VAR_flipper_length_mm &lt;dbl&gt;, AVG_bill_length_mm &lt;dbl&gt;,
 ## #   AVG_bill_depth_mm &lt;dbl&gt;, AVG_flipper_length_mm &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="fu">show_query</span><span class="op">(</span><span class="va">penguins_aggr</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "&lt;SQL&gt;"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 ## [2] "SELECT `species`, COUNT(*) AS `N`, SUM(`bill_length_mm`) AS `TOT_bill_length_mm`, SUM(`bill_depth_mm`) AS `TOT_bill_depth_mm`, SUM(`flipper_length_mm`) AS `TOT_flipper_length_mm`, VARIANCE(`bill_length_mm`) AS `VAR_bill_length_mm`, VARIANCE(`bill_depth_mm`) AS `VAR_bill_depth_mm`, VARIANCE(`flipper_length_mm`) AS `VAR_flipper_length_mm`, AVG(`bill_length_mm`) AS `AVG_bill_length_mm`, AVG(`bill_depth_mm`) AS `AVG_bill_depth_mm`, AVG(`flipper_length_mm`) AS `AVG_flipper_length_mm`"
 ## [3] "FROM `penguins`"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 ## [4] "GROUP BY `species`"</code></pre>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 <p>What does using other tools have to do with making your work reproducible? R markdown is a flexible tool that lets you use more than just R, so if your workflow contains steps external to R, they can sometimes still be included in your report.</p>
 </div>
@@ -392,7 +386,7 @@ aes(color = mean_life_exp, x = log10(mean_GDP), y=fct_reorder(country, mean_life
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-02.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

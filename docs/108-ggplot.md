@@ -282,7 +282,7 @@ s <- diamonds %>% group_by(cut, clarity) %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'cut' (override with `.groups` argument)
+## `summarise()` has grouped output by 'cut'. You can override using the `.groups` argument.
 ```
 
 ```r

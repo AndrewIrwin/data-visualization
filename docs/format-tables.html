@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 13 Format tables | Data Visualization</title>
 <meta name="author" content="Andrew Irwin">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.3/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
@@ -94,14 +94,14 @@
 <p>Let’s use a simple table to demonstrate the main features. I want some text, some numbers, and not too many rows or columns. I’ll summarize the data in the <code>palmerpenguins</code> table into a small table.</p>
 <pre><code>## # A tibble: 5 x 4
 ##   species   island    count body_mass_g
-##   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;
+## * &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;
 ## 1 Adelie    Biscoe       44       3710.
 ## 2 Adelie    Dream        56       3688.
 ## 3 Adelie    Torgersen    51       3706.
 ## 4 Chinstrap Dream        68       3733.
 ## 5 Gentoo    Biscoe      123       5076.</code></pre>
 <p>The function <code>kable</code> turns this into a formatted table.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">kable</span><span class="op">(</span><span class="va">t1</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -196,7 +196,7 @@ Biscoe
 <span class="header-section-number">13.1</span> Header rows<a class="anchor" aria-label="anchor" href="#header-rows"><i class="fas fa-link"></i></a>
 </h2>
 <p>Often you will want to rename or reformat the column headings. There are two ways to do this: using <code>rename</code> to change the actual column names before formatting the table, or using column formatting to just affect the table appearance. You can rename just one column using <code>rename</code>, but with the second version below (<code>col.names</code>) you need to provide all the column names in the correct order.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">rename</span><span class="op">(</span>`Body mass (g)` <span class="op">=</span> <span class="va">body_mass_g</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -286,7 +286,7 @@ Biscoe
 </tr>
 </tbody>
 </table></div>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Island"</span>, <span class="st">"Count"</span>,  <span class="st">"Body mass (g)"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -382,7 +382,7 @@ Biscoe
 <span class="header-section-number">13.2</span> Column alignment<a class="anchor" aria-label="anchor" href="#column-alignment"><i class="fas fa-link"></i></a>
 </h2>
 <p>Commonly numbers are right justified and text is left justified. That’s what’s done automatically. You can specify each column as left, centre, or right justified using the letters l, c, or r for each column. Here we’ll center the justify the numbers to demonstrate.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>align <span class="op">=</span> <span class="st">"llcc"</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -479,7 +479,7 @@ Biscoe
 </h2>
 <p>Any number that comes from a calculation (such as a mean) will have a lot of decimal places displayed unless you change this. You can control the number of decimal places to show using rounding. (Use a negative number of digits to round to the left of the decimal point, for example <code>digits=-1</code> to round to the tens place.) Give either one number to use for all columns, or provide a vector to control the number of digits separately for each column.</p>
 <p>You can add a comma (or space for SI or . for European styles) to separate the thousands or millions using <code>format.args = list(big.mark = ",")</code>. See the help for <code>format</code> for more options.</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">1</span>, format.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr>
@@ -576,7 +576,7 @@ Biscoe
 </h2>
 <p>There are a lot of options for changing the appearance of text in the <code>kableExtra</code> package. If you are interested, look at the <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">vignette</a> linked in the further reading.</p>
 <p>The two styles I use frequently are alternating shading to help you read across rows and making the columns only wide enough to display your data.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">kable_styling</span><span class="op">(</span>full_width <span class="op">=</span> <span class="cn">FALSE</span>, bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -672,7 +672,7 @@ Biscoe
 <span class="header-section-number">13.5</span> Captions<a class="anchor" aria-label="anchor" href="#captions"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can add a caption to a table with the <code>caption</code> argument to <code>kable</code>.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"The number and average mass of penguins by species and island."</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -771,7 +771,7 @@ Biscoe
 <span class="header-section-number">13.6</span> Putting it all together<a class="anchor" aria-label="anchor" href="#putting-it-all-together"><i class="fas fa-link"></i></a>
 </h2>
 <p>Usually you will want to combine these features to get the look you want. Your goal should always be to make a table that clearly displays your data.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">kable</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">1</span>, format.args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span>,
              col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Island"</span>, <span class="st">"n"</span>, <span class="st">"Body mass (g)"</span><span class="op">)</span>,
              caption<span class="op">=</span><span class="st">"The number and average mass of penguins by species and island."</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -874,13 +874,13 @@ Biscoe
 </h2>
 <p>We frequently make tables of counts of categorical variables. In these tables it can be helpful to add column or row totals. Sometimes we want to report those totals as percentages of a grand total. The <code>janitor</code> package makes it easy to add totals and percentages to rows and columns.</p>
 <p>We’ll start with a matrix of counts showing the number of countries with life expectancy more than 75 years in each year and continent.</p>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">&gt;</span> <span class="fl">75</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"continent"</span>, values_from <span class="op">=</span> <span class="st">"n"</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by 'year' (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<pre><code>## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 6
 ## # Groups:   year [7]
@@ -894,7 +894,7 @@ Biscoe
 ## 6  2002     7     20        7       2      1
 ## 7  2007     9     22       10       2      1</code></pre>
 <p>Now we will add row totals. No sum is computed for the first column since it is assumed to be a label.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">adorn_totals</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##   year Asia Europe Americas Oceania Africa
 ##   1977    1      5        0       0      0
@@ -906,7 +906,7 @@ Biscoe
 ##   2007    9     22       10       2      1
 ##  Total   33    101       28       9      2</code></pre>
 <p>If you think about this, you’ll realize this doesn’t make much sense! So let’s add column totals instead. Again the first column is ignored, assuming it is a label.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">adorn_totals</span><span class="op">(</span>where <span class="op">=</span> <span class="st">"col"</span><span class="op">)</span> </code></pre></div>
 <pre><code>##  year Asia Europe Americas Oceania Africa Total
 ##  1977    1      5        0       0      0     6
@@ -918,7 +918,7 @@ Biscoe
 ##  2007    9     22       10       2      1    44</code></pre>
 <p>These tables are formatted differently compared to <code>data.frames</code> and <code>tibbles</code>, but they can still be reformatted as you would expect using <code>%&gt;% kable() %&gt;% kable_styling()</code>.</p>
 <p>Incidentally, the <code>janitor</code> package has a powerful table generating function <code>tabyl</code> which does the counting we started this section with. We still need the <code>filter</code> to retain only rows with life expectancy more than 75 years. The columns are reported alphabetically instead of according to the order they appear in the original dataset.</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">&gt;</span> <span class="fl">75</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">tabyl</span><span class="op">(</span><span class="va">year</span>, <span class="va">continent</span><span class="op">)</span> <span class="co">#  %&gt;% adorn_totals(where="col")</span></code></pre></div>
 <pre><code>##  year Africa Americas Asia Europe Oceania
@@ -935,7 +935,7 @@ Biscoe
 <span class="header-section-number">13.8</span> Adding grouping for rows and columns<a class="anchor" aria-label="anchor" href="#adding-grouping-for-rows-and-columns"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sometimes it is desirable to add a grouping label over a series of columns. For example, the in the table showing totals above, we can add a header “Continent” over the appropriate columns. We do this to a <code>kable</code> formatted table using the function <code>add_header_row</code>. This function takes an argument which is a vector of pairs: labels for each column and the number of columns that label should span. There must be enough lables to span all the columns. We will add a blank label for the first and last column (spanning 1 column each), and a label “Continent” spanning the 5 continents.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">adorn_totals</span><span class="op">(</span>where <span class="op">=</span> <span class="st">"col"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">add_header_above</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">" "</span> <span class="op">=</span> <span class="fl">1</span>, 
@@ -1144,7 +1144,7 @@ Total
 </tbody>
 </table></div>
 <p>It can also be helpful to add grouping to rows. For example, we could label the first 5 rows as being part of the 20th century and the last 2 rows as being part of the 21st century. We add row labels one at a time, giving a label for the row and the numbers of the rows the header should span. We will do this with the <code>kableExtra</code> function <code>group_rows</code>.</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">t1</span> <span class="op">%&gt;%</span> <span class="fu">adorn_totals</span><span class="op">(</span>where <span class="op">=</span> <span class="st">"col"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">kable</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_rows</span><span class="op">(</span><span class="st">"20th century"</span>, <span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1181,7 +1181,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 1977
 </td>
 <td style="text-align:right;">
@@ -1204,7 +1204,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 1982
 </td>
 <td style="text-align:right;">
@@ -1227,7 +1227,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 1987
 </td>
 <td style="text-align:right;">
@@ -1250,7 +1250,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 1992
 </td>
 <td style="text-align:right;">
@@ -1273,7 +1273,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 1997
 </td>
 <td style="text-align:right;">
@@ -1301,7 +1301,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 2002
 </td>
 <td style="text-align:right;">
@@ -1324,7 +1324,7 @@ Total
 </td>
 </tr>
 <tr>
-<td style="text-align:right; padding-left:  2em;" indentlevel="1">
+<td style="text-align:right;padding-left: 2em;" indentlevel="1">
 2007
 </td>
 <td style="text-align:right;">
@@ -1394,7 +1394,7 @@ Total
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-02.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

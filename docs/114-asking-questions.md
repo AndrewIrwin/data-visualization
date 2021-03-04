@@ -77,7 +77,7 @@ my_summarySE <- ToothGrowth %>% group_by(supp, dose) %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'supp' (override with `.groups` argument)
+## `summarise()` has grouped output by 'supp'. You can override using the `.groups` argument.
 ```
 
 Great -- this produces the same output as `summarySE(ToothGrowth)`. (I used a different name for the mean column because I need `len` to compute the standard deviation after I compute the mean. If you use the function from the help page and write `summarize` above instead of `dplyr::summarize` you'll get an error because the example uses the `plyr` package that has a different definition of `summarize`. I've bumped into that error a lot, so I recognize it right away. It might stump you the first time you experience it.)
@@ -120,7 +120,7 @@ my_summarySE <- penguins %>% na.omit() %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'species' (override with `.groups` argument)
+## `summarise()` has grouped output by 'species'. You can override using the `.groups` argument.
 ```
 
 ```r

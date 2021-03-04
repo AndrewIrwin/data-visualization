@@ -185,13 +185,13 @@ diamonds %>% slice_sample(n = 5)
 
 ```
 ## # A tibble: 5 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-## 1  0.52 Very Good I     SI1      62.4    55  1088  5.1   5.12  3.19
-## 2  0.64 Ideal     D     VVS1     61.5    56  4281  5.57  5.59  3.43
-## 3  1.01 Premium   E     SI1      60.5    62  5226  6.5   6.46  3.92
-## 4  1.2  Very Good G     SI2      62      60  5698  6.78  6.76  4.2 
-## 5  0.7  Premium   F     SI1      61      60  2492  5.75  5.72  3.5
+##   carat cut   color clarity depth table price     x     y     z
+##   <dbl> <ord> <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+## 1  0.5  Ideal E     SI2      62.4    57  1240  5.07  5.03  3.15
+## 2  1.72 Ideal I     VS2      62.8    57 11226  7.69  7.63  4.81
+## 3  1.17 Good  J     SI1      63.9    55  4054  6.66  6.73  4.28
+## 4  2.17 Fair  G     I1       55.6    62  6817  8.75  8.69  4.8 
+## 5  0.35 Ideal G     IF       61.9    54  1001  4.56  4.58  2.83
 ```
 
 You can use `arrange` to sort the data by any number of columns before slicing or displaying the data.
@@ -199,12 +199,6 @@ You can use `arrange` to sort the data by any number of columns before slicing o
 
 ```r
 diamonds %>% arrange(cut, -color, -carat) %>% slice_head(n = 10) %>% select(carat, cut, color, price)
-```
-
-```
-## Warning: Problem with `mutate()` input `^^--arrange_quosure_2`.
-## ℹ '-' is not meaningful for ordered factors
-## ℹ Input `^^--arrange_quosure_2` is `-color`.
 ```
 
 ```
@@ -279,7 +273,7 @@ diamonds %>% group_by(cut) %>%
 ```
 ## # A tibble: 5 x 5
 ##   cut       n_rows mean_price median_price min_carat
-##   <ord>      <int>      <dbl>        <dbl>     <dbl>
+## * <ord>      <int>      <dbl>        <dbl>     <dbl>
 ## 1 Fair        1610      4359.        3282       0.22
 ## 2 Good        4906      3929.        3050.      0.23
 ## 3 Very Good  12082      3982.        2648       0.2 

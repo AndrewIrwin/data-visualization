@@ -182,34 +182,28 @@ sessionInfo()
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] gapminder_0.3.0 here_1.0.1      report_0.2.0    forcats_0.5.0  
-##  [5] stringr_1.4.0   dplyr_1.0.2     purrr_0.3.4     readr_1.4.0    
-##  [9] tidyr_1.1.2     tibble_3.0.4    ggplot2_3.3.2   tidyverse_1.3.0
+##  [1] gapminder_0.3.0 here_1.0.1      report_0.2.0    forcats_0.5.1  
+##  [5] stringr_1.4.0   dplyr_1.0.4     purrr_0.3.4     readr_1.4.0    
+##  [9] tidyr_1.1.2     tibble_3.1.0    ggplot2_3.3.3   tidyverse_1.3.0
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.6           lubridate_1.7.9.2    assertthat_0.2.1    
-##  [4] rprojroot_2.0.2      digest_0.6.27        R6_2.5.0            
-##  [7] cellranger_1.1.0     backports_1.2.1      reprex_0.3.0        
-## [10] evaluate_0.14        httr_1.4.2           pillar_1.4.7        
-## [13] rlang_0.4.9          readxl_1.3.1         rstudioapi_0.13     
-## [16] jquerylib_0.1.3      R.utils_2.10.1       R.oo_1.24.0         
-## [19] effectsize_0.4.3-1   rmarkdown_2.6.4      styler_1.3.2        
-## [22] labeling_0.4.2       munsell_0.5.0        broom_0.7.4         
-## [25] compiler_4.0.3       modelr_0.1.8         xfun_0.19           
-## [28] pkgconfig_2.0.3      parameters_0.11.0.1  htmltools_0.5.0.9003
-## [31] downlit_0.2.1        insight_0.13.0.1     tidyselect_1.1.0    
-## [34] bookdown_0.21.6      fansi_0.4.1          crayon_1.3.4        
-## [37] dbplyr_2.0.0         withr_2.3.0          R.methodsS3_1.8.1   
-## [40] rappdirs_0.3.1       grid_4.0.3           jsonlite_1.7.2      
-## [43] gtable_0.3.0         lifecycle_0.2.0      DBI_1.1.0           
-## [46] magrittr_2.0.1       bayestestR_0.8.2.1   scales_1.1.1        
-## [49] cli_2.2.0            stringi_1.5.3        farver_2.0.3        
-## [52] fs_1.5.0             xml2_1.3.2           bslib_0.2.3.9000    
-## [55] ellipsis_0.3.1       generics_0.1.0       vctrs_0.3.6         
-## [58] tools_4.0.3          R.cache_0.14.0       glue_1.4.2          
-## [61] hms_0.5.3            yaml_2.2.1           colorspace_2.0-0    
-## [64] rvest_0.3.6          knitr_1.30           haven_2.3.1         
-## [67] sass_0.2.0.9005
+##  [1] Rcpp_1.0.6         lubridate_1.7.10   assertthat_0.2.1   rprojroot_2.0.2   
+##  [5] digest_0.6.27      utf8_1.1.4         R6_2.5.0           cellranger_1.1.0  
+##  [9] backports_1.2.1    reprex_1.0.0       evaluate_0.14      highr_0.8         
+## [13] httr_1.4.2         pillar_1.5.0       rlang_0.4.10       readxl_1.3.1      
+## [17] rstudioapi_0.13    jquerylib_0.1.3    R.utils_2.10.1     R.oo_1.24.0       
+## [21] effectsize_0.4.3-1 styler_1.3.2       rmarkdown_2.7      labeling_0.4.2    
+## [25] munsell_0.5.0      broom_0.7.5        compiler_4.0.3     modelr_0.1.8      
+## [29] xfun_0.21          pkgconfig_2.0.3    parameters_0.12.0  htmltools_0.5.1.1 
+## [33] downlit_0.2.1      insight_0.13.1     tidyselect_1.1.0   bookdown_0.21.6   
+## [37] fansi_0.4.2        crayon_1.4.1       dbplyr_2.1.0       withr_2.4.1       
+## [41] R.methodsS3_1.8.1  grid_4.0.3         jsonlite_1.7.2     gtable_0.3.0      
+## [45] lifecycle_1.0.0    DBI_1.1.1          magrittr_2.0.1     bayestestR_0.8.2.1
+## [49] scales_1.1.1       cli_2.3.1          stringi_1.5.3      farver_2.0.3      
+## [53] fs_1.5.0           xml2_1.3.2         bslib_0.2.4        ellipsis_0.3.1    
+## [57] generics_0.1.0     vctrs_0.3.6        tools_4.0.3        R.cache_0.14.0    
+## [61] glue_1.4.2         hms_1.0.0          yaml_2.2.1         colorspace_2.0-0  
+## [65] rvest_0.3.6        knitr_1.31         haven_2.3.1        sass_0.3.1
 ```
 
 If you want to produce bibliographic citations for your packages you can use the `report` package:
@@ -222,13 +216,13 @@ report::cite_packages()
 ```
 ##   - H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 ##   - Hadley Wickham (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0. https://CRAN.R-project.org/package=stringr
-##   - Hadley Wickham (2020). forcats: Tools for Working with Categorical Variables (Factors). R package version 0.5.0. https://CRAN.R-project.org/package=forcats
 ##   - Hadley Wickham (2020). tidyr: Tidy Messy Data. R package version 1.1.2. https://CRAN.R-project.org/package=tidyr
+##   - Hadley Wickham (2021). forcats: Tools for Working with Categorical Variables (Factors). R package version 0.5.1. https://CRAN.R-project.org/package=forcats
 ##   - Hadley Wickham and Jim Hester (2020). readr: Read Rectangular Text Data. R package version 1.4.0. https://CRAN.R-project.org/package=readr
-##   - Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2020). dplyr: A Grammar of Data Manipulation. R package version 1.0.2. https://CRAN.R-project.org/package=dplyr
+##   - Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.4. https://CRAN.R-project.org/package=dplyr
 ##   - Jennifer Bryan (2017). gapminder: Data from Gapminder. R package version 0.3.0. https://CRAN.R-project.org/package=gapminder
 ##   - Kirill Müller (2020). here: A Simpler Way to Find Your Files. R package version 1.0.1. https://CRAN.R-project.org/package=here
-##   - Kirill Müller and Hadley Wickham (2020). tibble: Simple Data Frames. R package version 3.0.4. https://CRAN.R-project.org/package=tibble
+##   - Kirill Müller and Hadley Wickham (2021). tibble: Simple Data Frames. R package version 3.1.0. https://CRAN.R-project.org/package=tibble
 ##   - Lionel Henry and Hadley Wickham (2020). purrr: Functional Programming Tools. R package version 0.3.4. https://CRAN.R-project.org/package=purrr
 ##   - Makowski, D., Lüdecke, D., & Ben-Shachar, M.S. (2020). Automated reporting as a practical tool to improve reproducibility and methodological best practices adoption. CRAN. Available from https://github.com/easystats/report. doi: .
 ##   - R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
@@ -311,11 +305,11 @@ penguins_aggr
 ```
 ## # Source:   lazy query [?? x 11]
 ## # Database: sqlite 3.34.1 [:memory:]
-##   species     N TOT_bill_length… TOT_bill_depth_… TOT_flipper_len…
-##   <chr>   <int>            <dbl>            <dbl>            <int>
-## 1 Adelie    152            5858.            2770.            28683
-## 2 Chinst…    68            3321.            1253.            13316
-## 3 Gentoo    124            5843.            1843.            26714
+##   species       N TOT_bill_length_mm TOT_bill_depth_mm TOT_flipper_length_mm
+##   <chr>     <int>              <dbl>             <dbl>                 <int>
+## 1 Adelie      152              5858.             2770.                 28683
+## 2 Chinstrap    68              3321.             1253.                 13316
+## 3 Gentoo      124              5843.             1843.                 26714
 ## # … with 6 more variables: VAR_bill_length_mm <dbl>, VAR_bill_depth_mm <dbl>,
 ## #   VAR_flipper_length_mm <dbl>, AVG_bill_length_mm <dbl>,
 ## #   AVG_bill_depth_mm <dbl>, AVG_flipper_length_mm <dbl>
