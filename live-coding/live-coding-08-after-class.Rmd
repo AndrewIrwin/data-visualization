@@ -15,6 +15,7 @@ library(tidytuesdayR)
 library(skimr)
 library(dlookr) 
 library(broom)
+library(ggfortify)
 ```
 
 # Agenda
@@ -31,6 +32,9 @@ Today I will work through examples
 * converting distances into locations on a plane (MDS)
 * clustering observations based on distance in many dimensions (k-means)
 
+**Note**:
+
+There will no new tasks _next week_ to give you more time to work on the project proposal, which is due next Friday 12 March.
 
 
 ```{r tt, cache=TRUE}
@@ -61,26 +65,42 @@ dlookr::diagnose(wind_turbines)
 
 Make a scatterplot of the quantitative variables.
 
+```{r}
+wind_turbines %>% mutate(year = as.numeric(commissioning_date)) %>%
+  ggplot(aes(x = hub_height_m, y = rotor_diameter_m, color = year)) +
+  geom_point()
+```
+
+```{r}
+wind_turbines %>% mutate(year = as.numeric(commissioning_date)) %>%
+  ggplot(aes(x = total_project_capacity_mw, y = turbine_rated_capacity_k_w, color = year)) +
+  geom_point()
+```
+
 
 ## PCA
 
 Make a PCA of the quantitative variables. Use `prcomp`. Experiment with scale=FALSE and scale=TRUE. 
 
 ```{r}
-
+wind_turbines_no_na <- wind_turbines %>% filter(!is.na(total_project_capacity_mw + turbine_rated_capacity_k_w + 
+                                                         hub_height_m + rotor_diameter_m))
+wind_ss <- wind_turbines_no_na %>% select( # total_project_capacity_mw, 
+  turbine_rated_capacity_k_w, hub_height_m, rotor_diameter_m)
+pca1 <- prcomp(wind_ss, scale=TRUE)
 ```
 
 Use `autoplot` to make a biplot. Fix the code cut and pasted from the course notes.
 
 ```{r eval=FALSE}
-autoplot(pca1, data= cars, loadings=TRUE, loadings.label=TRUE, scale=0) + coord_equal()
+autoplot(pca1, data= wind_turbines_no_na, loadings=TRUE, loadings.label=TRUE, scale=1) # + coord_equal()
 ```
 
 Get the "principal components" using `augment`. Fix the code cut and pasted from the notes.
 
 ```{r eval=FALSE}
 pca1 %>%
-  augment(cars) %>%
+  augment(wind_turbines_no_na) %>%
   ggplot(aes(x=.fittedPC1, y= .fittedPC2)) +
   geom_point()
 ```
@@ -91,21 +111,21 @@ pca1 %>%
 Make a distance matrix using `dist` (or `fields::rdist.earth`) on latitude and longitude.
 
 ```{r}
-
-
+wind_ss_d <- distinct(wind_ss)  # there are a lot of identical observations when we just look at these variables
+dM <- dist(scale(wind_ss_d))
+# dM
 ```
 
 Use `cmdscale` to perform MDS on the distance matrix.
 
 ```{r}
-
+mds1 <- cmdscale(dM)
 ```
 
 Turn the result into a tibble and plot.
 
 ```{r}
-
-
+mds1 %>% as_tibble()  %>% ggplot(aes(V1, V2)) + geom_point()
 ```
 
 
@@ -114,20 +134,20 @@ Turn the result into a tibble and plot.
 Cluster the turbines based on quantitative variables. Scaled and not-scaled. Use `kmeans`.
 
 ```{r}
-
+# km1 <- kmeans(distinct(wind_ss), 4)
+km1 <- kmeans(scale(wind_ss), 4)
 ```
 
 Use `tidy` to show the clusters.
 
 ```{r}
-
-
+tidy(km1)
 ```
 
 Use `augment` on the result and combine with the original data frame. Make a plot of clusters and show some other categorical data.
 
 ```{r}
-
-
+augment(km1, wind_turbines_no_na)
+augment(km1, wind_turbines_no_na) %>% ggplot(aes(longitude, latitude, color=.cluster)) + geom_point()
 ```
 
