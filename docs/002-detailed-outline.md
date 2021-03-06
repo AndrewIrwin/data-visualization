@@ -378,7 +378,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Mon 15 Mar </td>
    <td style="text-align:right;"> 27 </td>
    <td style="text-align:left;"> Making maps </td>
-   <td style="text-align:left;"> [Notes](#mapping-1), [Bonus task](#task-b9) </td>
+   <td style="text-align:left;"> [Notes](#mapping-1), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e4224204-d944-476d-a16e-ace3013c0b02), [Slides](slides/27-making-maps.html), [Bonus task](#task-b9) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Tue 16 Mar </td>
@@ -390,7 +390,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Wed 17 Mar </td>
    <td style="text-align:right;"> 28 </td>
    <td style="text-align:left;"> More about maps </td>
-   <td style="text-align:left;"> [Notes](#mapping-2), [Task 15](#task-17) </td>
+   <td style="text-align:left;"> [Notes](#mapping-2), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=440e71f5-474b-4c8e-aee5-ace3014233d4), [Slides](slides/28-sliding-maps.html), [Task 15](#task-17) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Thu 18 Mar </td>
@@ -402,7 +402,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Fri 19 Mar </td>
    <td style="text-align:right;"> 29 </td>
    <td style="text-align:left;"> Alternatives to maps </td>
-   <td style="text-align:left;"> [Notes](#mapping-3), [Task 16](#task-18) </td>
+   <td style="text-align:left;"> [Notes](#mapping-3), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f487f98e-c494-492a-bd67-ace30147bd5e), [Slides](slides/29-map-alternatives.html), [Task 16](#task-18) </td>
   </tr>
   <tr grouplength="6"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 12</strong></td></tr>
 <tr>

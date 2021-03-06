@@ -291,11 +291,11 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Capital"                         "Niagara"                        
-##  [3] "Division No.  3"                 "Bonaventure"                    
-##  [5] "Robert-Cliche"                   "Digby"                          
-##  [7] "Greater Sudbury / Grand Sudbury" "Stikine"                        
-##  [9] "Les Îles-de-la-Madeleine"        "Montmagny"
+##  [1] "Kenora"                      "La Mitis"                   
+##  [3] "Cape Breton"                 "Region 6"                   
+##  [5] "Division No. 21"             "Bruce"                      
+##  [7] "Sudbury"                     "Kawartha Lakes"             
+##  [9] "Les Collines-de-l'Outaouais" "Kitikmeot"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.
@@ -388,6 +388,7 @@ Map making is complex for at least two reasons: obtaining the data to describe c
 * The [PROJ](http://www.euref.eu/documentation/Tutorial2019/t-01-Evers.pdf) tool for projecting map coordiates
 * R journal article on [mapping with mapmisc](https://journal.r-project.org/archive/2016-1/brown.pdf)
 * Finding and fixing problems with [simple feature geometry](https://www.r-spatial.org/r/2017/03/19/invalid.html) and a [book](https://keen-swartz-3146c4.netlify.app/), especially section 8.4
+* There are a huge number of map projections. Here is an [introduction](http://geokov.com/education/map-projection.aspx) to some of the kinds of projections.
 
 ### Maps of Canada
 

@@ -1,0 +1,172 @@
+---
+title: "Data Visualization"
+subtitle: "Making sliding maps"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-17 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# html widgets (leaflet) is experimental in xaringan. Try remotes::install_github('yihui/xaringan')
+library(tidyverse)
+library(leaflet)
+library(ggmap)
+```
+
+# Plan
+
+* Kinds of maps
+
+* Basic maps
+
+* Adding points
+
+* Shading areas
+
+* Tile service providers
+
+---
+class: middle
+### Map libraries
+
+* Dynamic: `leaflet` for drawing raster or tiled maps (leafletjs.com)
+
+* Static: `ggmap` (part of tidyverse, has stamen map functions)
+
+---
+### A basic map
+
+```{r message=FALSE, warning=FALSE}
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=-63.5932, lat=44.63697, popup="Math & Stats, Dalhousie U")
+```
+
+---
+### A basic map
+
+```{r fig.align="center", out.width="90%", echo=FALSE}
+m  # Print the map
+```
+
+
+---
+### Adding points
+
+```{r message=FALSE, warning=FALSE}
+cities <- read_csv("../static/selected_cities.csv")
+m2 <- leaflet(data = cities) %>%
+  addTiles() %>%
+  addCircleMarkers(~ lng, ~lat, label = ~city)
+```
+
+---
+### Adding points
+
+```{r fig.align="center", out.width="90%", echo=FALSE}
+m2
+```
+
+---
+### Colour regions
+
+```{r message=FALSE}
+library(geojsonio)
+pal <- colorNumeric("viridis", NULL)  # make a viridis palette
+canada <- geojson_read("https://gist.githubusercontent.com/mikelotis/2156d7c170d10d2c77cb79424fe2137d/raw/7a13748ed7ea5ba64876c77c53b6cb64dd5c3ab0/canada-province.geojson", what="sp")
+my_values = runif(13, 0, 10) # random numbers between 0 and 10
+m3 <- canada %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addPolygons(fillColor = ~ pal(my_values),
+              weight = 1, color = "black") %>%
+  addLegend(pal = pal, values = my_values, opacity = 1.0)
+```
+
+
+---
+### Colour regions
+
+```{r fig.align="center", out.width="90%", echo=FALSE}
+m3
+```
+
+
+---
+### Other tiled map services
+
+```{r stamen, cache=TRUE, message=FALSE, fig.align="center", out.width="90%", fig.retina=2}
+mymap_terrain <- get_stamenmap(bbox = c(left = -130, bottom = 41, 
+                                        right = -50, top = 66), 
+                               zoom=5, maptype = "terrain")
+m4 <- ggmap(mymap_terrain)  
+```
+---
+### Other tiled map services
+
+```{r message=FALSE, fig.align="center", out.width="90%", fig.retina=2, echo=FALSE}
+m4
+```
+
+---
+### Add text and points
+
+```{r message=FALSE}
+my_points <- tibble(lat = c(43+57/60, 49+53/60),
+                    lon = c(-59-55/60, -97-9/60),
+                    label = c("Sable Is.", "Winnipeg")
+)
+m5 <- ggmap(mymap_terrain)  +
+  geom_point(data = my_points, color="brown") + 
+  geom_label(data = my_points, 
+            aes(label=label), 
+            fill = "#FFFFFF90",
+            color = "black", nudge_y = 1.5)
+```
+
+---
+#### Add text and points
+
+```{r echo=FALSE, fig.align="center", out.width="90%", echo=FALSE, fig.retina=2}
+m5
+```
+
+---
+class: middle
+### Summary
+
+* Make a basic map
+
+* Add points and labels
+
+* Fill regions with colour (requires polygons)
+
+* There are several tile services
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+---
+class: middle, inverse
+
+## Task
+
+* Task 15. Make some maps as described in repository
+
+
+

@@ -67,10 +67,9 @@ class: middle
 * Tiled maps
 
 ---
-class: middle
 ### A basic map
 
-```{r messages=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 WorldData <- map_data('world')  
 m1 <- ggplot(WorldData, aes(map_id=region)) + 
@@ -83,7 +82,6 @@ m1 <- ggplot(WorldData, aes(map_id=region)) +
 
 
 ---
-class: middle
 ### A basic map
 
 ```{r echo=FALSE, fig.asp=0.5, out.width="90%", fig.align="center"}
@@ -92,35 +90,32 @@ m1
 
 
 ---
-class: middle
 ### Colour countries
 
-```{r messages=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 values <- tibble( region = WorldData %>% pull(region) %>% unique())
-values <- values %>% mutate(value = runif(nrow(qualities)))
+values <- values %>% mutate(value = runif(nrow(values)))
 m2 <- ggplot(values, aes(map_id = region)) + 
         geom_map(aes(fill = value),
                  map = WorldData,
                  colour = "lightgray", 
                  alpha = 1, size=0.5) +
-   expand_limits(x = c(-180,180), y = c(-80,80))+
-  theme_bw()
+   expand_limits(x = c(-180,180), y = c(-80,80)) +
+   theme_bw()
 ```
 
 ---
-class: middle
 ### Colour countries
 
-```{r out.width="90%", fig.asp = 0.5}
+```{r out.width="90%", fig.asp = 0.5, echo=FALSE, fig.align="center"}
 m2
 ```
 
 
 ---
-class: middle
 ### Show only some countries
 
-```{r messages=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 values <- tibble( region = c("Canada", "China", "Chile"),
                   value  = c(1, 2, 3))
 m3 <- ggplot(values, aes(map_id = region)) + 
@@ -133,73 +128,122 @@ m3 <- ggplot(values, aes(map_id = region)) +
 ```
 
 ---
-class: middle
 ### Show some countries
 
-```{r out.width="90%", fig.asp = 0.5}
+```{r out.width="90%", fig.asp = 0.5, echo=FALSE, fig.align="center"}
 m3
 ```
 
 
 ---
-class: middle
 ### Colour some countries
 
-```{r messages=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 values <- tibble( region = c("Canada", "China", "Chile"),
                   value  = c(1, 2, 3))
 m4 <- ggplot(WorldData, aes(map_id = region)) + 
         geom_map(map = WorldData,
                  colour = "lightgray", fill = "darkgray",
                  alpha = 1, size=0.5) +
-        geom_map(aes(fill = value), data = values, map = WorldData) + 
+        geom_map(aes(fill = value), 
+                 data = values, map = WorldData) + 
    expand_limits(x = c(-180,180), y = c(-80,80))+
   theme_bw()
 ```
 
 ---
-class: middle
 ### Colour some countries
 
-```{r fig.asp = 0.6, out.width = "90%"}
+```{r fig.asp = 0.6, out.width = "90%", echo=FALSE, fig.align="center"}
 m4
 ```
 
 
 ---
-class: middle
 ### Add points
 
-```{r messages=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(ggrepel)
-canada <- ne_countries(country = "canada", scale = "large", returnclass = "sf")
-sites <- tibble(longitude = c(-81, -80), latitude = c(44, 45), label = c("A", "B"))
+canada <- ne_countries(country = "canada", scale = "large", 
+                       returnclass = "sf")
+sites <- tibble(longitude = c(-81, -80), latitude = c(44, 45), 
+                label = c("A", "B"))
 m5 <- ggplot(data = canada) +
-        geom_sf() +
-        geom_point(data = sites, 
-               aes(x = longitude, y = latitude), 
-               size = 4, shape = 21, fill = "darkred") +
+      geom_sf() +
+      geom_point(data = sites, 
+                 aes(x = longitude, y = latitude), 
+                 size = 4, shape = 21, fill = "darkred") +
   geom_label_repel(data = sites, 
-             aes(x = longitude, y = latitude, label = label)) + 
+                   aes(x = longitude, y = latitude, 
+                       label = label)) + 
   coord_sf(xlim = c(-140,-50), ylim = c(42,65))
 ```
 
 ---
-class: middle
 ### Add points
 
-```{r fig.asp = 0.6, out.width = "90%"}
+```{r fig.asp = 0.6, out.width = "90%", echo=FALSE, fig.align="center"}
 m5
 ```
 
+---
+### Projections
+
+```{r message=FALSE, warning=FALSE}
+library(mapproj)
+CanadaData <- map_data('world', 'Canada')  
+m6 <- ggplot(CanadaData, aes(map_id=region)) + 
+        geom_map(map = CanadaData,
+                 aes(x = long, y = lat),
+                 fill = "lightgray", colour = "#7f7f7f", 
+                 alpha = 0.5, size=0.5) +
+  theme_bw() +
+  coord_map("lambert", lat0 = 42, lat1 = 50)
+```
+
+---
+### Projections
+
+```{r fig.asp = 0.6, out.width = "90%", echo=FALSE, fig.align="center"}
+m6
+```
+
+---
+### Polar regions
+
+```{r message=FALSE, warning=FALSE}
+library(mapproj)
+m7 <- ggplot(WorldData, aes(map_id=region)) + 
+        geom_map(map = WorldData,
+                 aes(x = long, y = lat),
+                 fill = "lightgray", colour = "#7f7f7f", 
+                 alpha = 0.5, size=0.5) +
+  theme_bw() +
+  coord_map("perspective", 2, orientation=c(-90, -90, 90))
+```
+
+---
+### Polar regions
+
+```{r fig.asp = 0.6, out.width = "90%", echo=FALSE, fig.align="center"}
+m7
+```
 
 ---
 class: middle
 ### Summary
 
+* Make a basic map
 
+* Select all or some countries
+
+* Fill regions with colour
+
+* Add points and labels
+
+* Use a different projection
 
 ---
 class: middle
@@ -213,7 +257,7 @@ class: middle, inverse
 
 ## Task
 
-* XXXXX
+* Bonus task - make some simple maps based on course notes
 
 
 

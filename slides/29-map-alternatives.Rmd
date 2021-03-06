@@ -1,0 +1,145 @@
+---
+title: "Data Visualization"
+subtitle: "Alternatives to maps"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-19 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(ggheatmap)
+```
+
+# Plan
+
+* When is a map not appropriate for geospatial data?
+
+* Tile geometry
+
+* Heatmaps with dendrograms
+
+* Specialized heatmap for the USA
+
+---
+class: middle
+### Why shouldn't I use a map?
+
+* Always think about the purpose
+
+* Is geography the most important feature?
+
+* Are you showing points or areas?
+
+* Will the area of a region complicate interpretation?
+
+* Is the spatial extent one dimensional? What could you do with the other dimension?
+
+
+
+---
+class: middle
+### Summary
+
+* Maps are very effective for showing points where spatial location is the primary information
+
+* To show quantitative data varying along a transcect, a line or dot plot may be better
+
+* Colour shows larger/smaller, positive/negative, but does not show quantitative values well
+
+* Heatmaps (2 dimensional tiles of colours) can be a good alternative
+
+
+---
+### COVID-19 cases & geom_tile
+
+```{r covid-data, message=FALSE, cache=TRUE, echo=FALSE, fig.align="center", out.width="100%", fig.asp = 0.65}
+covid <- cansim::get_cansim("13-10-0775-01")
+# covid2 <- get_cansim("13-10-0774-01")  # related data with extra information
+covid_ss <- covid %>% filter(GEO != "Canada", Gender == "Total, all genders", 
+                             `Age group` != "Total, all age groups") %>%
+  filter(Statistics == "Community exposures") %>%
+  mutate(GEO = str_remove(GEO, " Region"))
+covid_ss %>%
+  ggplot(aes(y = GEO, x = `Age group`, fill = VALUE)) + 
+  geom_tile() +
+  theme(axis.text.x = element_text(angle = 90, size=15, hjust = 1, vjust=0.5),
+        axis.text.y = element_text(size=14, hjust = 1)) + 
+  labs(x = "", y="")
+```
+
+
+---
+### Same data with ggheatmap
+
+```{r message=FALSE, echo=FALSE, fig.align="center", out.width="90%"}
+covid_ss4 <- covid_ss %>% select(GEO, `Age group`, VALUE) %>%
+  pivot_wider(names_from = GEO, values_from = VALUE) 
+data.frame(covid_ss4 %>% select(-`Age group`), 
+              row.names = covid_ss4 %>% pull(`Age group`)) %>%
+  ggheatmap()
+```
+
+
+---
+### Scale columns to have sum 1
+
+```{r message=FALSE, echo=FALSE, fig.align="center", out.width="90%"}
+data.frame(covid_ss4 %>% select(-`Age group`), 
+              row.names = covid_ss4 %>% pull(`Age group`)) %>%
+  scale(center = FALSE, scale = colSums(.)) %>%
+  as.data.frame() %>%
+  ggheatmap()
+```
+
+
+
+---
+### Specialized maps of USA
+
+```{r}
+library(statebins)
+load("../static/election.rda")
+m4 <- election %>% ggplot(aes(state = state, fill = pct_trump)) +
+  geom_statebins() +
+  theme_statebins() +
+  labs(fill="Percent Trump")
+```
+
+---
+### Specialized maps of USA
+
+```{r fig.align=TRUE, out.width="90%", echo=FALSE, fig.asp=0.75}
+m4
+```
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy Chapter 7
+
+---
+class: middle, inverse
+
+## Task
+
+* Task 16 as described in repository
+
+
+

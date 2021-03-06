@@ -14,7 +14,7 @@ In this lesson we will look ways to show data with spatial dimensions in ways th
 
 ## Heatmaps
 
-Suppose we want to show a combination of spatial and temporal data. The geographic data is important, but the location on a map is not the most important feature. As an example, consider this data on weekly cases of COVID-19 in 5 regions of Canada reported on 2021-01-21. In the code below I select the number of cases identified broken down into age classes and geographic regions. The number of cases is presented as a shade of blue using `geom_tile`.
+Suppose we want to show a combination of spatial and temporal data. The geographic data is important, but the location on a map is not the most important feature. As an example, consider this data on total cases of COVID-19 in 5 regions of Canada reported on 2021-01-21. In the code below I select the number of cases identified broken down into age classes and geographic regions. The number of cases is presented as a shade of blue using `geom_tile`.
 
 ```{r covid-data, cache=TRUE}
 covid <- cansim::get_cansim("13-10-0775-01")
