@@ -61,6 +61,7 @@ class: middle
 ```{r warning=FALSE}
 p1 <- penguins %>% plot_ly(x = ~ body_mass_g, y = ~ bill_length_mm) %>%
   add_markers(color = ~ species)
+p1
 htmlwidgets::saveWidget(as_widget(p1), "dynamic-graphics-1.html")
 ```
 

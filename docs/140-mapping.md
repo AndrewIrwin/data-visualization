@@ -291,11 +291,11 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Kenora"                      "La Mitis"                   
-##  [3] "Cape Breton"                 "Region 6"                   
-##  [5] "Division No. 21"             "Bruce"                      
-##  [7] "Sudbury"                     "Kawartha Lakes"             
-##  [9] "Les Collines-de-l'Outaouais" "Kitikmeot"
+##  [1] "Les Laurentides"            "Longueuil"                 
+##  [3] "Central Okanagan"           "Baffin"                    
+##  [5] "La Haute-Gaspésie"          "Brant"                     
+##  [7] "Les Jardins-de-Napierville" "Sept-Rivières--Caniapiscau"
+##  [9] "Kootenay Boundary"          "Renfrew"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.

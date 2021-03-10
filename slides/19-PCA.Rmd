@@ -73,8 +73,9 @@ f <- paste0("plotly-",1,".html")
 htmlwidgets::saveWidget(pi, f)
 # orca(pi, "plotly-1.svg")
 ```
-```{r echo=FALSE, out.width = '60%', fig.align="center"}
+```{r echo=FALSE, warning=FALSE, message=FALSE, out.width = '60%', fig.align="center"}
 #htmltools::tags$iframe(src=f, width="100%", height="400", scrolling="no", seamless="seamless", frameBorder="0")
+# pi  # github version of xaringan package allows html widgets
 knitr::include_graphics("../static/plotly-1.png")
 ```
 

@@ -281,11 +281,11 @@ geojson_write(canada_raw_sim, file = "static/canada_cd_sim.geojson") </code></pr
 ## [13] "Yukon"</code></pre>
 <div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">canada_cd</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="va">CDNAME</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "Kenora"                      "La Mitis"                   
-##  [3] "Cape Breton"                 "Region 6"                   
-##  [5] "Division No. 21"             "Bruce"                      
-##  [7] "Sudbury"                     "Kawartha Lakes"             
-##  [9] "Les Collines-de-l'Outaouais" "Kitikmeot"</code></pre>
+<pre><code>##  [1] "Les Laurentides"            "Longueuil"                 
+##  [3] "Central Okanagan"           "Baffin"                    
+##  [5] "La Haute-Gaspésie"          "Brant"                     
+##  [7] "Les Jardins-de-Napierville" "Sept-Rivières--Caniapiscau"
+##  [9] "Kootenay Boundary"          "Renfrew"</code></pre>
 <p>I’ve changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.</p>
 <div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">crs_string2</span> <span class="op">=</span> <span class="st">"+proj=lcc +lat_1=40 +lat_2=50 +lon_0=-75 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs"</span>
@@ -422,7 +422,7 @@ geojson_write(canada_raw_sim, file = "static/canada_cd_sim.geojson") </code></pr
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-06.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

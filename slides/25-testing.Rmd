@@ -49,7 +49,7 @@ class: middle
 ### Data error
 
 ```{r echo=FALSE}
-knitr::include_graphics(here("static/error-excel-covid.png"))
+knitr::include_graphics("../static/error-excel-covid.png")
 ```
 
 ---
@@ -57,7 +57,7 @@ class: middle
 ### Computing error
 
 ```{r echo=FALSE}
-knitr::include_graphics(here("static/testing-error-austerity.png"))
+knitr::include_graphics("../static/testing-error-austerity.png")
 ```
 
 ---
