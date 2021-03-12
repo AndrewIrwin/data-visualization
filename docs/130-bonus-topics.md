@@ -1,11 +1,10 @@
-# Working with factors and dates {#factors-dates}
+# Working with text, factors, dates and times {#factors-dates}
 
 
 
-And some other bonus topics.
+In this lesson I'll show you how to work with the most common non-numeric data. Text (called [strings](https://en.wikipedia.org/wiki/String_(computer_science))) is the most basic type and represents a sequence of letters (plus spaces, numbers, punctuation, emoij, and more) that is not interpreted by the computer. In statistics, strings can be interpreted as [categorical data](https://en.wikipedia.org/wiki/Categorical_variable) which usually means that there is a mapping from a set of text strings to natural numbers. The categories can be considered as ordered or unordered; when they are unordered, R usually arranges them in alphabetical order (A-Z). Dates and times have familiar purposes in natural language, but there are many ways to represent them, so that topic needs some discussion. Dates are surprisingly complicated.
 
-
-## Working with strings
+## Working with text
 
 When making visualizations it is frequently useful to manipulate text ("strings") directly. Sometimes this is to simplify text that is being displayed on a graph. Or perhaps there is a typographical error or formatting problem with text. The [stringr](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html) package contains many useful functions for manipulating text strings. I will explain a few simple examples that I use frequently.
 
@@ -21,6 +20,41 @@ my_string2
 
 ```
 ## [1] "A cat is a small, living and furry animal."
+```
+
+* It can be helpful to convert all text to a uniform pattern of capitalization: all capital letters, all lower case, and other patterns.
+
+
+```r
+str_to_lower(my_string2)
+```
+
+```
+## [1] "a cat is a small, living and furry animal."
+```
+
+```r
+str_to_upper(my_string2)
+```
+
+```
+## [1] "A CAT IS A SMALL, LIVING AND FURRY ANIMAL."
+```
+
+```r
+str_to_sentence(my_string2)
+```
+
+```
+## [1] "A cat is a small, living and furry animal."
+```
+
+```r
+str_to_title(my_string2)
+```
+
+```
+## [1] "A Cat Is A Small, Living And Furry Animal."
 ```
 
 * If there are particular letters or symbols you want to remove, the `str_remove` function can accomplish this. This can be used on literal strings or on patterns. Patterns allow for the use of character classes, selecting specific sequences, and more complex symbolic descriptions of strings. I will give a couple of simple examples of patterns. `str_remove` matches only once; `str_remove_all` matches the pattern as many times as possible.
@@ -49,6 +83,28 @@ str_remove_all(my_string2, "[ ,\\.!]")
 ```
 ## [1] "Acatisasmalllivingandfurryanimal"
 ```
+
+* If a variable contains numbers, but R is interpreting the data as text, you can use the function `as.numeric` to convert the text to numbers. Any string that can't be interpreted as a number will be converted to `NA`.
+
+
+```r
+text_and_numbers <- tibble( text = c("Andrew", "33", "12.45", 
+                                     "-1.00", "Inf"))
+text_and_numbers %>% mutate(numbers = as.numeric(text), 
+                            integers = as.integer(text))
+```
+
+```
+## # A tibble: 5 x 3
+##   text   numbers integers
+##   <chr>    <dbl>    <int>
+## 1 Andrew    NA         NA
+## 2 33        33         33
+## 3 12.45     12.4       12
+## 4 -1.00     -1         -1
+## 5 Inf      Inf         NA
+```
+
 
 * If a pattern appears in a string, you might want to extract that information. `str_extract` allows you to write a pattern that matches part of the string and extract that from the source material.
 
@@ -113,7 +169,7 @@ unglue_unnest(my_strings1, greeting, "My name is {name}.", remove=FALSE)
 
 ## Working with factors
 
-Factors are categorical variables in which a set of labels ("strings") are the possible values of a variable. These are sometimes interpreted as integers and sometimes interpreted as text. In data visualization, our primary concern is mapping factors on to sequence of colours, shapes, or locations on an axis. In R, if a factor is not given an explicit order by the analyst, but must have an order (on a scale), this is usually alphabetical. This ordering is rarely the best one for visualizations!
+Factors are categorical variables in which a set of text labels ("strings") are the possible values of a variable. These are sometimes interpreted as integers and sometimes interpreted as text. In data visualization, our primary concern is mapping factors on to sequence of colours, shapes, or locations on an axis. In R, if a factor is not given an explicit order by the analyst, but must have an order (on a scale), this is usually alphabetical. This ordering is rarely the best one for visualizations!
 
 The [forcats](https://forcats.tidyverse.org/) package has a series of functions for reordering factors. These can be used to explicitly reorder a factor by value (level) or a quantitative value can be used to reorder a factor. 
 
@@ -126,19 +182,20 @@ mpg %>% ggplot(aes(x = cty,
   geom_boxplot()
 ```
 
-<img src="130-bonus-topics_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="130-bonus-topics_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-Here the transmission factor is reordered according to the minimum value of highway fuel economy.
+Here the transmission factor is reordered according to the minimum value of highway fuel economy. The three arguments to `fct_reorder` are the categorical variable to be reordered, the quantitative variable to use for the reordering, and a function that converts a vector of numbers to a single value for sorting (such as mean, median, min, max, length). The smallest value is plotted on the left of the horizontal axis or the bottom of the vertical axis. The option `.desc=TRUE` (descending = TRUE) is an easy way to reverse the order of factors and is especially useful for the vertical axis.
 
 
 ```r
 mpg %>% ggplot(aes(x = cty,
-                   y = fct_reorder(trans, hwy, median))) +
-  geom_boxplot()
+                   y = fct_reorder(trans, hwy, median, .desc=TRUE))) +
+  geom_boxplot() 
 ```
 
-<img src="130-bonus-topics_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="130-bonus-topics_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
+Of course you will want to pratice working with strings and factors to develop flexible methods of customizing your display of categorical variables.
 Here we extract the number of gears from the transmission and reorder transmission on this basis.
 
 
@@ -150,7 +207,7 @@ mpg %>% unglue_unnest(trans, "{trans_desc}({trans_code})", remove=FALSE)  %>%
   geom_boxplot() 
 ```
 
-<img src="130-bonus-topics_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="130-bonus-topics_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 When there are too many cateogories to display on a graph, it can be helpful to pick out the ones with the most observations and to group the remaining observations together in an "other" category. Here's how you can accomplish that.
 
@@ -162,14 +219,41 @@ mpg %>%
   geom_boxplot() 
 ```
 
-<img src="130-bonus-topics_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="130-bonus-topics_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 
 ## Working with dates and times
 
-Dates and times are complex data to work with. Dates are represented in many formats. Times are reported in time zones. which change depending on the time of year and the location of the measurement. Dates are futher complicated by leap years and local rules operating in specific countries. Placing dates and times on plots, or comparing observations made at different times arithmetic with dates
+Dates and times are complex data to work with. Dates are represented in many formats. Times are reported in time zones, which change depending on the time of year and the location of the measurement. Dates are further complicated by leap years and local rules operating in specific countries. Special formatting is required for labelling dates and times on plots.
 
 The package `lubridate` contains many functions to help you work with dates and times. For data visualization purposes I mostly use functions to parse dates and times (converting text to a date-time object), some basic arithmetic, extract components of a date, and format axis labels.
+
+To see some nicely formatted dates and times, use the `today` and `now` functions. When reporting times, you need to pick a time zone. This can be surprisingly complicated, especially since the time zone used in a particular location changes (daylight savings time) and according to changes in local regulations and legislation. Many people report time in UTC (referenced to longitude 0, Greenwich UK, but without the complexity of daylight savings time) to make times a bit easier. Of course, the date in UTC may not be the date where you are right now (it could be 'yesterday' or 'tomorrow'), so be on the lookout for that!
+
+
+```r
+today()
+```
+
+```
+## [1] "2021-03-12"
+```
+
+```r
+now() # for me this is: now(tz = "America/Halifax") 
+```
+
+```
+## [1] "2021-03-12 12:55:03 AST"
+```
+
+```r
+now(tz = "UTC")
+```
+
+```
+## [1] "2021-03-12 16:55:03 UTC"
+```
 
 ### Reading dates
 
@@ -177,7 +261,8 @@ There are a family of functions `ymd`, `dmy`, `mdy`, and `ymd_hms` among others 
 
 
 ```r
-dt1 <- tibble(text_date = c("1999-01-31", "2000-02-28", "2010-06-28", "2024-03-14", "2021-02-29"),
+dt1 <- tibble(text_date = c("1999-01-31", "2000-02-28", "2010-06-28",
+                            "2024-03-14", "2021-02-29"),
              date = ymd(text_date))
 ```
 
@@ -200,13 +285,14 @@ dt1
 ## 5 2021-02-29 NA
 ```
 
-Here is an example with times. You can specify a time zone if you want, but sometimes you can get away with ignoring the problem.
+Here is an example with times. You can specify a [time zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) if you want, but sometimes you can get away with ignoring the problem. Here the timezone information tells the computer how to interpret the text representation of the time.
 
 
 ```r
-dt2 <- tibble(text_date = c("1999-01-31 09:14", "2000-02-28 12:15", "2010-06-28 23:45", 
+dt2 <- tibble(text_date = c("1999-01-31 09:14", "2000-02-28 12:15",
+                            "2010-06-28 23:45", 
                             "2024-03-14 07:00 AM", "2021-03-01 6:16 PM"),
-             date_time = ymd_hm(text_date, tz="America/Halifax"))  # UTC is assumed if not specified
+             date_time = ymd_hm(text_date, tz="America/Halifax"))
 dt2
 ```
 
@@ -225,37 +311,46 @@ These functions are remarkably powerful, for example they work on formats like t
 
 
 ```r
-mdy(c("Jan 5, 1999", "Saturday May 16, 70", "8-8-88", "December 31/99", "Jan 1, 01"))
+tibble(date = c("Jan 5, 1999", "Saturday May 16, 70", "8-8-88",
+               "December 31/99", "Jan 1, 01"),
+      decoded = mdy(date))
 ```
 
 ```
-## [1] "1999-01-05" "1970-05-16" "1988-08-08" "1999-12-31" "2001-01-01"
+## # A tibble: 5 x 2
+##   date                decoded   
+##   <chr>               <date>    
+## 1 Jan 5, 1999         1999-01-05
+## 2 Saturday May 16, 70 1970-05-16
+## 3 8-8-88              1988-08-08
+## 4 December 31/99      1999-12-31
+## 5 Jan 1, 01           2001-01-01
 ```
 
 As with people working in the [late 20th century](https://en.wikipedia.org/wiki/Year_2000_problem), 
 you should be very careful with two digit years. Best not to use them.
 
-If you want to know how much time has passed since the first observation, you can do arithmetic. Note the data types of each column (character, date, time, double = numeric).
+If you want to know how much time has passed since the earliest observation in a dataset, you can do arithmetic. Note the data types of each column (character, date, time, double = numeric).
 
 
 ```r
 dt1 %>% arrange(date) %>%
   mutate(elapsed = date - min(date, na.rm=TRUE),
-         t = as.numeric(elapsed))
+         t_days = as.numeric(elapsed))
 ```
 
 ```
 ## # A tibble: 5 x 4
-##   text_date  date       elapsed       t
-##   <chr>      <date>     <drtn>    <dbl>
-## 1 1999-01-31 1999-01-31    0 days     0
-## 2 2000-02-28 2000-02-28  393 days   393
-## 3 2010-06-28 2010-06-28 4166 days  4166
-## 4 2024-03-14 2024-03-14 9174 days  9174
-## 5 2021-02-29 NA           NA days    NA
+##   text_date  date       elapsed   t_days
+##   <chr>      <date>     <drtn>     <dbl>
+## 1 1999-01-31 1999-01-31    0 days      0
+## 2 2000-02-28 2000-02-28  393 days    393
+## 3 2010-06-28 2010-06-28 4166 days   4166
+## 4 2024-03-14 2024-03-14 9174 days   9174
+## 5 2021-02-29 NA           NA days     NA
 ```
 
-Let's add some random data to the second table and make a scatter graph.
+Let's add some random data to the second table and make a scatter graph. Special codes are used to format dates and times, but these are fairly well standardized (see the help for `strptime`).
 
 
 ```r
@@ -265,10 +360,9 @@ dt2 %>% mutate(r = rnorm(n(), 20, 3)) %>%
   scale_x_datetime(date_labels = "%Y\n%b-%d")
 ```
 
-<img src="130-bonus-topics_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="130-bonus-topics_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 There are lots more options for formatting date and time axes. See the help pages for more (in particular the examples, as always).
-
 
 
 ## Working with missing data
@@ -366,30 +460,8 @@ na.omit(dt3)
 ## 5  21
 ```
 
-
-## Multi-panel figures 
-
-patchwork 
-cowplot
-hiding and combining guides
-Adding tags
-Creating space for a legend
-
-marginal plots (histograms, densities)
-
-
 ## Further reading
 
 * A blog post about [missing values](https://www.njtierney.com/post/2020/09/17/missing-flavour/) and data types
-
-
-## Move elsewhere
-
-
-### Testing data and calculations
-
-### What is reproducibility and why should I care?
-
-
 
 

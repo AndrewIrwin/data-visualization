@@ -291,11 +291,9 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Les Laurentides"            "Longueuil"                 
-##  [3] "Central Okanagan"           "Baffin"                    
-##  [5] "La Haute-Gaspésie"          "Brant"                     
-##  [7] "Les Jardins-de-Napierville" "Sept-Rivières--Caniapiscau"
-##  [9] "Kootenay Boundary"          "Renfrew"
+##  [1] "Division No. 16"  "Lajemmerais"      "Montcalm"         "Matane"          
+##  [5] "Montréal"         "Sunbury"          "Algoma"           "Central Okanagan"
+##  [9] "Richmond"         "Kenora"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.

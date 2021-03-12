@@ -415,13 +415,13 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Mon 22 Mar </td>
    <td style="text-align:right;"> 30 </td>
    <td style="text-align:left;"> Factors and Dates </td>
-   <td style="text-align:left;"> [Notes](#factors-dates), [Task 17](#task-19) </td>
+   <td style="text-align:left;"> [Notes](#factors-dates), [Slides](slides/30-factors-dates.html), [Task 17](#task-19) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Wed 24 Mar </td>
    <td style="text-align:right;"> 31 </td>
    <td style="text-align:left;"> Using colour </td>
-   <td style="text-align:left;"> [Notes](#colour), [Bonus task](#task-b10) </td>
+   <td style="text-align:left;"> [Notes](#colour), [Slides](slides/31-colour.html), [Bonus task](#task-b10) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Wed 24 Mar </td>

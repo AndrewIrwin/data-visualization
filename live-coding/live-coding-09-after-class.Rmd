@@ -49,13 +49,34 @@ Let's use the `penguins` and `penguins_raw` data.
 First get an overview of the data. Use functions from the `dlookr` package: describe, diagnose, diagnose_category. This is a carefully cleaned data set, so there are probably no obvious problems with it.
 
 ```{r}
-
+describe(penguins_raw)
+diagnose(penguins_raw)
+diagnose_category(penguins)
+diagnose_category(diamonds)
 ```
 
 Computing summary statistics (mean, median, etc) with variables that contain missing data.
 
 ```{r}
+penguins_raw %>% group_by(Species) %>%
+  summarize(mean_flipper_length = mean(`Flipper Length (mm)`, na.rm=TRUE),
+            n_missing = skimr::n_missing(`Flipper Length (mm)`),
+            n_complete = skimr::n_complete(`Flipper Length (mm)`),
+            n =n(),
+            my_n_missing = sum(is.na(`Flipper Length (mm)`)),
+            m_n_complete = sum(!is.na(`Flipper Length (mm)`)))
 
+```
+
+```{r}
+penguins_raw %>% filter(!is.na(Sex)) %>%
+  group_by(Species, Sex) %>%
+  summarize(mean_flipper_length = mean(`Flipper Length (mm)`, na.rm=TRUE),
+            n_missing = skimr::n_missing(`Flipper Length (mm)`),
+            n_complete = skimr::n_complete(`Flipper Length (mm)`),
+            n =n(),
+            my_n_missing = sum(is.na(`Flipper Length (mm)`)),
+            m_n_complete = sum(!is.na(`Flipper Length (mm)`)))
 
 ```
 
@@ -65,7 +86,7 @@ Computing summary statistics (mean, median, etc) with variables that contain mis
 Use plotly to make a scatterplot. This creates an interactive HTML "widget" that lets the user view data about the plot, zoom and pan the plot.
 
 ```{r}
-plot_ly(penguins,  x = ~ body_mass_g, y = ~ flipper_length_mm, color = ~ species)
+plot_ly(penguins, x = ~ body_mass_g, y = ~ flipper_length_mm, color = ~ species)
 
 ```
 
@@ -80,7 +101,53 @@ The `gganimate` package allows you to convert a regular ggplot into a series of 
 We'll use the penguin or gapminder data to generate some animations. The examples in the transition_* help pages have some great examples.
 
 ```{r}
+gapminder %>% ggplot(aes(year, lifeExp)) + geom_line(aes(group=country)) +
+  transition_manual(continent) 
+```
 
+Many lines and then a line with changing slope:
+
+```{r}
+df <- tibble(intercept = 0:10,
+             slope = (-5:5)/5,
+             group = 0:10)
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12)
+```
+
+Now animate
+
+```{r}
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12) + 
+  transition_time(group)
 ```
 
 
+```{r}
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12) + 
+  transition_states(group)
+```
+
+```{r}
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12) + 
+  transition_manual(group) 
+```
+
+
+Try this for penguins
+
+```{r}
+penguins %>% ggplot(aes(body_mass_g, flipper_length_mm, color = sex)) + geom_point() +
+  transition_states(species) # transition_manual(species)
+```

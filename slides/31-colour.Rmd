@@ -1,0 +1,131 @@
+---
+title: "Data Visualization"
+subtitle: "Colour"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-24 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(forcats)
+library(lubridate)
+library(palmerpenguins)
+library(kableExtra)
+library(paletteer)
+library(gapminder)
+my_theme = theme_bw() + theme(text = element_text(size=25))
+```
+
+# Plan
+
+* Discrete colour scales
+
+* Continuous colour scales
+
+* viridis colour
+
+* other palettes
+
+* custom colours
+
+---
+class: middle
+### Colour guidelines - Discrete
+
+* Not too many
+
+* Keep brightness constant
+
+---
+class: middle
+### Colour guidelines - Continuous
+
+* One shade, vary brightness
+
+* Two shades if there is a natural middle or 0, white in middle
+
+* Avoid red-green diverging scales
+
+
+---
+class: middle
+### Discrete colour scales
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+                        color = species)) + geom_point() + my_theme
+```
+
+---
+class: middle
+### Discrete colour scales
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+                        color = species)) + geom_point() + my_theme +
+  scale_color_viridis_d(end = 0.7) 
+```
+
+
+---
+class: middle
+### Discrete colour scales
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+                        color = species)) + geom_point() + my_theme +
+  scale_color_paletteer_d("ggthemes::hc_default")
+```
+
+
+---
+class: middle
+### Discrete colour scales
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+penguins %>% ggplot(aes(body_mass_g, flipper_length_mm,
+                        color = species)) + geom_point() + my_theme +
+  scale_color_manual(values = c("red", "blue", "orange"))
+```
+
+---
+### Continuous colour shades
+
+```{r warning=FALSE, fig.asp = 0.7, out.width="60%", fig.align="center"}
+gapminder %>% filter(country %in% c("Canada", "China", "Chile", "Iceland")) %>%
+  ggplot(aes(year, lifeExp, color = log10(pop))) +
+  geom_point(size=3) + my_theme
+```
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy appendix
+
+* R4DS Chapter 14 [Strings](https://r4ds.had.co.nz/strings.html), Chapter 15 [Factors](https://r4ds.had.co.nz/factors.html), and Chapter 16 [Dates and times](https://r4ds.had.co.nz/dates-and-times.html)
+
+---
+class: middle, inverse
+
+## Task
+
+* Task 17 as described in repository
+
+
+

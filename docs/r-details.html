@@ -71,7 +71,7 @@
 <li><a class="" href="mapping-1.html"><span class="header-section-number">27</span> Making maps</a></li>
 <li><a class="" href="mapping-2.html"><span class="header-section-number">28</span> Mapping part two</a></li>
 <li><a class="" href="mapping-3.html"><span class="header-section-number">29</span> Alternatives to maps</a></li>
-<li><a class="" href="factors-dates.html"><span class="header-section-number">30</span> Working with factors and dates</a></li>
+<li><a class="" href="factors-dates.html"><span class="header-section-number">30</span> Working with text, factors, dates and times</a></li>
 <li><a class="" href="colour.html"><span class="header-section-number">31</span> Using colour well</a></li>
 <li><a class="" href="theme.html"><span class="header-section-number">32</span> Themes</a></li>
 <li><a class="" href="output-files.html"><span class="header-section-number">33</span> Graphics formatting</a></li>
@@ -103,13 +103,13 @@ together with their applications one chapter at a time.</p>
 <p>R has many basic types: logical, numeric (double), character, factor. Any combination of these types can be combined into lists. Elements of lists can be named so that they work like dictionaries. Vectors, matrices, and higher dimensional arrays are all composed of the same type of data, usually numeric, factor, or logical.</p>
 <p>Lists are a very powerful type because they can be given attributes that identify them as special structures with particular intepretations. The most common special list is a data frame, data table or tibble. (The tibble is a refined kind of data frame.) You probably think of a tibble as a matrix where each column can be of a different type. How is this accomplished? It’s a list of vectors. Each vector corresponds to a column or variable in the data frame with its own name and data type.</p>
 <p>Here are some R commands you can use to decode the structure of any object you have in your workspace. I’ll demonstrate on the <code>diamonds</code> tibble. As always, experiment with these commands by trying them on other objects such as <code>cars</code> (a data frame).</p>
-<div class="sourceCode" id="cb495"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb511"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span>  <span class="co"># it's a list</span></code></pre></div>
 <pre><code>## [1] "list"</code></pre>
-<div class="sourceCode" id="cb497"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb513"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span> <span class="co"># which works as a data.frame and also as a tbl (tibble)</span></code></pre></div>
 <pre><code>## [1] "tbl_df"     "tbl"        "data.frame"</code></pre>
-<div class="sourceCode" id="cb499"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb515"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">)</span></code></pre></div>
 <pre><code>## tibble [53,940 × 10] (S3: tbl_df/tbl/data.frame)
 ##  $ carat  : num [1:53940] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...
@@ -122,16 +122,16 @@ together with their applications one chapter at a time.</p>
 ##  $ x      : num [1:53940] 3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...
 ##  $ y      : num [1:53940] 3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...
 ##  $ z      : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
-<div class="sourceCode" id="cb501"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb517"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">carat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "numeric"</code></pre>
-<div class="sourceCode" id="cb503"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb519"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">diamonds</span><span class="op">$</span><span class="va">cut</span><span class="op">)</span>  <span class="co"># its a factor, and the factor is ordered (factors can be unordered)</span></code></pre></div>
 <pre><code>## [1] "ordered" "factor"</code></pre>
-<div class="sourceCode" id="cb505"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb521"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">table</span>, <span class="va">price</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># if you pick columns of the same type, you can convert them to a matrix</span></code></pre></div>
 <pre><code>## [1] "matrix" "array"</code></pre>
-<div class="sourceCode" id="cb507"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb523"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="va">cut</span>, <span class="va">color</span>, <span class="va">clarity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  </code></pre></div>
 <pre><code>## [1] "matrix" "array"</code></pre>
 </div>
@@ -150,18 +150,18 @@ together with their applications one chapter at a time.</p>
 <p>A string is just a sequence of text, enclosed by single or double quotation marks. You can display strings, and search for text, and do other text-type things with them, but you can’t (of course) do calculations with them.</p>
 <p>You can convert a vector of strings into a vector of factors. This assigns an integer to each different element in the vector. Why would you do this? The numbers can be assigned to give a particular order to the factors (strings) that is different from alphabetical. The factors can be used in statistical models as though they are numbers, as though they were the indexes you use on a variable in math class (e.g., <span class="math inline">\(x_1, x_2, \dots\)</span>).</p>
 <p>Here are some simple examples.</p>
-<div class="sourceCode" id="cb509"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb525"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Apple"</span>, <span class="st">"Bananna"</span>, <span class="st">"Cat"</span>, <span class="st">"Apple"</span>, <span class="st">"Orange"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "character"</code></pre>
-<div class="sourceCode" id="cb511"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb527"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">v</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "integer"</code></pre>
-<div class="sourceCode" id="cb513"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb529"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1 2 3 1 4</code></pre>
-<div class="sourceCode" id="cb515"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb531"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span></code></pre></div>
 <pre><code>## [1] Apple   Bananna Cat     Apple   Orange 
 ## Levels: Apple Bananna Cat Orange</code></pre>
@@ -173,7 +173,7 @@ together with their applications one chapter at a time.</p>
 </h2>
 <p>The pipe <code><a href="https://docs.ropensci.org/geojsonio/reference/pipe.html">%&gt;%</a></code> is a way to write function composition. In our data analysis we build up calculations from lots of different functions such as <code>select</code>, <code>group_by</code>, <code>arrange</code>, <code>filter</code>, <code>summarize</code>, <code>distinct</code> and many more described in R for Data Science. Each function starts with a tibble, does something to it, and produces a revised tibble. It’s very natural to develop a complex series of calculations like a recipe in a cookbook. (Sometimes these recipes are called pipelines!) Before pipes were invented there were basically two options; write the functions down in reverse order, or create lots of temporary variables to store the intermediate results and then discard them. Pipelines are easier to write and easier to read. Here’s an example of the three styles, based on a simple analysis of the <code>diamonds</code> data.</p>
 <p>Pipeline:</p>
-<div class="sourceCode" id="cb517"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb533"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span><span class="op">==</span><span class="st">"Ideal"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   color mean_price
@@ -186,7 +186,7 @@ together with their applications one chapter at a time.</p>
 ## 6 I          4452.
 ## 7 J          4918.</code></pre>
 <p>Temporary variables:</p>
-<div class="sourceCode" id="cb519"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb535"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span><span class="op">==</span><span class="st">"Ideal"</span><span class="op">)</span>
 <span class="va">d2</span> <span class="op">&lt;-</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">d1</span>, <span class="va">color</span><span class="op">)</span> 
 <span class="fu">summarize</span><span class="op">(</span><span class="va">d2</span>, mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -201,7 +201,7 @@ together with their applications one chapter at a time.</p>
 ## 6 I          4452.
 ## 7 J          4918.</code></pre>
 <p>Composition:</p>
-<div class="sourceCode" id="cb521"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb537"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">summarize</span><span class="op">(</span>
   <span class="fu">group_by</span><span class="op">(</span>
     <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">diamonds</span>, <span class="va">cut</span> <span class="op">==</span> <span class="st">"Ideal"</span><span class="op">)</span>, <span class="va">color</span>
@@ -352,7 +352,7 @@ SQL as another example</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-10.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

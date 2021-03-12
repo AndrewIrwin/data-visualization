@@ -1,0 +1,252 @@
+---
+title: "Data Visualization"
+subtitle: "Text, Factors, Dates, and Times"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-22 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(forcats)
+library(lubridate)
+library(palmerpenguins)
+library(kableExtra)
+library(glue)
+library(unglue)
+my_theme = theme_bw() + theme(text = element_text(size=25))
+```
+
+# Plan
+
+* Tools to help you work with data that are not numbers
+
+* Specialized functions for working with strings, factors and dates
+
+* Strings package `stringr`, `glue`, `unglue` and functions `str_squish`, `glue` and more
+
+* Factors package `forcats` and functions `fct_*`
+
+* Date and time package: `lubridate` and functions `ymd`, `ymdhms`, `yday`, `decimal_date` and more
+
+
+---
+class: middle
+### Challenges that arise with text
+
+* Extra spaces
+
+* Upper and lower case differences
+
+* Locales (non-English text); see [ragg](https://www.tidyverse.org/blog/2021/02/modern-text-features/) for plotting with non-Latin text
+
+* Difference between factors and strings
+
+---
+class: middle
+### Extra spaces
+
+Data entered by a human in a web form or spreadsheet often has inconspicuous spaces, for example after the last letter, or two spaces between a word. This is easily ignored when read by humans, but creates havoc for computers.  `str_squish` gets rid of these troublesome spaces.
+
+```{r}
+str_squish(" a crazy sentence   with 
+           too many spaces in    strange places.     ")
+```
+
+---
+class: middle
+### Letter case
+
+Upper and lower case differences are often not noticed by humans, but matter to a computer. One solution is to convert all text to upper, lower, or title case.
+
+```{r}
+tibble(original = c("Apple", "apple", "APPLE", "aPpLe"),
+       lower = str_to_lower(original),
+       upper = str_to_upper(original),
+       title = str_to_title(original)) %>% kable()
+```
+
+---
+### Getting data in and out of strings
+
+```{r}
+tibble(name = c("Andrew", "Susan", "Yong"),
+       age = c(12, 21, 35)) %>%
+  mutate(sentence = glue("{name} is {age} years old.")) %>% kable()
+```
+
+---
+### Getting data in and out of strings
+
+```{r include = FALSE}
+t0 <- tibble(name = c("Andrew", "Susan", "Yong"),
+       age = c(12, 21, 35)) %>%
+  mutate(sentence = glue("{name} is {age} years old."))
+```
+
+```{r}
+t0 %>% select(sentence) %>%
+  mutate( unglue_data(sentence, "{name} is {age} years old.")) %>%
+  mutate( age = as.numeric(age),
+          next_year = age + 1) %>% kable()
+```
+
+---
+class: middle
+### Challenges that arise with factors
+
+* Plot order on scales (axes, color scale)
+
+* Too many factors
+
+* Mapping colours to specific levels (later lesson on colour)
+
+
+---
+class: middle
+### Plot order
+
+Here's a plot of mean penguin body mass by species and sex. What's the order?
+
+```{r warning=FALSE, message=FALSE, fig.asp = 0.5, fig.align="center", out.width="90%"}
+penguins %>% ggplot(aes(x = body_mass_g, y = island)) + 
+  stat_summary() +
+  facet_wrap(~ sex) + theme_bw() 
+```
+
+
+---
+class: middle
+### Plot order
+
+Order from smallest to largest, top to bottom. Watch out for NAs.
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+penguins %>% na.omit() %>%
+  ggplot(aes(x = bill_length_mm, 
+                   y = fct_reorder(species, bill_length_mm,
+                                   .desc=TRUE))) + 
+  stat_summary() + my_theme
+```
+
+
+---
+class: middle
+### Custom order
+
+Order from smallest to largest, top to bottom. Watch out for NAs.
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+penguins %>%
+  ggplot(aes(x = bill_length_mm, 
+             y = fct_relevel(species, "Gentoo", "Adelie"))) + 
+  stat_summary() + my_theme
+```
+
+---
+class: middle
+### Challenges that arise with dates and times
+
+* Date format
+
+* Extracting components of date or time
+
+* Formatting axes on plots
+
+* Arithmetic with dates and times
+
+* Time zones
+
+---
+### Converting text to dates
+
+```{r}
+tibble(date = c("01/02/03", "121006", "05/12/08", "11-03-21"),
+       ymd = ymd(date),
+       dmy = dmy(date),
+       mdy = mdy(date)) %>% kable()
+```
+
+
+---
+### Dates and times
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
+                "2021/03/11 15:14", "2021/03/11 11:50 PM"),
+       dt = ymd_hm(date),
+       value = 1:4) %>%
+  ggplot(aes(y = dt, x = value)) + geom_point(size=4) + my_theme
+```
+
+---
+### Dates and times
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
+                "2021/03/11 15:14", "2021/03/11 11:50 PM"),
+       dt = ymd_hm(date),
+       value = 1:4) %>%
+  ggplot(aes(y = dt, x = value)) + geom_point(size=4) + 
+  scale_y_datetime(date_labels = "%H:%M") + my_theme
+```
+
+---
+### Time arithmetic
+
+```{r}
+tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
+                "2021/03/11 15:14", "2021/03/11 11:50 PM"),
+       dt = ymd_hm(date),
+       value = 1:4) %>%
+  mutate(elapsed = dt - min(dt)) %>% kable()
+```
+
+---
+### Time arithmetic
+
+```{r include=FALSE}
+t1 <- tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
+                "2021/03/11 15:14", "2021/03/11 11:50 PM"),
+       dt = ymd_hm(date),
+       value = 1:4) 
+```
+
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center"}
+t1 %>% mutate(elapsed = dt - min(dt)) %>%
+  ggplot(aes(x = as.numeric(elapsed)/3600, 
+             y = value)) + geom_point(size=4) +
+  labs(x = "Time in hours since start") + my_theme
+```
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy appendix
+
+* R4DS Chapter 14 [Strings](https://r4ds.had.co.nz/strings.html), Chapter 15 [Factors](https://r4ds.had.co.nz/factors.html), and Chapter 16 [Dates and times](https://r4ds.had.co.nz/dates-and-times.html)
+
+---
+class: middle, inverse
+
+## Task
+
+* Task 17 as described in repository
+
+
+

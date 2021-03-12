@@ -17,8 +17,15 @@ Getting to know other students in the course -- explicit signup for networking
 
 
 
-text without a home.
+## Multi-panel figures 
 
+patchwork 
+cowplot
+hiding and combining guides
+Adding tags
+Creating space for a legend
+
+marginal plots (histograms, densities)
 
 ## notes
 
