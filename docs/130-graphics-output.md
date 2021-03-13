@@ -117,14 +117,50 @@ p1
 
 <img src="130-graphics-output_files/figure-html/unnamed-chunk-6-1.png" width="50%" style="display: block; margin: auto;" />
 
+## Vector or raster?
+
+The quality of a vector image (PDF, svg) should always be superior to a raster image (png). Vector images can be redrawn at different scales easily, making it possible for your reader to zoom in on your graphics. If your plot has millions of points or a huge number of lines, then a vector format which requires the computer to draw each feature every time the image is shown will be slow. So you should normally use a raster format (svg for the web, pdf for printing) and only use raster formats (png) for very complicated figures, for example if you notice that your graphics are displaying slowly.
+
+
+```r
+p1
+```
+
+```
+## Warning: Removed 11 rows containing missing values (geom_point).
+```
+
+<img src="130-graphics-output_files/figure-html/unnamed-chunk-7-1.svg" width="672" style="display: block; margin: auto;" />
+
 ## Size and resolution
 
 The differences between raster and vector formats give rise to different ideas of a graphics size. Raster images are defined by the number of pixels in each dimension. Vector graphics are not made of pixels, so they are defined by a target size for presentation in inches or centimeters. When they are actually displayed, raster images may be simplified to lower resolution or dots may be interpolated to match the device you are using. Similarly, a vector image on a monitor, printed page, or projected on a screen will have very different sizes, even if the computer doesn't know it. These resizing operations happen all the time, sometimes even interactively (as you zoom on a phone for example) and the person creating the image has no control over how it will be displayed!
 
+## Recommendations
+
+In your code chunks use 
+
+* `fig.width = 6` (6 inches)
+* `fig.asp = 0.65` (aspect ratio of height is 65% of the width)
+* `out.width = '70%'` (so that there is some blank margin on both sides of your image)
+* `fig.align = 'center'`
+* `dev = 'svg'` or `dev = 'svglite'` (the output format)
+
+You can set the defaults in your first code chunk using the following code:
+
+
+```r
+knitr::opts_chunk$set(
+  fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%'
+)
+```
+
+Then you only need to specify these chunk options if you need to change them for some reason.
+
+
 ## A solution for scaling graphics
 
-There is a relatively new solution to many of these sizing problems. (So new it seems to not work sometimes.) The `ragg` library and graphics output device provides reliable rendering text in many (perhaps most) languages and a way to scale the size of images across different output formats.
-
+When you show a figure on the screen, on a projector, printed page, or poster, you will want to redesign some elements. There is a relatively new solution to this resizing challenge. (So new it seems to not work sometimes.) 
 Once you have made a graphic look just the way you want, you can adjust the scale of the elements of the figure without changing the “physical” size of the image. Here I make the graphic have a much larger "physical" size, but I also scale up all the elements of the graphic by a factor of three (using `scaling = 3`). This allows you to make a high resolution object you can include in a printed poster without redesigning a figure too much -- just set the scaling factor and adjust the width and height by the same factor.
 
 
@@ -142,7 +178,7 @@ ggsave(pngfile, p2, device = agg_png,
 knitr::include_graphics(pngfile)
 ```
 
-<img src="130-graphics-output_files/figure-html/unnamed-chunk-7-1/penguins-ragg.png" width="8" />
+<img src="130-graphics-output_files/figure-html/unnamed-chunk-9-1/penguins-ragg.png" width="70%" style="display: block; margin: auto;" />
 
 ```r
 # agg_png("static/penguins-ragg.png", width = 45, height = 30, units = "cm", res = 300, scaling = 3)
@@ -150,9 +186,10 @@ knitr::include_graphics(pngfile)
 # invisble(dev.off())
 ```
 
-For a demonstration of text in other languages, please see [here](https://www.tidyverse.org/blog/2021/02/modern-text-features/). For a discussion of scaling plots see [here](https://www.tidyverse.org/blog/2020/08/taking-control-of-plot-scaling/).
+The `ragg` library and graphics output device also provides reliable rendering text in many (perhaps most) languages and a way to scale the size of images across different output formats. See the link below for more information.
 
 
 ## Further reading
 
 * Notes on [figure scaling in R Markdown](https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing) from R for Data Science.
+* For a demonstration of text in other languages, please see [here](https://www.tidyverse.org/blog/2021/02/modern-text-features/). For a discussion of scaling plots see [here](https://www.tidyverse.org/blog/2020/08/taking-control-of-plot-scaling/).

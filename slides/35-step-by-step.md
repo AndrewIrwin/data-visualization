@@ -1756,7 +1756,7 @@ gapminder %>%
 Change the x-axis to a log scale
 ========================================================
 
-The figure uses $\log_2$ with fancy labels (and has an error), but we will be content with $\log_{10}$.
+The figure uses $\log_2$ with fancy labels (and has an error), but we will be content with simple labels.
 
 
 ```r
@@ -1764,8 +1764,8 @@ gapminder %>%
   filter(year == 2007) %>%
   ggplot(aes(y=lifeExp,
              x=gdpPercap)) + 
-  geom_point() +
-  scale_x_log10()
+  geom_point() + 
+  scale_x_continuous(trans = "log2") 
 ```
 ***
 ![plot of chunk unnamed-chunk-7](35-step-by-step-figure/unnamed-chunk-7-1.png)
@@ -1798,8 +1798,7 @@ gapminder %>%
   ggplot(aes(y=lifeExp, 
              x=gdpPercap, 
              color=continent)) + 
-  ... +
-  scale_x_log10()
+  ... 
 ```
 ***
 ![plot of chunk unnamed-chunk-11](35-step-by-step-figure/unnamed-chunk-11-1.png)
@@ -2011,7 +2010,7 @@ ggplot(aes(y=lifeExp,
            x=gdpPercap)) + 
   annotation_custom(grob=
     ggplotGrob(world_map), 
-    xmin=3.7, 
+    xmin=12.3, 
     ymin=35, ymax=50 ) +
   
   geom_label_repel(aes(
@@ -2031,7 +2030,7 @@ ggplot(aes(y=lifeExp,
 
 Adjust the aspect ratio
 ========================================================
-Use the ratio of width (log units, log10(30000/300)) to height (80-40), scaled to be 1:2 for a wide plot.
+Use the ratio of width (log units, log2(30000/300)) to height (80-40), scaled to be 1:2 for a wide plot.
 
 ```r
 gapminder %>%
@@ -2041,7 +2040,7 @@ gapminder %>%
              size=pop)) + 
   ... +
   coord_fixed(ratio=(1/2)*
-                log10(30000/300)/(80-40)) 
+                log2(30000/300)/(80-40)) 
 ```
 ***
 ![plot of chunk unnamed-chunk-41](35-step-by-step-figure/unnamed-chunk-41-1.png)
@@ -2068,18 +2067,19 @@ gapminder %>% filter(year == 2007) %>%
                                    color="black", fill="green", 
                    segment.size=1, segment.color="green", 
                    box.padding=3) +
-  xlab("Income per person, GCP/capita in $/year adjusted for inflation and prices") + 
+  xlab("Income per person, GCP/capita in $/year\nadjusted for inflation and prices") + 
   ylab("") + 
+  theme_bw() + 
   ggtitle("Life Expectancy (2007)") +
   scale_color_manual(values = c("blue", "green", "pink", 
                                 "yellow", "red")) +
   scale_size_area(max_size = 20) + 
   annotation_custom(grob=ggplotGrob(world_map), 
-                  xmin=3.7, ymin=40, ymax=55 ) +
-  scale_x_log10() +
+                  xmin=12.3, ymin=40, ymax=55 ) +
+  scale_x_continuous(trans = "log2") +
   theme(legend.position = "none",
-        text=element_text(size=20))  +
-  coord_fixed(ratio=0.5*log10(30000/300)/(80-40)) -> final_plot
+        text=element_text(size=16))  +
+  coord_fixed(ratio=0.5*log2(30000/300)/(80-40)) -> final_plot
 ```
 
 Final plot

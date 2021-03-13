@@ -1,0 +1,159 @@
+---
+title: "Data Visualization"
+subtitle: "Graphics output"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-29 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(forcats)
+library(lubridate)
+library(palmerpenguins)
+library(kableExtra)
+library(paletteer)
+library(gapminder)
+my_theme = theme_bw() + theme(text = element_text(size=25))
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev='svglite'
+)
+```
+
+# Plan
+
+* Kinds of graphics 
+
+* How to describe the size of a graphic
+
+* Knitted documents and separate files
+
+
+---
+### Starting figure
+
+```{r}
+p1 <- gapminder %>% # filter(continent == "Europe") %>%
+  ggplot(aes(x = year, y = lifeExp)) + 
+  # geom_line(aes(group=country)) + 
+  geom_smooth(method = "loess", formula = y ~ x, aes(color = continent)) +
+  theme_bw() + 
+  theme(text = element_text(size=20))
+p1
+```
+
+---
+### Kinds of graphics
+
+* Vector graphics (pdf, svg)
+
+* Bitmapped or raster graphics (png, jpeg)
+
+* Why does it matter?
+  
+  * File sizes
+  
+  * Quality when printed
+  
+  * Appearance on screen
+  
+---
+### Overview
+
+* Device types: png, ragg, jpeg, svg, pdf
+
+* Size: fig.height, fig.width (in inches, default 7), and fig.asp (aspect ratio: height / width)
+
+* Display size: out.width, out.height (in percentage of display area, e.g., '70%')
+
+* Resolution:  dpi (dots per inch; 96-250 on screen, 300-600 when printed)
+
+* Alignment: fig.align = left, right, center
+
+---
+### PNG example
+
+Chunk options: `fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev = 'png'`
+
+```{r dev='png'}
+p1 
+```
+
+---
+### Higher resolution PNG example
+
+Chunk options: `dev='png', dpi=150`
+
+```{r dev='png', dpi=150}
+p1 
+```
+
+---
+### RAGG example
+
+Chunk options: `dev='ragg_png', dpi = 150`
+
+```{r dev='ragg_png', dpi = 150}
+p1 
+```
+
+
+---
+### JPEG example
+
+Chunk options: `dev='jpeg', dpi = 150`
+
+```{r dev='jpeg', dpi = 150}
+p1 
+```
+
+---
+### SVG example
+
+Chunk options: `dev='svglite'`
+
+```{r dev='svglite'}
+p1 
+```
+
+---
+### PDF example
+
+The file looks great on [my computer](33-graphics-output_files/figure-html/pdfoutput-1.pdf) (look in `XXXX_files` folder), but is not shown properly in a web page.
+
+Chunk options: `dev='pdf'`
+
+```{r pdfoutput, dev='pdf'}
+p1 
+```
+
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+
+---
+class: middle, inverse
+
+## Task
+
+* No assigned task
+
+
+

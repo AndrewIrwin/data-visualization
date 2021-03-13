@@ -319,7 +319,9 @@ further-reading-25
 output-files
 formatting-visualizations-for-a-purpose
 graphics-formats
+vector-or-raster
 size-and-resolution
+recommendations
 a-solution-for-scaling-graphics
 further-reading-26
 organization

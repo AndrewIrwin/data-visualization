@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Colour
 ### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
 ### Math &amp; Stats, Dalhousie University
-### 2021-03-24 (updated: 2021-03-11)
+### 2021-03-24 (updated: 2021-03-12)
 
 ---
 
@@ -66,7 +66,7 @@ penguins %&gt;% ggplot(aes(body_mass_g, flipper_length_mm,
                         color = species)) + geom_point() + my_theme
 ```
 
-&lt;img src="31-colour_files/figure-html/unnamed-chunk-1-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="31-colour_files/figure-html/unnamed-chunk-1-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle
@@ -79,7 +79,7 @@ penguins %&gt;% ggplot(aes(body_mass_g, flipper_length_mm,
   scale_color_viridis_d(end = 0.7) 
 ```
 
-&lt;img src="31-colour_files/figure-html/unnamed-chunk-2-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="31-colour_files/figure-html/unnamed-chunk-2-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -93,7 +93,7 @@ penguins %&gt;% ggplot(aes(body_mass_g, flipper_length_mm,
   scale_color_paletteer_d("ggthemes::hc_default")
 ```
 
-&lt;img src="31-colour_files/figure-html/unnamed-chunk-3-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="31-colour_files/figure-html/unnamed-chunk-3-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -107,7 +107,7 @@ penguins %&gt;% ggplot(aes(body_mass_g, flipper_length_mm,
   scale_color_manual(values = c("red", "blue", "orange"))
 ```
 
-&lt;img src="31-colour_files/figure-html/unnamed-chunk-4-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="31-colour_files/figure-html/unnamed-chunk-4-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 ### Continuous colour shades
@@ -119,7 +119,30 @@ gapminder %&gt;% filter(country %in% c("Canada", "China", "Chile", "Iceland")) %
   geom_point(size=3) + my_theme
 ```
 
-&lt;img src="31-colour_files/figure-html/unnamed-chunk-5-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="31-colour_files/figure-html/unnamed-chunk-5-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+### Continuous colour shades - diverging
+
+
+```r
+p1 &lt;- penguins %&gt;% mutate(body_mass_centered = 
+                      body_mass_g - mean(body_mass_g, na.rm=TRUE)) %&gt;%
+  ggplot(aes(flipper_length_mm, bill_length_mm, 
+             color = body_mass_centered)) +
+  geom_point(size=3) + theme_bw() +
+  # scale_color_distiller(type="div", palette="RdBu", limits = c(-2000,2000)) 
+  scale_color_fermenter(type="div", 
+                        palette="RdBu", 
+                        limits = c(-2000,2000)) 
+```
+
+
+---
+### Continuous colour shades - diverging
+
+&lt;img src="31-colour_files/figure-html/unnamed-chunk-7-1.svg" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle
@@ -128,16 +151,17 @@ class: middle
 
 * Course notes
 
-* Healy appendix
+* Healy and Wilke sections on colour
 
-* R4DS Chapter 14 [Strings](https://r4ds.had.co.nz/strings.html), Chapter 15 [Factors](https://r4ds.had.co.nz/factors.html), and Chapter 16 [Dates and times](https://r4ds.had.co.nz/dates-and-times.html)
 
 ---
 class: middle, inverse
 
 ## Task
 
-* Task 17 as described in repository
+* Practice using colour
+
+* No assigned task
 
 
 

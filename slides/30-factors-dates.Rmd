@@ -26,6 +26,9 @@ library(kableExtra)
 library(glue)
 library(unglue)
 my_theme = theme_bw() + theme(text = element_text(size=25))
+knitr::opts_chunk$set(
+  fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev='svglite'
+)
 ```
 
 # Plan
@@ -119,7 +122,7 @@ class: middle
 
 Here's a plot of mean penguin body mass by species and sex. What's the order?
 
-```{r warning=FALSE, message=FALSE, fig.asp = 0.5, fig.align="center", out.width="90%"}
+```{r warning=FALSE, message=FALSE, fig.asp = 0.5, fig.align="center", out.width="90%", dev='svglite'}
 penguins %>% ggplot(aes(x = body_mass_g, y = island)) + 
   stat_summary() +
   facet_wrap(~ sex) + theme_bw() 
@@ -132,7 +135,7 @@ class: middle
 
 Order from smallest to largest, top to bottom. Watch out for NAs.
 
-```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+```{r fig.align="center", fig.asp=0.75, message=FALSE, warning=FALSE, dev='svglite', out.width="50%"}
 penguins %>% na.omit() %>%
   ggplot(aes(x = bill_length_mm, 
                    y = fct_reorder(species, bill_length_mm,
@@ -147,7 +150,7 @@ class: middle
 
 Order from smallest to largest, top to bottom. Watch out for NAs.
 
-```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
 penguins %>%
   ggplot(aes(x = bill_length_mm, 
              y = fct_relevel(species, "Gentoo", "Adelie"))) + 
@@ -182,7 +185,7 @@ tibble(date = c("01/02/03", "121006", "05/12/08", "11-03-21"),
 ---
 ### Dates and times
 
-```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
 tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
                 "2021/03/11 15:14", "2021/03/11 11:50 PM"),
        dt = ymd_hm(date),
@@ -193,7 +196,7 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
 ---
 ### Dates and times
 
-```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75}
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", fig.asp =0.75, dev='svglite'}
 tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12", 
                 "2021/03/11 15:14", "2021/03/11 11:50 PM"),
        dt = ymd_hm(date),
@@ -223,7 +226,7 @@ t1 <- tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
        value = 1:4) 
 ```
 
-```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center"}
+```{r warning=FALSE, message=FALSE, out.width = "50%", fig.align="center", dev='svglite'}
 t1 %>% mutate(elapsed = dt - min(dt)) %>%
   ggplot(aes(x = as.numeric(elapsed)/3600, 
              y = value)) + geom_point(size=4) +

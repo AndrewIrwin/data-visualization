@@ -26,6 +26,9 @@ library(kableExtra)
 library(paletteer)
 library(gapminder)
 my_theme = theme_bw() + theme(text = element_text(size=25))
+knitr::opts_chunk$set(
+  fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev='svglite'
+)
 ```
 
 # Plan
@@ -109,6 +112,31 @@ gapminder %>% filter(country %in% c("Canada", "China", "Chile", "Iceland")) %>%
   geom_point(size=3) + my_theme
 ```
 
+
+---
+### Continuous colour shades - diverging
+
+```{r warning=FALSE}
+p1 <- penguins %>% mutate(body_mass_centered = 
+                      body_mass_g - mean(body_mass_g, na.rm=TRUE)) %>%
+  ggplot(aes(flipper_length_mm, bill_length_mm, 
+             color = body_mass_centered)) +
+  geom_point(size=3) + theme_bw() +
+  # scale_color_distiller(type="div", palette="RdBu", limits = c(-2000,2000)) 
+  scale_color_fermenter(type="div", 
+                        palette="RdBu", 
+                        limits = c(-2000,2000)) 
+```
+
+
+---
+### Continuous colour shades - diverging
+
+```{r echo=FALSE, warning=FALSE, fig.asp = 0.7, out.width="80%", fig.align="center"}
+p1 + my_theme +
+  labs(color = "Mass relative\nto mean (g)")
+```
+
 ---
 class: middle
 
@@ -116,16 +144,17 @@ class: middle
 
 * Course notes
 
-* Healy appendix
+* Healy and Wilke sections on colour
 
-* R4DS Chapter 14 [Strings](https://r4ds.had.co.nz/strings.html), Chapter 15 [Factors](https://r4ds.had.co.nz/factors.html), and Chapter 16 [Dates and times](https://r4ds.had.co.nz/dates-and-times.html)
 
 ---
 class: middle, inverse
 
 ## Task
 
-* Task 17 as described in repository
+* Practice using colour
+
+* No assigned task
 
 
 

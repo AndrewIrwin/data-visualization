@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Text, Factors, Dates, and Times
 ### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
 ### Math &amp; Stats, Dalhousie University
-### 2021-03-22 (updated: 2021-03-11)
+### 2021-03-22 (updated: 2021-03-12)
 
 ---
 
@@ -222,7 +222,7 @@ penguins %&gt;% ggplot(aes(x = body_mass_g, y = island)) +
   facet_wrap(~ sex) + theme_bw() 
 ```
 
-&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-6-1.svg" width="90%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -240,7 +240,7 @@ penguins %&gt;% na.omit() %&gt;%
   stat_summary() + my_theme
 ```
 
-&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-7-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-7-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -257,7 +257,7 @@ penguins %&gt;%
   stat_summary() + my_theme
 ```
 
-&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-8-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-8-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle
@@ -334,7 +334,7 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
   ggplot(aes(y = dt, x = value)) + geom_point(size=4) + my_theme
 ```
 
-&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-10-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-10-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 ### Dates and times
@@ -349,7 +349,7 @@ tibble(date = c("2021/03/11 10:05", "2021/03/12 15:12",
   scale_y_datetime(date_labels = "%H:%M") + my_theme
 ```
 
-&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-11-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 ### Time arithmetic
@@ -413,7 +413,7 @@ t1 %&gt;% mutate(elapsed = dt - min(dt)) %&gt;%
   labs(x = "Time in hours since start") + my_theme
 ```
 
-&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-14-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="30-factors-dates_files/figure-html/unnamed-chunk-14-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle

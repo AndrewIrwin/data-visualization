@@ -99,14 +99,14 @@
 <span class="header-section-number">32.1</span> Example plots for customization<a class="anchor" aria-label="anchor" href="#example-plots-for-customization"><i class="fas fa-link"></i></a>
 </h2>
 <p>We’ll use a couple of plots repeatedly: one with facets, and one with many other elements, but no facets.</p>
-<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb478"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">penguins</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">body_mass_g</span>, y <span class="op">=</span> <span class="va">flipper_length_mm</span>, 
                               color <span class="op">=</span> <span class="va">species</span>, shape <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">p1</span></code></pre></div>
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
-<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb480"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/unglue/man/unglue.html">unglue_unnest</a></span><span class="op">(</span><span class="va">trans</span>, <span class="st">"{trans_type}({trans_code})"</span><span class="op">)</span> <span class="op">%&gt;%</span>
            <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span>, color <span class="op">=</span> <span class="va">trans_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -120,15 +120,15 @@
 <span class="header-section-number">32.2</span> Built-in themes<a class="anchor" aria-label="anchor" href="#built-in-themes"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">many themes available</a> that change the whole look of your plot. I’ve used <code>theme_bw</code> many times already, so here are a couple of other examples. For each you can use the <code>base_size</code> option (default value 11) to scale text elements and <code>base_line_size</code> to scale line elements of the figure.</p>
-<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb481"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span>, base_line_size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
-<div class="sourceCode" id="cb486"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb483"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-2-2.png" width="672"></div>
 <p>There are also add-in packages with more themes: <code>ggthemes</code> has <code>theme_tufte</code> and <code>theme_economist</code></p>
-<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb484"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu">theme_economist</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">scale_fill_economist</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
@@ -140,7 +140,7 @@
 </h2>
 <p>The most common change I want to make to a plot’s theme (after axis and guide labels) is to increase the size of the text. This can be done using <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(text= ...)</a></code> or for specific elements, <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.title=...)</a></code> (see the help page for more elements of the theme that can be set with a text element.) On the right side of the equals sign, you need the function <code>element_text</code> which allows you to control 10 different characteristics of your text. Here is an example of a few of the features.</p>
 <p>Themes are controlled hierarchically, so adjusting <code>text</code> affects all text on the plot. Adjusting <code>axis.title</code> affects both <code>axis.title.x</code> and <code>axis.title.y</code>.</p>
-<div class="sourceCode" id="cb489"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb486"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span>  <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
             axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span><span class="op">)</span>,
             axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span>,
@@ -156,7 +156,7 @@
 <span class="header-section-number">32.4</span> Customizing borders, ticks, axis labels<a class="anchor" aria-label="anchor" href="#customizing-borders-ticks-axis-labels"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are many elements on a plot drawn with lines. These too can be customized all at once using <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(line = ...)</a></code> or element by element using, for example <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.line.x=...)</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme(axis.ticks.y=...)</a></code>. The grid lines can be adjusted using <code>panel.grid.major</code> and <code>panel.grid.minor</code>. These elements are named and controlled hierarchically as well. The right hand size of the expressions above must have an <code>element_line</code> function which allows you to control color, size, linetype and other features like arrows.</p>
-<div class="sourceCode" id="cb490"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb487"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
            axis.ticks.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"pink"</span><span class="op">)</span>,
            axis.line.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">3</span>, size <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span>,
@@ -170,7 +170,7 @@
 </h2>
 <p>The <code>ggtext</code> package allows you to use markdown and HTML code in any text element on your plot. You need to use <code>element_markdown</code> (or <code>element_textbox_simple</code>) instead of <code>element_text</code> for each element you want to use this enhanced formatting method with.</p>
 <p>Unlike other theme elements, you can’t easily use <code>ggtext</code> formatting hierarchically: you can’t simply set all text to use <code>elemment_markdown</code> or even both axis labels. You must control each element individually.</p>
-<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb488"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"_Penguin data from **Palmer station**, Antarctica_&lt;sup&gt;1&lt;/sup&gt;"</span>,
           x <span class="op">=</span> <span class="st">"&lt;span style = 'color:red;'&gt;body mass (g)&lt;/span&gt;"</span>,
           y <span class="op">=</span> <span class="st">"flipper length (mm)"</span>,
@@ -183,7 +183,7 @@
 <pre><code>## Warning: Removed 11 rows containing missing values (geom_point).</code></pre>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <p>You can also add formatted boxes for the titles of facets and at any location on a plot.</p>
-<div class="sourceCode" id="cb493"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb490"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
     strip.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     strip.text <span class="op">=</span> <span class="fu">element_textbox</span><span class="op">(</span>
@@ -194,7 +194,7 @@
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="133-themes_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
-<div class="sourceCode" id="cb494"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb491"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">text_annotations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/tibble.html">tibble</a></span><span class="op">(</span>
   label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
     <span class="st">"Some text **in bold.**"</span>,

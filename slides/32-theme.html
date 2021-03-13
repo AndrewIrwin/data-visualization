@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data Visualization</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Andrew Irwin, a.irwin@dal.ca" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <link href="libs/remark-css/useR-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Data Visualization
+## Theme
+### Andrew Irwin, <a href="mailto:a.irwin@dal.ca" class="email">a.irwin@dal.ca</a>
+### Math &amp; Stats, Dalhousie University
+### 2021-03-26 (updated: 2021-03-12)
+
+---
+
+class: middle
+
+
+
+# Plan
+
+* What is the `theme` of a visualization?
+
+* Ready-to-use themes
+
+* Titles
+
+* Text size, colour, bold, italics, and more
+
+* Spacing and positioning
+
+
+---
+### Starting figure
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-1-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Ready to use themes
+
+
+```r
+p1 + theme_bw()
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-2-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Ready to use themes
+
+
+```r
+p1 + theme_classic()
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-3-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+---
+### More themes
+
+* `theme_dark`, `theme_gray`, `theme_light`
+
+* From `ggthemes`: `theme_wsj`, `theme_tufte`, `theme_fivethirtyeight`, `theme_economist`, `theme_clean`
+
+
+---
+### All text larger
+
+
+```r
+p1 + theme(text = element_text(size=22))
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-4-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Sizes for different elements
+
+
+```r
+p1 + theme(axis.text.x = element_text(size=16),
+           axis.title.y = element_text(size=18),
+           legend.title = element_text(size=16),
+           legend.text = element_text(size=18),
+           plot.title = element_text(size=21),
+           plot.subtitle = element_text(size=20)) +
+  labs(x = "Year", 
+       y = "Life Expectancy at birth",
+       title = "Life expectancy averaged by continent",
+       subtitle = "From Gapminder.org")
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-5-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Other features of text
+
+
+```r
+p1 + labs(title = "Average life expectancy") + 
+  theme(plot.title = element_text(family = "serif",
+                                  face = "italic",
+                                  color = "blue",
+                                  size = 30,
+                                  hjust = 1, 
+                                  lineheight = 2))
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-6-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Fancy text: ggtext
+
+
+```r
+library(ggtext)
+p1 + labs(title = "**Gapminder** data for _life expectancy_&lt;sup&gt;1&lt;/sup&gt;",
+          caption = "&lt;sup&gt;1&lt;/sup&gt;from gapminder.org") +
+  theme(plot.title = element_markdown(size = 24),
+        plot.caption = element_markdown(size = 13))
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-7-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Move and redesign the legend
+
+
+```r
+p1 + theme(legend.position = "top",
+           legend.direction = "horizontal",
+           legend.text = element_text(size = 11, vjust = 0.5),
+           legend.title = element_text(size = 12, vjust = 0.5),
+           legend.key.size = unit(0.9, "cm"))
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-8-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Move and redesign the legend
+
+
+```r
+p1 + theme_bw() + theme(legend.position = c(0.03, 0.98),
+                        legend.justification = c(0,1),
+           legend.direction = "vertical",
+           legend.background = element_rect(fill = "transparent"),
+           legend.text = element_text(size = 10, vjust = 0.5),
+           legend.title = element_blank(),
+           legend.key.size = unit(0.8, "cm")) + 
+  guides(color = guide_legend(ncol = 3))
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-9-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+### Formatting numbers on scales
+
+
+```r
+p1 + scale_x_continuous(labels = scales::dollar) +
+  scale_y_continuous(labels = scales::percent) + # also comma
+  theme(axis.text = element_text(size=14))
+```
+
+&lt;img src="32-theme_files/figure-html/unnamed-chunk-10-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy and Wilke sections on colour
+
+
+---
+class: middle, inverse
+
+## Task
+
+* Practice using colour
+
+* No assigned task
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

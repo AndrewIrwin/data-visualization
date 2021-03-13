@@ -1,0 +1,182 @@
+---
+title: "Data Visualization"
+subtitle: "Theme"
+author: "Andrew Irwin, a.irwin@dal.ca"
+institute: "Math & Stats, Dalhousie University"
+date: "2021-03-26 (updated: `r Sys.Date()`)"
+ratio: "16:9"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, useR-fonts]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(tidyverse)
+library(forcats)
+library(lubridate)
+library(palmerpenguins)
+library(kableExtra)
+library(paletteer)
+library(gapminder)
+my_theme = theme_bw() + theme(text = element_text(size=25))
+dpi = 72
+knitr::opts_chunk$set(
+  fig.width = 6, fig.asp = 0.65, fig.align="center", out.width = '70%', dev='svglite'
+)
+```
+
+# Plan
+
+* What is the `theme` of a visualization?
+
+* Ready-to-use themes
+
+* Titles
+
+* Text size, colour, bold, italics, and more
+
+* Spacing and positioning
+
+
+---
+### Starting figure
+
+```{r echo=FALSE}
+p1 <- gapminder %>% # filter(continent == "Europe") %>%
+  ggplot(aes(x = year, y = lifeExp)) + 
+  # geom_line(aes(group=country)) + 
+  geom_smooth(method = "loess", formula = y ~ x, aes(color = continent))
+p1
+```
+
+---
+### Ready to use themes
+
+```{r}
+p1 + theme_bw()
+```
+
+---
+### Ready to use themes
+
+```{r}
+p1 + theme_classic()
+```
+---
+### More themes
+
+* `theme_dark`, `theme_gray`, `theme_light`
+
+* From `ggthemes`: `theme_wsj`, `theme_tufte`, `theme_fivethirtyeight`, `theme_economist`, `theme_clean`
+
+
+---
+### All text larger
+
+```{r}
+p1 + theme(text = element_text(size=22))
+```
+
+---
+### Sizes for different elements
+
+```{r}
+p1 + theme(axis.text.x = element_text(size=16),
+           axis.title.y = element_text(size=18),
+           legend.title = element_text(size=16),
+           legend.text = element_text(size=18),
+           plot.title = element_text(size=21),
+           plot.subtitle = element_text(size=20)) +
+  labs(x = "Year", 
+       y = "Life Expectancy at birth",
+       title = "Life expectancy averaged by continent",
+       subtitle = "From Gapminder.org")
+```
+
+---
+### Other features of text
+
+```{r}
+p1 + labs(title = "Average life expectancy") + 
+  theme(plot.title = element_text(family = "serif",
+                                  face = "italic",
+                                  color = "blue",
+                                  size = 30,
+                                  hjust = 1, 
+                                  lineheight = 2))
+```
+
+---
+### Fancy text: ggtext
+
+```{r}
+library(ggtext)
+p1 + labs(title = "**Gapminder** data for _life expectancy_<sup>1</sup>",
+          caption = "<sup>1</sup>from gapminder.org") +
+  theme(plot.title = element_markdown(size = 24),
+        plot.caption = element_markdown(size = 13))
+```
+
+---
+### Move and redesign the legend
+
+```{r}
+p1 + theme(legend.position = "top",
+           legend.direction = "horizontal",
+           legend.text = element_text(size = 11, vjust = 0.5),
+           legend.title = element_text(size = 12, vjust = 0.5),
+           legend.key.size = unit(0.9, "cm"))
+```
+
+---
+### Move and redesign the legend
+
+```{r}
+p1 + theme_bw() + theme(legend.position = c(0.03, 0.98),
+                        legend.justification = c(0,1),
+           legend.direction = "vertical",
+           legend.background = element_rect(fill = "transparent"),
+           legend.text = element_text(size = 10, vjust = 0.5),
+           legend.title = element_blank(),
+           legend.key.size = unit(0.8, "cm")) + 
+  guides(color = guide_legend(ncol = 3))
+
+```
+
+---
+### Formatting numbers on scales
+
+```{r}
+p1 + scale_x_continuous(labels = scales::dollar) +
+  scale_y_continuous(labels = scales::percent) + # also comma
+  theme(axis.text = element_text(size=14))
+```
+
+---
+class: middle
+
+# Further reading
+
+* Course notes
+
+* Healy and Wilke sections on colour
+
+
+---
+class: middle, inverse
+
+## Task
+
+* Practice using colour
+
+* No assigned task
+
+
+
