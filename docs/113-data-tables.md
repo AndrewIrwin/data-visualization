@@ -10,7 +10,7 @@ Let's use a simple table to demonstrate the main features. I want some text, som
 ```
 ## # A tibble: 5 x 4
 ##   species   island    count body_mass_g
-## * <fct>     <fct>     <int>       <dbl>
+##   <fct>     <fct>     <int>       <dbl>
 ## 1 Adelie    Biscoe       44       3710.
 ## 2 Adelie    Dream        56       3688.
 ## 3 Adelie    Torgersen    51       3706.

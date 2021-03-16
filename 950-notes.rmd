@@ -5,6 +5,12 @@ date: "10/12/2020"
 output: html_document
 ---
 
+## Version 2 planning
+
+* separate slides + live coding + course schedule in to one repository
+* course notes in separate repo. (should help with bookdown, static files, caching)
+* update github instructions. email and name. authentication: https://happygitwithr.com/credential-caching.html#credential-caching
+
 # Notes and To Do
 
 - exercises for students to work through in "live coding" -- How would I do X? What could go wrong?

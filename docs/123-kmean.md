@@ -168,9 +168,9 @@ tidy(kclust2)
 ## # A tibble: 4 x 7
 ##     displ      cyl    cty    hwy  size withinss cluster
 ##     <dbl>    <dbl>  <dbl>  <dbl> <int>    <dbl> <fct>  
-## 1  1.36    1.31    -0.476 -0.242    18     8.96 1      
-## 2 -1.04   -1.14     1.05   0.988    80    87.1  2      
-## 3  1.26    1.31    -1.19  -1.23     52    18.5  3      
+## 1  1.24    1.31    -1.16  -1.20     55    20.2  1      
+## 2  1.44    1.31    -0.437 -0.141    15     7.31 2      
+## 3 -1.04   -1.14     1.05   0.988    80    87.1  3      
 ## 4 -0.0814 -0.00492 -0.157 -0.128    84    63.5  4
 ```
 
@@ -182,27 +182,26 @@ augment(kclust2, mpg) %>% count(.cluster, class)
 ```
 
 ```
-## # A tibble: 18 x 3
+## # A tibble: 17 x 3
 ##    .cluster class          n
 ##    <fct>    <chr>      <int>
-##  1 1        2seater        5
-##  2 1        midsize        2
-##  3 1        pickup         2
-##  4 1        subcompact     5
-##  5 1        suv            4
-##  6 2        compact       34
-##  7 2        midsize       16
-##  8 2        minivan        1
-##  9 2        subcompact    23
-## 10 2        suv            6
-## 11 3        pickup        18
-## 12 3        suv           34
-## 13 4        compact       13
-## 14 4        midsize       23
-## 15 4        minivan       10
-## 16 4        pickup        13
-## 17 4        subcompact     7
-## 18 4        suv           18
+##  1 1        pickup        20
+##  2 1        suv           35
+##  3 2        2seater        5
+##  4 2        midsize        2
+##  5 2        subcompact     5
+##  6 2        suv            3
+##  7 3        compact       34
+##  8 3        midsize       16
+##  9 3        minivan        1
+## 10 3        subcompact    23
+## 11 3        suv            6
+## 12 4        compact       13
+## 13 4        midsize       23
+## 14 4        minivan       10
+## 15 4        pickup        13
+## 16 4        subcompact     7
+## 17 4        suv           18
 ```
 
 If we use `glance` we get to see how the sums of squares are partitioned. I'll add a fifth variable that measures the proportion of sums of squares within compared to the total.
@@ -216,7 +215,7 @@ glance(kclust2) %>% mutate(proportion_within = tot.withinss / totss)
 ## # A tibble: 1 x 5
 ##   totss tot.withinss betweenss  iter proportion_within
 ##   <dbl>        <dbl>     <dbl> <int>             <dbl>
-## 1   932         178.      754.     3             0.191
+## 1   932         178.      754.     2             0.191
 ```
 
 How can we decide how many clusters to make? Let's compute the proportion of sums of squares accounted for by the clustering for 2, 3, 4, etc., clusters. We will use functions in `broom` to accomplish this including `nest` and `map`.

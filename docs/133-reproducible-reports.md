@@ -183,14 +183,14 @@ sessionInfo()
 ## 
 ## other attached packages:
 ##  [1] gapminder_0.3.0 here_1.0.1      report_0.2.0    forcats_0.5.1  
-##  [5] stringr_1.4.0   dplyr_1.0.4     purrr_0.3.4     readr_1.4.0    
-##  [9] tidyr_1.1.2     tibble_3.1.0    ggplot2_3.3.3   tidyverse_1.3.0
+##  [5] stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4     readr_1.4.0    
+##  [9] tidyr_1.1.3     tibble_3.1.0    ggplot2_3.3.3   tidyverse_1.3.0
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_1.0.6         lubridate_1.7.10   assertthat_0.2.1   rprojroot_2.0.2   
-##  [5] digest_0.6.27      utf8_1.1.4         R6_2.5.0           cellranger_1.1.0  
+##  [5] digest_0.6.27      utf8_1.2.1         R6_2.5.0           cellranger_1.1.0  
 ##  [9] backports_1.2.1    reprex_1.0.0       evaluate_0.14      highr_0.8         
-## [13] httr_1.4.2         pillar_1.5.0       rlang_0.4.10       readxl_1.3.1      
+## [13] httr_1.4.2         pillar_1.5.1       rlang_0.4.10       readxl_1.3.1      
 ## [17] rstudioapi_0.13    jquerylib_0.1.3    R.utils_2.10.1     R.oo_1.24.0       
 ## [21] effectsize_0.4.3-1 styler_1.3.2       rmarkdown_2.7      labeling_0.4.2    
 ## [25] munsell_0.5.0      broom_0.7.5        compiler_4.0.3     modelr_0.1.8      
@@ -216,10 +216,10 @@ report::cite_packages()
 ```
 ##   - H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
 ##   - Hadley Wickham (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0. https://CRAN.R-project.org/package=stringr
-##   - Hadley Wickham (2020). tidyr: Tidy Messy Data. R package version 1.1.2. https://CRAN.R-project.org/package=tidyr
 ##   - Hadley Wickham (2021). forcats: Tools for Working with Categorical Variables (Factors). R package version 0.5.1. https://CRAN.R-project.org/package=forcats
+##   - Hadley Wickham (2021). tidyr: Tidy Messy Data. R package version 1.1.3. https://CRAN.R-project.org/package=tidyr
 ##   - Hadley Wickham and Jim Hester (2020). readr: Read Rectangular Text Data. R package version 1.4.0. https://CRAN.R-project.org/package=readr
-##   - Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.4. https://CRAN.R-project.org/package=dplyr
+##   - Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.5. https://CRAN.R-project.org/package=dplyr
 ##   - Jennifer Bryan (2017). gapminder: Data from Gapminder. R package version 0.3.0. https://CRAN.R-project.org/package=gapminder
 ##   - Kirill Müller (2020). here: A Simpler Way to Find Your Files. R package version 1.0.1. https://CRAN.R-project.org/package=here
 ##   - Kirill Müller and Hadley Wickham (2021). tibble: Simple Data Frames. R package version 3.1.0. https://CRAN.R-project.org/package=tibble

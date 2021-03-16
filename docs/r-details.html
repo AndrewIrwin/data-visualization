@@ -177,7 +177,7 @@ together with their applications one chapter at a time.</p>
 <code class="sourceCode R"><span class="va">diamonds</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">cut</span><span class="op">==</span><span class="st">"Ideal"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">group_by</span><span class="op">(</span><span class="va">color</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">summarize</span><span class="op">(</span>mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   color mean_price
-## * &lt;ord&gt;      &lt;dbl&gt;
+##   &lt;ord&gt;      &lt;dbl&gt;
 ## 1 D          2629.
 ## 2 E          2598.
 ## 3 F          3375.
@@ -192,7 +192,7 @@ together with their applications one chapter at a time.</p>
 <span class="fu">summarize</span><span class="op">(</span><span class="va">d2</span>, mean_price <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   color mean_price
-## * &lt;ord&gt;      &lt;dbl&gt;
+##   &lt;ord&gt;      &lt;dbl&gt;
 ## 1 D          2629.
 ## 2 E          2598.
 ## 3 F          3375.
@@ -209,7 +209,7 @@ together with their applications one chapter at a time.</p>
 <span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   color mean_price
-## * &lt;ord&gt;      &lt;dbl&gt;
+##   &lt;ord&gt;      &lt;dbl&gt;
 ## 1 D          2629.
 ## 2 E          2598.
 ## 3 F          3375.
@@ -352,7 +352,7 @@ SQL as another example</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-12.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

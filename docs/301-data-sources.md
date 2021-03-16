@@ -46,6 +46,7 @@ Naturally there are websites that curate lists of data available from other site
 * This is one person's collection of [data](https://github.com/tacookson/data) of various sources
 * [r-dir](https://r-dir.com/reference/datasets.html) has a list of freely available datasets
 * World Bank [economic development indicators](https://datacatalog.worldbank.org/dataset/world-development-indicators)
+* [CORGIS](https://corgis-edu.github.io/corgis/) the collection of really great, interesting, situated datasets
 
 ### Canadian COVID data
 

@@ -1,7 +1,7 @@
 ---
 title: "Data Visualization"
 author: "Andrew Irwin"
-date: "2021-03-12"
+date: "2021-03-16"
 site: bookdown::bookdown_site
 ---
 

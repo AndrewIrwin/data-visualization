@@ -327,13 +327,13 @@ Emily
 <p>To see some nicely formatted dates and times, use the <code>today</code> and <code>now</code> functions. When reporting times, you need to pick a time zone. This can be surprisingly complicated, especially since the time zone used in a particular location changes (daylight savings time) and according to changes in local regulations and legislation. For example, as I write these notes the “Atlantic/Halifax” time zone corresponds to AST (Atlantic Standard Time), but when you read the notes, the same time zone will be ADT (Daylight time.) We don’t use the three letter codes for time zone (except as an abbreviation when displaying the time), because there are multiple meanings for some three letter codes. Many people report time in UTC (referenced to longitude 0, Greenwich UK, but without the complexity of daylight savings time) to make times a bit easier. Of course, the date in UTC may not be the date where you are right now (it could be ‘yesterday’ or ‘tomorrow’), so be on the lookout for that!</p>
 <div class="sourceCode" id="cb440"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">today</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-03-12"</code></pre>
+<pre><code>## [1] "2021-03-16"</code></pre>
 <div class="sourceCode" id="cb442"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">now</span><span class="op">(</span><span class="op">)</span> <span class="co"># for me this is: now(tz = "America/Halifax") </span></code></pre></div>
-<pre><code>## [1] "2021-03-12 21:17:43 AST"</code></pre>
+<pre><code>## [1] "2021-03-16 12:34:04 ADT"</code></pre>
 <div class="sourceCode" id="cb444"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">now</span><span class="op">(</span>tz <span class="op">=</span> <span class="st">"UTC"</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "2021-03-13 01:17:43 UTC"</code></pre>
+<pre><code>## [1] "2021-03-16 15:34:04 UTC"</code></pre>
 <div id="reading-dates" class="section level3" number="30.3.1">
 <h3>
 <span class="header-section-number">30.3.1</span> Reading dates<a class="anchor" aria-label="anchor" href="#reading-dates"><i class="fas fa-link"></i></a>
@@ -654,7 +654,7 @@ you should be very careful with two digit years. Best not to use them.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-12.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

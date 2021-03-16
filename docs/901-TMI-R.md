@@ -155,7 +155,7 @@ diamonds %>% filter(cut=="Ideal") %>% group_by(color) %>% summarize(mean_price =
 ```
 ## # A tibble: 7 x 2
 ##   color mean_price
-## * <ord>      <dbl>
+##   <ord>      <dbl>
 ## 1 D          2629.
 ## 2 E          2598.
 ## 3 F          3375.
@@ -177,7 +177,7 @@ summarize(d2, mean_price = mean(price))
 ```
 ## # A tibble: 7 x 2
 ##   color mean_price
-## * <ord>      <dbl>
+##   <ord>      <dbl>
 ## 1 D          2629.
 ## 2 E          2598.
 ## 3 F          3375.
@@ -200,7 +200,7 @@ summarize(
 ```
 ## # A tibble: 7 x 2
 ##   color mean_price
-## * <ord>      <dbl>
+##   <ord>      <dbl>
 ## 1 D          2629.
 ## 2 E          2598.
 ## 3 F          3375.

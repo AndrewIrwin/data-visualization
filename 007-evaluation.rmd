@@ -171,37 +171,31 @@ Create and modify an "R presentation" slide presentation as described in the les
 * make the graphic the right size to fit on the slide,
 * open the HTML version in your web browser.
 
-### Task 15 (Lesson 25) {#task-15 .unnumbered}
-
-Cleaning and validating data.
-
-### Task 16 (Lesson 26) {#task-16 .unnumbered}
-
-Make an animated plot following the instructions in the repository.
-
 ### Bonus task (Lesson 27) {#task-b10 .unnumbered}
 
 Practice making a map from the lesson
 
-### Task 17 (Lesson 28) {#task-17 .unnumbered}
+### Task 15 (Lesson 28) {#task-15 .unnumbered}
 
 Make maps described in the task markdown file in the repository.
 
-### Task 18 (Lesson 29) {#task-18 .unnumbered}
+### Task 16 (Lesson 29) {#task-16 .unnumbered}
 
-Create a heatmap with a dendrogram.
+Show geographic data without maps as described in the repository.
 
-### Task 19 (Lesson 30) {#task-19 .unnumbered}
+### Task 17 (Lesson 30) {#task-17 .unnumbered}
 
-Work with factors and dates. Practice tasks in repository file.
+Exercises with strings, factors, dates, and times.
 
 ### Bonus task (Lesson 31) {#task-b11 .unnumbered}
 
 Make a custom color scale using a web interactive tool and then use those colours on a plot. Select a palette from a list given in the lesson and use it in a visualization.
 
-### Task 20 (Lesson 32) {#task-20 .unnumbered}
+### Task 18 (Lesson 32) {#task-18 .unnumbered}
 
-Create a theme by building on an existing theme. Show a visualization with and without your theme. 
+Learn to use theme elements as described in the repository.
+
+That is the last task for the course!
 
 ## Assignments {-}
 
@@ -249,20 +243,20 @@ Present your work as a short R markdown report. You should describe the dataset,
 
 ### Assignment 5 {#assignment-5 .unnumbered}
 
-This is the second Tidy Tuesday assignment. You should create a map and some other analysis such as a data table or other visualization already discussed in class.
+This is the second Tidy Tuesday assignment. Create maps as described in the repository.
 
-Organize your work as a slide presentation with presenter notes. An example and instructions are in the repository.
+Organize your work as a slide presentation. A template with instructions is in the repository.
 
 ### Assignment 6 {#assignment-6 .unnumbered}
 
 This is a peer evaluation assignment. You should provide, in separate documents as described in the repository,
 
-* confidental feedback on your team mates work for the term project
+* confidential feedback on your team mates work for the term project
 * a peer evaluation of two oral presentations from other teams, which will be shared with the presenters.
 
 You should provide thoughtful and constructive feedback on the work of your classmates. Everyone's work has good aspects and areas where there could be improvement; you should aim to provide useful feedback in both areas.
 
-Your assignment for the peer evaluation is in the project planning repository we all share. Pull an updated version from github after XXX to see your assigment. Remember to do this before the first day of presentations so you know which presentation to evaluate!
+Your assignment for the peer evaluation is in the project planning repository we all share. Pull an updated version from github to see your assigment. Remember to do this before the first day of presentations so you know which presentation to evaluate!
 
 A rubric and guide for your evaluations is in the repository for this assignment.
 

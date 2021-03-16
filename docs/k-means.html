@@ -272,41 +272,40 @@ cluster
 <pre><code>## # A tibble: 4 x 7
 ##     displ      cyl    cty    hwy  size withinss cluster
 ##     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;fct&gt;  
-## 1  1.36    1.31    -0.476 -0.242    18     8.96 1      
-## 2 -1.04   -1.14     1.05   0.988    80    87.1  2      
-## 3  1.26    1.31    -1.19  -1.23     52    18.5  3      
+## 1  1.24    1.31    -1.16  -1.20     55    20.2  1      
+## 2  1.44    1.31    -0.437 -0.141    15     7.31 2      
+## 3 -1.04   -1.14     1.05   0.988    80    87.1  3      
 ## 4 -0.0814 -0.00492 -0.157 -0.128    84    63.5  4</code></pre>
 <p>Compare these clusters to the class of the cars. There are many classes of each car in some clusters.</p>
 <div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">augment</span><span class="op">(</span><span class="va">kclust2</span>, <span class="va">mpg</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">count</span><span class="op">(</span><span class="va">.cluster</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 18 x 3
+<pre><code>## # A tibble: 17 x 3
 ##    .cluster class          n
 ##    &lt;fct&gt;    &lt;chr&gt;      &lt;int&gt;
-##  1 1        2seater        5
-##  2 1        midsize        2
-##  3 1        pickup         2
-##  4 1        subcompact     5
-##  5 1        suv            4
-##  6 2        compact       34
-##  7 2        midsize       16
-##  8 2        minivan        1
-##  9 2        subcompact    23
-## 10 2        suv            6
-## 11 3        pickup        18
-## 12 3        suv           34
-## 13 4        compact       13
-## 14 4        midsize       23
-## 15 4        minivan       10
-## 16 4        pickup        13
-## 17 4        subcompact     7
-## 18 4        suv           18</code></pre>
+##  1 1        pickup        20
+##  2 1        suv           35
+##  3 2        2seater        5
+##  4 2        midsize        2
+##  5 2        subcompact     5
+##  6 2        suv            3
+##  7 3        compact       34
+##  8 3        midsize       16
+##  9 3        minivan        1
+## 10 3        subcompact    23
+## 11 3        suv            6
+## 12 4        compact       13
+## 13 4        midsize       23
+## 14 4        minivan       10
+## 15 4        pickup        13
+## 16 4        subcompact     7
+## 17 4        suv           18</code></pre>
 <p>If we use <code>glance</code> we get to see how the sums of squares are partitioned. I’ll add a fifth variable that measures the proportion of sums of squares within compared to the total.</p>
 <div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">glance</span><span class="op">(</span><span class="va">kclust2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">mutate</span><span class="op">(</span>proportion_within <span class="op">=</span> <span class="va">tot.withinss</span> <span class="op">/</span> <span class="va">totss</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 5
 ##   totss tot.withinss betweenss  iter proportion_within
 ##   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;             &lt;dbl&gt;
-## 1   932         178.      754.     3             0.191</code></pre>
+## 1   932         178.      754.     2             0.191</code></pre>
 <p>How can we decide how many clusters to make? Let’s compute the proportion of sums of squares accounted for by the clustering for 2, 3, 4, etc., clusters. We will use functions in <code>broom</code> to accomplish this including <code>nest</code> and <code>map</code>.</p>
 <div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">kclusts2</span> <span class="op">&lt;-</span> 
@@ -385,7 +384,7 @@ cluster
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-12.</p>
+    <p>"<strong>Data Visualization</strong>" was written by Andrew Irwin. It was last built on 2021-03-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

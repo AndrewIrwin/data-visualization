@@ -291,10 +291,9 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Division No. 13"       "Guysborough"           "Alberni-Clayoquot"    
-##  [4] "Portneuf"              "Témiscouata"           "Shawinigan"           
-##  [7] "Thérèse-De Blainville" "Timiskaming"           "Region 1"             
-## [10] "Mékinac"
+##  [1] "Gatineau"         "L'Islet"          "Lajemmerais"      "Hastings"        
+##  [5] "Oxford"           "Albert"           "Les Appalaches"   "Inverness"       
+##  [9] "Central Kootenay" "Maskinongé"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.
