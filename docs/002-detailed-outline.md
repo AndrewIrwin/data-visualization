@@ -390,7 +390,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Wed 17 Mar </td>
    <td style="text-align:right;"> 28 </td>
    <td style="text-align:left;"> More about maps </td>
-   <td style="text-align:left;"> [Notes](#mapping-2), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=440e71f5-474b-4c8e-aee5-ace3014233d4), [Slides](slides/28-sliding-maps.html), [Task 15](#task-17) </td>
+   <td style="text-align:left;"> [Notes](#mapping-2), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=440e71f5-474b-4c8e-aee5-ace3014233d4), [Slides](slides/28-sliding-maps.html), [Task 15](#task-15) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Thu 18 Mar </td>
@@ -402,7 +402,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Fri 19 Mar </td>
    <td style="text-align:right;"> 29 </td>
    <td style="text-align:left;"> Alternatives to maps </td>
-   <td style="text-align:left;"> [Notes](#mapping-3), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f487f98e-c494-492a-bd67-ace30147bd5e), [Slides](slides/29-map-alternatives.html), [Task 16](#task-18) </td>
+   <td style="text-align:left;"> [Notes](#mapping-3), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f487f98e-c494-492a-bd67-ace30147bd5e), [Slides](slides/29-map-alternatives.html), [Task 16](#task-16) </td>
   </tr>
   <tr grouplength="6"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 12</strong></td></tr>
 <tr>
@@ -415,7 +415,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Mon 22 Mar </td>
    <td style="text-align:right;"> 30 </td>
    <td style="text-align:left;"> Factors and Dates </td>
-   <td style="text-align:left;"> [Notes](#factors-dates), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ca09257b-eae5-4268-a404-ace90180db17), [Slides](slides/30-factors-dates.html), [Task 17](#task-19) </td>
+   <td style="text-align:left;"> [Notes](#factors-dates), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ca09257b-eae5-4268-a404-ace90180db17), [Slides](slides/30-factors-dates.html), [Task 17](#task-17) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Wed 24 Mar </td>
@@ -439,7 +439,7 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Fri 26 Mar </td>
    <td style="text-align:right;"> 32 </td>
    <td style="text-align:left;"> Themes </td>
-   <td style="text-align:left;"> [Notes](#theme), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8fed4c4d-e67e-47b4-96f5-acea00003555), [Slides](slides/32-theme.html), [Task 18](#task-20) </td>
+   <td style="text-align:left;"> [Notes](#theme), [Video](https://dal.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8fed4c4d-e67e-47b4-96f5-acea00003555), [Slides](slides/32-theme.html), [Task 18](#task-18) </td>
   </tr>
   <tr grouplength="5"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 13</strong></td></tr>
 <tr>
@@ -470,14 +470,14 @@ Tasks are due the Monday at 9:00 Atlantic in the week after they are assigned. A
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Thu  1 Apr </td>
    <td style="text-align:right;">  </td>
    <td style="text-align:left;"> Oral presentations, day 1 </td>
-   <td style="text-align:left;"> [Agenda](#sync-12), [Meet at 8:35](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View) </td>
+   <td style="text-align:left;"> [Agenda](#sync-12), [Meet at 8:35](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View), [Presentation schedule](https://github.com/Dalhousie-AndrewIrwin-Teaching/team-planning/blob/main/presentation-schedule.csv), [Peer evaluation schedule](https://github.com/Dalhousie-AndrewIrwin-Teaching/team-planning/blob/main/peer-evaluation-schedule.csv) </td>
   </tr>
   <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>Week 14</strong></td></tr>
 <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Tue  6 Apr </td>
    <td style="text-align:right;">  </td>
    <td style="text-align:left;"> Oral presentations, day 2 </td>
-   <td style="text-align:left;"> [Agenda](#sync-13), [Meet at 8:35](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View) </td>
+   <td style="text-align:left;"> [Agenda](#sync-13), [Meet at 8:35](https://dal.brightspace.com/d2l/le/content/159870/viewContent/2083793/View), [Presentation schedule](https://github.com/Dalhousie-AndrewIrwin-Teaching/team-planning/blob/main/presentation-schedule.csv), [Peer evaluation schedule](https://github.com/Dalhousie-AndrewIrwin-Teaching/team-planning/blob/main/peer-evaluation-schedule.csv) </td>
   </tr>
   <tr>
    <td style="text-align:left;padding-left: 2em;" indentlevel="1"> Wed  7 Apr </td>

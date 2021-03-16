@@ -27,29 +27,29 @@ kclust1
 ```
 
 ```
-## K-means clustering with 3 clusters of sizes 71, 148, 123
+## K-means clustering with 3 clusters of sizes 123, 87, 132
 ## 
 ## Cluster means:
 ##   flipper_length_mm bill_length_mm bill_depth_mm body_mass_g
-## 1        -0.3004658      0.8898759     0.7564847  -0.4487199
-## 2        -0.8175594     -0.9723116     0.5499273  -0.6907503
-## 3         1.1571696      0.6562677    -1.0983711   1.0901639
+## 1         1.1571696      0.6562677    -1.0983711   1.0901639
+## 2        -0.2857869      0.6600059     0.8157307  -0.3737654
+## 3        -0.8899121     -1.0465260     0.4858415  -0.7694891
 ## 
 ## Clustering vector:
-##   [1] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-##  [38] 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2
-##  [75] 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 1
-## [112] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-## [149] 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-## [186] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-## [223] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
-## [260] 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1
-## [297] 2 1 1 1 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1
-## [334] 1 1 1 1 1 1 1 1 1
+##   [1] 3 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 2 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+##  [38] 3 3 3 3 3 2 3 3 3 3 3 2 3 3 3 2 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 2 3 3 3 2 3
+##  [75] 2 3 3 3 2 3 2 3 3 3 3 3 3 3 3 3 2 3 3 3 2 3 3 3 2 3 2 3 3 3 3 3 3 3 2 3 2
+## [112] 3 2 3 2 3 3 3 3 3 3 3 2 3 3 3 3 3 2 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+## [149] 3 3 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [186] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [223] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [260] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2
+## [297] 3 2 2 2 2 2 2 2 3 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 2 2 2
+## [334] 2 2 2 2 2 2 2 2 2
 ## 
 ## Within cluster sum of squares by cluster:
-## [1]  81.56839 155.25908 143.15025
-##  (between_SS / total_SS =  72.1 %)
+## [1] 143.1502 112.9852 122.1477
+##  (between_SS / total_SS =  72.3 %)
 ## 
 ## Available components:
 ## 
@@ -78,30 +78,30 @@ tidy(kclust1) %>% kable(digits = 2)
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> -0.30 </td>
-   <td style="text-align:right;"> 0.89 </td>
-   <td style="text-align:right;"> 0.76 </td>
-   <td style="text-align:right;"> -0.45 </td>
-   <td style="text-align:right;"> 71 </td>
-   <td style="text-align:right;"> 81.57 </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -0.82 </td>
-   <td style="text-align:right;"> -0.97 </td>
-   <td style="text-align:right;"> 0.55 </td>
-   <td style="text-align:right;"> -0.69 </td>
-   <td style="text-align:right;"> 148 </td>
-   <td style="text-align:right;"> 155.26 </td>
-   <td style="text-align:left;"> 2 </td>
-  </tr>
-  <tr>
    <td style="text-align:right;"> 1.16 </td>
    <td style="text-align:right;"> 0.66 </td>
    <td style="text-align:right;"> -1.10 </td>
    <td style="text-align:right;"> 1.09 </td>
    <td style="text-align:right;"> 123 </td>
    <td style="text-align:right;"> 143.15 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.29 </td>
+   <td style="text-align:right;"> 0.66 </td>
+   <td style="text-align:right;"> 0.82 </td>
+   <td style="text-align:right;"> -0.37 </td>
+   <td style="text-align:right;"> 87 </td>
+   <td style="text-align:right;"> 112.99 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.89 </td>
+   <td style="text-align:right;"> -1.05 </td>
+   <td style="text-align:right;"> 0.49 </td>
+   <td style="text-align:right;"> -0.77 </td>
+   <td style="text-align:right;"> 132 </td>
+   <td style="text-align:right;"> 122.15 </td>
    <td style="text-align:left;"> 3 </td>
   </tr>
 </tbody>
@@ -146,11 +146,11 @@ augment(kclust1, data = penguin_q) %>%
 ## # A tibble: 5 x 3
 ##   .cluster species       n
 ##   <fct>    <fct>     <int>
-## 1 1        Adelie        8
-## 2 1        Chinstrap    63
-## 3 2        Adelie      143
-## 4 2        Chinstrap     5
-## 5 3        Gentoo      123
+## 1 1        Gentoo      123
+## 2 2        Adelie       24
+## 3 2        Chinstrap    63
+## 4 3        Adelie      127
+## 5 3        Chinstrap     5
 ```
 
 ## Example 2
@@ -168,10 +168,10 @@ tidy(kclust2)
 ## # A tibble: 4 x 7
 ##     displ      cyl    cty    hwy  size withinss cluster
 ##     <dbl>    <dbl>  <dbl>  <dbl> <int>    <dbl> <fct>  
-## 1  1.24    1.31    -1.16  -1.20     55    20.2  1      
-## 2  1.44    1.31    -0.437 -0.141    15     7.31 2      
-## 3 -1.04   -1.14     1.05   0.988    80    87.1  3      
-## 4 -0.0814 -0.00492 -0.157 -0.128    84    63.5  4
+## 1  1.29    1.31    -1.01  -0.976    70     47.5 1      
+## 2 -0.974  -1.14     0.756  0.736    67     21.5 2      
+## 3 -1.32   -1.17     2.37   2.11     14     14.9 3      
+## 4 -0.0752  0.00914 -0.159 -0.127    83     61.8 4
 ```
 
 Compare these clusters to the class of the cars. There are many classes of each car in some clusters.
@@ -182,26 +182,28 @@ augment(kclust2, mpg) %>% count(.cluster, class)
 ```
 
 ```
-## # A tibble: 17 x 3
+## # A tibble: 19 x 3
 ##    .cluster class          n
 ##    <fct>    <chr>      <int>
-##  1 1        pickup        20
-##  2 1        suv           35
-##  3 2        2seater        5
-##  4 2        midsize        2
-##  5 2        subcompact     5
-##  6 2        suv            3
-##  7 3        compact       34
-##  8 3        midsize       16
-##  9 3        minivan        1
-## 10 3        subcompact    23
-## 11 3        suv            6
-## 12 4        compact       13
-## 13 4        midsize       23
-## 14 4        minivan       10
-## 15 4        pickup        13
-## 16 4        subcompact     7
-## 17 4        suv           18
+##  1 1        2seater        5
+##  2 1        midsize        2
+##  3 1        pickup        20
+##  4 1        subcompact     5
+##  5 1        suv           38
+##  6 2        compact       29
+##  7 2        midsize       16
+##  8 2        minivan        1
+##  9 2        pickup         1
+## 10 2        subcompact    14
+## 11 2        suv            6
+## 12 3        compact        5
+## 13 3        subcompact     9
+## 14 4        compact       13
+## 15 4        midsize       23
+## 16 4        minivan       10
+## 17 4        pickup        12
+## 18 4        subcompact     7
+## 19 4        suv           18
 ```
 
 If we use `glance` we get to see how the sums of squares are partitioned. I'll add a fifth variable that measures the proportion of sums of squares within compared to the total.
@@ -215,7 +217,7 @@ glance(kclust2) %>% mutate(proportion_within = tot.withinss / totss)
 ## # A tibble: 1 x 5
 ##   totss tot.withinss betweenss  iter proportion_within
 ##   <dbl>        <dbl>     <dbl> <int>             <dbl>
-## 1   932         178.      754.     2             0.191
+## 1   932         146.      786.     2             0.156
 ```
 
 How can we decide how many clusters to make? Let's compute the proportion of sums of squares accounted for by the clustering for 2, 3, 4, etc., clusters. We will use functions in `broom` to accomplish this including `nest` and `map`.

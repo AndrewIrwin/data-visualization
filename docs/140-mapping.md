@@ -291,9 +291,10 @@ canada_cd %>% pull(CDNAME) %>% unique() %>% sample(10)
 ```
 
 ```
-##  [1] "Gatineau"         "L'Islet"          "Lajemmerais"      "Hastings"        
-##  [5] "Oxford"           "Albert"           "Les Appalaches"   "Inverness"       
-##  [9] "Central Kootenay" "Maskinongé"
+##  [1] "Division No. 22"      "Halifax"              "Region 1"            
+##  [4] "Kitimat-Stikine"      "North Okanagan"       "Okanagan-Similkameen"
+##  [7] "Parry Sound"          "Division No. 19"      "Abitibi"             
+## [10] "Ottawa"
 ```
 
 I've changed the latitude and longitude parameters for the projection to values more suitable for this part of Canada.
