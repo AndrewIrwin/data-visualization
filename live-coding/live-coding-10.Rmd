@@ -1,0 +1,96 @@
+---
+title: "Live coding 10"
+author: "Andrew Irwin"
+date: "2021-03-18 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggmap)
+library(mapproj)
+library(leaflet)
+library(statebins)
+
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Maps and alternatives
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. 
+
+## Outline maps
+
+* Picking a country or several from the world map
+
+```{r}
+
+```
+
+* Drawing the map
+
+```{r}
+
+```
+
+* Filling countries with colours
+
+```{r}
+
+```
+
+* Adding points to a map
+
+```{r}
+
+```
+
+* Making a projection
+
+```{r}
+
+```
+
+## Sliding maps
+
+* Simple sliding map with leaflet
+
+```{r}
+
+```
+
+* Setting latitude, longitude, zoom level with `setView`
+
+```{r}
+
+
+```
+
+* Adding points to the map
+
+```{r}
+
+
+```
+
+## Alternatives to maps
+
+* geom_tile for a "heatmap"
+
+
+```{r}
+
+```
+
+* statebins (see homework for a global version)
+
+```{r}
+
+```
+

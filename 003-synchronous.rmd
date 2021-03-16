@@ -194,8 +194,7 @@ Meeting agenda:
 
 * Factors
 * Dates and time
-* Colours
-* Themes
+* Possible bonus topics: Colours and Themes
 
 Here are links to materials for the synchronous session. Download the Rmd file before class by right (or control) clicking the Rmd link. 
 

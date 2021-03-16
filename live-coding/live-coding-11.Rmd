@@ -1,0 +1,87 @@
+---
+title: "Live coding 11"
+author: "Andrew Irwin"
+date: "2021-03-25 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Working with strings, factors, dates and times
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. 
+
+
+## Strings
+
+* String clean up with str_squish, str_lo_lower, str_remove, str_remove_all
+
+```{r}
+
+```
+
+* Building strings from data with glue
+
+```{r}
+
+```
+
+* Extracting data from text using unglue
+
+```{r}
+
+```
+
+
+## Factors
+
+* Reordering factors using a quantitative variable
+
+```{r}
+
+```
+
+* Reordering a factor using an arbitrary order
+
+```{r}
+
+
+```
+
+* Grouping several factors together
+
+```{r}
+
+
+```
+
+## Dates and times
+
+* Converting text to dates and dates/times
+
+
+```{r}
+
+```
+
+* Arithmetic with date/times (subtracting, etc)
+
+```{r}
+
+```
+
+* Formatting axis labels on plots
+
+```{r}
+
+```
