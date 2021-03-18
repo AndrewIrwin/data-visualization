@@ -1,0 +1,84 @@
+---
+title: "Live coding 7"
+author: "Andrew Irwin"
+date: "2021-02-25 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+# Agenda
+
+-   Questions arising from lessons, tasks
+-   Collaborating with GitHub, especially creating a team for your project
+-   Finding data to work with for your project
+-   Reproducible reports
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. The skills from this week are about collaborating, finding data, and writing reports. These skills will all be essential for your term project.
+
+Today I will work through examples
+
+-   using the `team-planning` repository to create a team (individual or two people),
+-   finding and working with data from TidyTuesday or other sources you ask me about,
+-   some tips on working with R markdown documents.
+
+## Collaborating with GitHub
+
+I will switch to a difference R project and show you how to add yourself to a team for the term project.
+
+## Working with external data
+
+We will go to the [TidyTuesday](https://github.com/rfordatascience/tidytuesday) website and get some data using functions there.
+
+```{r tt1, cache=TRUE}
+tuesdata <- tidytuesdayR::tt_load('2021-01-12')
+artwork <- tuesdata$artwork
+```
+
+Note there are some other great datasets listed on the main Tidy Tuesday page listed above
+
+We picked this week's data in the live class
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2021-02-23')
+```
+
+Access just get the earnings data.
+
+```{r}
+earnings <- tuesdata$earn
+```
+
+Get to know the data
+
+```{r}
+earnings %>% count(age, race)
+```
+
+## Working with R markdown
+
+How and why of
+
+1.  Headings
+2.  Formatting: **bold**, *italics*, bullet lists, numbered lists
+3.  Visual editor (Rstudio version 1.4)
+4.  Naming code blocks
+5.  include=FALSE, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE, fig=FALSE, error=FALSE in code block header
+6.  fig.width, fig.height, fig.asp, out.width in code block header for formatting figures
+7.  fig.cap for creating captions
+
+```{r fig.asp=1, out.width="50%", fig.align="center", fig.cap="This is a MPG classic figure."}
+mpg %>% ggplot(aes(displ, hwy, color = factor(cyl))) + geom_point()
+```
+
+```{r eval=FALSE}
+mpg
+
+```

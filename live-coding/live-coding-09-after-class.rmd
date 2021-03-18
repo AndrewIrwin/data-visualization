@@ -1,0 +1,153 @@
+---
+title: "Live coding 9"
+author: "Andrew Irwin"
+date: "2021-03-11 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(gapminder)
+library(plotly)
+library(gganimate) 
+library(dlookr)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Slide presentations
+* Checking your work
+* Dynamic graphics
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. The skills from this week are about making slide presentations, checking data and calculations, and producing dyanmic graphics.
+
+Today I will work through examples
+
+* creating a slide presentation using "Rpres" format with Rstudio, previewing the presentation, saving the presentation as a web page and viewing the presentation in your web browser,
+* some tests on data, especially summarizing categorical variables, and counting missing data,
+* making and using a plotly interactive graph,
+* making and displaying an animated graph using gganimate.
+
+
+## Slide presentations with R
+
+This will be done in a separate document. Watch the recording of the session (or the live session) for more information.
+
+When you save your R presentation, you should see a preview appear. The preview window has a pop-up menu with a "save as webpage" option. Use this to create a file that can be viewed as a slideshow from a web browser.
+
+
+## Testing data
+
+Let's use the `penguins` and `penguins_raw` data.
+
+First get an overview of the data. Use functions from the `dlookr` package: describe, diagnose, diagnose_category. This is a carefully cleaned data set, so there are probably no obvious problems with it.
+
+```{r}
+describe(penguins_raw)
+diagnose(penguins_raw)
+diagnose_category(penguins)
+diagnose_category(diamonds)
+```
+
+Computing summary statistics (mean, median, etc) with variables that contain missing data.
+
+```{r}
+penguins_raw %>% group_by(Species) %>%
+  summarize(mean_flipper_length = mean(`Flipper Length (mm)`, na.rm=TRUE),
+            n_missing = skimr::n_missing(`Flipper Length (mm)`),
+            n_complete = skimr::n_complete(`Flipper Length (mm)`),
+            n =n(),
+            my_n_missing = sum(is.na(`Flipper Length (mm)`)),
+            m_n_complete = sum(!is.na(`Flipper Length (mm)`)))
+
+```
+
+```{r}
+penguins_raw %>% filter(!is.na(Sex)) %>%
+  group_by(Species, Sex) %>%
+  summarize(mean_flipper_length = mean(`Flipper Length (mm)`, na.rm=TRUE),
+            n_missing = skimr::n_missing(`Flipper Length (mm)`),
+            n_complete = skimr::n_complete(`Flipper Length (mm)`),
+            n =n(),
+            my_n_missing = sum(is.na(`Flipper Length (mm)`)),
+            m_n_complete = sum(!is.na(`Flipper Length (mm)`)))
+
+```
+
+
+## Interactive plots with plotly
+
+Use plotly to make a scatterplot. This creates an interactive HTML "widget" that lets the user view data about the plot, zoom and pan the plot.
+
+```{r}
+plot_ly(penguins, x = ~ body_mass_g, y = ~ flipper_length_mm, color = ~ species)
+
+```
+
+## Animated plot
+
+The `gganimate` package allows you to convert a regular ggplot into a series of frames which are the animated. There are several functions that can be used to move (transition) from one frame to the next:
+
+* `transition_states` which uses a variable to define a partitioning of the data; a bit like a temporal version of "colour"
+* `transition_time` splits the data by a quantitative variable and uses the value of the variable to time the movement through the data
+* `transition_events` which requires start and end times for each frame
+
+We'll use the penguin or gapminder data to generate some animations. The examples in the transition_* help pages have some great examples.
+
+```{r}
+gapminder %>% ggplot(aes(year, lifeExp)) + geom_line(aes(group=country)) +
+  transition_manual(continent) 
+```
+
+Many lines and then a line with changing slope:
+
+```{r}
+df <- tibble(intercept = 0:10,
+             slope = (-5:5)/5,
+             group = 0:10)
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12)
+```
+
+Now animate
+
+```{r}
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12) + 
+  transition_time(group)
+```
+
+
+```{r}
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12) + 
+  transition_states(group)
+```
+
+```{r}
+df %>% ggplot() +
+  geom_abline(aes(intercept = intercept, slope = slope)) +
+  xlim(-10, 10) + 
+  ylim(-2, 12) + 
+  transition_manual(group) 
+```
+
+
+Try this for penguins
+
+```{r}
+penguins %>% ggplot(aes(body_mass_g, flipper_length_mm, color = sex)) + geom_point() +
+  transition_states(species) # transition_manual(species)
+```
