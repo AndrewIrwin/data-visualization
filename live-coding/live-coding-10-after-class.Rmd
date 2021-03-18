@@ -33,11 +33,22 @@ m_data <- map_data("world")
 m_data
 ```
 
+* Get the data for selected countries
+
+```{r}
+m_data_2 <- map_data("world", c("Canada", "France", "China"))
+m_data_2
+```
+}
 * Drawing the map
 
 ```{r}
 m1 <- ggplot() +
-  geom_map(aes(map_id = region), map = m_data, data = m_data) +
+  geom_map(aes(map_id = region), 
+           map = m_data, data = m_data,
+           # map = m_data_2, data = m_data_2,
+           fill = "lightgray", color = "blue") +
+  # expand_limits(x = c(-130, -50), y = c(40,80))
   expand_limits(x = c(-180, 180), y = c(-90,90))
 m1
 ```
@@ -55,7 +66,7 @@ m2
 * Colour only some countries
 
 ```{r}
-selected_countries <- c("Canada", "France", "USA")
+selected_countries <- c("Canada", "France", "USA", "China")
 m3 <- ggplot() + 
   geom_map(aes(map_id = region), map = m_data, data = m_data) + 
   geom_map(aes(fill = region, map_id = region), map = m_data,
@@ -63,7 +74,20 @@ m3 <- ggplot() +
   expand_limits(x = c(-180, 180), y = c(-90,90))
 m3
 ```
-)
+
+* Make a chlorpleth map for selected countries
+
+```{r}
+d1 <- tibble( region = c("Canada", "France", "USA", "China"),
+              value = c(4.5, 2.3, -1.9, 7.6))
+m3 <- ggplot() + 
+  geom_map(aes(map_id = region), map = m_data, data = m_data, fill = "lightgray") + 
+  geom_map(aes(fill = value, map_id = region), map = m_data,
+           data = d1) +
+  expand_limits(x = c(-180, 180), y = c(-90,90))
+m3
+```
+
 * Adding points to a map
 
 Here are some data I wanted to add to a map yesterday.
@@ -105,7 +129,7 @@ leaflet() %>% addTiles()
 * Setting latitude, longitude, zoom level with `setView`
 
 ```{r}
-leaflet() %>% addTiles() %>% setView(0,0,5)
+leaflet() %>% addTiles() %>% setView(-79.5, 43.6, 10)
 ```
 
 * Adding points to the map
@@ -134,7 +158,7 @@ t1 %>% mutate(value = 1:15) %>%
 
 ```{r}
 t2 <- tibble(
-  state = c("AZ", "CA", "NM", "RI", "NJ", "FL", "NJ"),
+  state = c("AZ", "CA", "NM", "RI", "NJ", "FL", "NY"),
   value = 1:7
 )
 t2 %>% 
