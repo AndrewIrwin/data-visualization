@@ -1,0 +1,153 @@
+---
+title: "Live coding 10"
+author: "Andrew Irwin"
+date: "2021-03-18 8:35"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggmap)
+library(mapproj)
+library(leaflet)
+library(statebins)
+```
+
+# Agenda
+
+* Questions arising from lessons, tasks
+* Maps and alternatives
+
+The plan for the live coding is for us to work together to solve problems using tools from this week's lessons. 
+
+## Outline maps
+
+* Picking a country or several from the world map
+
+```{r}
+m_data <- map_data("world")
+m_data
+```
+
+* Drawing the map
+
+```{r}
+m1 <- ggplot() +
+  geom_map(aes(map_id = region), map = m_data, data = m_data) +
+  expand_limits(x = c(-180, 180), y = c(-90,90))
+m1
+```
+
+* Filling countries with colours
+
+```{r}
+m2 <- ggplot() + 
+  geom_map(aes(map_id = region, fill=region), map = m_data, data = m_data,
+           show.legend = FALSE) + 
+  expand_limits(x = c(-180, 180), y = c(-90,90))
+m2
+```
+
+* Colour only some countries
+
+```{r}
+selected_countries <- c("Canada", "France", "USA")
+m3 <- ggplot() + 
+  geom_map(aes(map_id = region), map = m_data, data = m_data) + 
+  geom_map(aes(fill = region, map_id = region), map = m_data,
+           data = m_data %>% filter(region %in% selected_countries)) +
+  expand_limits(x = c(-180, 180), y = c(-90,90))
+m3
+```
+)
+* Adding points to a map
+
+Here are some data I wanted to add to a map yesterday.
+
+```{r}
+ts <- tribble(
+  ~ name, ~ lat, ~ long,
+  "Cariaco", 10.50, -64.66,
+  "L4", 50+15/60, -4-13/60,
+  "Port Hacking", -34-4/60, 151+8/60,
+  "Gullmar", 58+15/60, 11+27/60,
+)
+library(ggrepel)
+m1 + 
+  geom_point(aes(long, lat), color="green", size=3, data = ts) +
+  geom_label_repel(aes(long, lat, label = name), data = ts)
+```
+
+* Making a projection
+
+Show greenland on a polar projection.
+
+```{r}
+greenland <- map_data("world", c("Greenland", "Iceland", "Canada"))
+ggplot() + 
+  geom_map(aes(map_id = region), map = greenland, data = greenland) + 
+  expand_limits(x = c(-80, -20), y = c(60, 85)) + 
+  coord_map("azequalarea")   # ?mapproject
+```
+
+## Sliding maps
+
+* Simple sliding map with leaflet
+
+```{r}
+leaflet() %>% addTiles()
+```
+
+* Setting latitude, longitude, zoom level with `setView`
+
+```{r}
+leaflet() %>% addTiles() %>% setView(0,0,5)
+```
+
+* Adding points to the map
+
+```{r}
+leaflet() %>% addTiles() %>% setView(0,0,2) %>%
+  addMarkers(ts$long, ts$lat, popup = ts$name)
+leaflet() %>% addTiles() %>% setView(0,0,2) %>%
+  addCircleMarkers(ts$long, ts$lat, popup = ts$name)
+
+```
+
+## Alternatives to maps
+
+* geom_tile for a "heatmap"
+
+```{r}
+t1 <- expand.grid(region = c("A", "B", "C", "D", "Z"),
+                  month = c("Jan", "Feb", "Mar"))
+t1 %>% mutate(value = 1:15) %>%
+  ggplot() +
+  geom_tile(aes(x = region, y = month, fill = value))
+```
+
+* statebins (see homework for a global version)
+
+```{r}
+t2 <- tibble(
+  state = c("AZ", "CA", "NM", "RI", "NJ", "FL", "NJ"),
+  value = 1:7
+)
+t2 %>% 
+  ggplot() +
+  geom_statebins(aes(state = state, fill = value))
+```
+
+State area
+
+```{r}
+t3<- tibble(state = state.abb,
+            area = state.area)
+ggplot() + 
+  geom_statebins(aes(state = state, fill = log10(area)), data = t3)
+```
+

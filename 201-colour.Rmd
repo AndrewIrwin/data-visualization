@@ -188,6 +188,7 @@ Avoid using more than 5 colours. It is hard to make quantitative comparisons bet
 
 * Colour in Healy [Chapter 8](https://socviz.co/refineplots.html#use-color-to-your-advantage)
 * Colour in Wilke [Chapter 4](https://clauswilke.com/dataviz/color-basics.html)
+* [Which color scale to use?](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/) a 4-part blog posting
 * [Paleteer R package](https://github.com/EmilHvitfeldt/paletteer) 
 * [Catalog of palettes](https://github.com/EmilHvitfeldt/r-color-palettes)
 * [Color Brewer 2](https://colorbrewer2.org/) interactive website to select and illustrate use of color scales on maps.
