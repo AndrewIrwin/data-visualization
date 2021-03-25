@@ -11,7 +11,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-
+library(glue)
+library(unglue)
+library(palmerpenguins)
 ```
 
 # Agenda
@@ -27,19 +29,27 @@ The plan for the live coding is for us to work together to solve problems using 
 * String clean up with str_squish, str_lo_lower, str_remove, str_remove_all
 
 ```{r}
-
+str_squish("\t\n  Hello, my    name 
+           is    Andrew   .   ")
+str_to_lower("\t\n  Hello, my    name 
+           is    Andrew   .   ")
+str_remove("\t\n  Hello, my    name 
+           is    Andrew   .   ", ",") %>% str_remove("\\.")
 ```
 
 * Building strings from data with glue
 
 ```{r}
-
+name <- "Andrew"
+glue("Hello, my name is {name}.")
+tibble(names = c("Andrew", "Susan", "Zoe")) %>%
+  mutate(greeting = glue("Hello, my name is {names}."))
 ```
 
 * Extracting data from text using unglue
 
 ```{r}
-
+unglue("Hello my name is Andrew.", "Hello my name is {name}.")
 ```
 
 
@@ -48,12 +58,26 @@ The plan for the live coding is for us to work together to solve problems using 
 * Reordering factors using a quantitative variable
 
 ```{r}
-
+penguins %>% filter(!is.na(flipper_length_mm)) %>%
+  ggplot(aes(body_mass_g, flipper_length_mm, 
+                        color = fct_reorder(species, flipper_length_mm, .desc = TRUE))) + 
+  geom_point() +
+  labs(color = "Species")
+penguins %>% filter(!is.na(body_mass_g)) %>%
+  ggplot(aes(body_mass_g, 
+                        y = fct_reorder(species, body_mass_g, .desc = TRUE))) + 
+  geom_boxplot() +
+  labs(y = "Species")
 ```
 
 * Reordering a factor using an arbitrary order
 
 ```{r}
+penguins %>% ggplot(aes(body_mass_g, 
+                        flipper_length_mm, 
+                        color = fct_relevel(island, "Dream", "Biscoe", "Torgersen"))) +
+  geom_point() +
+  labs(color = "Island")
 
 
 ```
@@ -61,7 +85,13 @@ The plan for the live coding is for us to work together to solve problems using 
 * Grouping several factors together
 
 ```{r}
-
+diamonds %>% ggplot(aes(y = carat, 
+                        x = fct_lump_n(clarity, 4))) +
+  geom_boxplot()
+diamonds %>% ggplot(aes(y = carat, 
+                        x = price)) +
+  facet_grid(fct_lump_n(clarity, 3) ~ fct_lump_n(color, 3)) +
+  geom_point()
 
 ```
 
@@ -69,19 +99,34 @@ The plan for the live coding is for us to work together to solve problems using 
 
 * Converting text to dates and dates/times
 
-
 ```{r}
-
+library(lubridate)
+dmy("23rd March, 2021")
+dmy_hm("23rd March, 2021 14:25", tz = "America/Halifax")
+dmy_hm("23rd March, 2001 14:25", tz = "America/Halifax")
 ```
 
 * Arithmetic with date/times (subtracting, etc)
 
 ```{r}
-
+ # "2021-March-25" - "2021-April-1" # Error
+ymd("2021-April-1") - ymd("2021-March-25")
+ymd_hm("2021-April-1 08:35") - ymd_hm("2021-March-25 9:33")
+ymd("2021-12-25")  + 21
+ymd("2020-01-01")  + 60
+ymd("2000-01-01")  + 60
+ymd("1900-01-01")  + 60
 ```
 
 * Formatting axis labels on plots
 
 ```{r}
+tibble(date = ymd_hm("2021-03-22 10:45", "2021-03-22 18:27", tz = "America/Halifax"),
+       value = c(4, 6)
+) %>% ggplot(aes(y = date, x = value)) + geom_point()
 
+tibble(date = ymd_hm("2021-03-20 10:45", "2021-03-22 18:27", tz = "America/Halifax"),
+       value = c(4, 6)
+) %>% ggplot(aes(y = date, x = value)) + geom_point() +
+  scale_y_datetime(date_labels = "%a %d %H")
 ```
